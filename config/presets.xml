@@ -1163,9 +1163,17 @@ common:  sc - "short scenery name" (name color)
 <v sc="Aln"  p="mushrooms3"  m="mushrooms_grn"
                                     r="4" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
 
-<v sc="Uni"  p="shroom_tall1"       r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
-<v sc="Uni"  p="shroom_tall2"       r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
-<v sc="Uni"  p="shroom_tall3"       r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
+<v sc="Cry"  p="shroom_tall1" m="shroom_tall_blue"  r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
+<v sc="Sur"  p="shroom_tall1" m="shroom_tall_cyan"  r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
+<v sc="Uni"  p="shroom_tall1" m="shroom_tall_viol"  r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
+
+<v sc="Cry"  p="shroom_tall2" m="shroom_tall_blue"  r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
+<v sc="Sur"  p="shroom_tall2" m="shroom_tall_cyan"  r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
+<v sc="Uni"  p="shroom_tall2" m="shroom_tall_viol"  r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
+
+<v sc="Cry"  p="shroom_tall3" m="shroom_tall_blue"  r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
+<v sc="Sur"  p="shroom_tall3" m="shroom_tall_cyan"  r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
+<v sc="Uni"  p="shroom_tall3" m="shroom_tall_viol"  r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
 
 <v sc="Uni"  p="shrooms_tall"       r="3" al="0"  vd="600" vD="1000"  y="0.52" sa="0.85" sb="1.25"  wx="0" wy="0"  ab="21.14" rd="4" fd="0.0" />
 <v sc="Aln"  p="shrooms_tall"  m="shrooms_tall_grn"

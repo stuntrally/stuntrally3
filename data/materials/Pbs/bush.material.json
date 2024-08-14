@@ -95,77 +95,6 @@
 	"pbs" : 
 	{
 
-		"3D-Diggers/shroom1" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"alpha_test" : ["greater", 0.5, false],
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0.6, 0.6, 0.6],
-				"background" : [1, 1, 1, 1],
-				"texture" : "shroom1.png",
-				"sampler" : "Sampler_10"
-			},
-			"specular" :
-			{
-				"value" : [1, 1, 1]
-			},
-			"fresnel" :
-			{
-				"value" : 0.03,
-				"mode" : "coeff"
-			},
-			"normal" :
-			{
-				"value" : 1,
-				"texture" : "shroom1_norm.png",
-				"sampler" : "Sampler_10"
-			},
-			"roughness" :
-			{
-				"value" : 0.1
-			}
-		},
-
-		"3D-Diggers/shroom2" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"alpha_test" : ["greater", 0.5, false],
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0.6, 0.6, 0.6],
-				"background" : [1, 1, 1, 1],
-				"texture" : "shroom2.png",
-				"sampler" : "Sampler_10"
-			},
-			"specular" :
-			{
-				"value" : [0.5, 0.5, 0.5]
-			},
-			"fresnel" :
-			{
-				"value" : 0.03,
-				"mode" : "coeff"
-			},
-			"normal" :
-			{
-				"value" : 1,
-				"texture" : "shroom2_norm.png",
-				"sampler" : "Sampler_10"
-			},
-			"roughness" :
-			{
-				"value" : 0.1
-			}
-		},
-
-
 		"fern2" :
 		{
 			"macroblock" : "Macroblock_2",
@@ -355,109 +284,6 @@
 			"roughness" :
 			{
 				"value" : 0.2
-			}
-		},
-
-
-		"shroom1_alien" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0.7, 0.7, 0.8],
-				"background" : [1, 1, 1, 1],
-				"texture" : "shroom_alien.png",
-				"sampler" : "Sampler_10"
-			},
-			"specular" :
-			{
-				"value" : [1, 1, 1]
-			},
-			"fresnel" :
-			{
-				"value" : 0.2,
-				"mode" : "coeff"
-			},
-			"normal" :
-			{
-				"value" : 1,
-				"texture" : "shroom2_norm.png",
-				"sampler" : "Sampler_10"
-			},
-			"roughness" :
-			{
-				"value" : 0.3
-			}
-		},
-
-		"shroom2_alien" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0.7, 0.7, 0.8],
-				"background" : [1, 1, 1, 1],
-				"texture" : "shroom_alien.png",
-				"sampler" : "Sampler_10"
-			},
-			"specular" :
-			{
-				"value" : [1, 1, 1]
-			},
-			"fresnel" :
-			{
-				"value" : 0.2,
-				"mode" : "coeff"
-			},
-			"normal" :
-			{
-				"value" : 1,
-				"texture" : "shroom2_norm.png",
-				"sampler" : "Sampler_10"
-			},
-			"roughness" :
-			{
-				"value" : 0.3
-			}
-		},
-
-		"shroom3_alien" :
-		{
-			"macroblock" : "Macroblock_0",
-			"blendblock" : "Blendblock_0",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"diffuse" :
-			{
-				"value" : [0.7, 0.7, 0.8],
-				"background" : [1, 1, 1, 1],
-				"texture" : "shroom_alien.png",
-				"sampler" : "Sampler_10"
-			},
-			"specular" :
-			{
-				"value" : [1, 1, 1]
-			},
-			"fresnel" :
-			{
-				"value" : 0.2,
-				"mode" : "coeff"
-			},
-			"normal" :
-			{
-				"value" : 1,
-				"texture" : "shroom2_norm.png",
-				"sampler" : "Sampler_10"
-			},
-			"roughness" :
-			{
-				"value" : 0.3
 			}
 		},
 
@@ -1126,6 +952,393 @@
 			"roughness" :
 			{
 				"value" : 0.28
+			}
+		},
+
+
+		"mushrooms" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"tree_wind" : true,
+			"diffuse" :
+			{
+				"value" : [1.2, 1.0, 1.2],
+				"background" : [1, 1, 1, 1],
+				"texture" : "mushrooms_viol.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.4, 0.4, 0.4]
+			},
+			"fresnel" :
+			{
+				"value" : 0.4,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1.5,
+				"texture" : "mushrooms_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 1.5,
+				"texture" : "mushrooms_r.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"mushrooms_red" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"tree_wind" : true,
+			"diffuse" :
+			{
+				"value" : [1.0, 1.0, 1.0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "mushrooms_red.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.4, 0.4, 0.4]
+			},
+			"fresnel" :
+			{
+				"value" : 0.2,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "mushrooms_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 1,
+				"texture" : "mushrooms_r.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"mushrooms_grn" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"tree_wind" : true,
+			"diffuse" :
+			{
+				"value" : [1.0, 1.0, 1.0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "mushrooms_grn.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.4, 0.4, 0.4]
+			},
+			"fresnel" :
+			{
+				"value" : 0.2,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1.5,
+				"texture" : "mushrooms_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 1,
+				"texture" : "mushrooms_r.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+
+		"shroom_tall_blue" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"tree_wind" : true,
+			"diffuse" :
+			{
+				"value" : [0.6, 0.8, 1.0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "shroom_tall_blue.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.4, 0.4, 0.4]
+			},
+			"fresnel" :
+			{
+				"value" : 0.2,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "shroom_tall_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.6,
+				"texture" : "shroom_tall_r.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"emissive" :
+			{
+				"value" : [0.2, 0.2, 0.3],
+				"texture" : "shroom_tall_e.jpg"
+			}
+		},
+
+		"shroom_tall_cyan" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"tree_wind" : true,
+			"diffuse" :
+			{
+				"value" : [0.7, 0.7, 0.7],
+				"background" : [1, 1, 1, 1],
+				"texture" : "shroom_tall_cyan.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.4, 0.4, 0.4]
+			},
+			"fresnel" :
+			{
+				"value" : 0.2,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "shroom_tall_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 1,
+				"texture" : "shroom_tall_r.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"emissive" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"texture" : "shroom_tall_e.jpg"
+			}
+		},
+
+		"shroom_tall_viol" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"tree_wind" : true,
+			"diffuse" :
+			{
+				"value" : [0.9, 0.9, 0.9],
+				"background" : [1, 1, 1, 1],
+				"texture" : "shroom_tall_viol.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.4, 0.4, 0.4]
+			},
+			"fresnel" :
+			{
+				"value" : 0.2,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "shroom_tall_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 1,
+				"texture" : "shroom_tall_r.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"emissive" :
+			{
+				"value" : [0.3, 0.1, 0.4],
+				"texture" : "shroom_tall_e.jpg"
+			}
+		},
+
+
+		"shrooms_tall" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"tree_wind" : true,
+			"diffuse" :
+			{
+				"value" : [1.0, 1.0, 1.0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "shrooms_tall.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.4, 0.4, 0.4]
+			},
+			"fresnel" :
+			{
+				"value" : 0.2,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "shrooms_tall_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 1,
+				"texture" : "shrooms_tall_r.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"shrooms_tall_grn" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"tree_wind" : true,
+			"diffuse" :
+			{
+				"value" : [2.1, 2.1, 2.1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "shrooms_tall_grn.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.4, 0.4, 0.4]
+			},
+			"fresnel" :
+			{
+				"value" : 0.2,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "shrooms_tall_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 1,
+				"texture" : "shrooms_tall_r.jpg",
+				"sampler" : "Sampler_10"
+			}
+		},
+
+
+		"shroom_tree_tops" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"tree_wind" : true,
+			"diffuse" :
+			{
+				"value" : [0.7, 1.6, 1.4],
+				"background" : [1, 1, 1, 1],
+				"texture" : "shroom_tree_tops.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.4, 0.4, 0.4]
+			},
+			"fresnel" :
+			{
+				"value" : 0.2,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "shroom_tree_tops_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.42,
+				"sampler" : "Sampler_10"
+			}
+		},
+
+		"shroom_tree_bark" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"tree_wind" : true,
+			"diffuse" :
+			{
+				"value" : [0.7, 1.6, 1.4],
+				"background" : [1, 1, 1, 1],
+				"texture" : "shroom_tree_bark.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.4, 0.4, 0.4]
+			},
+			"fresnel" :
+			{
+				"value" : 0.2,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "shroom_tree_bark_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.36,
+				"sampler" : "Sampler_10"
 			}
 		}
 
