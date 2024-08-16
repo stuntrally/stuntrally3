@@ -157,7 +157,7 @@ public:
 	CK(TerrainEmissive);
 	SlV(TerReflect);
 	
-	SlV(TerHoriz);  SlV(TerPosX);  SlV(TerPosZ);
+	SlV(TerHoriz);  SlV(TerPosX);  SlV(TerPosZ);  SV svTerVeget;
 	//  collis, borders
 	CK(TerCollis);  CK(TerBL); CK(TerBR); CK(TerBF); CK(TerBB);
 	void SldUpd_Ter();

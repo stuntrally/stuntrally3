@@ -20,7 +20,7 @@ WIP means work in progress, still being developed
     - grass and bushes deform under vehicle
 - Gui
   - New tab on Setup - Paints - Adjust - **Under glow** for color H,S,V
-    - under glow color also auto set by picking paint
+    - under glow color is auto set by picking paint
   - Main menu 3rd level for Game Types. Separate for Splitscreen and Multiplayer
   - 3D win **cups** shown on game end
   - Gui shows small track previews for game track / series
@@ -29,7 +29,8 @@ WIP means work in progress, still being developed
   - Road: wall type, for decoration walls, rectangular
     - pipe parameter changes it from wide at 0, to square at 0.5 to tall at 1.0
   - New tab Sun - **Wind**
-    - unified params, (WIP) affecting: trees, grass, water, weather particles
+    - unified params, affecting: trees, grass, water, weather particles
+  - Vegetation materials, possible in presets
   - Edit mode for Collection, key Y  
     - Insert/remove gems, move, scale
     - change type (for look, at end of presets.xml)

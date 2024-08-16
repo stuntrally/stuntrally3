@@ -93,6 +93,7 @@ public:
 	//  🎳 physics
 	bool collis = true;  // game, physics
 	bool bL=1,bR=1,bF=1,bB=1;  // border planes < > ^ v
+	float fVeget = 1.f;  // veget factor, less on horizons in jungle etc
 	
 	//  methods
 	TerData();	void Default();

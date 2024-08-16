@@ -480,7 +480,7 @@ void CGui::listColsChng(MyGUI::List* l, size_t t)
 		if (s == app->vColNames[i])
 		{
 			app->SetColNewType(i);
-			Upd3DView(s+".mesh");
+			Upd3DView(s+".mesh");  //,mtr);
 			return;
 		}
 }

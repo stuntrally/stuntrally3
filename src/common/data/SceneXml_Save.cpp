@@ -193,6 +193,8 @@ bool Scene::SaveXml(String file)
 			if (!td.bR)		ter->SetAttribute("bR",	td.bR ? 1 : 0 );
 			if (!td.bF)		ter->SetAttribute("bF",	td.bF ? 1 : 0 );
 			if (!td.bB)		ter->SetAttribute("bB",	td.bB ? 1 : 0 );
+			if (td.fVeget != 1.f)
+				ter->SetAttribute("veget",	toStrC( td.fVeget ));
 
 			const TerLayer* l;
 			for (int i=0; i < 6; ++i)

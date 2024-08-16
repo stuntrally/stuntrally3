@@ -144,6 +144,7 @@ void CGui::SldUpd_Ter()
 	ckTerBR.Upd(&t.bR);
 	ckTerBF.Upd(&t.bF);
 	ckTerBB.Upd(&t.bB);
+	svTerVeget.UpdF(&t.fVeget);
 }
 
 void CGui::slTerHoriz(SV* sv)

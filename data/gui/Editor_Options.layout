@@ -573,15 +573,15 @@
 						</Widget>
 					</Widget>
 
-					<!-- 🌳 Horizon Vegetation -->
+					<!-- 🌳 Horizon, Vegetation -->
 					<Widget type="TabItem" skin="" position="2 24 694 272">
 						<Property key="Caption" value="#30F030#{Horizon}"/>
-						<Widget type="Button" skin="Button" position="32 210 200 26" layer="Back" name="HorApplyVeget">
+						<Widget type="Button" skin="Button" position="32 180 200 26" layer="Back" name="HorApplyVeget">
 							<Property key="Caption" value="#{Apply}"/>
 							<Property key="Colour" value="0.8 1 0.7"/>
 							<Property key="TextColour" value="0.8 1 0.7"/>
 						</Widget>
-						<!-- <Widget type="Button" skin="Button" position="464 240 136 26" name="VegetReset">
+						<!-- <Widget type="Button" skin="Button" position="464 240 136 26" name="HorVegetReset">
 							<Property key="Caption" value="#{Reset}"/>
 							<Property key="Colour" value="0.6 1.0 0.3"/>
 							<Property key="TextColour" value="0.3 1 0.2"/>
@@ -631,7 +631,7 @@
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="32 320 172 24">
-							<Property key="Caption" value="#{Horizon} #{max} ##"/>
+							<Property key="Caption" value="#{Horizon} #{Horizon} #{max} ##"/>
 							<Property key="TextColour" value="0.4 1 1"/>
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="280 320 320 18" name="Horizons"/>

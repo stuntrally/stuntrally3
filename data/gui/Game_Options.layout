@@ -1153,10 +1153,10 @@
 						</Widget>
 					</Widget>
 
-					<!-- 🌳 Horizon Vegetation -->
+					<!-- 🌳 Horizon, Vegetation -->
 					<Widget type="TabItem" skin="" position="2 24 694 272">
 						<Property key="Caption" value="#30F030#{Horizon}"/>
-						<Widget type="Button" skin="Button" position="32 210 200 26" layer="Back" name="HorApplyVeget">
+						<Widget type="Button" skin="Button" position="32 180 200 26" layer="Back" name="HorApplyVeget">
 							<Property key="Caption" value="#{Apply}"/>
 							<Property key="Colour" value="0.8 1 0.7"/>
 							<Property key="TextColour" value="0.8 1 0.7"/>

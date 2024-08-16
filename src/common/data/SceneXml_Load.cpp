@@ -464,6 +464,8 @@ bool Scene::LoadTerData(TerData& td, XMLElement* e)
 	a = e->Attribute("bR");		if (a)  td.bR = s2i(a)>0;
 	a = e->Attribute("bF");		if (a)  td.bF = s2i(a)>0;
 	a = e->Attribute("bB");		if (a)  td.bB = s2i(a)>0;
+	a = e->Attribute("veget");		if (a)  td.fVeget = s2r(a);
+
 
 	//  get iVerts from hmap file
 	int n = tds.size();

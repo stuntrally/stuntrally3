@@ -74,8 +74,8 @@ void CScene::CreateVegets()
 		Real dTr = sc->densTrees; // * horizMul;
 		dTr = dTr / 1000000.f * tws * tws;
 
-		Real hTr = horiz ? pSet->veg.hor_trees  : 1.f;
-		Real hBu = horiz ? pSet->veg.hor_bushes : 1.f;
+		Real hTr = horiz ? td.fVeget * pSet->veg.hor_trees  : 1.f;
+		Real hBu = horiz ? td.fVeget * pSet->veg.hor_bushes : 1.f;
 		Real fTrees  = gs.trees  * dTr * hTr;
 		Real fBushes = gs.bushes * dTr * hBu;
 		

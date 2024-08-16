@@ -524,7 +524,7 @@ void CGui::listObjsChng(MyGUI::List* l, size_t t)
 		if (s == app->vObjNames[i])
 		{
 			app->SetObjNewType(i);
-			Upd3DView(s+".mesh");
+			Upd3DView(s+".mesh");  //,mtr);
 			return;
 		}
 }

@@ -359,7 +359,8 @@ void CGui::InitGui()
 	ck= &ckTerBF;	ck->Init("TerBF",	&b);   Cev(TerBF);
 	ck= &ckTerBB;	ck->Init("TerBB",	&b);   Cev(TerBB);
 	// SldUpd_Ter();  // no ter yet
-
+	sv= &svTerVeget;	sv->Init("TerVeget",	&f,  0.f, 1.f);  sv->DefaultF(1.f);
+	
 
 	Btn("TerrainNew",    btnTerrainNew);   Btn("UpdateTerrain", btnUpdateLayers);
 	Btn("TerrainGenAdd", btnTerGenerate);  Btn("TerrainGenSub", btnTerGenerate);    Btn("TerrainGenMul", btnTerGenerate);
