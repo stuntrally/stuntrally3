@@ -18,6 +18,7 @@ WIP means work in progress, still being developed
     - Limit (total count) option
     - Tree wind animation, WIP
     - grass and bushes deform under vehicle
+  - Some more tracks have new horizons, almost all in game
 - Gui
   - New tab on Setup - Paints - Adjust - **Under glow** for color H,S,V
     - under glow color is auto set by picking paint

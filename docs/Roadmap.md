@@ -19,8 +19,6 @@ Marked: `crucial`, **Next or Big**, _Important_.
 🌪️**wind scale** params in json, for all trees, bushes, grass sway own-  
 wind anim *shadow caster* too, ed prv obj no wind-  
 
-🌳new [trees](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), *shrooms*, etc  
-
 💎Add **gems** to tracks, more types 3d  
 xml par continuous?, logic btn continue, hid collected gems on start?  
 
@@ -55,9 +53,8 @@ Road wall types, [link](https://stuntrally.tuxfamily.org/mantis/view.php?id=6)
 📦 object hit sounds, reverb change in water, caves, pipes-  
 
 Remove all non **CC** data, [new topic](https://groups.f-hub.org/d/pIoLYCaO/-removing-replacing-data-with-non-cc-lincenses-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800)  
-
-redo or replace lowest quality meshes: shroom* 🍄, skyscraper* 🏢  
-normalize .mesh scales fir*, etc.  
+🌳new [trees](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), normalize .mesh scales fir*, etc  
+redo or replace lowest quality meshes: , skyscraper* 🏢  
 
 [Horizons](https://stuntrally.tuxfamily.org/mantis/view.php?id=11), add to rest of tracks  
 broken mygui set scrollview size, gallery list  
@@ -85,8 +82,9 @@ sunrays [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)
   add emissive, reflect par  
   blendmap also .hlsl or .any for DX  
   read blendmap, for ter wheel **surface** ids, many ters  
-  fix restore pages visibility  
-  fix triplanar normalmaps-  
+  fix restore *pages visibility*  
+  triplanar only for chosen layers  
+  fix *triplanar* normalmaps-  
 - 🛣️ Road  
   **Grid** for walls, road, pipes, ed update cell  
   1 mesh with 4 LODs, shader fix specular stretch  
