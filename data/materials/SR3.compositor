@@ -77,32 +77,105 @@ compositor_node Rtt_RoadPreview
 compositor_node Rtt_Terrain
 {
 	in 0 rt_output
+	// in 1 dynamic_cubemap  // todo..
 
-	target rt_output
+	texture depthBuffer  target_width target_height PFG_D32_FLOAT
+	texture rtt_first    target_width target_height target_format
+	texture rtt_refract  target_width target_height target_format
+	texture rtt_final    target_width target_height target_format
+
+	rtv rtt_first
 	{
+		depth_stencil	depthBuffer
+	}
+	rtv rtt_refract
+	{
+		depth_stencil	depthBuffer
+	}
+	rtv rtt_final
+	{
+		depth_stencil	depthBuffer
+	}
+
+
+	target rtt_first
+	{
+		//  [Terrain Render]  --------
 		pass render_scene
 		{
 			profiling_id "RTT 2 terrain"
 			identifier	11102
 
+			execution_mask			0xff
+			viewport_modifier_mask	0xff
+
 			load
 			{
 				all				clear
-				clear_colour	0 0 0 1  // black
+				// clear_depth  1.0
+				clear_colour	0.2 0.4 0.6 1
 			}
 			store
 			{
-				colour	store
+				colour	store_or_resolve
 				depth	store
-				stencil	store
+				stencil	dont_care
 			}
-			visibility_mask  0x00000024  // RV_Terrain & Fluids, + RV_Objects
-			
-			rq_first  1    // terrain, objects
-			rq_last	  76   // RQG_Fluid too
+
+			// expose dynamic_cubemap
+
+			visibility_mask  0x00000024  // RV_Terrain + RV_Objects
+
+			rq_last		20
 
 			overlays	off
-			enable_forwardplus no
+			//- shadows		SR3_Shadows  //** ed
+			lod_bias	2.0
+		}
+	}
+
+	target rtt_refract
+	{
+		pass render_quad
+		{
+			//  preserve depth buffer
+			load {  colour dont_care  }
+			material Ogre/Copy/4xFP32
+			input 0 rtt_first
+		}
+
+		//  water, Pass with refractive objects
+		pass render_scene
+		{
+			load {  all load  }
+			store
+			{
+				colour	store_or_resolve
+				depth	dont_care
+				stencil	dont_care
+			}
+
+			// expose demo_dynamic_cubemap
+			identifier	11103
+
+			visibility_mask  0x00000002
+			rq_first	210
+			rq_last		211
+
+			overlays		on
+			use_refractions	depthBuffer rtt_first
+		}
+
+	}
+
+	target rt_output
+	{
+		pass render_quad
+		{
+			identifier	11105
+			load {  colour dont_care  }
+			material Ogre/Copy/4xFP32
+			input 0 rtt_refract
 		}
 	}
 }
@@ -311,7 +384,7 @@ compositor_node PlanarReflectNode
 			store
 			{
 				colour	store_or_resolve
-				depth	dont_care
+				depth	store  //?
 				stencil	dont_care
 			}
 
@@ -451,10 +524,7 @@ compositor_node Rtt_View3D
 		//  water, Pass with refractive objects
 		pass render_scene
 		{
-			load
-			{
-				all		load
-			}
+			load {  all load  }
 			store
 			{
 				colour	store_or_resolve
@@ -495,7 +565,7 @@ compositor_node Rtt_View3D
 			execution_mask			0xff
 			viewport_modifier_mask	0xff
 
-			load {  all load }
+			load {  all load  }
 			store
 			{
 				colour	store
@@ -518,7 +588,7 @@ compositor_node Rtt_View3D
 	{
 		pass render_quad
 		{
-			load { all dont_care }
+			load {  all dont_care  }
 			store
 			{
 				colour	store
@@ -631,14 +701,11 @@ abstract compositor_node SR3_RenderAbs
 		//  water, Pass with refractive objects
 		pass render_scene
 		{
-			load
-			{
-				all		load
-			}
+			load {  all load  }
 			store
 			{
 				colour	store_or_resolve
-				depth	dont_care
+				depth	store  //?
 				stencil	dont_care
 			}
 
@@ -676,7 +743,7 @@ abstract compositor_node SR3_RenderAbs
 			execution_mask			0xff
 			viewport_modifier_mask	0xff
 
-			load {  all load }
+			load {  all load  }
 			store
 			{
 				colour	store
@@ -691,6 +758,8 @@ abstract compositor_node SR3_RenderAbs
 			//! set later at end in all  : SR3_RenderAbs
 
 			rq_first		76  //82
+			//rq_first		106  //82
+			rq_last		255
 
 			overlays	off
 			// shadows		SR3_Shadows  //** added in code
@@ -703,11 +772,12 @@ abstract compositor_node SR3_RenderAbs
 		//  Output to window
 		pass render_quad
 		{
-			load { all dont_care }
+			// load { all dont_care }
+			load {  colour dont_care  }
 			store
 			{
 				colour	store
-				depth	dont_care  //-
+				depth	store  //-
 				stencil	dont_care
 			}
 			material Ogre/Copy/4xFP32
@@ -728,11 +798,12 @@ abstract compositor_node SR3_RenderAbs
 			// affected by modifier, apply to the whole screen
 			viewport_modifier_mask	0x00
 
+			load {  all dont_care  }
 			store
 			{
 				colour	store
 				depth	store  //-
-				stencil	store
+				stencil	dont_care
 			}
 			visibility_mask  0x00002080  // RV_Hud, RV_Particles
 

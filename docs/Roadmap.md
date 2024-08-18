@@ -10,11 +10,11 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 `fix` multiplayer on windows [issue](https://github.com/stuntrally/stuntrally3/issues/28)
 
-🌊**add** refract clr, `depth` clr params  
-`fix` emissive fluids, fix no refract, `fix` crash on: Surreal, HexForest  
-**under**water top, *pass* projmatrix not inverse  
+`fix crash` on: Surreal, HexForest, Bug, Glitch  
 `fix` compositor: `boost` particles, car glass, `more` fluids at once MilkyWay, hud?,  
-`ed` **prv** add wtr to ter  
+🌊**add** refract clr, `depth` clr params  
+`fix` emissive fluids, fix no refract  
+**under**water top, *pass* projmatrix not inverse  
 
 🌪️**wind scale** params in json, for all trees, bushes, grass sway own-  
 wind anim *shadow caster* too, ed prv obj no wind-  

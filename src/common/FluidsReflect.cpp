@@ -94,7 +94,7 @@ void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 #define OFF_FOG  //-
 
 #if defined(SR_EDITOR) && defined(OFF_FOG)
-	bool rtt = id >= 11100 && id < 11103;  // road, ter
+	bool rtt = id >= 11100 && id < 11110;  // road, ter
 	if (rtt)
 	{	app->scn->UpdFog(0, 1);  //- off fog in RTTs
 		app->scn->UpdSun();
@@ -106,7 +106,7 @@ void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 
 	//  Ignore passes not tagged to receive reflections
 	bool prvCam = id == 11103;
-	if (id != 22201 && !prvCam)  // main or prv cam
+	if (id != 22201 && !prvCam)  // main cam  //or prv cam
 		return;
 #if defined(SR_EDITOR) && defined(OFF_FOG)
 	app->scn->UpdFog(prvCam, 0);  //- on fog back  main or prv cam

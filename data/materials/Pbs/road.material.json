@@ -3191,7 +3191,6 @@
 			"specular" :
 			{
 				"value" : [0.3, 0.3, 0.3],
-				"texture" : "roadAsphalt_spec.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
