@@ -144,6 +144,7 @@ void CScene::UpdFog(bool on, bool off)
 {
 	if (!atmo || !sun)  return;
 	bool fog = off ? false : app->pSet->bFog || on;
+	//** LogO(String("UpdFog: ") + (fog ? "Y" : "N") +"  on: "+ (on ? "y" : "n") +"  off: "+ (off ? "y" : "n"));
 
 	atmo->fogStartDistance = sc->fogStart;
 	atmo->fogDensity = !fog ? 0.000001f :

@@ -63,23 +63,28 @@ void ReflectListener::workspacePreUpdate( CompositorWorkspace *workspace )
 void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 {
 	// return;  //!-
-	//  Ignore clear etc
-	if (pass->getType() != PASS_SCENE)
-		return;
 
 	assert( dynamic_cast<const CompositorPassSceneDef *>( pass->getDefinition() ) );
 	const CompositorPassSceneDef *passDef =
 		static_cast<const CompositorPassSceneDef *>( pass->getDefinition() );
 
 	auto id = passDef->mIdentifier;
-	// auto s = passDef->mProfilingId;
-	// LogO("ws pass: "+s);  //toStr(pass->getParentNode()->getId() ));
+	auto s = passDef->mProfilingId;
+	//** LogO("ws pass: "+toStr(id)+" "+s);  //toStr(pass->getParentNode()->getId() ));
+
+	//  Ignore clear etc  ---
+	if (pass->getType() != PASS_SCENE)
+		return;
+
+	//  Ignore shadows ---
+	if (passDef->mShadowNodeRecalculation == SHADOW_NODE_CASTER_PASS)
+		return;
 
 	CompositorPassScene *passScene = static_cast<CompositorPassScene *>( pass );
 	Camera *camera = passScene->getCamera();
 
 #if 0  // todo: upd ter here? for splitscreen
-	///  ⛰️ Terrain  ----
+	///  ⛰️ Terrain  ----?
 	if (app->mGraphicsSystem->getRenderWindow()->isVisible())
 	{
 		// Force update the shadow map every frame
@@ -94,25 +99,33 @@ void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 #define OFF_FOG  //-
 
 #if defined(SR_EDITOR) && defined(OFF_FOG)
-	bool rtt = id >= 11100 && id < 11110;  // road, ter
+	bool rtt = //id == 10101 11101 
+		id == 22201;  //?..
+		// id >= 22201 && id <= 22299;
+		//id >= 11100 && id < 11110;  // road, ter
 	if (rtt)
 	{	app->scn->UpdFog(0, 1);  //- off fog in RTTs
 		app->scn->UpdSun();
 	}
 #endif
-	//  Ignore shadows
-	if (passDef->mShadowNodeRecalculation == SHADOW_NODE_CASTER_PASS)
+
+#if defined(SR_EDITOR) && defined(OFF_FOG)
+	rtt = id == 22299 || id == 10001 || id == 33301;  //?..
+	if (rtt)
+	{
+		app->scn->UpdFog(
+			id != 10001
+			, 0);  //- on fog back  main or prv cam
+		app->scn->UpdSun();
+	}
+#endif
+
+	//  Ignore passes not tagged to receive reflections/refract
+	bool reflect = id == 22202 || id == 33302   // rtt
+				|| id == 10002 || id == 21002;  // main
+	if (!reflect)
 		return;
 
-	//  Ignore passes not tagged to receive reflections
-	bool prvCam = id == 11103;
-	if (id != 22201 && !prvCam)  // main cam  //or prv cam
-		return;
-#if defined(SR_EDITOR) && defined(OFF_FOG)
-	app->scn->UpdFog(prvCam, 0);  //- on fog back  main or prv cam
-	app->scn->UpdSun();
-#endif
-	
 	//camera->setLodBias()  // not here, wont work
 
 	//  aspect ratio must match that of the camera we're reflecting
