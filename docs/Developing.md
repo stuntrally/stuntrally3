@@ -477,7 +477,7 @@ Workspace basically is the setup for rendering one view target, only like reflec
 Many compositor Workspaces are created from code (telling how to render stuff, also few extra for editor minimap RTT).  
 Creating is in `.log` lines with: `--++ WS add:`, and in cpp code by any `addWorkspace`.  
 
-`SR3.compositor` has definitions for most workspaces used.  
+[SR3.compositor](../data/materials/SR3.compositor) has definitions for most workspaces used.  
 Only shadows are made completely by code in `src/common/AppGui_Shadows.cpp`,  
 based on `Samples/2.0/ApiUsage/ShadowMapFromCode/ShadowMapFromCode.cpp`.  
 _Todo:_ only 3 PSSM splits work, no other count. ESM (Sh_Soft) is also broken.
@@ -489,7 +489,13 @@ Parts of [post](https://forums.ogre3d.org/viewtopic.php?p=553666#p553666) with i
 We do `workspace->addListener(` so that `PlanarReflWorkspaceListener` is updated, for _every_ workspace that can see the reflection (e.g. the cubemap workspaces).  
 In code `AddListenerRnd2Tex()`, it's `ReflectListener`, `mWsListener` in `FluidsReflect.h`.
 
-`ReflectListener::passEarlyPreExecute` does check which `render_pass` it is from `SR3.compositor` by `identifier` number.
+`ReflectListener::passEarlyPreExecute` does check which `render_pass` it is from `SR3.compositor` by `identifier` number.  
+
+In editor it also turns off fog for minimap RTTs, and back on for main views.
+
+_Todo:_ use `#define MANUAL_RTT_UPD` so editor won't drop Fps so much (rendering all its RTTs every frame).  
+Needs fix: in minimap and preview camera all gets dark (shadowed).  
+Possibly relevant [link](https://forums.ogre3d.org/viewtopic.php?p=556401#p556401).
 
 ## Effects
 

@@ -8,25 +8,26 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 ### SR 3.2
 
-`fix` multiplayer on windows [issue](https://github.com/stuntrally/stuntrally3/issues/28)
+`fix multiplayer` on windows [issue](https://github.com/stuntrally/stuntrally3/issues/28)  
+`fix splitscreen` broken with refractions  
 
 `fix crash` on: Surreal, HexForest, Bug, Glitch  
 `fix` compositor: `boost` particles, car glass, `more` fluids at once MilkyWay, hud?,  
-🌊**add** refract clr, `depth` clr params  
-`fix` emissive fluids, fix no refract  
+
+🌊add params: refract clr, *depth* clr  
+emissive fluids, fix no refract  
 **under**water top, *pass* projmatrix not inverse  
 
 🌪️**wind scale** params in json, for all trees, bushes, grass sway own-  
-wind anim *shadow caster* too, ed prv obj no wind-  
-
-💎Add **gems** to tracks, more types 3d  
-xml par continuous?, logic btn continue, hid collected gems on start?  
+wind anim shadow **caster** too, ed prv obj no wind-  
 
 fix .car thrusters lights pos  
 hide flares with in car camera  
 **ed** Fields: accel par, dir, teleport end  
 SSAO?  convert .compositor to C++  
 
+💎Add **gems** to tracks, more types 3d  
+xml par continuous?, logic btn continue, hid collected gems on start?  
 *new* track(s) with fields, add walls  
 hud new best time show, win particles-  
 
