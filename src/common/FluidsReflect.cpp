@@ -254,15 +254,18 @@ void FluidsReflect::CreateFluids()
 		
 		String sMtr = fb.id == -1 ? "" :
 			app->scn->data->fluids->fls[fb.id].material +
-			(app->pSet->g.water_refract == 0 ? "_lq" : "");
+			(fb.hq == 0 || app->pSet->g.water_refract == 0 ? "_lq" : "");
 
 		//  [0] above  [1] below
-		for (int n=0; n < 2; ++n)  // 2  // todo: FIXME refract wirefr bad
+		for (int n=0; n < 1; ++n)  // 2  // todo: FIXME refract wirefr bad
 		{
 			item[n] = mgr->createItem( mesh, dyn );
 			item[n]->setDatablock( sMtr );
 			item[n]->setCastShadows( false );
-			item[n]->setRenderQueueGroup( RQG_Fluid );  item[n]->setVisibilityFlags( RV_Fluid );
+			auto rqg = fb.hq == 2 ? RQG_Fluid+1 : RQG_Fluid;
+			// LogO("fluid "+iToStr(i,2)+" n "+toStr(n)+"  "+sMtr+"  rqg "+toStr(rqg));  //-
+
+			item[n]->setRenderQueueGroup( rqg );  item[n]->setVisibilityFlags( RV_Fluid );
 			app->SetTexWrap(item[n]);
 			
 			node[n] = rootNode->createChildSceneNode( dyn );

@@ -299,21 +299,21 @@
 			},
 			"diffuse" :
 			{
-				"value" : [0.54, 0.24, 0.3],
+				"value" : [0, 0.53420264, 0.71643287],
 				"background" : [1, 1, 1, 1]
 			},
 			"specular" :
 			{
-				"value" : [0.2, 0.2, 0.2]
+				"value" : [0.90332186, 1.5, 1.5]
 			},
 			"fresnel" :
 			{
-				"value" : [0.57, 0.27, 0.18],
+				"value" : [0.46842605, 0.9656067, 1.4672999],
 				"mode" : "coloured"
 			},
 			"normal" :
 			{
-				"value" : 1,
+				"value" : 6,
 				"texture" : "desert_mntn2_anomaly_n.jpg",
 				"sampler" : "Sampler_10"
 			},
