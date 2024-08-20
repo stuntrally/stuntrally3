@@ -8,15 +8,19 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 ### SR 3.2
 
-`fix multiplayer` on windows [issue](https://github.com/stuntrally/stuntrally3/issues/28)  
-`fix splitscreen` broken with refractions  
+`fix`:  
+**fix** multiplayer on windows [issue](https://github.com/stuntrally/stuntrally3/issues/28)  
+fix splitscreen broken with refractions  
 
-`fix crash` on: Surreal, HexForest, Bug, Glitch  
-`fix` compositor: `boost` particles, car glass, `more` fluids at once MilkyWay, hud?,  
+refract? **crash** on: Surreal, HexForest, Bug, Glitch  
+fix compositor:  
+car glass not refracted, offset, glass pipes not underwater  
+more fluids at once, blink on MilkyWay  
+option no refract water stretched  
 
-🌊add params: refract clr, *depth* clr  
-emissive fluids, fix no refract  
-**under**water top, *pass* projmatrix not inverse  
+🌊**under**water top,  
+pass projmatrix not **inverse**  
+add params: refract clr, *depth* clr, emissive fluids?  
 
 🌪️**wind scale** params in json, for all trees, bushes, grass sway own-  
 wind anim shadow **caster** too, ed prv obj no wind-  

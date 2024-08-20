@@ -643,7 +643,7 @@ void CarModel::UpdParsTrails(bool visible)
 	for (int w=0; w < numWheels; ++w)
 	{
 		uint8 grp = RQG_CarTrails;  //9=road  after glass
-		if (w < PAR_BOOST && parBoost[w]) {  parBoost[w]->setVisible(vis);  parBoost[w]->setRenderQueueGroup(grp);  }
+		if (w < PAR_BOOST && parBoost[w]) {  parBoost[w]->setVisible(vis);  /*parBoost[w]->setRenderQueueGroup(grp);  */}
 		
 		if (whTrail[w]){  whTrail[w]->setVisible(visible && pSet->trails);  whTrail[w]->setRenderQueueGroup(grp);  }
 		
@@ -654,7 +654,7 @@ void CarModel::UpdParsTrails(bool visible)
 		if (parHit && w==0)	{  parHit->setVisible(vis);  parHit->setRenderQueueGroup(grp);  }
 	}
 	for (int w=0; w < PAR_THRUST*2; ++w)
-		if (parThrust[w]) {  parThrust[w]->setVisible(vis);  parThrust[w]->setRenderQueueGroup(RQG_CarTrails);  }
+		if (parThrust[w]) {  parThrust[w]->setVisible(vis);  /*parThrust[w]->setRenderQueueGroup(RQG_CarTrails);*/  }
 }
 
 

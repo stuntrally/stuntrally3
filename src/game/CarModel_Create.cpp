@@ -520,6 +520,7 @@ void CarModel::Create()
 			if (!parBoost[i])
 			{	parBoost[i] = mSceneMgr->createParticleSystem(sBoostParName);  ToDel(parBoost[i]);
 				parBoost[i]->setVisibilityFlags(RV_Particles);
+				parBoost[i]->setRenderQueueGroup(RQG_CarParticles);  //RQG_CarTrails
 
 				const Vector3& pos = boostPos[i];
 				SceneNode* nb = ndCar->createChildSceneNode(SCENE_DYNAMIC, pos);  ToDel(nb);
@@ -548,6 +549,7 @@ void CarModel::Create()
 				if (parThrust[ii])  continue;
 				parThrust[ii] = mSceneMgr->createParticleSystem(t.sPar);  ToDel(parThrust[ii]);
 				parThrust[ii]->setVisibilityFlags(RV_Particles);
+				parThrust[i]->setRenderQueueGroup(RQG_CarParticles);
 
 				Vector3 pos = Vector3(t.ofs[0], t.ofs[1],
 					t.ofs[2] + (i-1)*2 * t.sizeZ);
