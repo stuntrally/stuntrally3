@@ -392,7 +392,7 @@ descr="Another alternating series, where odd tracks are brown (some dark), and e
 			<t name="Mud2-Bumps"         passPoints="9" />
 			<t name="Des2-Mntn"          passPoints="9" />
 			<t name="Vlc2-Volcanic"      passPoints="9" />
-			<t name="Des10-MudBath"      passPoints="9" />
+			<t name="Jng16-MudBath"      passPoints="9" />
 			<t name="Vlc5-Sad"           passPoints="9" />
 			<t name="Des16-AsphaltJumps" passPoints="9" />
 			<t name="Mud3-Mudlake"       passPoints="9" />
@@ -504,7 +504,7 @@ descr="The original Swamp and MudBath tracks. Quite bumpy and a bit tricky. Need
 		<pass avgPoints="11" />
 		<tracks>
 			<t name="Jng15-Swamp"   passPos="1" />
-			<t name="Des10-MudBath" passPos="1" />
+			<t name="Jng16-MudBath" passPos="1" />
 		</tracks>
 	</challenge>
 

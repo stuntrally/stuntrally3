@@ -237,7 +237,7 @@ descr="A collection of tracks that have either water or mud drive through areas.
 		<t name="Jng12-Fog"/>
 		<t name="Jng14-Muddy"/>
 		<t name="Jng15-Swamp"/>
-		<t name="Des10-MudBath"/>
+		<t name="Jng16-MudBath"/>
 		<t name="Isl6-Flooded"/>
 		<t name="Jng16-MudMad"/>
 		<t name="Jng18-Tiny"/>
@@ -462,9 +462,8 @@ descr="Desert championship. Part 1.">
 		<t name="Des7-CrossJumps"/>
 		<t name="Des8-Technical"/>
 	</champ>
-	<champ name="Desert 2nd" ver="4" difficulty="3" type="5"
+	<champ name="Desert 2nd" ver="5" difficulty="3" type="5"
 descr="Desert champ. Part 2.">
-		<t name="Des10-MudBath"/>
 		<t name="Des11-PersianCity"/>
 		<t name="Des12-Sandstorm"/>
 		<t name="Des14-JumpCrazy"/>
@@ -886,7 +885,7 @@ descr="Absolutely all rally tracks from game. Some easy pipes might appear.">
 		<t name="Wnt9-IceFrenzy"/>
 		<t name="Jng15-Swamp"/>
 		<t name="For12-HighPeaks"/>
-		<t name="Des10-MudBath"/>
+		<t name="Jng16-MudBath"/>
 		<t name="Grc3-Butterfly"/>
 		<t name="Isl6-Flooded"/>
 		<t name="Jng16-MudMad"/>
