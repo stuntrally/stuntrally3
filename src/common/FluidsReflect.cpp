@@ -41,6 +41,8 @@
 #include <OgreSceneNode.h>
 #include <OgreRenderable.h>
 #include "OgrePlanarReflections.h"
+#include <OgreBitwise.h>
+#include <OgreStagingTexture.h>
 #include <Compositor/Pass/PassScene/OgreCompositorPassScene.h>
 using namespace Ogre;
 
@@ -63,8 +65,7 @@ void ReflectListener::workspacePreUpdate( CompositorWorkspace *workspace )
 void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 {
 	// return;  //!-
-
-	assert( dynamic_cast<const CompositorPassSceneDef *>( pass->getDefinition() ) );
+	// assert( dynamic_cast<const CompositorPassSceneDef *>( pass->getDefinition() ) );  //!?-
 	const CompositorPassSceneDef *passDef =
 		static_cast<const CompositorPassSceneDef *>( pass->getDefinition() );
 

@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "App.h"
+#include "settings.h"
 #include "GraphicsSystem.h"
 
 #include <OgreRoot.h>
@@ -36,11 +37,6 @@ using namespace Ogre;
 //---------------------------------------------------------------------------------
 void AppGui::InitSSAO()
 {
-	// return;
-	mKernelRadius = 2.f;  // 1 par
-	mPowerScale = 1.5f;
-	// mKernelRadius = 3.f;
-	// mPowerScale = 4.f;
 
 	//  Create SSAO kernel samples
 	float kernelSamples[64][4];
@@ -130,7 +126,7 @@ void AppGui::InitSSAO()
 	psParams->setNamedConstant( "projectionParams", projectionAB );
 
 	//  other uniforms
-	psParams->setNamedConstant( "kernelRadius", mKernelRadius );
+	psParams->setNamedConstant( "kernelRadius", pSet->ssao_radius );
 	psParams->setNamedConstant(
 		"noiseScale",
 		Vector2(
@@ -164,15 +160,12 @@ void AppGui::InitSSAO()
 	Pass *passApply = materialApply->getTechnique( 0 )->getPass( 0 );
 	mApplyPass = passApply;
 	GpuProgramParametersSharedPtr psParamsApply = passApply->getFragmentProgramParameters();
-	psParamsApply->setNamedConstant( "powerScale", mPowerScale );
-
-	// TutorialGameState::createScene01();
+	psParamsApply->setNamedConstant( "powerScale", pSet->ssao_scale );
 }
 
 //-----------------------------------------------------------------------------------
 void AppGui::UpdateSSAO()
 {
-	// return;
 	GpuProgramParametersSharedPtr psParams = mSSAOPass->getFragmentProgramParameters();
 	Camera *camera = mCamera;  //mGraphicsSystem->getCamera();
 #if OGRE_NO_VIEWPORT_ORIENTATIONMODE == 0
@@ -181,10 +174,8 @@ void AppGui::UpdateSSAO()
 	camera->setOrientationMode( OR_DEGREE_0 );
 #endif
 	psParams->setNamedConstant( "projection", camera->getProjectionMatrix() );
-	psParams->setNamedConstant( "kernelRadius", mKernelRadius );
+	psParams->setNamedConstant( "kernelRadius", pSet->ssao_radius );
 
 	GpuProgramParametersSharedPtr psParamsApply = mApplyPass->getFragmentProgramParameters();
-	psParamsApply->setNamedConstant( "powerScale", mPowerScale );
-
-	// TutorialGameState::update( timeSinceLast );
+	psParamsApply->setNamedConstant( "powerScale", pSet->ssao_scale );
 }

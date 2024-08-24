@@ -232,10 +232,11 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 
 	// ck= &ckBloom;		ck->Init("Bloom",		&pSet->bloom);  Cev(EffUpd);
 	// sv= &svBloomInt;		sv->Init("BloomInt",	&pSet->bloom_int);   sv->DefaultF(0.13f);  Sev(EffUpd);
-	// sv= &svBloomOrig;	sv->Init("BloomOrig",	&pSet->bloom_orig);	 sv->DefaultF(0.91f);  Sev(EffUpd);
-
-	ck= &ckSSAO;			ck->Init("SSAO",		&pSet->ssao);  //Cev(EffUpdShd);
 	// ck= &ckSoftPar;		ck->Init("SoftParticles",&pSet->softparticles);  Cev(EffUpdShd);
+
+	ck= &ckSSAO;			ck->Init("SSAO",		&pSet->ssao);
+	sv= &svSsaoRadius;		sv->Init("SsaoRadius",	&pSet->ssao_radius, 0.1,6.f);  sv->DefaultF(1.f);
+	sv= &svSsaoScale;		sv->Init("SsaoScale",	&pSet->ssao_scale,  0.1,6.f);  sv->DefaultF(1.5f);
 
 
 	//  ⚙️ Settings  🆕 Startup common 

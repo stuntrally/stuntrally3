@@ -244,13 +244,15 @@ public:
 
 	//  🪄 Effects  --------------------------
 	Ck ckSSAO;
-	/*CK(AllEffects);
-	Ck ckSoftPar, ckHDR, ckBloom, ckMotBlur, ckGodRays;
-	void chkEffUpd(Ck*), chkEffUpdShd(Ck*);
+	SV svSsaoRadius, svSsaoScale;
 
-	SV svBloomInt, svBloomOrig;
-	void slEffUpd(SV*);
-	SV svHDRBloomInt, svHDRBloomOrig;*/
+	// CK(AllEffects);
+	// Ck ckSoftPar, ckHDR, ckBloom, ckMotBlur, ckGodRays;
+	// void chkEffUpd(Ck*), chkEffUpdShd(Ck*);
+
+	// SV svBloomInt, svBloomOrig;
+	// void slEffUpd(SV*);
+	// SV svHDRBloomInt, svHDRBloomOrig;
 
 
 	//  ⚙️ Settings  --------------------------

@@ -46,6 +46,7 @@ public:
 
 	//  🪄 Effects  ----
 	bool ssao;
+	float ssao_radius = 1.f, ssao_scale = 1.5f;
 	// bool all_effects =0;
 	// bool soft_particles, lens_flare;  // todo: 1st
 	// bool hdr, bloom;  // todo: 2nd
