@@ -48,6 +48,8 @@ using namespace std;
 void App::update( float dt )
 {
 	fLastFrameDT = dt;
+	if (pSet->ssao)
+		UpdateSSAO();
 
 	#if 0  //** log big dt
 	if (dt > 0.02)

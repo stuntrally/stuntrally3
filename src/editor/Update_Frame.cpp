@@ -359,6 +359,9 @@ void App::update( float dt )
 
 	processCamera(mDTime);
 
+	if (pSet->ssao)
+		UpdateSSAO();
+
 	
 	///  gui
 	gui->GuiUpdate();
