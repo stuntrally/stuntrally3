@@ -803,8 +803,6 @@
 	<Tag name="HDRParam1">Exposure</Tag>
 	<Tag name="HDRParam2">Brightness</Tag>
 	<Tag name="HDRParam3">Grain</Tag>
-	<Tag name="HDRVignettingRadius">Vignetting Radius</Tag>
-	<Tag name="HDRVignettingDarkness">Vignetting Darken</Tag>
 
 
 	<!--  Settings  debug  -->

@@ -618,7 +618,7 @@ compositor_node Rtt_View3D
 
 //  SSAO
 //------------------------------------------------------------------------------------------------------------------------------------------
-abstract compositor_node SR3_RenderAbs_SSAO
+abstract compositor_node SR3_RenderAbsOld_SSAO
 {
 	in 0 rt_renderwindow
 	// in 1 dynamic_cubemap
@@ -1048,7 +1048,7 @@ abstract compositor_node SR3_RenderAbsOld
 //------------------------------------------------------------------------------------------------------------------------------------------
 //  [Main Nodes]  for all  Max_Players,  vis mask  same as RV_Hud3D[..]
 //------------------------------------------------------------------------------------
-compositor_node SR3_Render0_SSAO : SR3_RenderAbs_SSAO
+compositor_node SR3_RenderOld0_SSAO : SR3_RenderAbsOld_SSAO
 {
 }
 compositor_node SR3_Render0 : SR3_RenderAbs
@@ -1111,10 +1111,10 @@ compositor_node SR3_RenderOld5 : SR3_RenderAbsOld
 
 //  [Workspaces]  0 also for ed 🏗️
 //------------------------------------------------------------------------------------
-workspace SR3_Workspace0_SSAO
-{
-	connect_output SR3_Render0_SSAO 0
-}
+// workspace SR3_Workspace0_SSAO
+// {
+// 	connect_output SR3_Render0_SSAO 0
+// }
 workspace SR3_Workspace0
 {
 	connect_external 0 SR3_Render0 0  // Render Window  on channel #0
@@ -1149,7 +1149,7 @@ workspace SR3_Workspace5
 //  Old  no refract  ----
 workspace SR3_WorkspaceOld0_SSAO
 {
-	connect_output SR3_Render0_SSAO 0
+	connect_output SR3_RenderOld0_SSAO 0
 }
 workspace SR3_WorkspaceOld0
 {

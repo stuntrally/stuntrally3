@@ -146,8 +146,8 @@ public:
 	void AddGuiShadows(bool vr_mode = false, int plr = 0, bool gui = true);
 	Ogre::CompositorWorkspace* SetupCompositor();
 
-	//  util get SR3_ name for player
-	Ogre::String getRender(int plr=0), getWorkspace(int plr=0);
+	//  util get SR3_ names for player
+	Ogre::String getWorkspace(bool worksp=1, int plr=0);
 
 
 	//  👥 Split screen  ----------------
@@ -164,6 +164,12 @@ public:
 
 	//  workspace, Ogre render setup   players + 1 for Refl cube, more for fluids etc
 	std::vector<Ogre::CompositorWorkspace*> mWorkspaces;
+
+
+	//  SSAO  ----------------
+	Ogre::Pass *mSSAOPass =0;
+	Ogre::Pass *mApplyPass =0;
+	void InitSSAO(), UpdateSSAO();
 
 
 	//  ⛰️ Terrain  ----------------

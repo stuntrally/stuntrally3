@@ -34,28 +34,40 @@ using namespace Ogre;
 
 
 //  util
-String AppGui::getRender(int plr)
+String AppGui::getWorkspace(bool worksp, int plr)
 {
-	String old = pSet->g.water_refract ? "" : "Old";
-	// "SR3_RenderAbs"
-	return "SR3_Render" + old + toStr(plr);
-}
-String AppGui::getWorkspace(int plr)
-{
-	String old = pSet->g.water_refract ? "" : "Old";
-	return "SR3_Workspace" + old + toStr(plr);
+	bool refr = pSet->g.water_refract;
+	String old = refr ? "" : "Old";
+	String ssao = !refr && pSet->ssao ? "_SSAO" : "";  // todo: ssao and refract..
+	
+	return (worksp ? "SR3_Workspace" : "SR3_Render")
+	 	+ old + toStr(plr) + ssao;
 }
 
 //  common
 //-----------------------------------------------------------------------------------------
 void AppGui::AddGuiShadows(bool vr_mode, int plr, bool gui)
 {
+	if (pSet->ssao)  //! todo: ssao, all in cpp ..
+		return;
 	bool old = !pSet->g.water_refract;
 	auto* mgr = mRoot->getCompositorManager2();
-	// CompositorNodeDef* def = mgr->addNodeDefinition("Aaa");  // create from cpp
-	// def->addTargetPass()
+	
+	/*//--- todo: create all from cpp..
+	{
+	CompositorNodeDef* node = mgr->addNodeDefinition("Aaa");
+	CompositorTargetDef* tgt = node->addTargetPass("abc", 0);
+	// CompositorPassDef* pas
+	CompositorPassSceneDef* pas = (CompositorPassSceneDef*)tgt->addPass(PASS_SCENE, "id");
+	pas->mProfilingId = "rtt";
+	pas->mFirstRQ = 0;
+	pas->mLastRQ = 250;
+	// pas->mMaterialScheme
+	CompositorPassSceneDef* psc;
+	}
+	/*---*/
 
-	CompositorNodeDef* node = mgr->getNodeDefinitionNonConst(getRender(plr));
+	CompositorNodeDef* node = mgr->getNodeDefinitionNonConst(getWorkspace(0, plr));
 	// LogO("--++ WS Target Gui passes "+toStr(node->getNumTargetPasses()));
 
 	CompositorTargetDef* target = node->getTargetPass(old ? 0 : 3);
@@ -191,7 +203,7 @@ CompositorWorkspace* AppGui::SetupCompositor()
 		//  add Workspace
 		CompositorWorkspace* ws1,*ws2;
 		LogO("--++ WS add:  VR Eye L, all: "+toStr(mgr->getNumWorkspaces()));
-		auto str = getWorkspace(0);
+		auto str = getWorkspace(1, 0);
 		const IdString wsName( str );
 		ws1 = mgr->addWorkspace( mSceneMgr, ext,
 				camL->cam, wsName,
@@ -233,7 +245,7 @@ CompositorWorkspace* AppGui::SetupCompositor()
 
 			//  add Workspace
 			LogO("--++ WS add:  Split Screen "+toStr(i)+", all: "+toStr(mgr->getNumWorkspaces()));
-			auto str = getWorkspace(i);
+			auto str = getWorkspace(1, i);
 			const IdString wsName( str );
 			CompositorWorkspace* w =
 				mgr->addWorkspace( mSceneMgr, ext,
@@ -259,7 +271,7 @@ CompositorWorkspace* AppGui::SetupCompositor()
 
 		//  add Workspace
 		LogO("--++ WS add:  Main, all: "+toStr(mgr->getNumWorkspaces()));
-		auto str = getWorkspace(0);
+		auto str = getWorkspace(1, 0);
 		const IdString wsName( str );
 		auto ws = mgr->addWorkspace( mSceneMgr, ext, c->cam, wsName, true );  // in .compositor
 		// ws->addListener(listener);

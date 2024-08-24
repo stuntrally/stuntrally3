@@ -84,31 +84,6 @@
 							<Property key="TextColour" value="0.8 1 1"/>
 							<Property key="FontName" value="font.big"/>
 						</Widget>
-
-						<!-- brightness -->
-						<Widget type="TextBox" skin="TextBox" position="32 406 248 24">
-							<Property key="Caption" value="#{Brightness}"/>
-							<Property key="TextColour" value="0.9 0.7 0.7"/>
-							<Property key="Alpha" value="0.8"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="296 406 48 24" name="BrightVal">
-							<Property key="TextColour" value="0.9 0.7 0.7"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="344 406 216 16" name="Bright">
-							<Property key="Colour" value="0.9 0.7 0.7"/>
-						</Widget>
-
-						<Widget type="TextBox" skin="TextBox" position="32 436 248 24">
-							<Property key="Caption" value="#{Contrast}"/>
-							<Property key="TextColour" value="0.9 0.5 0.5"/>
-							<Property key="Alpha" value="0.8"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="296 436 48 24" name="ContrastVal">
-							<Property key="TextColour" value="0.9 0.5 0.5"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="344 436 216 16" name="Contrast">
-							<Property key="Colour" value="0.9 0.5 0.5"/>
-						</Widget>
 					</Widget>
 
 					<Widget type="TabItem" skin="" position="2 24 738 472" layer="Back">
@@ -166,6 +141,32 @@
 							<Property key="Alpha" value="0.4"/>
 							<Property key="ImageTexture" value="gui_icons.png"/>
 						</Widget>
+
+						<!-- brightness -->
+						<Widget type="TextBox" skin="TextBox" position="32 406 248 24">
+							<Property key="Caption" value="#{Brightness}"/>
+							<Property key="TextColour" value="0.9 0.7 0.7"/>
+							<Property key="Alpha" value="0.8"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="296 406 48 24" name="BrightVal">
+							<Property key="TextColour" value="0.9 0.7 0.7"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="344 406 216 16" name="Bright">
+							<Property key="Colour" value="0.9 0.7 0.7"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="32 436 248 24">
+							<Property key="Caption" value="#{Contrast}"/>
+							<Property key="TextColour" value="0.9 0.5 0.5"/>
+							<Property key="Alpha" value="0.8"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="296 436 48 24" name="ContrastVal">
+							<Property key="TextColour" value="0.9 0.5 0.5"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="344 436 216 16" name="Contrast">
+							<Property key="Colour" value="0.9 0.5 0.5"/>
+						</Widget>
+						
 						<!-- <Widget type="Button" skin="CheckBox" position="28 30 408 24" name="AllEffects">
 							<Property key="Caption" value="#{AllEffects}"/>
 							<Property key="TextColour" value="1.0 1.0 0.7"/>
@@ -186,9 +187,32 @@
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="392 90 320 18" name="BloomInt"/> -->
 
+						<!-- SSAO -->
 						<Widget type="Button" skin="CheckBox" position="28 120 256 24" name="SSAO">
 							<Property key="Caption" value="#{ssao}"/>
 							<Property key="TextColour" value="1 0.7 0.1"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="32 150 248 24">
+							<Property key="Caption" value="#{Brush_Size}"/>
+							<Property key="TextColour" value="0.5 0.7 0.9"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="296 150 48 24" name="SsaoRadiusVal">
+							<Property key="TextColour" value="0.5 0.7 0.9"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="344 150 216 16" name="SsaoRadius">
+							<Property key="Colour" value="0.5 0.7 0.9"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="32 180 248 24">
+							<Property key="Caption" value="#{Brush_Power}"/>
+							<Property key="TextColour" value="0.5 0.9 0.9"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="296 180 48 24" name="SsaoScaleVal">
+							<Property key="TextColour" value="0.5 0.9 0.9"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="344 180 216 16" name="SsaoScale">
+							<Property key="Colour" value="0.5 0.9 0.9"/>
 						</Widget>
 
 						<!-- <Widget type="Button" skin="CheckBox" position="28 150 256 24" name="SoftParticles">
