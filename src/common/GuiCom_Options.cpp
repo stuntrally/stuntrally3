@@ -39,6 +39,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 
 
 	//  🧊 Detail, far geometry
+	//------------------------------------------------------------
 	const Real maxDist = 60000.f;
 	sv= &svLodBias;		sv->Init("LodBias",		&pSet->g.lod_bias,	0.01f,4.f, 1.5f);  SevC(LodBias);  sv->DefaultF(1.f);
 	sv= &svRoadDist;	sv->Init("RoadDist",	&pSet->g.road_dist,	0.f,5.f, 2.f, 2,5);  sv->DefaultF(1.6f);
@@ -46,6 +47,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 																			SevC(ViewDist);  sv->DefaultF(maxDist);
 
 	//  🖼️ Textures filtering
+	//------------------------------------------------------------
 	CmbC(cmb, "TexFiltering", cmbTexFilter);  cbTexFilter = cmb;
 	cmb->removeAllItems();
 	cmb->addItem(TR("#{Bilinear}"));     cmb->addItem(TR("#{Trilinear}"));
@@ -56,6 +58,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	// BtnC("ApplyShaders", btnShaders);
 
 	//  ⛰️ Terrain
+	//------------------------------------------------------------
 	//sv->strMap[1] = TR("#{max} 2");  sv->strMap[2] = TR("#{Any}");  // todo: shader tripl layers only..
 	auto triplMap = [&](){
 		sv->strMap[0] = TR("0 #{None}");		sv->strMap[1] = TR("1 #{Diffuse}");
@@ -71,6 +74,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 
 
 	//  🌳🪨 Veget  🌿 grass
+	//------------------------------------------------------------
 	sv= &svTrees;		sv->Init("Trees",		&pSet->gui.trees,      0.0f,9.f, 2.f);  sv->DefaultF(1.5f);
 	sv= &svTreesDist;	sv->Init("TreesDist",	&pSet->veg.trees_dist, 0.1f,9.f, 2.f);  sv->DefaultF(1.f);
 	sv= &svBush;		sv->Init("Bush",		&pSet->gui.bushes,     0.0f,9.f, 2.f);  sv->DefaultF(1.f);
@@ -88,6 +92,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 
 
 	//  🌒 Shadows
+	//------------------------------------------------------------
 	sv= &svShadowType;
 		sv->strMap[0] = TR("#{None}");  sv->strMap[1] = TR("#{FogNormal}");  sv->strMap[2] = "= Soft";
 						sv->Init("ShadowType",	&pSet->g.shadow_type,  0,2);  sv->DefaultI(1);
@@ -100,6 +105,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	BtnC("ApplyShadows", btnShadowsApply);
 
 	//  💡 Lights
+	//------------------------------------------------------------
 #ifndef SR_EDITOR  // game vehicles
 	ck= &ckLiFront;			ck->Init("LightsFront",        &pSet->li.front);  //CevC(Lights);
 	ck= &ckLiFrontShadows;	ck->Init("LightsFrontShadows", &pSet->li.front_shdw);
@@ -120,6 +126,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 
 
 	//  🔮 Reflection
+	//------------------------------------------------------------
 	sv= &svReflSkip;	sv->Init("ReflSkip",	&pSet->g.refl_skip,    0,1000, 2.f);  sv->DefaultI(0);
 	sv= &svReflFaces;	sv->Init("ReflFaces",	&pSet->g.refl_faces,   1,6);  sv->DefaultI(1);
 	sv= &svReflSize;
@@ -137,6 +144,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	sv->Init("ReflMode",	&pSet->refl_mode,   0,2);  SevC(ReflMode);  sv->DefaultI(1);*/
 
 	//  🌊 Water  // todo:
+	//------------------------------------------------------------
 	ck= &ckWaterReflect; ck->Init("WaterReflection", &pSet->g.water_reflect);  CevC(Water);
 	ck= &ckWaterRefract; ck->Init("WaterRefraction", &pSet->g.water_refract);  CevC(Water);
 	sv= &svWaterSize;
@@ -151,6 +159,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 
 
 	//  📊 Presets
+	//------------------------------------------------------------
 	CmbC(cmb, "CmbGraphicsPreset", cmbGraphicsPreset);
 	cmb->removeAllItems();
 	cmb->addItem(TR("#{GraphicsAll_Lowest}"));  cmb->addItem(TR("#{GraphicsAll_Low}"));
@@ -165,6 +174,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	// sv= &svLimitSleep; sv->Init("LimitSleep", &pSet->limit_sleep,  -2,20, 1.5f);  sv->DefaultI(-1);
 	
 	//  🖥️ Screen
+	//------------------------------------------------------------
 	// ck= &ckVRmode;  ck->Init("VRmode", &pSet->vr_mode);  // todo: meh
 
 	//  💡 brightness
@@ -189,6 +199,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	}*/
 
 	//  Render systems ..
+	//------------------------------------------------------------
 	#if 0
 	CmbC(cmb, "CmbRendSys", comboRenderSystem);
 	if (cmb)
@@ -214,6 +225,18 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 		//	combo->addItem(rsl[i]->getName());
 	}
 	#endif
+
+	//  🪄 Effects
+	//------------------------------------------------------------
+	// ck= &ckAllEffects;	ck->Init("AllEffects",	&pSet->all_effects);  Cev(AllEffects);
+
+	// ck= &ckBloom;		ck->Init("Bloom",		&pSet->bloom);  Cev(EffUpd);
+	// sv= &svBloomInt;		sv->Init("BloomInt",	&pSet->bloom_int);   sv->DefaultF(0.13f);  Sev(EffUpd);
+	// sv= &svBloomOrig;	sv->Init("BloomOrig",	&pSet->bloom_orig);	 sv->DefaultF(0.91f);  Sev(EffUpd);
+
+	ck= &ckSSAO;			ck->Init("SSAO",		&pSet->ssao);  //Cev(EffUpdShd);
+	// ck= &ckSoftPar;		ck->Init("SoftParticles",&pSet->softparticles);  Cev(EffUpdShd);
+
 
 	//  ⚙️ Settings  🆕 Startup common 
 	//------------------------------------------------------------

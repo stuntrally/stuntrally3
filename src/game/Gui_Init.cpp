@@ -382,17 +382,6 @@ void CGui::InitGui()
 	// ck= &ckShowPics;	ck->Init("ShowPictures",&pSet->loadingbackground);
 
 
-	//  Effects
-	// ck= &ckAllEffects;	ck->Init("AllEffects",	&pSet->all_effects);  Cev(AllEffects);
-
-	// ck= &ckBloom;		ck->Init("Bloom",		&pSet->bloom);  Cev(EffUpd);
-	// sv= &svBloomInt;		sv->Init("BloomInt",	&pSet->bloom_int);   sv->DefaultF(0.13f);  Sev(EffUpd);
-	// sv= &svBloomOrig;	sv->Init("BloomOrig",	&pSet->bloom_orig);	 sv->DefaultF(0.91f);  Sev(EffUpd);
-
-	// ck= &ckSSAO;			ck->Init("SSAO",		&pSet->ssao);  Cev(EffUpdShd);
-	// ck= &ckSoftPar;		ck->Init("SoftParticles",&pSet->softparticles);  Cev(EffUpdShd);
-
-
 	//  📽️ Replays  ------------------------------------------------------------
 	Btn("RplLoad",   btnRplLoad);    Btn("RplSave",   btnRplSave);
 	Btn("RplDelete", btnRplDelete);  Btn("RplRename", btnRplRename);

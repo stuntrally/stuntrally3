@@ -43,9 +43,17 @@ public:
 	//  💡 brightness
 	float bright = 1.f, contrast = 1.f;  //, gamma = 1.15f;
 	float car_light_bright = 1.f;
-	
 
-	//  hud
+	//  🪄 Effects  ----
+	bool ssao;
+	// bool all_effects =0;
+	// bool soft_particles, lens_flare;  // todo: 1st
+	// bool hdr, bloom;  // todo: 2nd
+	// bool god_rays, motion_blur;  // todo: 2nd
+	// float bloom_int, bloom_orig, blur_intensity;
+
+
+	//  Hud  ----
 	bool vr_mode = 0;  // 👀 forces 1 player
 	int fps_bar =0;  // 📈
 	float fps_mul = 1.f;  // red vals factor
@@ -75,7 +83,7 @@ public:
 		int grid_quality = 0;
 	} li;
 
-	struct Veget
+	struct Veget  // ----
 	{
 		//  🌳🪨🌿 veget  6x
 		float trees = 1.5f, trees_dist = 1.f;  // only for presets [] arrays

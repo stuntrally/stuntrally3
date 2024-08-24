@@ -346,16 +346,6 @@ public:
 	void radKmh(WP), radMph(WP), radUpd(bool kmh);
 
 
-	//  Effects  ----
-	/*CK(AllEffects);
-	Ck ckBloom, ckBlur, ckSoftPar, ckSSAO, ckGodRays, ckHDR;
-	void chkEffUpd(Ck*), chkEffUpdShd(Ck*);
-
-	SV svBloomInt, svBloomOrig;
-	void slEffUpd(SV*);
-	SV svHDRBloomInt, svHDRBloomOrig;*/
-
-
 	//  🔨 Game  setup  ----
 	Ck ckVegetCollis, ckCarCollis, ckRoadWCollis, ckDynamicObjs, ckDriveOnHoriz;
 	SV svNumLaps;  SLV(RplNumViewports);  //-

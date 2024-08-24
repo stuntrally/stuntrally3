@@ -213,15 +213,6 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "sound.vol_car_crash", vol_car_crash);	Param(c,w, "sound.vol_car_scrap", vol_car_scrap);
 	Param(c,w, "sound.hud_vol", vol_hud);
 	Param(c,w, "sound.hud_chk", snd_chk);			Param(c,w, "sound.hud_chk_wrong", snd_chkwr);
-
-	//  effects
-	/*Param(c,w, "video_eff.all_effects", all_effects);
-	Param(c,w, "video_eff.bloom", bloom);				Param(c,w, "video_eff.bloomintensity", bloom_int);
-	Param(c,w, "video_eff.ssao", ssao);					Param(c,w, "video_eff.softparticles", softparticles);
-	Param(c,w, "video_eff.godrays", godrays);
-	Param(c,w, "video_eff.boost_fov", boost_fov);
-	//  effects hdr
-	Param(c,w, "video_eff.hdr", hdr);					Param(c,w, "video_eff.hdr_p1", hdrParam1);*/
 }
 
 SETTINGS::SETTINGS()

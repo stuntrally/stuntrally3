@@ -193,12 +193,6 @@ public:
 	//  🔧 tweak
 	std::map<char, std::string> dev_tracks;  // alt-shift-
 
-	//  effects
-	// bool all_effects =0;
-	// bool hdr, bloom, ssao;  // todo: 1st
-	// bool soft_particles, god_rays, motion_blur;  // todo: 2nd
-	// float bloom_int, bloom_orig, blur_intensity;
-
 	//  📽️ replay
 	bool rpl_rec = 1, rpl_ghost = 1, rpl_bestonly = 1;
 	bool rpl_ghostother = 1, rpl_trackghost = 1;

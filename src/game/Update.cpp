@@ -1,9 +1,7 @@
 #include "pch.h"
-#include "Def_Str.h"
 #include "CGame.h"
 // #include "CHud.h"
 #include "CGui.h"
-#include "masterclient.hpp"
 #include "gameclient.hpp"
 
 #include "CarModel.h"
@@ -12,7 +10,6 @@
 #include "car.h"
 #include "game.h"
 // #include <MyGUI.h>
-#include "LinearMath/btDefaultMotionState.h"
 #include <thread>
 using namespace Ogre;
 using namespace std;

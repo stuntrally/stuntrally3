@@ -158,8 +158,65 @@
 						</Widget>
 					</Widget>
 
+					<!-- 🪄 Effects todo -->
+					<Widget type="TabItem" skin="" position="2 24 738 472">
+						<Property key="Caption" value="#A0B0C0#{Effects}"/>
+						<Widget type="ImageBox" skin="ImageBox" position="660 4 56 56">
+							<Property key="ImageCoord" value="640 128 128 128"/>
+							<Property key="Alpha" value="0.4"/>
+							<Property key="ImageTexture" value="gui_icons.png"/>
+						</Widget>
+						<!-- <Widget type="Button" skin="CheckBox" position="28 30 408 24" name="AllEffects">
+							<Property key="Caption" value="#{AllEffects}"/>
+							<Property key="TextColour" value="1.0 1.0 0.7"/>
+							<Property key="TextShadow" value="true"/>
+							<Property key="FontName" value="font.big"/>
+						</Widget> -->
+
+						<!-- <Widget type="Button" skin="CheckBox" position="28 60 164 24" name="Bloom">
+							<Property key="Caption" value="#{Bloom}"/>
+							<Property key="TextColour" value="1 1 0.3"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="196 90 128 24">
+							<Property key="Caption" value="#{Intensity}"/>
+							<Property key="TextColour" value="1.0 0.9 0.0"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="328 90 60 26" name="BloomIntVal">
+							<Property key="TextColour" value="1.0 1 0.2"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="392 90 320 18" name="BloomInt"/> -->
+
+						<Widget type="Button" skin="CheckBox" position="28 120 256 24" name="SSAO">
+							<Property key="Caption" value="#{ssao}"/>
+							<Property key="TextColour" value="1 0.7 0.1"/>
+						</Widget>
+
+						<!-- <Widget type="Button" skin="CheckBox" position="28 150 256 24" name="SoftParticles">
+							<Property key="Caption" value="#{softparticles}"/>
+							<Property key="TextColour" value="1 0.75 0.4"/>
+						</Widget>
+
+						<Widget type="Button" skin="CheckBox" position="28 180 152 24" name="HDR">
+							<Property key="Caption" value="#{HDR}"/>
+							<Property key="TextColour" value="0.8 0.3 0.6"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="196 210 118 24">
+							<Property key="Caption" value="#{HDRAdaptationScale}"/>
+							<Property key="TextColour" value="0.6 0.76 0.9"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="328 210 60 24" name="HDRAdaptScaleVal">
+							<Property key="TextColour" value="0.7 0.86 1.0"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="392 210 320 18" name="HDRAdaptScale"/>
+						<Widget type="TextBox" skin="TextBox" position="196 94 128 24">
+							<Property key="Caption" value="#{HDRIntensity}"/>
+							<Property key="TextColour" value="1.0 0.9 0.0"/>
+						</Widget> -->
+					</Widget>
+
 					<!-- GUI fonts scale -->
-					<Widget type="TabItem" skin="" position="2 24 738 472" layer="Back">
+					<Widget type="TabItem" skin="" position="2 24 738 472">
 						<Property key="Caption" value="#A090A0#{GUI}"/>
 			
 						<Widget type="TextBox" skin="TextBox" position="464 2 312 24">
@@ -1368,65 +1425,6 @@
 							<Property key="TextColour" value="0.5 0.7 0.9"/>
 						</Widget>
 					</Widget>
-
-					<!-- 🪄 Effects todo -->
-					<!-- <Widget type="TabItem" skin="" position="2 24 738 472">
-						<Property key="Caption" value="#E0C080#{Effects}"/>
-						<Property key="ButtonAutoWidth" value="false"/>
-						<Property key="ButtonWidth" value="1"/>
-						<Widget type="ImageBox" skin="ImageBox" position="660 4 56 56">
-							<Property key="ImageCoord" value="640 128 128 128"/>
-							<Property key="Alpha" value="0.4"/>
-							<Property key="ImageTexture" value="gui_icons.png"/>
-						</Widget>
-						<Widget type="Button" skin="CheckBox" position="28 30 408 24" name="AllEffects">
-							<Property key="Caption" value="#{AllEffects}"/>
-							<Property key="TextColour" value="1.0 1.0 0.7"/>
-							<Property key="TextShadow" value="true"/>
-							<Property key="FontName" value="font.big"/>
-						</Widget>
-
-						<Widget type="Button" skin="CheckBox" position="28 60 164 24" name="Bloom">
-							<Property key="Caption" value="#{Bloom}"/>
-							<Property key="TextColour" value="1 1 0.3"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="196 90 128 24">
-							<Property key="Caption" value="#{Intensity}"/>
-							<Property key="TextColour" value="1.0 0.9 0.0"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="328 90 60 26" name="BloomIntVal">
-							<Property key="TextColour" value="1.0 1 0.2"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="392 90 320 18" name="BloomInt"/>
-
-						<Widget type="Button" skin="CheckBox" position="28 120 256 24" name="SSAO">
-							<Property key="Caption" value="#{ssao}"/>
-							<Property key="TextColour" value="1 0.7 0.1"/>
-						</Widget>
-
-						<Widget type="Button" skin="CheckBox" position="28 150 256 24" name="SoftParticles">
-							<Property key="Caption" value="#{softparticles}"/>
-							<Property key="TextColour" value="1 0.75 0.4"/>
-						</Widget>
-
-						<Widget type="Button" skin="CheckBox" position="28 180 152 24" name="HDR">
-							<Property key="Caption" value="#{HDR}"/>
-							<Property key="TextColour" value="0.8 0.3 0.6"/>
-						</Widget>
-
-						<Widget type="TextBox" skin="TextBox" position="196 210 118 24">
-							<Property key="Caption" value="#{HDRAdaptationScale}"/>
-							<Property key="TextColour" value="0.6 0.76 0.9"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="328 210 60 24" name="HDRAdaptScaleVal">
-							<Property key="TextColour" value="0.7 0.86 1.0"/>
-						</Widget>
-						<Widget type="Slider" skin="Slider" position="392 210 320 18" name="HDRAdaptScale"/>
-						<Widget type="TextBox" skin="TextBox" position="196 94 128 24">
-							<Property key="Caption" value="#{HDRIntensity}"/>
-							<Property key="TextColour" value="1.0 0.9 0.0"/>
-						</Widget>
-					</Widget> -->
 
 				</Widget>
 			</Widget>
