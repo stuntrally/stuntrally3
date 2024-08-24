@@ -4,6 +4,7 @@ This section lists changes not yet released, but committed to repositories stunt
 WIP means work in progress, still being developed
 
 - Game
+  - fixed Multiplayer on Windows, bug was present since SR 3.0
   - **Collection** - new game mode
     - Collecting all gems located on track, for completion or quicker time
     - Hud 3D arrows on vehicle, pointing to closest 3 gems
@@ -129,7 +130,7 @@ WIP means work in progress, still being developed
     - **cfg or config** forces showing Ogre dialog with screen and rendering options
     - Starting with ? shows help for all. In code search for _Tool_ or references to MainEntryPoints::args
 - **Bugs** and notable **missing** features from SR 2.8, not yet present in SR 3.0:
-  - `broken multiplayer on Windows`
+  - broken multiplayer on Windows
   - Video options: Resolution, Vsync, Antialiasing, etc are not on Gui, but in Ogre dialog before start. No Limit Fps
     - Can't change them without quit. Also possibly alt-tab could require track reload on Windows.
   - Terrain shadowmap, Fluids: depth color, Refraction, smooth border. Grass deform, Trees wind.

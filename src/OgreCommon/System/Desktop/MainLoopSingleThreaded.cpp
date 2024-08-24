@@ -24,6 +24,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -----------------------------------------------------------------------------
+modified by CryHam for SR3
 */
 #include "pch.h"
 #include "App.h"
@@ -43,6 +44,8 @@ THE SOFTWARE.
 #include <memory>
 
 #include "Threading/OgreThreads.h"
+#include "../network/enet-wrapper.hpp"
+using namespace std;
 
 
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
@@ -72,21 +75,26 @@ int MainEntryPoints::mainAppSingleThreaded( int argc, const char *argv[] )
 
 	//**
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-	args.all = std::vector<std::string>( __argv, __argv + __argc );
+	args.all = vector<string>( __argv, __argv + __argc );
 #else
-	args.all = std::vector<std::string>( argv, argv + argc );
+	args.all = vector<string>( argv, argv + argc );
 #endif
 	if (args.Help())
 		return 0;
 
-	std::cout << "Init :: new App\n";
-	std::unique_ptr<App> app = std::make_unique<App>();
+	cout << "Init :: new App\n";
+	unique_ptr<App> app = make_unique<App>();
 	
-	std::cout << "Init :: LoadSettings\n";
+	cout << "Init :: LoadSettings\n";
 	app->LoadSettings();
+
+#ifndef SR_EDITOR
+	//  Initialize networking
+	net::ENetContainer enet;
+#endif
 	//**
 
-	std::cout << "Init :: createSystems\n";
+	cout << "Init :: createSystems\n";
 	MainEntryPoints::createSystems( app.get(),
 		&graphicsGameState, &graphicsSystem,
 		&logicGameState, &logicSystem );
@@ -105,7 +113,7 @@ int MainEntryPoints::mainAppSingleThreaded( int argc, const char *argv[] )
 
 			MainEntryPoints::destroySystems( graphicsGameState, graphicsSystem,
 											 logicGameState, logicSystem );
-			return 0; //User cancelled config
+			return 0; // User cancelled config
 		}
 
 		if( unitTest.getParams().isRecording() )
@@ -169,7 +177,7 @@ int MainEntryPoints::mainAppSingleThreaded( int argc, const char *argv[] )
 
 			Ogre::uint64 endTime = timer.getMicroseconds();
 			timeSinceLast = (endTime - startTime) / 1000000.0;
-			timeSinceLast = std::min( 1.0, timeSinceLast ); //Prevent from going haywire.
+			timeSinceLast = min( 1.0, timeSinceLast ); // Prevent from going haywire.
 			accumulator += timeSinceLast;
 			startTime = endTime;
 		}

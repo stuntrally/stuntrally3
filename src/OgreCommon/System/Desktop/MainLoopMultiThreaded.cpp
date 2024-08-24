@@ -24,6 +24,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 -----------------------------------------------------------------------------
+modified by CryHam for SR3
 */
 #include "pch.h"
 #include "App.h"
@@ -45,7 +46,7 @@ THE SOFTWARE.
 #include "Threading/OgreThreads.h"
 #include "Threading/OgreBarrier.h"
 
-#include "Threading/OgreThreads.h"
+#include "../network/enet-wrapper.hpp"
 using namespace std;
 
 
@@ -95,6 +96,7 @@ int MainEntryPoints::mainAppMultiThreaded( int argc, const char *argv[] )
 
 	Ogre::Barrier barrier( 2 );
 
+	//**
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
 	args.all = vector<string>( __argv, __argv + __argc );
 #else
@@ -103,13 +105,19 @@ int MainEntryPoints::mainAppMultiThreaded( int argc, const char *argv[] )
 	if (args.Help())
 		return 0;
 
-	std::cout << "Init :: new App\n";
-	std::unique_ptr<App> app = std::make_unique<App>();
+	cout << "Init :: new App\n";
+	unique_ptr<App> app = make_unique<App>();
 	
-	std::cout << "Init :: LoadSettings\n";
+	cout << "Init :: LoadSettings\n";
 	app->LoadSettings();
-	
-	std::cout << "Init :: createSystems\n";
+
+#ifndef SR_EDITOR
+	//  Initialize networking
+	net::ENetContainer enet;
+#endif
+	//**
+
+	cout << "Init :: createSystems\n";
 	MainEntryPoints::createSystems( app.get(),
 		&graphicsGameState, &graphicsSystem,
 		&logicGameState, &logicSystem );
@@ -146,7 +154,7 @@ unsigned long renderThreadApp( Ogre::ThreadHandle *threadHandle )
 	if( graphicsSystem->getQuit() )
 	{
 		graphicsSystem->deinitialize();
-		return 0; //User cancelled config
+		return 0; // User cancelled config
 	}
 
 	graphicsSystem->createScene01();
@@ -156,7 +164,7 @@ unsigned long renderThreadApp( Ogre::ThreadHandle *threadHandle )
 	barrier->sync();
 
 	#if OGRE_USE_SDL2
-	//Do this after creating the scene for easier the debugging (the mouse doesn't hide itself)
+	// Do this after creating the scene for easier the debugging (the mouse doesn't hide itself)
 	SdlInputHandler *inputHandler = graphicsSystem->getInputHandler();
 	if (graphicsSystem->mGrabMouse)
 	{
@@ -182,13 +190,13 @@ unsigned long renderThreadApp( Ogre::ThreadHandle *threadHandle )
 
 		if( !renderWindow->isVisible() )
 		{
-			//Don't burn CPU cycles unnecessary when we're minimized.
+			// Don't burn CPU cycles unnecessary when we're minimized.
 			Ogre::Threads::Sleep( 500 );
 		}
 
 		Ogre::uint64 endTime = timer.getMicroseconds();
 		timeSinceLast = (endTime - startTime) / 1000000.0;
-		timeSinceLast = std::min( 1.0, timeSinceLast ); //Prevent from going haywire.
+		timeSinceLast = min( 1.0, timeSinceLast ); // Prevent from going haywire.
 		startTime = endTime;
 	}
 
@@ -217,8 +225,8 @@ unsigned long renderThread( Ogre::ThreadHandle *threadHandle )
 		MessageBoxA( NULL, e.getFullDescription().c_str(), "An exception has occured!",
 					 MB_OK | MB_ICONERROR | MB_TASKMODAL );
    #else
-		std::cerr << "An exception has occured: " <<
-					 e.getFullDescription().c_str() << std::endl;
+		cerr << "An exception has occured: " <<
+				e.getFullDescription().c_str() << endl;
    #endif
 
 		abort();
@@ -240,7 +248,7 @@ unsigned long logicThread( Ogre::ThreadHandle *threadHandle )
 	if( graphicsSystem->getQuit() )
 	{
 		logicSystem->deinitialize();
-		return 0; //Render thread cancelled early
+		return 0; // Render thread cancelled early
 	}
 
 	logicSystem->createScene01();
@@ -266,11 +274,11 @@ unsigned long logicThread( Ogre::ThreadHandle *threadHandle )
 
 		if( !renderWindow->isVisible() )
 		{
-			//Don't burn CPU cycles unnecessary when we're minimized.
+			// Don't burn CPU cycles unnecessary when we're minimized.
 			Ogre::Threads::Sleep( 500 );
 		}
 
-		//YieldTimer will wait until the current time is greater than startTime + cFrametime
+		// YieldTimer will wait until the current time is greater than startTime + cFrametime
 		startTime = yieldTimer.yield( MainEntryPoints::Frametime, startTime );
 	}
 

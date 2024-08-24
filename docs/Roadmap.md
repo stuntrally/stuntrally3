@@ -9,16 +9,15 @@ Marked: `crucial`, **Next or Big**, _Important_.
 ### SR 3.2
 
 `fix`:  
-**fix** multiplayer on windows [issue](https://github.com/stuntrally/stuntrally3/issues/28)  
-fix splitscreen broken with refractions  
+fix splitscreen broken with refractions?  
 
-refract? **crash** on: Surreal, HexForest, Bug, Glitch  
-fix compositor:  
+🌊**refract**? **crash** on: Surreal, HexForest, Bug, Glitch  
+fix compositor / rqg:  
 car glass not refracted, offset, glass pipes not underwater  
 more fluids at once, blink on MilkyWay  
 option no refract water stretched  
 
-🌊**under**water top,  
+**under**water top?  
 pass projmatrix not **inverse**  
 add params: refract clr, *depth* clr, emissive fluids?  
 
@@ -28,7 +27,8 @@ wind anim shadow **caster** too, ed prv obj no wind-
 fix .car thrusters lights pos  
 hide flares with in car camera  
 **ed** Fields: accel par, dir, teleport end  
-SSAO?  convert .compositor to C++  
+
+cd SSAO, fog fade?, convert .compositor to C++  
 
 💎Add **gems** to tracks, more types 3d  
 xml par continuous?, logic btn continue, hid collected gems on start?  
@@ -68,7 +68,7 @@ broken mygui set scrollview size, gallery list
 ----
 ### Ogre new
 🪄 Effects: **Soft** Particles  
-`SSAO`, HDR, bloom  
+SSAO, HDR, bloom  
 lens flare [shaders](https://www.shadertoy.com/results?query=lens+flare)  
 sunrays [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)  
 
