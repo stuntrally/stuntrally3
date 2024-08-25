@@ -32,11 +32,12 @@ The process of releasing and things that need to be checked before.
   * Check all the game modes:  
     Championship, Challenge, Collection,  
     **Split screen, Multiplayer, Replays**
-  * Check at least new features and important older ones (see [Features](Features.md))
+  * Check at least new features and important older ones (from [Features](Features.md))
   * Delete/rename your user dir to check default config (update *-default.cfg)
   * Try a few different Vehicles and Tracks
   * Test Graphics presets from combo
-  * Try **Track Editor** - duplicate a track, save, and at least basic editing, of each mode
+  * Try **Track Editor** - duplicate a track, save,  
+    and at least basic editing, of each mode
 
 ### 4. Packages
   * Create packages for supported systems and test them
