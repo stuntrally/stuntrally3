@@ -243,7 +243,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 	//  🔥 Emitters  : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :
 	if (edMode == ED_Particles && edit)
 	{
-		auto emt = scn->sc->emitters;
+		auto& emt = scn->sc->emitters;
 		int emts = emt.size();
 		switch (skey)
 		{
