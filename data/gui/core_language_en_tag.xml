@@ -1288,6 +1288,7 @@
 	<Tag name="Group">Group</Tag>
 
 	<Tag name="Fields">Fields</Tag>
+	<Tag name="InputFieldsTelepEnd">Enter - toggle teleport end edit</Tag>
 
 
 	<!--  Tools  -->

@@ -952,12 +952,12 @@
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="12 244 376 20">
 							<Property key="TextColour" value="0.85 0.95 0.8"/>
-							<Property key="Caption" value="O,P  /  [,]  - #{InputParticlesType}"/>
+							<Property key="Caption" value="O,P  /  [,]  - #{scale}"/>
 						</Widget>
-						<!-- <Widget type="TextBox" skin="TextBox" position="12 308 376 20">
-							<Property key="TextColour" value="0.8 0.9 0.9"/>
-							<Property key="Caption" value="#{InputObjectsMaterial}"/>
-						</Widget> -->
+						<Widget type="TextBox" skin="TextBox" position="12 308 376 20">
+							<Property key="TextColour" value="1.0 0.9 0.9"/>
+							<Property key="Caption" value="#{InputFieldsTelepEnd}"/>
+						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="396 44 368 20">
 							<Property key="TextColour" value="0.8 0.8 0.9"/>

@@ -76,6 +76,7 @@ public:
 	
 	//  🛠️ Edit all  :
 	void EditMouse(),  MouseRoad(), MouseStart();
+	bool MouseStart(MATHVECTOR <float,3>& pos, QUATERNION <float>& rot);
 	void MouseFluids(), MouseObjects(), MouseEmitters();
 	void MouseCollects(), MouseFields();
 
@@ -208,12 +209,13 @@ public:
 
 	//  🚧 box cursors  for each edit mode
 	void UpdStartPos(bool vis = true), CreateCursors();
+	void UpdTelepEnd();
 
 	struct BoxCur  // cursors
 	{	Ogre::SceneNode* nd =0;
 		Ogre::Item*      it =0;
 	}
-	boxCar,boxStart[2], boxFluid, boxObj, boxEmit, boxCol, boxField;
+	boxCar,boxStart[2], boxFluid, boxObj, boxEmit, boxCol, boxField,boxTelep;
 
 	void CreateBox(BoxCur& box, Ogre::String sMat, Ogre::String sMesh, int x = 0, bool shadow =false);
 

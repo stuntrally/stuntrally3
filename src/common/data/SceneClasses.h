@@ -244,12 +244,12 @@ public:
 	float factor = 1.f;  // par for grav, accel, damp
 	
 	//  teleport destination
-	MATHVECTOR<Dbl,3> pos2;
-	QUATERNION<Dbl> dir2;
+	MATHVECTOR <float,3> pos2;
+	QUATERNION <float>   dir2;
 
 	Ogre::SceneNode* nd = 0;  // 🟢 ogre
-	Ogre::ParticleSystem* ps = 0;
 	Ogre::Item* it = 0;  //rem-
+	Ogre::ParticleSystem* ps = 0;
 
 	btCollisionObject* co = 0;  // 🎳 bullet
 };

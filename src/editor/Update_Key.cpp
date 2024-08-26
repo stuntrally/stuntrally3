@@ -8,7 +8,6 @@
 #include "CGui.h"
 #include "CScene.h"
 #include "Road.h"
-#include "paths.h"
 #include "ExportRoR.h"
 
 // #include <OgreRenderTexture.h>
@@ -377,7 +376,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		case key(TAB):	//  🎥 Camera / Edit mode
 		if (!bGuiFocus && !alt)  {
 			bMoveCam = !bMoveCam;
-			UpdVisGui();  UpdFluidBox();  UpdObjPick();
+			UpdVisGui();  UpdFluidBox();  UpdObjPick();  UpdFldPick();
 		}	break;
 
 		//  ✅ toggle fog, veget, weather, particles
@@ -416,7 +415,8 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		case key(SPACE):
 			if (edMode == ED_Start && road)  road->iDir *= -1;  break;
 		case key(KP_ENTER):  case key(RETURN):
-			if (edMode == ED_Start)  iEnd = 1 - iEnd;  UpdStartPos();  break;
+			if (edMode == ED_Start) {  iEnd = 1 - iEnd;  UpdStartPos();  }
+		else if (edMode == ED_Fields) {  iEnd = 1 - iEnd;  UpdTelepEnd();  }  break;
 
 
 		//  🖼️🎥 prv cam

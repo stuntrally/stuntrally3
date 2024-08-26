@@ -258,6 +258,7 @@
 			}
 		},
 
+
 		"body_realtime" :
 		{
 			"macroblock" : "Macroblock_2",
@@ -292,6 +293,42 @@
 				"2" : [1, 0.5, 0, 0.7]
 			}
 		},
+
+		"teleport_endcar" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"paint" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "car_body_ed.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.45, 0.025, 0.015]
+			},
+			"fresnel" :
+			{
+				"value" : [1, 0, 0],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.021
+			},
+			"user_values" :
+			{
+				"0" : [1, 0.5, 1, 0.2],
+				"1" : [1, 1, 0, 0.5],
+				"2" : [1, 0.5, 0, 0.7]
+			}
+		},
+
 
 		"checkpoint" :
 		{
@@ -479,6 +516,7 @@
 			}
 		},
 
+		
 		"ed_Rtt_pbs" :
 		{
 			"macroblock" : "Macroblock_2",

@@ -64,14 +64,13 @@ void App::CreateField(int i)
 			f.type == TF_Teleport ? "checkpoint_finish" :  // red
 				"checkpoint_normal"  // green
 		);
-
 		// c.it->setName("cE"+s);
 		// SetTexWrap(c.it);
 		f.it->setCastShadows(0);
 	}
 	catch (Exception& e)
 	{
-		LogO(String("Create collect fail: ") + e.what());
+		LogO(String("Create field fail: ") + e.what());
 		return;;
 	}
 
@@ -80,6 +79,18 @@ void App::CreateField(int i)
 	f.nd->setPosition(f.pos);
 	f.nd->setScale(f.size);
 	f.nd->attachObject(f.it);  f.it->setVisibilityFlags(RV_Objects);  //?
+
+	//  particles
+	f.ps = mSceneMgr->createParticleSystem(
+		f.type == TF_Accel ? "FieldAccel" :  // cyan
+		f.type == TF_Gravity ? "FieldGravity" :  // yellow
+		f.type == TF_Teleport ? "FieldTeleport" :  // red
+			"FieldDamp"  // green
+	);  // todo par?
+	f.ps->setVisibilityFlags(RV_Particles);
+
+	f.nd->attachObject(f.ps);
+	f.ps->getEmitter(0)->setEmissionRate(200);  // todo par ..
 
 	f.it->setRenderQueueGroup( RQG_AlphaVegObj );
 	f.nd->_getFullTransformUpdated();  //?
@@ -133,6 +144,7 @@ void App::DestroyField(int i)
 {
 	SField& c = scn->sc->fields[i];
 	//  ogre
+	if (c.ps)  mSceneMgr->destroyParticleSystem(c.ps);  c.ps = 0;
 	if (c.nd)  mSceneMgr->destroySceneNode(c.nd);  c.nd = 0;
 	if (c.it)  mSceneMgr->destroyItem(c.it);  c.it = 0;
 
@@ -164,14 +176,16 @@ void App::UpdFldPick()
 	boxField.nd->setVisible(bFields);
 	if (!bFields)  return;
 	
-	const SField& o = scn->sc->fields[iFldCur];
-	const Aabb& ab = o.nd->getAttachedObject(0)->getLocalAabb();
-	Vector3 s = o.size * ab.getSize();  // * sel fld's node aabb
+	const SField& f = scn->sc->fields[iFldCur];
+	const Aabb& ab = f.nd->getAttachedObject(0)->getLocalAabb();
+	Vector3 s = f.size * ab.getSize();  // * sel fld's node aabb
 
-	boxField.nd->setPosition(o.pos);
+	boxField.nd->setPosition(f.pos);
 	// boxFld.nd->setOrientation(rotO);
 	boxField.nd->setScale(s);
 	boxField.nd->_getFullTransformUpdated();
+
+	UpdTelepEnd();
 }
 
 #if 0

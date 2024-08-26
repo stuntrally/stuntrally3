@@ -3542,7 +3542,6 @@ particle_system WaterfallLow
 }
 
 
-//  New
 //  Electric Sparks2  * * * * * * * * * * * * * * 
 particle_system ElectricSparks2
 {
@@ -3878,6 +3877,7 @@ particle_system BubblesSurface
 	}
 }
 
+//  Oil Bubbles  o o o o o o o o o o o o o o 
 particle_system OilBubblesSmall
 {
 	material			FluidBubble
@@ -4040,6 +4040,7 @@ particle_system OilBubblesSurface
 	}
 }
 
+//  Grease Bubbles  o o o o o o o o o o o o o o 
 particle_system GreaseBubblesSmall
 {
 	material			FluidBubbleGrease
@@ -4202,6 +4203,7 @@ particle_system GreaseBubblesSurface
 	}
 }
 
+//  Slime Bubbles  o o o o o o o o o o o o o o 
 particle_system SlimeBubblesSmall
 {
 	material			FluidBubbleGrease
@@ -4364,8 +4366,8 @@ particle_system SlimeBubblesSurface
 	}
 }
 
-////// PINK JELLY WATERFALL
 
+//  Pink Jelly waterfall  ::: ::: :::
 particle_system PinkJellyfallHigh
 {
 	material        FluidJellyFall
@@ -4476,9 +4478,7 @@ particle_system PinkJellyfallLow
 	}
 }
 
-
-////// BLUE JELLY WATERFALL
-
+//  Blue Jelly waterfall  ::: ::: :::
 particle_system BlueJellyfallHigh
 {
 	material        FluidJellyFall
@@ -4589,8 +4589,7 @@ particle_system BlueJellyfallLow
 	}
 }
 
-////// GREASE JELLY WATERFALL
-
+//  Grease Jelly waterfall  ::: ::: :::
 particle_system GreaseJellyfallHigh
 {
 	material        FluidJellyFall
@@ -4701,8 +4700,7 @@ particle_system GreaseJellyfallLow
 	}
 }
 
-////// GREEN SLIME WATERFALL
-
+//  Green Slime waterfall  ::: ::: :::
 particle_system GreenSlimefallHigh
 {
 	material        FluidJellyFall
@@ -4813,7 +4811,8 @@ particle_system GreenSlimefallLow
 	}
 }
 
-//  Aurora
+
+//  Aurora  --  - -  -- - -- -
 particle_system Aurora01
 {
 	material			Aurora01
@@ -5010,3 +5009,165 @@ particle_system Aurora04
 	}
 }
 
+
+//  Force Fields  > > > ^ ^ ^ x x x
+particle_system FieldAccel
+{
+	quota           1000
+	material		Particles/Spark
+	particle_width	0.05
+	particle_height	0.5
+	cull_each		false
+	sorted			false
+	billboard_type  oriented_self
+
+	emitter Box
+	{
+		angle	10
+		colour_range_start  0.7 0.9 1 1
+		colour_range_end    0.2 0.7 1 0.5
+		velocity	0.5
+		velocity_min	0.5
+		velocity_max	1
+		time_to_live       0.5
+		time_to_live_min   0.3
+		time_to_live_max   0.8
+		width	0.7
+		height	0.7
+		depth	0.7
+	}
+	affector ColourFader
+	{
+		red	  -0.1
+		green -0.1
+		blue  -0.1
+	}
+	// affector DirectionRandomiser
+	// {
+	// 	randomness  0.2
+	// }
+}
+
+particle_system FieldGravity
+{
+	quota           1000
+	material		Particles/Spark
+	particle_width	0.05
+	particle_height	0.3
+	cull_each		false
+	sorted			false
+	billboard_type  oriented_self
+
+	emitter Box
+	{
+		angle	0
+	    direction 0 1 0
+		colour_range_start  1 1.0 0.8 1
+		colour_range_end    1 0.5 0.1 0.5
+		velocity	0.1
+		velocity_min	0.1
+		velocity_max	0.2
+		time_to_live       0.5
+		time_to_live_min   0.3
+		time_to_live_max   0.8
+		width	0.7
+		height	0.7
+		depth	0.7
+	}
+	// affector LinearForce
+	// {
+	// 	force_vector	0 -9.8 0
+	// 	force_application	add
+	// }
+	affector ColourFader
+	{
+		red	  -0.1
+		green -0.1
+		blue  -0.1
+	}
+	// affector DirectionRandomiser
+	// {
+	// 	randomness  0.2
+	// }
+}
+
+particle_system FieldTeleport
+{
+	quota           1000
+    material        Boost_Red
+    particle_width  0.01
+    particle_height 0.01
+	cull_each		false
+	sorted			false
+
+	emitter Box
+	{
+		angle	10
+		colour_range_start  0.8 0.9 1 0.5
+		colour_range_end    0.4 0.4 1 1
+		velocity	0
+		velocity_min	0
+		velocity_max	0.01
+		time_to_live       0.2
+		time_to_live_min   0.1
+		time_to_live_max   0.3
+		width	0.7
+		height	0.7
+		depth	0.7
+	}
+    affector Scaler
+    {
+   	    rate 0.90
+    }
+	affector ColourFader
+	{
+		red	  -0.2
+		green -0.2
+		blue   0.2
+		alpha -4.8
+	}
+	affector DirectionRandomiser
+	{
+		randomness  12
+	}
+}
+
+
+particle_system FieldDamp
+{
+	quota           1000
+    material        Boost
+    particle_width  0.01
+    particle_height 0.01
+	cull_each		false
+	sorted			false
+
+	emitter Box
+	{
+		angle	0
+		colour_range_start  0.4 1 0.4 0.1
+		colour_range_end    0.2 1 0.2 0.3
+		velocity	0.0
+		time_to_live       0.5
+		time_to_live_min   0.3
+		time_to_live_max   0.8
+		width	0.7
+		height	0.7
+		depth	0.7
+	}
+    affector Scaler
+    {
+   	    rate 1.30
+    }
+	affector ColourFader
+	{
+		red	  -0.1
+		green -1.15
+		blue  -0.1
+		alpha -5.1
+	}
+	affector DirectionRandomiser
+	{
+		randomness  3
+	}
+}

@@ -432,7 +432,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 					UpdFldPick();
 				}	break;
 
-			//  move,scale
+			//  move, rot, scale
 			case key(1):
 				if (!shift)  fldEd = EO_Move;
 				else if (f)
@@ -448,11 +448,15 @@ void App::keyPressObjects(SDL_Scancode skey)
 					}
 				}	break;
 
+			case key(2):
+				if (!shift)  fldEd = EO_Rotate;  break;
+
 			case key(3):
-				if (!shift)  fldEd = EO_Scale;
+				if (alt)  f->factor = 1.f;
+				else if (!shift)  fldEd = EO_Scale;
 				else if (f)  // reset scale
 				{
-					// f->size = 1.f;
+					f->size = 1.f;
 					f->nd->setScale(f->size * Vector3::UNIT_SCALE);
 				}	break;
 			default:  break;

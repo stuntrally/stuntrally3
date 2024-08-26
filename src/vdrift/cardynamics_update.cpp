@@ -66,19 +66,17 @@ void CARDYNAMICS::UpdateFields()
 	switch (fld->type)
 	{
 		case TF_Gravity:
-		{	auto f = m * sc->gravity * 2.f;  // par..
+		{	auto f = m * sc->gravity * fld->factor;
 			chassis->applyCentralForce( btVector3(0,0,f) );
 		}	break;
 		
 		case TF_Accel:
-		{	auto f = m * 32.f;  // par, dir
+		{	auto f = m * fld->factor * 10.f;  // par, dir..
 			chassis->applyCentralForce( btVector3(f,0,0) );
 		}	break;
 		
 		case TF_Teleport:
-		{	//auto p = GetPosition();  // relative no-
-			// p[1] += 11.f;  // p[2] += 11.f;  //^
-			// SetPosition(p);
+		{
 			// pCar->SetPosition(fld->pos2, fld->dir2)
 			SetPosition(fld->pos2);  // destination
 			// SetOrientation(fld->dir2);
@@ -86,7 +84,7 @@ void CARDYNAMICS::UpdateFields()
 		
 		case TF_Damp:
 		{	btVector3 v = chassis->getLinearVelocity();
-			chassis->applyCentralForce(v * -800);
+			chassis->applyCentralForce(v * -1000.f * fld->factor);
 		}	break;
 		
 		case TF_All:

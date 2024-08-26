@@ -6,6 +6,7 @@
 #include "CGui.h"
 #include "CApp.h"
 #include "Road.h"
+#include "SceneClasses.h"
 
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
@@ -36,11 +37,13 @@ void App::CreateBox(BoxCur& box, String sMat, String sMesh, int x, bool shadow)
 void App::CreateCursors()
 {
 	LogO("C--- create Cursors");
+	//  car
 	CreateBox(boxCar, "", "car.mesh", 0, 1);
+	CreateBox(boxTelep, "teleport_endcar", "car.mesh", 0, 1);
 	
 	CreateBox(boxStart[0], "start_box", "cube.mesh", 20000);
 	CreateBox(boxStart[1], "end_box", "cube.mesh", 20000);
-
+	//  box
 	CreateBox(boxFluid, "fluid_box", "box_fluids.mesh");
 	CreateBox(boxObj, "object_box", "box_obj.mesh");
 	CreateBox(boxEmit, "emitter_box", "box_obj.mesh");
@@ -70,6 +73,25 @@ void App::UpdStartPos(bool vis)
 	
 		boxStart[i].nd->_getFullTransformUpdated();
 		boxStart[i].nd->setVisible(vis && edMode == ED_Start && bEdit());
+	}
+}
+
+//  🎆 teleport end car pos
+void App::UpdTelepEnd()
+{
+	int flds = scn->sc->fields.size();
+	bool bNew = iFldCur == -1;
+	SField& f = bNew || scn->sc->fields.empty() ? fldNew : scn->sc->fields[iFldCur];
+	bool tlp = f.type == TF_Teleport;
+	bool vis = tlp && iEnd;
+	boxTelep.nd->setVisible(vis);
+
+	Vector3 p1 = Axes::toOgre(f.pos2);
+	Quaternion q1 = Axes::toOgre(f.dir2);
+	if (vis)
+	{
+		boxTelep.nd->setPosition(p1);  boxTelep.nd->setOrientation(q1);
+		boxTelep.nd->_getFullTransformUpdated();
 	}
 }
 

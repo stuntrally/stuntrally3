@@ -385,6 +385,7 @@ void App::KeyTxtEmitters(Real q)
 	Txt *emtTxt = gui->emtTxt;
 	int emts = scn->sc->emitters.size();
 	bool bNew = iEmtCur == -1;
+	iEmtCur = std::min(iEmtCur, emts-1);
 	SEmitter& e = bNew || scn->sc->emitters.empty() ? emtNew : scn->sc->emitters[iEmtCur];
 	
 	UString s = bNew
@@ -455,21 +456,35 @@ void App::KeyTxtFields()
 	Txt* fldTxt = gui->fldTxt;
 	int flds = scn->sc->fields.size();
 	bool bNew = iFldCur == -1;
-	const SField& c = bNew || scn->sc->fields.empty() ? fldNew : scn->sc->fields[iFldCur];
+	SField& f = bNew || scn->sc->fields.empty() ? fldNew : scn->sc->fields[iFldCur];
+	bool tlp = f.type == TF_Teleport, end = tlp && iEnd;
+
 	UString s = bNew
 		? UString("#80FF80")+TR("#{Road_New}")+"#B0D0B0     "
 		: UString("#A0D0FF")+TR("#{Road_Cur}")+"#B0B0D0     ";
 	s = s + (bNew ? "-" : toStr(iFldCur+1)+" / "+toStr(flds));
 	fldTxt[0]->setCaption(s);
+
 	const char* strFld[TF_All] = {
 		"Gravity", "Accel", "Teleport", "Damp" };
+	fldTxt[1]->setCaption(TR("#{CarType}  ") +strFld[f.type]);
 
-	fldTxt[1]->setCaption(TR("#{CarType}  ") +strFld[c.type]);
 	//  pos, rot, scale
-	fldTxt[2]->setCaption(String(fldEd==EO_Move  ?"#60FF60":"")+ sPos +fToStr(c.pos[0],1,4)+" "+fToStr(c.pos[1],1,4)+" "+fToStr(c.pos[2],1,4));
-	fldTxt[3]->setCaption(String(fldEd==EO_Rotate?"#FFA0A0":"")+ sRot +fToStr(c.dir.x,1,3)+" "+fToStr(c.dir.y,1,3)+" "+fToStr(c.dir.z,1,3));
-	fldTxt[4]->setCaption(String(fldEd==EO_Scale ?"#60F0FF":"")+ sScl +fToStr(c.size.x,2,4)+" "+fToStr(c.size.y,2,4)+" "+fToStr(c.size.z,2,4));
-	// fldTxt[5]->setCaption(TR("#{Group}  ") +toStr(c.group));
+if (end) {
+	fldTxt[2]->setCaption(String(fldEd==EO_Move  ?"#60FF60":"")+ sPos +fToStr(f.pos2[0],1,4)+" "+fToStr(f.pos2[1],1,4)+" "+fToStr(f.pos2[2],1,4));
+	fldTxt[3]->setCaption(String(fldEd==EO_Rotate?"#FFA0A0":"")+ sRot +fToStr(f.dir2[0],1,3)+" "+fToStr(f.dir2[1],1,3)+" "+fToStr(f.dir2[2],1,3));
+} else {
+	fldTxt[2]->setCaption(String(fldEd==EO_Move  ?"#60FF60":"")+ sPos +fToStr(f.pos[0],1,4)+" "+fToStr(f.pos[1],1,4)+" "+fToStr(f.pos[2],1,4));
+	fldTxt[3]->setCaption(String(fldEd==EO_Rotate?"#FFA0A0":"")+ sRot +fToStr(f.dir.x,1,3)+" "+fToStr(f.dir.y,1,3)+" "+fToStr(f.dir.z,1,3));
+}
+	fldTxt[4]->setCaption(String(fldEd==EO_Scale ?"#60F0FF":"")+ sScl +fToStr(f.size.x,2,4)+" "+fToStr(f.size.y,2,4)+" "+fToStr(f.size.z,2,4));
+	fldTxt[5]->setCaption( tlp ? "" : TR("#{scale}  ") +fToStr(f.factor,2,4));
+
+	fldTxt[6]->setCaption( !tlp ? "" :
+		TR(iEnd ? "#{FogEnd}" : "#{FogStart}")+ "  Enter");
+
+	if (isKey(LEFTBRACKET) ||isKey(O)){  f.factor  *= 1.f - 0.04f;  }
+	if (isKey(RIGHTBRACKET)||isKey(P)){  f.factor  *= 1.f + 0.04f;  }
 
 	//  edit
 	if (mz != 0 && bEdit() && flds > 0)  // wheel prev/next

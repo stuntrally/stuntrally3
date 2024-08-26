@@ -8,7 +8,6 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 ### SR 3.2
 
-`fix`:  
 fix splitscreen broken with refractions?  
 
 🌊**refract**? **crash** on: Surreal, HexForest, Bug, Glitch  
@@ -27,6 +26,7 @@ wind anim shadow **caster** too, ed prv obj no wind-
 fix .car thrusters lights pos  
 hide flares with in car camera  
 **ed** Fields: accel par, dir, teleport end  
+ed emit dir  
 
 cd SSAO, fog fade?, convert .compositor to C++  
 

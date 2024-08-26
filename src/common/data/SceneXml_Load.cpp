@@ -388,6 +388,10 @@ bool Scene::LoadXml(String file, bool bTer)
 			a = u->Attribute("dir");	if (a)  f.dir = s2v(a);
 			a = u->Attribute("sz");		if (a)  f.size = s2v(a);
 
+			a = u->Attribute("f");		if (a)  f.factor = s2r(a);
+			a = u->Attribute("pos2");	if (a)  {  Vector3 v = s2v(a);   f.pos2 = MATHVECTOR<float,3>(v.x,v.y,v.z);    }
+			a = u->Attribute("dir2");	if (a)  {  Vector4 v = s2v4(a);  f.dir2 = QUATERNION<float>(v.x,v.y,v.z,v.w);  }
+
 			fields.push_back(f);
 			u = u->NextSiblingElement("f");
 	}	}

@@ -33,12 +33,13 @@ WIP means work in progress, still being developed
   - New tab Sun - **Wind**
     - unified params, affecting: trees, grass, water, weather particles
   - Vegetation materials, possible in presets
-  - Edit mode for Collection, key Y  
+  - Edit mode for Collection, key Y
     - Insert/remove gems, move, scale
     - change type (for look, at end of presets.xml)
     - change group (for more sets on 1 track)
-  - Edit mode for Fields, key H, WIP  
-    - areas: teleporters, force fields, speed up, lift, anti-gravity, damping  
+  - Edit mode for Fields, key H - examples on TestC14-Fields
+    - areas: speed up, lift, anti-gravity, damping - act as force fields on vehicle
+    - teleporters - instantly places vehicle in destination, Enter toggle edit
 - Other
   - split all.material.json to many files
   - in data dir, added subdirs: models, textures etc

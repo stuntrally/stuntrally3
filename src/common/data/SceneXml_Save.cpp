@@ -431,7 +431,16 @@ bool Scene::SaveXml(String file)
 			fe->SetAttribute("pos",	toStrC(f->pos));
 			fe->SetAttribute("dir",	toStrC(f->dir));
 			fe->SetAttribute("sz",	toStrC(f->size));
-			
+
+			fe->SetAttribute("f",	toStrC(f->factor));
+			if (f->type == TF_Teleport)
+			{
+				string s = toStr(f->pos2[0])+" "+toStr(f->pos2[1])+" "+toStr(f->pos2[2]);
+				fe->SetAttribute("pos2",	s.c_str());
+
+				s = toStr(f->dir2[0])+" "+toStr(f->dir2[1])+" "+toStr(f->dir2[2])+" "+toStr(f->dir2[3]);
+				fe->SetAttribute("dir2",	s.c_str());
+			}
 			flds->InsertEndChild(fe);
 		}
 	root->InsertEndChild(flds);
