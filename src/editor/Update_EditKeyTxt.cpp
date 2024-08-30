@@ -397,7 +397,7 @@ void App::KeyTxtEmitters(Real q)
 
 	//  pos, rot, scale
 	emtTxt[2]->setCaption(String(emtEd==EO_Move  ?"#60FF60":"")+ sPos +fToStr(e.pos.x,1,4)+" "+fToStr(e.pos.y,1,4)+" "+fToStr(e.pos.z,1,4));
-	emtTxt[3]->setCaption(String(emtEd==EO_Rotate?"#FFA0A0":"")+ sRot +"y " +fToStr(e.rot/*e.up.x*/,0,3) );
+	emtTxt[3]->setCaption(String(emtEd==EO_Rotate?"#FFA0A0":"")+ sRot +" " +fToStr(e.yaw,0,3) +" "+ fToStr(e.pitch,0,3) );
 	emtTxt[4]->setCaption(String(emtEd==EO_Scale ?"#60F0FF":"")+ sScl +fToStr(e.size.x,1,4)+" "+fToStr(e.size.y,1,4)+" "+fToStr(e.size.z,1,4));
 	
 	emtTxt[5]->setCaption(TR("#{Size}: ") +fToStr(e.parScale,2,4)+" * "+fToStr(e.par.x,1,3) );

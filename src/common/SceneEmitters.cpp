@@ -70,6 +70,12 @@ void SEmitter::UpdEmitter()
 	ps->getEmitter(0)->setParameter("height", toStr(size.z));
 	ps->getEmitter(0)->setParameter("depth",  toStr(size.y));  // h
 	ps->getEmitter(0)->setEmissionRate(rate);
+	Vector3 dir = SplineRoad::GetRot(yaw, pitch);
+	ps->getEmitter(0)->setDirection(dir);
+	//ps->getEmitter(0)->setAngle(roll);
+	//ps->getEmitter(0)->setParticleVelocity(minVel,maxVel);  // todo?
+	//ps->getEmitter(0)->setMinTimeToLive(minTime);
+	//ps->getEmitter(0)->setMaxTimeToLive(maxTime);
 }
 
 void CScene::DestroyEmitters(bool clear)

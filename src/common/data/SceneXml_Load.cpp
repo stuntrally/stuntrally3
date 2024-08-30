@@ -347,8 +347,8 @@ bool Scene::LoadXml(String file, bool bTer)
 
 			a = u->Attribute("pos");	if (a)  p.pos = s2v(a);
 			a = u->Attribute("sc");		if (a)  p.size = s2v(a);
-			a = u->Attribute("up");		if (a)  p.up = s2v(a);
-			a = u->Attribute("rot");	if (a)  p.rot = s2r(a);
+			a = u->Attribute("yaw");	if (a)  p.yaw = s2r(a);  // dir
+			a = u->Attribute("pt");		if (a)  p.pitch = s2r(a);
 			
 			a = u->Attribute("rate");	if (a)  p.rate = s2r(a);
 			a = u->Attribute("st");		if (a)  p.stat = s2i(a);

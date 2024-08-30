@@ -234,11 +234,19 @@ void App::MouseEmitters()
 			em.pos.y += ym;
 			em.nd->setPosition(em.pos);  em.nd->_getFullTransformUpdated();  UpdEmtBox();
 		}
-		else if (mbMiddle)  // rot yaw
+	}else if (emtEd == EO_Rotate)
+	{
+		if (mbLeft)  // rot y
 		{
-			Real xm = vNew.x * fRot * moveMul * s;
-			em.rot += xm;
-			//em.nd->setOrientation(Quaternion(Degree(em.rot.x), em.up));
+			Real xm = vNew.x * fRot * moveMul;
+			em.yaw += xm;
+			em.UpdEmitter();
+		}
+		else if (mbRight)  // rot x
+		{
+			Real ym = vNew.x * fRot * moveMul;
+			em.pitch += ym;
+			em.UpdEmitter();
 		}
 	}else if(emtEd == EO_Scale)
 	{

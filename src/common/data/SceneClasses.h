@@ -188,7 +188,8 @@ class SEmitter		//  🔥 Particles ⛅☢️
 public:
 	std::string name;  // particle_system
 	Ogre::Vector3 pos{0,0,0}, size{1,1,1};
-	Ogre::Vector3 up{0,1,0};  float rot = 0.f, velScale = 1.f;  // dir todo:
+	float yaw = 0.f, pitch = -90.f;  //  dir angles
+	// Ogre::Vector3 dir{0,1,0};  float velScale = 1.f;  // todo: dir
 	Ogre::Vector2 par{1,1};  // auto set original particle size from .emitter
 	float rate = 0.f;  // emit
 	float parScale = 1.f;

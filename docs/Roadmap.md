@@ -10,7 +10,8 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 fix splitscreen broken with refractions?  
 
-🌊**refract**? **crash** on: Surreal, HexForest, Bug, Glitch  
+🌊**refract** river roads **crash** on: Surreal, HexForest, Bug, Glitch  
+no water collis on: Butterfly, SlopeCity..  
 fix compositor / rqg:  
 car glass not refracted, offset, glass pipes not underwater  
 more fluids at once, blink on MilkyWay  

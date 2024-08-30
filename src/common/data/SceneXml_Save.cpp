@@ -393,8 +393,8 @@ bool Scene::SaveXml(String file)
 
 			oe->SetAttribute("pos",	toStrC(e->pos));
 			oe->SetAttribute("sc",	toStrC(e->size));
-			oe->SetAttribute("up",	toStrC(e->up));
-			oe->SetAttribute("rot",	toStrC(e->rot));
+			oe->SetAttribute("yaw",	toStrC(e->yaw));  // dir
+			oe->SetAttribute("pt",	toStrC(e->pitch));
 			
 			oe->SetAttribute("rate",	toStrC(e->rate));
 			oe->SetAttribute("st",	e->stat ? 1 : 0);
