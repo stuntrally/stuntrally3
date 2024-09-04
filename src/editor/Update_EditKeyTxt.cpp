@@ -458,6 +458,7 @@ void App::KeyTxtFields()
 	bool bNew = iFldCur == -1;
 	SField& f = bNew || scn->sc->fields.empty() ? fldNew : scn->sc->fields[iFldCur];
 	bool tlp = f.type == TF_Teleport, end = tlp && iEnd;
+	bool acc = f.type == TF_Accel;
 
 	UString s = bNew
 		? UString("#80FF80")+TR("#{Road_New}")+"#B0D0B0     "
@@ -475,7 +476,8 @@ if (end) {
 	fldTxt[3]->setCaption(String(fldEd==EO_Rotate?"#FFA0A0":"")+ sRot +fToStr(f.dir2[0],1,3)+" "+fToStr(f.dir2[1],1,3)+" "+fToStr(f.dir2[2],1,3));
 } else {
 	fldTxt[2]->setCaption(String(fldEd==EO_Move  ?"#60FF60":"")+ sPos +fToStr(f.pos[0],1,4)+" "+fToStr(f.pos[1],1,4)+" "+fToStr(f.pos[2],1,4));
-	fldTxt[3]->setCaption(String(fldEd==EO_Rotate?"#FFA0A0":"")+ sRot +fToStr(f.dir.x,1,3)+" "+fToStr(f.dir.y,1,3)+" "+fToStr(f.dir.z,1,3));
+	fldTxt[3]->setCaption(!acc ? "" :
+						  String(fldEd==EO_Rotate?"#FFA0A0":"")+ sRot +fToStr(f.yaw,1,3)+" "+fToStr(f.pitch,1,3));
 }
 	fldTxt[4]->setCaption(String(fldEd==EO_Scale ?"#60F0FF":"")+ sScl +fToStr(f.size.x,2,4)+" "+fToStr(f.size.y,2,4)+" "+fToStr(f.size.z,2,4));
 	fldTxt[5]->setCaption( tlp ? "" : TR("#{scale}  ") +fToStr(f.factor,2,4));

@@ -423,9 +423,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 			case key(DELETE):  case key(KP_PERIOD):
 			case key(KP_5):
 				if (iFldCur >= 0 && flds > 0)
-				{	SField& c = fld[iFldCur];
-					// DestroyField(iFldCur);
-					
+				{
 					if (flds == 1)	fld.clear();
 					else			fld.erase(fld.begin() + iFldCur);
 					iFldCur = std::min(iFldCur, (int)fld.size()-1);
@@ -444,12 +442,18 @@ void App::keyPressObjects(SDL_Scancode skey)
 					else if (road)  // move to ter
 					{
 						f->pos = road->posHit;
-						f->nd->setPosition(f->pos);  UpdFldPick();
+						f->nd->setPosition(f->pos);  f->UpdEmitter();  UpdFldPick();
 					}
 				}	break;
 
 			case key(2):
-				if (!shift)  fldEd = EO_Rotate;  break;
+				if (!shift)  fldEd = EO_Rotate;
+				else
+				if (ctrl)  // gravity up
+				{	f->yaw = 0.f;  f->pitch = 90.f;  f->UpdEmitter();  UpdFldPick();  }
+				else  // accel flat
+				{	f->yaw = 0.f;  f->pitch = 0.f;  f->UpdEmitter();  UpdFldPick();  }
+				break;
 
 			case key(3):
 				if (alt)  f->factor = 1.f;
@@ -458,6 +462,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 				{
 					f->size = 1.f;
 					f->nd->setScale(f->size * Vector3::UNIT_SCALE);
+					f->UpdEmitter();  UpdFldPick();
 				}	break;
 			default:  break;
 		}

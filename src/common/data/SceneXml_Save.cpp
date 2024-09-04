@@ -429,9 +429,12 @@ bool Scene::SaveXml(String file)
 			fe->SetAttribute("t",	toStrC(f->type));
 
 			fe->SetAttribute("pos",	toStrC(f->pos));
-			fe->SetAttribute("dir",	toStrC(f->dir));
 			fe->SetAttribute("sz",	toStrC(f->size));
-
+			if (f->type == TF_Accel)
+			{
+				fe->SetAttribute("yaw",	toStrC(f->yaw));
+				fe->SetAttribute("pt",	toStrC(f->pitch));
+			}
 			fe->SetAttribute("f",	toStrC(f->factor));
 			if (f->type == TF_Teleport)
 			{

@@ -443,15 +443,15 @@ void App::MouseFields()
 	int i = iFldCur;  //  picked or new
 	if (i < scn->sc->fields.size())
 	{
-		SField& c = i == -1 ? fldNew : scn->sc->fields[i];
-		if (c.type == TF_Teleport && iEnd)
+		SField& f = i == -1 ? fldNew : scn->sc->fields[i];
+		if (f.type == TF_Teleport && iEnd)
 		{
-			MouseStart(c.pos2, c.dir2);
+			MouseStart(f.pos2, f.dir2);
 			UpdTelepEnd();
 			return;
 		}
 
-		const Real d = mCamera->getPosition().distance(c.pos) * fMove * s;
+		const Real d = mCamera->getPosition().distance(f.pos) * fMove * s;
 
 		switch (fldEd)
 		{
@@ -462,28 +462,31 @@ void App::MouseFields()
 					Vector3 vx = mCamera->getRight();      vx.y = 0;  vx.normalise();
 					Vector3 vz = mCamera->getDirection();  vz.y = 0;  vz.normalise();
 					Vector3 vm = (-vNew.y * vz + vNew.x * vx) * d * moveMul;
-					c.pos.x += vm.x;  c.pos.z += vm.z;
-					c.nd->setPosition(c.pos);  upd = true;
+					f.pos.x += vm.x;  f.pos.z += vm.z;
+					f.nd->setPosition(f.pos);  upd = true;
 				}
 				else if (mbRight)  // move y
 				{
 					Real ym = -vNew.y * d * moveMul;
-					c.pos.y += ym;
-					c.nd->setPosition(c.pos);  upd = true;
+					f.pos.y += ym;
+					f.nd->setPosition(f.pos);  upd = true;
 				}
 			}	break;
 
 			case EO_Rotate:
 			{
-				/*Real xm = -vNew.x * fRot * moveMul *PI_d/180.f * s;
-				Quaternion q(o.rot.w(),o.rot.x(),o.rot.y(),o.rot.z());
-				Radian r = Radian(xm);  Quaternion qr;
-
-				qr.FromAngleAxis(r, mbLeft ? Vector3::UNIT_Z : (mbRight ? Vector3::UNIT_Y : Vector3::UNIT_X));
-				if (sel || alt)  q = qr * q;  else  q = q * qr;
-				o.rot = QUATERNION<float>(q.x,q.y,q.z,q.w);
-
-				upd1 = true;*/
+				if (mbLeft)  // rot y
+				{
+					Real xm = vNew.x * fRot * moveMul;
+					f.yaw += xm;
+					f.UpdEmitter();
+				}
+				else if (mbRight)  // rot x
+				{
+					Real ym = vNew.x * fRot * moveMul;
+					f.pitch += ym;
+					f.UpdEmitter();
+				}
 			}	break;
 
 			case EO_Scale:
@@ -491,10 +494,10 @@ void App::MouseFields()
 				float vm = (vNew.y + vNew.x) * d * moveMul;
 				float sc = 1.f + vm * fScale;
 	
-				if (mbLeft)        c.size *= sc;  // xyz
-				else if (mbRight)  c.size.y *= sc;  // y
-				else if (mbMiddle) c.size.z *= sc;  // z
-				c.nd->setScale(c.size);  upd = true;
+				if (mbLeft)        f.size *= sc;  // xyz
+				else if (mbRight)  f.size.y *= sc;  // y
+				else if (mbMiddle) f.size.z *= sc;  // z
+				f.nd->setScale(f.size);  upd = true;
 			}	break;
 
 			default:  break;

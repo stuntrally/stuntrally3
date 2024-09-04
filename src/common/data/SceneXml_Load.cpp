@@ -385,8 +385,9 @@ bool Scene::LoadXml(String file, bool bTer)
 			a = u->Attribute("t");		if (a)  f.type = (FieldTypes)s2i(a);
 
 			a = u->Attribute("pos");	if (a)  f.pos = s2v(a);
-			a = u->Attribute("dir");	if (a)  f.dir = s2v(a);
 			a = u->Attribute("sz");		if (a)  f.size = s2v(a);
+			a = u->Attribute("yaw");	if (a)  f.yaw = s2r(a);
+			a = u->Attribute("pt");		if (a)  f.pitch = s2r(a);
 
 			a = u->Attribute("f");		if (a)  f.factor = s2r(a);
 			a = u->Attribute("pos2");	if (a)  {  Vector3 v = s2v(a);   f.pos2 = MATHVECTOR<float,3>(v.x,v.y,v.z);    }

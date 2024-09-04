@@ -71,15 +71,16 @@ void CARDYNAMICS::UpdateFields()
 		}	break;
 		
 		case TF_Accel:
-		{	auto f = m * fld->factor * 10.f;  // par, dir..
-			chassis->applyCentralForce( btVector3(f,0,0) );
+		{	auto f = m * fld->factor * 10.f;
+		
+			chassis->applyCentralForce( f * fld->dir );
 		}	break;
 		
 		case TF_Teleport:
 		{
 			// pCar->SetPosition(fld->pos2, fld->dir2)
 			SetPosition(fld->pos2);  // destination
-			// SetOrientation(fld->dir2);
+			// SetOrientation(fld->dir2);  // todo..
 		}	break;
 		
 		case TF_Damp:

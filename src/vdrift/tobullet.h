@@ -2,9 +2,9 @@
 #include "mathvector.h"
 #include "quaternion.h"
 #include "matrix3.h"
-#include "LinearMath/btVector3.h"
-#include "LinearMath/btQuaternion.h"
-#include "LinearMath/btMatrix3x3.h"
+#include <LinearMath/btVector3.h>
+#include <LinearMath/btQuaternion.h>
+#include <LinearMath/btMatrix3x3.h>
 
 inline btVector3 ToBulletVector(const MATHVECTOR<float,3> & v)
 {

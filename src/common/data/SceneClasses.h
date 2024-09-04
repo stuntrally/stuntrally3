@@ -12,6 +12,7 @@
 #include <OgreQuaternion.h>
 #include <vector>
 #include <string>
+#include <LinearMath/btVector3.h>
 
 namespace Ogre {  class SceneNode;  class Item;  class ParticleSystem;  }
 class btDefaultMotionState;  class btCollisionObject;  class btRigidBody;  class btTransform;
@@ -188,8 +189,10 @@ class SEmitter		//  🔥 Particles ⛅☢️
 public:
 	std::string name;  // particle_system
 	Ogre::Vector3 pos{0,0,0}, size{1,1,1};
+
 	float yaw = 0.f, pitch = -90.f;  //  dir angles
-	// Ogre::Vector3 dir{0,1,0};  float velScale = 1.f;  // todo: dir
+	// Ogre::Vector3 vel{0,1,0};  float velScale = 1.f;  // todo: scale vel, life time-
+
 	Ogre::Vector2 par{1,1};  // auto set original particle size from .emitter
 	float rate = 0.f;  // emit
 	float parScale = 1.f;
@@ -199,7 +202,6 @@ public:
 
 	Ogre::SceneNode* nd = 0;  // 🟢 ogre
 	Ogre::ParticleSystem* ps = 0;
-	
 	void UpdEmitter();
 };
 
@@ -241,18 +243,22 @@ class SField
 public:
 	FieldTypes type;
 
-	Ogre::Vector3 pos{0,0,0}, dir{0,1,0}, size{1,1,1};
+	Ogre::Vector3 pos{0,0,0}, /*dir{0,1,0},*/ size{1,1,1};
 	float factor = 1.f;  // par for grav, accel, damp
+	Ogre::Real yaw = 0.f, pitch = 90.f;  // accel dir
+	btVector3 dir;
 	
 	//  teleport destination
 	MATHVECTOR <float,3> pos2;
 	QUATERNION <float>   dir2;
 
 	Ogre::SceneNode* nd = 0;  // 🟢 ogre
-	Ogre::Item* it = 0;  //rem-
-	Ogre::ParticleSystem* ps = 0;
+	Ogre::Item* it = 0;
 
-	btCollisionObject* co = 0;  // 🎳 bullet
+	Ogre::ParticleSystem* ps = 0;
+	void UpdEmitter();
+
+	btCollisionObject* co = 0;  // 🎳 bullet trigger
 };
 
 

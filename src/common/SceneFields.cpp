@@ -71,8 +71,9 @@ void App::CreateField(int i)
 	catch (Exception& e)
 	{
 		LogO(String("Create field fail: ") + e.what());
-		return;;
+		return;
 	}
+	f.it->setRenderQueueGroup( RQG_AlphaVegObj );
 
 	//  pos, scale  ----
 	f.nd = mSceneMgr->getRootSceneNode(SCENE_DYNAMIC)->createChildSceneNode();
@@ -89,10 +90,10 @@ void App::CreateField(int i)
 	);  // todo par?
 	f.ps->setVisibilityFlags(RV_Particles);
 
-	f.nd->attachObject(f.ps);
+	f.UpdEmitter();
 	f.ps->getEmitter(0)->setEmissionRate(200);  // todo par ..
 
-	f.it->setRenderQueueGroup( RQG_AlphaVegObj );
+	f.nd->attachObject(f.ps);
 	f.nd->_getFullTransformUpdated();  //?
 
 #ifdef SR_EDITOR  // ed hide
@@ -142,21 +143,21 @@ void App::DestroyFields(bool clear)
 
 void App::DestroyField(int i)
 {
-	SField& c = scn->sc->fields[i];
+	SField& f = scn->sc->fields[i];
 	//  ogre
-	if (c.ps)  mSceneMgr->destroyParticleSystem(c.ps);  c.ps = 0;
-	if (c.nd)  mSceneMgr->destroySceneNode(c.nd);  c.nd = 0;
-	if (c.it)  mSceneMgr->destroyItem(c.it);  c.it = 0;
+	if (f.ps)  mSceneMgr->destroyParticleSystem(f.ps);  f.ps = 0;
+	if (f.nd)  mSceneMgr->destroySceneNode(f.nd);  f.nd = 0;
+	if (f.it)  mSceneMgr->destroyItem(f.it);  f.it = 0;
 
 	//  bullet
-	if (c.co)
-	{	delete c.co->getCollisionShape();
+	if (f.co)
+	{	delete f.co->getCollisionShape();
 		#ifdef SR_EDITOR
-		world->removeCollisionObject(c.co);
+		world->removeCollisionObject(f.co);
 		#else
-		pGame->collision.world->removeCollisionObject(c.co);
+		pGame->collision.world->removeCollisionObject(f.co);
 		#endif
-		delete c.co;  c.co = 0;
+		delete f.co;  f.co = 0;
 	}
 }
 

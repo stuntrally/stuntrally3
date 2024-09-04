@@ -971,10 +971,10 @@
 							<Property key="TextColour" value="0.9 0.6 0.6"/>
 							<Property key="Caption" value="#{InputObjectsDel}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="396 140 368 20">
+						<!-- <Widget type="TextBox" skin="TextBox" position="396 140 368 20">
 							<Property key="TextColour" value="0.8 0.8 1"/>
 							<Property key="Caption" value="#{InputRoadPick}"/>
-						</Widget>
+						</Widget> -->
 					</Widget>
 	<!-- ................................................................................................................... -->
 				</Widget>
