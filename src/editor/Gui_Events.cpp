@@ -5,13 +5,13 @@
 #include "CApp.h"
 #include "CGui.h"
 #include "CScene.h"
-#include "CData.h"
-#include "PresetsXml.h"
+// #include "CData.h"
+// #include "PresetsXml.h"
 #include "Road.h"
 
 #include <fstream>
 #include "Gui_Def.h"
-#include "Slider.h"
+// #include "Slider.h"
 #include "MultiList2.h"
 #include "Terra.h"
 #include <MyGUI.h>
@@ -278,6 +278,7 @@ void CGui::tabPgLayers(Tab wp, size_t id)
 		if (liVeg->getSubItemNameAt(1,i).substr(7) == s)
 			liVeg->setIndexSelected(i);
 			
+	// LogO(lay.name+" "+lay.mtr);
 	Upd3DView(lay.name, lay.mtr);
 	SetUsedStr(valLTrAll, sc->vegLayers.size(), ciLTrAllYlw);
 	txVCnt->setCaption(toStr(lay.cnt));

@@ -3,14 +3,14 @@
 #include "RenderConst.h"
 #include "Road.h"
 #include "App.h"
-#include "CData.h"
-#include "PresetsXml.h"
+// #include "CData.h"
+// #include "PresetsXml.h"
 #ifndef SR_EDITOR
 #else
 	#include "game.h"
 #endif
-#include "CScene.h"
-#include "GraphicsSystem.h"
+// #include "CScene.h"
+// #include "GraphicsSystem.h"
 
 #include <OgreCommon.h>
 #include <OgreHlmsManager.h>

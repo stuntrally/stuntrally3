@@ -2,7 +2,7 @@
 #include "par.h"
 #include "Def_Str.h"
 #include "settings.h"
-#include "App.h"
+#include "AppGui.h"
 #include "Cam.h"
 #include "settings_com.h"
 
@@ -53,9 +53,15 @@ void AppGui::AddGuiShadows(bool vr_mode, int plr, bool gui)
 	bool old = !pSet->g.water_refract;
 	auto* mgr = mRoot->getCompositorManager2();
 	
-	/*//--- todo: create all from cpp..
+	/** //--- todo: create all from cpp..
+	mgr->removeAllWorkspaces();
+	mgr->removeAllWorkspaceDefinitions();
+	mgr->removeAllShadowNodeDefinitions();
+	mgr->removeAllNodeDefinitions();
 	{
 	CompositorNodeDef* node = mgr->addNodeDefinition("Aaa");
+	auto* tex = node->addTextureDefinition("t1");
+	RenderTargetViewDef* rtv = node->addRenderTextureView("r1");
 	CompositorTargetDef* tgt = node->addTargetPass("abc", 0);
 	// CompositorPassDef* pas
 	CompositorPassSceneDef* pas = (CompositorPassSceneDef*)tgt->addPass(PASS_SCENE, "id");

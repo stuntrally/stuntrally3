@@ -1,10 +1,10 @@
 #include "pch.h"
-#include "FluidsReflect.h"
 #include "Def_Str.h"
 #include "RenderConst.h"
 #include "settings.h"
 #include "App.h"
-#include "Cam.h"
+// #include "Cam.h"
+#include "FluidsReflect.h"
 
 #include "CScene.h"
 #include "SceneXml.h"
@@ -21,7 +21,7 @@
 // #include <OgreTextureGpuManager.h>
 
 #include "HlmsPbs2.h"
-#include "Terra.h"
+// #include "Terra.h"
 #include <OgreHlmsManager.h>
 #include <Compositor/OgreCompositorManager2.h>
 #include <Compositor/OgreCompositorNodeDef.h>

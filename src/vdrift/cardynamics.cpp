@@ -5,7 +5,7 @@
 #include "mathvector.h"
 #include "cardynamics.h"
 #include "tobullet.h"
-#include "Def_Str.h"
+// #include "Def_Str.h"
 
 
 MATHVECTOR<Dbl,3> CARDYNAMICS::GetWheelPosition(WHEEL_POSITION wp) const
