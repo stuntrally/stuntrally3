@@ -74,10 +74,12 @@ void CScene::CreateVegets()
 		Real dTr = sc->densTrees; // * horizMul;
 		dTr = dTr / 1000000.f * tws * tws;
 
-		Real hTr = horiz ? td.fVeget * pSet->veg.hor_trees  : 1.f;
-		Real hBu = horiz ? td.fVeget * pSet->veg.hor_bushes : 1.f;
-		Real fTrees  = gs.trees  * dTr * hTr;
-		Real fBushes = gs.bushes * dTr * hBu;
+		Real hTr = horiz ? pSet->veg.hor_trees  : 1.f;
+		Real hBu = horiz ? pSet->veg.hor_bushes : 1.f;
+		//  todo: if any other terrain is here and higher, use its td.fVeget instead ..
+		//  to fix trees going through from below terrain
+		Real fTrees  = gs.trees  * td.fVeget * dTr * hTr;
+		Real fBushes = gs.bushes * td.fVeget * dTr * hBu;
 		
 		if (fTrees > 0.f || fBushes > 0.f)
 		{
