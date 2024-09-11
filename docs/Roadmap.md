@@ -26,7 +26,6 @@ wind anim shadow **caster** too, ed prv obj no wind-
 
 fix .car thrusters lights pos  
 hide flares with in car camera  
-**ed** Fields: accel par, dir, teleport end  
 
 cd SSAO, fog fade?, convert .compositor to C++  
 

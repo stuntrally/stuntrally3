@@ -1,25 +1,26 @@
 ## What's coming next
 
 This section lists changes not yet released, but committed to repositories stuntrally3 and tracks3.  
-WIP means work in progress, still being developed
+WIP means work in progress, unfinished, still being developed.
 
 - Game
   - fixed Multiplayer on Windows, bug was present since SR 3.0
-  - **Collection** - new game mode
-    - Collecting all gems located on track, for completion or quicker time
-    - Hud 3D arrows on vehicle, pointing to closest 3 gems
+  - **Collection** - new game mode, in menu
+    - Collect all gems located on track, for completion or quicker time
+    - Hud shows 3D arrows on vehicle, pointing to closest 3 gems
   - More **Lights** - with toggable Options
     - for vehicle: brakes, boost, reverse, under glow and for collection gems
 - Both
-  - **Water** refraction, depth color, soft border
+  - **Water Refraction***, depth color, soft border  
+    *does not work in Split Screen - it will disable, and won't restore
   - **Vegetation**, over half of tracks renewed
     - **New Bushes**, separate multiplier and distance options
     - **New** models: Palms, Jungle trees, mushrooms
     - Vegetation on Horizon, new tab in options
     - Limit (total count) option
-    - Tree wind animation, WIP
+    - Tree wind animation, WIP, not yet varied by model
     - grass and bushes deform under vehicle
-  - Some more tracks have new horizons, almost all in game
+  - More tracks have new **horizons**, almost all in game
 - Gui
   - New tab on Setup - Paints - Adjust - **Under glow** for color H,S,V
     - under glow color is auto set by picking paint
@@ -36,10 +37,14 @@ WIP means work in progress, still being developed
   - Edit mode for Collection, key Y
     - Insert/remove gems, move, scale
     - change type (for look, at end of presets.xml)
-    - change group (for more sets on 1 track)
-  - Edit mode for Fields, key H - examples on TestC14-Fields
-    - areas: speed up, lift, anti-gravity, damping - act as force fields on vehicle
-    - teleporters - instantly places vehicle in destination, Enter toggle edit
+    - change group (for *more sets* on 1 track)
+  - Edit mode for **Fields**
+    - key H toggles, examples on TestC14-Fields
+    - Field is a box area, which will act as force fields on vehicle  types:  
+      acceleration, anti-gravity, damping - 
+    - have factor value, acceleration has also direction
+    - **teleporter** - instantly places vehicle in destination, Enter - toggle edit
+  - Particles have direction yaw, pitch angles
 - Other
   - split all.material.json to many files
   - in data dir, added subdirs: models, textures etc
@@ -71,8 +76,8 @@ WIP means work in progress, still being developed
   - New tab Options - Screen - GUI with scales for font size and windows margin size, all need restart
   - Screen and Video tabs with render system options, WIP few not done  
     - Vsync works immediately, but Resolution, Fullscreen, Antialiasing need restart  
-- Added Japanese font and quick, basic translation (could be wrong)  
-- Linux binary release
+  - Added Japanese font and quick, basic translation (could be wrong)  
+  - Linux binary release
 
 ## Version 3.0 beta
 
