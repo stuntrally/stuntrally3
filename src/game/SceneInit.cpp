@@ -401,7 +401,7 @@ void App::LoadGame()
 	//  need to know sc->asphalt before vdrift car load
 	if (dstTrk)
 	{
-		scn->sc->pGame = pGame;
+		scn->sc->surf_map = &pGame->surf_map;
 		scn->sc->LoadXml(gcom->TrkDir()+"scene.xml");
 		// pGame->track.asphalt = scn->sc->asphalt;  //*
 		// pGame->track.sDefaultTire = scn->sc->asphalt ? "asphalt" : "gravel";  //*

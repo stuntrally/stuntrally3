@@ -315,6 +315,7 @@ void App::LoadTrackEv()
 	// mSceneMgr->_destroyAllCubemapProbes()
 
 	//  🏞️ load scene
+	scn->sc->surf_map = &surf_map;
 	scn->sc->LoadXml(gcom->TrkDir()+"scene.xml");
 	
 	//  water RTT recreate

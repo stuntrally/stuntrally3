@@ -57,8 +57,10 @@ void CGui::ToolTracksWarnings()
 	//  foreach track
 	int tracks = data->tracks->trks.size();
 	for (int t=0; t < tracks; ++t)
-	{	string trk = data->tracks->trks[t].name,
+	{
+		string trk = data->tracks->trks[t].name,
 			path = gcom->pathTrk[0] +"/"+ trk +"/";
+		
 		if (!(trk[0] >= 'A' && trk[0] <= 'Z'))  continue;
 		if (StringUtil::startsWith(trk,"test"))  continue;
 
@@ -78,6 +80,7 @@ void CGui::ToolTracksWarnings()
 		}	}
 		
 		LogO("Track: "+trk);
+		LogO("ters: "+toStr(sc.tds.size()));
 		TrackWarn tw = WarningsCheck(&sc, vRoads);
 		
 		if (tw.hq < min_hq)  min_hq = tw.hq;  if (tw.hq > max_hq)  max_hq = tw.hq;
@@ -88,7 +91,7 @@ void CGui::ToolTracksWarnings()
 	LogO("))) ALL tracks warnings --------- Stats");
 	LogO(String("::: Average Quality: ") + fToStr( float(all.hq) / tracks) + "  of 10 HQ");
 	LogO(String("::: Quality  min: ")+toStr(min_hq)+"  max: "+toStr(max_hq));
-	LogO(String("::: Total  Horizons: ") + toStr( tracks - all.horiz ) +
+	LogO(String("::: Total  Horizons: ") + toStr( all.horiz ) +
 							"  " + fToStr( 100.f * float(all.horiz) / tracks,0,3)+" %");
 	LogO(String("::: Total  Warnings: ") + toStr( all.warn) +
 							"  average: " + fToStr( float(all.warn) / tracks,2,4));

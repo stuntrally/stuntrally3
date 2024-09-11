@@ -120,17 +120,17 @@ bool GAME::LoadAllSurfaces()
 		surf.setType(id);
 		
 		float f = 0.f;
-		param.GetParamE(section + ".BumpWaveLength", f);	surf.bumpWaveLength = f;
-		param.GetParamE(section + ".BumpAmplitude", f);	surf.bumpAmplitude = f;
+		param.GetParamE(section + ".BumpWaveLength", f);  surf.bumpWaveLength = f;
+		param.GetParamE(section + ".BumpAmplitude", f);  surf.bumpAmplitude = f;
 		if (param.GetParam(section + ".BumpWaveLength2", f))  surf.bumpWaveLength2 = f;
-		if (param.GetParam(section + ".BumpAmplitude2", f))   surf.bumpAmplitude2 = f;
+		if (param.GetParam(section + ".BumpAmplitude2", f))  surf.bumpAmplitude2 = f;
 		
-		param.GetParamE(section + ".FrictionTread", f);	surf.friction = f;
-		if (param.GetParam(section + ".FrictionX", f))   surf.frictionX = f;
-		if (param.GetParam(section + ".FrictionY", f))   surf.frictionY = f;
+		param.GetParamE(section + ".FrictionTread", f);  surf.friction = f;
+		if (param.GetParam(section + ".FrictionX", f))  surf.frictionX = f;
+		if (param.GetParam(section + ".FrictionY", f))  surf.frictionY = f;
 		
-		if (param.GetParam(section + ".RollResistance", f))	surf.rollingResist = f;
-		param.GetParamE(section + ".RollingDrag", f);			surf.rollingDrag = f;
+		if (param.GetParam(section + ".RollResistance", f))  surf.rollingResist = f;
+		param.GetParamE(section + ".RollingDrag", f);  surf.rollingDrag = f;
 
 
 		///---  Tire  ---

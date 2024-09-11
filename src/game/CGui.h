@@ -511,7 +511,7 @@ public:
 	bool isChampGui(), isChallGui(), isCollectGui();  void BackFromChs();
 
 
-	//  🛠️ _Tools_  ----
+	//  🧰 _Tools_  cmd arg
 	void ToolGhosts(),ToolGhostsConv(), ToolTestTrkGhosts();
 
 	//  ⛓️ key util
