@@ -396,6 +396,7 @@ public:
 	//  🧰 _Tools_  cmd arg
 	void ToolSceneXml(), ToolSceneOld();
 	void ToolTracksWarnings();  //, ToolPresets();
+	void Setup(Scene& sc);
 
 	//  ⚠ Warnings  --------------------
 	struct TrackWarn

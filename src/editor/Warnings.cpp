@@ -346,6 +346,8 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 	if (hqFluids)  Warn(INFO,"HQ, fluid present");
 
 	//  if ter above and below, fluid depth should reach lowest ter h
+	if (!scn->ters.empty())  // tool all warnings has no ters
+	{
 	i = 1;
 	const auto* ter = scn->ters[0];
 	for (const auto& fb : sc->fluids)
@@ -383,7 +385,7 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 			//fb.size.y = needed;  // fix it, const-
 		}
 		++i;
-	}
+	}	}
 
 	//  📦 Objects
 	//---------------------------------------------------------------

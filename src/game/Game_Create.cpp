@@ -74,7 +74,7 @@ void App::Load()
 	hud = new CHud(this);
 
 	gcom = new CGuiCom(this);
-	scn->sc->gcom = gcom;
+	// scn->sc->gcom = gcom;
 
 	gui = new CGui(this);
 	gui->gcom = gcom;

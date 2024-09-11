@@ -63,7 +63,7 @@ void App::Load()
 	gcom = new CGuiCom(this);
 	gcom->mGui = mGui;
 	gcom->sc = scn->sc;
-	scn->sc->gcom = gcom;
+	// scn->sc->gcom = gcom;
 
 	gui = new CGui(this);
 	// gui->viewBox = new wraps::RenderBoxScene();
@@ -92,9 +92,10 @@ void App::LoadData()
 	// Ogre::Timer ti;
 
 	//  data xmls
+	// pGame = new GAME(pSet);  // no
 	// pGame->ReloadSimData();  // need surfaces
 	
-	scn->data->Load(/*&pGame->surf_map*/0, 0);
+	scn->data->Load(&surf_map, 0);
 	scn->sc->pFluidsXml = scn->data->fluids;
 	scn->sc->pReverbsXml = scn->data->reverbs;
 
@@ -105,6 +106,7 @@ void App::LoadData()
 App::~App()
 {
 	delete scn;  scn = 0;
+	// delete pGame;  pGame = 0;
 
 	BltWorldDestroy();
 	

@@ -379,7 +379,7 @@ void CGuiCom::ReadTrkStats()
 	String sRd = PathListTrk() + "/road.xml";
 	String sSc = PathListTrk() + "/scene.xml";
 
-	Scene sc;  sc.gcom = this;
+	Scene sc;  //sc.Setup();
 	sc.LoadXml(sSc);  // fails to defaults
 #ifndef SR_EDITOR  // game
 	SplineRoad rd(app->pGame);  rd.LoadFile(sRd,false);  // load
@@ -402,7 +402,7 @@ void CGui::ReadTrkStatsChamp(String track, bool reverse)
 	String sRd = gcom->pathTrk[0] + track + "/road.xml";
 	String sSc = gcom->pathTrk[0] + track + "/scene.xml";
 
-	Scene sc;  sc.gcom = gcom;
+	Scene sc;  //sc.Setup();
 	sc.LoadXml(sSc);  // fails to defaults
 	SplineRoad rd(pGame);  rd.LoadFile(sRd,false);  // load
 

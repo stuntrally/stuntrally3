@@ -17,9 +17,7 @@ using namespace Ogre;
 
 
 Scene::Scene()
-	: pGame(0)
 {
-	pFluidsXml = 0;  pReverbsXml = 0;
 	Default();
 }
 void Scene::Default()
@@ -183,8 +181,8 @@ void Scene::UpdateFluidsId()
 
 void Scene::UpdateSurfId()
 {
-	if (!pGame)
-	{	LogO("! UpdateSurfId no pGame");  return;  }
+	if (!surf_map)
+	{	LogO("! UpdateSurfId no surf_map");  return;  }
 
 	//  update surfId from surfName
 	int i;
@@ -193,7 +191,7 @@ void Scene::UpdateSurfId()
 	for (i=0; i < td.ciNumLay; ++i)
 	{
 		const std::string& s = td.layersAll[i].surfName;
-		int id = pGame->surf_map[s]-1;
+		int id = (*surf_map)[s]-1;
 		if (id == -1)
 		{	id = 0;  // default if not found
 			LogO("! Warning: Surface not found (terrain): "+s);
@@ -204,7 +202,7 @@ void Scene::UpdateSurfId()
 	for (i=0; i < 4; ++i)
 	{
 		const std::string& s = layerRoad[i].surfName;
-		int id = pGame->surf_map[s]-1;
+		int id = (*surf_map)[s]-1;
 		if (id == -1)
 		{	id = 0;
 			LogO("! Warning: Surface not found (road): "+s);

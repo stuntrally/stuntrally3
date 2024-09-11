@@ -35,6 +35,15 @@ using namespace MyGUI;
 #ifdef SR_EDITOR
 
 //--------  Editor Tools  --------
+void CGui::Setup(Scene& sc)
+{
+	sc.pFluidsXml = data->fluids;
+	#ifndef SR_EDITOR
+		sc.surf_map = pGame->surf_map;
+	#else
+		sc.surf_map = &app->surf_map;
+	#endif
+}
 
 ///  🧰 _Tool_  Warnings  ......................................................
 ///  check all tracks for warnings
@@ -53,7 +62,8 @@ void CGui::ToolTracksWarnings()
 		if (!(trk[0] >= 'A' && trk[0] <= 'Z'))  continue;
 		if (StringUtil::startsWith(trk,"test"))  continue;
 
-		Scene sc;  sc.LoadXml(path +"scene.xml");
+		Scene sc;  Setup(sc);
+		sc.LoadXml(path +"scene.xml");
 
 		std::vector<SplineRoad*> vRoads;
 		for (int i=0; i < 20; ++i)  // max roads?
@@ -103,7 +113,10 @@ void CGui::ToolSceneXml()
 	{
 		//  load each track xmls
 		string trk = trkinf.name, path = gcom->pathTrk[0] +"/"+ trk +"/";
-		Scene sc;  sc.LoadXml(path +"scene.xml");
+		
+		Scene sc;  Setup(sc);
+		sc.LoadXml(path +"scene.xml");
+		
 		SplineRoad rd(app);  rd.LoadFile(path +"road.xml");
 		bool modif = false;
 
@@ -136,18 +149,18 @@ void CGui::ToolSceneXml()
 		#endif
 			bool e = l.texFile.empty();
 			if (!e && !rg.resourceExistsInAnyGroup(l.texFile))
-				LogO("Ter: " + trk + " Not Found !!!  " + l.texFile);
+				LogO(trk + " Ter layer Not Found !!!  " + l.texFile);
 
 			if (!l.texNorm.empty() && !rg.resourceExistsInAnyGroup(l.texNorm))
-				LogO("Ter: " + trk + " Not Found !!!  " + l.texNorm);
+				LogO(trk + " Ter layer Not Found !!!  " + l.texNorm);
 				
 			const PTer* p = data->pre->GetTer(l.texFile.substr(0, l.texFile.length()-4));
 			if (!e && !p)
-				LogO("Ter: " + trk + " Not Found in presets !!!  " + l.texFile);
+				LogO(trk + " Ter layer Not Found in presets !!!  " + l.texFile);
 
-			if (!e && l.surfName == "Default")
+			if (!e && l.surfName == "Default" && l.on)
 			{
-				LogO("Ter: " + trk + " Default surface !!!  " + l.texFile);
+				LogO(trk + " Default surface !!!  " + l.texFile);
 			#if 0  //  fix from presets
 				l.surfName = p->surfName;
 				l.dust = p->dust;   l.dustS = p->dustS;
@@ -167,19 +180,19 @@ void CGui::ToolSceneXml()
 		for (n=0; n < rd.mP.size(); ++n)
 			if (rd.mP[n].chkR > 0.f && rd.mP[n].loop > 0)
 				++iLch;
-		//LogO("Road: " + trk + "  Lch " + toStr(iLch));
+		//LogO(trk + "  Road Lch " + toStr(iLch));
 		if (iLch % 2 == 1)
-			LogO("Road: " + trk + " Not even loop chks count !  ");
+			LogO(trk + " Road Not even loop chks count !  ");
 
 		for (n=0; n < MTRs; ++n)
 		{
 			String s = rd.sMtrRoad[n];
 			if (!s.empty() && !data->pre->GetRoad(s))
-				LogO("Road: " + trk + " Not Found in presets !!!  " + s);
+				LogO(trk + " Road Not Found in presets !!!  " + s);
 
 			s = rd.sMtrPipe[n];
 			if (!s.empty() && !data->pre->GetRoad(s))
-				LogO("Pipe: " + trk + " Not Found in presets !!!  " + s);
+				LogO(trk + " Pipe Not Found in presets !!!  " + s);
 	
 			//sc.td.layerRoad
 		}
@@ -192,7 +205,7 @@ void CGui::ToolSceneXml()
 
 			String s = l.material;
 			if (!s.empty() && l.on && !data->pre->GetGrass(s))
-				LogO("Grs: " + trk + " Not Found in presets !!!  " + s);
+				LogO(trk + " Grass Not Found in presets !!!  " + s);
 		}
 
 		///  🌳🪨 Veget  ----------------
@@ -205,16 +218,16 @@ void CGui::ToolSceneXml()
 			if (!s.empty())
 			{
 				if (l.on && !rg.resourceExistsInAnyGroup(s))
-					LogO("Veg: " + trk + " Not Found !!!  " + s);
+					LogO(trk + " Veget Not Found !!!  " + s);
 
 				if (l.on &&/**/ !data->pre->GetVeget(s.substr(0,s.length()-5)))
-					LogO("Veg: " + trk + " Not Found in presets !!!  " + s);
+					LogO(trk + " Veget Not Found in presets !!!  " + s);
 
 				#if 0
 				if (l.on && !data->objs->Find(s) && noCol[s]==0)
 				if (!(s.length() > 4 && s.substr(0,4) == "rock"))
 				{	noCol[s] = 1;
-					LogO("Veg: " + trk + " no collision.xml for  " + s);
+					LogO(trk + " Veget no collision.xml for  " + s);
 				}
 				#endif
 
@@ -222,8 +235,8 @@ void CGui::ToolSceneXml()
 				{	minSc[s] = 1;
 					LogO("Veg: " + trk + " scale < 0.3  model  " + s + "  val " + fToStr(l.minScale,2,4) +" "+ fToStr(l.maxScale,2,4));
 				}*/
-				if (l.maxScale > 4.f)
-					LogO("All: " + trk + "  scale > 4  model  "   + s + "  val " + fToStr(l.maxScale,2,4));
+				// if (l.maxScale > 4.f)
+				// 	LogO(trk + "  All scale > 4  model  "   + s + "  val " + fToStr(l.maxScale,2,4));
 				
 				//  rescale ..
 				/**if (s.substr(0,3)=="fir")
@@ -326,7 +339,10 @@ void CGui::ToolSceneOld()
 	{
 		//  load each track xmls
 		string trk = trkinf.name, path = gcom->pathTrk[0] +"/"+ trk +"/";
-		Scene sc;  sc.LoadXml(path +"scene.xml");
+		
+		Scene sc;  Setup(sc);
+		sc.LoadXml(path +"scene.xml");
+		
 		// SplineRoad rd(app);  rd.LoadFile(path +"road.xml");
 		bool modif = false;
 

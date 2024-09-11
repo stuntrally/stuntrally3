@@ -11,6 +11,7 @@
 #include "paths.h"
 
 #include <OgreSceneNode.h>
+#include <algorithm>
 #include <tinyxml2.h>
 using namespace tinyxml2;
 using namespace std;
@@ -188,7 +189,7 @@ bool Scene::LoadXml(String file, bool bTer)
 	
 
 	///  ⛰️ Terrain
-	//  new, many
+	//  new 3, many
 	e = root->FirstChildElement("terrains");
 	if (e)
 	{
@@ -196,7 +197,7 @@ bool Scene::LoadXml(String file, bool bTer)
 		while (u)
 		{
 			TerData td;
-			LoadTerData(td, u);
+			LoadTerData(file, td, u);
 			tds.push_back(td);
 			u = u->NextSiblingElement("terrain");
 		}
@@ -207,7 +208,7 @@ bool Scene::LoadXml(String file, bool bTer)
 	if (e)
 	{
 		TerData td;
-		LoadTerData(td, e);
+		LoadTerData(file, td, e);
 		tds.push_back(td);
 	}
 	
@@ -217,13 +218,13 @@ bool Scene::LoadXml(String file, bool bTer)
 	if (!e)
  		e = root->FirstChildElement("paged");  // old
 	if (e)
-	{	a = e->Attribute("densTrees");		if (a)
+	{	a = e->Attribute("densTrees");		if (a)  // old
 		{
 			densTrees = s2r(a);
-			LogO("dens: "+toStr(densTrees)+" tws: "+fToStr(tds[0].fTerWorldSize)+" tws1: "+fToStr(tds[1].fTerWorldSize));
+			// LogO("old dens: "+toStr(densTrees)+" tws: "+fToStr(tds[0].fTerWorldSize)+" tws1: "+fToStr(tds[1].fTerWorldSize));
 			auto tws = tds[0].fTerWorldSize;
 			densTrees = 1000000.f * densTrees / tws / tws;
-			LogO("dens2: "+fToStr(densTrees,9,11));
+			// LogO("new dens2: "+fToStr(densTrees,9,11));
 		}
 		a = e->Attribute("densTrees2");		if (a)  densTrees = s2r(a);
 		a = e->Attribute("densGrass");		if (a)  densGrass = s2r(a);
@@ -446,7 +447,7 @@ bool Scene::LoadXmlCollects(String file)
 
 //  Ter Data
 //  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-bool Scene::LoadTerData(TerData& td, XMLElement* e)
+bool Scene::LoadTerData(String file, TerData& td, XMLElement* e)
 {
 	XMLElement* u;
 	const char* a;
@@ -474,12 +475,15 @@ bool Scene::LoadTerData(TerData& td, XMLElement* e)
 
 	//  get iVerts from hmap file
 	int n = tds.size();
-	String fname = gcom->app->scn->getHmap(n, 0);
-	bool exists = PATHS::FileExists(fname);
+	// String fname = gcom->app->scn->getHmap(n, 0);  // tool cant
+	String hmap = "heightmap" + (n > 0 ? toStr(n+1) : "") /*+ (bNew ? "-new" : "")*/ + ".f32";
+	String hfile = StringUtil::replaceAll(file, "scene.xml", hmap);
+
+	bool exists = PATHS::FileExists(hfile);
 	if (!exists)
-		LogO("Terrains error! No hmap file: "+fname);
+		LogO("Terrains error! No hmap file: "+hfile);
 	else
-		td.getFileSize(fname);
+		td.getFileSize(hfile);
 	// td.UpdVals();  //^in
 
 	int il = 0;

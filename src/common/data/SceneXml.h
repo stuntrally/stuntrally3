@@ -162,10 +162,12 @@ public:
 	void Default();
 	void UpdateFluidsId(), UpdateSurfId();
 
-	GAME* pGame =0;  // for all surfaces by name
-	CGuiCom* gcom =0;  // for TrkDir to hmap file
+	// CGuiCom* gcom =0;  // for TrkDir to hmap file
+	// GAME* pGame =0;  // for all surfaces by name, in game not ed
+	std::map <std::string, int>* surf_map =0;  // name to surface id
+	// ! set surf_map before full LoadXml
 	bool LoadXml(Ogre::String file, bool bTer = true), SaveXml(Ogre::String file);
 	
 	bool LoadXmlCollects(Ogre::String file);
-	bool LoadTerData(TerData& td, tinyxml2::XMLElement* e);//, SaveTerData(const TerData& td, XMLElement*& e);
+	bool LoadTerData(Ogre::String file, TerData& td, tinyxml2::XMLElement* e);//, SaveTerData(const TerData& td, XMLElement*& e);
 };
