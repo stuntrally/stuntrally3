@@ -188,10 +188,10 @@
 						<Widget type="Slider" skin="Slider" position="392 90 320 18" name="BloomInt"/> -->
 
 						<!-- SSAO -->
-						<Widget type="Button" skin="CheckBox" position="28 120 256 24" name="SSAO">
-							<Property key="Caption" value="#{ssao}"/>
+						<!-- <Widget type="Button" skin="CheckBox" position="28 120 256 24" name="SSAO">
+							<Property key="Caption" value="#{ssao}  #704040 = #{NotDone}"/>
 							<Property key="TextColour" value="1 0.7 0.1"/>
-						</Widget>
+						</Widget> -->
 
 						<Widget type="TextBox" skin="TextBox" position="32 150 248 24">
 							<Property key="Caption" value="#{Brush_Size}"/>
@@ -968,9 +968,9 @@
 							<Property key="Caption" value="#{WaterReflection} *"/>
 							<Property key="TextColour" value="0.6 0.8 1"/>
 						</Widget>
-						<Widget type="Button" skin="CheckBox" position="32 78 250 24" name="WaterRefraction">
-							<Property key="Caption" value="#{WaterRefraction} *"/>
-							<Property key="TextColour" value="0.6 0.8 1"/>
+						<Widget type="Button" skin="CheckBox" position="32 78 350 24" name="WaterRefraction">
+							<Property key="Caption" value="#{WaterRefraction} * #704040 - #{SplitScreen} ="/>
+							<Property key="TextColour" value="0.6 0.9 1"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="32 110 174 24">

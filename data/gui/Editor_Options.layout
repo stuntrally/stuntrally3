@@ -188,10 +188,10 @@
 						<Widget type="Slider" skin="Slider" position="392 90 320 18" name="BloomInt"/> -->
 
 						<!-- SSAO -->
-						<Widget type="Button" skin="CheckBox" position="28 120 256 24" name="SSAO">
-							<Property key="Caption" value="#{ssao}"/>
+						<!-- <Widget type="Button" skin="CheckBox" position="28 120 256 24" name="SSAO">
+							<Property key="Caption" value="#{ssao}  #704040 = #{NotDone}"/>
 							<Property key="TextColour" value="1 0.7 0.1"/>
-						</Widget>
+						</Widget> -->
 
 						<Widget type="TextBox" skin="TextBox" position="32 150 248 24">
 							<Property key="Caption" value="#{Brush_Size}"/>

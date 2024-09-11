@@ -241,13 +241,13 @@
 		</Widget>
 	</Widget>
 
-	<Widget type="Window" skin="WindowC" position="144 102 920 168" layer="Back" name="RplLessonTextWnd">
+	<Widget type="Window" skin="WindowC" position="144 102 920 178" layer="Back" name="RplLessonTextWnd">
 		<Property key="Alpha" value="0.9"/>
 		<Property key="Colour" value="0.6 0.8 1.0"/>
 		<Property key="Caption" value="#{Lesson} - #{Hint}"/>
 		<Property key="Visible" value="false"/>
 		<UserString key="NotSized" value="1"/>
-		<Widget type="EditBox" skin="EditBoxEmpty" position="4 4 884 166" name="RplLessonText">
+		<Widget type="EditBox" skin="EditBoxEmpty" position="4 4 884 176" name="RplLessonText">
 			<Property key="ReadOnly" value="true"/>
 			<Property key="MultiLine" value="true"/>
 			<Property key="WordWrap" value="true"/>
