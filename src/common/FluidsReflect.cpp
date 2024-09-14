@@ -258,12 +258,12 @@ void FluidsReflect::CreateFluids()
 			(fb.hq == 0 || app->pSet->g.water_refract == 0 ? "_lq" : "");
 
 		//  [0] above  [1] below
-		for (int n=0; n < 1; ++n)  // 2  // todo: FIXME refract wirefr bad
+		for (int n=0; n < 2; ++n)  // 2  // todo: FIXME refract wirefr bad ..
 		{
 			item[n] = mgr->createItem( mesh, dyn );
 			item[n]->setDatablock( sMtr );
 			item[n]->setCastShadows( false );
-			auto rqg = fb.hq == 2 ? RQG_Fluid+1 : RQG_Fluid;
+			auto rqg = fb.hq == 2 ? RQG_Refract : RQG_Fluid;  // fimxe order? ..
 			// LogO("fluid "+iToStr(i,2)+" n "+toStr(n)+"  "+sMtr+"  rqg "+toStr(rqg));  //-
 
 			item[n]->setRenderQueueGroup( rqg );  item[n]->setVisibilityFlags( RV_Fluid );

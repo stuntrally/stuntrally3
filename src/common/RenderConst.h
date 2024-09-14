@@ -36,6 +36,7 @@ const Ogre::uint8
 	RQG_RoadBlend    = RQ_7 +1,
 
 	RQG_Fluid        = 210,  //RQ_7 +4,  // water etc
+	RQG_Refract      = 211,
 	RQG_Grass        = RQ_7 +5,  // veget grass
 
 	RQG_PipeGlass    = RQ_GlassV2 +2,   // glass pipe road`

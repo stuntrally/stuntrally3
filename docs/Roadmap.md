@@ -8,30 +8,28 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 ### SR 3.2
 
-fix splitscreen broken with refractions?  
-
 🌊**refract** river roads **crash** on: Surreal, HexForest, Bug, Glitch  
-no water collis on: Butterfly, SlopeCity..  
+**fix** no refract water stretched, no anim  
+fix refract underwater top  
+pass projmatrix not **inverse**  
+*fix splitscreen* broken with refractions  
+**no** water collis? on: Butterfly, SlopeCity..  
 fix compositor / rqg:  
 car glass not refracted, offset, glass pipes not underwater  
 more fluids at once, blink on MilkyWay  
-option no refract water stretched  
-
-**under**water top?  
-pass projmatrix not **inverse**  
 add params: refract clr, *depth* clr, emissive fluids?  
 
 🌪️**wind scale** params in json, for all trees, bushes, grass sway own-  
 wind anim shadow **caster** too, ed prv obj no wind-  
 
 fix .car thrusters lights pos  
-hide flares with in car camera  
+**hide** flares with in car camera  
 
 cd SSAO, fog fade?, convert .compositor to C++  
 
 💎Add **gems** to tracks, more types 3d  
 xml par continuous?, logic btn continue, hid collected gems on start?  
-*new* track(s) with fields, add walls  
+*new* track(s) with **fields**, add walls  
 hud new best time show, win particles-  
 
 
