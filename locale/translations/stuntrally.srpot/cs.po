@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-14 12:04+0200\n"
-"PO-Revision-Date: 2024-09-14 20:09+0000\n"
+"PO-Revision-Date: 2024-09-14 22:09+0000\n"
 "Last-Translator: Petr Ohlídal <petr@ohlidal.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/cs/>\n"
@@ -203,13 +203,13 @@ msgstr "Nápověda"
 #: data/gui/Game_Help.layout:142 ..Help.Tab
 msgctxt "Readme"
 msgid "Readme"
-msgstr "Čti"
+msgstr "Pokyny"
 
 #. MAIN  Menu 
 #: data/gui/Game_Help.layout:161 ..Help.Tab
 msgctxt "Changes"
 msgid "Changes"
-msgstr ""
+msgstr "Změny"
 
 #. MAIN  Menu 
 #: data/gui/Game_Help.layout:17 ..Help.Tab
@@ -234,25 +234,25 @@ msgstr "Zásluhy"
 #: data/gui/Game_Replay.layout:246 ..Window
 msgctxt "Lesson"
 msgid "Lesson"
-msgstr ""
+msgstr "Lekce"
 
 #. How To Play 
 #: data/gui/Game_Help.layout:419 ..HowToPlay.Text
 msgctxt "DrivingSchool"
 msgid "Stunt Rally driving school"
-msgstr ""
+msgstr "Autoškola Stunt Rally"
 
 #. How To Play 
 #: data/gui/Game_Help.layout:419 ..HowToPlay.Text
 msgctxt "LessonClick"
 msgid "click button to play a lesson"
-msgstr ""
+msgstr "tlačítkem přehrajete lekci"
 
 #. Game  User Path 
 #: data/gui/Game_Help.layout:110 ..Help.Support.Text
 msgctxt "UserDir"
 msgid "User Path (logs, configs, user data, etc)"
-msgstr ""
+msgstr "Cesta k profilu (logy, nastavení, uložené hry atd...)"
 
 #. TIP  Slider 
 #: data/gui/Editor_Help.layout:163 ..Help.Input/help.Shortcuts.Text
@@ -260,7 +260,7 @@ msgstr ""
 #: data/gui/Game_Options.layout:1572 ..Options.Sound.HUD.Text
 msgctxt "TipSliderReset"
 msgid "RMB on slider - reset to default value."
-msgstr ""
+msgstr "Pravým kliknutím na posuvník vyresetujete hodnotu."
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:36 ..Help.Support.Text
@@ -379,7 +379,7 @@ msgstr "Zlato"
 #: ..Options.Graphics.Water.Check src/game/Gui_Util.cpp:176:192
 msgctxt "SplitScreen"
 msgid "Split Screen"
-msgstr ""
+msgstr "Rozděl. obrazovka"
 
 #. MAIN  Game  Modes 
 #: data/gui/Game.layout:1730 ..SingleRace.Tab data/gui/Game_Main.layout:340
@@ -399,7 +399,7 @@ msgstr "Více hráčů"
 #: src/game/Gui_Util.cpp:175:176
 msgctxt "Collection"
 msgid "Collection"
-msgstr ""
+msgstr "Sbírka"
 
 #. MAIN  Game  Modes 
 #: src/game/Gui_InitGames.cpp:95
