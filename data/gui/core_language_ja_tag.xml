@@ -97,6 +97,11 @@
 	<Tag name="GameTypes">Game Types</Tag>
 	<Tag name="Reverse">逆行する</Tag>
 	<Tag name="Find">探す</Tag>
+	<Tag name="ViewList">List</Tag>
+	<Tag name="ViewListUser">List user</Tag>
+	<Tag name="ViewListDetail">List wide</Tag>
+	<Tag name="ViewGalleryList">Gallery list</Tag>
+	<Tag name="ViewGallery">Gallery</Tag>
 	<Tag name="TrackBestTime">ベストタイム</Tag>
 	<Tag name="TrackAvgSpeed">Avg. speed</Tag>
 	<Tag name="TrackLength">長さ</Tag>
@@ -347,6 +352,7 @@
 	<Tag name="Graphics">Graphics</Tag>
 	<Tag name="NeedRestart">* need restart</Tag>
 	<Tag name="NeedNewGame">* need New Game</Tag>
+	<Tag name="NeedReload">* need reload</Tag>
 	<Tag name="Apply">Apply</Tag>
 	<Tag name="Replay">Replay</Tag>
 	<Tag name="RplLoad">Load</Tag>
@@ -460,6 +466,7 @@
 	<Tag name="ViewDist">View distance</Tag>
 	<Tag name="RoadQual">Road far quality</Tag>
 	<Tag name="GridQual">Grid quality</Tag>
+	<Tag name="Quality">Quality</Tag>
 	<Tag name="Textures">Textures</Tag>
 	<Tag name="Bilinear">Bilinear</Tag>
 	<Tag name="Trilinear">Trilinear</Tag>
@@ -468,9 +475,8 @@
 	<Tag name="Triplanar">Triplanar</Tag>
 	<Tag name="HighestSlopes">Highest slopes</Tag>
 	<Tag name="Vegetation">Vegetation</Tag>
-	<Tag name="TreeMult">Trees multiplier</Tag>
+	<Tag name="Bush">Bush</Tag>
 	<Tag name="DistMult">Distance mul</Tag>
-	<Tag name="GrassMult">Grass mul</Tag>
 	<Tag name="Reset">Reset</Tag>
 	<Tag name="Reflections">Reflections</Tag>
 	<Tag name="FrameSkip">Frames skip</Tag>
@@ -546,8 +552,6 @@
 	<Tag name="HDRParam1">Exposure</Tag>
 	<Tag name="HDRParam2">Brightness</Tag>
 	<Tag name="HDRParam3">Grain</Tag>
-	<Tag name="HDRVignettingRadius">Vignetting Radius</Tag>
-	<Tag name="HDRVignettingDarkness">Vignetting Darken</Tag>
 	<Tag name="Other">Other</Tag>
 	<Tag name="Development">Development</Tag>
 	<Tag name="TipDebugShaders">Will save generated shaders in user's cache/shaders/ folder. Only for those not cached already. Optionally also properties on top, messing error line numbers.</Tag>
@@ -690,7 +694,6 @@
 	<Tag name="CopyTrackNoSource">No source track selected.</Tag>
 	<Tag name="CopyTrackSourceSame">Source track and current track are the same.</Tag>
 	<Tag name="CantSaveOrgTrack">Can't save original track. Duplicate it first.</Tag>
-	<Tag name="NeedReload">* need reload</Tag>
 	<Tag name="Sun">Sun</Tag>
 	<Tag name="Sky">Sky</Tag>
 	<Tag name="SunDir">Sun dir.</Tag>
@@ -772,6 +775,7 @@
 	<Tag name="Surface">Surface</Tag>
 	<Tag name="Type">Type</Tag>
 	<Tag name="BumpWavelen">Bump:  WaveLen</Tag>
+	<Tag name="Frequency">Frequency</Tag>
 	<Tag name="Amplitude">Amplitude</Tag>
 	<Tag name="Friction">Friction</Tag>
 	<Tag name="RollingDrag">Rolling Drag</Tag>
@@ -809,6 +813,7 @@
 	<Tag name="max">max</Tag>
 	<Tag name="distance">distance</Tag>
 	<Tag name="length">length</Tag>
+	<Tag name="speed">speed</Tag>
 	<Tag name="TreeRoadDist">Trees to road dist.</Tag>
 	<Tag name="ImpostorDist">Impostors dist.</Tag>
 	<Tag name="LTrFlDepth">max Depth in fluid</Tag>
@@ -818,9 +823,6 @@
 	<Tag name="GrColorMap">Color map</Tag>
 	<Tag name="Channels">Channels</Tag>
 	<Tag name="Channel">Channel</Tag>
-	<Tag name="GrassSway">Sway</Tag>
-	<Tag name="speed">speed</Tag>
-	<Tag name="distribution">distribution</Tag>
 	<Tag name="Road">Road</Tag>
 	<Tag name="Pipe">Pipe</Tag>
 	<Tag name="Wall">Wall</Tag>
@@ -1364,7 +1366,10 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="GameVersion">3.1</Tag>
+	<Tag name="Changes">Changes</Tag>
+	<Tag name="Limit">Limit</Tag>
+	<Tag name="InputFieldsTelepEnd">Enter - toggle teleport end edit</Tag>
+	<Tag name="GameVersion">3.2</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
 </MyGUI>

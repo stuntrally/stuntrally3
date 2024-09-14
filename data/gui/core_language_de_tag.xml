@@ -52,7 +52,7 @@
 	<Tag name="SplitScreen">Geteiltes Bild</Tag>
 	<Tag name="Multiplayer">Mehrspieler</Tag>
 	<Tag name="Collection">Sammlung</Tag>
-	<Tag name="Collected">Collected</Tag>
+	<Tag name="Collected">Gesammelt</Tag>
 	<Tag name="Career">Karriere</Tag>
 	<Tag name="NumLocalPlayers">Anzahl der lokalen Spieler</Tag>
 	<Tag name="SplitVertically">Senkrecht teilen</Tag>
@@ -97,6 +97,11 @@
 	<Tag name="GameTypes">Spieltypen</Tag>
 	<Tag name="Reverse">Rückwärts</Tag>
 	<Tag name="Find">Suchen</Tag>
+	<Tag name="ViewList">Liste</Tag>
+	<Tag name="ViewListUser">Benutzerliste</Tag>
+	<Tag name="ViewListDetail">breite Liste</Tag>
+	<Tag name="ViewGalleryList">Galerieliste</Tag>
+	<Tag name="ViewGallery">Galerie</Tag>
 	<Tag name="TrackBestTime">Beste Zeit</Tag>
 	<Tag name="TrackAvgSpeed">ø-Geschw.</Tag>
 	<Tag name="TrackLength">Länge</Tag>
@@ -347,6 +352,7 @@
 	<Tag name="Graphics">Grafik</Tag>
 	<Tag name="NeedRestart">* Neustart erforderlich</Tag>
 	<Tag name="NeedNewGame">* neues Spiel nötig</Tag>
+	<Tag name="NeedReload">* Neu-Laden nötig</Tag>
 	<Tag name="Apply">Anwenden</Tag>
 	<Tag name="Replay">Wiederholung</Tag>
 	<Tag name="RplLoad">Laden</Tag>
@@ -459,7 +465,8 @@
 	<Tag name="TerHQDist">Gelände-HQ-Dist.</Tag>
 	<Tag name="ViewDist">Sichtweite</Tag>
 	<Tag name="RoadQual">Straßenqualität</Tag>
-	<Tag name="GridQual">Grid quality</Tag>
+	<Tag name="GridQual">Netzqualität</Tag>
+	<Tag name="Quality">Qualität</Tag>
 	<Tag name="Textures">Texturen</Tag>
 	<Tag name="Bilinear">Bilinear</Tag>
 	<Tag name="Trilinear">Trilinear</Tag>
@@ -468,9 +475,8 @@
 	<Tag name="Triplanar">Triplanar</Tag>
 	<Tag name="HighestSlopes">Höchste Steigung</Tag>
 	<Tag name="Vegetation">Vegetation</Tag>
-	<Tag name="TreeMult">Baumanzahl</Tag>
+	<Tag name="Bush">Busch</Tag>
 	<Tag name="DistMult">Distanzfaktor</Tag>
-	<Tag name="GrassMult">Grasfaktor</Tag>
 	<Tag name="Reset">Zurücksetzen</Tag>
 	<Tag name="Reflections">Spiegelungen</Tag>
 	<Tag name="FrameSkip">Bilder überspringen</Tag>
@@ -493,7 +499,7 @@
 	<Tag name="LightmapSize">Lightmap-Größe</Tag>
 	<Tag name="Lights">Lichter</Tag>
 	<Tag name="VehicleLights">Fahrzeugbeleuchtung</Tag>
-	<Tag name="UnderGlow">Under glow</Tag>
+	<Tag name="UnderGlow">Unter leuchten</Tag>
 	<Tag name="Particles">Partikel</Tag>
 	<Tag name="TireTrails">Reifenspuren</Tag>
 	<Tag name="View">Ansicht</Tag>
@@ -546,8 +552,6 @@
 	<Tag name="HDRParam1">Belichtung</Tag>
 	<Tag name="HDRParam2">Helligkeit</Tag>
 	<Tag name="HDRParam3">Körnung</Tag>
-	<Tag name="HDRVignettingRadius">Vignettierungsradius</Tag>
-	<Tag name="HDRVignettingDarkness">Vignettierung abdunkeln</Tag>
 	<Tag name="Other">Sonstige</Tag>
 	<Tag name="Development">Entwicklung</Tag>
 	<Tag name="TipDebugShaders">Will save generated shaders in user's cache/shaders/ folder. Only for those not cached already. Optionally also properties on top, messing error line numbers.</Tag>
@@ -690,7 +694,6 @@
 	<Tag name="CopyTrackNoSource">Keine Quellstrecke ausgewählt.</Tag>
 	<Tag name="CopyTrackSourceSame">Quellstrecke und aktuelle Strecke sind identisch.</Tag>
 	<Tag name="CantSaveOrgTrack">Originalstrecke kann nicht gespeichert werden. Kopieren Sie sie zuerst.</Tag>
-	<Tag name="NeedReload">* Neu-Laden nötig</Tag>
 	<Tag name="Sun">Sonne</Tag>
 	<Tag name="Sky">Himmel</Tag>
 	<Tag name="SunDir">Sonnenrichtung</Tag>
@@ -772,6 +775,7 @@
 	<Tag name="Surface">Oberfläche</Tag>
 	<Tag name="Type">Typ</Tag>
 	<Tag name="BumpWavelen">Bump: WaveLen</Tag>
+	<Tag name="Frequency">Frequenz</Tag>
 	<Tag name="Amplitude">Amplitude</Tag>
 	<Tag name="Friction">Reibung</Tag>
 	<Tag name="RollingDrag">Rollwiderstand</Tag>
@@ -809,6 +813,7 @@
 	<Tag name="max">Max.</Tag>
 	<Tag name="distance">Distanz</Tag>
 	<Tag name="length">Länge</Tag>
+	<Tag name="speed">Geschw.</Tag>
 	<Tag name="TreeRoadDist">Abst. Bäume/Straße</Tag>
 	<Tag name="ImpostorDist">Bestrügerabstand</Tag>
 	<Tag name="LTrFlDepth">max. Wassertiefe</Tag>
@@ -818,9 +823,6 @@
 	<Tag name="GrColorMap">Color-Map</Tag>
 	<Tag name="Channels">Kanäle</Tag>
 	<Tag name="Channel">Kanal</Tag>
-	<Tag name="GrassSway">Schaukeln</Tag>
-	<Tag name="speed">Geschw.</Tag>
-	<Tag name="distribution">Verteilung</Tag>
 	<Tag name="Road">Straße</Tag>
 	<Tag name="Pipe">Rohre</Tag>
 	<Tag name="Wall">Mauer</Tag>
@@ -875,7 +877,7 @@
 	<Tag name="ObjBuildings">Gebäude</Tag>
 	<Tag name="ObjRocks">Steine</Tag>
 	<Tag name="Group">Gruppe</Tag>
-	<Tag name="Fields">Fields</Tag>
+	<Tag name="Fields">Gebiete</Tag>
 	<Tag name="Tools">Werkzeuge</Tag>
 	<Tag name="SourceTrack">Bezugsquelle</Tag>
 	<Tag name="ChngTrkTab">aus dem Tab »Strecke«</Tag>
@@ -980,16 +982,16 @@
 	<Tag name="InputStart">Start</Tag>
 	<Tag name="InputStartPos">Q - Startposition ändern</Tag>
 	<Tag name="InputFluidsMode">W - Gewässer bearbeiten</Tag>
-	<Tag name="TipFluidExamples">water, mud, acid, ice, lava, oil, etc.</Tag>
+	<Tag name="TipFluidExamples">Wasser, Schlamm, Säure, Eis, Lava, Öl, usw.</Tag>
 	<Tag name="InputObjectsMode">X - Objekte bearbeiten</Tag>
-	<Tag name="TipObjectExamples">crates, buildings, obstacles, caves, etc.</Tag>
+	<Tag name="TipObjectExamples">Kisten, Gebäude, Hindernisse, Höhlen, usw.</Tag>
 	<Tag name="InputParticlesMode">A - Partikel bearbeiten</Tag>
-	<Tag name="TipParticleExamples">cloud, fire, smoke, etc.</Tag>
-	<Tag name="InputCollectMode">edit Collectibles</Tag>
-	<Tag name="TipCollectExamples">crystals, gems, resources, etc.</Tag>
-	<Tag name="InputCollectGroup">Collectible group (for more sets)</Tag>
-	<Tag name="InputFieldsMode">edit Fields</Tag>
-	<Tag name="TipFieldExamples">acceleration, gravity lift, etc.</Tag>
+	<Tag name="TipParticleExamples">Wolke, Feuer, Rauch, usw.</Tag>
+	<Tag name="InputCollectMode">Sammlerstücke bearbeiten</Tag>
+	<Tag name="TipCollectExamples">Kristalle, Edelsteine, Ressourcen usw.</Tag>
+	<Tag name="InputCollectGroup">Sammlergruppe (für weitere Sets)</Tag>
+	<Tag name="InputFieldsMode">Gebiete bearbeiten</Tag>
+	<Tag name="TipFieldExamples">Beschleunigung, Schwerkraftaufzug usw.</Tag>
 	<Tag name="InputTerPaint">A - Anstrichtextur (Schicht)</Tag>
 	<Tag name="InputPaintColor">C - Anstrichfarbe</Tag>
 	<Tag name="InputLockBrush">Einfügen - Pinselposition einrasten</Tag>
@@ -1091,7 +1093,7 @@
 	<Tag name="InputParticlesDensity">[,] - Änderung der Dichte (Emissionsrate)</Tag>
 	<Tag name="InputParticlesStatic">Enter - statisch umschalten</Tag>
 	<Tag name="InputParticlesSize">K,L - Größenskala ändern</Tag>
-	<Tag name="InputParticlesType">change particles type</Tag>
+	<Tag name="InputParticlesType">Partikeltyp ändern</Tag>
 	<Tag name="TipCarSpeed">Fahrzeuggeschwindigkeitsbewertung, mehr bedeutet schnelleres Auto. Achtung, auf Schotter werden zu schnelle Autos nicht schneller, weil ihnen der Grip fehlt.</Tag>
 	<Tag name="TipCarType">Fahrzeugtyp, Hauptziel. Einige können auch dann auf Schotter verwendet werden, wenn sie nicht dafür vorgesehen sind.</Tag>
 	<Tag name="TipCarYear">Jahr, in dem die Produktion dieses Fahrzeugs aufgenommen wurde.</Tag>
@@ -1103,13 +1105,13 @@
 	<Tag name="TutorEndFinished">Die Einführung wurde beendet.</Tag>
 	<Tag name="ChampEndFinished">Die Meisterschaft wurde erfolgreich beendet!</Tag>
 	<Tag name="ChallEndFinished">Sie haben die Herausforderung gewonnen.</Tag>
-	<Tag name="ClickInList">Pick in list to read description and start.</Tag>
+	<Tag name="ClickInList">Wählen Sie in der Liste, um die Beschreibung zu lesen und zu starten.</Tag>
 	<Tag name="ChampInfo">Im Tutorial-/Meisterschaftsmodus wird eine Streckenserie gefahren. Eine Mindestpunktzahl, die von der gefahrenen Zeit abhängig ist, ist erforderlich, um die nächste Etappe zu erreichen. Es ist möglich, das Auto zu wechseln.</Tag>
 	<Tag name="ChallInfo">Im Herausforderungsmodus wurde das Spiel fertig aufgesetzt, die meisten Einstellungen sind unveränderlich. Zeit oder Position ist benötigt. Wenn Sie bestehen, gewinnen sie einen Bronze-, Silber- oder Gold-Preis.</Tag>
 	<Tag name="ChampInfo2">Meisterschaften sind meistens lang, haben viele Strecken, aber sind einfach zu bestehen.</Tag>
 	<Tag name="ChallInfo2">Herausforderungen sind kurz, aber meistens schwierig zu bestehen.</Tag>
 	<Tag name="TutorInfo">Einführungen haben nur wenige Strecken. Sie sind einfach und zeigen verschiedene Streckenelemente.</Tag>
-	<Tag name="CollectInfo">In collection game, you roam a track freely (not just on roads). The aim is to collect all gems located in various places. Time can be limited or not. Faster time gives better prize.</Tag>
+	<Tag name="CollectInfo">Im Sammelspiel bewegst du dich frei auf einer Strecke (nicht nur auf Straßen). Ziel ist es, alle Edelsteine zu sammeln, die sich an verschiedenen Orten befinden. Die Zeit kann begrenzt sein oder nicht. Eine schnellere Zeit gibt einen besseren Preis.</Tag>
 	<Tag name="Hint">Tipp</Tag>
 	<Tag name="HintShow">Bei Start anzeigen</Tag>
 	<Tag name="HintKey">Strg-F1 - Anzeigen</Tag>
@@ -1364,7 +1366,10 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="GameVersion">3.1</Tag>
+	<Tag name="Changes">Changes</Tag>
+	<Tag name="Limit">Limit</Tag>
+	<Tag name="InputFieldsTelepEnd">Enter - toggle teleport end edit</Tag>
+	<Tag name="GameVersion">3.2</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
 </MyGUI>

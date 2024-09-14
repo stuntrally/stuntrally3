@@ -97,6 +97,11 @@
 	<Tag name="GameTypes">Game Types</Tag>
 	<Tag name="Reverse">Reverse</Tag>
 	<Tag name="Find">Find</Tag>
+	<Tag name="ViewList">List</Tag>
+	<Tag name="ViewListUser">List user</Tag>
+	<Tag name="ViewListDetail">List wide</Tag>
+	<Tag name="ViewGalleryList">Gallery list</Tag>
+	<Tag name="ViewGallery">Gallery</Tag>
 	<Tag name="TrackBestTime">Cel mai bun timp</Tag>
 	<Tag name="TrackAvgSpeed">Viteza medie</Tag>
 	<Tag name="TrackLength">Length</Tag>
@@ -347,6 +352,7 @@
 	<Tag name="Graphics">Grafică</Tag>
 	<Tag name="NeedRestart">* need restart</Tag>
 	<Tag name="NeedNewGame">* necesită Joc nou</Tag>
+	<Tag name="NeedReload">* trebuie reîncărcat</Tag>
 	<Tag name="Apply">Apply</Tag>
 	<Tag name="Replay">Replay</Tag>
 	<Tag name="RplLoad">Load</Tag>
@@ -460,6 +466,7 @@
 	<Tag name="ViewDist">Distanță de vedere</Tag>
 	<Tag name="RoadQual">Calitatea in depărtare a traseului</Tag>
 	<Tag name="GridQual">Grid quality</Tag>
+	<Tag name="Quality">Quality</Tag>
 	<Tag name="Textures">Texturi</Tag>
 	<Tag name="Bilinear">Bilinear</Tag>
 	<Tag name="Trilinear">Trilinear</Tag>
@@ -468,9 +475,8 @@
 	<Tag name="Triplanar">Triplanar</Tag>
 	<Tag name="HighestSlopes">Highest slopes</Tag>
 	<Tag name="Vegetation">Vegetation</Tag>
-	<Tag name="TreeMult">Trees multiplier</Tag>
+	<Tag name="Bush">Bush</Tag>
 	<Tag name="DistMult">Distance mul</Tag>
-	<Tag name="GrassMult">Grass mul</Tag>
 	<Tag name="Reset">Reset</Tag>
 	<Tag name="Reflections">Reflections</Tag>
 	<Tag name="FrameSkip">Frames skip</Tag>
@@ -546,8 +552,6 @@
 	<Tag name="HDRParam1">Exposure</Tag>
 	<Tag name="HDRParam2">Brightness</Tag>
 	<Tag name="HDRParam3">Grain</Tag>
-	<Tag name="HDRVignettingRadius">Vignetting Radius</Tag>
-	<Tag name="HDRVignettingDarkness">Vignetting Darken</Tag>
 	<Tag name="Other">Alte</Tag>
 	<Tag name="Development">Dezvoltare</Tag>
 	<Tag name="TipDebugShaders">Will save generated shaders in user's cache/shaders/ folder. Only for those not cached already. Optionally also properties on top, messing error line numbers.</Tag>
@@ -690,7 +694,6 @@
 	<Tag name="CopyTrackNoSource">No source track selected.</Tag>
 	<Tag name="CopyTrackSourceSame">Source track and current track are the same.</Tag>
 	<Tag name="CantSaveOrgTrack">Can't save original track. Duplicate it first.</Tag>
-	<Tag name="NeedReload">* trebuie reîncărcat</Tag>
 	<Tag name="Sun">Sun</Tag>
 	<Tag name="Sky">Cer</Tag>
 	<Tag name="SunDir">Direcția soarelui</Tag>
@@ -772,6 +775,7 @@
 	<Tag name="Surface">Suprafaţă</Tag>
 	<Tag name="Type">Tipul</Tag>
 	<Tag name="BumpWavelen">Bump:  WaveLen</Tag>
+	<Tag name="Frequency">Frequency</Tag>
 	<Tag name="Amplitude">Amplitude</Tag>
 	<Tag name="Friction">Fricțiune</Tag>
 	<Tag name="RollingDrag">Învârtire mașină</Tag>
@@ -809,6 +813,7 @@
 	<Tag name="max">max</Tag>
 	<Tag name="distance">distanță</Tag>
 	<Tag name="length">lungime</Tag>
+	<Tag name="speed">speed</Tag>
 	<Tag name="TreeRoadDist">Trees to road dist.</Tag>
 	<Tag name="ImpostorDist">Impostors dist.</Tag>
 	<Tag name="LTrFlDepth">max Depth in fluid</Tag>
@@ -818,9 +823,6 @@
 	<Tag name="GrColorMap">Color map</Tag>
 	<Tag name="Channels">Channels</Tag>
 	<Tag name="Channel">Channel</Tag>
-	<Tag name="GrassSway">Sway</Tag>
-	<Tag name="speed">speed</Tag>
-	<Tag name="distribution">distribution</Tag>
 	<Tag name="Road">Drum</Tag>
 	<Tag name="Pipe">Pipe</Tag>
 	<Tag name="Wall">Wall</Tag>
@@ -1364,7 +1366,10 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="GameVersion">3.1</Tag>
+	<Tag name="Changes">Changes</Tag>
+	<Tag name="Limit">Limit</Tag>
+	<Tag name="InputFieldsTelepEnd">Enter - toggle teleport end edit</Tag>
+	<Tag name="GameVersion">3.2</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
 </MyGUI>

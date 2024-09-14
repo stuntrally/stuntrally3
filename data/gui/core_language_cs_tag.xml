@@ -97,6 +97,11 @@
 	<Tag name="GameTypes">Game Types</Tag>
 	<Tag name="Reverse">Obrácené</Tag>
 	<Tag name="Find">Najít</Tag>
+	<Tag name="ViewList">List</Tag>
+	<Tag name="ViewListUser">List user</Tag>
+	<Tag name="ViewListDetail">List wide</Tag>
+	<Tag name="ViewGalleryList">Gallery list</Tag>
+	<Tag name="ViewGallery">Gallery</Tag>
 	<Tag name="TrackBestTime">Nejlepší čas</Tag>
 	<Tag name="TrackAvgSpeed">Průměrná rychlost</Tag>
 	<Tag name="TrackLength">Délka</Tag>
@@ -347,6 +352,7 @@
 	<Tag name="Graphics">Grafika</Tag>
 	<Tag name="NeedRestart">* Vyžadováno opětovné spuštění</Tag>
 	<Tag name="NeedNewGame">* je potřeba nová hra</Tag>
+	<Tag name="NeedReload">* Vyžadováno opětovné nahrání</Tag>
 	<Tag name="Apply">Apply</Tag>
 	<Tag name="Replay">Opakované přehrání</Tag>
 	<Tag name="RplLoad">Nahrát</Tag>
@@ -460,6 +466,7 @@
 	<Tag name="ViewDist">Dohlednost</Tag>
 	<Tag name="RoadQual">Jakost cesty</Tag>
 	<Tag name="GridQual">Grid quality</Tag>
+	<Tag name="Quality">Quality</Tag>
 	<Tag name="Textures">Povrchy</Tag>
 	<Tag name="Bilinear">Dvojčarý</Tag>
 	<Tag name="Trilinear">Tříčarý</Tag>
@@ -468,9 +475,8 @@
 	<Tag name="Triplanar">Třírovinný</Tag>
 	<Tag name="HighestSlopes">Nejvyšší stoupání</Tag>
 	<Tag name="Vegetation">Rostlinstvo</Tag>
-	<Tag name="TreeMult">Násobič stromů</Tag>
+	<Tag name="Bush">Bush</Tag>
 	<Tag name="DistMult">Násobič vzdálenosti</Tag>
-	<Tag name="GrassMult">Násobič trávy</Tag>
 	<Tag name="Reset">Nastavit znovu</Tag>
 	<Tag name="Reflections">Odrazy</Tag>
 	<Tag name="FrameSkip">Přeskočit obrázky</Tag>
@@ -546,8 +552,6 @@
 	<Tag name="HDRParam1">Osvětlení</Tag>
 	<Tag name="HDRParam2">Jas</Tag>
 	<Tag name="HDRParam3">Obilí</Tag>
-	<Tag name="HDRVignettingRadius">Poloměr okraje do ztracena</Tag>
-	<Tag name="HDRVignettingDarkness">Ztmavení okraje do ztracena</Tag>
 	<Tag name="Other">Jiné</Tag>
 	<Tag name="Development">Vývoj</Tag>
 	<Tag name="TipDebugShaders">Will save generated shaders in user's cache/shaders/ folder. Only for those not cached already. Optionally also properties on top, messing error line numbers.</Tag>
@@ -690,7 +694,6 @@
 	<Tag name="CopyTrackNoSource">Nevybrána žádná zdrojová dráha.</Tag>
 	<Tag name="CopyTrackSourceSame">Zdrojová trať a nynější trať jsou stejné.</Tag>
 	<Tag name="CantSaveOrgTrack">Nelze uložit původní trať. Nejprve ji zdvojte.</Tag>
-	<Tag name="NeedReload">* Vyžadováno opětovné nahrání</Tag>
 	<Tag name="Sun">Slunce</Tag>
 	<Tag name="Sky">Obloha</Tag>
 	<Tag name="SunDir">Sun dir.</Tag>
@@ -772,6 +775,7 @@
 	<Tag name="Surface">Povrch</Tag>
 	<Tag name="Type">Typ</Tag>
 	<Tag name="BumpWavelen">Bump:  WaveLen</Tag>
+	<Tag name="Frequency">Frequency</Tag>
 	<Tag name="Amplitude">Rozkmit</Tag>
 	<Tag name="Friction">Tření</Tag>
 	<Tag name="RollingDrag">Rolling Drag</Tag>
@@ -809,6 +813,7 @@
 	<Tag name="max">max</Tag>
 	<Tag name="distance">Vzdálenost</Tag>
 	<Tag name="length">Délka</Tag>
+	<Tag name="speed">Rychlost</Tag>
 	<Tag name="TreeRoadDist">Vzdálenost stromů od cesty</Tag>
 	<Tag name="ImpostorDist">Vzdálenost podvodníků</Tag>
 	<Tag name="LTrFlDepth">max Depth in fluid</Tag>
@@ -818,9 +823,6 @@
 	<Tag name="GrColorMap">Mapa barev</Tag>
 	<Tag name="Channels">Kanály</Tag>
 	<Tag name="Channel">Kanál</Tag>
-	<Tag name="GrassSway">Sway</Tag>
-	<Tag name="speed">Rychlost</Tag>
-	<Tag name="distribution">Rozdělování</Tag>
 	<Tag name="Road">Cesta</Tag>
 	<Tag name="Pipe">Roura</Tag>
 	<Tag name="Wall">Zeď</Tag>
@@ -1364,7 +1366,10 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="GameVersion">3.1</Tag>
+	<Tag name="Changes">Changes</Tag>
+	<Tag name="Limit">Limit</Tag>
+	<Tag name="InputFieldsTelepEnd">Enter - toggle teleport end edit</Tag>
+	<Tag name="GameVersion">3.2</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
 </MyGUI>

@@ -97,6 +97,11 @@
 	<Tag name="GameTypes">Game Types</Tag>
 	<Tag name="Reverse">Inverso</Tag>
 	<Tag name="Find">Encontrar</Tag>
+	<Tag name="ViewList">List</Tag>
+	<Tag name="ViewListUser">List user</Tag>
+	<Tag name="ViewListDetail">List wide</Tag>
+	<Tag name="ViewGalleryList">Gallery list</Tag>
+	<Tag name="ViewGallery">Gallery</Tag>
 	<Tag name="TrackBestTime">Mejor tiempo</Tag>
 	<Tag name="TrackAvgSpeed">Avg. speed</Tag>
 	<Tag name="TrackLength">Longitud</Tag>
@@ -347,6 +352,7 @@
 	<Tag name="Graphics">Graficos</Tag>
 	<Tag name="NeedRestart">+necesita reiniciar</Tag>
 	<Tag name="NeedNewGame">*necesita nuevo juego</Tag>
+	<Tag name="NeedReload">* necesita recargar</Tag>
 	<Tag name="Apply">Apply</Tag>
 	<Tag name="Replay">Repeticion</Tag>
 	<Tag name="RplLoad">Cargar</Tag>
@@ -460,6 +466,7 @@
 	<Tag name="ViewDist">Distancia de vision</Tag>
 	<Tag name="RoadQual">Calidad de carretera lejana</Tag>
 	<Tag name="GridQual">Grid quality</Tag>
+	<Tag name="Quality">Quality</Tag>
 	<Tag name="Textures">Texturas</Tag>
 	<Tag name="Bilinear">Bilineal</Tag>
 	<Tag name="Trilinear">Trilineal</Tag>
@@ -468,9 +475,8 @@
 	<Tag name="Triplanar">Triplanar</Tag>
 	<Tag name="HighestSlopes">Las pendientes mas altas</Tag>
 	<Tag name="Vegetation">Vegetacion</Tag>
-	<Tag name="TreeMult">Multiplicador de arboles</Tag>
+	<Tag name="Bush">Bush</Tag>
 	<Tag name="DistMult">Distance mul</Tag>
-	<Tag name="GrassMult">Multiplicador de pasto</Tag>
 	<Tag name="Reset">Reajustar</Tag>
 	<Tag name="Reflections">Reflejos</Tag>
 	<Tag name="FrameSkip">Saltar fotogramas</Tag>
@@ -546,8 +552,6 @@
 	<Tag name="HDRParam1">Exposicion</Tag>
 	<Tag name="HDRParam2">Brillo</Tag>
 	<Tag name="HDRParam3">Grano</Tag>
-	<Tag name="HDRVignettingRadius">Radio de viñeteado</Tag>
-	<Tag name="HDRVignettingDarkness">Oscurecer viñeteado</Tag>
 	<Tag name="Other">Otro</Tag>
 	<Tag name="Development">Desarrollo</Tag>
 	<Tag name="TipDebugShaders">Will save generated shaders in user's cache/shaders/ folder. Only for those not cached already. Optionally also properties on top, messing error line numbers.</Tag>
@@ -690,7 +694,6 @@
 	<Tag name="CopyTrackNoSource">No source track selected.</Tag>
 	<Tag name="CopyTrackSourceSame">Source track and current track are the same.</Tag>
 	<Tag name="CantSaveOrgTrack">No se puede guardar pista original. Duplicala primero</Tag>
-	<Tag name="NeedReload">* necesita recargar</Tag>
 	<Tag name="Sun">So</Tag>
 	<Tag name="Sky">Cielo</Tag>
 	<Tag name="SunDir">Sun dir.</Tag>
@@ -772,6 +775,7 @@
 	<Tag name="Surface">Superficie</Tag>
 	<Tag name="Type">Tipo</Tag>
 	<Tag name="BumpWavelen">Bump:  WaveLen</Tag>
+	<Tag name="Frequency">Frequency</Tag>
 	<Tag name="Amplitude">Amplitude</Tag>
 	<Tag name="Friction">Friction</Tag>
 	<Tag name="RollingDrag">Rolling Drag</Tag>
@@ -809,6 +813,7 @@
 	<Tag name="max">max</Tag>
 	<Tag name="distance">distancia</Tag>
 	<Tag name="length">Longitud</Tag>
+	<Tag name="speed">Velocidad</Tag>
 	<Tag name="TreeRoadDist">Distancia de arboles a carretera</Tag>
 	<Tag name="ImpostorDist">Impostors dist.</Tag>
 	<Tag name="LTrFlDepth">max Depth in fluid</Tag>
@@ -818,9 +823,6 @@
 	<Tag name="GrColorMap">Color de mapa</Tag>
 	<Tag name="Channels">Canales</Tag>
 	<Tag name="Channel">Canal</Tag>
-	<Tag name="GrassSway">Sway</Tag>
-	<Tag name="speed">Velocidad</Tag>
-	<Tag name="distribution">Distribucion</Tag>
 	<Tag name="Road">Carretera</Tag>
 	<Tag name="Pipe">Pipe</Tag>
 	<Tag name="Wall">Wall</Tag>
@@ -1364,7 +1366,10 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="GameVersion">3.1</Tag>
+	<Tag name="Changes">Changes</Tag>
+	<Tag name="Limit">Limit</Tag>
+	<Tag name="InputFieldsTelepEnd">Enter - toggle teleport end edit</Tag>
+	<Tag name="GameVersion">3.2</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
 </MyGUI>

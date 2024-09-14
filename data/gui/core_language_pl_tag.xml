@@ -97,6 +97,11 @@
 	<Tag name="GameTypes">Typy Gier</Tag>
 	<Tag name="Reverse">Odwrócenie</Tag>
 	<Tag name="Find">Znajdź</Tag>
+	<Tag name="ViewList">Lista</Tag>
+	<Tag name="ViewListUser">Lista użytkownika</Tag>
+	<Tag name="ViewListDetail">Lista szeroka</Tag>
+	<Tag name="ViewGalleryList">Galleria lista</Tag>
+	<Tag name="ViewGallery">Galeria</Tag>
 	<Tag name="TrackBestTime">Najlepszy</Tag>
 	<Tag name="TrackAvgSpeed">Śred. szybk.</Tag>
 	<Tag name="TrackLength">Długość</Tag>
@@ -347,6 +352,7 @@
 	<Tag name="Graphics">Grafika</Tag>
 	<Tag name="NeedRestart">* wymaga restartu</Tag>
 	<Tag name="NeedNewGame">* wymaga Nowej Gry</Tag>
+	<Tag name="NeedReload">* wymaga przeładowania</Tag>
 	<Tag name="Apply">Zastosuj</Tag>
 	<Tag name="Replay">Powtórka</Tag>
 	<Tag name="RplLoad">Wczytaj</Tag>
@@ -460,6 +466,7 @@
 	<Tag name="ViewDist">Dalekość widzenia</Tag>
 	<Tag name="RoadQual">Jakość drogi daleko</Tag>
 	<Tag name="GridQual">Jakość siatki</Tag>
+	<Tag name="Quality">Jakość</Tag>
 	<Tag name="Textures">Tekstury</Tag>
 	<Tag name="Bilinear">Dwuliniowe</Tag>
 	<Tag name="Trilinear">Trójliniowe</Tag>
@@ -468,9 +475,8 @@
 	<Tag name="Triplanar">Trójpłaszcz.</Tag>
 	<Tag name="HighestSlopes">Najb. strome zbocza</Tag>
 	<Tag name="Vegetation">Wegetacja</Tag>
-	<Tag name="TreeMult">Mnożnik drzew</Tag>
+	<Tag name="Bush">Zarośla</Tag>
 	<Tag name="DistMult">Mnożnik odl.</Tag>
-	<Tag name="GrassMult">Mnożnik trawy</Tag>
 	<Tag name="Reset">Przywróć</Tag>
 	<Tag name="Reflections">Odbicia</Tag>
 	<Tag name="FrameSkip">Pomijanie klatek</Tag>
@@ -546,8 +552,6 @@
 	<Tag name="HDRParam1">Ekspozycja</Tag>
 	<Tag name="HDRParam2">Jasność</Tag>
 	<Tag name="HDRParam3">Ziarnistość</Tag>
-	<Tag name="HDRVignettingRadius">Promień winietowania</Tag>
-	<Tag name="HDRVignettingDarkness">Ściemnienie winietowania</Tag>
 	<Tag name="Other">Inne</Tag>
 	<Tag name="Development">Narzędzia</Tag>
 	<Tag name="TipDebugShaders">Zapisze generowane shadery w katalogu użytkownika cache/shaders/. Tylko dla tych nie zapisanych jeszcze. Opcjonalnie z właściwościami na górze, zakłócającymi numery linii błędów.</Tag>
@@ -690,7 +694,6 @@
 	<Tag name="CopyTrackNoSource">Nie wybrano trasy źródłowej.</Tag>
 	<Tag name="CopyTrackSourceSame">Trasa źródłowa i obecna są takie same.</Tag>
 	<Tag name="CantSaveOrgTrack">Nie można zapisać oryginalnej trasy. Zduplikuj ją najpierw.</Tag>
-	<Tag name="NeedReload">* wymaga przeładowania</Tag>
 	<Tag name="Sun">Słońce</Tag>
 	<Tag name="Sky">Niebo</Tag>
 	<Tag name="SunDir">Kierunek słońca</Tag>
@@ -772,6 +775,7 @@
 	<Tag name="Surface">Nawierzchnia</Tag>
 	<Tag name="Type">Typ</Tag>
 	<Tag name="BumpWavelen">Wyboje: Częstość</Tag>
+	<Tag name="Frequency">Częstotliwość</Tag>
 	<Tag name="Amplitude">Amplituda</Tag>
 	<Tag name="Friction">Tarcie</Tag>
 	<Tag name="RollingDrag">Opór toczenia</Tag>
@@ -809,6 +813,7 @@
 	<Tag name="max">maks</Tag>
 	<Tag name="distance">odległość</Tag>
 	<Tag name="length">długość</Tag>
+	<Tag name="speed">szybkość</Tag>
 	<Tag name="TreeRoadDist">Odl. od drogi.</Tag>
 	<Tag name="ImpostorDist">Odległość atrap</Tag>
 	<Tag name="LTrFlDepth">max Głębokość w cieczy</Tag>
@@ -818,9 +823,6 @@
 	<Tag name="GrColorMap">Mapa koloru</Tag>
 	<Tag name="Channels">Kanały</Tag>
 	<Tag name="Channel">Kanał</Tag>
-	<Tag name="GrassSway">Kołysanie</Tag>
-	<Tag name="speed">szybkość</Tag>
-	<Tag name="distribution">rozkład</Tag>
 	<Tag name="Road">Droga</Tag>
 	<Tag name="Pipe">Rura</Tag>
 	<Tag name="Wall">Ściana</Tag>
@@ -1364,7 +1366,10 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="GameVersion">3.1</Tag>
+	<Tag name="Changes">Changes</Tag>
+	<Tag name="Limit">Limit</Tag>
+	<Tag name="InputFieldsTelepEnd">Enter - toggle teleport end edit</Tag>
+	<Tag name="GameVersion">3.2</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
 </MyGUI>

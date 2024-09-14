@@ -97,6 +97,11 @@
 	<Tag name="GameTypes">Game Types</Tag>
 	<Tag name="Reverse">Inverser</Tag>
 	<Tag name="Find">Rechercher</Tag>
+	<Tag name="ViewList">List</Tag>
+	<Tag name="ViewListUser">List user</Tag>
+	<Tag name="ViewListDetail">List wide</Tag>
+	<Tag name="ViewGalleryList">Gallery list</Tag>
+	<Tag name="ViewGallery">Gallery</Tag>
 	<Tag name="TrackBestTime">Meilleur temps</Tag>
 	<Tag name="TrackAvgSpeed">Vitesse moyenne</Tag>
 	<Tag name="TrackLength">Longueur</Tag>
@@ -347,6 +352,7 @@
 	<Tag name="Graphics">Graphiques</Tag>
 	<Tag name="NeedRestart">* redémarrage requis</Tag>
 	<Tag name="NeedNewGame">* besoin d'une nouvelle partie</Tag>
+	<Tag name="NeedReload">* besoin de recharger</Tag>
 	<Tag name="Apply">Appliquer</Tag>
 	<Tag name="Replay">Replays</Tag>
 	<Tag name="RplLoad">Chargement</Tag>
@@ -460,6 +466,7 @@
 	<Tag name="ViewDist">Distance de vue</Tag>
 	<Tag name="RoadQual">Détails de la route</Tag>
 	<Tag name="GridQual">Grid quality</Tag>
+	<Tag name="Quality">Quality</Tag>
 	<Tag name="Textures">Textures</Tag>
 	<Tag name="Bilinear">Bilinéaire</Tag>
 	<Tag name="Trilinear">Trilinéaire</Tag>
@@ -468,9 +475,8 @@
 	<Tag name="Triplanar">Triplane</Tag>
 	<Tag name="HighestSlopes">Pentes les plus raides</Tag>
 	<Tag name="Vegetation">Végétation</Tag>
-	<Tag name="TreeMult">Multi. d'arbres</Tag>
+	<Tag name="Bush">Bush</Tag>
 	<Tag name="DistMult">Multi. de distance</Tag>
-	<Tag name="GrassMult">Multi. d'herbe</Tag>
 	<Tag name="Reset">Réinitialiser</Tag>
 	<Tag name="Reflections">Réflexions</Tag>
 	<Tag name="FrameSkip">Fréquence d'actualisation</Tag>
@@ -546,8 +552,6 @@
 	<Tag name="HDRParam1">Exposition</Tag>
 	<Tag name="HDRParam2">Luminosité</Tag>
 	<Tag name="HDRParam3">Grain</Tag>
-	<Tag name="HDRVignettingRadius">Taille de l'effet Vignette</Tag>
-	<Tag name="HDRVignettingDarkness">Intensité de l'effet Vignette</Tag>
 	<Tag name="Other">Autres</Tag>
 	<Tag name="Development">Développement</Tag>
 	<Tag name="TipDebugShaders">Will save generated shaders in user's cache/shaders/ folder. Only for those not cached already. Optionally also properties on top, messing error line numbers.</Tag>
@@ -690,7 +694,6 @@
 	<Tag name="CopyTrackNoSource">Pas de circuit source sélectionné.</Tag>
 	<Tag name="CopyTrackSourceSame">Le circuit source et le circuit actuel sont identiques.</Tag>
 	<Tag name="CantSaveOrgTrack">Impossible d'écraser un circuit intégré au jeu. Dupliquez-le d'abord.</Tag>
-	<Tag name="NeedReload">* besoin de recharger</Tag>
 	<Tag name="Sun">Soleil</Tag>
 	<Tag name="Sky">Ciel</Tag>
 	<Tag name="SunDir">Dir. du soleil</Tag>
@@ -772,6 +775,7 @@
 	<Tag name="Surface">Surface</Tag>
 	<Tag name="Type">Type</Tag>
 	<Tag name="BumpWavelen">Bump:  WaveLen</Tag>
+	<Tag name="Frequency">Frequency</Tag>
 	<Tag name="Amplitude">Amplitude</Tag>
 	<Tag name="Friction">Friction</Tag>
 	<Tag name="RollingDrag">Rolling Drag</Tag>
@@ -809,6 +813,7 @@
 	<Tag name="max">max</Tag>
 	<Tag name="distance">distance</Tag>
 	<Tag name="length">longueur</Tag>
+	<Tag name="speed">vitesse</Tag>
 	<Tag name="TreeRoadDist">Distance arbres-route</Tag>
 	<Tag name="ImpostorDist">Distance des sprites</Tag>
 	<Tag name="LTrFlDepth">profondeur maximale dans le liquide</Tag>
@@ -818,9 +823,6 @@
 	<Tag name="GrColorMap">Carte de couleurs</Tag>
 	<Tag name="Channels">Canaux</Tag>
 	<Tag name="Channel">Canal</Tag>
-	<Tag name="GrassSway">Vent</Tag>
-	<Tag name="speed">vitesse</Tag>
-	<Tag name="distribution">distribution</Tag>
 	<Tag name="Road">Route</Tag>
 	<Tag name="Pipe">Tube</Tag>
 	<Tag name="Wall">Mur</Tag>
@@ -1364,7 +1366,10 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="GameVersion">3.1</Tag>
+	<Tag name="Changes">Changes</Tag>
+	<Tag name="Limit">Limit</Tag>
+	<Tag name="InputFieldsTelepEnd">Enter - toggle teleport end edit</Tag>
+	<Tag name="GameVersion">3.2</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
 </MyGUI>

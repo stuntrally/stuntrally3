@@ -97,6 +97,11 @@
 	<Tag name="GameTypes">Game Types</Tag>
 	<Tag name="Reverse">Обратно</Tag>
 	<Tag name="Find">Найти</Tag>
+	<Tag name="ViewList">List</Tag>
+	<Tag name="ViewListUser">List user</Tag>
+	<Tag name="ViewListDetail">List wide</Tag>
+	<Tag name="ViewGalleryList">Gallery list</Tag>
+	<Tag name="ViewGallery">Gallery</Tag>
 	<Tag name="TrackBestTime">Луч. время</Tag>
 	<Tag name="TrackAvgSpeed">Ср. скор.</Tag>
 	<Tag name="TrackLength">Длина</Tag>
@@ -347,6 +352,7 @@
 	<Tag name="Graphics">Графика</Tag>
 	<Tag name="NeedRestart">* необходим рестарт</Tag>
 	<Tag name="NeedNewGame">* нужна Новая игра</Tag>
+	<Tag name="NeedReload">* нужна перезагрузка</Tag>
 	<Tag name="Apply">Apply</Tag>
 	<Tag name="Replay">Повтор</Tag>
 	<Tag name="RplLoad">Загрузить</Tag>
@@ -460,6 +466,7 @@
 	<Tag name="ViewDist">Видимость</Tag>
 	<Tag name="RoadQual">Качество дороги</Tag>
 	<Tag name="GridQual">Grid quality</Tag>
+	<Tag name="Quality">Quality</Tag>
 	<Tag name="Textures">Текстуры</Tag>
 	<Tag name="Bilinear">Билинейный</Tag>
 	<Tag name="Trilinear">Трилинейный</Tag>
@@ -468,9 +475,8 @@
 	<Tag name="Triplanar">Трех плоскостной</Tag>
 	<Tag name="HighestSlopes">Макс. склоны</Tag>
 	<Tag name="Vegetation">Растит.</Tag>
-	<Tag name="TreeMult">Коэф. деревьев</Tag>
+	<Tag name="Bush">Bush</Tag>
 	<Tag name="DistMult">Коэф. дистанции</Tag>
-	<Tag name="GrassMult">Коэф. травы</Tag>
 	<Tag name="Reset">Сброс</Tag>
 	<Tag name="Reflections">Отражения</Tag>
 	<Tag name="FrameSkip">Пропуск кадра</Tag>
@@ -546,8 +552,6 @@
 	<Tag name="HDRParam1">Выдержка</Tag>
 	<Tag name="HDRParam2">Яркость</Tag>
 	<Tag name="HDRParam3">Зерно</Tag>
-	<Tag name="HDRVignettingRadius">Пределы кашир.</Tag>
-	<Tag name="HDRVignettingDarkness">Затем. кашир.</Tag>
 	<Tag name="Other">Другое</Tag>
 	<Tag name="Development">Разработка</Tag>
 	<Tag name="TipDebugShaders">Will save generated shaders in user's cache/shaders/ folder. Only for those not cached already. Optionally also properties on top, messing error line numbers.</Tag>
@@ -690,7 +694,6 @@
 	<Tag name="CopyTrackNoSource">Не выбран источник трассы.</Tag>
 	<Tag name="CopyTrackSourceSame">Нет разницы у текущей трассы с источником.</Tag>
 	<Tag name="CantSaveOrgTrack">Нельзя сохр. ориг. трассу. Продублируйте.</Tag>
-	<Tag name="NeedReload">* нужна перезагрузка</Tag>
 	<Tag name="Sun">Солнце</Tag>
 	<Tag name="Sky">Небо</Tag>
 	<Tag name="SunDir">Напр. солнца</Tag>
@@ -772,6 +775,7 @@
 	<Tag name="Surface">Поверхность</Tag>
 	<Tag name="Type">Тип</Tag>
 	<Tag name="BumpWavelen">Ухаб: длина волны</Tag>
+	<Tag name="Frequency">Frequency</Tag>
 	<Tag name="Amplitude">Амплитуда</Tag>
 	<Tag name="Friction">Трение</Tag>
 	<Tag name="RollingDrag">Вращ. движ.</Tag>
@@ -809,6 +813,7 @@
 	<Tag name="max">макс.</Tag>
 	<Tag name="distance">дистанция</Tag>
 	<Tag name="length">длина</Tag>
+	<Tag name="speed">скорость</Tag>
 	<Tag name="TreeRoadDist">Расстояние деревьев от дороги.</Tag>
 	<Tag name="ImpostorDist">Дист. спрайта</Tag>
 	<Tag name="LTrFlDepth">макс. глубина</Tag>
@@ -818,9 +823,6 @@
 	<Tag name="GrColorMap">Цвет карты</Tag>
 	<Tag name="Channels">Каналы</Tag>
 	<Tag name="Channel">Канал</Tag>
-	<Tag name="GrassSway">Качание</Tag>
-	<Tag name="speed">скорость</Tag>
-	<Tag name="distribution">распределение</Tag>
 	<Tag name="Road">Дорога</Tag>
 	<Tag name="Pipe">Труба</Tag>
 	<Tag name="Wall">Стена</Tag>
@@ -1364,7 +1366,10 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="GameVersion">3.1</Tag>
+	<Tag name="Changes">Changes</Tag>
+	<Tag name="Limit">Limit</Tag>
+	<Tag name="InputFieldsTelepEnd">Enter - toggle teleport end edit</Tag>
+	<Tag name="GameVersion">3.2</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
 </MyGUI>
