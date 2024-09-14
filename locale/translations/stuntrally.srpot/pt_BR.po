@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-07 21:34+0200\n"
-"PO-Revision-Date: 2023-11-11 10:04+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2024-09-12 00:09+0000\n"
+"Last-Translator: Kirazake <sidinoe@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "stunt-rally-3/stunt-rally-3/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % "
 "1000000 == 0 ? 1 : 2;\n"
-"X-Generator: Weblate 5.2-dev\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #. General 
 #: data/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -136,7 +136,7 @@ msgstr "Desafio"
 #: ..NewGame-Difficulty.Button :256
 msgctxt "HowToPlay"
 msgid "How To Play"
-msgstr ""
+msgstr "Como Jogar"
 
 #. MAIN  Menu 
 #: data/gui/Game_Main.layout:71 ..StuntRally##{GameVersion}.Button
@@ -178,7 +178,7 @@ msgstr "Voltar"
 #: data/gui/Game_Main.layout:119 ..StuntRally##{GameVersion}.Button
 msgctxt "TrackEditor"
 msgid "Track Editor"
-msgstr ""
+msgstr "Editor de Pistas"
 
 #. MAIN  Menu 
 #: data/gui/Game_Main.layout:124 ..StuntRally##{GameVersion}.Button
@@ -187,6 +187,8 @@ msgid ""
 "Press to start the SR3 Track Editor, a separate program for creating and "
 "editing tracks. This will not close the game."
 msgstr ""
+"Pressione para iniciar o SR3 Track Editor, um programa independente para "
+"criação e edição de pistas. Isto não irá encerrar o jogo."
 
 #. MAIN  Menu 
 #: data/gui/Editor_Help.layout:5 ..Window data/gui/Editor_Main.layout:63
@@ -207,44 +209,44 @@ msgstr "Leia-me"
 #: data/gui/Game_Help.layout:17 ..Help.Tab
 msgctxt "Support"
 msgid "Support"
-msgstr ""
+msgstr "Suporte"
 
 #. MAIN  Menu 
 #: data/gui/Game_Help.layout:161 ..Help.Tab
 msgctxt "Contributing"
 msgid "Contributing"
-msgstr ""
+msgstr "Contribuição"
 
 #. MAIN  Menu 
 #: data/gui/Game_Help.layout:185 ..Help.Tab
 msgctxt "Credits"
 msgid "Credits"
-msgstr ""
+msgstr "Créditos"
 
 #. How To Play 
 #: data/gui/Game_Help.layout:412 ..HowToPlay.Button :419:426:433:440:447:454
 #: data/gui/Game_Replay.layout:246 ..Window
 msgctxt "Lesson"
 msgid "Lesson"
-msgstr ""
+msgstr "Lição"
 
 #. How To Play 
 #: data/gui/Game_Help.layout:400 ..HowToPlay.Text
 msgctxt "DrivingSchool"
 msgid "Stunt Rally driving school"
-msgstr ""
+msgstr "Autoescola Stunt Rally"
 
 #. How To Play 
 #: data/gui/Game_Help.layout:400 ..HowToPlay.Text
 msgctxt "LessonClick"
 msgid "click button to play a lesson"
-msgstr ""
+msgstr "Clique no botão para assistir a lição"
 
 #. Game  User Path 
 #: data/gui/Game_Help.layout:110 ..Help.Support.Text
 msgctxt "UserDir"
 msgid "User Path (logs, configs, user data, etc)"
-msgstr ""
+msgstr "Rota de usuário (registros, configurações, dados de usuário, etc)"
 
 #. TIP  Slider 
 #: data/gui/Editor_Help.layout:163 ..Help.Input/help.Shortcuts.Text
@@ -253,61 +255,63 @@ msgstr ""
 msgctxt "TipSliderReset"
 msgid "RMB on slider - reset to default value."
 msgstr ""
+"Clique com o botão direito do mouse em um controle deslizante - redefina o "
+"valor padrão."
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:36 ..Help.Support.Text
 msgctxt "LinksToWeb"
 msgid "Links to websites:"
-msgstr ""
+msgstr "Links para websites:"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:49 ..Help.Support.Button
 msgctxt "Homepage"
 msgid "Homepage"
-msgstr ""
+msgstr "Página Inicial"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:55 ..Help.Support.Button
 msgctxt "DocumentationWiki"
 msgid "Documentation (Wiki)"
-msgstr ""
+msgstr "Documentação (Wiki)"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:68 ..Help.Support.Button
 msgctxt "Forum"
 msgid "Forum"
-msgstr ""
+msgstr "Fórum"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:86 ..Help.Support.Button
 msgctxt "Sources"
 msgid "Sources"
-msgstr ""
+msgstr "Fontes"
 
 #. MAIN  Help links 
 #: data/gui/Editor_Help.layout:24 ..Help.Input/help.Button
 #: data/gui/Game_Help.layout:74 ..Help.Support.Button
 msgctxt "TrackEditorTutorial"
 msgid "Track Editor Tutorials"
-msgstr ""
+msgstr "Tutoriais do Editor de Pistas"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:80 ..Help.Support.Button
 msgctxt "Translations"
 msgid "Translations"
-msgstr ""
+msgstr "Traduções"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:61 ..Help.Support.Button
 msgctxt "GameControllers"
 msgid "Game Controllers"
-msgstr ""
+msgstr "Controles do jogo"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:92 ..Help.Support.Button
 msgctxt "Donations"
 msgid "Donations"
-msgstr ""
+msgstr "Doações"
 
 #. MAIN  Championship  buttons 
 #: data/gui/Game.layout:2088 ..SingleRace.Championship.Button :2099:2110:2121
@@ -370,7 +374,7 @@ msgstr "Ouro"
 #: ..NewGame-GameTypes.Button src/game/Gui_Util.cpp:176:192
 msgctxt "SplitScreen"
 msgid "Split Screen"
-msgstr ""
+msgstr "Tela Dividida"
 
 #. MAIN  Game  Modes 
 #: data/gui/Game.layout:1730 ..SingleRace.Tab data/gui/Game_Main.layout:340
@@ -390,20 +394,20 @@ msgstr "Multiplayer"
 #: src/game/Gui_Util.cpp:175:176
 msgctxt "Collection"
 msgid "Collection"
-msgstr ""
+msgstr "Coleção"
 
 #. MAIN  Game  Modes 
 #: src/game/Gui_InitGames.cpp:95
 msgctxt "Collected"
 msgid "Collected"
-msgstr ""
+msgstr "Coletado"
 
 #. MAIN  Game  Modes 
 #: data/gui/Game_Main.layout:439 ..NewGame-GameTypes.Button
 #: src/game/Gui_Games.cpp:94 src/game/Gui_Util.cpp:171
 msgctxt "Career"
 msgid "Career"
-msgstr ""
+msgstr "Carreira"
 
 #. Game  Split screen 
 #: data/gui/Game.layout:1641 ..SingleRace.SplitScreen.Text
@@ -453,7 +457,7 @@ msgstr "Configuração"
 #: data/gui/Game.layout:914 ..SingleRace.Setup.Tab
 msgctxt "Paint"
 msgid "Paint"
-msgstr ""
+msgstr "Pintura"
 
 #. Setup  Vehicle,Game 
 #: data/gui/Editor_Help.layout:241 ..Help.Input/help.Shortcuts.Text
@@ -560,7 +564,7 @@ msgstr "Combustível do Turbo"
 #: src/game/Gui_Init.cpp:353
 msgctxt "GoBackTime"
 msgid "Go back time"
-msgstr ""
+msgstr "Voltar no tempo"
 
 #. Challenge types 
 #: data/gui/Game.layout:1957 ..SingleRace.Championship.Tab
@@ -652,6 +656,9 @@ msgid ""
 "Vehicle and Track, visible HUD elements and driving aids. All can be changed "
 "manually later."
 msgstr ""
+"A alteração da dificuldade define: Filtro e seleção da lista de pistas, "
+"veículo e pista selecionados, elementos visíveis do HUD e auxílios de "
+"direção. Tudo pode ser alterado manualmente mais tarde."
 
 #. MAIN  Track Difficulty 
 #: data/gui/Game_Main.layout:226 ..NewGame-Difficulty.Button
@@ -665,6 +672,12 @@ msgid ""
 "on gravel. In Hard - cars rotate easier, and wheels spin already on gravel, "
 "good control is required."
 msgstr ""
+"O modo Simulação altera o grau de realismo dos veículos e a dificuldade de "
+"direção. Também altera o modo de dano e a rapidez com que os veículos se "
+"quebram após impactos. No modo fácil - veículos são lentos, parecem pesados "
+"e os carros não deslizam muito. No médio - eles são rápidos, deslizam e "
+"patinam na neve e talvez no cascalho. No difícil - carros rodam mais fácil, "
+"e patinam no cascalho, é necessário um bom controle."
 
 #. MAIN  Track 
 #: data/gui/Common.layout:36 ..Window data/gui/Editor_Help.layout:235
@@ -704,7 +717,7 @@ msgstr "Novo jogo"
 #: data/gui/Game_Main.layout:149 ..NewGame-Difficulty.Button :286..Window
 msgctxt "GameTypes"
 msgid "Game Types"
-msgstr ""
+msgstr "Tipos de jogo"
 
 #. MAIN  Track 
 #: data/gui/Editor.layout:3012 ..Editor.Vegetation.Road.Advanced.Text
@@ -727,31 +740,31 @@ msgstr "Procurar"
 #: src/common/GuiCom_Track.cpp:246
 msgctxt "ViewList"
 msgid "List"
-msgstr ""
+msgstr "Lista"
 
 #. MAIN  Track 
 #: src/common/GuiCom_Track.cpp:246
 msgctxt "ViewListUser"
 msgid "List user"
-msgstr ""
+msgstr "Registrar usuário"
 
 #. MAIN  Track 
 #: src/common/GuiCom_Track.cpp:247
 msgctxt "ViewListDetail"
 msgid "List wide"
-msgstr ""
+msgstr "Registro Amplo"
 
 #. MAIN  Track 
 #: src/common/GuiCom_Track.cpp:247
 msgctxt "ViewGalleryList"
 msgid "Gallery list"
-msgstr ""
+msgstr "Registro da galeria"
 
 #. MAIN  Track 
 #: src/common/GuiCom_Track.cpp:248
 msgctxt "ViewGallery"
 msgid "Gallery"
-msgstr ""
+msgstr "Galeria"
 
 #. MAIN  Track stats 
 #: data/gui/Game.layout:383 ..SingleRace.Track.Text :2490
