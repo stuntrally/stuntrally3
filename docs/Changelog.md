@@ -28,6 +28,7 @@ WIP means work in progress, unfinished, still being developed.
   - 3D win **cups** shown on game end
   - Gui shows small track previews for game track / series
   - Gui Tracks view, new mode: **gallery**
+  - Added Changes tab in game Help
 - Editor
   - Road: wall type, for decoration walls, rectangular
     - pipe parameter changes it from wide at 0, to square at 0.5 to tall at 1.0

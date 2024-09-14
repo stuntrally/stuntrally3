@@ -15,7 +15,7 @@
 				<Property key="Colour" value="1 0.6 0.2"/>
 			</Widget>
 			<Widget type="TabItem" skin="" position="2 24 794 562">
-				<Property key="Caption" value="#A0C0FF#{Support}"/>
+				<Property key="Caption" value="#60A0FF#{Support}"/>
 				<Widget type="ImageBox" skin="ImageBox" position="356 106 56 56">
 					<Property key="ImageCoord" value="640 0 128 128"/>
 					<Property key="Alpha" value="0.6"/>
@@ -140,7 +140,7 @@
 			</Widget>
 
 			<Widget type="TabItem" skin="" position="2 24 794 562">
-				<Property key="Caption" value="#F0E8DC#{Readme}"/>
+				<Property key="Caption" value="#E09050#{Readme}"/>
 				<Widget type="ImageBox" skin="ImageBox" position="660 48 96 96">
 					<Property key="ImageCoord" value="256 768 128 128"/>
 					<Property key="Alpha" value="0.6"/>
@@ -159,7 +159,26 @@
 			</Widget>
 
 			<Widget type="TabItem" skin="" position="2 24 794 562">
-				<Property key="Caption" value="#C0F0C0#{Contributing}"/>
+				<Property key="Caption" value="#80C040#{Changes}"/>
+				<Widget type="ImageBox" skin="ImageBox" position="660 48 96 96">
+					<Property key="ImageCoord" value="256 768 128 128"/>
+					<Property key="Alpha" value="0.6"/>
+					<Property key="ImageTexture" value="gui_icons.png"/>
+				</Widget>
+				<Widget type="EditBox" skin="EditBoxStretch" position="32 16 600 530" name="Changes">
+					<Property key="ReadOnly" value="true"/>
+					<Property key="MultiLine" value="true"/>
+					<Property key="WordWrap" value="true"/>
+					<Property key="VisibleHScroll" value="false"/>
+					<Property key="VisibleVScroll" value="true"/>
+					<Property key="MaxTextLength" value="8000"/>
+					<Property key="TextColour" value="0.85 0.95 0.9"/>
+					<Property key="Colour" value="0.55 0.65 0.6"/>
+				</Widget>
+			</Widget>
+
+			<Widget type="TabItem" skin="" position="2 24 794 562">
+				<Property key="Caption" value="#A0F0A0#{Contributing}"/>
 				<Widget type="ImageBox" skin="ImageBox" position="660 48 96 96">
 					<Property key="ImageCoord" value="256 640 128 128"/>
 					<Property key="Alpha" value="0.5"/>
@@ -183,7 +202,7 @@
 			</Widget>
 
 			<Widget type="TabItem" skin="" position="2 24 794 562">
-				<Property key="Caption" value="#C0A0B0#{Credits}"/>
+				<Property key="Caption" value="#D0D060#{Credits}"/>
 				<Widget type="ImageBox" skin="ImageBox" position="660 48 96 96">
 					<Property key="ImageCoord" value="0 384 128 128"/>
 					<Property key="Alpha" value="0.3"/>
@@ -202,7 +221,7 @@
 			</Widget>
 
 			<Widget type="TabItem" skin="" position="2 24 794 562">
-				<Property key="Caption" value="#D0C0FF#{About}"/>
+				<Property key="Caption" value="#B080FF#{About}"/>
 				<Widget type="ImageBox" skin="ImageBox" position="2 0 790 269">
 					<Property key="ImageTexture" value="stuntrally-logo.jpg"/>
 					<!-- <Property key="ImageCoord" value="0 0 1892 645"/> 2.933 -->

@@ -191,7 +191,7 @@
 						<!-- <Widget type="Button" skin="CheckBox" position="28 120 256 24" name="SSAO">
 							<Property key="Caption" value="#{ssao}  #704040 = #{NotDone}"/>
 							<Property key="TextColour" value="1 0.7 0.1"/>
-						</Widget> -->
+						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="32 150 248 24">
 							<Property key="Caption" value="#{Brush_Size}"/>
@@ -213,7 +213,7 @@
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="344 180 216 16" name="SsaoScale">
 							<Property key="Colour" value="0.5 0.9 0.9"/>
-						</Widget>
+						</Widget> -->
 
 						<!-- <Widget type="Button" skin="CheckBox" position="28 150 256 24" name="SoftParticles">
 							<Property key="Caption" value="#{softparticles}"/>
