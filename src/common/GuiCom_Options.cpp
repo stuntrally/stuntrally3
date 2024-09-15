@@ -64,9 +64,9 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 		sv->strMap[0] = TR("0 #{None}");		sv->strMap[1] = TR("1 #{Diffuse}");
 		sv->strMap[2] = TR("2 #{Specular}");	sv->strMap[3] = TR("3 = #{Normal}");  };
 	sv= &svTerTripl;	triplMap();
-						sv->Init("TerTripl",	&pSet->g.ter_tripl,   0,3);  sv->DefaultI(1);
+						sv->Init("TerTripl",	&pSet->g.ter_tripl,   0,2);  sv->DefaultI(1);  // 3 todo
 	sv= &svTriplHoriz;	triplMap();
-						sv->Init("TriplHoriz",	&pSet->g.tripl_horiz, 0,3);  sv->DefaultI(0);
+						sv->Init("TriplHoriz",	&pSet->g.tripl_horiz, 0,2);  sv->DefaultI(0);
 
 	sv= &svTerLod;		sv->Init("TerLod",		&pSet->g.ter_lod,   0,5);  SevC(TerLod);  sv->DefaultI(2);
 	sv= &svHorizLod;	sv->Init("HorizLod",	&pSet->g.horiz_lod, 0,5);  SevC(TerLod);  sv->DefaultI(2);
@@ -234,9 +234,10 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	// sv= &svBloomInt;		sv->Init("BloomInt",	&pSet->bloom_int);   sv->DefaultF(0.13f);  Sev(EffUpd);
 	// ck= &ckSoftPar;		ck->Init("SoftParticles",&pSet->softparticles);  Cev(EffUpdShd);
 
-	// ck= &ckSSAO;			ck->Init("SSAO",		&pSet->ssao);  // todo: ssao
-	sv= &svSsaoRadius;		sv->Init("SsaoRadius",	&pSet->ssao_radius, 0.1,6.f);  sv->DefaultF(1.f);
-	sv= &svSsaoScale;		sv->Init("SsaoScale",	&pSet->ssao_scale,  0.1,6.f);  sv->DefaultF(1.5f);
+	// todo: ssao
+	// ck= &ckSSAO;			ck->Init("SSAO",		&pSet->ssao);
+	// sv= &svSsaoRadius;		sv->Init("SsaoRadius",	&pSet->ssao_radius, 0.1,6.f);  sv->DefaultF(1.f);
+	// sv= &svSsaoScale;		sv->Init("SsaoScale",	&pSet->ssao_scale,  0.1,6.f);  sv->DefaultF(1.5f);
 
 
 	//  ⚙️ Settings  🆕 Startup common 

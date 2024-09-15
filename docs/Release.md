@@ -13,7 +13,7 @@ The process of releasing and things that need to be checked before.
       - add to [ini](../config/tracks.ini), [champs](../config/championships.xml) and [challs](../config/challenges.xml) xmls (all in config/)  
       - run `stuntrally3 check`  
       - update tracks `_previews`, run `tracks/previews.py`  
-    * Run editor tools to check tracks  
+    * Run editor **tools** to check tracks  
       (errors, presets, etc.: ToolSceneXml, ToolTracksWarnings)  
       by starting with arguments:  
       `sr-editor3 scene` and `sr-editor3 warnings`

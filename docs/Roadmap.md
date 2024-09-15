@@ -8,16 +8,20 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 ### SR 3.2
 
-🌊**refract** river roads **crash** on: Surreal, HexForest, Bug, Glitch  
+ed tools, add checks: all roads river, horiz veget < 1
+
+🌊**refract** river roads `crash` on: Surreal, HexForest, Bug, Glitch  
 **fix** no refract water stretched, no anim  
-fix refract underwater top  
 pass projmatrix not **inverse**  
-*fix splitscreen* broken with refractions  
+
 **no** water collis? on: Butterfly, SlopeCity..  
+fix refract underwater top  
+*fix splitscreen* broken with refractions  
+
 fix compositor / rqg:  
 car glass not refracted, offset, glass pipes not underwater  
 more fluids at once, blink on MilkyWay  
-add params: refract clr, *depth* clr, emissive fluids?  
+**add** params: refract clr, *depth* clr, emissive fluids?  
 
 🌪️**wind scale** params in json, for all trees, bushes, grass sway own-  
 wind anim shadow **caster** too, ed prv obj no wind-  
