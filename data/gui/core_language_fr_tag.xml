@@ -24,6 +24,7 @@
 	<Tag name="TipTrackEditor">Press to start the SR3 Track Editor, a separate program for creating and editing tracks. This will not close the game.</Tag>
 	<Tag name="Help">Aide</Tag>
 	<Tag name="Readme">Lisez-moi</Tag>
+	<Tag name="Changes">Changements</Tag>
 	<Tag name="Support">Soutien</Tag>
 	<Tag name="Contributing">Contribuant</Tag>
 	<Tag name="Credits">Crédits</Tag>
@@ -53,7 +54,7 @@
 	<Tag name="Multiplayer">Multijoueur</Tag>
 	<Tag name="Collection">Collection</Tag>
 	<Tag name="Collected">Collected</Tag>
-	<Tag name="Career">Career</Tag>
+	<Tag name="Career">Carrière</Tag>
 	<Tag name="NumLocalPlayers">Nombre de joueurs locaux</Tag>
 	<Tag name="SplitVertically">Scinder verticalement</Tag>
 	<Tag name="ReverseStartOrder">Inverser l'ordre de départ</Tag>
@@ -94,14 +95,14 @@
 	<Tag name="SimulationHelp">Simulation mode does change how realistic vehicles are and how difficult driving is. It also changes damage mode and how fast vehicles break after hits. In Easy mode - vehicles are slow, feel heavy and cars don't slide much. In Medium - they are fast, slide and will spin wheels on snow and can on gravel. In Hard - cars rotate easier, and wheels spin already on gravel, good control is required.</Tag>
 	<Tag name="Track">Circuit</Tag>
 	<Tag name="NewGame">Nouvelle partie</Tag>
-	<Tag name="GameTypes">Game Types</Tag>
+	<Tag name="GameTypes">Types de jeux</Tag>
 	<Tag name="Reverse">Inverser</Tag>
 	<Tag name="Find">Rechercher</Tag>
-	<Tag name="ViewList">List</Tag>
+	<Tag name="ViewList">Liste</Tag>
 	<Tag name="ViewListUser">List user</Tag>
 	<Tag name="ViewListDetail">List wide</Tag>
 	<Tag name="ViewGalleryList">Gallery list</Tag>
-	<Tag name="ViewGallery">Gallery</Tag>
+	<Tag name="ViewGallery">Galerie</Tag>
 	<Tag name="TrackBestTime">Meilleur temps</Tag>
 	<Tag name="TrackAvgSpeed">Vitesse moyenne</Tag>
 	<Tag name="TrackLength">Longueur</Tag>
@@ -134,17 +135,17 @@
 	<Tag name="Vehicle">Véhicule</Tag>
 	<Tag name="Vehicles">Véhicules</Tag>
 	<Tag name="TipCarsList">Liste des voitures. Appuyez sur Entrée ou [Nouvelle partie] pour les conduire.</Tag>
-	<Tag name="TipCarDesc">Vehicle description text. Can have driving advices.</Tag>
+	<Tag name="TipCarDesc">Texte de description du véhicule. Peut contenir des conseils de conduite.</Tag>
 	<Tag name="TipNewGameCar">Redémarrer la partie</Tag>
-	<Tag name="P_1color">1 color, simple</Tag>
+	<Tag name="P_1color">1 couleur, simple</Tag>
 	<Tag name="P_2colors">2 couleurs</Tag>
-	<Tag name="P_3colors">3 colors, changing</Tag>
+	<Tag name="P_3colors">3 couleurs, changeantes</Tag>
 	<Tag name="ColHue">Coleur - teinte</Tag>
 	<Tag name="ColSat">Saturation</Tag>
 	<Tag name="ColBright">Luminosité</Tag>
 	<Tag name="ColGloss">Brillance</Tag>
 	<Tag name="ColReflect">Réflexion</Tag>
-	<Tag name="ColMetalness">Metalness</Tag>
+	<Tag name="ColMetalness">Métallique</Tag>
 	<Tag name="ColRoughness">Rugosité</Tag>
 	<Tag name="ColFresnel">Fresnel</Tag>
 	<Tag name="ColClearCoat">Couche transparente</Tag>
@@ -323,7 +324,7 @@
 	<Tag name="CarCollis">Collision des voitures</Tag>
 	<Tag name="RoadWallFullCollis">Collision avec la route</Tag>
 	<Tag name="DynamicObjects">Objets dynamiques</Tag>
-	<Tag name="DriveOnHorizons">Allow driving outside map, on horizons</Tag>
+	<Tag name="DriveOnHorizons">Autoriser la conduite en dehors de la carte, sur les horizons</Tag>
 	<Tag name="Gearbox">Boîte de vitesses</Tag>
 	<Tag name="AutoGearbox">Boîte de rapports automatique</Tag>
 	<Tag name="AutoRear">Marche aarière automatique</Tag>
@@ -357,7 +358,7 @@
 	<Tag name="Replay">Replays</Tag>
 	<Tag name="RplLoad">Chargement</Tag>
 	<Tag name="RplSave">Sauvegarder</Tag>
-	<Tag name="ToolsTime">Warning: May take several minutes!</Tag>
+	<Tag name="ToolsTime">Avertissement : Peut prendre plusieurs minutes !</Tag>
 	<Tag name="AlreadyExists">Existe déjà</Tag>
 	<Tag name="DoesntExist">N'existe pas</Tag>
 	<Tag name="RplAll">Tous</Tag>
@@ -466,7 +467,7 @@
 	<Tag name="ViewDist">Distance de vue</Tag>
 	<Tag name="RoadQual">Détails de la route</Tag>
 	<Tag name="GridQual">Grid quality</Tag>
-	<Tag name="Quality">Quality</Tag>
+	<Tag name="Quality">Qualité</Tag>
 	<Tag name="Textures">Textures</Tag>
 	<Tag name="Bilinear">Bilinéaire</Tag>
 	<Tag name="Trilinear">Trilinéaire</Tag>
@@ -477,6 +478,7 @@
 	<Tag name="Vegetation">Végétation</Tag>
 	<Tag name="Bush">Bush</Tag>
 	<Tag name="DistMult">Multi. de distance</Tag>
+	<Tag name="Limit">Limite</Tag>
 	<Tag name="Reset">Réinitialiser</Tag>
 	<Tag name="Reflections">Réflexions</Tag>
 	<Tag name="FrameSkip">Fréquence d'actualisation</Tag>
@@ -878,6 +880,7 @@
 	<Tag name="ObjRocks">Roches</Tag>
 	<Tag name="Group">Groupe</Tag>
 	<Tag name="Fields">Fields</Tag>
+	<Tag name="InputFieldsTelepEnd">Enter - toggle teleport end edit</Tag>
 	<Tag name="Tools">Outils</Tag>
 	<Tag name="SourceTrack">Circuit source</Tag>
 	<Tag name="ChngTrkTab">changé dans l'onglet [Circuit]</Tag>
@@ -1366,9 +1369,6 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="Changes">Changes</Tag>
-	<Tag name="Limit">Limit</Tag>
-	<Tag name="InputFieldsTelepEnd">Enter - toggle teleport end edit</Tag>
 	<Tag name="GameVersion">3.2</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 

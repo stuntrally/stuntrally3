@@ -24,6 +24,7 @@
 	<Tag name="TipTrackEditor">Drücken Sie , um den SR3 Track Editor zu starten, ein separates Programm zum Erstellen und Bearbeiten von Tracks. Dadurch wird das Spiel nicht beendet.</Tag>
 	<Tag name="Help">Hilfe</Tag>
 	<Tag name="Readme">Liesmich</Tag>
+	<Tag name="Changes">Änderungen</Tag>
 	<Tag name="Support">Unterstützung</Tag>
 	<Tag name="Contributing">Mitwirken</Tag>
 	<Tag name="Credits">Danksagungen</Tag>
@@ -153,7 +154,7 @@
 	<Tag name="CarClrRandom">Zufällig</Tag>
 	<Tag name="Adjust">Anpassen</Tag>
 	<Tag name="NewLine">Neue Linie</Tag>
-	<Tag name="TipCarColor">Click to apply color to vehicle, and select. Shift-Click move selected here. Alt-Click swap color with selected.</Tag>
+	<Tag name="TipCarColor">Klicken Sie auf, um die Farbe auf das Fahrzeug anzuwenden, und auszuwählen. Umschalt-Klick verschiebt die Auswahl hierher. Alt-Klick, um die Farbe mit der ausgewählten zu tauschen.</Tag>
 	<Tag name="TipChangeHue">Autofarbe ändern (Farbton)</Tag>
 	<Tag name="TipChangeSat">Sättigung der Autofarbe ändern (weiß bis schwarz).</Tag>
 	<Tag name="TipChangeBright">Helligkeit der Autofarbe ändern (dunkel bis hell).</Tag>
@@ -477,6 +478,7 @@
 	<Tag name="Vegetation">Vegetation</Tag>
 	<Tag name="Bush">Busch</Tag>
 	<Tag name="DistMult">Distanzfaktor</Tag>
+	<Tag name="Limit">Limit</Tag>
 	<Tag name="Reset">Zurücksetzen</Tag>
 	<Tag name="Reflections">Spiegelungen</Tag>
 	<Tag name="FrameSkip">Bilder überspringen</Tag>
@@ -878,6 +880,7 @@
 	<Tag name="ObjRocks">Steine</Tag>
 	<Tag name="Group">Gruppe</Tag>
 	<Tag name="Fields">Gebiete</Tag>
+	<Tag name="InputFieldsTelepEnd">Enter - toggle teleport end edit</Tag>
 	<Tag name="Tools">Werkzeuge</Tag>
 	<Tag name="SourceTrack">Bezugsquelle</Tag>
 	<Tag name="ChngTrkTab">aus dem Tab »Strecke«</Tag>
@@ -943,7 +946,7 @@
 	<Tag name="ExportOnLoad">Export nach dem Laden</Tag>
 	<Tag name="ExportCopyData">Copy data to track on export</Tag>
 	<Tag name="PathRoRExport">Inhaltspfad von Rigs of Rods</Tag>
-	<Tag name="PathOldSR">Path to Stunt Rally 2.x data</Tag>
+	<Tag name="PathOldSR">Pfad zu Stunt Rally 2.x Daten</Tag>
 	<Tag name="InputHelp">Hilfe</Tag>
 	<Tag name="Shortcuts">Tastenkürzel</Tag>
 	<Tag name="InputMain">Allgemein</Tag>
@@ -1052,7 +1055,7 @@
 	<Tag name="InputRoadRebuild">B - Straße anpassen (nach Geländeänderung, usw.)</Tag>
 	<Tag name="InputRoadAlignTerrain">U - Gelände zum Weg ausrichten (für ausgewählte Segmente)</Tag>
 	<Tag name="InputRoadMirror">Alt-Pos1 - Auswahl spiegeln</Tag>
-	<Tag name="InputRoadsAdd">ctrl-Enter - Add road, also for decoration or river etc.</Tag>
+	<Tag name="InputRoadsAdd">ctrl-Enter - Straße hinzufügen, auch für Dekoration oder Fluss usw.</Tag>
 	<Tag name="InputRoadsNext">Enter - nächste Straße (falls mehrere), Shift - vorherige</Tag>
 	<Tag name="InputRoadsDel">Strg-shift-Enter - Straße löschen</Tag>
 	<Tag name="InputRoadsRiver">alt-Enter - Fluss umschalten (keine Wand, Säulen usw.)</Tag>
@@ -1224,7 +1227,7 @@
 	<Tag name="Hint-17text">Folgen Sie die Rennstrecke, um die beste Fahrweise zu finden. Nutzen Sie die Farben zu Ihrem Vorteil. Bremsen Sie frühzeitig, wenn Sie sehen, dass sie rot wird.</Tag>
 	<Tag name="Hint-18">Temponoten</Tag>
 	<Tag name="Hint-18text">Beachten Sie die Hinweisschilder über der Straße. Sie zeigen Kurven an: leicht in grün, mittelschwer in orange und am schärfsten in rot.</Tag>
-	<Tag name="Hint-19">Stunt Pacenotes</Tag>
+	<Tag name="Hint-19">Stunt-Pacenoten</Tag>
 	<Tag name="Hint-19text">Pace notes also warn about stunts like jumps, loops and on pipe drive. For jumps, also text with ideal speed is shown. Turning green on close match, orange when too slow and cyan or white when too fast.</Tag>
 	<Tag name="Hint-20">Flüssigkeiten</Tag>
 	<Tag name="Hint-20text">Flüssigkeiten wie Wasser und Schlamm sind sicher. Sie können Autos unter Wasser und durch Schlamm fahren. Halten Sie sich von Lava und Säure fern, die schnell Schaden anrichten können.</Tag>
@@ -1239,7 +1242,7 @@
 	<Tag name="Hint-25">Unterstützung</Tag>
 	<Tag name="Hint-25text">Stunt Rally ist eine freie Open-Source-Software. Sie können zu diesem Projekt beitragen oder es mit Spenden unterstützen.</Tag>
 	<Tag name="Hint-26">Teststrecken</Tag>
-	<Tag name="Hint-26text">When beginning it may be safer and more fun, to train driving on big test tracks with no roads: Flat, TerrainBig, Fluids, Snow or Asphalt. Type name in find box for quick search.</Tag>
+	<Tag name="Hint-26text">Am Anfang kann es sicherer sein und mehr Spaß machen, das Fahren auf großen Teststrecken ohne Straßen zu trainieren: Flat, TerrainBig, Fluids, Snow or Asphalt. Geben Sie den Namen in das Suchfeld ein, um schnell zu suchen.</Tag>
 	<Tag name="Hint-27">Handbremse</Tag>
 	<Tag name="Hint-27text">Ziehen Sie die Handbremse in sehr scharfen Kurven nur kurz an. Dadurch werden die Hinterräder blockiert und das Auto dreht sich schneller.</Tag>
 	<Tag name="TipLoadTrkEditor">Andere Strecke laden oder aktuelle Strecke neu laden.</Tag>
@@ -1366,9 +1369,6 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="Changes">Changes</Tag>
-	<Tag name="Limit">Limit</Tag>
-	<Tag name="InputFieldsTelepEnd">Enter - toggle teleport end edit</Tag>
 	<Tag name="GameVersion">3.2</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 

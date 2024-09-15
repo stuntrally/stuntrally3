@@ -24,6 +24,7 @@
 	<Tag name="TipTrackEditor">Naciśnij by uruchomić edytor tras SR3 Track Editor, osobny program do tworzenia i edycji tras. To nie zamknie gry.</Tag>
 	<Tag name="Help">Pomoc</Tag>
 	<Tag name="Readme">Readme</Tag>
+	<Tag name="Changes">Zmiany</Tag>
 	<Tag name="Support">Wsparcie</Tag>
 	<Tag name="Contributing">Rozwój</Tag>
 	<Tag name="Credits">Kredyty</Tag>
@@ -389,7 +390,7 @@
 	<Tag name="RenderSystem">System renderowania</Tag>
 	<Tag name="AntiAliasing">Wygładzanie krawędzi</Tag>
 	<Tag name="Change">Zmień</Tag>
-	<Tag name="GUI">Gamma</Tag>
+	<Tag name="GUI">GUI</Tag>
 	<Tag name="FontSizes">Rozmiary czcionek</Tag>
 	<Tag name="WindowMargin">Margines okna</Tag>
 	<Tag name="Gamma">Gamma</Tag>
@@ -477,6 +478,7 @@
 	<Tag name="Vegetation">Wegetacja</Tag>
 	<Tag name="Bush">Zarośla</Tag>
 	<Tag name="DistMult">Mnożnik odl.</Tag>
+	<Tag name="Limit">Limit</Tag>
 	<Tag name="Reset">Przywróć</Tag>
 	<Tag name="Reflections">Odbicia</Tag>
 	<Tag name="FrameSkip">Pomijanie klatek</Tag>
@@ -878,6 +880,7 @@
 	<Tag name="ObjRocks">Skały</Tag>
 	<Tag name="Group">Grupa</Tag>
 	<Tag name="Fields">Pola</Tag>
+	<Tag name="InputFieldsTelepEnd">Enter - przełącz edycję końca teleportu</Tag>
 	<Tag name="Tools">Narzędzia</Tag>
 	<Tag name="SourceTrack">Trasa źródłowa</Tag>
 	<Tag name="ChngTrkTab">zmiana w zakładce [Trasa]</Tag>
@@ -1366,9 +1369,6 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="Changes">Changes</Tag>
-	<Tag name="Limit">Limit</Tag>
-	<Tag name="InputFieldsTelepEnd">Enter - toggle teleport end edit</Tag>
 	<Tag name="GameVersion">3.2</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 

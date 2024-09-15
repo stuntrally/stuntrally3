@@ -24,6 +24,7 @@
 	<Tag name="TipTrackEditor">Press to start the SR3 Track Editor, a separate program for creating and editing tracks. This will not close the game.</Tag>
 	<Tag name="Help">Apua</Tag>
 	<Tag name="Readme">Lueminut</Tag>
+	<Tag name="Changes">Changes</Tag>
 	<Tag name="Support">Support</Tag>
 	<Tag name="Contributing">Contributing</Tag>
 	<Tag name="Credits">Credits</Tag>
@@ -477,6 +478,7 @@
 	<Tag name="Vegetation">Kasvillisuus</Tag>
 	<Tag name="Bush">Bush</Tag>
 	<Tag name="DistMult">Distance mul</Tag>
+	<Tag name="Limit">Limit</Tag>
 	<Tag name="Reset">Nollaa</Tag>
 	<Tag name="Reflections">Heijastukset</Tag>
 	<Tag name="FrameSkip">Frames skip</Tag>
@@ -878,6 +880,7 @@
 	<Tag name="ObjRocks">Rocks</Tag>
 	<Tag name="Group">Group</Tag>
 	<Tag name="Fields">Fields</Tag>
+	<Tag name="InputFieldsTelepEnd">Enter - toggle teleport end edit</Tag>
 	<Tag name="Tools">Työkalut</Tag>
 	<Tag name="SourceTrack">Source track</Tag>
 	<Tag name="ChngTrkTab">changed in [Track] tab</Tag>
@@ -1366,9 +1369,6 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="Changes">Changes</Tag>
-	<Tag name="Limit">Limit</Tag>
-	<Tag name="InputFieldsTelepEnd">Enter - toggle teleport end edit</Tag>
 	<Tag name="GameVersion">3.2</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
