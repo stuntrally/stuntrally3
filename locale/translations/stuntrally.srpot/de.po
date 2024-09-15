@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-14 12:04+0200\n"
-"PO-Revision-Date: 2024-08-07 21:09+0000\n"
+"PO-Revision-Date: 2024-09-15 11:09+0000\n"
 "Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/de/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #. General 
 #: data/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -208,7 +208,7 @@ msgstr "Liesmich"
 #: data/gui/Game_Help.layout:161 ..Help.Tab
 msgctxt "Changes"
 msgid "Changes"
-msgstr ""
+msgstr "Änderungen"
 
 #. MAIN  Menu 
 #: data/gui/Game_Help.layout:17 ..Help.Tab
@@ -1149,6 +1149,9 @@ msgid ""
 "Click to apply color to vehicle, and select. Shift-Click move selected here. "
 "Alt-Click swap color with selected."
 msgstr ""
+"Klicken Sie auf, um die Farbe auf das Fahrzeug anzuwenden, und auszuwählen. "
+"Umschalt-Klick verschiebt die Auswahl hierher. Alt-Klick, um die Farbe mit "
+"der ausgewählten zu tauschen."
 
 #. TIP  Vehicle Color 
 #: data/gui/Game.layout:1127 ..SingleRace.Setup.Paint.Text
@@ -3155,7 +3158,7 @@ msgstr "Distanzfaktor"
 #: data/gui/Game_Options.layout:1227
 msgctxt "Limit"
 msgid "Limit"
-msgstr ""
+msgstr "Limit"
 
 #. Graphics  Vegetation 
 #: data/gui/Editor.layout:893 ..Editor.Terrain.Brushes.Button
@@ -6240,7 +6243,7 @@ msgstr "Inhaltspfad von Rigs of Rods"
 #: data/gui/Editor_Track.layout:950 ..Track.Export.Settings.Text
 msgctxt "PathOldSR"
 msgid "Path to Stunt Rally 2.x data"
-msgstr ""
+msgstr "Pfad zu Stunt Rally 2.x Daten"
 
 #. MAIN  Editor Input Gui 
 #: data/gui/Editor_Help.layout:18 ..Help.Tab
@@ -6911,7 +6914,7 @@ msgstr "Alt-Pos1 - Auswahl spiegeln"
 #: data/gui/Editor_Help.layout:391 ..Help.Input/help.Road1.Text
 msgctxt "InputRoadsAdd"
 msgid "ctrl-Enter - Add road, also for decoration or river etc."
-msgstr ""
+msgstr "ctrl-Enter - Straße hinzufügen, auch für Dekoration oder Fluss usw."
 
 #. Road  Input  more roads
 #: data/gui/Editor_Help.layout:387 ..Help.Input/help.Road1.Text
@@ -8317,7 +8320,7 @@ msgstr ""
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-19"
 msgid "Stunt Pacenotes"
-msgstr ""
+msgstr "Stunt-Pacenoten"
 
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-19text"
@@ -8431,6 +8434,9 @@ msgid ""
 "tracks with no roads: Flat, TerrainBig, Fluids, Snow or Asphalt. Type name "
 "in find box for quick search."
 msgstr ""
+"Am Anfang kann es sicherer sein und mehr Spaß machen, das Fahren auf großen "
+"Teststrecken ohne Straßen zu trainieren: Flat, TerrainBig, Fluids, Snow or "
+"Asphalt. Geben Sie den Namen in das Suchfeld ein, um schnell zu suchen."
 
 #. TIP  Hints title+text  (in game's How To Play) 
 #: data/gui/Game_Help.layout:466 ..HowToPlay.Button

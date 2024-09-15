@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-14 12:04+0200\n"
-"PO-Revision-Date: 2024-04-13 13:01+0000\n"
+"PO-Revision-Date: 2024-09-15 11:09+0000\n"
 "Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/fr/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % "
 "1000000 == 0 ? 1 : 2;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #. General 
 #: data/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -205,7 +205,7 @@ msgstr "Lisez-moi"
 #: data/gui/Game_Help.layout:161 ..Help.Tab
 msgctxt "Changes"
 msgid "Changes"
-msgstr ""
+msgstr "Changements"
 
 #. MAIN  Menu 
 #: data/gui/Game_Help.layout:17 ..Help.Tab
@@ -395,7 +395,7 @@ msgstr "Multijoueur"
 #: src/game/Gui_Util.cpp:175:176
 msgctxt "Collection"
 msgid "Collection"
-msgstr ""
+msgstr "Collection"
 
 #. MAIN  Game  Modes 
 #: src/game/Gui_InitGames.cpp:95
@@ -408,7 +408,7 @@ msgstr ""
 #: src/game/Gui_Games.cpp:94 src/game/Gui_Util.cpp:171
 msgctxt "Career"
 msgid "Career"
-msgstr ""
+msgstr "Carrière"
 
 #. Game  Split screen 
 #: data/gui/Game.layout:1641 ..SingleRace.SplitScreen.Text
@@ -709,7 +709,7 @@ msgstr "Nouvelle partie"
 #: data/gui/Game_Main.layout:149 ..NewGame-Difficulty.Button :286..Window
 msgctxt "GameTypes"
 msgid "Game Types"
-msgstr ""
+msgstr "Types de jeux"
 
 #. MAIN  Track 
 #: data/gui/Editor.layout:3025 ..Editor.Vegetation.Road.Advanced.Text
@@ -732,7 +732,7 @@ msgstr "Rechercher"
 #: src/common/GuiCom_Track.cpp:246
 msgctxt "ViewList"
 msgid "List"
-msgstr ""
+msgstr "Liste"
 
 #. MAIN  Track 
 #: src/common/GuiCom_Track.cpp:246
@@ -756,7 +756,7 @@ msgstr ""
 #: src/common/GuiCom_Track.cpp:248
 msgctxt "ViewGallery"
 msgid "Gallery"
-msgstr ""
+msgstr "Galerie"
 
 #. MAIN  Track stats 
 #: data/gui/Game.layout:383 ..SingleRace.Track.Text :2490
@@ -996,6 +996,7 @@ msgstr ""
 msgctxt "TipCarDesc"
 msgid "Vehicle description text. Can have driving advices."
 msgstr ""
+"Texte de description du véhicule. Peut contenir des conseils de conduite."
 
 #. TIP  Vehicle 
 #: data/gui/Game.layout:519 ..SingleRace.Vehicle.Button
@@ -1008,7 +1009,7 @@ msgstr "Redémarrer la partie"
 #: src/game/Gui_InitCar.cpp:57
 msgctxt "P_1color"
 msgid "1 color, simple"
-msgstr ""
+msgstr "1 couleur, simple"
 
 #. Color  params 
 #: src/game/Gui_InitCar.cpp:58
@@ -1020,7 +1021,7 @@ msgstr "2 couleurs"
 #: src/game/Gui_InitCar.cpp:58
 msgctxt "P_3colors"
 msgid "3 colors, changing"
-msgstr ""
+msgstr "3 couleurs, changeantes"
 
 #. Color  params 
 #: data/gui/Editor_Utils.layout:108 ..Color.Text data/gui/Game.layout:1124
@@ -1062,7 +1063,7 @@ msgstr "Réflexion"
 #: data/gui/MaterialEditor.layout:149 ..MaterialEditor.Main.Text :194
 msgctxt "ColMetalness"
 msgid "Metalness"
-msgstr ""
+msgstr "Métallique"
 
 #. Color  params 
 #: data/gui/Game.layout:1194 ..SingleRace.Setup.Paint.Text
@@ -1086,7 +1087,7 @@ msgstr "Rugosité"
 #: :164:168..MaterialEditor.Main.Slider :172..MaterialEditor.Main.Edit
 msgctxt "ColFresnel"
 msgid "Fresnel"
-msgstr ""
+msgstr "Fresnel"
 
 #. Color  params 
 #: data/gui/Game.layout:1210 ..SingleRace.Setup.Paint.Text
@@ -2101,7 +2102,7 @@ msgstr "Objets dynamiques"
 #: data/gui/Game.layout:1393 ..SingleRace.Setup.Collision.Check
 msgctxt "DriveOnHorizons"
 msgid "Allow driving outside map, on horizons"
-msgstr ""
+msgstr "Autoriser la conduite en dehors de la carte, sur les horizons"
 
 #. Setup  Gearbox 
 #: data/gui/Game.layout:1464 ..SingleRace.Setup.Tab
@@ -2348,7 +2349,7 @@ msgstr "Sauvegarder"
 #. Replay 
 msgctxt "ToolsTime"
 msgid "Warning: May take several minutes!"
-msgstr ""
+msgstr "Avertissement : Peut prendre plusieurs minutes !"
 
 #. Replay 
 #: src/game/Gui_Replay.cpp:121:312:321 src/game/Gui_TweakSim.cpp:513
@@ -2588,7 +2589,7 @@ msgstr ""
 #. Screen  not used 
 msgctxt "Gamma"
 msgid "Gamma"
-msgstr ""
+msgstr "Gamma"
 
 #. Screen  not used 
 #: data/gui/Editor_Options.layout:125 ..Options.Screen.Video.Check
@@ -3071,7 +3072,7 @@ msgstr ""
 #: data/gui/Game_Options.layout:1439 ..Options.Graphics.Simulation.Text
 msgctxt "Quality"
 msgid "Quality"
-msgstr ""
+msgstr "Qualité"
 
 #. Graphics  Textures 
 #: data/gui/Editor_Options.layout:725 ..Options.Graphics.Tab
@@ -3139,7 +3140,7 @@ msgstr "Végétation"
 #: :1275..Options.Graphics.Horizon.Text
 msgctxt "Bush"
 msgid "Bush"
-msgstr ""
+msgstr "Bush"
 
 #. Graphics  Vegetation 
 msgctxt "DistMult"
@@ -3151,7 +3152,7 @@ msgstr "Multi. de distance"
 #: data/gui/Game_Options.layout:1227
 msgctxt "Limit"
 msgid "Limit"
-msgstr ""
+msgstr "Limite"
 
 #. Graphics  Vegetation 
 #: data/gui/Editor.layout:893 ..Editor.Terrain.Brushes.Button
