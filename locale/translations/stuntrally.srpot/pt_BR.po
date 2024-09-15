@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-14 12:04+0200\n"
-"PO-Revision-Date: 2024-09-12 00:09+0000\n"
+"PO-Revision-Date: 2024-09-16 00:09+0000\n"
 "Last-Translator: Kirazake <sidinoe@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "stunt-rally-3/stunt-rally-3/pt_BR/>\n"
@@ -209,7 +209,7 @@ msgstr "Leia-me"
 #: data/gui/Game_Help.layout:161 ..Help.Tab
 msgctxt "Changes"
 msgid "Changes"
-msgstr ""
+msgstr "Mudanças"
 
 #. MAIN  Menu 
 #: data/gui/Game_Help.layout:17 ..Help.Tab
@@ -1008,7 +1008,7 @@ msgstr "Lista de carros. Pressione Enter ou [Novo Jogo] para dirigir com ele."
 #: :741..SingleRace.Vehicle.Image
 msgctxt "TipCarDesc"
 msgid "Vehicle description text. Can have driving advices."
-msgstr ""
+msgstr "Texto descritivo do veículo. Pode conter dicas de direção."
 
 #. TIP  Vehicle 
 #: data/gui/Game.layout:519 ..SingleRace.Vehicle.Button
@@ -1021,22 +1021,19 @@ msgstr "Reiniciar corrida."
 #: src/game/Gui_InitCar.cpp:57
 msgctxt "P_1color"
 msgid "1 color, simple"
-msgstr ""
+msgstr "1 cor, padrão"
 
 #. Color  params 
 #: src/game/Gui_InitCar.cpp:58
-#, fuzzy
-#| msgctxt "TextColor"
-#| msgid "Text color"
 msgctxt "P_2colors"
 msgid "2 colors"
-msgstr "Cor do texto"
+msgstr "2 cores"
 
 #. Color  params 
 #: src/game/Gui_InitCar.cpp:58
 msgctxt "P_3colors"
 msgid "3 colors, changing"
-msgstr ""
+msgstr "3 cores, variáveis"
 
 #. Color  params 
 #: data/gui/Editor_Utils.layout:108 ..Color.Text data/gui/Game.layout:1124
@@ -1078,7 +1075,7 @@ msgstr "Reflexos"
 #: data/gui/MaterialEditor.layout:149 ..MaterialEditor.Main.Text :194
 msgctxt "ColMetalness"
 msgid "Metalness"
-msgstr ""
+msgstr "Metalizado"
 
 #. Color  params 
 #: data/gui/Game.layout:1194 ..SingleRace.Setup.Paint.Text
@@ -1088,12 +1085,9 @@ msgstr ""
 #: ..MaterialEditor.Main.Text :180:184..MaterialEditor.Main.Slider
 #: :188..MaterialEditor.Main.Edit :222..MaterialEditor.Main.Text
 #: :223:227..MaterialEditor.Main.Slider :231..MaterialEditor.Main.Edit
-#, fuzzy
-#| msgctxt "ColBright"
-#| msgid "Brightness"
 msgctxt "ColRoughness"
 msgid "Roughness"
-msgstr "Brilho"
+msgstr "Brilhoso"
 
 #. Color  params 
 #: data/gui/Game.layout:1240 ..SingleRace.Setup.Paint.Text
@@ -1103,9 +1097,10 @@ msgstr "Brilho"
 #: :149..MaterialEditor.Main.Text :150:154..MaterialEditor.Main.Slider
 #: :158..MaterialEditor.Main.Edit :163..MaterialEditor.Main.Text
 #: :164:168..MaterialEditor.Main.Slider :172..MaterialEditor.Main.Edit
+#, fuzzy
 msgctxt "ColFresnel"
 msgid "Fresnel"
-msgstr ""
+msgstr "Fresnel"
 
 #. Color  params 
 #: data/gui/Game.layout:1210 ..SingleRace.Setup.Paint.Text
@@ -1117,7 +1112,7 @@ msgstr ""
 #: :231..MaterialEditor.Main.Edit
 msgctxt "ColClearCoat"
 msgid "Clear coat"
-msgstr ""
+msgstr "Envernizado"
 
 #. Color  extras 
 #: data/gui/Editor_Options.layout:1096 ..Options.View.Pacenotes.Text
