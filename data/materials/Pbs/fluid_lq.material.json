@@ -3603,6 +3603,66 @@
 			}
 		},
 
+		"Water_strange_anomaly_lq" :
+		{
+			"macroblock" : "Macroblock_2",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.75,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0.372, 0.54, 0.6],
+				"background" : [1, 1, 1, 1]
+			},
+			"specular" :
+			{
+				"value" : [0.4, 0.4, 0.4]
+			},
+			"fresnel" :
+			{
+				"value" : [0.306, 0.120, 0.15],
+				"mode" : "coloured"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "desert_mntn2_anomaly_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.23
+			},
+			"detail_diffuse0" :
+			{
+				"value" : 1,
+				"offset" : [0.15, 0.1],
+				"scale" : [0.3, 0.15]
+			},
+			"detail_diffuse1" :
+			{
+				"value" : 1,
+				"offset" : [0.3, 0.3]
+			},
+			"detail_diffuse2" :
+			{
+				"value" : 1,
+				"offset" : [0.8, 0.01],
+				"scale" : [2, 1.1]
+			},
+			"detail_diffuse3" :
+			{
+				"value" : 1,
+				"offset" : [6, 0.4]
+			}
+		},
+
 		"Water_strange2_anomaly_lq" :
 		{
 			"macroblock" : "Macroblock_2",
@@ -3663,65 +3723,6 @@
 			}
 		},
 
-		"Water_strange_anomaly_lq" :
-		{
-			"macroblock" : "Macroblock_2",
-			"blendblock" : "Blendblock_2",
-			"shadow_const_bias" : 0.01,
-			"workflow" : "specular_ogre",
-			"transparency" :
-			{
-				"value" : 0.75,
-				"mode" : "Transparent",
-				"use_alpha_from_textures" : true
-			},
-			"diffuse" :
-			{
-				"value" : [0.372, 0.54, 0.6],
-				"background" : [1, 1, 1, 1]
-			},
-			"specular" :
-			{
-				"value" : [0.4, 0.4, 0.4]
-			},
-			"fresnel" :
-			{
-				"value" : [0.306, 0.120, 0.15],
-				"mode" : "coloured"
-			},
-			"normal" :
-			{
-				"value" : 1,
-				"texture" : "desert_mntn2_anomaly_n.jpg",
-				"sampler" : "Sampler_10"
-			},
-			"roughness" :
-			{
-				"value" : 0.23
-			},
-			"detail_diffuse0" :
-			{
-				"value" : 1,
-				"offset" : [0.15, 0.1],
-				"scale" : [0.3, 0.15]
-			},
-			"detail_diffuse1" :
-			{
-				"value" : 1,
-				"offset" : [0.3, 0.3]
-			},
-			"detail_diffuse2" :
-			{
-				"value" : 1,
-				"offset" : [0.8, 0.01],
-				"scale" : [2, 1.1]
-			},
-			"detail_diffuse3" :
-			{
-				"value" : 1,
-				"offset" : [6, 0.4]
-			}
-		},
 
 		"Water_sunset_lq" :
 		{

@@ -3,6 +3,7 @@
 #include "RenderConst.h"
 #include "Road.h"
 #include "App.h"
+#include "settings.h"
 // #include "CData.h"
 // #include "PresetsXml.h"
 #ifndef SR_EDITOR
@@ -13,6 +14,7 @@
 // #include "GraphicsSystem.h"
 
 #include <OgreCommon.h>
+#include <OgreString.h>
 #include <OgreHlmsManager.h>
 #include <OgreHlmsPbs.h>
 #include <OgreHlmsPbsDatablock.h>
@@ -47,11 +49,11 @@ class ManResLd : public ManualResourceLoader
 
 //  🏗️ Create Mesh
 //---------------------------------------------------------------------------------------------------------------------------------
-void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
-	Ogre::String sMtrName, bool alpha, bool pipeGlass, bool minimap,
-	const std::vector<Ogre::Vector3>& pos, const std::vector<Ogre::Vector3>& norm,
-	const std::vector<Ogre::Vector4>& clr, const std::vector<Ogre::Vector2>& tcs,
-	const std::vector<Ogre::uint16>& idx)
+void SplineRoad::CreateMesh( int lod, SegData& sd, String sMesh,
+	String sMtrName, bool alpha, bool pipeGlass, bool minimap,
+	const std::vector<Vector3>& pos, const std::vector<Vector3>& norm,
+	const std::vector<Vector4>& clr, const std::vector<Vector2>& tcs,
+	const std::vector<uint16>& idx)
 {
 	// LogO("Road -- MESH mtr: "+sMtrName+"  cnt pos "+toStr(pos.size())+" idx "+toStr(idx.size()));
 
@@ -62,6 +64,26 @@ void SplineRoad::CreateMesh( int lod, SegData& sd, Ogre::String sMesh,
 	}
 	if (MeshManager::getSingleton().getByName(sMesh))
 		LogR("Mesh exists !!!" + sMesh);
+
+	//----
+	bool river_no_lq = 
+		StringUtil::startsWith(sMtrName, "River") &&
+		!StringUtil::endsWith(sMtrName, "_lq");
+	
+	//----  fix road, pipe river mtr must end with _lq  or // todo: set refract rqg, vis
+	if (IsRoad() && river_no_lq)
+	{
+		// LogO("Road added _lq to mtr: " + sMtrName);
+		sMtrName += "_lq";
+	}
+	//----  fix river mtr, add _lq if not refract
+	if (IsRiver() && river_no_lq &&
+		pApp->pSet->g.water_refract == 0)
+	{
+		// LogO("River added _lq to mtr: " + sMtrName);
+		sMtrName += "_lq";
+	}
+	//----
 
 	//LogO("RD MESH: "+sMesh+" "+sMtrName+" al: "+(alpha?"1":"0"));
 	bool trail = IsTrail();

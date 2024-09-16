@@ -10,8 +10,7 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 fix all trks: vegetation factor still 1, on horizon  
 
-🌊**refract** river roads `crash` on: Surreal, HexForest, Bug, Glitch  
-**fix** no refract water stretched, no anim  
+🌊**fix** no refract water stretched, no anim  
 pass projmatrix not **inverse**  
 
 **no** water collis? on: Butterfly, SlopeCity..  
