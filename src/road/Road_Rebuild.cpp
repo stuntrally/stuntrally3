@@ -760,7 +760,13 @@ void SplineRoad::createSeg_Meshes(
 		auto it = rs.road[lod].it,
 			it2 = rs.road[lod].it2;
 		if (it)
-		{	auto que = 
+		{	
+			bool refra = 0;  // todo ?
+			// bool refra = mtr.substr(0,5) == "River"
+			// 	&& pApp->pSet->g.water_refract;
+			
+			auto que = 
+				refra ? RQG_Refract : 
 				//IsTrail() ? RQG_RoadBlend /*: RQG_Hud1*/ : // ?
 				IsRiver() ? RQG_Fluid :
 				pipeGlass ? RQG_PipeGlass : RQG_Road;

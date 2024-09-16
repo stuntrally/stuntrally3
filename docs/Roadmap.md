@@ -8,17 +8,20 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 ### SR 3.2
 
-fix all trks: vegetation factor still 1, on horizon  
-
-🌊**fix** no refract water stretched, no anim  
-pass projmatrix not **inverse**  
-
+**fix** old no refract water: stretched, no anim  
 **no** water collis? on: Butterfly, SlopeCity..  
+
+new game **video**  
+gallery screens, website screens  
+
+### SR 3.3
+
+🌊**refract**, depth: pass projmatrix not **inverse**  
 fix refract underwater top  
 *fix splitscreen* broken with refractions  
 
-fix compositor / rqg:  
-car glass not refracted, offset, glass pipes not underwater  
+fix refract depth write, glass pipes not underwater  
+fix compositor / rqg: car glass not refracted, offset  
 more fluids at once, blink on MilkyWay  
 **add** params: refract clr, *depth* clr, emissive fluids?  
 
@@ -32,6 +35,7 @@ cd SSAO, fog fade?, convert .compositor to C++
 
 💎Add **gems** to tracks, more types 3d  
 xml par continuous?, logic btn continue, hid collected gems on start?  
+
 *new* track(s) with **fields**, add walls  
 hud new best time show, win particles-  
 
