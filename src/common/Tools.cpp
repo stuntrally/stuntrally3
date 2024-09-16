@@ -80,7 +80,7 @@ void CGui::ToolTracksWarnings()
 		}	}
 		
 		LogO("Track: "+trk);
-		LogO("ters: "+toStr(sc.tds.size()));
+		LogO("terrains: "+toStr(sc.tds.size()));
 		TrackWarn tw = WarningsCheck(&sc, vRoads);
 		
 		if (tw.hq < min_hq)  min_hq = tw.hq;  if (tw.hq > max_hq)  max_hq = tw.hq;
@@ -185,9 +185,10 @@ void CGui::ToolSceneXml()
 				if (td.iHorizon >= 2)
 				{	td.fVeget = 0.f;  modif = 1;  }
 				if (td.iHorizon == 1)
-				{	td.fVeget = 0.2f;  modif = 1;  }
+				{	td.fVeget = 0.3f;  modif = 1;  }
 			}
-			LogO(trk + " ^^ ter: "+toStr(t) + "  veget " + fToStr(td.fVeget));
+			if (td.fVeget != 1.f)
+				LogO(trk + " ^^ ter: "+toStr(t) + "  veget " + fToStr(td.fVeget));
 			#endif
 		}
 		
@@ -219,10 +220,10 @@ void CGui::ToolSceneXml()
 				if (!data->pre->GetRoad(s))
 					LogO(trk +" "+ fname + r +" Not Found in presets !!!  " + s);
 				
-				if (rd.IsRoad() &&
+				/*if (rd.IsRoad() &&
 					StringUtil::startsWith(s, "River") &&
 					!StringUtil::endsWith(s, "_lq"))  // todo?-
-					LogO(trk +" "+ fname + r +" river mtr must end with _lq !!  " + s);
+					LogO(trk +" "+ fname + r +" river mtr must end with _lq !!  " + s);*/
 			}
 			//sMtrWall,sMtrWallPipe, sMtrCol
 			//sc.td.layerRoad

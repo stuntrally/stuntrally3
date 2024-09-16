@@ -712,7 +712,7 @@
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="32 320 172 24">
-							<Property key="Caption" value="#{Horizon} #{Horizon} #{max} ##"/>
+							<Property key="Caption" value="#{Horizon} #{max} ##"/>
 							<Property key="TextColour" value="0.4 1 1"/>
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="280 320 320 18" name="Horizons"/>

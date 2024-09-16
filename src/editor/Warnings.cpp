@@ -291,9 +291,9 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 		if (lay <= 2)  Warn(INFO, "Too few terrain layers used");
 		++i;
 	}
-	if (!hqHoriz && ters == 1){  Warn(WARN, "No Horizon terrain");  tw.horiz++;  }
-	if (!hqHoriz && ters > 1){  Warn(WARN, "No Horizon terrain or no terrain marked as Horizon > 0");  tw.horiz++;  }
-	if (hqHoriz)  Warn(INFO, "HQ Horizon");
+	if (!hqHoriz && ters == 1)  Warn(WARN, "No Horizon terrain");
+	if (!hqHoriz && ters > 1)  Warn(WARN, "No Horizon terrain or no terrain marked as Horizon > 0");
+	if (hqHoriz)  {  Warn(INFO, "HQ Horizon");  tw.horiz++;  }
 
 	
 	///  🌳🪨 Vegetation

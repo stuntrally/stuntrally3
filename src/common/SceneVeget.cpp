@@ -64,7 +64,9 @@ void CScene::CreateVegets()
 			continue;
 		bool horiz = td.iHorizon == 1;
 		if (horiz)  // less dist
-			tws *= pSet->veg.hor_trees_dist;
+		{	tws *= pSet->veg.hor_trees_dist;
+			LogO("C--V Create Veget on Horizon");
+		}
 
 		//  density
 		// Real horizMul = 1.f; // /*1.f / */ (1.f + td.iHorizon * 23);
@@ -153,7 +155,7 @@ void CScene::CreateVegets()
 				//----------------------------------------------------------------
 				int cnt = 6000 * vg.dens * (veg->bush ? fBushes : fTrees);  // old
 				int all = 0;  // stat
-				LogO("tws: "+fToStr(tws)+" tr cnt: "+toStr(cnt)+" c/t2: "+fToStr(cnt/tws/tws,8,10));  //-
+				// LogO("tws: "+fToStr(tws)+" tr cnt: "+toStr(cnt)+" c/t2: "+fToStr(cnt/tws/tws,8,10));  //-
 				// LogO(String("col?  ")+(col?"y":"n")+ " ofs x "+fToStr(ofs.x,2)+ " z "+fToStr(ofs.y,2));
 				
 				for (int i = 0; i < cnt; ++i)

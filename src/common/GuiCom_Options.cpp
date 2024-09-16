@@ -84,9 +84,9 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 
 	sv= &svHorTrees;	sv->Init("HorTrees",	&pSet->veg.hor_trees,      0.0f,1.f);  sv->DefaultF(0.5f);
 	sv= &svHorTreesDist;sv->Init("HorTreesDist",&pSet->veg.hor_trees_dist, 0.0f,1.f);  sv->DefaultF(0.5f);
-	sv= &svHorBush;		sv->Init("HorBush",		&pSet->veg.hor_bushes,     0.0f,1.f);  sv->DefaultF(0.3f);
-	sv= &svHorBushDist;	sv->Init("HorBushDist",	&pSet->veg.hor_bushes_dist,0.0f,1.f);  sv->DefaultF(0.3f);
-	sv= &svVegetLimit;	sv->Init("VegetLimit",	&pSet->veg.limit,         0, 100000);  sv->DefaultI(10000);
+	sv= &svHorBush;		sv->Init("HorBush",		&pSet->veg.hor_bushes,     0.0f,1.f);  sv->DefaultF(0.f);
+	sv= &svHorBushDist;	sv->Init("HorBushDist",	&pSet->veg.hor_bushes_dist,0.0f,1.f);  sv->DefaultF(0.f);
+	sv= &svVegetLimit;	sv->Init("VegetLimit",	&pSet->veg.limit,         0, 100000);  sv->DefaultI(20000);
 	BtnC("ApplyVeget",    btnVegetApply);   BtnC("VegetReset",  btnVegetReset);
 	BtnC("HorApplyVeget", btnVegetApply);
 
