@@ -120,7 +120,6 @@ void CGui::ToolSceneXml()
 		Scene sc;  Setup(sc);
 		sc.LoadXml(path +"scene.xml");
 		
-		SplineRoad rd(app);  rd.LoadFile(path +"road.xml");
 		bool modif = false;
 
 		int l = 20 - trk.length();  // align
@@ -143,64 +142,91 @@ void CGui::ToolSceneXml()
 		
 		
 		///  ⛰️ Terrains  --------
-		#if 0  // used
-		for (n=0; n < sc.td.layers.size(); ++n)
-		{	const TerLayer& l = sc.td.layersAll[sc.td.layers[n]];
-		#else  // all
-		for (n=0; n < TerData::ciNumLay; ++n)
-		{	TerLayer& l = sc.tds[0].layersAll[n];  // 1st ter only
-		#endif
-			bool e = l.texFile.empty();
-			if (!e && !rg.resourceExistsInAnyGroup(l.texFile))
-				LogO(trk + " Ter layer Not Found !!!  " + l.texFile);
-
-			if (!l.texNorm.empty() && !rg.resourceExistsInAnyGroup(l.texNorm))
-				LogO(trk + " Ter layer Not Found !!!  " + l.texNorm);
-				
-			const PTer* p = data->pre->GetTer(l.texFile.substr(0, l.texFile.length()-4));
-			if (!e && !p)
-				LogO(trk + " Ter layer Not Found in presets !!!  " + l.texFile);
-
-			if (!e && l.surfName == "Default" && l.on)
-			{
-				LogO(trk + " Default surface !!!  " + l.texFile);
-			#if 0  //  fix from presets
-				l.surfName = p->surfName;
-				l.dust = p->dust;   l.dustS = p->dustS;
-				l.mud = p->mud;  l.smoke = 0.f;  l.tclr = p->tclr;
-				modif = true;
-				LogO("Ter:  Fixed");
+		for (int t=0; t < sc.tds.size(); ++t)
+		{
+			auto& td = sc.tds[t];
+			#if 0  // used
+			for (n=0; n < td.layers.size(); ++n)
+			{	const TerLayer& l = td.layersAll[td.layers[n]];
+			#else  // all
+			for (n=0; n < TerData::ciNumLay; ++n)
+			{	TerLayer& l = td.layersAll[n];  // 1st ter only
 			#endif
+				bool e = l.texFile.empty();
+				if (!e && !rg.resourceExistsInAnyGroup(l.texFile))
+					LogO(trk + " Ter layer Not Found !!!  " + l.texFile);
+
+				if (!l.texNorm.empty() && !rg.resourceExistsInAnyGroup(l.texNorm))
+					LogO(trk + " Ter layer Not Found !!!  " + l.texNorm);
+					
+				const PTer* p = data->pre->GetTer(l.texFile.substr(0, l.texFile.length()-4));
+				if (!e && !p)
+					LogO(trk + " Ter layer Not Found in presets !!!  " + l.texFile);
+
+				if (!e && l.surfName == "Default" && l.on)
+				{
+					LogO(trk + " Default surface !!!  " + l.texFile);
+				#if 0  //  fix from presets
+					l.surfName = p->surfName;
+					l.dust = p->dust;   l.dustS = p->dustS;
+					l.mud = p->mud;  l.smoke = 0.f;  l.tclr = p->tclr;
+					modif = true;
+					LogO("Ter:  Fixed");
+				#endif
+				}
+				#if 0
+				if (!e && p && l.surfName != p->surfName)
+					LogO("Ter: " + trk + " Different surface !  " + l.texFile + " " + l.surfName + " pre: " + p->surfName);
+				#endif
 			}
-			#if 0
-			if (!e && p && l.surfName != p->surfName)
-				LogO("Ter: " + trk + " Different surface !  " + l.texFile + " " + l.surfName + " pre: " + p->surfName);
+			#if 0	//  auto horiz veget
+			if (td.fVeget == 1.f)
+			{
+				if (td.iHorizon >= 2)
+				{	td.fVeget = 0.f;  modif = 1;  }
+				if (td.iHorizon == 1)
+				{	td.fVeget = 0.2f;  modif = 1;  }
+			}
+			LogO(trk + " ^^ ter: "+toStr(t) + "  veget " + fToStr(td.fVeget));
 			#endif
 		}
 		
-		///  🛣️ Road  ----
-		int iLch = 0;
-		for (n=0; n < rd.mP.size(); ++n)
-			if (rd.mP[n].chkR > 0.f && rd.mP[n].loop > 0)
-				++iLch;
-		//LogO(trk + "  Road Lch " + toStr(iLch));
-		if (iLch % 2 == 1)
-			LogO(trk + " Road Not even loop chks count !  ");
-
-		for (n=0; n < MTRs; ++n)
+		///  🛣️ Roads all  ----
+		strlist lr;
+		PATHS::DirList(path, lr, "xml");
+		
+		for (auto fname:lr)
+		if (StringUtil::startsWith(fname,"road"))
 		{
-			String s = rd.sMtrRoad[n];
-			if (!s.empty() && !data->pre->GetRoad(s))
-				LogO(trk + " Road Not Found in presets !!!  " + s);
+			int id = scn->roads.size();
+			SplineRoad rd(app);
+			rd.LoadFile(path + fname);
 
-			s = rd.sMtrPipe[n];
-			if (!s.empty() && !data->pre->GetRoad(s))
-				LogO(trk + " Pipe Not Found in presets !!!  " + s);
-	
+			int iLch = 0;
+			for (n=0; n < rd.mP.size(); ++n)
+				if (rd.mP[n].chkR > 0.f && rd.mP[n].loop > 0)
+					++iLch;
+			//LogO(trk + "  Road Lch " + toStr(iLch));
+			if (iLch % 2 == 1)
+				LogO(trk +" "+ fname + " Not even loop chks count !  ");
+
+			for (i=0; i < 2; ++i)
+			for (n=0; n < MTRs; ++n)
+			{
+				String r = i ? " Pipe" : " Road";
+				String s = i ? rd.sMtrPipe[n] : rd.sMtrRoad[n];
+				if (s.empty())  continue;
+				if (!data->pre->GetRoad(s))
+					LogO(trk +" "+ fname + r +" Not Found in presets !!!  " + s);
+				
+				if (rd.IsRoad() &&
+					StringUtil::startsWith(s, "River") &&
+					!StringUtil::endsWith(s, "_lq"))  // todo?-
+					LogO(trk +" "+ fname + r +" river mtr must end with _lq !!  " + s);
+			}
+			//sMtrWall,sMtrWallPipe, sMtrCol
 			//sc.td.layerRoad
 		}
-		//sMtrWall,sMtrWallPipe, sMtrCol
-
 		
 		///  🌿 Grass  ----
 		for (n=0; n < Scene::ciNumGrLay; ++n)

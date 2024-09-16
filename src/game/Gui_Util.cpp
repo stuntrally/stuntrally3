@@ -478,11 +478,12 @@ void CGui::FillHelpTxt()
 	};
 
 	ed = fEd("Readme");        if (ed)  PathMd("Readme.md", 0);
+	ed = fEd("Changes");       if (ed)  PathMd("docs/Changelog.md", 1);
 	ed = fEd("Contributing");  if (ed)  PathMd("docs/Contributing.md", 1);
 
 	ed = fEd("Credits");
 	if (ed)
-	{
+	{	//  data paths
 		string dir[3] = {PATHS::Data()+"/", PATHS::Models()+"/", PATHS::Textures()+"/"};
 		String text = "", sep = "-------------------------------------------------------";
 
@@ -501,9 +502,9 @@ void CGui::FillHelpTxt()
 					text += s + "\n";
 			}
 		};
-		auto ReadTxts = [&](string path, int i=1)
+		auto ReadTxts = [&](string path, int d=1)
 		{
-			path = dir[i] + path;
+			path = dir[d] + path;
 			strlist lo;
 			PATHS::DirList(path, lo, "txt");
 			

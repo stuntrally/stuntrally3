@@ -37,7 +37,6 @@ using namespace Ogre;
 //---------------------------------------------------------------------------------
 void AppGui::InitSSAO()
 {
-
 	//  Create SSAO kernel samples
 	float kernelSamples[64][4];
 	for( size_t i = 0; i < 64u; ++i )

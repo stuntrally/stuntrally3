@@ -8,7 +8,7 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 ### SR 3.2
 
-ed tools, add checks: all roads river, horiz veget < 1
+fix all trks: vegetation factor still 1, on horizon  
 
 🌊**refract** river roads `crash` on: Surreal, HexForest, Bug, Glitch  
 **fix** no refract water stretched, no anim  

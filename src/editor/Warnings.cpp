@@ -251,6 +251,10 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 		
 		//  info
 		Warn(INFO, "[] Terrain: " + toStr(i+1)+ " - Horizon: " + toStr(horiz));
+
+		//  veget new
+		if (horiz && td.fVeget == 1.f)
+			Warn(WARN, "vegetation factor still 1, on horizon");
 		
 		//  hmap filesize
 		int sz = td.iVertsX * td.iVertsX * sizeof(float) / 1024/1024;
@@ -273,7 +277,7 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 		if (tri < 30.f && horiz == 2)	Warn(INFO, "horizon2 tri size < 30 Small: "+fToStr(tri,2,4));
 		if (tri > 51.f && horiz == 2)	Warn(INFO, "horizon2 tri size > 51 Big: "+fToStr(tri,2,4)+" - not recommended");
 
-		if (tri > 5.f && horiz == 0)  Warn(ERR, "big triangle but not Horizon > 0");
+		if (tri > 5.f && horiz == 0)  Warn(ERR, "big triangle (> 5) but not set Horizon > 0");
 
 		///-  🏔️ ter layers  -------------
 		int lay = 0;
