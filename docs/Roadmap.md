@@ -8,7 +8,6 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 ### SR 3.2
 
-**fix** old no refract water: stretched, no anim  
 **no** water collis? on: Butterfly, SlopeCity..  
 
 new game **video**  

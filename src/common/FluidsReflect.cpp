@@ -216,7 +216,7 @@ void FluidsReflect::CreateFluids()
 #endif
 
 	bool reflect = app->pSet->g.water_reflect;
-	
+		
 	for (int i=0; i < sc->fluids.size(); ++i)
 	{
 		FluidBox& fb = sc->fluids[i];
@@ -258,7 +258,7 @@ void FluidsReflect::CreateFluids()
 			(fb.hq == 0 || app->pSet->g.water_refract == 0 ? "_lq" : "");
 
 		//  [0] above  [1] below
-		for (int n=0; n < 2; ++n)  // 2  // todo: FIXME refract wirefr bad ..
+		for (int n=0; n < 2; ++n)  // 2
 		{
 			item[n] = mgr->createItem( mesh, dyn );
 			item[n]->setDatablock( sMtr );

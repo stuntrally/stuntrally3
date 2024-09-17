@@ -22,7 +22,9 @@ FluidParams::FluidParams()
 
 bool FluidsXml::MatInMap(string mat)
 {
-	return matMap.find(mat) != matMap.end();
+	String s = mat;
+	s = StringUtil::replaceAll(s, "_lq", "");  // rem _lq
+	return matMap.find(s) != matMap.end();
 }
 
 

@@ -11,16 +11,17 @@ WIP means work in progress, unfinished, still being developed.
   - More **Lights** - with toggable Options
     - for vehicle: brakes, boost, reverse, under glow and for collection gems
 - Both
-  - **Water Refraction***, depth color, soft border, WIP  
-    *does not work in Split Screen - will disable, and won't restore
-  - **Vegetation**, over half of tracks renewed
+  - New **Vegetation** - over half of tracks renewed
     - **New Bushes**, separate multiplier and distance options
     - **New** models: Palms, Jungle trees, mushrooms
     - Vegetation on Horizon, new tab in options
     - Limit (total count) option
     - Tree wind animation, WIP, not yet varied by model
     - grass and bushes deform under vehicle
-  - More tracks have new **horizons**, almost all in game
+  - **Water Refraction***, depth color, soft border, WIP  
+    *does not work in Split Screen - will disable, and won't restore  
+    *antialiasing / FSAA does not work with refraction  
+  - New **horizons** on more tracks, almost all have it
 - Gui
   - New tab on Setup - Paints - Adjust - **Under glow** for color H,S,V
     - under glow color is auto set by picking paint
