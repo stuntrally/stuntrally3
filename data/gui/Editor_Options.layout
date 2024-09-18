@@ -412,11 +412,11 @@
 					<!-- 🌊 Water -->
 					<Widget type="TabItem" skin="" position="2 24 694 272">
 						<Property key="Caption" value="#60B0FF#{Water}"/>
-						<Widget type="Button" skin="Button" position="32 240 200 26" layer="Back" name="ApplyShadersWater">
+						<!-- <Widget type="Button" skin="Button" position="32 240 200 26" layer="Back" name="ApplyShadersWater">
 							<Property key="Caption" value="#{Apply} ="/>
 							<Property key="Colour" value="0.5 0.75 1.0"/>
 							<Property key="TextColour" value="0.5 0.75 1.0"/>
-						</Widget>
+						</Widget> -->
 						<Widget type="Button" skin="CheckBox" position="32 48 250 24" name="WaterReflection">
 							<Property key="Caption" value="#{WaterReflection} *"/>
 							<Property key="TextColour" value="0.6 0.8 1"/>

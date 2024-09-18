@@ -155,7 +155,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	sv= &svWaterDist;	sv->Init("WaterDist",	&pSet->g.water_dist,	20.f,maxDist, 4.f, 1,4, 0.001f, TR(" #{UnitKm}"));
 																	SevC(WaterDist);  sv->DefaultF(1000.f);
 	sv= &svWaterLod;	sv->Init("WaterLod",	&pSet->g.water_lod,	0.01f,2.f, 2.f);  sv->DefaultF(0.4f);
-	BtnC("ApplyShadersWater", btnWaterApply);
+	// BtnC("ApplyShadersWater", btnWaterApply);
 
 
 	//  📊 Presets
