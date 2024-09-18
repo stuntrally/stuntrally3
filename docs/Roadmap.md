@@ -8,8 +8,6 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 ### SR 3.2
 
-**no** water collis? on: Butterfly, SlopeCity..  
-
 new game **video**  
 gallery screens, website screens  
 

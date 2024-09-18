@@ -9,7 +9,7 @@ WIP means work in progress, unfinished, still being developed.
     - Collect all gems located on track, for completion or quicker time
     - Hud shows 3D arrows on vehicle, pointing to closest 3 gems
   - More **Lights** - with toggable Options
-    - for vehicle: brakes, boost, reverse, under glow and for collection gems
+    - for vehicle: brakes, boost, reverse, *under glow* and for collection gems
 - Both
   - New **Vegetation** - over half of tracks renewed
     - **New Bushes**, separate multiplier and distance options
@@ -23,7 +23,7 @@ WIP means work in progress, unfinished, still being developed.
     *antialiasing / FSAA does not work with refraction  
   - New **horizons** on more tracks, almost all have it
 - Gui
-  - New tab on Setup - Paints - Adjust - **Under glow** for color H,S,V
+  - New tab on Setup - Paints - Adjust - Under glow for color H,S,V
     - under glow color is auto set by picking paint
   - Main menu 3rd level for Game Types. Separate for Splitscreen and Multiplayer
   - 3D win **cups** shown on game end
@@ -45,7 +45,7 @@ WIP means work in progress, unfinished, still being developed.
     - Field is a box area, which will act as force fields on vehicle  types:  
       acceleration, anti-gravity, damping - 
     - have factor value, acceleration has also direction
-    - **teleporter** - instantly places vehicle in destination, Enter - toggle edit
+    - *teleporter* - instantly places vehicle in destination, Enter - toggle edit
   - Particles have direction yaw, pitch angles
 - Other
   - split all.material.json to many files

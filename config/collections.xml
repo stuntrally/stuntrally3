@@ -427,7 +427,7 @@ descr="Simple test terrain.">
 	<collection name="#A0C0F0Terrains hover" ver="1" difficulty="3" type="4" groups="7"
 descr="Terrains test track, with any hovering vehicle.">
 		<cartype names="Spaceship|Hover|Drone" />
-		<pass time="2:00" />
+		<pass time="2:10" next="20" />
 		<track name="Test14-Terrains" />
 	</collection>
 
