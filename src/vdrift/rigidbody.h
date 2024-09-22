@@ -44,8 +44,8 @@ public:
 
 	
 	// acessing both linear and rotational frames
-	void Integrate1(const Dbl & dt)  {  linear.Integrate1(dt);rotation.Integrate1(dt);  }
-	void Integrate2(const Dbl & dt)  {  linear.Integrate2(dt);rotation.Integrate2(dt);  }
+	void Integrate1(const Dbl & dt)  {  linear.Integrate1(dt);  rotation.Integrate1(dt);  }
+	void Integrate2(const Dbl & dt)  {  linear.Integrate2(dt);  rotation.Integrate2(dt);  }
 
 	const MATHVECTOR<Dbl,3> TransformLocalToWorld(const MATHVECTOR<Dbl,3> & localpoint) const
 	{

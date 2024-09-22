@@ -454,7 +454,7 @@ void CGui::ChallengeAdvance(float timeCur/*total*/)
 	if (!passed)
 		iChSnd = -1;
 	else
-		iChSnd = std::min(2, std::max(0, prize-1));  // ch.diff ?
+		iChSnd = std::min(2, std::max(0, prize));  // ch.diff ?
 
 
 	//  upd chall end [window]

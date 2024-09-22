@@ -424,6 +424,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 			case key(KP_5):
 				if (iFldCur >= 0 && flds > 0)
 				{
+					DestroyField(iFldCur);
 					if (flds == 1)	fld.clear();
 					else			fld.erase(fld.begin() + iFldCur);
 					iFldCur = std::min(iFldCur, (int)fld.size()-1);
