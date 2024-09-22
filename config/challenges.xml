@@ -1842,7 +1842,7 @@ descr="Incredibly fast drone on Vast canyon track. Average speed over 400km/h, t
 	<challenge name="#C0C0C0Test#80C0FF 0#D0C080 prize" ver="1" difficulty="0" type="10"
 descr="Test Challenge 0, prize points">
 		<car names="HI|H1|R3|BV|V2" />
-		<pass avgPoints="10" />
+		<pass avgPoints="20" factor="5" />
 		<tracks>
 			<t name="TestC4-Ow"   passPoints="7" />
 		</tracks>
