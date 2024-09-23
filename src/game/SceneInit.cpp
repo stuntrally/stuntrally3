@@ -369,8 +369,8 @@ void App::LoadCleanUp()
 		//** temp, split screen disables refract
 		//  compositor goes bad, wont restore
 		if (pSet->game.local_players > 1 &&
-			pSet->g.water_refract > 0)
-		{	pSet->g.water_refract = 0;  gcom->ckWaterRefract.Upd();  }
+			pSet->g.water_refract)
+		{	pSet->g.water_refract = false;  gcom->ckWaterRefract.Upd();  }
 
 		SetupCompositor();  //+ ok
 	}

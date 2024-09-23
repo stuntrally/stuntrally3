@@ -175,9 +175,11 @@ void App::update( float dt )
 		{
 			updatePoses(dt);
 
+			if (!carModels.empty())
+			{
 			bool col = pSet->game.collect_num >= 0;
 			float sc = pSet->size_arrow/2.f;
-			if (pSet->check_arrow && !bRplPlay && !carModels.empty())
+			if (pSet->check_arrow && !bRplPlay)
 				for (int c = 0; c < carModels.size(); ++c)
 				if (!carModels[c]->isGhost())
 				{
@@ -189,7 +191,7 @@ void App::update( float dt )
 				}
 
 			//  cam info text
-			if (pSet->show_cam && !carModels.empty() && hud->txCamInfo)
+			if (pSet->show_cam && hud->txCamInfo)
 			{	FollowCamera* cam = carModels[0]->fCam;
 				if (cam)
 				{	bool vis = cam->updInfo(dt) && !isFocGui;
@@ -200,7 +202,7 @@ void App::update( float dt )
 
 			for (int i=0; i < 3; ++i)
 				hud->cup[i].UpdateCup(carModels[0], dt);
-		}
+		}	}
 
 		
 		//  📃 keys up/dn, for gui lists

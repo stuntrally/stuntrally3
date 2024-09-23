@@ -52,7 +52,8 @@ App::~App()
 	// gui->viewBox->destroy();
 	// delete gui->viewBox;
 
-	delete gui->popup;
+	if (gui)
+		delete gui->popup;
 	delete gcom;
 	delete gui;
 	delete scn;
