@@ -91,9 +91,7 @@ endif (CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
 set( EXECUTABLE_OUTPUT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}" )
 
 #  Set CXX compile flags
-if( MSVC )
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
-else()
+if( NOT MSVC )
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -Wno-comment -Wno-dangling-else -Wno-deprecated-declarations -Wno-parentheses")
 endif()
 
@@ -194,6 +192,7 @@ set( COMMON_SRC_DIRS
 #  game
 set( GAME_SRC_DIRS ${COMMON_SRC_DIRS} )
 list( APPEND GAME_SRC_DIRS ./src/game )
+list( APPEND GAME_SRC_DIRS ./src/game/data )
 #list( APPEND GAME_SRC_DIRS ./src/sound )
 #list( APPEND GAME_SRC_DIRS ./src/vdrift )
 list( APPEND GAME_SRC_DIRS ./src/oics )  # libs
