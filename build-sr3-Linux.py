@@ -18,9 +18,9 @@
 #  These could be changed by user.
 #-------------------------
 #  these could be changed by user
-#Config = ['Release']  # choose one (options below)
+Configs = ['Release']  # choose one (options below)
 #Configs = ['Debug']
-Configs = ['Release','Debug']  # both
+#Configs = ['Release','Debug']  # both
 
 sr3 = 'sr3'  # dir name for SR repos
 
