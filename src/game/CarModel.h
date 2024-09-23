@@ -44,8 +44,10 @@ public:
 	int numWheels = 4;
 	int numLights = 0;  // front
 
+	bool hasCam()     const {  return cType == CT_LOCAL || cType == CT_REPLAY;  }
 	bool isGhost()    const {  return cType >= CT_GHOST;  }
 	bool isGhostTrk() const {  return cType == CT_TRACK;  }
+	
 	void SetNumWheels(int n);
 	bool hasRpm()     const {  return vType == V_Car;  }
 	bool isHover()    const

@@ -3,6 +3,8 @@
 This section lists changes not yet released, but committed to repositories stuntrally3 and tracks3.  
 WIP means work in progress, unfinished, still being developed.
 
+## Version 3.2
+
 - Game
   - fixed Multiplayer on Windows, bug was present since SR 3.0
   - **Collection** - new game mode, in menu

@@ -280,7 +280,7 @@ void App::update( float dt )
 		{	
 			for (int i=0; i < carModels.size(); ++i)
 			{	const CarModel* cm = carModels[i];
-				if (!cm->isGhost())
+				if (cm->hasCam())
 				{
 					int id = cm->iIndex;
 					if (scn->pace[id])
