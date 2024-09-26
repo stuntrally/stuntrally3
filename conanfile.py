@@ -21,13 +21,13 @@ class StuntRally3(ConanFile):
         self.folders.generators = os.path.join(self.folders.build, "generators")
 
     def requirements(self):
-        self.requires("ogre3d-next/2024.01@anotherfoxguy/stable", force=True)
+        self.requires("ogre3d-next/2024.09@anotherfoxguy/stable", force=True)
         self.requires("mygui-next/2024.01@anotherfoxguy/stable")
 
         if not self.options.system_pkgs:
             self.requires("boost/1.83.0")
             self.requires("bullet3/3.25@anotherfoxguy/patched") 
-            self.requires("sdl/2.28.5")
+            self.requires("sdl/2.30.7")
             self.requires("ogg/1.3.5")
             self.requires("vorbis/1.3.7")
             self.requires("openal-soft/1.22.2@anotherfoxguy/patched")
