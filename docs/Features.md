@@ -16,6 +16,7 @@ _Todo:_ - means it's not present or not yet fully restored from old SR 2.x
     Easier - Drive to get higher score, if too low repeat a stage.
   - 🥇 Challenges - few tracks, quite difficult to pass, game already set up.  
     Challenging - Drive with no mistakes to win bronze, silver or gold prize.
+  - 💎 Collections - single track to roam freely, with placed gems to collect.  
 - 👥 More Players
   - 🪟 Split Screen - 2 to 6 players on 1 screen (requires a good GPU or reduced graphics options)
   - 🌎 Multiplayer - over internet or in local network, in-game chat. See Wiki, no game server, needs direct connect.
@@ -99,4 +100,4 @@ _Todo:_ - means it's not present or not yet fully restored from old SR 2.x
 - Many graphs (visualizations) of key simulation values
   - gearbox and torque curve, suspension, differentials etc
 - Tire functions (Pacejka's Magic Formula) editing _while_ driving
-- Tire grip cricles visualization
+- Tire grip circles visualization
