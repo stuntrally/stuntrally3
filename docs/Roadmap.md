@@ -6,12 +6,9 @@ More in [Tasks tracker](https://stuntrally.tuxfamily.org/mantis/view_all_bug_pag
 Marked: `crucial`, **Next or Big**, _Important_.
 
 
-### SR 3.2
+### SR 3.3
 
 new game **video**  
-gallery screens, website screens  
-
-### SR 3.3
 
 🌊**refract**, depth: pass projmatrix not **inverse**  
 fix refract underwater top  
@@ -28,12 +25,13 @@ wind anim shadow **caster** too, ed prv obj no wind-
 fix .car thrusters lights pos  
 **hide** flares with in car camera  
 
-cd SSAO, fog fade?, convert .compositor to C++  
+**SSAO** cd, fog fade?, convert `.compositor` to C++  
 
 💎Add **gems** to tracks, more types 3d  
 xml par continuous?, logic btn continue, hid collected gems on start?  
 
-*new* track(s) with **fields**, add walls  
+**New** tracks, with **fields**, add walls  
+
 hud new best time show, win particles-  
 
 

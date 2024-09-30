@@ -23,7 +23,7 @@ _Todo:_ - means it's not present or not yet fully restored from old SR 2.x
 
 ## Gameplay 🏁
 
-- 🏞️ 228 **Tracks**
+- 🏞️ 229 **Tracks**
   - in 41 **sceneries**, great variety: from nature based, to alien, space and surreal
   - over 11 hours to drive all, just once
 - **Stunt** elements: obstacles, jumps, loops, pipes or very twisted road
@@ -32,12 +32,13 @@ _Todo:_ - means it's not present or not yet fully restored from old SR 2.x
   &nbsp;
 - 🚗 33 **Vehicles**
   - 17 cars (Hyena or Fox are best for rally)
-  - few extreme with bigger wheels, or: 6 and 8 wheeled 🚌
-  - 2 motorbikes 🏍️, one 3 metal balls vehicle
-  - 2 racing hovercrafts
-  - 1 bouncy sphere 🔘
-  - antigravity hovering:  
-    3 spaceships 🚀, 2 drones🔹, 3 cars
+  - few extreme with bigger wheels
+  - 2 motorbikes 🏍️, 3 metal balls vehicle, fast 6 wheeled
+  - 1 slow old truck, 1 fast 8 wheeled bus 🚌
+  - 2 racing hovercrafts, with propeller, (go on fluids)
+  - 3 hovering spaceships 🚀 (*only* for flat tracks), (go on fluids)
+  - 1 bouncy sphere 🔘 (*only* for flat tracks)
+  - 3 antigravity fast hovering cars, 2 fast antigravity drones🔹 (go *inside* all fluids)
 - 💨 Boost - key to apply rocket boosters to speed up vehicle, works in air and underwater too
 - ⏪ Rewind - hold key to go back in time (after hit or mistake)
 - Simulation modes: Easy (beginner) and Normal
@@ -91,6 +92,14 @@ _Todo:_ - means it's not present or not yet fully restored from old SR 2.x
 - Console tab, listing track errors, warnings and very simple hints for quality when saving
 - _Old:_ docs page and video tutorials available [here](Editor.md)
 - No undo - using quick save and quick load
+
+## Tools
+
+Game and editor both have few different tools for in command line.  
+These tools can check tracks, warnings, challenges, convert track ghost etc.  
+For details, start game or editor in console,  
+with command line argument `?` or `help` to get their text info.  
+Or see under Args::Help() in sources for [game](../src/game/SceneInit.cpp) and [editor](../src/editor/SceneInit.cpp).
 
 ## Vehicle editing 🚗
 
