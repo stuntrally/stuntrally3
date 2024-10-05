@@ -59,7 +59,7 @@ _Todo:_ - means it's not present or not yet fully restored from old SR 2.x
   - loops (few types), jumps (with required speed, match by color) and on pipe changes
 - 🎗️ Racing line (Trail)
   - shows best way to drive, red colors for braking
-- 🌍 Minimap, can be zoomed and rotated, _Todo:_ terrain and border toggleable
+- 🌍 Minimap, can be zoomed and rotated, _Todo:_ terrain and border toggle
 - Driving aids
   - 🔝 arrow to next check point (HUD top)
   - next check point beam (on track)
@@ -78,7 +78,7 @@ _Todo:_ - means it's not present or not yet fully restored from old SR 2.x
 - PBS materials with normalmaps, roughness and fresnel
 - Terrain triplanar mapping
 - Reflections and fresnel (for Vehicles, water etc)
-- _ToDo:_ Refraction for water
+- Refraction for water
 
 ------------------------------------------------------------------------------
 

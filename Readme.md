@@ -12,8 +12,8 @@
 
 ### Main
 🌎[Stunt Rally Homepage](https://stuntrally.tuxfamily.org/) - Download links, track & vehicle browsers etc.  
-⚙️[Sources](https://github.com/stuntrally/stuntrally3/) - also for bugs & Issues, pull requests, etc.  
 📚[Documentation](https://github.com/stuntrally/stuntrally3/blob/main/docs/_menu.md) - inside docs/, Information on many pages  
+⚙️[Sources](https://github.com/stuntrally/stuntrally3/) - also for bugs & Issues, pull requests, etc.  
 
 ### Media
 🖼️[Screenshots](https://stuntrally.tuxfamily.org/gallery) - Galleries from all versions and development  
@@ -21,14 +21,13 @@
 💜[Donations](https://cryham.tuxfamily.org/donate/) - financial support
 
 ### Feedback
-💬[Discord](https://discord.gg/TywnXxAtR6) - chat, Community  
-🪧[Reddit](https://www.reddit.com/r/stuntrally/) - r/stuntrally/  
-[github discussions](https://github.com/stuntrally/stuntrally3/discussions)  
-Matrix (e.g. with [element app](https://element.io/download)) chat room: #stuntrally:matrix.org  
+💬[Discord](https://discord.gg/TywnXxAtR6) - chat, community, quick help, etc - follow #rules  
+🏛️[Forum](https://groups.f-hub.org/stunt-rally/) - discussions, tracks, content - [how to join](https://groups.f-hub.org/d/2ftpShKs/) info on top  
+New Issue, on [github](https://github.com/stuntrally/stuntrally3/issues) - needs account
 
-### Forum  
-🏛️[New Forum](https://groups.f-hub.org/stunt-rally/) - Discussions, Tracks, content, [how to join](https://groups.f-hub.org/d/2ftpShKs/) info on top.  
-📜[Old Forum](https://forum.freegamedev.net/viewforum.php?f=77) - archive  
+🪧[Reddit](https://www.reddit.com/r/stuntrally/)  
+Matrix (e.g. with [element app](https://element.io/download)) chat room: #stuntrally:matrix.org  
+📜[Old Forum](https://forum.freegamedev.net/viewforum.php?f=77) - old archive, SR 2.x  
 
 ------------------------------------------------------------------------------
 
