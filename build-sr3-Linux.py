@@ -15,9 +15,8 @@
 
 #-------------------------
 #  User params:
-#  These could be changed by user.
+#  These could be changed by user
 #-------------------------
-#  these could be changed by user
 Configs = ['Release']  # choose one (options below)
 #Configs = ['Debug']
 #Configs = ['Release','Debug']  # both

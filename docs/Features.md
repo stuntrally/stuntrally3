@@ -10,16 +10,19 @@ _Todo:_ - means it's not present or not yet fully restored from old SR 2.x
   - 🏁 Single Race
     - 👻 Ghost drive (orange) - chase your best time vehicle on track
     - Track's ghost (green) - best drive for track, a green ghost car ES, on all tracks
-    - 📽️ Replays - save your drive and watch it from other cameras later
+    - 📽️ Replays - to save your drive and watch it from other cameras later
   - Tutorials - few short and easy tracks for start, with various track elements
   - 🏆 Championships - usually long series of tracks.  
     Easier - Drive to get higher score, if too low repeat a stage.
   - 🥇 Challenges - few tracks, quite difficult to pass, game already set up.  
     Challenging - Drive with no mistakes to win bronze, silver or gold prize.
   - 💎 Collections - single track to roam freely, with placed gems to collect.  
+    Against time, collecting all quicker for better prize.
 - 👥 More Players
-  - 🪟 Split Screen - 2 to 6 players on 1 screen (requires a good GPU or reduced graphics options)
-  - 🌎 Multiplayer - over internet or in local network, in-game chat. See Wiki, no game server, needs direct connect.
+  - 🪟 Split Screen - 2 to 6 players on 1 screen.  
+  Requires a good GPU or reduced graphics options.
+  - 🌎 Multiplayer - over internet or in local network, with in-game chat.  
+  Info [here](Multiplayer.md), no game server, needs direct connect.
 
 ## Gameplay 🏁
 
@@ -90,7 +93,7 @@ _Todo:_ - means it's not present or not yet fully restored from old SR 2.x
   - Terrain generator with many parameters
 - In-editor **Help** page with all key shortcuts and mouse actions listed
 - Console tab, listing track errors, warnings and very simple hints for quality when saving
-- _Old:_ docs page and video tutorials available [here](Editor.md)
+- docs page and video tutorials available [here](Editor.md)
 - No undo - using quick save and quick load
 
 ## Tools

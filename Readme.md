@@ -34,7 +34,7 @@ Matrix (e.g. with [element app](https://element.io/download)) chat room: #stuntr
 
 ## 📄Description
 
-Stunt Rally is a 3D racing game, including Sci-Fi and own Track Editor.  
+Stunt Rally is a 3D racing game, including Sci-Fi elements and own Track Editor.  
 Works on GNU/Linux and Windows.  
 
 For cars the game has a **rally** style of driving and sliding, mostly on gravel and loose surfaces.  
@@ -52,7 +52,7 @@ now using [Ogre-Next](https://github.com/OGRECave/ogre-next) 3.0 for rendering a
 Stunt Rally 3.2 features 229 tracks in 40 sceneries and 33 vehicles.  
 Game modes include:
 * ⏱️Single Race (with your Ghost drive, track car guide), Replays,
-* 🏆Challenges, Championships, Tutorials, (series of tracks)
+* 🏆Challenges, Championships, Tutorials, (series of tracks), Collections
 * 👥Multiplayer (info [here](docs/multiplayer.md), no official server) and Split Screen, up to 6 players.  
 
 The Track Editor allows creating and modifying tracks.  
@@ -119,7 +119,7 @@ Then create a [new issue on github](https://github.com/stuntrally/stuntrally3/is
 or a topic on [New Forum](https://groups.f-hub.org/stunt-rally/) (if already joined, [how to](https://groups.f-hub.org/d/2ftpShKs/)).
 
 Other way is to use:
-[Discord](https://discord.gg/KXuCwhTE) (also for chat),
+[Discord](https://discord.gg/TywnXxAtR6) (also for chat),
 [Reddit](https://www.reddit.com/r/stuntrally/) or
 [github discussions](https://github.com/stuntrally/stuntrally3/discussions).  
 
@@ -139,7 +139,7 @@ Sources have emojis, [this file](/src/emojis.txt) has all, with quick components
 
 ## ⚖️License
 
-    Stunt Rally 3 - 3D racing game, with own Track Editor
+    Stunt Rally 3 - 3D racing game, with Sci-Fi elements and own Track Editor
                     based on Ogre-Next rendering and VDrift simulation
     Copyright (C) 2010-2024  Crystal Hammer and contributors
 

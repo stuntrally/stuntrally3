@@ -8,15 +8,22 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 ### SR 3.3
 
-new game **video**  
+new game **video**, editor videos  
+new **tracks**  
+
+fix ed fields rot, focus, telep offset  
+key obj random rot, yaw  
+
+**fix** H2,H1 going through big waters e.g. Islands,  
+and wheels jumping on big ice e.g. FreshBreeze
 
 🌊**refract**, depth: pass projmatrix not **inverse**  
 fix refract underwater top  
-*fix splitscreen* broken with refractions  
+*fix splitscreen* and fsaa broken with refractions  
 
 fix refract depth write, glass pipes not underwater  
 fix compositor / rqg: car glass not refracted, offset  
-more fluids at once, blink on MilkyWay  
+more fluids at once, blink on MilkyWay, add compositor depth copy  
 **add** params: refract clr, *depth* clr, emissive fluids?  
 
 🌪️**wind scale** params in json, for all trees, bushes, grass sway own-  

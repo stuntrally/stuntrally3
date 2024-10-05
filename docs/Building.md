@@ -29,7 +29,7 @@ Needed to build SR3 itself:
 
 First create a new folder `dev/` e.g. in your home dir (`mkdir dev`), and go into it (`cd dev/`).
 
-See remarks on top of [build-sr3-Linux.py](../build-sr3-Linux.py) file.
+See remarks on top of [build-sr3-Linux.py](../build-sr3-Linux.py) file (about 6.5 GB needed etc).
 
 Download just the [build-sr3-Linux.py](../build-sr3-Linux.py) file, and put it inside `dev/`.
 

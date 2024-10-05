@@ -6,28 +6,31 @@ This page contains information about the network multiplayer feature.
 ### Direct connect
 
 Networked multiplayer only works with Direct connect (all players need to specify IP).  
-Doesn't need to be only local network.
+Can be local network or internet.  
+If internet, all players need to have ports forwarded.  
 
-To play multiplayer you should enlist your friends to play with you.  
-All players need to have ports forwarded, and use Direct connect.
+There are no servers or game lists to get players, so to play  
+you probaly need to enlist your friends to play with you.  
 
 
 ### Quick guide
 
-  - You can host your own game by pressing the 'Create game' button
-    - Others can connect directly to an existing IP:port by pressing 'Direct connect'
-  - Press 'Ready' button in the game lobby tab and wait for others to become ready too
-  - The game will start when host presses Start button
+  - You can host your own game by pressing the **Create game** button
+    - Then others can connect directly to an existing IP:port by pressing **Direct connect**
+  - After connecting, you can use in-game chat for text messages
+  - Press **Ready** button in the game lobby tab and wait for others to become Ready too
+  - Now the game will start when host presses Start button
+  - Messages from chat, disconnect or winning will be shown during game at top
 
-  - It is possible for host to continue game on other track (or restart on current)
-    - When host presses New game (same button as Start) current game will end, peers will have shown menu
-    - Host can now change track (and game settings) and after all peers have pressed ready, game can start again
+  - It is possible for host to continue game on other track (or restart on current):
+    - When host presses **New game** (same button as Start) current game will end, peers will have shown menu
+    - Host can now change track (and game settings) and after all peers have pressed **Ready**, game can start again
 
  
 ### Master (games) server (unavailable)
 
 It's not working since years and likely won't be.  
-Unless someone can host it on an IP that is not changing or better has a named domain. In that case please post on our forum.  
+Unless someone can host it on an IP that is not changing or better has a named domain. If so, please contact us.  
 
 The list of available games will not be filled.  
 Hence the last tab Server in Multiplayer has that big red cross.  
@@ -61,16 +64,16 @@ Stunt Rally is way less popular than e.g. Xonotic. You can help spreading its po
    
 **Q:** How can I change my nickname?
 
-**A:** Go to the 'Settings' tab under the Multiplayer main tab.
+**A:** Go to the **Settings** tab under the Multiplayer main tab.
 
 ----
 
 ### Technical details
 
-SR networking is based on the peer-to-peer architecture, meaning all players are connected to each other and there is no separate game (simulating) server.
+SR networking is based on the peer-to-peer architecture, meaning all players are connected to each other and there is no separate server for game.
 
 The underlying protocol used is UDP, through ENet (networking library).  
-SR builds it's own layer on top of that, so using generic UDP sockets for communicating with SR or master server is not possible.
+SR builds its own layer on top of that, so using generic UDP sockets for communicating with SR or master server is not possible.
 
 ### Master (game) server
 

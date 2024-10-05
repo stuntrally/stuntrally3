@@ -6,20 +6,21 @@ This page describes how to properly report bugs etc. as well as self help tips.
 
 ### Where to report problems
 
-  * [Github Issues](https://github.com/stuntrally/stuntrally3/issues)
-  * or [New forum](https://groups.f-hub.org/stunt-rally/) if already invited.
-
+  * [Github Issues](https://github.com/stuntrally/stuntrally3/issues) (preferred, but needs github account)
+  * or [Discord](https://discord.gg/TywnXxAtR6), #general channel
+  * or [Forum](https://groups.f-hub.org/stunt-rally/) if already invited.
+  
 ### What we will ask from you
 
 So how about saving your time as well as ours and providing the answers before we get a chance to ask them? You might also find the cause by yourself.
 
   * **Do you have an integrated Intel graphics card (e.g. a non-gaming laptop)?**
     * There is your cause for the crash - Stunt Rally 3 needs a decent GPU, nothing we can do  
-    apart from recommending you to upgrade your hardware (or visiting a friend with better hardware, or borrowing it 😉
+    apart from recommending you to upgrade your hardware (or visiting a friend with better hardware, or borrowing it 😉)
   * **What operating system are you using?**
   * What version of Stunt Rally3?
   * From where did you install SR3?
-    * If you are not using the latest release version of SR3, we'll probably ask you to upgrade and test that.
+    * If you are *not* using the latest release version of SR3, we'll probably ask you to upgrade and test that.
     * If you aren't using our binaries, we will probably recommend trying them (unless you are already building from sources).
   * **When did the crash or bug occur?**
     * Did you get any graphics?
@@ -27,7 +28,7 @@ So how about saving your time as well as ours and providing the answers before w
     * After loading a track?
     * What triggered it?
     * Does it repeat?
-  * **Please post ogre.log file (or ogre_ed.log for editor)**
+  * **Please post Ogre.log file (or Ogre_ed.log for editor)**
     * Their location is given on the [Paths](Paths.md) page. Also in Game, bottom of Help tab.
     * Use attachments if on forum
   * **Please follow up**

@@ -107,14 +107,13 @@ The handbrake acts on rear wheels only and can also easily lock them to make a f
 
 **Why is the game not in my Linux distribution?**  
 
-Nowadays [flatpak](Install.md#flatpak) should cover all distributions. It isn't official, it is managed by contributor(s).  
-Long ago we had official binaries archive, we don't now.  
-For those who really want, I'd recommend [building](Building.md) from sources, but it's not an easy task.
+More info in [Install](Install.md). Our privided binaries should cover all distributions.  
+You can also [build](Building.md) from sources, on Linux it's a rather easy task.
 
 **Why is there no Mac OS X package?**  
 
 Nobody managed to make it. And then continued to update it. If you still want to play the game, I recommend trying it on Debian.  
-Apple is one of the worst companies ever, and their products are overpriced, meant to be garbage [see video](https://www.youtube.com/watch?v=AUaJ8pDlxi8) (and [wiki](https://en.wikipedia.org/wiki/Planned_obsolescence)).  
+Apple is one of the worst companies ever, and their products are overpriced, meant to be garbage, see [video](https://www.youtube.com/watch?v=AUaJ8pDlxi8) and [wiki](https://en.wikipedia.org/wiki/Planned_obsolescence).  
 I won't support it myself, instead will promote [Freedom](https://www.fsf.org/) that Linux OSes and [FOSS](https://www.gnu.org/philosophy/free-sw.html) give.  
 
 ----
@@ -125,7 +124,7 @@ I won't support it myself, instead will promote [Freedom](https://www.fsf.org/) 
 
 If it is a crash than it's obvious but if not make sure it is a bug. Observe if there is a pattern to have it happen, this will be useful in fixing it.  
 Read this wiki about [Troubleshooting](Troubleshooting.md). It tells how to report a bug and what is needed for it.  
-Basically by creating a new [Issue](https://github.com/stuntrally/stuntrally3/issues) on github, or on [Forum](https://groups.f-hub.org/stunt-rally/).
+Basically by creating a new [Issue](https://github.com/stuntrally/stuntrally3/issues) on github (preferred), on [Forum](https://groups.f-hub.org/stunt-rally/) or on [Discord](https://discord.gg/TywnXxAtR6).
 
 **How can I contribute to this project?**  
 
