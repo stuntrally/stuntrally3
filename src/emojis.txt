@@ -10,8 +10,8 @@ You can search in code by emoji for all that is related to it.
       trk   scn     ✨🔥 Particles                       🥛 Next chk beam                    📏 Wall bridge  🪜 suspension    🏍️ Motorbike  
  ⛰️ Terrain  ter       Emitters  emt   🌫️ Fog            🔝 Arrow           🚦 Pacenotes    🏛️ Column  col                    🚌 Bus        
  🏔️ Blendmap                           🌦️🌧️ Weather                         🎗️ Trail                         📈 engine        🚤 Hover      
-            Trees   📦🏢 Objects  obj      rain snow     🔨 Damage hit      ❌ wrong chk     ⭕ Pipe         🔴 brake         
- 🌳🪨 Veget-ation     caves buildings  🌪️🍃 wind         💨 Boost                           ➰➿ Loop                         
+            Trees   🛢️📦 Objects  obj      rain snow     🔨 Damage hit      ❌ wrong chk     ⭕ Pipe         🔴 brake         
+ 🌳🪨 Veget-ation   🏢 caves buildings 🌪️🍃 wind         💨 Boost                           ➰➿ Loop                         
  🪴 Bush 🍄shroom   🎆 Fields   fld                      ⏪ Rewind          🎨 paint                                           
  🌿 Grass  grs        accelerate lift  🪐🌌 Space                                                                              
                                        ⛈️🌋 Extreme                                                          

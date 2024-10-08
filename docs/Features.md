@@ -1,5 +1,4 @@
 _This page lists available features in Stunt Rally 3 game and editor._  
-_Todo:_ - means it's not present or not yet fully restored from old SR 2.x
 
 ## Game Modes
 
@@ -24,15 +23,20 @@ _Todo:_ - means it's not present or not yet fully restored from old SR 2.x
   - 🌎 Multiplayer - over internet or in local network, with in-game chat.  
   Info [here](Multiplayer.md), no game server, needs direct connect.
 
-## Gameplay 🏁
+## Content 🏞️
 
 - 🏞️ 229 **Tracks**
-  - in 41 **sceneries**, great variety: from nature based, to alien, space and surreal
+  - in 40 **sceneries**, great variety:
+    - Nature based:
+    🌳[Jungle](https://stuntrally.tuxfamily.org/tracks3?id=Jng13-Tropic), [JungleDark](https://stuntrally.tuxfamily.org/tracks3?id=Jng20-JungleMaze), [Moss](https://stuntrally.tuxfamily.org/tracks3?id=Mos6-TaraMosses),  
+    🌲[Forest](https://stuntrally.tuxfamily.org/tracks3?id=For3-Snail), [ForestYellow](https://stuntrally.tuxfamily.org/tracks3?id=For7-Blur), 🏔️[ForestMntn](https://stuntrally.tuxfamily.org/tracks3?id=For12-HighPeaks), [Finland](https://stuntrally.tuxfamily.org/tracks3?id=Fin3-TreeTops), [Mud](https://stuntrally.tuxfamily.org/tracks3?id=Mud3-Mudlake),  
+    🏜️[Desert](https://stuntrally.tuxfamily.org/tracks3?id=Des1-Dunes), [Australia](https://stuntrally.tuxfamily.org/tracks3?id=Aus5-TopTwist), [Canyon](https://stuntrally.tuxfamily.org/tracks3?id=Can2-CanyonRun), [Savanna](https://stuntrally.tuxfamily.org/tracks3?id=Sav4-Hills), [SavannaDry](https://stuntrally.tuxfamily.org/tracks3?id=Sav15-Scorpio),  
+    🌴[Greece](https://stuntrally.tuxfamily.org/tracks3?id=Grc2-Coast), [GreeceWhite](https://stuntrally.tuxfamily.org/tracks3?id=Grc8-SlopeCity), 🪨[GreeceRocky](https://stuntrally.tuxfamily.org/tracks3?id=Grc13-YeleyStunts), 🏝️[Islands](https://stuntrally.tuxfamily.org/tracks3?id=Isl19-Shocacosh), [IslandDark](https://stuntrally.tuxfamily.org/tracks3?id=Isl5-Shore),  
+    🌨️[Winter](https://stuntrally.tuxfamily.org/tracks3?id=Wnt15-SkiJump), [WinterWet](https://stuntrally.tuxfamily.org/tracks3?id=Wnt2-Wet), 🍁[Autumn](https://stuntrally.tuxfamily.org/tracks3?id=Atm1-Autumn), [Spring](https://stuntrally.tuxfamily.org/tracks3?id=Spr1-Rise),
+    - Extreme: 🌋[Volcanic](https://stuntrally.tuxfamily.org/tracks3?id=Vlc6-Crematoria), [VolcanicDark](https://stuntrally.tuxfamily.org/tracks3?id=Vlc9-Craters), 🪨[Stone](https://stuntrally.tuxfamily.org/tracks3?id=Stn2-UltraFrenzy), ☢️[Toxic](https://stuntrally.tuxfamily.org/tracks3?id=Tox1-Radioactive), [PostApo](https://stuntrally.tuxfamily.org/tracks3?id=Apo1-TarFields), 
+    - other Planets: 🪐[Unidentified](https://stuntrally.tuxfamily.org/tracks3?id=Uni4-Pipeline), 🔴[Mars](https://stuntrally.tuxfamily.org/tracks3?id=Mrs1-Mars), 🛸[Alien](https://stuntrally.tuxfamily.org/tracks3?id=Aln2-Freefall), 💎[CrystalMoon](https://stuntrally.tuxfamily.org/tracks3?id=Cry5-CrystalIslands), 🌌[Space](https://stuntrally.tuxfamily.org/tracks3?id=Spc2-SpaceMine), ⚫[BlackDesert](https://stuntrally.tuxfamily.org/tracks3?id=Blk1-Darkness)
+    - and Surreal places: 🕰️[Surreal](https://stuntrally.tuxfamily.org/tracks3?id=Sur1-Surreal), 🔮[SurrealSpace](https://stuntrally.tuxfamily.org/tracks3?id=Sur5-FreshBreeze), [Marble](https://stuntrally.tuxfamily.org/tracks3?id=Mar3-Plateaus), 🫧[Anomaly](https://stuntrally.tuxfamily.org/tracks3?id=Ano3-Oversize)
   - over 11 hours to drive all, just once
-- **Stunt** elements: obstacles, jumps, loops, pipes or very twisted road
-- 🌊 Drives through water or mud areas (safe, won't get stuck)
-- 📦 Dynamic objects on tracks (barrels, boxes, etc), can be hit  
-  &nbsp;
 - 🚗 33 **Vehicles**
   - 17 cars (Hyena or Fox are best for rally)
   - few extreme with bigger wheels
@@ -42,6 +46,18 @@ _Todo:_ - means it's not present or not yet fully restored from old SR 2.x
   - 3 hovering spaceships 🚀 (*only* for flat tracks), (go on fluids)
   - 1 bouncy sphere 🔘 (*only* for flat tracks)
   - 3 antigravity fast hovering cars, 2 fast antigravity drones🔹 (go *inside* all fluids)
+
+## Gameplay 🏁
+
+- **Stunt** and other elements:
+  - [obstacles](https://stuntrally.tuxfamily.org/tracks3?id=Can5-Obstacles) - to avoid on road or in pipes
+  - / \ [jumps](https://stuntrally.tuxfamily.org/tracks3?id=Des7-CrossJumps) - with shown required speed
+  - ➰ [loops](https://stuntrally.tuxfamily.org/tracks3?id=Sav3-Loops): straight, skewed, [side](https://stuntrally.tuxfamily.org/tracks3?id=Grc13-YeleyStunts), [barrel](https://stuntrally.tuxfamily.org/tracks3?id=Mos5-Factory), double, [unique](https://stuntrally.tuxfamily.org/tracks3?id=Spc3-HyperLoops), etc
+  - ⭕ [pipes](https://stuntrally.tuxfamily.org/tracks3?id=Sav6-PipeCrazy) (closed), [half](https://stuntrally.tuxfamily.org/tracks3?id=Grc6-Halfpipes) pipes (open), on pipe drives
+  - 🔀 very [twisted](https://stuntrally.tuxfamily.org/tracks3?id=Apo1-TarFields) bridges and highly [banked](https://stuntrally.tuxfamily.org/tracks3?id=Can2-CanyonRun) (up to 90°)
+  - 🌊 Drives through [water](https://stuntrally.tuxfamily.org/tracks3?id=Isl3-Islands) or [mud areas](https://stuntrally.tuxfamily.org/tracks3?id=Jng16-MudBath) (all are safe, won't get stuck)
+  - Dynamic objects on tracks (🛢️barrels, 📦boxes, etc), can be hit  
+  &nbsp;
 - 💨 Boost - key to apply rocket boosters to speed up vehicle, works in air and underwater too
 - ⏪ Rewind - hold key to go back in time (after hit or mistake)
 - Simulation modes: Easy (beginner) and Normal
@@ -51,6 +67,11 @@ _Todo:_ - means it's not present or not yet fully restored from old SR 2.x
 
 - 🎮 Game controllers support (gamepad, steering wheel, joystick etc.)
 - ⌨️ Input configuring (reassign keys, change sensitivity)
+
+## Localization
+
+Few languages fully available: 🇬🇧 🇩🇪 🇵🇱 🇫🇷 🇷🇺  
+or partly 🇮🇹 🇨🇿 🇪🇸 [translated](https://hosted.weblate.org/projects/stunt-rally-3/stunt-rally-3/#translations) with most main texts in game and editor.
 
 ## Gui and HUD ⏱️
 

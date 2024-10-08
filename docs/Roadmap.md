@@ -8,14 +8,37 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 ### SR 3.3
 
-new game **video**, editor videos  
-new **tracks**  
+#### New
 
-fix ed fields rot, focus, telep offset  
-key obj random rot, yaw  
+new game *video*, editor videos  
+
+New **tracks**, also with **fields**, add walls  
+
+new road particles  
+new **road** textures, detail mix, vert clr blend
+
+new *Stats* tab, completed: tracks, challs, colls, etc
+
+**SSAO** cd, fog fade?, convert `.compositor` to C++  
+
+**Sounds** cpp, engine, abient, object hit, info below
+
+💎Add **gems** to tracks, more types 3d  
+xml par continuous?, logic btn continue, hid collected gems on start?  
+
+hud new best time show, win particles-  
+
+#### Fix
+
+fix no tire trails  
+fix rivers wrong way  
+fix **ed** fields rot, focus, no cam ray cut, *telep offset*  
+**key** for obj random rot, yaw  
 
 **fix** H2,H1 going through big waters e.g. Islands,  
 and wheels jumping on big ice e.g. FreshBreeze
+
+#### Fix Ogre
 
 🌊**refract**, depth: pass projmatrix not **inverse**  
 fix refract underwater top  
@@ -31,15 +54,6 @@ wind anim shadow **caster** too, ed prv obj no wind-
 
 fix .car thrusters lights pos  
 **hide** flares with in car camera  
-
-**SSAO** cd, fog fade?, convert `.compositor` to C++  
-
-💎Add **gems** to tracks, more types 3d  
-xml par continuous?, logic btn continue, hid collected gems on start?  
-
-**New** tracks, with **fields**, add walls  
-
-hud new best time show, win particles-  
 
 
 ----
