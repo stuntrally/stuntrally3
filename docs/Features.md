@@ -26,6 +26,7 @@ _This page lists available features in Stunt Rally 3 game and editor._
 ## Content 🏞️
 
 - 🏞️ 229 **Tracks**
+  - over 11 hours needed to drive all just once
   - in 40 **sceneries**, great variety:
     - Nature based:
     🌳[Jungle](https://stuntrally.tuxfamily.org/tracks3?id=Jng13-Tropic), [JungleDark](https://stuntrally.tuxfamily.org/tracks3?id=Jng20-JungleMaze), [Moss](https://stuntrally.tuxfamily.org/tracks3?id=Mos6-TaraMosses),  
@@ -33,19 +34,18 @@ _This page lists available features in Stunt Rally 3 game and editor._
     🏜️[Desert](https://stuntrally.tuxfamily.org/tracks3?id=Des1-Dunes), [Australia](https://stuntrally.tuxfamily.org/tracks3?id=Aus5-TopTwist), [Canyon](https://stuntrally.tuxfamily.org/tracks3?id=Can2-CanyonRun), [Savanna](https://stuntrally.tuxfamily.org/tracks3?id=Sav4-Hills), [SavannaDry](https://stuntrally.tuxfamily.org/tracks3?id=Sav15-Scorpio),  
     🌴[Greece](https://stuntrally.tuxfamily.org/tracks3?id=Grc2-Coast), [GreeceWhite](https://stuntrally.tuxfamily.org/tracks3?id=Grc8-SlopeCity), 🪨[GreeceRocky](https://stuntrally.tuxfamily.org/tracks3?id=Grc13-YeleyStunts), 🏝️[Islands](https://stuntrally.tuxfamily.org/tracks3?id=Isl19-Shocacosh), [IslandDark](https://stuntrally.tuxfamily.org/tracks3?id=Isl5-Shore),  
     🌨️[Winter](https://stuntrally.tuxfamily.org/tracks3?id=Wnt15-SkiJump), [WinterWet](https://stuntrally.tuxfamily.org/tracks3?id=Wnt2-Wet), 🍁[Autumn](https://stuntrally.tuxfamily.org/tracks3?id=Atm1-Autumn), [AutumnDark](https://stuntrally.tuxfamily.org/tracks3?id=Atm4-Scary), [Spring](https://stuntrally.tuxfamily.org/tracks3?id=Spr1-Rise),
-    - Extreme: 🌋[Volcanic](https://stuntrally.tuxfamily.org/tracks3?id=Vlc6-Crematoria), [VolcanicDark](https://stuntrally.tuxfamily.org/tracks3?id=Vlc9-Craters), 🪨[Stone](https://stuntrally.tuxfamily.org/tracks3?id=Stn2-UltraFrenzy), ☢️[Toxic](https://stuntrally.tuxfamily.org/tracks3?id=Tox1-Radioactive), [PostApo](https://stuntrally.tuxfamily.org/tracks3?id=Apo1-TarFields), 
+    - Extreme: 🌋[Volcanic](https://stuntrally.tuxfamily.org/tracks3?id=Vlc2-Volcanic), [VolcanicDark](https://stuntrally.tuxfamily.org/tracks3?id=Vlc9-Craters), 🪨[Stone](https://stuntrally.tuxfamily.org/tracks3?id=Stn2-UltraFrenzy), ☢️[Toxic](https://stuntrally.tuxfamily.org/tracks3?id=Tox1-Radioactive), [PostApo](https://stuntrally.tuxfamily.org/tracks3?id=Apo1-TarFields), 
     - other Planets: 🪐[Unidentified](https://stuntrally.tuxfamily.org/tracks3?id=Uni4-Pipeline), 🔴[Mars](https://stuntrally.tuxfamily.org/tracks3?id=Mrs1-Mars), 🛸[Alien](https://stuntrally.tuxfamily.org/tracks3?id=Aln2-Freefall), 💎[CrystalMoon](https://stuntrally.tuxfamily.org/tracks3?id=Cry5-CrystalIslands), 🌌[Space](https://stuntrally.tuxfamily.org/tracks3?id=Spc2-SpaceMine), ⚫[BlackDesert](https://stuntrally.tuxfamily.org/tracks3?id=Blk1-Darkness)
     - and Surreal places: 🕰️[Surreal](https://stuntrally.tuxfamily.org/tracks3?id=Sur1-Surreal), 🔮[SurrealSpace](https://stuntrally.tuxfamily.org/tracks3?id=Sur5-FreshBreeze), [Marble](https://stuntrally.tuxfamily.org/tracks3?id=Mar3-Plateaus), 🫧[Anomaly](https://stuntrally.tuxfamily.org/tracks3?id=Ano3-Oversize)
-  - over 11 hours to drive all, just once
 - 🚗 33 **Vehicles**
-  - 17 cars (Hyena or Fox are best for rally)
-  - few extreme with bigger wheels
-  - 2 motorbikes 🏍️, 3 metal balls vehicle, fast 6 wheeled
-  - 1 slow old truck, 1 fast 8 wheeled bus 🚌
-  - 2 racing hovercrafts, with propeller, (go on fluids)
-  - 3 hovering spaceships 🚀 (*only* for flat tracks), (go on fluids)
-  - 1 bouncy sphere 🔘 (*only* for flat tracks)
-  - 3 antigravity fast hovering cars, 2 fast antigravity drones🔹 (go *inside* all fluids)
+  - 17 cars ([Hyena](https://stuntrally.tuxfamily.org/cars?id=HI), [Fox](https://stuntrally.tuxfamily.org/cars?id=ES) or [Jaguar](https://stuntrally.tuxfamily.org/cars?id=SX) are best for rally)
+  - few extreme with bigger wheels e.g. [Lizard](https://stuntrally.tuxfamily.org/cars?id=TU), [Bear](https://stuntrally.tuxfamily.org/cars?id=UV)  
+  - 2 [motorbikes](https://stuntrally.tuxfamily.org/cars?id=BE) 🏍️, [3 metal](https://stuntrally.tuxfamily.org/cars?id=3B) balls vehicle, fast [6 wheeled](https://stuntrally.tuxfamily.org/cars?id=U6)
+  - slow old [truck](https://stuntrally.tuxfamily.org/cars?id=OT), fast [8 wheeled](https://stuntrally.tuxfamily.org/cars?id=U8) bus 🚌
+  - 2 racing [hovercrafts](https://stuntrally.tuxfamily.org/cars?id=H2), with propeller, (go on fluids)
+  - 3 hovering [spaceships](https://stuntrally.tuxfamily.org/cars?id=V2) 🚀 (*only* for flat tracks), (go on fluids)
+  - bouncy [sphere](https://stuntrally.tuxfamily.org/cars?id=O) 🔘 (*only* for flat tracks)
+  - 3 antigravity fast [hovering cars](https://stuntrally.tuxfamily.org/cars?id=R3), 2 fast antigravity [drones](https://stuntrally.tuxfamily.org/cars?id=Q3)🔹 (go *inside* all fluids)
 
 ## Gameplay 🏁
 
