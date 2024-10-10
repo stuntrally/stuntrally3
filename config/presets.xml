@@ -1242,6 +1242,19 @@ common:  sc - "short scenery name" (name color)
 <v sc="Ano"  p="rock26grayBlue_anomaly"   r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 <v sc="Ano"  p="rock35red1edgy_anomaly"   r="1" al="1"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
 
+<v sc="Apo"  p="tree_dead_01"             r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Apo"  p="tree_dead_01_burned"      r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Apo"  p="tree_dead_01_dark"        r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Apo"  p="tree_dead_02"             r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Apo"  p="tree_dead_02_burned"      r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Apo"  p="tree_dead_02_dark"        r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Apo"  p="tree_dead_03"             r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Apo"  p="tree_dead_03_burned"      r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Apo"  p="tree_dead_03_dark"        r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Apo"  p="tree_dead_04"             r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Apo"  p="tree_dead_04_burned"      r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+<v sc="Apo"  p="tree_dead_04_dark"        r="1" al="0"  vd="600" vD="1000"  y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
+
 
 <v sc="Wnt"  p="---- icicles"           r="0" />
 <v sc="Wnt"  p="icicles_05"             r="-1" al="1"  vd="200" vD="400"   y="0.52" sa="0.80" sb="1.20"  wx="0" wy="0"  ab="26.93" rd="1" fd="0.0" />
