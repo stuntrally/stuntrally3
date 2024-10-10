@@ -3,6 +3,8 @@
 This section lists changes not yet released, but committed to repositories stuntrally3 and tracks3.  
 WIP means work in progress, unfinished, still being developed.
 
+- 1 New track
+
 ## Version 3.2
 
 - Game
