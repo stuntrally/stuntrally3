@@ -16,7 +16,7 @@
 ⚙️[Sources](https://github.com/stuntrally/stuntrally3/) - also for bugs & Issues, pull requests, etc.  
 
 ### Media
-🖼️[Screenshots](https://stuntrally.tuxfamily.org/gallery) - all Galleries from all versions and development, [latest big](https://photos.app.goo.gl/8j9f7HLDvx9QS9XN7) from SR 3.2  
+🖼️[Screenshots](https://stuntrally.tuxfamily.org/gallery) - all Galleries from all versions and development, [latest Big](https://photos.app.goo.gl/8j9f7HLDvx9QS9XN7) from SR 3.2  
 ▶️[Videos](https://www.youtube.com/user/TheCrystalHammer) - from gameplay and editor  
 💜[Donations](https://cryham.tuxfamily.org/donate/) - financial support, on [Ko-Fi](https://ko-fi.com/cryham)
 
@@ -37,14 +37,13 @@ Stunt Rally is a 3D racing game, including Sci-Fi elements and own Track Editor.
 Works on GNU/Linux and Windows.  
 
 For cars the game has a **rally** style of driving and sliding, mostly on gravel and loose surfaces.  
-with possible **stunt** elements (jumps, loops, pipes) and generated roads from 3D spline.  
-It includes many Sci-Fi vehicles and different planets🌌. Even surreal locations.  
-All [tracks](https://stuntrally.tuxfamily.org/tracks3) and [vehicles](https://stuntrally.tuxfamily.org/cars) can be browsed on website.
+It has possible **stunt** elements (like: jumps, loops, pipes). Roads are made from 3D spline.  
+It includes many Sci-Fi vehicles and different planets🌌, even surreal locations.  
+All [Tracks](https://stuntrally.tuxfamily.org/tracks3) and [Vehicles](https://stuntrally.tuxfamily.org/cars) can be browsed on website.
 
-SR 3.x is continuing old [Stunt Rally](https://github.com/stuntrally/stuntrally) 2.x,  
-now using [Ogre-Next](https://github.com/OGRECave/ogre-next) 3.0 for rendering and [VDrift](https://github.com/VDrift/vdrift) for simulation.
+SR 3.x continues old [SR](https://github.com/stuntrally/stuntrally) 2.x, now using [Ogre-Next](https://github.com/OGRECave/ogre-next) 3.0 for rendering and [VDrift](https://github.com/VDrift/vdrift) for simulation.
 
-**Documentation** is [inside docs/](docs/_menu.md) dir.
+**Documentation** is [inside docs/](docs/_menu.md) dir and has many pages with more information.
 
 ## 📊Features
 
