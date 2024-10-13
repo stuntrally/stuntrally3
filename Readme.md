@@ -16,9 +16,9 @@
 ⚙️[Sources](https://github.com/stuntrally/stuntrally3/) - also for bugs & Issues, pull requests, etc.  
 
 ### Media
-🖼️[Screenshots](https://stuntrally.tuxfamily.org/gallery) - Galleries from all versions and development  
+🖼️[Screenshots](https://stuntrally.tuxfamily.org/gallery) - all Galleries from all versions and development, [latest big](https://photos.app.goo.gl/8j9f7HLDvx9QS9XN7) from SR 3.2  
 ▶️[Videos](https://www.youtube.com/user/TheCrystalHammer) - from gameplay and editor  
-💜[Donations](https://cryham.tuxfamily.org/donate/) - financial support
+💜[Donations](https://cryham.tuxfamily.org/donate/) - financial support, on [Ko-Fi](https://ko-fi.com/cryham)
 
 ### Feedback
 💬[Discord](https://discord.gg/TywnXxAtR6) - chat, community, quick help, etc - follow #rules  

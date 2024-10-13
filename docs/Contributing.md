@@ -70,7 +70,7 @@ Or can edit vehicles ([new topic](https://groups.f-hub.org/d/adePgxzW/-cars-new-
 ------------------------
 # Donations
 
-Financial support is possible through [CryHam's page](https://cryham.tuxfamily.org/donate/).
+Financial support is possible through [CryHam's page](https://cryham.tuxfamily.org/donate/) or directly on [Ko-Fi](https://ko-fi.com/cryham).
 
 ------------------------
 .
