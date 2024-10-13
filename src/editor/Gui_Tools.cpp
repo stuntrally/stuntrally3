@@ -268,6 +268,7 @@ void CGui::btnTrackNew(WP)
 	//  paths
 	sc->baseTrk = gcom->sListTrack;
 	String from = gcom->PathListTrk(),  to = gcom->pathTrk[1] + name;
+	sc->secEdited = 0;
 
 	//  dirs
 	const String subdirs[3] = {"", "/objects", "/preview"};
