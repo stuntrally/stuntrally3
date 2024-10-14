@@ -1,8 +1,8 @@
 ### Statistics
 
-__This table shows all releases with their key counts and is meant for statistics purpose._
+This table shows all releases with their dates and key counts, mentiones only major changes and is meant for statistics purpose.
 
-Link to calculate [date difference](https://www.timeanddate.com/date/durationresult.html?d1=25&m1=4&y1=2024&d2=23&m2=9&y2=2024).
+Link to calculate [date difference](https://www.timeanddate.com/date/durationresult.html?d1=23&m1=9&y1=2024&d2=23&m2=1&y2=2025).
 
 | Legend                   |     |     | |
 |--------------------------|-----|-----|-|
@@ -17,7 +17,8 @@ Link to calculate [date difference](https://www.timeanddate.com/date/durationres
 
 |Version  | Date   |Days| MB  |g|e |Tracks |new  | ren |del| Scn  |New Sceneries  |Vehicles|new |New Vehicles| major Changes         |
 |---------|--------|----|-----|-|--|-------|-----|-----|---|------|---------------|--------|----|------------|-----------------------|
-|**3.2**  |23.09'24| 151|2552 |.|  |  229  |     |`129`|   |**40**|rem DesertMud  | **33** |    |            | `Vegetation`🌳🪴🍄, Collection💎   |
+|**3.3**  | -.--'25|?121|2556?|.|. |**231**|  +2 |     |   |  40  |               |   33   |    |            |                       |
+|**3.2**  |23.09'24| 151|2552 |.|  |  229  |     |`129`|   |**40**|rem DesertMud  |   33   |    |            | `Vegetation`🌳🪴🍄, Collection💎   |
 |**3.1**  |25.04'24| 127|2391 | |3 |**229**|  +1 | >50 |   |  41  |               | **33** |`+8`| R1,R2,R3, Q1,Q3, H1,H2, YG | `Skies`⛅🌌, `Hovers`🚤, RoR export |
 |**3.0.1**|20.12'23| 17 |2100?| |  |  228  |     |     |   |  41  |               |   25   |    |            |                       |
 | `3.0`   | 3.12'23| 388|2098 |1|--|**228**| +26 |**`153`**|-2 |  41  |           |   25   |    |            | **OgreNext,** PBS, paints, `Horizons`🏞️ |
