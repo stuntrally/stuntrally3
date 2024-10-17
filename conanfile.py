@@ -21,7 +21,7 @@ class StuntRally3(ConanFile):
         self.folders.generators = os.path.join(self.folders.build, "generators")
 
     def requirements(self):
-        self.requires("ogre3d-next/2024.09@anotherfoxguy/stable", force=True)
+        self.requires("ogre3d-next/3.0.0@anotherfoxguy/stable", force=True)
         self.requires("mygui-next/2024.01@anotherfoxguy/stable")
 
         if not self.options.system_pkgs:
