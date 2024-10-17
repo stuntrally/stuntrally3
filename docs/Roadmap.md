@@ -28,15 +28,17 @@ xml par continuous?, logic btn continue, hid collected gems on start?
 
 hud new best time show, win particles-  
 
+ed **key** for obj random rot, yaw  
+
 #### Fix
 
 fix no tire trails  
 fix rivers wrong way  
 fix **ed** fields rot, focus, no cam ray cut, *telep offset*  
-**key** for obj random rot, yaw  
 
 **fix** H2,H1 going through big waters e.g. Islands,  
-and wheels jumping on big ice e.g. FreshBreeze
+and wheels jumping on big ice e.g. FreshBreeze  
+cam tilt jumps on Shore?  
 
 #### Fix Ogre
 

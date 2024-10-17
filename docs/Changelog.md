@@ -1,11 +1,11 @@
-## What's coming next
+### What's coming next
 
 This section lists changes not yet released, but committed to repositories stuntrally3 and tracks3.  
 WIP means work in progress, unfinished, still being developed.
 
 - 2 New tracks
 
-## Version 3.2
+### Version 3.2 - 23.09.2024
 
 - Game
   - fixed Multiplayer on Windows, bug was present since SR 3.0
@@ -55,7 +55,7 @@ WIP means work in progress, unfinished, still being developed.
   - split all.material.json to many files
   - in data dir, added subdirs: models, textures etc
 
-## Version 3.1
+### Version 3.1 - 25.04.2024
 
 - Game
   - 8 New vehicles (Sci-Fi)
@@ -85,7 +85,7 @@ WIP means work in progress, unfinished, still being developed.
   - Added Japanese font and quick, basic translation (could be wrong)  
   - Linux binary release
 
-## Version 3.0 beta
+### Version 3.0 beta - 3.12.2023
 
 - Stunt Rally 3 is continuing last SR 2.x.  
 - Graphics - moved to Ogre-Next 3.0
