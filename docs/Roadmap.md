@@ -21,14 +21,18 @@ new *Stats* tab, completed: tracks, challs, colls, etc
 
 **SSAO** cd, fog fade?, convert `.compositor` to C++  
 
-**Sounds** cpp, engine, abient, object hit, info below
+**Sounds** cpp, new engine, abient, object hit, info below
 
 💎Add **gems** to tracks, more types 3d  
 xml par continuous?, logic btn continue, hid collected gems on start?  
 
+less poly, own collision *_p.mesh for veget/obj/bld, e.g. Cloud shrooms
+
 hud new best time show, win particles-  
 
 ed **key** for obj random rot, yaw  
+
+test, move to bullet3 ?
 
 #### Fix
 

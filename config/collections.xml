@@ -98,15 +98,7 @@ descr="Extreme Stunt Rally track collection. Highest locations for gems. Require
 		<track name="TestC12-SR" />
 	</collection>
 
-	<!-- tracks -->
-	<collection name="Dunes rocky tops" ver="1" difficulty="2" type="0" groups="1"
-descr="Easy collection with terrain cars for places on top of rocky hills in desert.">
-		<cartype names="Terrain" />
-		<sim boost="0" rewind="0" />
-		<pass time="2:35" next="10" />
-		<track name="Des1-Dunes" />
-	</collection>
-
+	<!-- sav -->
 	<collection name="#90E0E0Loops #FF8030in air" ver="1" difficulty="5" type="3" groups="1"
 descr="Tricky collection of gems in air below loops top, needs falling down from middle or other place. Moving camera view to side makes it much easier.">
 		<cartype names="Gravel" />
@@ -137,6 +129,15 @@ descr="Difficult to collect gems, located on top of or below all balloons. Using
 		<sim boost="3" damage="1" />
 		<pass time="33:00" next="360" />
 		<track name="Sav4-Hills" />
+	</collection>
+
+	<!-- desert -->
+	<collection name="Dunes rocky tops" ver="1" difficulty="2" type="0" groups="1"
+descr="Easy collection with terrain cars for places on top of rocky hills in desert.">
+		<cartype names="Terrain" />
+		<sim boost="0" rewind="0" />
+		<pass time="2:35" next="10" />
+		<track name="Des1-Dunes" />
 	</collection>
 
 	<collection name="SBridge terrain" ver="1" difficulty="3" type="1" groups="1"
@@ -170,6 +171,7 @@ descr="Desert gems floating in air, requiring to jump off from road or nearby te
 		<pass time="4:05" next="30" />
 		<track name="Des8-Technical" />
 	</collection>
+
 
 	<collection name="HighMadness river" ver="1" difficulty="3" type="1" groups="1"
 descr="Gems located in river, lake and on hills.">
@@ -251,6 +253,8 @@ descr="Hovercraft visit to small islands, buildings and edge locations on Shore 
 		<track name="Isl5-Shore" />
 	</collection>
 
+
+	<!-- sav Hole -->
 	<collection name="Hole around" ver="1" difficulty="4" type="1" groups="1"
 descr="Tricky gems located in round circles on the Hole track. No boost or rewind so need to gain momentum to reach top edge and not cause damage.">
 		<cartype names="Gravel|Asphalt" />
@@ -272,6 +276,7 @@ descr="Small set of gems on high pillars away from start of Hole track, on horiz
 		<track name="Sav13-Hole" />
 	</collection>
 
+
 	<collection name="HighPeaks lakes" ver="1" difficulty="3" type="0" groups="1"
 descr="High peaked mountain track. In each one of 4 lakes there are 2 gems to collect with hovercraft. Careful about damage on bridges.">
 		<cartype names="Hovercraft" />
@@ -288,6 +293,8 @@ descr="Canyon Hairpins track with gems on the very top of those hairpin hills.">
 		<track name="Can1-Hairpins" />
 	</collection>
 
+
+	<!-- Castle -->
 	<collection name="Castle #80C0F0towers" ver="1" difficulty="2" type="0" groups="1"
 descr="Forest Castle track with gems close to road and on top towers.">
 		<cartype names="Gravel|Asphalt" />
@@ -330,6 +337,7 @@ descr="Mostly on slippery icy hills. No problem with boost.">
 	</collection>
 
 	
+	<!-- GlassStairs -->
 	<collection name="GlassStairs #A040F0terrain" ver="1" difficulty="5" type="3" groups="1"
 descr="Very long exploration, for gems in various terrain places, some harder to get.">
 		<cartype names="Hover|Spaceship|Drone" />
@@ -366,6 +374,7 @@ descr="GlassStairs track, visiting places on buildings. Gems with not an easy wa
 		<track name="Uni7-GlassStairs" />
 	</collection>
 
+
 	<collection name="#B0A0D0Satellite visits" ver="1" difficulty="2" type="0" groups="1"
 descr="Easy collection, each satellite antenna (near road) has a gem, usually in front.">
 		<cartype names="Extreme" />
@@ -381,6 +390,24 @@ descr="Crystal gems in somewhat hidden places on islands.">
 		<sim boost="2" />
 		<pass time="8:50" next="30" />
 		<track name="Cry5-CrystalIslands" />
+	</collection>
+
+
+	<!-- Spc4-Crossing -->
+	<collection name="Space Station gather" ver="1" difficulty="3" type="3" groups="1"
+descr="Gathering crystals around the Space Station platform.">
+		<cartype names="Gravel|Asphalt|Hover|Spaceship" />
+		<sim boost="2" />
+		<pass time="3:33" next="30" />
+		<track name="Spc4-Crossing" />
+	</collection>
+
+	<collection name="Space Station maintenance" ver="1" difficulty="4" type="3" groups="2"
+descr="Crystals located in buildings in need of maintenance or around them.">
+		<cartype names="Gravel|Asphalt|Hover|Spaceship" />
+		<sim boost="2" />
+		<pass time="4:15" next="30" />
+		<track name="Spc4-Crossing" />
 	</collection>
 
 
