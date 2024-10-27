@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-14 12:04+0200\n"
+"POT-Creation-Date: 2024-10-27 19:34+0100\n"
 "PO-Revision-Date: 2023-11-11 10:05+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/stunt-rally-3/"
@@ -102,7 +102,7 @@ msgstr "Jeden závod"
 #. MAIN  Menu 
 #: data/gui/Game.layout:1929 ..SingleRace.Tab data/gui/Game_Main.layout:377
 #: ..NewGame-GameTypes.Button data/gui/Game_Options.layout:401
-#: ..Options.Input.Shortcuts.Text data/gui/Game_Utils.layout:20 ..Window :52
+#: ..Options.Input.Shortcuts.Text data/gui/Game_Utils.layout:20 ..Window :54
 #: src/game/Championships.cpp:232:379:401 src/game/Gui_Games.cpp:96
 #: src/game/Gui_Util.cpp:184
 msgctxt "Championship"
@@ -121,7 +121,7 @@ msgstr "Výučba"
 #. MAIN  Menu 
 #: data/gui/Game_Main.layout:396 ..NewGame-GameTypes.Button
 #: data/gui/Game_Options.layout:404 ..Options.Input.Shortcuts.Text
-#: data/gui/Game_Utils.layout:96 ..Window :128
+#: data/gui/Game_Utils.layout:101 ..Window :135
 #: src/game/Challenges.cpp:382:486:607 src/game/Gui_Games.cpp:95
 #: src/game/Gui_Util.cpp:180
 msgctxt "Challenge"
@@ -164,8 +164,8 @@ msgstr "Ukončiť"
 #: :531..HowToPlay.Button data/gui/Game.layout:13 ..SingleRace.Tab
 #: data/gui/Game_Main.layout:274 ..NewGame-Difficulty.Button
 #: :470..NewGame-GameTypes.Button data/gui/Game_Options.layout:13
-#: data/gui/Game_Replay.layout:13 ..Replays.Tab data/gui/Game_Utils.layout:40
-#: ..Championship.Button :116..Challenge.Button :185..Multiplayer.Button
+#: data/gui/Game_Replay.layout:13 ..Replays.Tab data/gui/Game_Utils.layout:42
+#: ..Championship.Button :123..Challenge.Button :197..Multiplayer.Button
 #: data/gui/MaterialEditor.layout:53 ..MaterialEditor.Tab
 msgctxt "BackMenu"
 msgid "Back"
@@ -314,7 +314,7 @@ msgstr ""
 
 #. MAIN  Championship  buttons 
 #: data/gui/Game.layout:2088 ..SingleRace.Championship.Button :2099:2110:2121
-#: data/gui/Game_Utils.layout:43 ..Championship.Button :119..Challenge.Button
+#: data/gui/Game_Utils.layout:45 ..Championship.Button :126..Challenge.Button
 #: src/game/Championships.cpp:178:435 src/game/Challenges.cpp:544:658
 #: src/game/Collections.cpp:260
 msgctxt "Start"
@@ -338,7 +338,7 @@ msgstr "Reštartovať"
 #. MAIN  Championship  buttons 
 #: data/gui/Common.layout:47 ..Track-Filter.Button
 #: data/gui/Game_Help.layout:399 ..Welcometo.Button
-#: data/gui/Game_Utils.layout:86 ..Championship.Button :167..Challenge.Button
+#: data/gui/Game_Utils.layout:91 ..Championship.Button :179..Challenge.Button
 msgctxt "Close"
 msgid "Close"
 msgstr "Zatvoriť"
@@ -379,7 +379,7 @@ msgstr ""
 #. MAIN  Game  Modes 
 #: data/gui/Game.layout:1730 ..SingleRace.Tab data/gui/Game_Main.layout:340
 #: ..NewGame-GameTypes.Button data/gui/Game_Options.layout:408
-#: ..Options.Input.Shortcuts.Text data/gui/Game_Utils.layout:177 ..Window
+#: ..Options.Input.Shortcuts.Text data/gui/Game_Utils.layout:189 ..Window
 #: src/game/Gui_Replay.cpp:166 src/game/Gui_Util.cpp:167
 msgctxt "Multiplayer"
 msgid "Multiplayer"
@@ -689,7 +689,7 @@ msgstr ""
 #: src/game/Gui_Init.cpp:453 src/game/SceneInit.cpp:243
 #: src/game/Gui_Replay.cpp:75:77:147 src/game/Gui_Network.cpp:124
 #: src/game/Collections.cpp:138:213 src/game/Gui_InitGames.cpp:93:109
-#: src/game/ChampChall.cpp:239 src/editor/Gui_Tools.cpp:32:39:263:307
+#: src/game/ChampChall.cpp:239 src/editor/Gui_Tools.cpp:32:39:263:308
 #: src/editor/SceneInit.cpp:506
 msgctxt "Track"
 msgid "Track"
@@ -1982,6 +1982,11 @@ msgctxt "SC_Anomaly"
 msgid "Anomaly"
 msgstr ""
 
+#. Scenery names 
+msgctxt "SC_PostApo"
+msgid "PostApo"
+msgstr ""
+
 #. Vehicle Paint names 
 #: data/gui/Editor.layout:586 ..Editor.Terrain.Light.Text
 #: data/gui/Editor_Options.layout:1199 ..Options.Settings.Tweak.Text
@@ -2388,7 +2393,7 @@ msgstr ""
 
 #. Replay 
 #: src/game/Gui_Replay.cpp:121:312:321 src/game/Gui_TweakSim.cpp:513
-#: src/editor/Gui_Tools.cpp:263:307
+#: src/editor/Gui_Tools.cpp:263:308
 msgctxt "AlreadyExists"
 msgid "Already exists"
 msgstr ""
@@ -4534,7 +4539,7 @@ msgstr ""
 #. Editor  Main  Track 
 #: data/gui/Editor_Track.layout:433 ..Track.Track.Button
 #: data/gui/Game_Replay.layout:59 ..Replays.Replay.Button
-#: src/game/Gui_Replay.cpp:312:321 src/editor/Gui_Tools.cpp:307
+#: src/game/Gui_Replay.cpp:312:321 src/editor/Gui_Tools.cpp:308
 msgctxt "Rename"
 msgid "Rename"
 msgstr "Premenovať"
@@ -4552,7 +4557,7 @@ msgid "Delete"
 msgstr "Vymazať"
 
 #. Editor  Track  message 
-#: src/editor/Gui_Tools.cpp:327
+#: src/editor/Gui_Tools.cpp:328
 msgctxt "DeleteTrack"
 msgid "Delete track ?"
 msgstr ""
@@ -6019,7 +6024,7 @@ msgstr ""
 #. Editor Warnings 
 #: data/gui/Editor_Help.layout:244 ..Help.Input/help.Shortcuts.Text
 #: data/gui/Editor_Track.layout:643 ..Track.Tab :706..Track.Export.Tab
-#: src/editor/Warnings.cpp:441
+#: src/editor/Warnings.cpp:445
 msgctxt "Warnings"
 msgid "Warnings"
 msgstr "Varovania"
@@ -7296,7 +7301,7 @@ msgid ""
 msgstr ""
 
 #. Championship  end 
-#: data/gui/Game_Utils.layout:61 ..Championship.Text :146..Challenge.Text
+#: data/gui/Game_Utils.layout:63 ..Championship.Text :154..Challenge.Text
 #: src/game/Challenges.cpp:464
 msgctxt "ChampEndCongrats"
 msgid "Congratulations !"
@@ -7309,14 +7314,14 @@ msgid "You have finished this tutorial."
 msgstr ""
 
 #. Championship  end 
-#: data/gui/Game_Utils.layout:68 ..Championship.Text
+#: data/gui/Game_Utils.layout:71 ..Championship.Text
 #: src/game/Championships.cpp:233
 msgctxt "ChampEndFinished"
 msgid "You have finished this championship."
 msgstr ""
 
 #. Championship  end 
-#: data/gui/Game_Utils.layout:153 ..Challenge.Text src/game/Challenges.cpp:465
+#: data/gui/Game_Utils.layout:162 ..Challenge.Text src/game/Challenges.cpp:465
 msgctxt "ChallEndFinished"
 msgid "You have passed this challenge."
 msgstr ""
