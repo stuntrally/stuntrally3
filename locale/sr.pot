@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-14 12:04+0200\n"
+"POT-Creation-Date: 2024-10-27 19:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -116,7 +116,7 @@ msgstr ""
 #: ..Options.Input.Shortcuts.Text
 #: data/gui/Game_Utils.layout:20
 #: ..Window
-#: :52
+#: :54
 #: src/game/Championships.cpp:232:379:401
 #: src/game/Gui_Games.cpp:96
 #: src/game/Gui_Util.cpp:184
@@ -141,9 +141,9 @@ msgstr ""
 #: ..NewGame-GameTypes.Button
 #: data/gui/Game_Options.layout:404
 #: ..Options.Input.Shortcuts.Text
-#: data/gui/Game_Utils.layout:96
+#: data/gui/Game_Utils.layout:101
 #: ..Window
-#: :128
+#: :135
 #: src/game/Challenges.cpp:382:486:607
 #: src/game/Gui_Games.cpp:95
 #: src/game/Gui_Util.cpp:180
@@ -211,10 +211,10 @@ msgstr ""
 #: ..Options.Tab
 #: data/gui/Game_Replay.layout:13
 #: ..Replays.Tab
-#: data/gui/Game_Utils.layout:40
+#: data/gui/Game_Utils.layout:42
 #: ..Championship.Button
-#: :116..Challenge.Button
-#: :185..Multiplayer.Button
+#: :123..Challenge.Button
+#: :197..Multiplayer.Button
 #: data/gui/MaterialEditor.layout:53
 #: ..MaterialEditor.Tab
 msgctxt "BackMenu"
@@ -394,9 +394,9 @@ msgstr ""
 #: data/gui/Game.layout:2088
 #: ..SingleRace.Championship.Button
 #: :2099:2110:2121
-#: data/gui/Game_Utils.layout:43
+#: data/gui/Game_Utils.layout:45
 #: ..Championship.Button
-#: :119..Challenge.Button
+#: :126..Challenge.Button
 #: src/game/Championships.cpp:178:435
 #: src/game/Challenges.cpp:544:658
 #: src/game/Collections.cpp:260
@@ -425,9 +425,9 @@ msgstr ""
 #: ..Track-Filter.Button
 #: data/gui/Game_Help.layout:399
 #: ..Welcometo.Button
-#: data/gui/Game_Utils.layout:86
+#: data/gui/Game_Utils.layout:91
 #: ..Championship.Button
-#: :167..Challenge.Button
+#: :179..Challenge.Button
 msgctxt "Close"
 msgid "Close"
 msgstr ""
@@ -478,7 +478,7 @@ msgstr ""
 #: ..NewGame-GameTypes.Button
 #: data/gui/Game_Options.layout:408
 #: ..Options.Input.Shortcuts.Text
-#: data/gui/Game_Utils.layout:177
+#: data/gui/Game_Utils.layout:189
 #: ..Window
 #: src/game/Gui_Replay.cpp:166
 #: src/game/Gui_Util.cpp:167
@@ -872,7 +872,7 @@ msgstr ""
 #: src/game/Collections.cpp:138:213
 #: src/game/Gui_InitGames.cpp:93:109
 #: src/game/ChampChall.cpp:239
-#: src/editor/Gui_Tools.cpp:32:39:263:307
+#: src/editor/Gui_Tools.cpp:32:39:263:308
 #: src/editor/SceneInit.cpp:506
 msgctxt "Track"
 msgid "Track"
@@ -2329,6 +2329,11 @@ msgctxt "SC_Anomaly"
 msgid "Anomaly"
 msgstr ""
 
+#. Scenery names 
+msgctxt "SC_PostApo"
+msgid "PostApo"
+msgstr ""
+
 #. Vehicle Paint names 
 #: data/gui/Editor.layout:586
 #: ..Editor.Terrain.Light.Text
@@ -2808,7 +2813,7 @@ msgstr ""
 #. Replay 
 #: src/game/Gui_Replay.cpp:121:312:321
 #: src/game/Gui_TweakSim.cpp:513
-#: src/editor/Gui_Tools.cpp:263:307
+#: src/editor/Gui_Tools.cpp:263:308
 msgctxt "AlreadyExists"
 msgid "Already exists"
 msgstr ""
@@ -5321,7 +5326,7 @@ msgstr ""
 #: data/gui/Game_Replay.layout:59
 #: ..Replays.Replay.Button
 #: src/game/Gui_Replay.cpp:312:321
-#: src/editor/Gui_Tools.cpp:307
+#: src/editor/Gui_Tools.cpp:308
 msgctxt "Rename"
 msgid "Rename"
 msgstr ""
@@ -5349,7 +5354,7 @@ msgid "Delete"
 msgstr ""
 
 #. Editor  Track  message 
-#: src/editor/Gui_Tools.cpp:327
+#: src/editor/Gui_Tools.cpp:328
 msgctxt "DeleteTrack"
 msgid "Delete track ?"
 msgstr ""
@@ -7158,7 +7163,7 @@ msgstr ""
 #: data/gui/Editor_Track.layout:643
 #: ..Track.Tab
 #: :706..Track.Export.Tab
-#: src/editor/Warnings.cpp:441
+#: src/editor/Warnings.cpp:445
 msgctxt "Warnings"
 msgid "Warnings"
 msgstr ""
@@ -8656,9 +8661,9 @@ msgid "Quality rating. Higher values mean: well made, playable, good looking and
 msgstr ""
 
 #. Championship  end 
-#: data/gui/Game_Utils.layout:61
+#: data/gui/Game_Utils.layout:63
 #: ..Championship.Text
-#: :146..Challenge.Text
+#: :154..Challenge.Text
 #: src/game/Challenges.cpp:464
 msgctxt "ChampEndCongrats"
 msgid "Congratulations !"
@@ -8671,7 +8676,7 @@ msgid "You have finished this tutorial."
 msgstr ""
 
 #. Championship  end 
-#: data/gui/Game_Utils.layout:68
+#: data/gui/Game_Utils.layout:71
 #: ..Championship.Text
 #: src/game/Championships.cpp:233
 msgctxt "ChampEndFinished"
@@ -8679,7 +8684,7 @@ msgid "You have finished this championship."
 msgstr ""
 
 #. Championship  end 
-#: data/gui/Game_Utils.layout:153
+#: data/gui/Game_Utils.layout:162
 #: ..Challenge.Text
 #: src/game/Challenges.cpp:465
 msgctxt "ChallEndFinished"

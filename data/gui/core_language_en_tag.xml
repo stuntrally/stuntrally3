@@ -439,6 +439,7 @@
 	<Tag name="SC_Marble">Marble</Tag>
 	<Tag name="SC_Spring">Spring</Tag>
 	<Tag name="SC_Anomaly">Anomaly</Tag>
+	<Tag name="SC_PostApo">PostApo</Tag>
 
 	<!--  Vehicle Paint names  -->
 	<Tag name="P_Red">Red</Tag>
