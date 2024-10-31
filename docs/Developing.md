@@ -19,11 +19,11 @@ Lastly there are plenty of `todo:` or `fixme` places marked in sources.
 
 Recommended all in one tool, having e.g.: go to definition, find references, debugging etc.
 ### [Qt Creator](https://www.qt.io/download)
-Easier to set up first, CMake is integrated. Fast, but less options.
+Easier to set up first, CMake is integrated. Works fast, but has less options.
 
 ### [VSCodium](https://github.com/VSCodium/vscodium/releases)
 Used by CryHam, needs a moment to set up frist. More info on [my C++ guide](https://cryham.tuxfamily.org/cpp-guide/#VSCodium).  
-Search in all files works super fast. Many extensions available.  
+Search in all files works super fast. Has lots of extensions available.  
 
 Extensions needed at least: 
 - clangd by llvm-vs-code-extensions
@@ -38,19 +38,20 @@ in `launch.json` configurations (for binaries) are set up, to run or debug.
 
 ## 🛠️ Debugging Tools
 
-Advanced, extra, external tools, should be used when testing or developing new (bigger) things in game or editor:
-- [Renderdoc](https://renderdoc.org/) - For debugging GPU, tracking rendered frame, its draw calls, shaders, textures etc.  
+**Advanced**, extra, external tools, should be used when testing or developing new (bigger) things in game or editor:
+- [Renderdoc](https://renderdoc.org/) - For debugging **GPU render**, tracking rendered frame, its draw calls, shaders, textures etc.  
 [documentation](https://renderdoc.org/docs/index.html), [forum post](https://forums.ogre3d.org/viewtopic.php?p=554959#p554959) with quick help on using it, [video tutorials](https://www.youtube.com/results?search_query=tutorial+%22renderdoc%22).
-- [Valgrind](https://valgrind.org/) - For debugging CPU, memory leaks etc.  
+- [Valgrind](https://valgrind.org/) - For debugging CPU, memory **leaks** etc.  
 To use run e.g. `valgrind --leak-check=full ./sr-editor3`, at end it will list details about leaks.
-- [ASAN](https://clang.llvm.org/docs/AddressSanitizer.html) - close purpose to above
-- Profiler. E.g.: Intel VTune, AMD uProf, Google Orbit, KDAB/hotspot. Any of them will do.  
+- leaks, thread **sanitizer** for gcc or clang [video](https://www.youtube.com/watch?v=ZJKBwQ71LN4&list=PLvv0ScY6vfd_ocTP2ZLicgqKnvq50OCXM&index=14), or [ASAN](https://clang.llvm.org/docs/AddressSanitizer.html).
+- **Profiler**. E.g.: Intel VTune, AMD uProf, Google Orbit, KDAB/hotspot. Any of them will do.  
 For measuring performance, CPU time spent in methods from classes in code.  
 Used [KDAB/hotspot](https://github.com/KDAB/hotspot) on Linux, quick tutorial [video](https://www.youtube.com/watch?v=6ogEkQ-vKt4), one [longer](https://www.youtube.com/watch?v=HOR4LiS4uMI). Overview of profiling [tools](https://www.youtube.com/watch?v=GL0GIdj6k2Q), Heaptrack [video](https://www.youtube.com/watch?v=OXqqVSdrSAw).
 
-WIP Using Vulkan, it has better support for debugging tools, has more debug asserts etc, which <del>is</del> would be good for finding errors.  
+WIP Using **Vulkan**, it has better support for debugging tools, has more debug asserts etc, which <del>is</del> / *would be* good for finding errors.  
 Mentioned in [Post1](https://forums.ogre3d.org/viewtopic.php?p=553813#p553813), [Post2](https://forums.ogre3d.org/viewtopic.php?p=554446#p554446).  
-It starts longer though, shader compilation is much slower. MyGui **doesn't** work with Vulkan.
+It starts longer though, shader compilation is much slower.  
+MyGui **doesn't** work with Vulkan (on Linux). On Windows seems working.
 
 --------
 
@@ -58,10 +59,10 @@ It starts longer though, shader compilation is much slower. MyGui **doesn't** wo
 
 Ogre-Next is the engine used for rendering, managing 3D scene, also loading resources, logging to `.log` files etc.
 
-- [Manual](https://ogrecave.github.io/ogre-next/api/latest/manual.html) - need to read it when beginning.
-- [version comparison](https://www.ogre3d.org/about/what-version-to-choose) of Ogre and Ogre-Next.
+- [Manual](https://ogrecave.github.io/ogre-next/api/latest/manual.html) - recommended reading when beginning.
 - [Compositor](https://ogrecave.github.io/ogre-next/api/latest/compositor.html) - for effects, RTTs, reflections, etc.
-- [Terrain](https://ogrecave.github.io/ogre-next/api/latest/_terra_system.html) - details of new Terra system
+- [Terrain](https://ogrecave.github.io/ogre-next/api/latest/_terra_system.html) - details of new Terra system.
+- [version comparison](https://www.ogre3d.org/about/what-version-to-choose) of Ogre and Ogre-Next - just for info.
 
 ----
 ## HLMS, materials, shaders
@@ -81,7 +82,7 @@ Main files in `data/Hlms/Terra/Any`.
 Main files in `data/Hlms/Pbs/Any/Main`.  
 I'm writing **water**/fluids also inside PBS, don't want to split.
 - Unlit (no lighting). We should only use this for **Gui**.  
-**Particles** must be at least: colored by sun diffuse, darker by shadows, also by terrain.  
+_ToDo:_ **Particles** must be at least: colored by sun diffuse, darker by shadows, also by terrain.  
 Small files in `data/Hlms/Unlit/Any`.
 
 Shader code in `.any` files are preferred, universal and these get translated to `.glsl` or `.hlsl` at end.
@@ -143,17 +144,18 @@ by searching for an emoji, e.g. 💨 for game boost, ⛰️ for all terrain stuf
 
 SR3 code is in `src/` its subdirs are:
 - [lib] [btOgre2](https://github.com/Ybalrid/BtOgre2) - for visualisation of bullet debug lines in Ogre-Next (called Ogre 2.1 before)
-- common - files for both editor and game. Mainly for common Gui, scene (map / track) elements.  
+- **common** - files for both editor and game. Mainly for common Gui, scene (map / track) elements.  
 Has also some MyGui classes a bit extended: `MultiList2.*, Slider*.*, Gui_Popup.*` and `GraphView.*` for game Graphs (Tweak F9).
 - common/data - has all data structures (mostly `.xml` config files, list above).
-- editor - purely editor sources
-- game - purely game sources
-- network - game multiplayer code, info in `DesignDoc.txt`. Also `master-server/`, small program for server game list (not used).
-- OgreCommon - [Ogre-Next] base application classes - slightly changed.
+- **editor** - purely editor sources
+- **game** - purely game sources
+- network - game multiplayer code, info in [DesignDoc.txt](../src/network/DesignDoc.txt). Also `master-server/`, small program for server game list (not used).
+- OgreCommon - [Ogre-Next](https://github.com/OGRECave/ogre-next/) base application classes - slightly changed.
 - [lib] [oics](https://sourceforge.net/projects/oics/) - for input configurations, bindings and analog key inputs emulation.
-- Terra - terrain and other components, from [Ogre-Next] - quite modified (more info below).
-- sound - sound engine, based on [RoR]'s, using openal-soft
-- vdrift - SR simulation (based on old [VDrift] from about 2010) with a lot of changes and custom code,  
+- road - code for unique SR roads, rivers, walls, pipes and transitions, with LODs.
+- Terra - terrain and other components, from Ogre-Next - quite modified (more info below).
+- sound - sound engine, based on [RoR](https://github.com/RigsOfRods/rigs-of-rods/tree/master/source/main/audio)'s, using openal-soft
+- vdrift - SR simulation (based on old [VDrift](https://github.com/VDrift) from about 2010) with a lot of changes and custom code,  
 Also has simulation for spaceships, sphere etc, and for `Buoyancy.*`.
 
 
