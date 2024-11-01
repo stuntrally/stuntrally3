@@ -5,17 +5,17 @@
 
 compositor_node RefractionsRenderingNode
 {
-	// rtt01 & rtt_final MUST share the same depth buffer.
+	// rtt_first & rtt_final MUST share the same depth buffer.
 	// Depth pools already take care of that. But just to be sure, we make it explicit
-	texture depthBuffer	target_width target_height PFG_D32_FLOAT msaa_auto
-	texture rtt01		target_width target_height target_format msaa_auto
+	texture depthBuffer  target_width target_height PFG_D32_FLOAT msaa_auto
+	texture rtt_first    target_width target_height target_format msaa_auto
 
-	rtv rtt01
+	rtv rtt_first
 	{
 		depth_stencil	depthBuffer
 	}
 
-	target rtt01
+	target rtt_first
 	{
 		// Pass with opaque objects (and possibly regular transparents)
 		pass render_scene
@@ -42,7 +42,7 @@ compositor_node RefractionsRenderingNode
 		}
 	}
 
-	out 0 rtt01
+	out 0 rtt_first
 	out 1 depthBuffer
 }
 
@@ -71,12 +71,12 @@ compositor_node RefractionsMsaaDepthResolve
 
 compositor_node RefractionsRefractionsNode
 {
-	in 0 rtt01
+	in 0 rtt_first
 	in 1 depthBuffer
 	in 2 depthBufferNoMsaa
 	in 3 rt_renderwindow
 
-	// rtt01 & rtt_final MUST share the same depth buffer.
+	// rtt_first & rtt_final MUST share the same depth buffer.
 	// Depth pools already take care of that. But just to be sure, we make it explicit
 	texture rtt_final	target_width target_height target_format msaa_auto
 
@@ -89,13 +89,13 @@ compositor_node RefractionsRefractionsNode
 	target rtt_final
 	{
 		// Perform exact copy (MSAA-preserving) so we can continue rendering
-		// into rtt_final. Meanwhile rtt01 will be used for sampling refractions
+		// into rtt_final. Meanwhile rtt_first will be used for sampling refractions
 		pass texture_copy
 		{
-			in	rtt01
+			in	rtt_first
 			out rtt_final
 
-			profiling_id "Copy / Clone rtt01"
+			profiling_id "Copy / Clone rtt_first"
 		}
 
 		// Pass with refractive objects
@@ -119,7 +119,7 @@ compositor_node RefractionsRefractionsNode
 
 			overlays		on
 			shadows			RefractionsShadowNode reuse
-			use_refractions	depthBufferNoMsaa rtt01
+			use_refractions	depthBufferNoMsaa rtt_first
 
 			profiling_id "Refractive Objects"
 		}
@@ -166,6 +166,7 @@ compositor_node RefractionsRefractionsNode
 		}
 	}
 }
+
 
 abstract target cubemap_target_shadow
 {
@@ -267,7 +268,7 @@ workspace RefractionsWorkspaceMsaa
 	// connect <node_name_1> [<output_ch #>] [<output_ch #>]  <node_name_2> [<input_ch #>] [<input_ch #>]
 
 	// Refractions_RenderingNode          Refractions_RefractionsNode
-	//  - out 0 rtt01    ----------------->  in 0 rtt01
+	//  - out 0 rtt_first  --------------->  in 0 rtt_first
 	// /  out 1 depthBuffer  ------------->  in 1 depthBuffer
 	// \                            _----->  in 2 depthBufferNoMsaa
 	//  \                          /         in 3 rt_renderwindow  target, connect_output
