@@ -24,6 +24,7 @@ using namespace Ogre;
 //-----------------------------------------------------------------------------------------
 void AppGui::CreateCubeReflect()
 {
+	LogO("C:## CreateCubeReflect "+getWsInfo());
 	iReflStart = 0;
 	auto* rndSys = mRoot->getRenderSystem();
 	auto* texMgr = rndSys->getTextureGpuManager();
@@ -138,17 +139,18 @@ void AppGui::CreateCubeReflect()
 	chan[0] = mCubeReflTex;
 
 	const String name( "SR3_ReflCubemap" );  // created from code
-	if( !mgr->hasWorkspaceDefinition( name ) )
+	if (mgr->hasWorkspaceDefinition(name))
+		mgr->removeWorkspaceDefinition(name);
 	{
 		auto* w = mgr->addWorkspaceDefinition( name );
 		w->connectExternal( 0, idCubeNode, 0 );
 	}
 
 	//  add Workspace
-	LogO("--++ WS add:  Reflect Cube, all: "+toStr(mgr->getNumWorkspaces()));
 	auto* ws = mgr->addWorkspace(
 		mSceneMgr, chan, mCubeCamera, name, false );  // manual update
-	mWorkspaces.push_back(ws);  //+ to destroy
+	vWorkspaces.push_back(ws);  //+ to destroy
+	LogO("--++ WS add:  Reflect Cube, "+getWsInfo());
 
 	wsCubeRefl = ws;
 	iReflSkip = 0;

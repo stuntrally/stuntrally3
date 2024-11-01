@@ -355,8 +355,7 @@ void CGuiCom::btnVegetApply(WP)
 //  🌒 shadows
 void CGuiCom::btnShadowsApply(WP)
 {
-	// todo ..
-	// app->SetupCompositor();  //-
+	app->SetupCompositor();  //
 	// app->setupShadowCompositor();  // fixme crash ws def..
 	app->updShadowFilter();  // works
 }
@@ -387,7 +386,8 @@ void CGuiCom::slReflLod(SV* sv)
 
 void CGuiCom::btnReflApply(WP)
 {
-	app->CreateCubeReflect();
+	// app->CreateCubeReflect();
+	app->SetupCompositor();  //
 }
 
 
@@ -408,6 +408,7 @@ void CGuiCom::slWaterSize(SV*)
 void CGuiCom::btnWaterApply(WP)
 {
 	//app->bRecreateFluidsRTT = 1;  // fixme: crash-
+	// app->SetupCompositor();  //
 }
 
 void CGuiCom::slCarLightBright(SV*)

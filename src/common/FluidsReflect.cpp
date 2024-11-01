@@ -148,7 +148,7 @@ void FluidsReflect::DestroyRTT()
 	pbs->setPlanarReflections( 0 );  // off
 
 	if (mWsListener)
-	for (auto* ws : app->mWorkspaces)
+	for (auto* ws : app->vWorkspaces)
 		ws->removeListener( mWsListener );
 	delete mWsListener;  mWsListener = 0;
 
@@ -190,7 +190,7 @@ void FluidsReflect::CreateRTT()
 		LogO("--++ WS add Listener");
 		mWsListener = new ReflectListener( app, mPlanarRefl );
 
-		for (auto* ws : app->mWorkspaces)
+		for (auto* ws : app->vWorkspaces)
 		{	ws->removeListener( mWsListener );  // not necessary
 			ws->addListener( mWsListener );
 	}	}

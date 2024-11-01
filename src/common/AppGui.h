@@ -13,7 +13,8 @@
 
 namespace MyGUI{  class Gui;  class Ogre2Platform;  }
 namespace Ogre {  class Root;  class SceneManager;  class Window;  class Camera;
-	class TextureGpu;  class CompositorWorkspace;  class HlmsSamplerblock;
+	class TextureGpu;  class HlmsSamplerblock;
+	class CompositorWorkspace;  class CompositorWorkspaceDef;  class CompositorNodeDef;
 	namespace v1 {  class Overlay;  }
 	class Terra;  class HlmsPbsTerraShadows;
 	class PlanarReflections;  }
@@ -143,11 +144,17 @@ public:
 	void ApplyReflect();  // to all Db2s, after CubeRefl created
 	std::set<HlmsPbsDb2*> vDbRefl;
 
+	//  🪄 main setup  ----------------
+	std::vector<Ogre::CompositorNodeDef*> vNodes;  // stuff we create and destroy
+	std::vector<Ogre::CompositorWorkspace*> vWorkspaces;
+	std::vector<Ogre::CompositorWorkspaceDef*> vWorkDefs;
+	constexpr static const char* csShadow = "ShadowMapFromCodeShadowNode";
+	
+	void CreateCompositor(), SetupCompositor(), DestroyCompositor();
 	void AddGuiShadows(bool vr_mode = false, int plr = 0, bool gui = true);
-	Ogre::CompositorWorkspace* SetupCompositor();
 
 	//  util get SR3_ names for player
-	Ogre::String getWorkspace(bool worksp=1, int plr=0);
+	Ogre::String getWorkspace(bool worksp=1, int plr=0), getWsInfo();
 
 
 	//  👥 Split screen  ----------------
@@ -163,7 +170,7 @@ public:
 	ViewDim mDims[MAX_Players];
 
 	//  workspace, Ogre render setup   players + 1 for Refl cube, more for fluids etc
-	std::vector<Ogre::CompositorWorkspace*> mWorkspaces;
+	// std::vector<Ogre::CompositorWorkspace*> mWorkspaces;
 
 
 	//  SSAO  ----------------

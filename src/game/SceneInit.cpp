@@ -528,7 +528,7 @@ void App::LoadGame()
 void App::AddListenerRnd2Tex()
 {
 	if (scn->refl.mWsListener)
-	for (auto* ws : mWorkspaces)
+	for (auto* ws : vWorkspaces)
 		ws->addListener(scn->refl.mWsListener);
 }
 

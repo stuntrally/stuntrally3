@@ -2,9 +2,10 @@
 #include "par.h"
 #include "Def_Str.h"
 #include "settings.h"
+#include "settings_com.h"
 #include "AppGui.h"
 #include "Cam.h"
-#include "settings_com.h"
+#include "RenderConst.h"
 
 #include <OgreRoot.h>
 #include <OgreCamera.h>
@@ -18,6 +19,11 @@
 #include <Compositor/OgreCompositorNodeDef.h>
 #include <Compositor/OgreCompositorWorkspace.h>
 #include <Compositor/OgreCompositorWorkspaceDef.h>
+#include <OgreDepthBuffer.h>
+#include <Compositor/Pass/OgreCompositorPassDef.h>
+#include <OgrePixelFormatGpu.h>
+#include <OgreRenderPassDescriptor.h>
+#include <Compositor/Pass/PassQuad/OgreCompositorPassQuadDef.h>
 #include <Compositor/Pass/PassScene/OgreCompositorPassSceneDef.h>
 #include <Compositor/Pass/PassIblSpecular/OgreCompositorPassIblSpecularDef.h>
 #include <Compositor/OgreCompositorWorkspaceListener.h>
@@ -34,49 +40,157 @@ using namespace Ogre;
 
 
 //  util
+String AppGui::getWsInfo()
+{
+	auto* mgr = mRoot->getCompositorManager2();
+	return " workspaces: "+ toStr(vWorkspaces.size())+" ("+toStr(mgr->getNumWorkspaces())+") nodes: "+ toStr(vNodes.size());
+}
 String AppGui::getWorkspace(bool worksp, int plr)
 {
 	bool refr = pSet->g.water_refract;
 	String old = refr ? "" : "Old";
 	String ssao = !refr && pSet->ssao ? "_SSAO" : "";  // todo: ssao and refract..
 	
+	// return "RefractionsWorkspaceMsaa";
 	return (worksp ? "SR3_Workspace" : "SR3_Render")
 	 	+ old + toStr(plr) + ssao;
 }
 
-//  common
+const String sNewNode = "SR3_Render_New";
+const String sNewWork = "SR3_Render_New_WS";
+
+
+//  🪄 Create Compositor  main render setup
+//-----------------------------------------------------------------------------------------
+void AppGui::CreateCompositor()
+{
+	LogO("C+## Create Compositor "+getWsInfo());
+	auto* mgr = mRoot->getCompositorManager2();
+	CompositorNodeDef* nd =0;
+	CompositorTargetDef* td =0;
+	CompositorPassSceneDef *ps =0;
+
+	//  node
+	// if (mgr->hasNodeDefinition(sNewNode))
+	// 	mgr->removeNodeDefinition(sNewNode);
+	{
+		nd = mgr->addNodeDefinition(sNewNode);
+		vNodes.push_back(nd);
+		
+		nd->addTextureSourceName("rt_wnd", 0, TextureDefinitionBase::TEXTURE_INPUT);
+
+		/*nd->setNumLocalTextureDefinitions(2);  //*
+		{
+			auto* td = nd->addTextureDefinition( "rtt1" );
+			// td->widthFactor = 0.5f;  td->heightFactor = 0.5f;
+			td->format = PFG_RGBA8_UNORM_SRGB;
+			td->fsaa = "";  // auto
+
+			td = nd->addTextureDefinition( "depth" );
+			td->depthBufferFormat = PFG_D32_FLOAT;
+
+			auto* rtv = nd->addRenderTextureView( "rtt1" );
+			rtv->depthAttachment.textureName = "depth";
+		}/**/
+
+		// nd->addRenderTextureView()
+
+		// Input channels
+		/*nd->addTextureSourceName( "rt_input", 0, TextureDefinitionBase::TEXTURE_INPUT );
+		nd->addTextureSourceName( "rt_output", 1, TextureDefinitionBase::TEXTURE_INPUT );
+		*/
+		nd->mCustomIdentifier = "new-1";
+		//if( pass->getParentNode()->getDefinition()->mCustomIdentifier == "CustomString" )
+
+		nd->setNumTargetPass(3);  //*  targets
+
+		// td = nd->addTargetPass( "rtt1" );
+		td = nd->addTargetPass( "rt_wnd" );
+
+			ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
+			ps->setAllLoadActions( LoadAction::Clear );
+			ps->mProfilingId = "Main Render";
+			// ps->mIdentifier = 20001;
+			ps->mLastRQ = 199;  //RQG_Fluid-1
+			
+			switch (pSet->g.shadow_type)  // shadows
+			{
+			case Sh_None:  break;  // none
+			case Sh_Depth: ps->mShadowNode = csShadow;  break;
+			case Sh_Soft:  ps->mShadowNode = chooseEsmShadowNode();  break;
+			}
+
+		//  ⏲️ Hud  --------
+			ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
+			// ps->setAllLoadActions( LoadAction::Clear );
+			ps->setAllStoreActions( StoreAction::Store );
+			ps->mProfilingId = "Main HUD";
+			ps->mIdentifier = 10007;
+
+			ps->mFirstRQ = 220;
+			ps->mLastRQ = 230;
+			ps->setVisibilityMask(0x00002080);  // RV_Hud, RV_Particles
+			ps->mIncludeOverlays = false;
+
+			// executed in all eyes, not views
+			// execution_mask			0xff
+			// executed on first view/eye
+			// execution_mask			0x01
+			// affected by modifier, apply to the whole screen
+			// viewport_modifier_mask	0x00
+	
+		//  🎛️ Gui, add MyGUI pass  --------
+			CompositorPassDef *pass;
+			pass = td->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
+			pass->mProfilingId = "Gui";  pass->mIdentifier = 99900;
+			// if (!vr_mode)  // single gui, fullscreen
+			{
+				pass->mExecutionMask = 0x02;
+				pass->mViewportModifierMask = 0x00;
+			}
+		/**/
+		// CompositorPassQuadDef *passQuad;
+		// passQuad = static_cast<CompositorPassQuadDef *>( td->addPass( PASS_QUAD ) );
+		// passQuad->setAllLoadActions( LoadAction::DontCare );
+		// passQuad->mMaterialName = "Postprocess/Glass";
+		// passQuad->addQuadTextureSource( 0, "rt_input" );
+
+		// Output channels
+		// nd->setNumOutputChannels( 1 );
+		// nd->mapOutputChannel( 0, "rt_output" );
+		
+		// nd->setNumOutputChannels( 2 );
+		// nd->mapOutputChannel( 0, "rtt1" );
+		// nd->mapOutputChannel( 1, "depth" );
+	}
+
+	//  workspace
+	// if (mgr->hasWorkspaceDefinition(sNewWork))
+	// 	mgr->removeWorkspaceDefinition(sNewWork);
+	{
+		CompositorWorkspaceDef *workDef = mgr->addWorkspaceDefinition( sNewWork );
+		workDef->connectExternal( 0, nd->getName(), 0 );
+		vWorkDefs.push_back(workDef);
+	}
+}
+
+
+//  common  todo: drop ..
 //-----------------------------------------------------------------------------------------
 void AppGui::AddGuiShadows(bool vr_mode, int plr, bool gui)
 {
-	if (pSet->ssao)  //! todo: ssao, all in cpp ..
+	LogO("C*## AddGuiShadows "+getWsInfo());
+
+	if (pSet->ssao)
 		return;
 	bool old = !pSet->g.water_refract;
 	auto* mgr = mRoot->getCompositorManager2();
 	
-	/** //--- todo: create all from cpp..
-	mgr->removeAllWorkspaces();
-	mgr->removeAllWorkspaceDefinitions();
-	mgr->removeAllShadowNodeDefinitions();
-	mgr->removeAllNodeDefinitions();
-	{
-	CompositorNodeDef* node = mgr->addNodeDefinition("Aaa");
-	auto* tex = node->addTextureDefinition("t1");
-	RenderTargetViewDef* rtv = node->addRenderTextureView("r1");
-	CompositorTargetDef* tgt = node->addTargetPass("abc", 0);
-	// CompositorPassDef* pas
-	CompositorPassSceneDef* pas = (CompositorPassSceneDef*)tgt->addPass(PASS_SCENE, "id");
-	pas->mProfilingId = "rtt";
-	pas->mFirstRQ = 0;
-	pas->mLastRQ = 250;
-	// pas->mMaterialScheme
-	CompositorPassSceneDef* psc;
-	}
-	/*---*/
 
 	CompositorNodeDef* node = mgr->getNodeDefinitionNonConst(getWorkspace(0, plr));
 	// LogO("--++ WS Target Gui passes "+toStr(node->getNumTargetPasses()));
 
-	CompositorTargetDef* target = node->getTargetPass(old ? 0 : 3);
+	CompositorTargetDef* target = node->getTargetPass(old ? 0 : 3);  // par!-
 	auto passes = target->getCompositorPasses();
 	// for (auto& p : passes)
 		// LogO("--++ WS  pass:  type "+toStr(p->getType())+"  id "+toStr(p->mIdentifier)+"  "+p->mProfilingId);
@@ -98,7 +212,7 @@ void AppGui::AddGuiShadows(bool vr_mode, int plr, bool gui)
 
 	//  🌒 shadows  ----
 	const int np = old ? 1 : 0;
-	target = node->getTargetPass(0);  // 0
+	target = node->getTargetPass(0);  // 0  // par!-
 	passes = target->getCompositorPasses();
 	// LogO("--++ WS Target Shdw passes "+toStr(node->getNumTargetPasses()));
 	// for (auto& p : passes)
@@ -112,33 +226,59 @@ void AppGui::AddGuiShadows(bool vr_mode, int plr, bool gui)
 	switch (pSet->g.shadow_type)
 	{
 	case Sh_None:  break;  // none
-	case Sh_Depth: ps->mShadowNode = "ShadowMapFromCodeShadowNode";  break;
+	case Sh_Depth: ps->mShadowNode = csShadow;  break;
 	case Sh_Soft:  ps->mShadowNode = chooseEsmShadowNode();  break;
 	}
+}
+
+
+//  💥 destroy Compositor
+//-----------------------------------------------------------------------------------------
+void AppGui::DestroyCompositor()
+{
+	auto* mgr = mRoot->getCompositorManager2();
+	LogO("D=## Destroy === "+getWsInfo());
+
+	for (auto* ws : vWorkspaces)
+	{
+		mgr->removeWorkspace( ws );
+	}
+	vWorkspaces.clear();
+			
+	if (mgr->hasShadowNodeDefinition(csShadow))
+		mgr->removeShadowNodeDefinition(csShadow);
+
+	for (auto* wd : vWorkDefs)
+	{
+		mgr->removeWorkspaceDefinition( wd->getName() );
+	}
+	vWorkDefs.clear();
+
+	for (auto* nd : vNodes)
+	{
+		mgr->removeNodeDefinition( nd->getName() );
+	}
+	vNodes.clear();
+	// mgr->removeAllWorkspaces();  // not necessary..? drops all from .compositor
+	// mgr->removeAllWorkspaceDefinitions();  // todo: cube, planar, all from code?
+	// mgr->removeAllNodeDefinitions();
+	// mgr->removeAllShadowNodeDefinitions();
+	// mgr->removeAllCameras();  //-
 }
 
 
 //-----------------------------------------------------------------------------------------
 //  🪄 Setup Compositor
 //-----------------------------------------------------------------------------------------
-CompositorWorkspace* AppGui::SetupCompositor()
+void AppGui::SetupCompositor()
 {
+	LogO("C^## Setup Compositor "+getWsInfo());
 	// LogO("C### setup Compositor");
 	auto* rndSys = mRoot->getRenderSystem();
 	auto* texMgr = rndSys->getTextureGpuManager();
 	auto* mgr = mRoot->getCompositorManager2();
 	
-	//  💥 destroy old
-	LogO("D### destroy Compositor, workspaces: "+ toStr(mWorkspaces.size()));
-	for (auto* ws : mWorkspaces)
-	{
-		// LogO("D### setup Compositor rem workspace");
-		mgr->removeWorkspace( ws );
-	}
-	mgr->removeAllWorkspaces();  // not necessary
-	// mgr->removeAllCameras();
-	mWorkspaces.clear();
-
+	DestroyCompositor();  //
 
 	//  🌒 shadows
 	bool esm = pSet->g.shadow_type == 2;
@@ -148,12 +288,16 @@ CompositorWorkspace* AppGui::SetupCompositor()
 		if (esm)  setupESM();
 		createPcfShadowNode();
 		if (esm)  createEsmShadowNodes();  // fixme..
-		first = false;
+		// first = false;
 	}
 
 
 	//  🔮 create Reflections  ----
 	CreateCubeReflect();  //
+
+
+	//  🪄 Create Compositor  ----
+	CreateCompositor();
 
 
 	//  Render window external channels  ----
@@ -192,7 +336,7 @@ CompositorWorkspace* AppGui::SetupCompositor()
 	for (int i = 0; i < MAX_Players; ++i)
 		mDims[i].Default();
 
-	if (vr_mode)
+	/*if (vr_mode)
 	{
 		//  👀 VR mode  ---- ----  wip meh todo use OpenVR
 		//.................................................................................
@@ -224,17 +368,17 @@ CompositorWorkspace* AppGui::SetupCompositor()
 				Vector4( 0.5f, 0.0f, 0.5f, 1.0f ),
 				0x02, 0x02 );
 
-		mWorkspaces.push_back(ws1);
-		mWorkspaces.push_back(ws2);
+		// mWorkspaces.push_back(ws1);
+		// mWorkspaces.push_back(ws2);
 
-		LogO("C### Created VR workspaces: "+toStr(mWorkspaces.size()));
-		return ws1;
-	}
+		// LogO("C### Created VR workspaces: "+toStr(mWorkspaces.size()));
+		// return ws1;
+	} else*/
 
 #ifndef SR_EDITOR
 	//  👥 Split Screen   ---- ---- ---- ----
 	//.....................................................................................
-	else if (views > 1)
+	if (views > 1)
 	{
 		for (int i = 0; i < views; ++i)
 		{
@@ -251,7 +395,7 @@ CompositorWorkspace* AppGui::SetupCompositor()
 
 			//  add Workspace
 			LogO("--++ WS add:  Split Screen "+toStr(i)+", all: "+toStr(mgr->getNumWorkspaces()));
-			auto str = getWorkspace(1, i);
+			auto str = getWorkspace(1, i);  // todo ..!
 			const IdString wsName( str );
 			CompositorWorkspace* w =
 				mgr->addWorkspace( mSceneMgr, ext,
@@ -260,32 +404,34 @@ CompositorWorkspace* AppGui::SetupCompositor()
 					Vector4(d.left0, d.top0, d.width0, d.height0),
 					f1 ? 0x02 : 0x01, f1 ? 0x02 : 0x01 );
 
-			mWorkspaces.push_back(w);
+			vWorkspaces.push_back(w);
+			// mWorkspaces.push_back(w);
 		}
 
 		// LogO("C### Created Split workspaces: "+toStr(mWorkspaces.size()));
-		return mWorkspaces[0];
+		// return mWorkspaces[0];
 	}
-#endif
 	else  // 🖥️ Single View
+#endif
 	//.....................................................................................
 	{
 		auto c = CreateCamera( "Player", 0, Vector3(0,150,0), Vector3(0,0,0) );
 		mCamera = c->cam;
 
-		AddGuiShadows(vr_mode, 0, true);
+		AddGuiShadows(vr_mode, 0, true);  //
 
 		//  add Workspace
 		LogO("--++ WS add:  Main, all: "+toStr(mgr->getNumWorkspaces()));
-		auto str = getWorkspace(1, 0);
+		// auto str = getWorkspace(1, 0);  // st
+		auto str = sNewWork;  // new
 		const IdString wsName( str );
 		auto ws = mgr->addWorkspace( mSceneMgr, ext, c->cam, wsName, true );  // in .compositor
 		// ws->addListener(listener);
-		mWorkspaces.push_back(ws);
+		vWorkspaces.push_back(ws);
 		// LogO("C### Created Single workspaces: "+toStr(mWorkspaces.size()));
 
 		// createShadowMapDebugOverlays();  //-
-		return ws;
+		// return ws;
 	}
 }
 
