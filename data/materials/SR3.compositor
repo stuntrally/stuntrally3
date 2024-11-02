@@ -1,5 +1,6 @@
 
 //------------------------------------------------------------------------------------------------------------------------------------------
+//  < NOT USED >
 //  NEW 4 Refract MSAA
 //------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -48,25 +49,25 @@ compositor_node RefractionsRenderingNode
 
 compositor_node RefractionsMsaaDepthResolve
 {
-	in 0 gBufferDepthBuffer
+	in 0 gBufferDB
 
-	texture resolvedDepthBuffer target_width target_height PFG_R32_FLOAT depth_pool 0
+	texture resolvedDB target_width target_height PFG_R32_FLOAT depth_pool 0
 
-	//We need to "downsample/resolve" mrtDepthBuffer because the impact
-	//performance on Refractions is gigantic.
-	target resolvedDepthBuffer
+	// We need to "downsample/resolve" mrtDepthBuffer because the impact
+	// performance on Refractions is gigantic.
+	target resolvedDB
 	{
 		pass render_quad
 		{
 			load { all dont_care }
 			material Ogre/Resolve/1xFP32_Subsample0
-			input 0 gBufferDepthBuffer
+			input 0 gBufferDB
 
 			profiling_id "Resolve Depth Buffer"
 		}
 	}
 
-	out 0 resolvedDepthBuffer
+	out 0 resolvedDB
 }
 
 compositor_node RefractionsRefractionsNode
@@ -583,7 +584,7 @@ abstract target cubemap_target
 		// shadows		SR3_Shadows
 		// ^ crashes ..
 		// todo: use that from code, not SR3_Shadows from here
-		enable_forwardplus no
+		enable_forwardplus no  //?
 	}
 
 	// pass generate_mipmaps  // ?
@@ -899,6 +900,7 @@ compositor_node Rtt_View3D
 }
 
 
+//  < NOT USED >
 //  SSAO
 //------------------------------------------------------------------------------------------------------------------------------------------
 abstract compositor_node SR3_RenderAbsOld_SSAO
@@ -1022,6 +1024,7 @@ abstract compositor_node SR3_RenderAbsOld_SSAO
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------
+//  < NOT USED >
 //  🏞️  [Main render]  (👥 split screens too and 🏗️ ed)  NEW Refract
 //------------------------------------------------------------------------------------------------------------------------------------------
 abstract compositor_node SR3_RenderAbs
@@ -1224,6 +1227,8 @@ abstract compositor_node SR3_RenderAbs
 }
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------
+//  < NOT USED >
 //  🏞️  [Main render]  OLD no refract
 //------------------------------------------------------------------------------------------------------------------------------------------
 abstract compositor_node SR3_RenderAbsOld
@@ -1329,6 +1334,7 @@ abstract compositor_node SR3_RenderAbsOld
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------
+//  < NOT USED >
 //  [Main Nodes]  for all  Max_Players,  vis mask  same as RV_Hud3D[..]
 //------------------------------------------------------------------------------------
 compositor_node SR3_RenderOld0_SSAO : SR3_RenderAbsOld_SSAO

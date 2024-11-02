@@ -71,201 +71,187 @@ void AppGui::CreateCompositor()
 	CompositorTargetDef* td =0;
 	CompositorPassSceneDef *ps =0;
 
-//  node  New Refract todo
-if (pSet->g.water_refract)
-{
-/* 1 -------------------- */
-	{	nd = mgr->addNodeDefinition("SR3_Refract_first");
-		vNodes.push_back(nd);
-		
-		nd->setNumLocalTextureDefinitions(2);  //* textures
-		{
-			auto* td = nd->addTextureDefinition( "depthBuffer" );
-			// td->depthBufferFormat = PFG_D32_FLOAT;
-			td->format = PFG_D32_FLOAT;
-			td->fsaa = "";  // auto
-			// td->preferDepthTexture = 1;
-			// td->depthBufferId = 0;
-			td->textureFlags = TextureFlags::RenderToTexture;  // no discard
-
-			td = nd->addTextureDefinition( "rtt_first" );
-			// td->widthFactor = 0.5f;  td->heightFactor = 0.5f;
-			td->format = PFG_UNKNOWN;  //PFG_RGBA8_UNORM_SRGB;  // target_format
-			td->fsaa = "";  // auto
-			td->textureFlags = TextureFlags::RenderToTexture;
-
-			auto* rtv = nd->addRenderTextureView( "rtt_first" );  // rtv
-			RenderTargetViewEntry at;
-			at.textureName = "rtt_first";
-			rtv->colourAttachments.push_back(at);
-			rtv->depthAttachment.textureName = "depthBuffer";
-			rtv->depthBufferId = 0;
-		}
-		nd->mCustomIdentifier = "1-first";
-		
-		nd->setNumTargetPass(1);  //* targets
-		td = nd->addTargetPass( "rtt_first" );
-		td->setNumPasses(1);  //* passes
-		{
-			ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
-			ps->setAllLoadActions( LoadAction::Clear );
-            ps->mStoreActionColour[0] = StoreAction::StoreOrResolve;
-			ps->mStoreActionDepth = StoreAction::Store;
-            ps->mStoreActionStencil = StoreAction::DontCare;
-
-			ps->mProfilingId = "Render First";  // "Opaque + Regular Transparents"
-			// ps->mIdentifier = 10001;
-			ps->mLastRQ = 199;  //RQG_Fluid-1
+	//  node  New Refract todo
+	if (pSet->g.water_refract)
+	{
+		/* 1 -------------------- */
+		{	nd = mgr->addNodeDefinition("SR3_Refract_first");
+			vNodes.push_back(nd);
 			
-			switch (pSet->g.shadow_type)  // shadows
+			nd->setNumLocalTextureDefinitions(2);  //* textures
 			{
-			case Sh_None:  break;  // none
-			case Sh_Depth: ps->mShadowNode = csShadow;  break;
-			case Sh_Soft:  ps->mShadowNode = chooseEsmShadowNode();  break;
+				auto* td = nd->addTextureDefinition( "depthBuffer" );
+				// td->depthBufferFormat = PFG_D32_FLOAT;
+				td->format = PFG_D32_FLOAT;
+				td->fsaa = "";  // auto
+				// td->preferDepthTexture = 1;
+				// td->depthBufferId = 0;
+				// td->textureFlags = TextureFlags::RenderToTexture;  //- no discard between frames
+
+				td = nd->addTextureDefinition( "rtt_first" );
+				// td->widthFactor = 0.5f;  td->heightFactor = 0.5f;
+				td->format = PFG_UNKNOWN;  //PFG_RGBA8_UNORM_SRGB;  // target_format
+				td->fsaa = "";  // auto
+
+				auto* rtv = nd->addRenderTextureView( "rtt_first" );  // rtv
+				RenderTargetViewEntry at;
+				at.textureName = "rtt_first";
+				rtv->colourAttachments.push_back(at);
+				rtv->depthAttachment.textureName = "depthBuffer";
+				// rtv->depthBufferId = 0;  // ignored if ^ set
 			}
-		}
-		nd->setNumOutputChannels(2);  //  out
-		nd->mapOutputChannel(0, "rtt_first");
-		nd->mapOutputChannel(1, "depthBuffer");
-	}
-/* 2 ---------- */
-	{	nd = mgr->addNodeDefinition("SR3_DepthResolve");
-		vNodes.push_back(nd);
-		
-		nd->addTextureSourceName("gBufferDepthBuffer", 0, TextureDefinitionBase::TEXTURE_INPUT);
-
-		nd->setNumLocalTextureDefinitions(1);  //* textures
-		{
-			auto* td = nd->addTextureDefinition( "resolvedDepthBuffer" );
-			td->depthBufferFormat = PFG_R32_FLOAT;  // D32 -> R32
-			td->textureFlags = TextureFlags::RenderToTexture;  // no discard
-
-			auto* rtv = nd->addRenderTextureView( "resolvedDepthBuffer" );  // rtv
-			// RenderTargetViewEntry at;
-			// at.textureName = "gBufferDepthBuffer";
-			// rtv->colourAttachments.push_back(at);
-			rtv->depthAttachment.textureName = "gBufferDepthBuffer";
-			rtv->depthBufferId = 0;  // depth_pool 0  ?
-			td->fsaa = 1;  // off  // td->fsaa = "";  // auto
-		}
-		nd->mCustomIdentifier = "2-resolve";
-
-		//  We need to "downsample/resolve" mrtDepthBuffer because the impact
-		//  performance on Refractions is gigantic.
-		nd->setNumTargetPass(1);  //*  targets
-		td = nd->addTargetPass( "resolvedDepthBuffer" );
-		td->setNumPasses(1);  //* passes
-		{
-			auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
-			pq->setAllLoadActions( LoadAction::DontCare );
-			pq->mMaterialName = "Ogre/Resolve/1xFP32_Subsample0";
-			pq->addQuadTextureSource( 0, "gBufferDepthBuffer" );  // input
-			pq->mProfilingId = "Resolve Depth Buffer";
-		}
-		nd->setNumOutputChannels(1);  //  out
-		nd->mapOutputChannel(0, "resolvedDepthBuffer");
-	}
-/* 3 ------------------------------  */
-	{	nd = mgr->addNodeDefinition("SR3_Refract_Final");
-		vNodes.push_back(nd);
-		
-		nd->addTextureSourceName("rtt_first", 0, TextureDefinitionBase::TEXTURE_INPUT);
-		nd->addTextureSourceName("depthBuffer", 1, TextureDefinitionBase::TEXTURE_INPUT);
-		nd->addTextureSourceName("depthBufferNoMsaa", 2, TextureDefinitionBase::TEXTURE_INPUT);
-		nd->addTextureSourceName("rt_renderwindow", 3, TextureDefinitionBase::TEXTURE_INPUT);
-
-		nd->setNumLocalTextureDefinitions(1);  //*  textures
-		{
-			auto* td = nd->addTextureDefinition( "rtt_final" );
-			td->format = PFG_UNKNOWN;  // target_format
-			td->fsaa = "";  // auto
-			td->textureFlags = TextureFlags::RenderToTexture;  // no discard
-
-			auto* rtv = nd->addRenderTextureView( "rtt_final" );  // rtv
-			RenderTargetViewEntry at;
-			at.textureName = "rtt_final";
-			rtv->colourAttachments.push_back(at);
-			rtv->depthBufferId = 0;
-			// rtv->depthBufferFormat = Ogre::PFG_D32_FLOAT;
-			rtv->depthAttachment.textureName = "depthBuffer";
-		}
-
-		nd->mCustomIdentifier = "3-final";
-		//if( pass->getParentNode()->getDefinition()->mCustomIdentifier == "CustomString" )
-
-		nd->setNumTargetPass(2);  //* targets
-
-		//  🌊 Refracted  Fluids  ----
-		td = nd->addTargetPass( "rtt_final" );
-		td->setNumPasses(2);  //* passes
-		{
-			//  Perform exact copy (MSAA-preserving) so we can continue rendering
-			//  into rtt_final. Meanwhile rtt_first will be used for sampling refractions
-			auto* cp = static_cast<CompositorPassDepthCopyDef*>(td->addPass(Ogre::PASS_DEPTHCOPY));
-			cp->setDepthTextureCopy("rtt_first", "rtt_final");  //*
-
-			ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
-			ps->setAllLoadActions( LoadAction::Load );
-            ps->mStoreActionColour[0] = StoreAction::StoreOrResolve;
-			ps->mStoreActionDepth = StoreAction::DontCare;
-            ps->mStoreActionStencil = StoreAction::DontCare;
-
-			ps->mProfilingId = "Refractive Objects";
-			ps->mIdentifier = 10002;
-			ps->mFirstRQ = RQG_Fluid;  // 210
-			ps->mLastRQ = RQG_Fluid+2;
-			ps->setVisibilityMask(RV_Fluid);  // 0x00000002
+			nd->mCustomIdentifier = "1-first";
 			
-			switch (pSet->g.shadow_type)  // shadows
+			nd->setNumTargetPass(1);  //* targets
+			td = nd->addTargetPass( "rtt_first" );
+			td->setNumPasses(1);  //* passes
 			{
-			case Sh_None:  break;  // none
-			case Sh_Depth: ps->mShadowNode = csShadow;  break;
-			case Sh_Soft:  ps->mShadowNode = chooseEsmShadowNode();  break;
-			}
-			ps->mShadowNodeRecalculation = SHADOW_NODE_REUSE;
-			ps->setUseRefractions("depthBufferNoMsaa", "rtt_first");
-		}
+				ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
+				ps->setAllLoadActions( LoadAction::Clear );
+				ps->mStoreActionColour[0] = StoreAction::StoreOrResolve;
+				ps->mStoreActionDepth = StoreAction::Store;
+				ps->mStoreActionStencil = StoreAction::DontCare;
 
-		//  rnd window  ----
-		td = nd->addTargetPass( "rt_renderwindow" );
-		td->setNumPasses(3);
-		{
-			auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
-			pq->setAllLoadActions( LoadAction::DontCare );
-			pq->mMaterialName = "Ogre/Copy/4xFP32";
-			pq->addQuadTextureSource( 0, "rtt_final" );  // input
-			pq->mProfilingId = "Copy to Window";
-
-			//  ⏲️ Hud  --------
-			{	ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
-				// ps->setAllLoadActions( LoadAction::Clear );
-				ps->setAllStoreActions( StoreAction::Store );
-				ps->mProfilingId = "Main HUD";
-				ps->mIdentifier = 10007;
-
-				ps->mFirstRQ = 220;  // RQG_RoadMarkers
-				ps->mLastRQ = 230;  // RQG_Hud3
-				ps->setVisibilityMask(RV_Hud + RV_Particles);
-
-				// executed in all eyes, not views
-				// execution_mask			0xff
-				// executed on first view/eye
-				// execution_mask			0x01
-				// affected by modifier, apply to the whole screen
-				// viewport_modifier_mask	0x00
-			}
-			//  🎛️ Gui, add MyGUI pass  --------
-			{	CompositorPassDef *pass;
-				pass = td->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
-				pass->mProfilingId = "Gui";  pass->mIdentifier = 99900;
-				// if (!vr_mode)  // single gui, fullscreen
+				ps->mProfilingId = "Render First";  // "Opaque + Regular Transparents"
+				ps->mIdentifier = 10001;
+				ps->mLastRQ = 199;  //RQG_Fluid-1
+				
+				switch (pSet->g.shadow_type)  // shadows
 				{
-					pass->mExecutionMask = 0x02;
-					pass->mViewportModifierMask = 0x00;
+				case Sh_None:  break;  // none
+				case Sh_Depth: ps->mShadowNode = csShadow;  break;
+				case Sh_Soft:  ps->mShadowNode = chooseEsmShadowNode();  break;
+				}
+			}
+			nd->setNumOutputChannels(2);  //  out
+			nd->mapOutputChannel(0, "rtt_first");
+			nd->mapOutputChannel(1, "depthBuffer");
+		}
+
+		/* 2 ---------- */
+		{	nd = mgr->addNodeDefinition("SR3_DepthResolve");
+			vNodes.push_back(nd);
+			
+			nd->addTextureSourceName("gBufferDB", 0, TextureDefinitionBase::TEXTURE_INPUT);
+
+			nd->setNumLocalTextureDefinitions(1);  //* textures
+			{
+				auto* td = nd->addTextureDefinition( "resolvedDB" );
+				td->format = PFG_R32_FLOAT;  // D32 -> R32
+				// td->textureFlags = TextureFlags::RenderToTexture;  // no discard
+				td->fsaa = 1;  // off
+
+				auto* rtv = nd->addRenderTextureView( "resolvedDB" );  // rtv
+				RenderTargetViewEntry at;
+				at.textureName = "resolvedDB";
+				rtv->colourAttachments.push_back(at);
+			}
+			nd->mCustomIdentifier = "2-resolve";
+
+			//  We need to "downsample/resolve" mrtDepthBuffer because the impact
+			//  performance on Refractions is gigantic.
+			nd->setNumTargetPass(1);  //* targets
+			td = nd->addTargetPass( "resolvedDB" );
+			td->setNumPasses(1);  //* passes
+			{
+				auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
+				pq->setAllLoadActions( LoadAction::DontCare );
+				pq->setAllStoreActions( StoreAction::DontCare );
+				pq->mStoreActionColour[0] = StoreAction::StoreOrResolve;
+
+				pq->mMaterialName = "Ogre/Resolve/1xFP32_Subsample0";
+				pq->addQuadTextureSource( 0, "gBufferDB" );  // input
+				pq->mProfilingId = "Resolve Depth Buffer";
+			}
+			nd->setNumOutputChannels(1);  //  out
+			nd->mapOutputChannel(0, "resolvedDB");
+		}
+
+		/* 3 ------------------------------  */
+		{	nd = mgr->addNodeDefinition("SR3_Refract_Final");
+			vNodes.push_back(nd);
+			
+			nd->addTextureSourceName("rtt_first", 0, TextureDefinitionBase::TEXTURE_INPUT);
+			nd->addTextureSourceName("depthBuffer", 1, TextureDefinitionBase::TEXTURE_INPUT);
+			nd->addTextureSourceName("depthBufferNoMsaa", 2, TextureDefinitionBase::TEXTURE_INPUT);
+			nd->addTextureSourceName("rt_renderwindow", 3, TextureDefinitionBase::TEXTURE_INPUT);
+
+			nd->setNumLocalTextureDefinitions(1);  //* textures
+			{
+				auto* td = nd->addTextureDefinition( "rtt_final" );
+				td->format = PFG_UNKNOWN;  // target_format, default
+				td->fsaa = "";  // auto
+
+				auto* rtv = nd->addRenderTextureView( "rtt_final" );  // rtv
+				RenderTargetViewEntry at;
+				at.textureName = "rtt_final";
+				rtv->colourAttachments.push_back(at);
+				rtv->depthAttachment.textureName = "depthBuffer";
+			}
+
+			nd->mCustomIdentifier = "3-final";
+			//if( pass->getParentNode()->getDefinition()->mCustomIdentifier == "custom" )
+
+			nd->setNumTargetPass(2);  //* targets
+
+			//  🌊 Refracted  Fluids  ----
+			td = nd->addTargetPass( "rtt_final" );
+			td->setNumPasses(2);  //* passes
+			{
+				//  Perform exact copy (MSAA-preserving) so we can continue rendering
+				//  into rtt_final. Meanwhile rtt_first will be used for sampling refractions
+				auto* cp = static_cast<CompositorPassDepthCopyDef*>(td->addPass(Ogre::PASS_DEPTHCOPY));
+				cp->setDepthTextureCopy("rtt_first", "rtt_final");  //*
+
+				ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
+				ps->setAllLoadActions( LoadAction::Load );
+				ps->mStoreActionColour[0] = StoreAction::StoreOrResolve;
+				ps->mStoreActionDepth = StoreAction::Store; //DontCare;
+				ps->mStoreActionStencil = StoreAction::DontCare;
+
+				ps->mProfilingId = "Refractive Fluids";  ps->mIdentifier = 10002;
+				ps->mFirstRQ = RQG_Fluid;  // 210
+				ps->mLastRQ = RQG_Fluid+2;
+				ps->setVisibilityMask(RV_Fluid);  // 0x00000002
+				
+				switch (pSet->g.shadow_type)  // shadows
+				{
+				case Sh_None:  break;  // none
+				case Sh_Depth: ps->mShadowNode = csShadow;  break;
+				case Sh_Soft:  ps->mShadowNode = chooseEsmShadowNode();  break;
+				}
+				ps->mShadowNodeRecalculation = SHADOW_NODE_REUSE;
+				ps->setUseRefractions("depthBufferNoMsaa", "rtt_first");
+			}
+
+			//  render Window  ----
+			td = nd->addTargetPass( "rt_renderwindow" );
+			td->setNumPasses(3);  //* passes
+			{
+				auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
+				pq->setAllLoadActions( LoadAction::DontCare );
+				pq->mMaterialName = "Ogre/Copy/4xFP32";
+				pq->addQuadTextureSource( 0, "rtt_final" );  // input
+				pq->mProfilingId = "Copy to Window";
+
+				//  ⏲️ Hud  --------
+				{	ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
+					ps->setAllStoreActions( StoreAction::Store );
+					ps->mProfilingId = "HUD";  ps->mIdentifier = 10007;
+
+					ps->mFirstRQ = 220;  // RQG_RoadMarkers
+					ps->mLastRQ = 230;  // RQG_Hud3
+					ps->setVisibilityMask(RV_Hud + RV_Particles);
+				}
+				//  🎛️ Gui, add MyGUI pass  --------
+				{	auto* gui = td->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
+					gui->mProfilingId = "Gui";  gui->mIdentifier = 99900;
+					//  single gui, fullscreen
+					gui->mExecutionMask = 0x02;  // if (!vr_mode)
+					gui->mViewportModifierMask = 0x00;
 				}
 			}
 		}
-	}
 		//  workspace
 		{
 			CompositorWorkspaceDef *workDef = mgr->addWorkspaceDefinition( sNewWork );
@@ -279,76 +265,73 @@ if (pSet->g.water_refract)
 			// workDef->connectExternal( 0, "SR3_Refract_Final", 1 );
 			vWorkDefs.push_back(workDef);
 		}
-	//-----------------------------------------------------------------------------------------
-}else  //  node  Old  no refract, no depth
-{
-	{	nd = mgr->addNodeDefinition(sNewNode);
-		vNodes.push_back(nd);
-		
-		//  render window input
-		nd->addTextureSourceName("rt_wnd", 0, TextureDefinitionBase::TEXTURE_INPUT);
-
-		nd->mCustomIdentifier = "old-1";
-		//if( pass->getParentNode()->getDefinition()->mCustomIdentifier == "CustomString" )
-
-		nd->setNumTargetPass(3);  //*  targets
-
-		td = nd->addTargetPass( "rt_wnd" );
-		{
-			ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
-			ps->setAllLoadActions( LoadAction::Clear );
-			ps->setAllStoreActions( StoreAction::Store );
-
-			ps->mProfilingId = "Main Render Old";
-			ps->mIdentifier = 21002;
-			// ps->mLastRQ = 199;  //RQG_Fluid-1  // all
-
-			ps->mExecutionMask = 0xff;  // executed in all views/eyes
-			ps->mViewportModifierMask = 0xff;  // affected by modifier, so renders to a portion of screen
+		//-----------------------------------------------------------------------------------------
+	}else  //  node  Old  no refract, no depth
+	{
+		{	nd = mgr->addNodeDefinition(sNewNode);
+			vNodes.push_back(nd);
 			
-			switch (pSet->g.shadow_type)  // shadows
+			//  render window input
+			nd->addTextureSourceName("rt_wnd", 0, TextureDefinitionBase::TEXTURE_INPUT);
+
+			nd->mCustomIdentifier = "old-1";
+			//if( pass->getParentNode()->getDefinition()->mCustomIdentifier == "CustomString" )
+
+			nd->setNumTargetPass(3);  //* targets
+
+			td = nd->addTargetPass( "rt_wnd" );
 			{
-			case Sh_None:  break;  // none
-			case Sh_Depth: ps->mShadowNode = csShadow;  break;
-			case Sh_Soft:  ps->mShadowNode = chooseEsmShadowNode();  break;
+				ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
+				ps->setAllLoadActions( LoadAction::Clear );
+				ps->setAllStoreActions( StoreAction::Store );
+
+				ps->mProfilingId = "Main Render Old";
+				ps->mIdentifier = 21002;
+				// ps->mLastRQ = 199;  //RQG_Fluid-1  // all
+
+				ps->mExecutionMask = 0xff;  // executed in all views/eyes
+				ps->mViewportModifierMask = 0xff;  // affected by modifier, so renders to a portion of screen
+				
+				switch (pSet->g.shadow_type)  // shadows
+				{
+				case Sh_None:  break;  // none
+				case Sh_Depth: ps->mShadowNode = csShadow;  break;
+				case Sh_Soft:  ps->mShadowNode = chooseEsmShadowNode();  break;
+				}
 			}
-		}
-		//  ⏲️ Hud  --------
-		{	ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
-			// ps->setAllLoadActions( LoadAction::Clear );
-			ps->setAllStoreActions( StoreAction::Store );
-			ps->mProfilingId = "Main HUD";
-			ps->mIdentifier = 10007;
+			//  ⏲️ Hud  --------
+			{	ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
+				// ps->setAllLoadActions( LoadAction::Clear );
+				ps->setAllStoreActions( StoreAction::Store );
+				ps->mProfilingId = "HUD";  ps->mIdentifier = 10007;
 
-			ps->mFirstRQ = 220;
-			ps->mLastRQ = 230;
-			ps->setVisibilityMask(0x00002080);  // RV_Hud, RV_Particles
+				ps->mFirstRQ = 220;
+				ps->mLastRQ = 230;
+				ps->setVisibilityMask(RV_Hud + RV_Particles);
 
-			// executed in all eyes, not views
-			// execution_mask			0xff
-			// executed on first view/eye
-			// execution_mask			0x01
-			// affected by modifier, apply to the whole screen
-			// viewport_modifier_mask	0x00
-		}
-		//  🎛️ Gui, add MyGUI pass  --------
-		{	CompositorPassDef *pass;
-			pass = td->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
-			pass->mProfilingId = "Gui";  pass->mIdentifier = 99900;
-			// if (!vr_mode)  // single gui, fullscreen
-			{
-				pass->mExecutionMask = 0x02;
+				// executed in all eyes, not views
+				// execution_mask			0xff
+				// executed on first view/eye
+				// execution_mask			0x01
+				// affected by modifier, apply to the whole screen
+				// viewport_modifier_mask	0x00
+			}
+			//  🎛️ Gui, add MyGUI pass  --------
+			{	CompositorPassDef *pass;
+				pass = td->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
+				pass->mProfilingId = "Gui";  pass->mIdentifier = 99900;
+				//  single gui, fullscreen
+				pass->mExecutionMask = 0x02;  // if (!vr_mode)
 				pass->mViewportModifierMask = 0x00;
 			}
-		}
-		//  workspace
-		{
-			CompositorWorkspaceDef *workDef = mgr->addWorkspaceDefinition( sNewWork );
-			workDef->connectExternal( 0, nd->getName(), 0 );
-			vWorkDefs.push_back(workDef);
+			//  workspace
+			{
+				CompositorWorkspaceDef *workDef = mgr->addWorkspaceDefinition( sNewWork );
+				workDef->connectExternal( 0, nd->getName(), 0 );
+				vWorkDefs.push_back(workDef);
+			}
 		}
 	}
-}
 }
 
 
@@ -600,7 +583,7 @@ void AppGui::SetupCompositor()
 		//  add Workspace
 		// auto str = getWorkspace(1, 0);  // old
 		// auto str = "RefractionsWorkspaceMsaa";  // new ok
-		auto str = sNewWork;  // new todo ..
+		auto str = sNewWork;  // new cpp
 		
 		const IdString wsName( str );
 		auto ws = mgr->addWorkspace( mSceneMgr, ext, c->cam, wsName, true );  // in .compositor
