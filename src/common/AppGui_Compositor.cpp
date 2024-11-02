@@ -78,25 +78,34 @@ if (pSet->g.water_refract)
 	{	nd = mgr->addNodeDefinition("SR3_Refract_first");
 		vNodes.push_back(nd);
 		
-		nd->setNumLocalTextureDefinitions(2);  //*  textures
+		nd->setNumLocalTextureDefinitions(2);  //* textures
 		{
 			auto* td = nd->addTextureDefinition( "depthBuffer" );
-			td->depthBufferFormat = PFG_D32_FLOAT;
+			// td->depthBufferFormat = PFG_D32_FLOAT;
+			td->format = PFG_D32_FLOAT;
 			td->fsaa = "";  // auto
+			// td->preferDepthTexture = 1;
+			// td->depthBufferId = 0;
+			td->textureFlags = TextureFlags::RenderToTexture;  // no discard
 
 			td = nd->addTextureDefinition( "rtt_first" );
 			// td->widthFactor = 0.5f;  td->heightFactor = 0.5f;
 			td->format = PFG_UNKNOWN;  //PFG_RGBA8_UNORM_SRGB;  // target_format
 			td->fsaa = "";  // auto
+			td->textureFlags = TextureFlags::RenderToTexture;
 
 			auto* rtv = nd->addRenderTextureView( "rtt_first" );  // rtv
+			RenderTargetViewEntry at;
+			at.textureName = "rtt_first";
+			rtv->colourAttachments.push_back(at);
 			rtv->depthAttachment.textureName = "depthBuffer";
+			rtv->depthBufferId = 0;
 		}
 		nd->mCustomIdentifier = "1-first";
 		
-		nd->setNumTargetPass(1);  //*  targets
+		nd->setNumTargetPass(1);  //* targets
 		td = nd->addTargetPass( "rtt_first" );
-		td->setNumPasses(1);
+		td->setNumPasses(1);  //* passes
 		{
 			ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
 			ps->setAllLoadActions( LoadAction::Clear );
@@ -104,10 +113,9 @@ if (pSet->g.water_refract)
 			ps->mStoreActionDepth = StoreAction::Store;
             ps->mStoreActionStencil = StoreAction::DontCare;
 
-			ps->mProfilingId = "Render First";  //  "Opaque + Regular Transparents"
+			ps->mProfilingId = "Render First";  // "Opaque + Regular Transparents"
 			// ps->mIdentifier = 10001;
 			ps->mLastRQ = 199;  //RQG_Fluid-1
-			ps->mIncludeOverlays = false;
 			
 			switch (pSet->g.shadow_type)  // shadows
 			{
@@ -116,9 +124,9 @@ if (pSet->g.water_refract)
 			case Sh_Soft:  ps->mShadowNode = chooseEsmShadowNode();  break;
 			}
 		}
-		nd->setNumOutputChannels( 2 );  //  out
-		nd->mapOutputChannel( 0, "rtt_first" );
-		nd->mapOutputChannel( 1, "depthBuffer" );
+		nd->setNumOutputChannels(2);  //  out
+		nd->mapOutputChannel(0, "rtt_first");
+		nd->mapOutputChannel(1, "depthBuffer");
 	}
 /* 2 ---------- */
 	{	nd = mgr->addNodeDefinition("SR3_DepthResolve");
@@ -126,12 +134,19 @@ if (pSet->g.water_refract)
 		
 		nd->addTextureSourceName("gBufferDepthBuffer", 0, TextureDefinitionBase::TEXTURE_INPUT);
 
-		nd->setNumLocalTextureDefinitions(1);  //*  textures
+		nd->setNumLocalTextureDefinitions(1);  //* textures
 		{
 			auto* td = nd->addTextureDefinition( "resolvedDepthBuffer" );
-			td->depthBufferFormat = PFG_D32_FLOAT;  // R32?
-			// depth_pool 0  ?
-			// td->fsaa = "";  // auto
+			td->depthBufferFormat = PFG_R32_FLOAT;  // D32 -> R32
+			td->textureFlags = TextureFlags::RenderToTexture;  // no discard
+
+			auto* rtv = nd->addRenderTextureView( "resolvedDepthBuffer" );  // rtv
+			// RenderTargetViewEntry at;
+			// at.textureName = "gBufferDepthBuffer";
+			// rtv->colourAttachments.push_back(at);
+			rtv->depthAttachment.textureName = "gBufferDepthBuffer";
+			rtv->depthBufferId = 0;  // depth_pool 0  ?
+			td->fsaa = 1;  // off  // td->fsaa = "";  // auto
 		}
 		nd->mCustomIdentifier = "2-resolve";
 
@@ -139,7 +154,7 @@ if (pSet->g.water_refract)
 		//  performance on Refractions is gigantic.
 		nd->setNumTargetPass(1);  //*  targets
 		td = nd->addTargetPass( "resolvedDepthBuffer" );
-		td->setNumPasses(1);
+		td->setNumPasses(1);  //* passes
 		{
 			auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
 			pq->setAllLoadActions( LoadAction::DontCare );
@@ -147,8 +162,8 @@ if (pSet->g.water_refract)
 			pq->addQuadTextureSource( 0, "gBufferDepthBuffer" );  // input
 			pq->mProfilingId = "Resolve Depth Buffer";
 		}
-		nd->setNumOutputChannels( 1 );  //  out
-		nd->mapOutputChannel( 0, "resolvedDepthBuffer" );
+		nd->setNumOutputChannels(1);  //  out
+		nd->mapOutputChannel(0, "resolvedDepthBuffer");
 	}
 /* 3 ------------------------------  */
 	{	nd = mgr->addNodeDefinition("SR3_Refract_Final");
@@ -164,22 +179,30 @@ if (pSet->g.water_refract)
 			auto* td = nd->addTextureDefinition( "rtt_final" );
 			td->format = PFG_UNKNOWN;  // target_format
 			td->fsaa = "";  // auto
+			td->textureFlags = TextureFlags::RenderToTexture;  // no discard
 
 			auto* rtv = nd->addRenderTextureView( "rtt_final" );  // rtv
+			RenderTargetViewEntry at;
+			at.textureName = "rtt_final";
+			rtv->colourAttachments.push_back(at);
+			rtv->depthBufferId = 0;
+			// rtv->depthBufferFormat = Ogre::PFG_D32_FLOAT;
 			rtv->depthAttachment.textureName = "depthBuffer";
 		}
 
 		nd->mCustomIdentifier = "3-final";
 		//if( pass->getParentNode()->getDefinition()->mCustomIdentifier == "CustomString" )
 
-		nd->setNumTargetPass(2);  //*  targets
+		nd->setNumTargetPass(2);  //* targets
 
-		//  Refracted  Fluids  ----
+		//  🌊 Refracted  Fluids  ----
 		td = nd->addTargetPass( "rtt_final" );
-		td->setNumPasses(2);
+		td->setNumPasses(2);  //* passes
 		{
+			//  Perform exact copy (MSAA-preserving) so we can continue rendering
+			//  into rtt_final. Meanwhile rtt_first will be used for sampling refractions
 			auto* cp = static_cast<CompositorPassDepthCopyDef*>(td->addPass(Ogre::PASS_DEPTHCOPY));
-			cp->setDepthTextureCopy("rtt_first", "rtt_final");
+			cp->setDepthTextureCopy("rtt_first", "rtt_final");  //*
 
 			ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
 			ps->setAllLoadActions( LoadAction::Load );
@@ -192,7 +215,6 @@ if (pSet->g.water_refract)
 			ps->mFirstRQ = RQG_Fluid;  // 210
 			ps->mLastRQ = RQG_Fluid+2;
 			ps->setVisibilityMask(RV_Fluid);  // 0x00000002
-			ps->mIncludeOverlays = false;
 			
 			switch (pSet->g.shadow_type)  // shadows
 			{
@@ -221,10 +243,9 @@ if (pSet->g.water_refract)
 				ps->mProfilingId = "Main HUD";
 				ps->mIdentifier = 10007;
 
-				ps->mFirstRQ = 220;
-				ps->mLastRQ = 230;
-				ps->setVisibilityMask(0x00002080);  // RV_Hud, RV_Particles
-				ps->mIncludeOverlays = false;
+				ps->mFirstRQ = 220;  // RQG_RoadMarkers
+				ps->mLastRQ = 230;  // RQG_Hud3
+				ps->setVisibilityMask(RV_Hud + RV_Particles);
 
 				// executed in all eyes, not views
 				// execution_mask			0xff
@@ -244,21 +265,20 @@ if (pSet->g.water_refract)
 				}
 			}
 		}
+	}
 		//  workspace
 		{
-			// connect	RefractionsRenderingNode 1 RefractionsMsaaDepthResolve 0
-			// connect	RefractionsRenderingNode 0 1 RefractionsRefractionsNode 0 1
-			// connect	RefractionsMsaaDepthResolve 0 RefractionsRefractionsNode 2
-			// connect_output RefractionsRefractionsNode 3
 			CompositorWorkspaceDef *workDef = mgr->addWorkspaceDefinition( sNewWork );
-			workDef->connect("SR3_Refract_first", 1, "SR3_DepthResolve", 0 );  // depthBuffer
-			workDef->connect("SR3_Refract_first", 0, "SR3_Refract_Final", 0 );  // first
+			workDef->connect("SR3_Refract_first", 0, "SR3_Refract_Final", 0 );  // first render
 			workDef->connect("SR3_Refract_first", 1, "SR3_Refract_Final", 1 );  // depth
+			// workDef->connect("SR3_Refract_first", 1, "SR3_Refract_Final", 2 );  // depth orig cant msaa-
+			// or
+			workDef->connect("SR3_Refract_first", 1, "SR3_DepthResolve", 0 );  // depth
 			workDef->connect("SR3_DepthResolve", 0, "SR3_Refract_Final", 2 );  // resolvedDepth
-			workDef->connectExternal( 0, "SR3_Refract_Final", 3 );
+			workDef->connectExternal( 0, "SR3_Refract_Final", 3 );  // d
+			// workDef->connectExternal( 0, "SR3_Refract_Final", 1 );
 			vWorkDefs.push_back(workDef);
 		}
-	}
 	//-----------------------------------------------------------------------------------------
 }else  //  node  Old  no refract, no depth
 {
@@ -303,7 +323,6 @@ if (pSet->g.water_refract)
 			ps->mFirstRQ = 220;
 			ps->mLastRQ = 230;
 			ps->setVisibilityMask(0x00002080);  // RV_Hud, RV_Particles
-			ps->mIncludeOverlays = false;
 
 			// executed in all eyes, not views
 			// execution_mask			0xff
@@ -580,8 +599,8 @@ void AppGui::SetupCompositor()
 
 		//  add Workspace
 		// auto str = getWorkspace(1, 0);  // old
-		auto str = "RefractionsWorkspaceMsaa";  // new ok
-		// auto str = sNewWork;  // new todo ..
+		// auto str = "RefractionsWorkspaceMsaa";  // new ok
+		auto str = sNewWork;  // new todo ..
 		
 		const IdString wsName( str );
 		auto ws = mgr->addWorkspace( mSceneMgr, ext, c->cam, wsName, true );  // in .compositor
