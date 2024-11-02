@@ -390,7 +390,11 @@
 
 			// pixelData.normal = float3(0.0,0.0,1.0) @insertpiece( two_sided_flip_normal );
 		@else
-			pixelData.normal = normalize( inPs.normal ) @insertpiece( two_sided_flip_normal );
+			// property( particle )
+			// 	pixelData.normal = midf3_c(0,0,1);
+			// else
+				pixelData.normal = normalize( inPs.normal ) @insertpiece( two_sided_flip_normal );
+			// end
 		@end
 	@else
 		// Normal mapping
@@ -1044,6 +1048,11 @@ uv3 = UV * WAVE_SCALE*2.0 + WIND_DIR *timer* WIND_SPEED*0.7 -(normal4.xy/normal4
 					* (_h(0.5) + _h(0.2) * sin(atmo.timeWind.x * _h(3.5)) );
 			@end
 
+			@property( particle && !hlms_shadowcaster )
+				//** This is particle
+				// finalColour.xyz = float3(0.1, 0.2, 0.3)
+				// 	* (_h(0.5) + _h(0.2) * sin(atmo.timeWind.x * _h(6.5)) );
+			@end
 
 			@insertpiece( applyFog )
 
@@ -1084,7 +1093,15 @@ uv3 = UV * WAVE_SCALE*2.0 + WIND_DIR *timer* WIND_SPEED*0.7 -(normal4.xy/normal4
 					outPs_normals = midf4_c( pixelData.normal * _h( 0.5 ) + _h( 0.5 ), 1.0 );
 				@end
 			@else
+				//outPs_colour0 = midf4_c( 0.02, 0.05, 0.1, 0.1 );
 				outPs_colour0 = midf4_c( 1.0, 1.0, 1.0, 1.0 );
+
+			@property( particle && !hlms_shadowcaster )
+				//** This is particle
+				// finalColour.xyz = float3(0.1, 0.2, 0.3)
+				// 	* (_h(0.5) + _h(0.2) * sin(atmo.timeWind.x * _h(6.5)) );
+			@end
+
 				@property( hlms_gen_normals_gbuffer )
 					outPs_normals = midf4_c( 0.5, 0.5, 1.0, 1.0 );
 				@end

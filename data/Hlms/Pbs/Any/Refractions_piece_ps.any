@@ -81,7 +81,7 @@
 	// refractionCol.y *= 0.9f;
 
 
-	//  depth  ------
+	//  depth  ------------------
 	float4x4 invVP = inverse( passBuf.viewProj );  // worldViewProj-  // todo atmo. pass matrix..
 
 	midf depthOrg = OGRE_SampleLevelF16( depthTextureNoMsaa, refractionMapSampler, screenPosUv.xy, 0 ).x;
@@ -100,8 +100,7 @@
 	// float depth = min(40, max(0, depth));  // max depth
 	// float depth = min(20, max(0, depth));  // max depth
 	// float depth = 0.1 + min(40, max(0, 6.0 + 20.0 * depth * 0.6));  // max depth
-	float d = min(40, max(0, 3.0 + 10.0 * depth * 0.6));  // max depth +
-
+	float d = min(40, max(0, 3.0 + 10.0 * /*abs*/(depth) * 0.6));  // max depth +
 
 	// midf3 deepFade = 1.1 * midf3(0.034, 0.022, 0.01);  // fade  blue dark
 	// midf3 deepFade = 1.1 * midf3(0.03, 0.025, 0.015);  // fade  blue cyan
