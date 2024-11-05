@@ -149,7 +149,7 @@ void App::createScene01()
 
 
 	// mGraphicsSystem->mWorkspace =
-	SetupCompositor();
+	SetupCompositors();
 	// mCamera->setFarClipDistance( pSet->view_distance );
 	// mCamera->setLodBias( pSet->lod_bias );
 

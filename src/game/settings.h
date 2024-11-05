@@ -129,7 +129,7 @@ public:
 		std::vector<std::string> car;  // [MAX_Players]   local players
 		std::vector<CarPaint> clr;     // [MAX_Vehicles]  also for ghosts 🎨  own paint.cfg
 
-		bool vr_mode =0;  // copy in game from pSet->
+		bool vr_mode =0;  // not used, copy in game from pSet->
 		int local_players = 1, num_laps = 2;  // 👥 split
 		//  🔨 game setup
 		std::string sim_mode{"normal"};

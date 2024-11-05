@@ -89,7 +89,7 @@ void App::CreateRnd2Tex()
 			{	scMgr->destroyCamera(r.cam);  r.cam = 0;  }
 			if( !r.cam && !prv3D)  // prv has own
 			{
-				r.cam = scMgr->createCamera( "RttCam" + si, true );
+				r.cam = scMgr->createCamera( "EdRttCam" + si, true );
 				bool btm = i == RT_RoadDens;
 				r.cam->setPosition(Vector3(0, btm ? -1500 : 1500, 0));  //par- max height
 				r.cam->setOrientation( btm ?
@@ -114,10 +114,7 @@ void App::CreateRnd2Tex()
 			}
 
 			//  🪄 Workspace  ----
-			CompositorChannelVec chan(1);
-			chan[0] = r.rtt;
-
-			const String name( "RttWrk" + si );  // created from code
+			const String name( "EdRttWrk" + si );  // created from code
 			if( !wsMgr->hasWorkspaceDefinition( name ) )
 			{
 				auto* w = wsMgr->addWorkspaceDefinition( name );
@@ -131,13 +128,16 @@ void App::CreateRnd2Tex()
 			//  add Workspace
 			LogO(String("--++ WS add:  Ed ")+strWs[i]+", all: "+toStr(wsMgr->getNumWorkspaces()));
 
+			CompositorChannelVec chan(1);
+			chan[0] = r.rtt;
+
 			auto* cam = prv3D ? prvScene.cam : r.cam;
 			r.ws = wsMgr->addWorkspace( scMgr, chan, cam, name,
 		#ifndef MANUAL_RTT_UPD
-				true );  //! slower
+				true, 2 /*-1 ?*/ );  //! slower
 			// r.ws->setEnabled(false);
 		#else
-				false );  // todo: manual update
+				false, 2 /*-1 ? */ );  // todo: manual update
 			// r.ws->_beginUpdate(true);
 			// r.ws->_update();  // todo: upd when needed only, skip
 			// r.ws->_endUpdate(true);
@@ -150,6 +150,7 @@ void App::CreateRnd2Tex()
 			const auto hlms = dynamic_cast<HlmsUnlit*>(mRoot->getHlmsManager()->getHlms(HLMS_UNLIT));
 			auto* db = dynamic_cast<HlmsUnlitDatablock*>(hlms->getDatablock(sMtr));
 			db->setTexture(PBSM_DIFFUSE, rt[i].tex);
+			// todo: sum road+ter PBSM_DETAIL0 .. unlit?
 
 			// String sMtr = "circle_smooth";
 			r.hr = new HudRenderable(sMtr, mSceneMgr,

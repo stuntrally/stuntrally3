@@ -72,7 +72,7 @@ void App::update( float dt )
 	scn->UpdSun(dt);  // ⛅
 
 	for (int i=0; i < CScene::SK_ALL; ++i)
-	if (scn->ndSky[i])
+	if (scn->ndSky[i])  // todo split screen..
 	{	scn->ndSky[i]->setPosition(mCamera->getPosition());
 		scn->ndSky[i]->_getFullTransformUpdated();
 	}

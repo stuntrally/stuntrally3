@@ -92,7 +92,7 @@ const Ogre::uint32
 	// RV_WaterReflect = RV_Terrain + RV_Vegetation + RV_Road /*+ RV_Objects /*+ RV_Car*/,
 	// RV_WaterRefract = RV_Terrain + RV_Vegetation + RV_Road + RV_Objects + RV_Car,
 
-	// RV_MaskAll      = 0x000001FF,
+	RV_MaskAll      = 0x000001FF,
 	// RV_MaskPrvCam   = 0x00000200,
 	//  ed only  road RTT prv
 	RV_EdRoadDens    = 0x00004000,  // 🛣️🌿 for grass,trees placing etc

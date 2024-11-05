@@ -24,7 +24,7 @@ using namespace Ogre;
 //-----------------------------------------------------------------------------------------
 void AppGui::CreateCubeReflect()
 {
-	LogO("C:## CreateCubeReflect "+getWsInfo());
+	LogO("C:## CreateCubeReflect   "+getWsInfo());
 	iReflStart = 0;
 	auto* rndSys = mRoot->getRenderSystem();
 	auto* texMgr = rndSys->getTextureGpuManager();
@@ -97,15 +97,15 @@ void AppGui::CreateCubeReflect()
 	// mCubeCamera->setCastShadows(true);
 
 
-	//  🪄 node def
+	//  🪄 Node def
 	//  No need to tie RenderWindow's use of MSAA with cubemap's MSAA
 	const IdString idCubeNode =
 		//mWindow->getSampleDescription().isMultisample() ? "CubemapNodeMsaa" :
 		"CubemapNode";  // never use MSAA for cubemap
 
-	CompositorNodeDef *nodeDef = mgr->getNodeDefinitionNonConst( idCubeNode );
+	auto* node = mgr->getNodeDefinitionNonConst( idCubeNode );
 	const CompositorPassDefVec &passes =
-		nodeDef->getTargetPass( nodeDef->getNumTargetPasses() - 1u )->getCompositorPasses();
+		node->getTargetPass( node->getNumTargetPasses() - 1u )->getCompositorPasses();
 
 	OGRE_ASSERT_HIGH( dynamic_cast<CompositorPassIblSpecularDef *>( passes.back() ) );
 	CompositorPassIblSpecularDef *iblPassDef =
@@ -120,17 +120,16 @@ void AppGui::CreateCubeReflect()
 
 
 	//  face skip mask  ----
-	const size_t num = nodeDef->getNumTargetPasses();
+	const size_t num = node->getNumTargetPasses();
 	assert( num == 6u && "Target face passes not 6" );
-	// LogO("Refl target passes: "+toStr(numTargetPasses));
 
 	for (size_t faceIdx = 0u; faceIdx < num; ++faceIdx)
 	{
-		const auto* targetDef = nodeDef->getTargetPass( faceIdx );
-		const auto& passDefs = targetDef->getCompositorPasses();
+		const auto* target = node->getTargetPass( faceIdx );
+		const auto& passes = target->getCompositorPasses();
 
-		for (auto* passDef : passDefs)
-			passDef->mExecutionMask = 1u << faceIdx;
+		for (auto* pass : passes)
+			pass->mExecutionMask = 1u << faceIdx;
 	}
 
 
@@ -150,8 +149,8 @@ void AppGui::CreateCubeReflect()
 	auto* ws = mgr->addWorkspace(
 		mSceneMgr, chan, mCubeCamera, name, false );  // manual update
 	vWorkspaces.push_back(ws);  //+ to destroy
-	LogO("--++ WS add:  Reflect Cube, "+getWsInfo());
 
+	LogO("C-*# Add Reflect Cube    "+getWsInfo());
 	wsCubeRefl = ws;
 	iReflSkip = 0;
 }

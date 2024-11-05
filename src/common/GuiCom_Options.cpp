@@ -355,7 +355,7 @@ void CGuiCom::btnVegetApply(WP)
 //  🌒 shadows
 void CGuiCom::btnShadowsApply(WP)
 {
-	app->SetupCompositor();  //
+	app->SetupCompositors();  //
 	// app->setupShadowCompositor();  // fixme crash ws def..
 	app->updShadowFilter();  // works
 }
@@ -387,7 +387,7 @@ void CGuiCom::slReflLod(SV* sv)
 void CGuiCom::btnReflApply(WP)
 {
 	// app->CreateCubeReflect();
-	app->SetupCompositor();  //
+	app->SetupCompositors();  //
 }
 
 

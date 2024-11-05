@@ -27,8 +27,7 @@ void main()
 																   VERTICAL_STEP	* (NUM_WEIGHTS - 1) ), 0 ).x;
 	outColour = weights[0];
 
-	int i;
-	for( i=NUM_WEIGHTS - 1; i > 0; i--)
+	for(int i=NUM_WEIGHTS - 1; i > 0; i--)
 	{
 		val = texelFetch( tex, ivec2( gl_FragCoord.xy ) - ivec2( HORIZONTAL_STEP* i,
 																 VERTICAL_STEP	* i ), 0 ).x;
@@ -38,7 +37,7 @@ void main()
 	val = texelFetch( tex, ivec2( gl_FragCoord.xy ), 0 ).x;
 	outColour += exp( K * (val - firstSmpl) ) * weights[NUM_WEIGHTS-1];
 
-	for( i=0; i<NUM_WEIGHTS - 1; i++ )
+	for(int i=0; i<NUM_WEIGHTS - 1; i++ )
 	{
 		val = texelFetch( tex, ivec2( gl_FragCoord.xy ) + ivec2( HORIZONTAL_STEP* (i+1),
 																 VERTICAL_STEP	* (i+1) ), 0 ).x;
