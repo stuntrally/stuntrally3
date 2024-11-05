@@ -1,67 +1,481 @@
-fragment_program Splitscreen_ps_HLSL hlsl
-{
-	source Copyback_4xFP32_ps.hlsl
-	entry_point main
-	target ps_5_0 ps_4_0 ps_4_0_level_9_1 ps_4_0_level_9_3
-}
+//  shaders for combining
+//  Split Screen views
+//  from RTTs into full window
 
-fragment_program Splitscreen_ps_GLSL glsl
+
+//  2 h  ---------------------------------------------------------------------------------------------------
+fragment_program SplitScreen_2h_ps_GLSL glsl
 {
-	source SplitScreen_ps.glsl
+	source SplitScreen_2h_ps.glsl
 	default_params
 	{
 		param_named tex1 int 0
 		param_named tex2 int 1
 	}
 }
-
-fragment_program Splitscreen_ps_VK glslvk
+fragment_program SplitScreen_2h_ps_VK glslvk
 {
-	source SplitScreen_ps.glsl
+	source SplitScreen_2h_ps.glsl
+}
+fragment_program SplitScreen_2h_HLSL hlsl
+{
+	source SplitScreen_todo_ps.hlsl
+	entry_point main
+	target ps_5_0 ps_4_0 ps_4_0_level_9_1 ps_4_0_level_9_3
+}
+fragment_program SplitScreen_2h_ps unified
+{
+	delegate SplitScreen_2h_ps_GLSL
+	delegate SplitScreen_2h_ps_VK
+	delegate SplitScreen_2h_ps_HLSL
 }
 
-fragment_program Splitscreen_ps_Metal metal
-{
-	source SplitScreen_ps.metal
-	shader_reflection_pair_hint Ogre/Compositor/Quad_vs
-}
-
-fragment_program Splitscreen_ps unified
-{
-	delegate Splitscreen_ps_GLSL
-	delegate Splitscreen_ps_VK
-	delegate Splitscreen_ps_HLSL
-	delegate Splitscreen_ps_Metal
-}
-
-material Splitscreen
-{
-	technique
-	{
-		pass
+material SplitScreen_2h
+{	technique
+	{	pass
 		{
 			depth_check off
 			depth_write off
-			
 			cull_hardware none
 
 			vertex_program_ref Ogre/Compositor/Quad_vs
-			{
-			}
-			fragment_program_ref Splitscreen_ps
-			{
-			}
+			{	}
+			fragment_program_ref SplitScreen_2h_ps
+			{	}
 
 			texture_unit tex1
-			{
-				filtering none
+			{	filtering none
 				tex_address_mode clamp
 			}
 			texture_unit tex2
-			{
-				filtering none
+			{	filtering none
 				tex_address_mode clamp
 			}
-		}
+}	}	}
+
+
+//  2 v  ---------------------------------------------------------------------------------------------------
+fragment_program SplitScreen_2v_ps_GLSL glsl
+{
+	source SplitScreen_2v_ps.glsl
+	default_params
+	{
+		param_named tex1 int 0
+		param_named tex2 int 1
 	}
 }
+fragment_program SplitScreen_2v_ps_VK glslvk
+{
+	source SplitScreen_2v_ps.glsl
+}
+fragment_program SplitScreen_2v_HLSL hlsl
+{
+	source SplitScreen_todo_ps.hlsl
+	entry_point main
+	target ps_5_0 ps_4_0 ps_4_0_level_9_1 ps_4_0_level_9_3
+}
+fragment_program SplitScreen_2v_ps unified
+{
+	delegate SplitScreen_2v_ps_GLSL
+	delegate SplitScreen_2v_ps_VK
+	delegate SplitScreen_2v_ps_HLSL
+}
+
+material SplitScreen_2v
+{	technique
+	{	pass
+		{
+			depth_check off
+			depth_write off
+			cull_hardware none
+
+			vertex_program_ref Ogre/Compositor/Quad_vs
+			{	}
+			fragment_program_ref SplitScreen_2v_ps
+			{	}
+
+			texture_unit tex1
+			{	filtering none
+				tex_address_mode clamp
+			}
+			texture_unit tex2
+			{	filtering none
+				tex_address_mode clamp
+			}
+}	}	}
+
+
+//  3 h  ---------------------------------------------------------------------------------------------------
+fragment_program SplitScreen_3h_ps_GLSL glsl
+{
+	source SplitScreen_3h_ps.glsl
+	default_params
+	{
+		param_named tex1 int 0
+		param_named tex2 int 1
+		param_named tex3 int 2
+	}
+}
+fragment_program SplitScreen_3h_ps_VK glslvk
+{
+	source SplitScreen_3h_ps.glsl
+}
+fragment_program SplitScreen_3h_HLSL hlsl
+{
+	source SplitScreen_todo_ps.hlsl
+	entry_point main
+	target ps_5_0 ps_4_0 ps_4_0_level_9_1 ps_4_0_level_9_3
+}
+fragment_program SplitScreen_3h_ps unified
+{
+	delegate SplitScreen_3h_ps_GLSL
+	delegate SplitScreen_3h_ps_VK
+	delegate SplitScreen_3h_ps_HLSL
+}
+
+material SplitScreen_3h
+{	technique
+	{	pass
+		{
+			depth_check off
+			depth_write off
+			cull_hardware none
+
+			vertex_program_ref Ogre/Compositor/Quad_vs
+			{	}
+			fragment_program_ref SplitScreen_3h_ps
+			{	}
+
+			texture_unit tex1
+			{	filtering none
+				tex_address_mode clamp
+			}
+			texture_unit tex2
+			{	filtering none
+				tex_address_mode clamp
+			}
+			texture_unit tex3
+			{	filtering none
+				tex_address_mode clamp
+			}
+}	}	}
+
+
+//  3 v  ---------------------------------------------------------------------------------------------------
+fragment_program SplitScreen_3v_ps_GLSL glsl
+{
+	source SplitScreen_3v_ps.glsl
+	default_params
+	{
+		param_named tex1 int 0
+		param_named tex2 int 1
+		param_named tex3 int 2
+	}
+}
+fragment_program SplitScreen_3v_ps_VK glslvk
+{
+	source SplitScreen_3v_ps.glsl
+}
+fragment_program SplitScreen_3v_HLSL hlsl
+{
+	source SplitScreen_todo_ps.hlsl
+	entry_point main
+	target ps_5_0 ps_4_0 ps_4_0_level_9_1 ps_4_0_level_9_3
+}
+fragment_program SplitScreen_3v_ps unified
+{
+	delegate SplitScreen_3v_ps_GLSL
+	delegate SplitScreen_3v_ps_VK
+	delegate SplitScreen_3v_ps_HLSL
+}
+
+material SplitScreen_3v
+{	technique
+	{	pass
+		{
+			depth_check off
+			depth_write off
+			cull_hardware none
+
+			vertex_program_ref Ogre/Compositor/Quad_vs
+			{	}
+			fragment_program_ref SplitScreen_3v_ps
+			{	}
+
+			texture_unit tex1
+			{	filtering none
+				tex_address_mode clamp
+			}
+			texture_unit tex2
+			{	filtering none
+				tex_address_mode clamp
+			}
+			texture_unit tex3
+			{	filtering none
+				tex_address_mode clamp
+			}
+}	}	}
+
+
+//  4  ---------------------------------------------------------------------------------------------------
+fragment_program SplitScreen_4_ps_GLSL glsl
+{
+	source SplitScreen_4_ps.glsl
+	default_params
+	{
+		param_named tex1 int 0
+		param_named tex2 int 1
+		param_named tex3 int 2
+		param_named tex4 int 3
+	}
+}
+fragment_program SplitScreen_4_ps_VK glslvk
+{
+	source SplitScreen_4_ps.glsl
+}
+fragment_program SplitScreen_4_HLSL hlsl
+{
+	source SplitScreen_todo_ps.hlsl
+	entry_point main
+	target ps_5_0 ps_4_0 ps_4_0_level_9_1 ps_4_0_level_9_3
+}
+fragment_program SplitScreen_4_ps unified
+{
+	delegate SplitScreen_4_ps_GLSL
+	delegate SplitScreen_4_ps_VK
+	delegate SplitScreen_4_ps_HLSL
+}
+
+material SplitScreen_4
+{	technique
+	{	pass
+		{
+			depth_check off
+			depth_write off
+			cull_hardware none
+
+			vertex_program_ref Ogre/Compositor/Quad_vs
+			{	}
+			fragment_program_ref SplitScreen_4_ps
+			{	}
+
+			texture_unit tex1
+			{	filtering none
+				tex_address_mode clamp
+			}
+			texture_unit tex2
+			{	filtering none
+				tex_address_mode clamp
+			}
+			texture_unit tex3
+			{	filtering none
+				tex_address_mode clamp
+			}
+			texture_unit tex4
+			{	filtering none
+				tex_address_mode clamp
+			}
+}	}	}
+
+
+//  5 h  ---------------------------------------------------------------------------------------------------
+fragment_program SplitScreen_5h_ps_GLSL glsl
+{
+	source SplitScreen_5h_ps.glsl
+	default_params
+	{
+		param_named tex1 int 0
+		param_named tex2 int 1
+		param_named tex3 int 2
+		param_named tex4 int 3
+		param_named tex5 int 4
+	}
+}
+fragment_program SplitScreen_5h_ps_VK glslvk
+{
+	source SplitScreen_5h_ps.glsl
+}
+fragment_program SplitScreen_5h_HLSL hlsl
+{
+	source SplitScreen_todo_ps.hlsl
+	entry_point main
+	target ps_5_0 ps_4_0 ps_4_0_level_9_1 ps_4_0_level_9_3
+}
+fragment_program SplitScreen_5h_ps unified
+{
+	delegate SplitScreen_5h_ps_GLSL
+	delegate SplitScreen_5h_ps_VK
+	delegate SplitScreen_5h_ps_HLSL
+}
+
+material SplitScreen_5h
+{	technique
+	{	pass
+		{
+			depth_check off
+			depth_write off
+			cull_hardware none
+
+			vertex_program_ref Ogre/Compositor/Quad_vs
+			{	}
+			fragment_program_ref SplitScreen_5h_ps
+			{	}
+
+			texture_unit tex1
+			{	filtering none
+				tex_address_mode clamp
+			}
+			texture_unit tex2
+			{	filtering none
+				tex_address_mode clamp
+			}
+			texture_unit tex3
+			{	filtering none
+				tex_address_mode clamp
+			}
+			texture_unit tex4
+			{	filtering none
+				tex_address_mode clamp
+			}
+			texture_unit tex5
+			{	filtering none
+				tex_address_mode clamp
+			}
+}	}	}
+
+
+//  5 v  ---------------------------------------------------------------------------------------------------
+fragment_program SplitScreen_5v_ps_GLSL glsl
+{
+	source SplitScreen_5v_ps.glsl
+	default_params
+	{
+		param_named tex1 int 0
+		param_named tex2 int 1
+		param_named tex3 int 2
+		param_named tex4 int 3
+		param_named tex5 int 4
+	}
+}
+fragment_program SplitScreen_5v_ps_VK glslvk
+{
+	source SplitScreen_5v_ps.glsl
+}
+fragment_program SplitScreen_5v_HLSL hlsl
+{
+	source SplitScreen_todo_ps.hlsl
+	entry_point main
+	target ps_5_0 ps_4_0 ps_4_0_level_9_1 ps_4_0_level_9_3
+}
+fragment_program SplitScreen_5v_ps unified
+{
+	delegate SplitScreen_5v_ps_GLSL
+	delegate SplitScreen_5v_ps_VK
+	delegate SplitScreen_5v_ps_HLSL
+}
+
+material SplitScreen_5v
+{	technique
+	{	pass
+		{
+			depth_check off
+			depth_write off
+			cull_hardware none
+
+			vertex_program_ref Ogre/Compositor/Quad_vs
+			{	}
+			fragment_program_ref SplitScreen_5v_ps
+			{	}
+
+			texture_unit tex1
+			{	filtering none
+				tex_address_mode clamp
+			}
+			texture_unit tex2
+			{	filtering none
+				tex_address_mode clamp
+			}
+			texture_unit tex3
+			{	filtering none
+				tex_address_mode clamp
+			}
+			texture_unit tex4
+			{	filtering none
+				tex_address_mode clamp
+			}
+			texture_unit tex5
+			{	filtering none
+				tex_address_mode clamp
+			}
+}	}	}
+
+
+//  6  ---------------------------------------------------------------------------------------------------
+fragment_program SplitScreen_6_ps_GLSL glsl
+{
+	source SplitScreen_6_ps.glsl
+	default_params
+	{
+		param_named tex1 int 0
+		param_named tex2 int 1
+		param_named tex3 int 2
+		param_named tex4 int 3
+		param_named tex5 int 4
+		param_named tex6 int 5
+	}
+}
+fragment_program SplitScreen_6_ps_VK glslvk
+{
+	source SplitScreen_6_ps.glsl
+}
+fragment_program SplitScreen_6_HLSL hlsl
+{
+	source SplitScreen_todo_ps.hlsl
+	entry_point main
+	target ps_5_0 ps_4_0 ps_4_0_level_9_1 ps_4_0_level_9_3
+}
+fragment_program SplitScreen_6_ps unified
+{
+	delegate SplitScreen_6_ps_GLSL
+	delegate SplitScreen_6_ps_VK
+	delegate SplitScreen_6_ps_HLSL
+}
+
+material SplitScreen_6
+{	technique
+	{	pass
+		{
+			depth_check off
+			depth_write off
+			cull_hardware none
+
+			vertex_program_ref Ogre/Compositor/Quad_vs
+			{	}
+			fragment_program_ref SplitScreen_6_ps
+			{	}
+
+			texture_unit tex1
+			{	filtering none
+				tex_address_mode clamp
+			}
+			texture_unit tex2
+			{	filtering none
+				tex_address_mode clamp
+			}
+			texture_unit tex3
+			{	filtering none
+				tex_address_mode clamp
+			}
+			texture_unit tex4
+			{	filtering none
+				tex_address_mode clamp
+			}
+			texture_unit tex5
+			{	filtering none
+				tex_address_mode clamp
+			}
+			texture_unit tex6
+			{	filtering none
+				tex_address_mode clamp
+			}
+}	}	}
