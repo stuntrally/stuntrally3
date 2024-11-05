@@ -132,6 +132,22 @@ CompositorWorkspaceDef* AppGui::AddWork(String name)
 	return wd;
 };
 
+//  Add rtv
+RenderTargetViewDef* AppGui::AddRtv(Ogre::CompositorNodeDef* nd, String name, String colour, String depth)
+{
+	auto* rtv = nd->addRenderTextureView( name );
+	if (!colour.empty())
+	{	RenderTargetViewEntry at;
+		at.textureName = colour;
+		rtv->colourAttachments.push_back(at);
+	}
+	if (!depth.empty())
+		rtv->depthAttachment.textureName = depth;
+	// rtv->depthBufferId = 0;  // ignored if ^ set
+	return rtv;
+}
+
+
 //  SplitScreen needs to render to RTT
 TextureGpu* AppGui::AddSplitRTT(String id, float width, float height)
 {
@@ -286,12 +302,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				td->format = PFG_UNKNOWN;  //PFG_RGBA8_UNORM_SRGB;  // target_format
 				td->fsaa = "";  // auto
 
-				auto* rtv = nd->addRenderTextureView( "rtt_first" );  // rtv
-				RenderTargetViewEntry at;
-				at.textureName = "rtt_first";
-				rtv->colourAttachments.push_back(at);
-				rtv->depthAttachment.textureName = "depthBuffer";
-				// rtv->depthBufferId = 0;  // ignored if ^ set
+				AddRtv(nd, "rtt_first", "rtt_first", "depthBuffer");
 			}
 			nd->mCustomIdentifier = "1-first-"+si;
 			
@@ -328,10 +339,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				td->format = PFG_R32_FLOAT;  // D32 -> R32
 				td->fsaa = 1;  // off
 
-				auto* rtv = nd->addRenderTextureView( "resolvedDB" );  // rtv
-				RenderTargetViewEntry at;
-				at.textureName = "resolvedDB";
-				rtv->colourAttachments.push_back(at);
+				AddRtv(nd, "resolvedDB", "resolvedDB", "");
 			}
 			nd->mCustomIdentifier = "2-depth-"+si;
 
@@ -368,11 +376,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				td->format = PFG_UNKNOWN;  // target_format, default
 				td->fsaa = "";  // auto
 
-				auto* rtv = nd->addRenderTextureView( "rtt_final" );  // rtv
-				RenderTargetViewEntry at;
-				at.textureName = "rtt_final";
-				rtv->colourAttachments.push_back(at);
-				rtv->depthAttachment.textureName = "depthBuffer";
+				AddRtv(nd, "rtt_final", "rtt_final", "depthBuffer");
 			}
 
 			nd->mCustomIdentifier = "3-Final-"+si;

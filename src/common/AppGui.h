@@ -11,14 +11,15 @@
 #include <MyGUI_KeyCode.h>
 #include <MyGUI_MouseButton.h>
 
-namespace MyGUI{  class Gui;  class Ogre2Platform;  }
-namespace Ogre {  class Root;  class SceneManager;  class Window;  class Camera;
+namespace Ogre
+{	class Root;  class SceneManager;  class Window;  class Camera;
 	class TextureGpu;  class HlmsSamplerblock;
-	class CompositorWorkspace;  class CompositorWorkspaceDef;
+	class CompositorWorkspace;  class CompositorWorkspaceDef;  class RenderTargetViewDef;
 	class CompositorNodeDef;  class CompositorTargetDef;  class CompositorPassSceneDef;
-	namespace v1 {  class Overlay;  }
-	class Terra;  class HlmsPbsTerraShadows;
-	class PlanarReflections;  }
+	// namespace v1 {  class Overlay;  }
+	class Terra;  class HlmsPbsTerraShadows;  class PlanarReflections;  }
+namespace MyGUI
+{	class Gui;  class Ogre2Platform;  }
 class GraphicsSystem;  class SETTINGS;  class CScene;  class CGui;  class CGuiCom;
 class HlmsPbsDb2;
 
@@ -119,9 +120,6 @@ public:
 
 
 	//  🌒 Shadows ----------------
-	Ogre::v1::Overlay *mDebugOverlayPSSM =0;
-	Ogre::v1::Overlay *mDebugOverlaySpotlights =0;
-
 	void createPcfShadowNode();
 	void createEsmShadowNodes();
 	void setupESM();
@@ -130,9 +128,6 @@ public:
 
 	const char *chooseEsmShadowNode();  // fixme ESM..
 	// void setupShadowNode( bool forEsm );
-
-	// void createShadowMapDebugOverlays();
-	// void destroyShadowMapDebugOverlays();
 
 
 	//  🔮 Reflection Cubemap  ----------------
@@ -155,8 +150,12 @@ public:
 	//  utils
 	Ogre::CompositorNodeDef* AddNode(Ogre::String name);
 	Ogre::CompositorWorkspaceDef* AddWork(Ogre::String name);
+	Ogre::RenderTargetViewDef* AddRtv(Ogre::CompositorNodeDef* nd,
+		Ogre::String name, Ogre::String colour, Ogre::String depth);
+
 	Ogre::TextureGpu* AddSplitRTT(Ogre::String id, float width, float height);
 	void AddHudGui(Ogre::CompositorTargetDef* td);
+
 	void AddShadows(Ogre::CompositorPassSceneDef* ps);
 	Ogre::String getSplitMtr(int splits);
 	Ogre::String getWsInfo();  // log
