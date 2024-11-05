@@ -14,7 +14,8 @@
 namespace MyGUI{  class Gui;  class Ogre2Platform;  }
 namespace Ogre {  class Root;  class SceneManager;  class Window;  class Camera;
 	class TextureGpu;  class HlmsSamplerblock;
-	class CompositorWorkspace;  class CompositorWorkspaceDef;  class CompositorNodeDef;
+	class CompositorWorkspace;  class CompositorWorkspaceDef;
+	class CompositorNodeDef;  class CompositorTargetDef;  class CompositorPassSceneDef;
 	namespace v1 {  class Overlay;  }
 	class Terra;  class HlmsPbsTerraShadows;
 	class PlanarReflections;  }
@@ -151,11 +152,19 @@ public:
 	std::vector<Ogre::CompositorWorkspaceDef*> vWorkDefs;
 	constexpr static const char* csShadow = "ShadowMapFromCodeShadowNode";
 	
-	//  returns rtt if made, when not final wnd  // cur view num / all
-	Ogre::TextureGpu* CreateCompositor(int view, int splits, float width, float height);
+	//  utils
+	Ogre::CompositorNodeDef* AddNode(Ogre::String name);
+	Ogre::CompositorWorkspaceDef* AddWork(Ogre::String name);
+	Ogre::TextureGpu* AddSplitRTT(Ogre::String id, float width, float height);
+	void AddHudGui(Ogre::CompositorTargetDef* td);
+	void AddShadows(Ogre::CompositorPassSceneDef* ps);
+	Ogre::String getSplitMtr(int splits);
+	Ogre::String getWsInfo();  // log
 
-	void SetupCompositors(), DestroyCompositors();  // full
-	Ogre::String getWsInfo();  // log util
+	//  One  returns rtt if made, when not final wnd  // cur view num / all
+	Ogre::TextureGpu* CreateCompositor(int view, int splits, float width, float height);
+	//  All  Full
+	void SetupCompositors(), DestroyCompositors();
 
 
 	//  👥 Split screen  ----------------

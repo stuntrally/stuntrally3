@@ -83,6 +83,102 @@ const String
 	sCombine = "SR3_Combine", sCombineWS = "SR3_Combine_WS";  // new in SplitScreen, last
 
 
+//  util methods
+//-----------------------------------------------------------------------------------------
+
+void AppGui::AddShadows(CompositorPassSceneDef* ps)
+{
+	switch (pSet->g.shadow_type)  // shadows
+	{
+	case Sh_None:  break;  // none
+	case Sh_Depth: ps->mShadowNode = csShadow;  break;
+	case Sh_Soft:  ps->mShadowNode = chooseEsmShadowNode();  break;
+	}
+}
+
+String AppGui::getSplitMtr(int splits)
+{
+	String mtr;
+#ifndef SR_EDITOR
+	bool hor = !pSet->split_vertically;
+	const String ss = "SplitScreen_";
+	switch (splits)
+	{
+	case 2:  mtr = ss + (hor ? "2h" : "2v");  break;
+	case 3:  mtr = ss + (hor ? "3h" : "3v");  break;
+	case 4:  mtr = ss + "4";  break;
+	case 5:  mtr = ss + (hor ? "5h" : "5v");  break;
+	case 6:  mtr = ss + "6";  break;
+	}
+#endif
+	return mtr;
+}
+
+//  Add basics
+CompositorNodeDef* AppGui::AddNode(String name)
+{
+	auto* mgr = mRoot->getCompositorManager2();
+	auto* nd = mgr->addNodeDefinition(name);
+	vNodes.push_back(nd);
+	LogO("C+-* Add Node " + name);
+	return nd;
+};
+CompositorWorkspaceDef* AppGui::AddWork(String name)
+{
+	auto* mgr = mRoot->getCompositorManager2();
+	auto* wd = mgr->addWorkspaceDefinition(name);
+	vWorkDefs.push_back(wd);
+	LogO("C+-# Add Work " + name);
+	return wd;
+};
+
+//  SplitScreen needs to render to RTT
+TextureGpu* AppGui::AddSplitRTT(String id, float width, float height)
+{
+	auto* texMgr = mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
+	//  Tex
+	auto* tex = texMgr->createTexture( "GTex" + id,
+		GpuPageOutStrategy::SaveToSystemRam,
+		TextureFlags::ManualTexture, TextureTypes::Type2D );
+	
+	tex->setResolution(  // dims
+		mWindow->getWidth() * width, mWindow->getHeight() * height);
+	tex->scheduleTransitionTo( GpuResidency::OnStorage );
+	tex->setNumMipmaps(1);  // none
+
+	tex->setPixelFormat( PFG_RGBA8_UNORM_SRGB );
+	tex->scheduleTransitionTo( GpuResidency::Resident );
+	vTex.push_back(tex);
+
+	//  RTT
+	auto flags = TextureFlags::RenderToTexture;
+	auto* rtt = texMgr->createTexture( "GRtt" + id,
+		GpuPageOutStrategy::Discard, flags, TextureTypes::Type2D );
+	rtt->copyParametersFrom( tex );
+	rtt->scheduleTransitionTo( GpuResidency::Resident );
+	rtt->_setDepthBufferDefaults( DepthBuffer::POOL_DEFAULT, false, PFG_D32_FLOAT );  //?
+	vRtt.push_back(rtt);
+	return rtt;
+}
+
+//  Add Hud, Gui
+void AppGui::AddHudGui(CompositorTargetDef* td)
+{
+	//  ⏲️ Hud  --------
+	auto* ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
+	ps->setAllStoreActions( StoreAction::Store );
+	ps->mProfilingId = "HUD";  ps->mIdentifier = 10007;
+
+	ps->mFirstRQ = 220;  // RQG_RoadMarkers
+	ps->mLastRQ = 230;  // RQG_Hud3
+	ps->setVisibilityMask(RV_Hud + RV_Particles);
+
+	//  🎛️ Gui, add MyGUI pass  --------
+	auto* gui = td->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
+	gui->mProfilingId = "GUI";  gui->mIdentifier = 99900;
+}
+
+
 //  🪄 Create Compositor  main render setup
 //-----------------------------------------------------------------------------------------
 TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float height)
@@ -119,15 +215,6 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 	// const Real wx = 1.f, wy = 1.f;
 	// const Real wx = 0.5f, wy = 1.f;
 
-	//  Add
-	auto AddNode = [&](String name)	{
-		nd = mgr->addNodeDefinition(name);
-		vNodes.push_back(nd);  LogO("C+-* Add Node " + name);
-	};
-	auto AddWork = [&](String name)	{
-		wd = mgr->addWorkspaceDefinition(name);
-		vWorkDefs.push_back(wd);  LogO("C+-# Add Work " + name);
-	};
 
 #ifndef SR_EDITOR  // game
 	//  Combine last, final wnd
@@ -135,14 +222,13 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 	//------------------------------------------------------------------------------------------------------------------------------------------
 	if (view >= 50)
 	{
-		/* 50 ---------- */
-		{	AddNode(sCombine);
+		{	nd = AddNode(sCombine);
 			
 			nd->addTextureSourceName("rt_renderwindow", 0, TextureDefinitionBase::TEXTURE_INPUT);  // wnd
 			for (int i=0; i < splits; ++i)
 				nd->addTextureSourceName("rtt_FullIn"+toStr(i), i+1, TextureDefinitionBase::TEXTURE_INPUT);
 
-			nd->mCustomIdentifier = "50-combine";
+			nd->mCustomIdentifier = "50-Combine";
 
 			nd->setNumTargetPass(1);  //* targets
 			td = nd->addTargetPass( "rt_renderwindow" );
@@ -153,39 +239,19 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
 				pq->setAllLoadActions( LoadAction::DontCare );  //Clear
 
-				//  material name
-				auto& mtr = pq->mMaterialName;
-				bool hor = !pSet->split_vertically;
-				const String ss = "SplitScreen_";
-				switch (splits)
-				{
-				case 2:  mtr = ss + (hor ? "2h" : "2v");  break;
-				case 3:  mtr = ss + (hor ? "3h" : "3v");  break;
-				case 4:  mtr = ss + "4";  break;
-				case 5:  mtr = ss + (hor ? "5h" : "5v");  break;
-				case 6:  mtr = ss + "6";  break;
-				}
+				pq->mMaterialName = getSplitMtr(splits);
+
 				for (int i=0; i < splits; ++i)
 					pq->addQuadTextureSource( i, "rtt_FullIn"+toStr(i) );  // input
 				pq->mProfilingId = "Combine to Window";
 
-				//  ⏲️ Hud  --------
-				{	ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
-					ps->setAllStoreActions( StoreAction::Store );
-					ps->mProfilingId = "HUD";  ps->mIdentifier = 10007;
-
-					ps->mFirstRQ = 220;  // RQG_RoadMarkers
-					ps->mLastRQ = 230;  // RQG_Hud3
-					ps->setVisibilityMask(RV_Hud + RV_Particles);
-				}
-				//  🎛️ Gui, add MyGUI pass  --------
-				{	auto* gui = td->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
-					gui->mProfilingId = "GUI";  gui->mIdentifier = 99900;
-			}	}
+				//  ⏲️ Hud, 🎛️ Gui  --------
+				AddHudGui(td);
+			}
 		}
 		//  workspace Full last
 		{
-			AddWork( sCombineWS );
+			wd = AddWork( sCombineWS );
 			wd->connectExternal( 0, sCombine, 0 );  // wnd
 			for (int i=0; i < splits; ++i)
 				wd->connectExternal( i+1, sCombine, i+1 );
@@ -200,32 +266,10 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 	{
 		//  🖼️ texture & rtt  for SplitScreen
 		if (split)
-		{
-			tex = texMgr->createTexture( "GTex" + si,
-				GpuPageOutStrategy::SaveToSystemRam,
-				TextureFlags::ManualTexture, TextureTypes::Type2D );
-			
-			tex->setResolution(  // dims
-				mWindow->getWidth() * width, mWindow->getHeight() * height);
-			tex->scheduleTransitionTo( GpuResidency::OnStorage );
-			tex->setNumMipmaps(1);  // none
-
-			tex->setPixelFormat( PFG_RGBA8_UNORM_SRGB );
-			tex->scheduleTransitionTo( GpuResidency::Resident );
-			vTex.push_back(tex);
-
-			//  RTT
-			auto flags = TextureFlags::RenderToTexture;
-			rtt = texMgr->createTexture( "GRtt" + si,
-				GpuPageOutStrategy::Discard, flags, TextureTypes::Type2D );
-			rtt->copyParametersFrom( tex );
-			rtt->scheduleTransitionTo( GpuResidency::Resident );
-			rtt->_setDepthBufferDefaults( DepthBuffer::POOL_DEFAULT, false, PFG_D32_FLOAT );  //?
-			vRtt.push_back(rtt);
-		}
+			rtt = AddSplitRTT(si, width, height);
 
 		/* 1 -------------------- */
-		{	AddNode(s1_first+si);
+		{	nd = AddNode(s1_first+si);
 						
 			nd->setNumLocalTextureDefinitions(2);  //* textures
 			{
@@ -266,12 +310,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				ps->mLastRQ = 199;  //RQG_Fluid-1
 				ps->setVisibilityMask(RV_view);
 				
-				switch (pSet->g.shadow_type)  // shadows
-				{
-				case Sh_None:  break;  // none
-				case Sh_Depth: ps->mShadowNode = csShadow;  break;
-				case Sh_Soft:  ps->mShadowNode = chooseEsmShadowNode();  break;
-				}
+				AddShadows(ps);  // shadows
 			}
 			nd->setNumOutputChannels(2);  //  out
 			nd->mapOutputChannel(0, "rtt_first");
@@ -279,7 +318,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 		}
 
 		/* 2 ---------- */
-		{	AddNode(s2_depth+si);
+		{	nd = AddNode(s2_depth+si);
 			
 			nd->addTextureSourceName("gBufferDB", 0, TextureDefinitionBase::TEXTURE_INPUT);
 
@@ -316,7 +355,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 		}
 
 		/* 3 ------------------------------  */
-		{	AddNode(s3_Final+si);
+		{	nd = AddNode(s3_Final+si);
 			
 			nd->addTextureSourceName("rtt_first", 0, TextureDefinitionBase::TEXTURE_INPUT);
 			nd->addTextureSourceName("depthBuffer", 1, TextureDefinitionBase::TEXTURE_INPUT);
@@ -336,7 +375,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				rtv->depthAttachment.textureName = "depthBuffer";
 			}
 
-			nd->mCustomIdentifier = "3-final-"+si;
+			nd->mCustomIdentifier = "3-Final-"+si;
 
 			nd->setNumTargetPass(2);  //* targets
 
@@ -356,21 +395,15 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				ps->mStoreActionStencil = StoreAction::DontCare;
 
 				ps->mProfilingId = "Refractive Fluids";  ps->mIdentifier = 10002;
-				ps->mFirstRQ = RQG_Fluid;  // 210
-				ps->mLastRQ = RQG_Fluid+2;
+				ps->mFirstRQ = RQG_Fluid;  ps->mLastRQ = RQG_Refract+1;  // 210, 211
 				ps->setVisibilityMask(RV_Fluid);  // 0x00000002
 				
-				switch (pSet->g.shadow_type)  // shadows
-				{
-				case Sh_None:  break;  // none
-				case Sh_Depth: ps->mShadowNode = csShadow;  break;
-				case Sh_Soft:  ps->mShadowNode = chooseEsmShadowNode();  break;
-				}
-				ps->mShadowNodeRecalculation = SHADOW_NODE_REUSE;
-				ps->setUseRefractions("depthBufferNoMsaa", "rtt_first");  //~
+				AddShadows(ps);  // shadows
+				ps->mShadowNodeRecalculation = SHADOW_NODE_REUSE;  // `
+				ps->setUseRefractions("depthBufferNoMsaa", "rtt_first");  // ~
 			}
 
-			//  render //Window  ----
+			//  render / Window  ----
 			td = nd->addTargetPass( "rtt_FullOut" );
 			td->setNumPasses( split ? 1 : 3 );  //* passes
 			{
@@ -380,26 +413,15 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				pq->addQuadTextureSource( 0, "rtt_final" );  // input
 				pq->mProfilingId = "Copy to Window";
 
-				//  ⏲️ Hud  --------
+				//  ⏲️ Hud, 🎛️ Gui  --------
 				if (!split)
-				{	ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
-					ps->setAllStoreActions( StoreAction::Store );
-					ps->mProfilingId = "HUD";  ps->mIdentifier = 10007;
-
-					ps->mFirstRQ = 220;  // RQG_RoadMarkers
-					ps->mLastRQ = 230;  // RQG_Hud3
-					ps->setVisibilityMask(RV_Hud + RV_Particles);
-				
-				//  🎛️ Gui, add MyGUI pass  --------
-					auto* gui = td->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
-					gui->mProfilingId = "GUI";  gui->mIdentifier = 99900;
-				}
+					AddHudGui(td);
 			}
 		}
 
 		//  workspace
 		{
-			AddWork( sWork+si );
+			wd = AddWork( sWork+si );
 			wd->connect( s1_first+si, 0, s3_Final+si, 0 );  // rtt_first
 			wd->connect( s1_first+si, 1, s3_Final+si, 1 );  // depthBuffer
 			wd->connect( s1_first+si, 1, s2_depth+si, 0 );  // depthBuffer
@@ -410,7 +432,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 	//------------------------------------------------------------------------------------------------------------------------------------------
 	else  //  node  Old  no refract, no depth  - - -  // todo old split screen ..
 	{
-		{	AddNode(sNode);
+		{	nd = AddNode(sNode);
 			
 			//  render window input
 			nd->addTextureSourceName("rt_wnd", 0, TextureDefinitionBase::TEXTURE_INPUT);
@@ -430,31 +452,14 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				ps->mIdentifier = 21002;
 				// ps->mLastRQ = 199;  //RQG_Fluid-1  // all
 
-				switch (pSet->g.shadow_type)  // shadows
-				{
-				case Sh_None:  break;  // none
-				case Sh_Depth: ps->mShadowNode = csShadow;  break;
-				case Sh_Soft:  ps->mShadowNode = chooseEsmShadowNode();  break;
-				}
+				AddShadows(ps);  // shadows
 			}
-			//  ⏲️ Hud  --------
-			{	ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
-				// ps->setAllLoadActions( LoadAction::Clear );
-				ps->setAllStoreActions( StoreAction::Store );
-				ps->mProfilingId = "HUD";  ps->mIdentifier = 10007;
+			//  ⏲️ Hud, 🎛️ Gui  --------
+			AddHudGui(td);
 
-				ps->mFirstRQ = 220;
-				ps->mLastRQ = 230;
-				ps->setVisibilityMask(RV_Hud + RV_Particles);
-			}
-			//  🎛️ Gui, add MyGUI pass  --------
-			{	CompositorPassDef *pass;
-				pass = td->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
-				pass->mProfilingId = "GUI";  pass->mIdentifier = 99900;
-			}
 			//  workspace
 			{
-				AddWork( sWork+si );
+				wd = AddWork( sWork+si );
 				wd->connectExternal( 0, nd->getName(), 0 );  // rt_renderwindow
 			}
 		}
