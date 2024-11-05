@@ -23,6 +23,15 @@ using namespace Ogre;
 using namespace MyGUI;
 
 
+//  util
+float CHud::getHudScale()
+{
+	const int plr = pSet->game.local_players;
+	const static float scPlr[6] =
+	{	1.f, 0.8f, 0.7f, 0.6f, 0.5f, 0.4f  };
+	return scPlr[plr-1];  // scale down for SplitScreen
+}
+
 ///  🗜️ HUD resize
 //---------------------------------------------------------------------------------------------------------------
 void CHud::Size()
@@ -111,10 +120,11 @@ void CHud::Size()
 
 		//  ⏱️ Times
 		// bool hasLaps = pSet->game.hasLaps();
-		const float t = pSet->font_times;
-		int w = 160 * t, tx = xMin + 40, ty = yMin + 55;  //40
-		tx *= t;  ty *= t;
-		h.bckTimes->setPosition(tx-20,ty);
+		const float t = pSet->font_times * getHudScale();
+		int w = 160 * t, tx = xMin + 40 * t, ty = yMin + 55 * t;  //40
+		// tx *= t;  ty *= t;
+		
+		h.bckTimes->setPosition(xMin + 20 * t,ty);
 		//tx = 24;  ty = (hasLaps ? 16 : 4);
 		h.txTimTxt->setPosition(tx,ty);
 		h.txTimes->setPosition(tx+w,ty);  //?-
@@ -247,22 +257,3 @@ void CHud::Show(bool hideAll)
 	if (app->mWndRplTxt && !app->bLoading && app->gui->bLesson)
 		app->mWndRplTxt->setVisible(app->bRplPlay);
 }
-
-
-/*void CHud::ShowVp(bool vp)	//?
-{
-	// show/hide for render viewport / gui viewport
-	// first show everything
-	Show(false);  // todo: don't here
-	// now hide things we dont want
-	if (!vp)
-	{
-		/// for gui viewport ----------------------
-		//if (ovCarDbg)  ovCarDbg->hide();	if (ovCarDbgTxt)  ovCarDbgTxt->hide();
-	}else{
-		/// for render viewport ---------
-		//if (ovCam)  ovCam->hide();
-		//bckFps->setVisible(false);
-	}
-}
-*/

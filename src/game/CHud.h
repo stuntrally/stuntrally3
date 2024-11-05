@@ -171,6 +171,7 @@ public:
 
 
 	//  ⛓️ util
+	float getHudScale();
 	Txt CreateNickText(int carId, Ogre::String text);
 	Ogre::Vector3 projectPoint(const Ogre::Camera* cam, const Ogre::Vector3& pos);  // 2d xy, z - out info
 

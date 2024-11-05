@@ -141,7 +141,8 @@ void CHud::Create()
 
 
 		//  gear  text  ----
-		float f = pSet->font_hud;
+		float f = pSet->font_hud * getHudScale();
+
 		h.parent = app->mGui->createWidget<Widget>("", 0,0,	wx, wy,
 			Align::Left,"Back","main"+s);
 
@@ -170,7 +171,7 @@ void CHud::Create()
 		h.txVel = h.parent->createWidget<TextBox>("TextBox",
 			0,y, 160*f,72*f, Align::Right, "Vel"+s);  h.txVel->setVisible(false);
 		h.txVel->setFontName("DigGear");
-		//h.txVel->setFontHeight(64);
+		h.txVel->setFontHeight(72 * f);  //par
 		//h.txVel->setInheritsAlpha(false);
 		h.txVel->setTextShadowColour(Colour::Black);  h.txVel->setTextShadow(true);
 
@@ -235,7 +236,7 @@ void CHud::Create()
 
 
 		///  ⏱️ times text  ----------------------
-		const float t = pSet->font_times;
+		const float t = pSet->font_times * f;  // scale
 		h.bckTimes = h.parent->createWidget<ImageBox>("ImageBox",
 			0,y, 320/*420*/*t,220*t, Align::Left, "TimP"+s);  h.bckTimes->setVisible(false);
 		h.bckTimes->setColour(Colour(0.1,0.1,0.1));
@@ -245,7 +246,7 @@ void CHud::Create()
 		h.txTimTxt = h.parent->createWidget<TextBox>("TextBox",
 			0,y, 170*t,260*t, Align::Left, "TimT"+s);
 		h.txTimTxt->setFontName(hudTimes);
-		// h.txTimTxt->setFontHeight(32*t);
+		h.txTimTxt->setFontHeight(32*t);
 		h.txTimTxt->setTextShadowColour(Colour::Black);  h.txTimTxt->setTextShadow(true);
 		h.txTimTxt->setInheritsAlpha(false);
 		
@@ -268,7 +269,7 @@ void CHud::Create()
 			0,y, 240*t,260*t, Align::Left, "Tim"+s);
 		h.txTimes->setInheritsAlpha(false);
 		h.txTimes->setFontName(hudTimes);
-		// h.txTimes->setFontHeight(32);
+		h.txTimes->setFontHeight(32*t);
 		h.txTimes->setTextShadow(true);
 
 		h.txCollect = h.parent->createWidget<TextBox>("TextBox",
@@ -289,7 +290,7 @@ void CHud::Create()
 		h.txLapTxt = h.parent->createWidget<TextBox>("TextBox",
 			0,y, 120*t,300*t, Align::Left, "LapT"+s);
 		h.txLapTxt->setFontName(hudTimes);
-		// h.txLapTxt->setFontHeight(25);
+		h.txLapTxt->setFontHeight(32*t);
 		h.txLapTxt->setTextShadow(true);
 		h.txLapTxt->setInheritsAlpha(false);
 		h.txLapTxt->setCaption(//String("\n")+
@@ -305,7 +306,7 @@ void CHud::Create()
 			0,y, 230*t,320*t, Align::Left, "Lap"+s);
 		h.txLap->setInheritsAlpha(false);
 		h.txLap->setFontName(hudTimes);
-		// h.txLap->setFontHeight(25);
+		h.txLap->setFontHeight(32*t);
 		h.txLap->setTextShadow(true);
 		h.txLap->setVisible(false);
 
