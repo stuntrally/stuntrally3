@@ -475,13 +475,13 @@
 					<Widget type="TabItem" skin="" position="2 24 694 272">
 						<Property key="Caption" value="#B0B0B0#{Shadows}"/>
 						<Widget type="Button" skin="Button" position="32 240 200 26" layer="Back" name="ApplyShadows">
-							<Property key="Caption" value="#{Apply} ^"/>
+							<Property key="Caption" value="#{Apply}"/>
 							<Property key="Colour" value="0.9 0.97 1.0"/>
 							<Property key="TextColour" value="0.9 0.97 1.0"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="32 50 176 24">
-							<Property key="Caption" value="#{Shadows} **"/>
+							<Property key="Caption" value="#{Shadows}"/>
 							<Property key="Colour" value="0 0 0"/>
 							<Property key="TextColour" value="0.5 0.8 1"/>
 						</Widget>
@@ -491,7 +491,7 @@
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="32 80 176 24">
-							<Property key="Caption" value="#{Count} * ="/>
+							<Property key="Caption" value="#{Count}"/>
 							<Property key="Colour" value="0 0 0"/>
 							<Property key="TextColour" value="0.75 0.85 1"/>
 						</Widget>
@@ -501,7 +501,7 @@
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="32 110 176 24">
-							<Property key="Caption" value="#{MapSize} *"/>
+							<Property key="Caption" value="#{MapSize}"/>
 							<Property key="Colour" value="0 0 0"/>
 							<Property key="TextColour" value="0.5 0.8 1"/>
 						</Widget>
@@ -511,7 +511,7 @@
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="32 140 176 24">
-							<Property key="Caption" value="#{Distance} *"/>
+							<Property key="Caption" value="#{Distance}"/>
 							<Property key="Colour" value="0 0 0"/>
 							<Property key="TextColour" value="0.7 0.8 0.9"/>
 						</Widget>
@@ -521,7 +521,7 @@
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="32 170 176 24">
-							<Property key="Caption" value="#{ShadowFilter} ^"/>
+							<Property key="Caption" value="#{ShadowFilter}"/>
 							<Property key="Colour" value="0 0 0"/>
 							<Property key="TextColour" value="0.6 0.7 0.8"/>
 						</Widget>

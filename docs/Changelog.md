@@ -4,8 +4,9 @@ This section lists changes not yet released, but committed to repositories stunt
 WIP means work in progress, unfinished, still being developed.
 
 - 3 [New tracks](https://groups.f-hub.org/d/ZXVHk6du/new-tracks-in-sr-3-3)
-- WIP .compositor rewrite
-  - Apply Shadows, Reflections buttons work
+- Compositor rewrite
+  - Apply buttons work for Shadows and Reflections
+  - SplitScreen uses RTTs, Refractions work, fix depth, todo: Old no reflect
 
 ### Version 3.2 - 23.09.2024
 
