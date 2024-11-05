@@ -1,0 +1,67 @@
+fragment_program Splitscreen_ps_HLSL hlsl
+{
+	source Copyback_4xFP32_ps.hlsl
+	entry_point main
+	target ps_5_0 ps_4_0 ps_4_0_level_9_1 ps_4_0_level_9_3
+}
+
+fragment_program Splitscreen_ps_GLSL glsl
+{
+	source SplitScreen_ps.glsl
+	default_params
+	{
+		param_named tex1 int 0
+		param_named tex2 int 1
+	}
+}
+
+fragment_program Splitscreen_ps_VK glslvk
+{
+	source SplitScreen_ps.glsl
+}
+
+fragment_program Splitscreen_ps_Metal metal
+{
+	source SplitScreen_ps.metal
+	shader_reflection_pair_hint Ogre/Compositor/Quad_vs
+}
+
+fragment_program Splitscreen_ps unified
+{
+	delegate Splitscreen_ps_GLSL
+	delegate Splitscreen_ps_VK
+	delegate Splitscreen_ps_HLSL
+	delegate Splitscreen_ps_Metal
+}
+
+material Splitscreen
+{
+	technique
+	{
+		pass
+		{
+			depth_check off
+			depth_write off
+			
+			cull_hardware none
+
+			vertex_program_ref Ogre/Compositor/Quad_vs
+			{
+			}
+			fragment_program_ref Splitscreen_ps
+			{
+			}
+
+			texture_unit tex1
+			{
+				filtering none
+				tex_address_mode clamp
+			}
+			texture_unit tex2
+			{
+				filtering none
+				tex_address_mode clamp
+			}
+		}
+	}
+}
