@@ -41,47 +41,189 @@
 using namespace Ogre;
 
 
-//  util
-String AppGui::getWsInfo()
-{
-	auto* mgr = mRoot->getCompositorManager2();
-	return " workspaces: "+ toStr(vWorkspaces.size())+" ("+toStr(mgr->getNumWorkspaces())+") nodes: "+ toStr(vNodes.size());
-}
-String AppGui::getWorkspace(bool worksp, int plr)
-{
-	bool refr = pSet->g.water_refract;
-	String old = refr ? "" : "Old";
-	String ssao = !refr && pSet->ssao ? "_SSAO" : "";  // todo: ssao and refract..
-	
-	return (worksp ? "SR3_Workspace" : "SR3_Render")
-	 	+ old + toStr(plr) + ssao;
-}
+/*  legend:   // Single   ++ Splitscreen
 
-const String sNewNode = "SR3_Render_New";
-const String sNewWork = "SR3_Render_New_WS";
+1 SR3_Refract_first
+	tex depthBuffer \rtv
+	tex rtt_first   /
+	target rtt_first
+		pass Scene  opaque,transp
+	out0> rtt_first
+	out1> depthBuffer
+
+2 SR3_DepthResolve
+	>in0 gBufferDB  <- depthBuffer
+	tex resolvedDB
+	target resolvedDB
+		pass quad  resolve gBufferDB
+	out0> resolvedDB
+
+3 SR3_Refract_Final
+	>in0 rtt_first
+	>in1 depthBuffer
+	>in2 depthBufferNoMsaa  <- resolvedDB
+	>in3 rtt_FullOut  // rt_renderwindow
+	tex rtt_final  rtv depthBuffer
+	target rtt_final
+		pass copy  rtt_first to rtt_final
+		pass Scene  Refractive Fluids
+			UseRefractions  depthBufferNoMsaa rtt_first
+	target rtt_FullOut or // rt_renderwindow
+		pass quad  copy rtt_final to rtt_FullOut or wnd
+	//	pass scene  Hud
+	//	pass scene  Gui
+
+++ 5 SR3_Combine
+	>in0 rt_renderwindow
+	>in1 rtt_FullIn1  <- rtt_FullOut 1
+	>in2 rtt_FullIn2  <- rtt_FullOut 2  ..more plr
+	target rt_renderwindow
+		pass quad copy  rtt_FullIn to wnd
+	++	pass Hud
+	++	pass Gui
+*/
+
+const String sNewNode = "SR3_New";
+const String sNewWork = "SR3_New_WS";
 
 
 //  🪄 Create Compositor  main render setup
 //-----------------------------------------------------------------------------------------
-void AppGui::CreateCompositor()
+TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float height)
 {
-	LogO("C+## Create Compositor "+getWsInfo());
-	auto* mgr = mRoot->getCompositorManager2();
-	CompositorNodeDef* nd =0;
-	CompositorTargetDef* td =0;
-	CompositorPassSceneDef *ps =0;
+	//  log
+	pSet->g.water_refract = 1;  //! test
+	const bool refract = pSet->g.water_refract;
+	const bool split = splits > 1;
 
-	//  node  New Refract todo
-	if (pSet->g.water_refract)
+	LogO("CC+# Create Compositor   "+getWsInfo());
+	if (view >= 50)
+		LogO("CC=# Combine screen "+toStr(view));
+	else
+	if (split)
+		LogO("CC+# Split screen "+toStr(view));
+	else
+		LogO("CC-# Single screen "+toStr(view));
+
+	//  var
+	auto* mgr = mRoot->getCompositorManager2();
+	auto* texMgr = mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
+	
+	CompositorNodeDef* nd =0;  CompositorTargetDef* td =0;
+	CompositorPassSceneDef *ps =0;  CompositorWorkspaceDef *wd = 0;
+	TextureGpu* tex =0, *rtt =0;
+
+	//  const
+	const String si = toStr(view+1);
+	const int plr = view < 0 ? 0 : view;
+	const uint32 RV_view = // vis mask, split screen
+		RV_Hud3D[plr] + (refract ? RV_MaskAll - RV_Fluid : RV_MaskAll);
+	// const Real wx = 1.f, wy = 1.f;
+	// const Real wx = 0.5f, wy = 1.f;
+
+	//  Add
+	auto AddNode = [&](String name)	{
+		nd = mgr->addNodeDefinition(name);
+		vNodes.push_back(nd);  LogO("C+-* Add Node " + name);
+	};
+	auto AddWork = [&](String name)	{
+		wd = mgr->addWorkspaceDefinition(name);
+		vWorkDefs.push_back(wd);  LogO("C+-# Add Work " + name);
+	};
+
+	//-----------------------------------------------------------------------------------------
+	if (view >= 50)  //  Combine last, final wnd
+	//  sum all splits (player views) + add one Hud, Gui
 	{
-		/* 1 -------------------- */
-		{	nd = mgr->addNodeDefinition("SR3_Refract_first");
-			vNodes.push_back(nd);
+		/* 50 ---------- */
+		{	AddNode("SR3_Combine");
 			
+			nd->addTextureSourceName("rt_renderwindow", 0, TextureDefinitionBase::TEXTURE_INPUT);
+			nd->addTextureSourceName("rtt_FullIn1", 1, TextureDefinitionBase::TEXTURE_INPUT);
+			nd->addTextureSourceName("rtt_FullIn2", 2, TextureDefinitionBase::TEXTURE_INPUT);
+
+			nd->mCustomIdentifier = "50-combine";
+
+			nd->setNumTargetPass(1);  //* targets
+			td = nd->addTargetPass( "rt_renderwindow" );
+			td->setNumPasses(3);  //* passes
+			//  render Window  ----
+			{
+				auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
+				// ps->setAllLoadActions( LoadAction::Clear );
+				pq->setAllLoadActions( LoadAction::DontCare );
+				// ps->setAllStoreActions( StoreAction::Store );
+
+				pq->mMaterialName = "Splitscreen";
+				pq->addQuadTextureSource( 0, "rtt_FullIn1" );  // input
+				pq->addQuadTextureSource( 1, "rtt_FullIn2" );
+				//  more ..
+				pq->mProfilingId = "Combine to Window";
+
+				//  ⏲️ Hud  --------
+				{	ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
+					ps->setAllStoreActions( StoreAction::Store );
+					ps->mProfilingId = "HUD";  ps->mIdentifier = 10007;
+
+					ps->mFirstRQ = 220;  // RQG_RoadMarkers
+					ps->mLastRQ = 230;  // RQG_Hud3
+					ps->setVisibilityMask(RV_Hud + RV_Particles);
+				}
+				//  🎛️ Gui, add MyGUI pass  --------
+				{	auto* gui = td->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
+					gui->mProfilingId = "GUI";  gui->mIdentifier = 99900;
+			}	}
+		}
+		//  workspace Full last
+		{
+			AddWork( "SR3_Combine_WS" );
+			wd->connectExternal( 0, "SR3_Combine", 0 );
+			wd->connectExternal( 1, "SR3_Combine", 1 );
+			wd->connectExternal( 2, "SR3_Combine", 2 );
+			// more ..
+		}
+		return rtt;  // 0
+	}
+
+
+	//  node  New Refract  * * *
+	//-----------------------------------------------------------------------------------------
+	if (refract)
+	{
+		//  🖼️ texture & rtt  for splitscreen
+		if (split)
+		{
+			tex = texMgr->createTexture( "GTex" + si,
+				GpuPageOutStrategy::SaveToSystemRam,
+				TextureFlags::ManualTexture, TextureTypes::Type2D );
+			
+			tex->setResolution(  // dims
+				mWindow->getWidth() * width, mWindow->getHeight() * height);
+			tex->scheduleTransitionTo( GpuResidency::OnStorage );
+			tex->setNumMipmaps(1);  // none
+
+			tex->setPixelFormat( PFG_RGBA8_UNORM_SRGB );
+			tex->scheduleTransitionTo( GpuResidency::Resident );
+			vTex.push_back(tex);
+
+			//  RTT
+			auto flags = TextureFlags::RenderToTexture;
+			rtt = texMgr->createTexture( "GRtt" + si,
+				GpuPageOutStrategy::Discard, flags, TextureTypes::Type2D );
+			rtt->copyParametersFrom( tex );
+			rtt->scheduleTransitionTo( GpuResidency::Resident );
+			rtt->_setDepthBufferDefaults( DepthBuffer::POOL_DEFAULT, false, PFG_D32_FLOAT );  //?
+			vRtt.push_back(rtt);
+		}
+
+		/* 1 -------------------- */
+		{	AddNode("SR3_Refract_first-"+si);
+						
 			nd->setNumLocalTextureDefinitions(2);  //* textures
 			{
 				auto* td = nd->addTextureDefinition( "depthBuffer" );
 				// td->depthBufferFormat = PFG_D32_FLOAT;
+				// td->widthFactor = wx;  td->heightFactor = wy;
 				td->format = PFG_D32_FLOAT;
 				td->fsaa = "";  // auto
 				// td->preferDepthTexture = 1;
@@ -89,7 +231,6 @@ void AppGui::CreateCompositor()
 				// td->textureFlags = TextureFlags::RenderToTexture;  //- no discard between frames
 
 				td = nd->addTextureDefinition( "rtt_first" );
-				// td->widthFactor = 0.5f;  td->heightFactor = 0.5f;
 				td->format = PFG_UNKNOWN;  //PFG_RGBA8_UNORM_SRGB;  // target_format
 				td->fsaa = "";  // auto
 
@@ -100,7 +241,7 @@ void AppGui::CreateCompositor()
 				rtv->depthAttachment.textureName = "depthBuffer";
 				// rtv->depthBufferId = 0;  // ignored if ^ set
 			}
-			nd->mCustomIdentifier = "1-first";
+			nd->mCustomIdentifier = "1-first-"+si;
 			
 			nd->setNumTargetPass(1);  //* targets
 			td = nd->addTargetPass( "rtt_first" );
@@ -112,9 +253,10 @@ void AppGui::CreateCompositor()
 				ps->mStoreActionDepth = StoreAction::Store;
 				ps->mStoreActionStencil = StoreAction::DontCare;
 
-				ps->mProfilingId = "Render First";  // "Opaque + Regular Transparents"
+				ps->mProfilingId = "Render First-"+si;  // "Opaque + Regular Transparents"
 				ps->mIdentifier = 10001;
 				ps->mLastRQ = 199;  //RQG_Fluid-1
+				ps->setVisibilityMask(RV_view);
 				
 				switch (pSet->g.shadow_type)  // shadows
 				{
@@ -129,8 +271,7 @@ void AppGui::CreateCompositor()
 		}
 
 		/* 2 ---------- */
-		{	nd = mgr->addNodeDefinition("SR3_DepthResolve");
-			vNodes.push_back(nd);
+		{	AddNode("SR3_DepthResolve-"+si);
 			
 			nd->addTextureSourceName("gBufferDB", 0, TextureDefinitionBase::TEXTURE_INPUT);
 
@@ -138,7 +279,6 @@ void AppGui::CreateCompositor()
 			{
 				auto* td = nd->addTextureDefinition( "resolvedDB" );
 				td->format = PFG_R32_FLOAT;  // D32 -> R32
-				// td->textureFlags = TextureFlags::RenderToTexture;  // no discard
 				td->fsaa = 1;  // off
 
 				auto* rtv = nd->addRenderTextureView( "resolvedDB" );  // rtv
@@ -146,10 +286,10 @@ void AppGui::CreateCompositor()
 				at.textureName = "resolvedDB";
 				rtv->colourAttachments.push_back(at);
 			}
-			nd->mCustomIdentifier = "2-resolve";
+			nd->mCustomIdentifier = "2-resolve-"+si;
 
-			//  We need to "downsample/resolve" mrtDepthBuffer because the impact
-			//  performance on Refractions is gigantic.
+			//  We need to "downsample/resolve" DepthBuffer because the impact
+			//  performance on Refractions is gigantic
 			nd->setNumTargetPass(1);  //* targets
 			td = nd->addTargetPass( "resolvedDB" );
 			td->setNumPasses(1);  //* passes
@@ -168,13 +308,12 @@ void AppGui::CreateCompositor()
 		}
 
 		/* 3 ------------------------------  */
-		{	nd = mgr->addNodeDefinition("SR3_Refract_Final");
-			vNodes.push_back(nd);
+		{	AddNode("SR3_Refract_Final-"+si);
 			
 			nd->addTextureSourceName("rtt_first", 0, TextureDefinitionBase::TEXTURE_INPUT);
 			nd->addTextureSourceName("depthBuffer", 1, TextureDefinitionBase::TEXTURE_INPUT);
 			nd->addTextureSourceName("depthBufferNoMsaa", 2, TextureDefinitionBase::TEXTURE_INPUT);
-			nd->addTextureSourceName("rt_renderwindow", 3, TextureDefinitionBase::TEXTURE_INPUT);
+			nd->addTextureSourceName("rtt_FullOut", 3, TextureDefinitionBase::TEXTURE_INPUT);  // or rt_renderwindow
 
 			nd->setNumLocalTextureDefinitions(1);  //* textures
 			{
@@ -189,8 +328,7 @@ void AppGui::CreateCompositor()
 				rtv->depthAttachment.textureName = "depthBuffer";
 			}
 
-			nd->mCustomIdentifier = "3-final";
-			//if( pass->getParentNode()->getDefinition()->mCustomIdentifier == "custom" )
+			nd->mCustomIdentifier = "3-final-"+si;
 
 			nd->setNumTargetPass(2);  //* targets
 
@@ -221,12 +359,12 @@ void AppGui::CreateCompositor()
 				case Sh_Soft:  ps->mShadowNode = chooseEsmShadowNode();  break;
 				}
 				ps->mShadowNodeRecalculation = SHADOW_NODE_REUSE;
-				ps->setUseRefractions("depthBufferNoMsaa", "rtt_first");
+				ps->setUseRefractions("depthBufferNoMsaa", "rtt_first");  //~
 			}
 
-			//  render Window  ----
-			td = nd->addTargetPass( "rt_renderwindow" );
-			td->setNumPasses(3);  //* passes
+			//  render //Window  ----
+			td = nd->addTargetPass( "rtt_FullOut" );
+			td->setNumPasses( split ? 1 : 3 );  //* passes
 			{
 				auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
 				pq->setAllLoadActions( LoadAction::DontCare );
@@ -235,6 +373,7 @@ void AppGui::CreateCompositor()
 				pq->mProfilingId = "Copy to Window";
 
 				//  ⏲️ Hud  --------
+				if (!split)
 				{	ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
 					ps->setAllStoreActions( StoreAction::Store );
 					ps->mProfilingId = "HUD";  ps->mIdentifier = 10007;
@@ -242,34 +381,28 @@ void AppGui::CreateCompositor()
 					ps->mFirstRQ = 220;  // RQG_RoadMarkers
 					ps->mLastRQ = 230;  // RQG_Hud3
 					ps->setVisibilityMask(RV_Hud + RV_Particles);
-				}
+				
 				//  🎛️ Gui, add MyGUI pass  --------
-				{	auto* gui = td->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
-					gui->mProfilingId = "Gui";  gui->mIdentifier = 99900;
-					//  single gui, fullscreen
-					gui->mExecutionMask = 0x02;  // if (!vr_mode)
-					gui->mViewportModifierMask = 0x00;
+					auto* gui = td->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
+					gui->mProfilingId = "GUI";  gui->mIdentifier = 99900;
 				}
 			}
 		}
+
 		//  workspace
 		{
-			CompositorWorkspaceDef *workDef = mgr->addWorkspaceDefinition( sNewWork );
-			workDef->connect("SR3_Refract_first", 0, "SR3_Refract_Final", 0 );  // first render
-			workDef->connect("SR3_Refract_first", 1, "SR3_Refract_Final", 1 );  // depth
-			// workDef->connect("SR3_Refract_first", 1, "SR3_Refract_Final", 2 );  // depth orig cant msaa-
-			// or
-			workDef->connect("SR3_Refract_first", 1, "SR3_DepthResolve", 0 );  // depth
-			workDef->connect("SR3_DepthResolve", 0, "SR3_Refract_Final", 2 );  // resolvedDepth
-			workDef->connectExternal( 0, "SR3_Refract_Final", 3 );  // d
-			// workDef->connectExternal( 0, "SR3_Refract_Final", 1 );
-			vWorkDefs.push_back(workDef);
+			AddWork( sNewWork+si );
+			wd->connect("SR3_Refract_first-"+si, 0, "SR3_Refract_Final-"+si, 0 );  // rtt_first
+			wd->connect("SR3_Refract_first-"+si, 1, "SR3_Refract_Final-"+si, 1 );  // depthBuffer
+			wd->connect("SR3_Refract_first-"+si, 1, "SR3_DepthResolve-"+si,  0 );  // depthBuffer
+			wd->connect("SR3_DepthResolve-"+si,  0, "SR3_Refract_Final-"+si, 2 );  // resolvedDepth -> depthBufferNoMsaa
+			wd->connectExternal( 0, "SR3_Refract_Final-"+si, 3 );  // rtt_FullOut  or  rt_renderwindow
 		}
-		//-----------------------------------------------------------------------------------------
-	}else  //  node  Old  no refract, no depth
+	}
+	//-----------------------------------------------------------------------------------------
+	else  //  node  Old  no refract, no depth  - - -  // todo old split screen ..
 	{
-		{	nd = mgr->addNodeDefinition(sNewNode);
-			vNodes.push_back(nd);
+		{	AddNode(sNewNode);
 			
 			//  render window input
 			nd->addTextureSourceName("rt_wnd", 0, TextureDefinitionBase::TEXTURE_INPUT);
@@ -285,13 +418,10 @@ void AppGui::CreateCompositor()
 				ps->setAllLoadActions( LoadAction::Clear );
 				ps->setAllStoreActions( StoreAction::Store );
 
-				ps->mProfilingId = "Main Render Old";
+				ps->mProfilingId = "Render Old";
 				ps->mIdentifier = 21002;
 				// ps->mLastRQ = 199;  //RQG_Fluid-1  // all
 
-				ps->mExecutionMask = 0xff;  // executed in all views/eyes
-				ps->mViewportModifierMask = 0xff;  // affected by modifier, so renders to a portion of screen
-				
 				switch (pSet->g.shadow_type)  // shadows
 				{
 				case Sh_None:  break;  // none
@@ -308,96 +438,180 @@ void AppGui::CreateCompositor()
 				ps->mFirstRQ = 220;
 				ps->mLastRQ = 230;
 				ps->setVisibilityMask(RV_Hud + RV_Particles);
-
-				// executed in all eyes, not views
-				// execution_mask			0xff
-				// executed on first view/eye
-				// execution_mask			0x01
-				// affected by modifier, apply to the whole screen
-				// viewport_modifier_mask	0x00
 			}
 			//  🎛️ Gui, add MyGUI pass  --------
 			{	CompositorPassDef *pass;
 				pass = td->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
-				pass->mProfilingId = "Gui";  pass->mIdentifier = 99900;
-				//  single gui, fullscreen
-				pass->mExecutionMask = 0x02;  // if (!vr_mode)
-				pass->mViewportModifierMask = 0x00;
+				pass->mProfilingId = "GUI";  pass->mIdentifier = 99900;
 			}
 			//  workspace
 			{
-				CompositorWorkspaceDef *workDef = mgr->addWorkspaceDefinition( sNewWork );
-				workDef->connectExternal( 0, nd->getName(), 0 );
-				vWorkDefs.push_back(workDef);
+				AddWork( sNewWork+si );
+				wd->connectExternal( 0, nd->getName(), 0 );  // rt_renderwindow
 			}
 		}
 	}
+	return rtt;
 }
 
-
-//  common  todo: drop ..
 //-----------------------------------------------------------------------------------------
-void AppGui::AddGuiShadows(bool vr_mode, int plr, bool gui)
+//  🪄 Setup Compositors All
+//-----------------------------------------------------------------------------------------
+void AppGui::SetupCompositors()
 {
-	LogO("C*## AddGuiShadows "+getWsInfo());
-
-	if (pSet->ssao)
-		return;
-	bool old = !pSet->g.water_refract;
+	LogO("CC## Setup Compositor    "+getWsInfo());
+	auto* rndSys = mRoot->getRenderSystem();
+	auto* texMgr = rndSys->getTextureGpuManager();
 	auto* mgr = mRoot->getCompositorManager2();
 	
+#ifndef SR_EDITOR  // game
+	const int views = pSet->game.local_players;
+	// bool vr_mode = pSet->game.vr_mode;  // not used
+#else
+	const int views = 1;  // ed
+	// bool vr_mode = pSet->vr_mode;
+#endif
 
-	CompositorNodeDef* node = mgr->getNodeDefinitionNonConst(getWorkspace(0, plr));
-	// LogO("--++ WS Target Gui passes "+toStr(node->getNumTargetPasses()));
+	DestroyCompositors();  // 💥 ----
 
-	CompositorTargetDef* target = node->getTargetPass(old ? 0 : 3);  // par!-
-	auto passes = target->getCompositorPasses();
-	// for (auto& p : passes)
-		// LogO("--++ WS  pass:  type "+toStr(p->getType())+"  id "+toStr(p->mIdentifier)+"  "+p->mProfilingId);
-	CompositorPassDef* pass = passes.back();
 
-	//  🎛️ Gui, add MyGUI pass  ----
-	if (gui)
+	//  🌒 Shadows  ----
+	bool esm = pSet->g.shadow_type == 2;
+	if (pSet->g.shadow_type > 0)
 	{
-		if (pass->getType() != PASS_CUSTOM)
-		{
-			pass = target->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
-			pass->mProfilingId = "Gui";  pass->mIdentifier = 99900;
-		}
-		if (!vr_mode)  // single gui, fullscreen
-		{
-			pass->mExecutionMask = 0x02;
-			pass->mViewportModifierMask = 0x00;
-	}	}
-
-	//  🌒 shadows  ----
-	const int np = old ? 1 : 0;
-	target = node->getTargetPass(0);  // 0  // par!-
-	passes = target->getCompositorPasses();
-	// LogO("--++ WS Target Shdw passes "+toStr(node->getNumTargetPasses()));
-	// for (auto& p : passes)
-	// 	LogO("--++ WS  pass:  type "+toStr(p->getType())+"  id "+toStr(p->mIdentifier)+"  "+p->mProfilingId);
-
-	assert( dynamic_cast<CompositorPassSceneDef *>(passes[np]) );
-	CompositorPassSceneDef* ps = static_cast<CompositorPassSceneDef *>(passes[np]);
-	if (!ps)
-	{	LogO("--++ WS Error! Can't set shadow");  return;  }
-	
-	switch (pSet->g.shadow_type)
-	{
-	case Sh_None:  break;  // none
-	case Sh_Depth: ps->mShadowNode = csShadow;  break;
-	case Sh_Soft:  ps->mShadowNode = chooseEsmShadowNode();  break;
+		if (esm)  setupESM();
+		createPcfShadowNode();
+		if (esm)  createEsmShadowNodes();  // fixme..
+		// createShadowMapDebugOverlays();  //-
 	}
+
+
+	//  🔮 create Reflections  ----
+	CreateCubeReflect();
+
+
+	//  🖥️ Viewports  ----
+	DestroyCameras();  // 💥🎥
+
+	for (int i = 0; i < MAX_Players; ++i)
+		mDims[i].Default();
+
+
+#ifndef SR_EDITOR
+	//  👥 Split Screen   ---- ---- ---- ----
+	//.....................................................................................
+	if (views > 1)
+	{
+		for (int i = 0; i < views; ++i)
+		{
+			bool f1 = i > 0;
+
+			auto c = CreateCamera( "Player" + toStr(i), 0, Vector3::ZERO, Vector3::NEGATIVE_UNIT_Z );
+			if (i==0)
+				mCamera = c->cam;
+			
+			auto& d = mDims[i];
+			d.SetDim(views, !pSet->split_vertically, i);
+
+			//  🪄 Create 1  ----
+			auto* rtt = CreateCompositor(i, views, d.width0, d.height0);
+
+			//  external output to rtt
+			CompositorChannelVec chOne(1);  // mCubeReflTex ? 2 : 1 );
+			chOne[0] = rtt;  // todo: add cubemap(s) refl..
+
+			const IdString wsName( sNewWork + toStr(i+1) );
+			auto* wOne = mgr->addWorkspace( mSceneMgr, chOne,  c->cam, wsName, true, 0 /*1st*/ );
+			vWorkspaces.push_back(wOne);
+		}
+
+		//  🪄 Combine []  ----
+		CreateCompositor(50, views, 1.f, 1.f);
+
+			auto c = CreateCamera( "PlayerW", 0, Vector3(0,150,0), Vector3(0,0,0) );
+			mCamera = c->cam;	// fake cam
+
+		//  Render window external channels  ----
+		CompositorChannelVec chAll( 3 /*+ views*/ );
+		chAll[0] = mWindow->getTexture();
+		chAll[1] = vRtt[0];  // RTTs player views
+		chAll[2] = vRtt[1];
+		// for (int i=0; i < views; ++i)  //  todo more..
+		// 	chAll[i+1] = vRtt[i];  // RTTs player views
+
+		const IdString wsNameC( "SR3_Combine_WS" );
+		auto* wAll = mgr->addWorkspace( mSceneMgr, chAll,  c->cam, wsNameC, true, -1 /*last*/ );
+		vWorkspaces.push_back(wAll);
+	}
+	else
+#endif
+  	//  🖥️ Single View  --------
+	//.....................................................................................
+	// if (!vr_mode)
+	{
+		auto c = CreateCamera( "Player", 0, Vector3(0,150,0), Vector3(0,0,0) );
+		mCamera = c->cam;
+
+		//  🪄 Create []  ----
+		CreateCompositor(-1, 1,  1.f, 1.f);
+
+		//  render Window external channels  ----
+		CompositorChannelVec chWnd( mCubeReflTex ? 2 : 1 );
+		chWnd[0] = mWindow->getTexture();
+		if (mCubeReflTex)
+			chWnd[1] = mCubeReflTex;  // 🔮
+
+		const IdString wsName( sNewWork + "0" );
+		auto ws = mgr->addWorkspace( mSceneMgr, chWnd,  c->cam, wsName, true );
+		// ws->addListener(listener);
+		vWorkspaces.push_back(ws);
+	}
+#if 0
+	else
+	{	//  👀 VR mode  ---- ----  meh, todo use OpenVR
+		//.................................................................................
+		const Real eyeSide = 0.5f, eyeFocus = 0.45f, eyeZ = -10.f;  // dist
+
+		AddGuiShadows(vr_mode, 0, true);
+
+		auto camL = CreateCamera( "EyeL", 0,
+			Vector3(-eyeSide, 0.f,0.f), Vector3(eyeFocus * -eyeSide, 0.f, eyeZ) );
+		auto camR = CreateCamera( "EyeR", camL->nd,
+			Vector3( eyeSide, 0.f,0.f), Vector3(eyeFocus *  eyeSide, 0.f, eyeZ) );
+		mCamera = camL->cam;
+
+		//  add Workspace
+		LogO("--++ WS add:  VR Eye L, all: "+toStr(mgr->getNumWorkspaces()));
+		auto str = getWorkspace(1, 0);
+		const IdString wsName( str );
+		auto* ws1 = mgr->addWorkspace( mSceneMgr, ext,
+				camL->cam, wsName,
+				true, -1, 0, 0,
+				Vector4( 0.0f, 0.0f, 0.5f, 1.0f ),
+				0x01, 0x01 );
+		vWorkspaces.push_back(ws1);
+
+		LogO("--++ WS add:  VR Eye R, all: "+toStr(mgr->getNumWorkspaces()));
+		auto* ws2 = mgr->addWorkspace( mSceneMgr, ext, 
+				camR->cam, wsName,
+				true, -1, 0, 0,
+				Vector4( 0.5f, 0.0f, 0.5f, 1.0f ),
+				0x02, 0x02 );
+		vWorkspaces.push_back(ws2);
+	}
+#endif
+	LogO("CC## Done Compositor === "+getWsInfo());
 }
+
 
 
 //  💥 destroy Compositor
 //-----------------------------------------------------------------------------------------
-void AppGui::DestroyCompositor()
+void AppGui::DestroyCompositors()
 {
+	LogO("DD## Destroy Compositor  "+getWsInfo());
 	auto* mgr = mRoot->getCompositorManager2();
-	LogO("D=## Destroy === "+getWsInfo());
+	auto* texMgr = mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
 
 	for (auto* ws : vWorkspaces)
 	{
@@ -407,6 +621,13 @@ void AppGui::DestroyCompositor()
 			
 	if (mgr->hasShadowNodeDefinition(csShadow))
 		mgr->removeShadowNodeDefinition(csShadow);
+
+	for (auto* rt : vRtt)
+		texMgr->destroyTexture( rt );
+	vRtt.clear();
+	for (auto* tx : vTex)
+		texMgr->destroyTexture( tx );
+	vTex.clear();
 
 	for (auto* wd : vWorkDefs)
 	{
@@ -427,181 +648,11 @@ void AppGui::DestroyCompositor()
 }
 
 
-//-----------------------------------------------------------------------------------------
-//  🪄 Setup Compositor
-//-----------------------------------------------------------------------------------------
-void AppGui::SetupCompositor()
-{
-	LogO("C^## Setup Compositor "+getWsInfo());
-	// LogO("C### setup Compositor");
-	auto* rndSys = mRoot->getRenderSystem();
-	auto* texMgr = rndSys->getTextureGpuManager();
-	auto* mgr = mRoot->getCompositorManager2();
-	
-#ifndef SR_EDITOR  // game
-	const int views = pSet->game.local_players;
-	bool vr_mode = pSet->game.vr_mode;
-#else
-	const int views = 1;  // ed
-	bool vr_mode = pSet->vr_mode;
-#endif
-
-
-	DestroyCompositor();  // ----
-
-	//  🌒 shadows  ----
-	bool esm = pSet->g.shadow_type == 2;
-	static bool first =	true;
-	if (first && pSet->g.shadow_type > 0)
-	{
-		if (esm)  setupESM();
-		createPcfShadowNode();
-		if (esm)  createEsmShadowNodes();  // fixme..
-		// first = false;
-	}
-
-
-	//  🔮 create Reflections  ----
-	CreateCubeReflect();
-
-
-	//  🪄 Create Compositor  ----
-	CreateCompositor();
-
-
-	//  Render window external channels  ----
-	CompositorChannelVec ext( mCubeReflTex ? 2 : 1 );
-	ext[0] = mWindow->getTexture();
-	if (mCubeReflTex)
-		ext[1] = mCubeReflTex;  // 🔮
-
-
-	// mGraphicsSystem->restartCompositor();
-	// createShadowMapDebugOverlays();
-
-	// mEnableForwardPlus;
-	// mLodCameraName ?
-
-#ifndef SR_EDITOR
-	//**  game,  Hud has own render
-	// ps->mVisibilityMask = RV_MaskGameAll + RV_Hud3D[0]+ RV_Hud3D[1];
-	// ps->mLastRQ = RQ_OVERLAY; //RQG_CarGhost;  // no, hides pacenotes-
-#endif
-
-
-	//  🖥️ Viewports
-	//-----------------------------------------------------------------------------------------
-	DestroyCameras();  // 💥🎥
-
-	for (int i = 0; i < MAX_Players; ++i)
-		mDims[i].Default();
-
-	/*if (vr_mode)
-	{
-		//  👀 VR mode  ---- ----  wip meh todo use OpenVR
-		//.................................................................................
-		const Real eyeSide = 0.5f, eyeFocus = 0.45f, eyeZ = -10.f;  // dist
-
-		AddGuiShadows(vr_mode, 0, true);
-
-		auto camL = CreateCamera( "EyeL", 0,
-			Vector3(-eyeSide, 0.f,0.f), Vector3(eyeFocus * -eyeSide, 0.f, eyeZ) );
-		auto camR = CreateCamera( "EyeR", camL->nd,
-			Vector3( eyeSide, 0.f,0.f), Vector3(eyeFocus *  eyeSide, 0.f, eyeZ) );
-		mCamera = camL->cam;
-
-		//  add Workspace
-		CompositorWorkspace* ws1,*ws2;
-		LogO("--++ WS add:  VR Eye L, all: "+toStr(mgr->getNumWorkspaces()));
-		auto str = getWorkspace(1, 0);
-		const IdString wsName( str );
-		ws1 = mgr->addWorkspace( mSceneMgr, ext,
-				camL->cam, wsName,
-				true, -1, 0, 0,
-				Vector4( 0.0f, 0.0f, 0.5f, 1.0f ),
-				0x01, 0x01 );
-
-		LogO("--++ WS add:  VR Eye R, all: "+toStr(mgr->getNumWorkspaces()));
-		ws2 = mgr->addWorkspace( mSceneMgr, ext, 
-				camR->cam, wsName,
-				true, -1, 0, 0,
-				Vector4( 0.5f, 0.0f, 0.5f, 1.0f ),
-				0x02, 0x02 );
-
-		// mWorkspaces.push_back(ws1);
-		// mWorkspaces.push_back(ws2);
-
-		// LogO("C### Created VR workspaces: "+toStr(mWorkspaces.size()));
-		// return ws1;
-	} else*/
-
-#ifndef SR_EDITOR
-	//  👥 Split Screen   ---- ---- ---- ----
-	//.....................................................................................
-	if (views > 1)
-	{
-		for (int i = 0; i < views; ++i)
-		{
-			bool f1 = i > 0;
-
-			AddGuiShadows(vr_mode, i, i==views-1);  // last only gui
-
-			auto c = CreateCamera( "Player" + toStr(i), 0, Vector3::ZERO, Vector3::NEGATIVE_UNIT_Z );
-			if (i==0)
-				mCamera = c->cam;
-			
-			auto& d = mDims[i];
-			d.SetDim(views, !pSet->split_vertically, i);
-
-			//  add Workspace
-			LogO("--++ WS add:  Split Screen "+toStr(i)+", all: "+toStr(mgr->getNumWorkspaces()));
-			auto str = getWorkspace(1, i);  // todo ..!
-			const IdString wsName( str );
-			CompositorWorkspace* w =
-				mgr->addWorkspace( mSceneMgr, ext,
-					c->cam, wsName,
-					true, -1, 0, 0,
-					Vector4(d.left0, d.top0, d.width0, d.height0),
-					f1 ? 0x02 : 0x01, f1 ? 0x02 : 0x01 );
-
-			vWorkspaces.push_back(w);
-			// mWorkspaces.push_back(w);
-		}
-
-		// LogO("C### Created Split workspaces: "+toStr(mWorkspaces.size()));
-		// return mWorkspaces[0];
-	}
-	else  // 🖥️ Single View
-#endif
-	//.....................................................................................
-	{
-		auto c = CreateCamera( "Player", 0, Vector3(0,150,0), Vector3(0,0,0) );
-		mCamera = c->cam;
-
-		AddGuiShadows(vr_mode, 0, true);  //
-
-		//  add Workspace
-		// auto str = getWorkspace(1, 0);  // old
-		// auto str = "RefractionsWorkspaceMsaa";  // new ok
-		auto str = sNewWork;  // new cpp
-		
-		const IdString wsName( str );
-		auto ws = mgr->addWorkspace( mSceneMgr, ext, c->cam, wsName, true );  // in .compositor
-		// ws->addListener(listener);
-		vWorkspaces.push_back(ws);
-		// LogO("C### Created Single workspaces: "+toStr(mWorkspaces.size()));
-
-		// createShadowMapDebugOverlays();  //-
-		// return ws;
-	}
-	LogO("C^## Done Compositor "+getWsInfo());
-}
-
-
 //  💥🎥 Destroy Camera
+//--------------------------------------------------------------------------------
 void AppGui::DestroyCameras()
 {
-	LogO("D### destroy Cameras-");
+	LogO("DD## destroy Cameras-");
 	/*for (auto cam : mCams)  // todo ?
 	{
 		if (cam.nd)  mSceneMgr->destroySceneNode(cam.nd);  cam.nd = 0;
@@ -670,7 +721,7 @@ Cam* AppGui::CreateCamera(String name,
 
 //---------------------------------------------------------------------------------
 #if 0
-	// Use one node to control both cameras
+	//  VR-  Use one node to control both cameras
 	mCamerasNode = mSceneManager->getRootSceneNode( Ogre::SCENE_DYNAMIC )
 						->createChildSceneNode( Ogre::SCENE_DYNAMIC );
 	mCamerasNode->setName( "Cameras Node" );
@@ -704,3 +755,14 @@ Cam* AppGui::CreateCamera(String name,
 
 	mCamera = mEyeCameras[0];
 #endif
+
+
+//  log util  ----
+String AppGui::getWsInfo()
+{
+	auto* mgr = mRoot->getCompositorManager2();
+	return " worksp: "+ toStr(vWorkspaces.size())+" ("+toStr(mgr->getNumWorkspaces())
+		+ ") workdef: "+ toStr(vWorkDefs.size())
+		+ " node: "+ toStr(vNodes.size())
+		+ " rtt: "+ toStr(vRtt.size());
+}

@@ -147,14 +147,15 @@ public:
 	//  🪄 main setup  ----------------
 	std::vector<Ogre::CompositorNodeDef*> vNodes;  // stuff we create and destroy
 	std::vector<Ogre::CompositorWorkspace*> vWorkspaces;
+	std::vector<Ogre::TextureGpu*> vRtt, vTex;
 	std::vector<Ogre::CompositorWorkspaceDef*> vWorkDefs;
 	constexpr static const char* csShadow = "ShadowMapFromCodeShadowNode";
 	
-	void CreateCompositor(), SetupCompositor(), DestroyCompositor();
-	void AddGuiShadows(bool vr_mode = false, int plr = 0, bool gui = true);
+	//  returns rtt if made, when not final wnd  // cur view num / all
+	Ogre::TextureGpu* CreateCompositor(int view, int splits, float width, float height);
 
-	//  util get SR3_ names for player
-	Ogre::String getWorkspace(bool worksp=1, int plr=0), getWsInfo();
+	void SetupCompositors(), DestroyCompositors();  // full
+	Ogre::String getWsInfo();  // log util
 
 
 	//  👥 Split screen  ----------------
