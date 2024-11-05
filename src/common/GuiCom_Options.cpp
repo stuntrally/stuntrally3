@@ -235,9 +235,9 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	// ck= &ckSoftPar;		ck->Init("SoftParticles",&pSet->softparticles);  Cev(EffUpdShd);
 
 	// todo: ssao
-	// ck= &ckSSAO;			ck->Init("SSAO",		&pSet->ssao);
-	// sv= &svSsaoRadius;		sv->Init("SsaoRadius",	&pSet->ssao_radius, 0.1,6.f);  sv->DefaultF(1.f);
-	// sv= &svSsaoScale;		sv->Init("SsaoScale",	&pSet->ssao_scale,  0.1,6.f);  sv->DefaultF(1.5f);
+	ck= &ckSSAO;			ck->Init("SSAO",		&pSet->ssao);
+	sv= &svSsaoRadius;		sv->Init("SsaoRadius",	&pSet->ssao_radius, 0.1,6.f);  sv->DefaultF(1.f);
+	sv= &svSsaoScale;		sv->Init("SsaoScale",	&pSet->ssao_scale,  0.1,6.f);  sv->DefaultF(1.5f);
 
 
 	//  ⚙️ Settings  🆕 Startup common 

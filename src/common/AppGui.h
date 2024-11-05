@@ -151,7 +151,7 @@ public:
 	Ogre::CompositorNodeDef* AddNode(Ogre::String name);
 	Ogre::CompositorWorkspaceDef* AddWork(Ogre::String name);
 	Ogre::RenderTargetViewDef* AddRtv(Ogre::CompositorNodeDef* nd,
-		Ogre::String name, Ogre::String colour, Ogre::String depth);
+		Ogre::String name, Ogre::String colour, Ogre::String depth="", Ogre::String colour2="");
 
 	Ogre::TextureGpu* AddSplitRTT(Ogre::String id, float width, float height);
 	void AddHudGui(Ogre::CompositorTargetDef* td);
