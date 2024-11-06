@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "ReplayTrk.h"
+#include "TrackGhost.h"
 #include "Def_Str.h"
 #include <OgreTimer.h>
 #include <string>

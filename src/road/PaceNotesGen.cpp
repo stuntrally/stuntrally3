@@ -3,7 +3,7 @@
 #include "Axes.h"
 #include "SceneXml.h"
 #include "PaceNotes.h"
-#include "ReplayTrk.h"
+#include "TrackGhost.h"
 #include "dbl.h"
 #ifdef SR_EDITOR
 	#include "CApp.h"

@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Def_Str.h"
 #include "paths.h"
-#include "brushes.h"
+#include "BrushesIni.h"
 #include "CGui.h"
 #include "GuiCom.h"
 #include "App.h"

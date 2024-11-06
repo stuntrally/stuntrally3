@@ -2,7 +2,7 @@
 // #include "Gui_Def.h"
 #include "BaseApp.h"
 #include "Replay.h"
-#include "ReplayTrk.h"
+#include "TrackGhost.h"
 #include "cardefs.h"
 #include "CarPosInfo.h"
 // #include "networkcallbacks.hpp"

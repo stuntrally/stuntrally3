@@ -6,7 +6,7 @@
 #include "Axes.h"
 #include "Road.h"
 #include "App.h"
-#include "ReplayTrk.h"
+#include "TrackGhost.h"
 
 #include <OgreHlmsPbsPrerequisites.h>
 using namespace Ogre;

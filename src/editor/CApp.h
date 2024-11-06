@@ -6,7 +6,7 @@
 #include "quaternion.h"
 #include "tracksurface.h"
 #include "SceneXml.h"  //Object-
-#include "brushes.h"
+#include "BrushesIni.h"
 #include "PreviewTex.h"
 #include "PreviewScene.h"
 

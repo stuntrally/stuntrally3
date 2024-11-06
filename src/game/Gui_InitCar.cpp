@@ -1,22 +1,12 @@
 #include "pch.h"
 #include "Def_Str.h"
 #include "Gui_Def.h"
-#include "GuiCom.h"
-#include "paths.h"
-#include "game.h"
-#include "paints.h"
-#include "Road.h"
-#include "CGame.h"
-#include "CHud.h"
+#include "PaintsIni.h"
 #include "CGui.h"
 #include "MultiList2.h"
 #include "Slider.h"
-#include "Gui_Popup.h"
-#include "CData.h"
-#include "TracksXml.h"
+#include "tracksurface.h"
 
-// #include <OgreRoot.h>
-// #include <OgreWindow.h>
 #include <OgreOverlay.h>
 #include <MyGUI.h>
 #include <MyGUI_Ogre2Platform.h>

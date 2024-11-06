@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Def_Str.h"
-#include "brushes.h"
+#include "BrushesIni.h"
 #include <fstream>
 #include <stdio.h>
 #include <iostream>

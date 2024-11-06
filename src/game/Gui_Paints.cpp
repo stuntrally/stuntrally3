@@ -5,7 +5,7 @@
 #include "settings.h"
 #include "paths.h"
 
-#include "paints.h"
+#include "PaintsIni.h"
 #include "CData.h"
 #include "CGui.h"
 #include "CGame.h"

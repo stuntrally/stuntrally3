@@ -89,6 +89,7 @@ void Grass::Create(App* app1)
 			++mtr;  //-
 
 			//  pages
+			//  todo: parallel..
 			for (Real yy = -hws; yy < hws; yy += pws)
 			for (Real xx = -hws; xx < hws; xx += pws)
 			{

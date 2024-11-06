@@ -119,7 +119,7 @@ void App::createScene01()  // once, init
 
 	baseInitGui();
 	gui->InitGui();
-	
+
 
 	// mGraphicsSystem->mWorkspace = 
 	SetupCompositors();
@@ -139,7 +139,7 @@ void App::createScene01()  // once, init
 	// mViewport->setVisibilityMask(RV_MaskAll);  // hide prv cam rect
 
 
-	InitSSAO();
+	InitSSAO();  //-^
 
 	CreatePreviews();
 	

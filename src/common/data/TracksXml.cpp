@@ -3,7 +3,7 @@
 #include "TracksXml.h"
 #include "SceneXml.h"
 #include "paths.h"
-#include "ReplayTrk.h"  // check
+#include "TrackGhost.h"  // check
 // #include "CHud.h"  // StrTime
 #include <set>
 #include <tinyxml2.h>

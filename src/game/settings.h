@@ -1,7 +1,7 @@
 #pragma once
 #include "configfile.h"
 #include "settings_com.h"
-#include "paints.h"
+#include "PaintsIni.h"
 #include "protocol.hpp"
 
 
