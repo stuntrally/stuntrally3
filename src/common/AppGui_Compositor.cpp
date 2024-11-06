@@ -190,8 +190,8 @@ void AppGui::AddHudGui(CompositorTargetDef* td)
 	ps->setAllStoreActions( StoreAction::Store );
 	ps->mProfilingId = "HUD";  ps->mIdentifier = 10007;
 
-	ps->mFirstRQ = 220;  // RQG_RoadMarkers
-	ps->mLastRQ = 230;  // RQG_Hud3
+	ps->mFirstRQ = RQG_RoadMarkers;  // 220
+	ps->mLastRQ = RQG_Hud3+1;  // 223
 	ps->setVisibilityMask(RV_Hud + RV_Particles);
 
 	//  🎛️ Gui, add MyGUI pass  --------
@@ -292,14 +292,12 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 		/* 1 -------------------- */
 		{	nd = AddNode(s1_first+si);
 			
-			nd->setNumLocalTextureDefinitions(ssao ? 3 : 2);  //* textures
+			nd->setNumLocalTextureDefinitions( (ssao ? 1 : 0) + 2 );  //* textures
 			{
 				auto* td = nd->addTextureDefinition( "depthBuffer" );
-				// td->depthBufferFormat = PFG_D32_FLOAT;
-				// td->widthFactor = wx;  td->heightFactor = wy;
 				td->format = PFG_D32_FLOAT;  td->fsaa = "";  // auto
+				// td->depthBufferFormat = PFG_D32_FLOAT;  //-
 				// td->preferDepthTexture = 1;
-				// td->depthBufferId = 0;
 				// td->textureFlags = TextureFlags::RenderToTexture;  //- no discard between frames
 
 				td = nd->addTextureDefinition( "rtt_first" );
@@ -309,8 +307,12 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				{	td = nd->addTextureDefinition( "gBufferNormals" );
 					td->format = PFG_R10G10B10A2_UNORM;  td->fsaa = "";  // auto
 					td->textureFlags |= TextureFlags::MsaaExplicitResolve;
+
+					// auto* td = nd->addTextureDefinition( "depthBufferCopy" );  // here ?-
+					// td->widthFactor = 0.5f;  td->heightFactor = 0.5f;  // half
+					// td->format = PFG_D32_FLOAT;  td->fsaa = "1";  // off
 				}
-				auto* rtv = AddRtv(nd, "rtt_first", "rtt_first", "depthBuffer", "gBufferNormals" );
+				auto* rtv = AddRtv(nd, "rtt_first", "rtt_first", "depthBuffer", ssao ? "gBufferNormals" : "");
 			}
 			nd->mCustomIdentifier = "1-first-"+si;
 			
@@ -325,8 +327,8 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				ps->mStoreActionStencil = StoreAction::DontCare;
 
 				ps->mProfilingId = "Render First-"+si;  // "Opaque + Regular Transparents"
-				ps->mIdentifier = 10001;
-				ps->mLastRQ = 199;  //RQG_Fluid-1
+				ps->mIdentifier = 10001; 
+				ps->mLastRQ = RQG_RoadBlend+1; //RQG_Fluid-1; //199
 				ps->setVisibilityMask(RV_view);
 				
 				AddShadows(ps);  // shadows
@@ -367,8 +369,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				pq->setAllStoreActions( StoreAction::DontCare );
 				pq->mStoreActionColour[0] = StoreAction::StoreOrResolve;
 
-				pq->mMaterialName = "Ogre/Resolve/1xFP32_Subsample0";
-				pq->mProfilingId = "Resolve Depth Buffer";
+				pq->mMaterialName = "Ogre/Resolve/1xFP32_Subsample0";  pq->mProfilingId = "Depth Resolve";
 				pq->addQuadTextureSource( 0, "gBufferDB" );  // input quad
 			}
 			nd->setNumOutputChannels(1);  //  out>
@@ -385,17 +386,23 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			if (ssao)
 				nd->addTextureSourceName("gBufferNormals", 4, inp);
 
-			nd->setNumLocalTextureDefinitions( (ssao ? 3 : 0) + 1 );  //* textures
+			nd->setNumLocalTextureDefinitions( (ssao ? 4 : 0) + 1 );  //* textures
 			{
 				auto* td = nd->addTextureDefinition( "rtt_final" );
 				td->format = PFG_UNKNOWN;  td->fsaa = "";  // target_format, auto
 				AddRtv(nd, "rtt_final", "rtt_final", "depthBuffer");
 				if (ssao)
-				{	td = nd->addTextureDefinition( "ssaoTexture" );
+				{
+					td = nd->addTextureDefinition( "depthBufferCopy" );
+					td->widthFactor = 0.5f;  td->heightFactor = 0.5f;  // half
+					td->format = PFG_D32_FLOAT;  td->fsaa = "1";  // D32  off
+					AddRtv(nd, "depthBufferCopy", "", "depthBufferCopy");
+
+					td = nd->addTextureDefinition( "ssaoTexture" );
 					td->widthFactor = 0.5f;  td->heightFactor = 0.5f;  //par` //HQ
 					td->format = PFG_R16_FLOAT;  td->fsaa = "1";  // off
 					td->depthBufferId = 0;  //?- depth_pool 0
-					AddRtv(nd, "ssaoTexture", "ssaoTexture");  //"depthBuffer"); //no-
+					AddRtv(nd, "ssaoTexture", "ssaoTexture", "depthBufferCopy");  //"depthBuffer"); //no-
 
 					td = nd->addTextureDefinition( "blurHorizontal" );
 					td->format = PFG_R16_FLOAT;  td->fsaa = "1";  td->depthBufferId = 0;
@@ -409,46 +416,59 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 
 			nd->mCustomIdentifier = "3-Final-"+si;
 
-			nd->setNumTargetPass( (ssao ? 3 : 0) + 2);  //* targets
+			nd->setNumTargetPass( (ssao ? 4 : 0) + 2);  //* targets
 
-			//  SSAO
-			td = nd->addTargetPass( "ssaoTexture" );
-			td->setNumPasses( 1 );  //* passes
+			if (ssao)  //  SSAO
 			{
-				auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
-				pq->setAllLoadActions( LoadAction::Clear );
-				pq->mClearColour[0] = ColourValue::White;
+				const String depthCopy = "depthBufferNoMsaa";  // bad- halo
+				// const String depthCopy = "depthBufferCopy";  //? fixme..
 
-				pq->mMaterialName = "SSAO/HS";  pq->mProfilingId = "SSAO 1 HS";
-				pq->addQuadTextureSource( 0, "depthBufferNoMsaa" ); //depthTextureCopy" );  // input
-				pq->addQuadTextureSource( 1, "gBufferNormals" );
-				pq->mFrustumCorners = CompositorPassQuadDef::VIEW_SPACE_CORNERS;  // quad_normals  camera_far_corners_view_space
+				td = nd->addTargetPass( "depthBufferCopy" );
+				td->setNumPasses( 1 );  //* passes
+				{
+					auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
+					pq->setAllLoadActions( LoadAction::DontCare );
+
+					pq->mMaterialName = "Ogre/Depth/DownscaleMax";  pq->mProfilingId = "Depth Downscale";
+					pq->addQuadTextureSource( 0, "depthBuffer" );  //`
+					// pq->addQuadTextureSource( 0, "depthBufferNoMsaa" );  //-
+				}
+
+				td = nd->addTargetPass( "ssaoTexture" );
+				td->setNumPasses( 1 );  //* passes
+				{
+					auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
+					pq->setAllLoadActions( LoadAction::Clear );
+					pq->mClearColour[0] = ColourValue::White;
+
+					pq->mMaterialName = "SSAO/HS";  pq->mProfilingId = "SSAO 1 HS";
+					pq->addQuadTextureSource( 0, depthCopy );  // input
+					pq->addQuadTextureSource( 1, "gBufferNormals" );
+					pq->mFrustumCorners = CompositorPassQuadDef::VIEW_SPACE_CORNERS;  // quad_normals  camera_far_corners_view_space
+				}
+
+				td = nd->addTargetPass( "blurHorizontal" );
+				td->setNumPasses( 1 );  //* passes
+				{
+					auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
+					pq->setAllLoadActions( LoadAction::DontCare );
+
+					pq->mMaterialName = "SSAO/BlurH";  pq->mProfilingId = "SSAO 2 BlurH";
+					pq->addQuadTextureSource( 0, "ssaoTexture" );  // input
+					pq->addQuadTextureSource( 1, depthCopy );
+				}
+
+				td = nd->addTargetPass( "blurVertical" );
+				td->setNumPasses( 1 );  //* passes
+				{
+					auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
+					pq->setAllLoadActions( LoadAction::DontCare );
+
+					pq->mMaterialName = "SSAO/BlurV";  pq->mProfilingId = "SSAO 3 BlurV";
+					pq->addQuadTextureSource( 0, "blurHorizontal" );  // input
+					pq->addQuadTextureSource( 1, depthCopy );
+				}
 			}
-
-			td = nd->addTargetPass( "blurHorizontal" );
-			td->setNumPasses( 1 );  //* passes
-			{
-				auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
-				pq->setAllLoadActions( LoadAction::DontCare );
-
-				pq->mMaterialName = "SSAO/BlurH";  pq->mProfilingId = "SSAO 2 BlurH";
-				pq->addQuadTextureSource( 0, "ssaoTexture" );  // input
-				pq->addQuadTextureSource( 1, "depthBufferNoMsaa" );  // depthTextureCopy
-				pq->mFrustumCorners = CompositorPassQuadDef::VIEW_SPACE_CORNERS;  // quad_normals  camera_far_corners_view_space
-			}
-
-			td = nd->addTargetPass( "blurVertical" );
-			td->setNumPasses( 1 );  //* passes
-			{
-				auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
-				pq->setAllLoadActions( LoadAction::DontCare );
-
-				pq->mMaterialName = "SSAO/BlurV";  pq->mProfilingId = "SSAO 3 BlurV";
-				pq->addQuadTextureSource( 0, "blurHorizontal" );  // input
-				pq->addQuadTextureSource( 1, "depthBufferNoMsaa" );  // depthTextureCopy
-				pq->mFrustumCorners = CompositorPassQuadDef::VIEW_SPACE_CORNERS;  // quad_normals  camera_far_corners_view_space
-			}
-
 
 			//  🌊 Refracted  Fluids  ----
 			td = nd->addTargetPass( "rtt_final" );
@@ -458,9 +478,10 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				//  into rtt_final. Meanwhile rtt_first will be used for sampling refractions
 				auto* cp = static_cast<CompositorPassDepthCopyDef*>(td->addPass(Ogre::PASS_DEPTHCOPY));
 				cp->setDepthTextureCopy("rtt_first", "rtt_final");  //*
-				// cp->setDepthTextureCopy("gBufferNormals", "rtt_final");  //* test normals
+				// cp->setDepthTextureCopy("gBufferNormals", "rtt_final");  //* test normals ok+
 				// cp->setDepthTextureCopy("ssaoTexture", "rtt_final");  //* test noise?
 				// cp->setDepthTextureCopy("blurVertical", "rtt_final");  //* test-
+				// cp->setDepthTextureCopy("depthBuffer", "rtt_final");  //* test-
 
 				ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
 				ps->setAllLoadActions( LoadAction::Load );
@@ -487,14 +508,13 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 					pq->setAllLoadActions( LoadAction::DontCare );
 					
 					pq->mMaterialName = "SSAO/Apply";  pq->mProfilingId = "SSAO Apply";  // input
-					pq->addQuadTextureSource( 0, "blurVertical" );  // + blurTextureVertical
-					pq->addQuadTextureSource( 1, "rtt_final" );  // + RT0 org
-					// pq->addQuadTextureSource( 0, "blurVertical" );  //* test red blur
+					pq->addQuadTextureSource( 0, "blurVertical" );
+					pq->addQuadTextureSource( 1, "rtt_final" );
+					// pq->addQuadTextureSource( 1, "gBufferNormals" );  //- test black  ?
+					// pq->addQuadTextureSource( 0, "blurVertical" );  //* test red, blur
 					// pq->addQuadTextureSource( 1, "blurVertical");  //* 
-					// pq->addQuadTextureSource( 0, "ssaoTexture" );  //* test red
+					// pq->addQuadTextureSource( 0, "ssaoTexture" );  //* test red, noisy
 					// pq->addQuadTextureSource( 1, "ssaoTexture");  //* 
-					// pq->addQuadTextureSource( 0, "gBufferNormals" );  //- test black
-					// pq->addQuadTextureSource( 1, "gBufferNormals" );  //-
 				}else
 				{
 					auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
