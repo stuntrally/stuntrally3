@@ -45,12 +45,14 @@ public:
 	float car_light_bright = 1.f;
 
 	//  🪄 Effects  ----
-	bool ssao;
+	bool ssao =0;
 	float ssao_radius = 1.f, ssao_scale = 1.5f;
+	bool gi =0;
+
 	// bool all_effects =0;
 	// bool soft_particles, lens_flare;  // todo: 1st
 	// bool hdr, bloom;  // todo: 2nd
-	// bool god_rays, motion_blur;  // todo: 2nd
+	// bool god_rays, motion_blur;  // todo: 3rd
 	// float bloom_int, bloom_orig, blur_intensity;
 
 

@@ -245,6 +245,7 @@ public:
 	//  🪄 Effects  --------------------------
 	Ck ckSSAO;
 	SV svSsaoRadius, svSsaoScale;
+	Ck ckGI;
 
 	// CK(AllEffects);
 	// Ck ckSoftPar, ckHDR, ckBloom, ckMotBlur, ckGodRays;

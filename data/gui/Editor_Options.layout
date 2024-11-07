@@ -187,10 +187,11 @@
 						</Widget>
 						<Widget type="Slider" skin="Slider" position="392 90 320 18" name="BloomInt"/> -->
 
-						<!-- SSAO -->
+
+						<!-- 🕳️ SSAO -->
 						<Widget type="Button" skin="CheckBox" position="28 120 256 24" name="SSAO">
 							<Property key="Caption" value="#{ssao}  #704040 = #{NotDone}"/>
-							<Property key="TextColour" value="1 0.7 0.1"/>
+							<Property key="TextColour" value="0.3 0.7 1"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="32 150 248 24">
@@ -214,9 +215,16 @@
 						<Widget type="Slider" skin="Slider" position="344 180 216 16" name="SsaoScale">
 							<Property key="Colour" value="0.5 0.9 0.9"/>
 						</Widget>
+
+						<!-- 🌄 GI -->
+						<Widget type="Button" skin="CheckBox" position="28 230 356 24" name="GI">
+							<Property key="Caption" value="#{GI}  #603030 = #{NotDone}"/>
+							<Property key="TextColour" value="1 0.5 0.7"/>
+						</Widget>
 						
+
 						<!-- <Widget type="Button" skin="CheckBox" position="28 150 256 24" name="SoftParticles">
-							<Property key="Caption" value="#{softparticles}"/>
+							<Property key="Caption" value="#{SoftParticles}"/>
 							<Property key="TextColour" value="1 0.75 0.4"/>
 						</Widget>
 

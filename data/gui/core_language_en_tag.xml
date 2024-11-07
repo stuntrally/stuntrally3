@@ -779,9 +779,10 @@
 	<Tag name="Effects">Effects</Tag>
 	<Tag name="AllEffects">Effects Enabled</Tag>
 
-	<Tag name="ssao">SSAO</Tag>
-	<Tag name="softparticles">Soft Particles</Tag>
+	<Tag name="SSAO">SSAO (Ambient Occlusion)</Tag>
+	<Tag name="GI">Global Illumination</Tag>
 
+	<Tag name="SoftParticles">Soft Particles</Tag>
 	<Tag name="Bloom">Bloom</Tag>
 	<Tag name="Intensity">Intensity</Tag>
 	<Tag name="OrigImage">Darken</Tag>

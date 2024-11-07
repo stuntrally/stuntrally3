@@ -42,6 +42,8 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	Param(c,w, "video_eff.ssao", ssao);
 	Param(c,w, "video_eff.ssao_radius", ssao_radius);	Param(c,w, "video_eff.ssao_scale", ssao_scale);
 
+	Param(c,w, "video_eff.gi", gi);
+
 	// Param(c,w, "video_eff.all_effects", all_effects);
 	// Param(c,w, "video_eff.godrays", godrays);			Param(c,w, "video_eff.softparticles", softparticles);
 	// Param(c,w, "video_eff.bloom", bloom);				Param(c,w, "video_eff.bloomintensity", bloom_int);
