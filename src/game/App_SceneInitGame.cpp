@@ -3,12 +3,9 @@
 #include "paths.h"
 #include "Road.h"
 #include "Def_Str.h"
-#include "RenderConst.h"
 #include "CData.h"
 #include "SceneXml.h"
-#include "Axes.h"
 #include "CScene.h"
-// #include "SplineBase.h"
 #include "Grass.h"
 #include "GuiCom.h"
 #include "CGame.h"
@@ -21,8 +18,6 @@
 #include "FollowCamera.h"
 #include "CarModel.h"
 #include "BtOgreExtras.h"
-// #include "SplitScreen.h"
-// #include "GraphView.h"
 #include "gameclient.hpp"
 #include "Terra.h"
 #include "MainEntryPoints.h"
@@ -267,6 +262,8 @@ void App::LoadCleanUp()
 {
 	LogO("DD-- LoadCleanUp ------DD");
 	updMouse();
+
+	DestroyGI();
 	
 	if (dstTrk)
 	{
@@ -753,6 +750,9 @@ void App::LoadTrees()
 		scn->LoadRoadDens();
 		scn->CreateVegets();
 		scn->grass->Create(this);  // 🌿
+
+        if (pSet->gi)
+			InitGI();
 	}	
 		
 	//  check for cars inside terrain ___

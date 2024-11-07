@@ -17,16 +17,25 @@ namespace Ogre
 	class CompositorWorkspace;  class CompositorWorkspaceDef;  class RenderTargetViewDef;
 	class CompositorNodeDef;  class CompositorTargetDef;  class CompositorPassSceneDef;
 	// namespace v1 {  class Overlay;  }
-	class Terra;  class HlmsPbsTerraShadows;  class PlanarReflections;  }
+	class Terra;  class HlmsPbsTerraShadows;  class PlanarReflections;
+    class VctVoxelizer;  class VctLighting;  class IrradianceField;
+}
 namespace MyGUI
-{	class Gui;  class Ogre2Platform;  }
-class GraphicsSystem;  class SETTINGS;  class CScene;  class CGui;  class CGuiCom;
-class HlmsPbsDb2;
+{	class Gui;  class Ogre2Platform;
+}
+class GraphicsSystem;  class HlmsPbsDb2;
+class SETTINGS;  class CScene;  class CGui;  class CGuiCom;
 
-//  cube reflections, car etc
+//  cube Reflections, car etc
 enum IblQuality
 {
 	MipmapsLowest, IblLow, IblMedium, IblHigh
+};
+
+//  Global Illumination
+enum GiMode
+{
+	NoGI, Ifd, Vct, IfdVct, NumGiModes
 };
 
 
@@ -80,7 +89,7 @@ public:
 	float GetGPUmem();
 
 
-	//  ⛓️ Utils  ----------------
+	//  ⛓️ Utils  --------------------------------
 	//  🌐 Wireframe
 	bool bWireframe = 0;
 	void SetWireframe();
@@ -119,6 +128,11 @@ public:
 	void Quit();
 
 
+	//  ⛰️ Terrain  ----------------
+	// Ogre::String mtrName;
+	// Ogre::SceneNode* nodeTerrain = 0;
+
+
 	//  🌒 Shadows ----------------
 	void createPcfShadowNode();
 	void createEsmShadowNodes();
@@ -140,14 +154,15 @@ public:
 	void ApplyReflect();  // to all Db2s, after CubeRefl created
 	std::set<HlmsPbsDb2*> vDbRefl;
 
-	//  🪄 main setup  ----------------
+
+	//  🪄 Compositor Setup  --------------------------------
 	std::vector<Ogre::CompositorNodeDef*> vNodes;  // stuff we create and destroy
 	std::vector<Ogre::CompositorWorkspace*> vWorkspaces;
 	std::vector<Ogre::TextureGpu*> vRtt, vTex;
 	std::vector<Ogre::CompositorWorkspaceDef*> vWorkDefs;
 	constexpr static const char* csShadow = "ShadowMapFromCodeShadowNode";
 	
-	//  utils
+	//  compositor utils
 	Ogre::CompositorNodeDef* AddNode(Ogre::String name);
 	Ogre::CompositorWorkspaceDef* AddWork(Ogre::String name);
 	Ogre::RenderTargetViewDef* AddRtv(Ogre::CompositorNodeDef* nd,
@@ -160,6 +175,7 @@ public:
 	Ogre::String getSplitMtr(int splits);
 	Ogre::String getWsInfo();  // log
 
+	//  Compositor Create
 	//  One  returns rtt if made, when not final wnd  // cur view num / all
 	Ogre::TextureGpu* CreateCompositor(int view, int splits, float width, float height);
 	//  All  Full
@@ -182,13 +198,38 @@ public:
 	// std::vector<Ogre::CompositorWorkspace*> mWorkspaces;
 
 
-	//  SSAO  ----------------
+	//  🕳️ SSAO  ----------------
 	Ogre::Pass *mSSAOPass =0;
 	Ogre::Pass *mApplyPass =0;
+	Ogre::TextureGpu *noiseTexture =0;
 	void InitSSAO(), UpdateSSAO();
 
 
-	//  ⛰️ Terrain  ----------------
-	// Ogre::String mtrName;
-	// Ogre::SceneNode* nodeTerrain = 0;
+	//  🌄 GI  ----------------
+	void InitGI(), UpdateGI(), DestroyGI();
+	void GIVoxelizeScene();
+
+	//  GI var
+	Ogre::VctVoxelizer *mVoxelizer =0;
+	Ogre::VctLighting *mVctLighting =0;
+	float mThinWallCounter = 1.f;
+
+	Ogre::IrradianceField *mIrradianceField =0;
+	bool mUseRasterIrradianceField = false;
+
+	int mDebugVisMode, mIfdDebugVisMode;
+	int mNumBounces = 6;
+
+	// TestUtils *mTestUtils =0;
+	Ogre::FastArray<Ogre::Item *> mItems;
+
+	//  ⛓️ GI util
+	GiMode GIgetMode() const;
+	Ogre::String GIstrMode() const;
+	bool GIneedsVoxels() const;
+
+	void GItoggletVctQuality(), GInextIrradianceField(int add);
+	void GInextVisMode(int add), GInextIfdProbeVisMode(int add);  // visualize
+
+	// void generateDebugText( float timeSinceLast, Ogre::String &outText ) override;
 };

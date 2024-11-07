@@ -14,7 +14,6 @@
 #include "SceneXml.h"
 #include "CScene.h"
 #include "CData.h"
-#include "FluidsXml.h"
 #include "PresetsXml.h"
 
 #include "Axes.h"

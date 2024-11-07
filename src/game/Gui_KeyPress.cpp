@@ -263,7 +263,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 			case key(V):	gui->GuiShortcut(MN_Options, TABo_View);	return;  // V View  ⏱️
 
 			case key(A):	gui->GuiShortcut(MN_Options, TABo_Graphics);	return;  // A Graphics  📊
-			//case key(E):	gui->GuiShortcut(MN_Options, TABo_Graphics,2);	return;  // E -Effects
+			case key(E):	gui->GuiShortcut(MN_Options, TABo_Screen,2);	return;  // E -Effects  🪄
 
 			case key(T):	gui->GuiShortcut(MN_Options, TABo_Settings);	return;  // T Settings  ⚙️
 			case key(O):	gui->GuiShortcut(MN_Options, TABo_Sound);	return;  // O Sound  🔊

@@ -2,20 +2,20 @@
 #include "par.h"
 #include "Def_Str.h"
 #include "CScene.h"
-#include "SceneXml.h"
-#include "CData.h"
+// #include "SceneXml.h"
+// #include "CData.h"
 #include "settings.h"
 #include "CHud.h"
 #include "CGui.h"
 #include "GuiCom.h"
 #include "CGame.h"
 #include "game.h"
-#include "SoundMgr.h"
-#include "CarPosInfo.h"
+// #include "SoundMgr.h"
+// #include "CarPosInfo.h"
 #include "CarModel.h"
 #include "FollowCamera.h"
-#include "carcontrolmap_local.h"
-#include "CInput.h"
+// #include "carcontrolmap_local.h"
+// #include "CInput.h"
 #include "Road.h"
 #include "PaceNotes.h"
 #include "GraphicsSystem.h"
@@ -28,7 +28,7 @@
 #include <OgreCamera.h>
 #include <OgreWindow.h>
 #include "Terra.h"
-#include "Atmosphere.h"
+// #include "Atmosphere.h"
 
 #include "ICSInputControlSystem.h"
 #include <SDL_keycode.h>
@@ -48,8 +48,11 @@ using namespace std;
 void App::update( float dt )
 {
 	fLastFrameDT = dt;
+
 	if (pSet->ssao)
 		UpdateSSAO();
+	if (pSet->gi)
+		UpdateGI();
 
 	#if 0  //** log big dt
 	if (dt > 0.02)
@@ -60,7 +63,7 @@ void App::update( float dt )
 	if (bLoading)
 	{
 		auto* texMgr = mRoot->getRenderSystem()->getTextureGpuManager();
-		texMgr->waitForStreamingCompletion();
+		texMgr->waitForStreamingCompletion();  // while..
 	}
 
 	//  🕹️ Input upd  ----
