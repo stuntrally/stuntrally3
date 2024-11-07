@@ -218,13 +218,13 @@ CONST_BUFFER_STRUCT_BEGIN( PassBuffer, 0 )
 	@insertpiece( DeclVctUniform )
 	@insertpiece( DeclIrradianceFieldUniform )
 
-	@property( body_paint )
+	// property( body_paint )
 	//  todo: extra vehicle paint changing colors
 		// float4 paint1;
 		// float4 paint2;
 		// float4 paint3;
 		// float4 paintMul;
-	@end
+	// end
 	@insertpiece( custom_passBuffer )
 
 #define pccVctMinDistance		pccVctMinDistance_invPccVctInvDistance_rightEyePixelStartX_envMapNumMipmaps.x
@@ -476,6 +476,11 @@ struct Material
 			@property( !exponential_shadow_maps )
 				FLAT_INTERPOLANT( float constBias, @counter(texcoord) );
 			@end
+		@end
+	@end
+	@property( hlms_emulate_clip_distances && hlms_pso_clip_distances )
+		@foreach( hlms_pso_clip_distances, n )
+			INTERPOLANT( float clipDistance@n, @counter(texcoord) );
 		@end
 	@end
 	@insertpiece( custom_VStoPS )

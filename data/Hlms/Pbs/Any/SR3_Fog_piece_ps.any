@@ -1,5 +1,5 @@
+@piece( SR3_ApplyFog )
 
-@piece( applyFog )
     @property( hlms_fog && !sky )
     //property( hlms_fog )  // todo: inside hfog and underwater, on sky too
 

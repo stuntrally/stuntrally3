@@ -1,0 +1,76 @@
+@piece( SR3_Fluid )
+
+			//~~~~~~~ water begin  //** This is Water
+
+				@piece( GetNorm )
+						getTSNormal( textureMaps@value( normal_map_tex_idx ),
+									samplerState@value( normal_map_tex_sampler ),
+									uv3, texIndex_normalIdx );
+				@end
+
+				#define SMALL_WAVES_X  material.detailOffsetScale[0].x
+				#define SMALL_WAVES_Y  material.detailOffsetScale[0].y
+				#define MID_WAVES_X    material.detailOffsetScale[0].z
+				#define MID_WAVES_Y    material.detailOffsetScale[0].w
+				#define BIG_WAVES_X    material.detailOffsetScale[1].x
+				#define BIG_WAVES_Y    material.detailOffsetScale[1].y
+
+			@property( river )
+				#define WIND_DIR     float2(0.1, -2.1)
+				#define WIND_SPEED   material.detailOffsetScale[2].x * 1.32
+				#define WIND_SPEED2  material.detailOffsetScale[2].x * 0.21
+			@else  // water
+				#define WIND_DIR     float2(atmo.windDir.x, atmo.windDir.y)
+				#define WIND_SPEED   material.detailOffsetScale[2].x * 0.32 * (1.0 + atmo.timeWind.y)
+				#define WIND_SPEED2  material.detailOffsetScale[2].x * 2.0  * (1.0 + atmo.timeWind.y)
+			@end
+				#define WAVE_CHOP    material.detailOffsetScale[2].y * 0.01
+				#define WAVE_SCALE  -material.detailOffsetScale[2].z
+
+				#define BUMP         material.detailOffsetScale[2].w
+				#define BUMP2        material.detailOffsetScale[3].x  //bump2SpecPowerMul
+				#define SPEC2        material.detailOffsetScale[3].y
+
+float2 UV = inPs.uv@value(uv_diffuse).xy;
+float timer = atmo.timeWind.x;
+float2
+uv3 = UV * WAVE_SCALE*0.05+ WIND_DIR *timer* WIND_SPEED*0.04                                   + WIND_SPEED2 *timer* float2(-0.015,-0.005);  float3 normal0 = @insertpiece(GetNorm)
+uv3 = UV * WAVE_SCALE*0.1 + WIND_DIR *timer* WIND_SPEED*0.08-(normal0.xy/normal0.zz)*WAVE_CHOP + WIND_SPEED2 *timer* float2(+0.020,+0.015);  float3 normal1 = @insertpiece(GetNorm)
+uv3 = UV * WAVE_SCALE*0.25+ WIND_DIR *timer* WIND_SPEED*0.07-(normal1.xy/normal1.zz)*WAVE_CHOP + WIND_SPEED2 *timer* float2(-0.04 ,-0.03);   float3 normal2 = @insertpiece(GetNorm)
+uv3 = UV * WAVE_SCALE*0.5 + WIND_DIR *timer* WIND_SPEED*0.09-(normal2.xy/normal2.zz)*WAVE_CHOP + WIND_SPEED2 *timer* float2(+0.03 ,+0.04);   float3 normal3 = @insertpiece(GetNorm)
+uv3 = UV * WAVE_SCALE*1.0 + WIND_DIR *timer* WIND_SPEED*0.4 -(normal3.xy/normal3.zz)*WAVE_CHOP + WIND_SPEED2 *timer* float2(-0.02 ,+0.1 );   float3 normal4 = @insertpiece(GetNorm)
+uv3 = UV * WAVE_SCALE*2.0 + WIND_DIR *timer* WIND_SPEED*0.7 -(normal4.xy/normal4.zz)*WAVE_CHOP + WIND_SPEED2 *timer* float2(+0.1  ,-0.06);   float3 normal5 = @insertpiece(GetNorm)
+// uv3 = UV * WAVE_SCALE*17.4+ WIND_DIR *timer* WIND_SPEED*0.6 -(normal1.xy/normal1.zz)*WAVE_CHOP + WIND_SPEED2 *timer* float2(+0.063,-0.053);  float3 normal6 = @insertpiece(GetNorm)
+// uv3 = UV * WAVE_SCALE*18.3+ WIND_DIR *timer* WIND_SPEED*0.5 -(normal2.xy/normal2.zz)*WAVE_CHOP + WIND_SPEED2 *timer* float2(-0.052,+0.064);  float3 normal7 = @insertpiece(GetNorm)
+
+				float3 n6 = normal0 * BIG_WAVES_X   + normal1 * BIG_WAVES_Y +
+							normal2 * MID_WAVES_X   + normal3 * MID_WAVES_Y +
+							normal4 * SMALL_WAVES_X + normal5 * SMALL_WAVES_Y;
+							// normal6 * SMALL_WAVES_X + normal7 * SMALL_WAVES_Y;
+				float3 n1 = normalize( midf3_c( n6.x * BUMP,  n6.y * BUMP,  n6.z ));
+				float3 n2 = normalize( midf3_c( n6.x * BUMP2, n6.y * BUMP2, n6.z ));
+
+			@property( river123 )  // todo: water fall getting white meh
+				// float fall = abs(pixelData.geomNormal.y) * 0.5;
+				float fall = abs(inPs.normal.y) * 0.1;  // todo: world space normal
+				pixelData.diffuse.xyz = lerp( pixelData.diffuse.xyz, midf3_c(0.8, 0.8, 0.8), fall );
+			@end
+
+				pixelData.normal = lerp(n1, n2, SPEC2);
+				// pixelData.normal.y = 1.0 - pixelData.normal.y;
+				// pixelData.diffuse.xyz = n1;  // test stuff ..
+				// pixelData.normal = midf3_c(0.0,0.0,1.0);
+
+				// pixelData.diffuse.xyz = float3(0.02,0.03,0.04) + float3(0.01,0.04,0.07) * pixelData.normal.z;
+				// pixelData.diffuse.xyz = float3(0.3,0.5,0.7) - float3(0.1,0.4,0.7) * pixelData.normal.z * pixelData.normal.z;
+				// uv3 = UV;
+				// pixelData.normal = @insertpiece(GetNorm)
+				// pixelData.normal = midf3_c( 0.5, 0.5, 0.1 );
+				// pixelData.specular.xyz = float3(0.9,0.95,0.99) - float3(0.3,0.4,0.5) * pixelData.normal.z;
+
+				pixelData.perceptualRoughness = max(0.01, min(1.0,  0.01 - 2.24 * n1.x - 2.24 * n1.y));  //** par?
+
+				// transparency ?
+				// material.F0.w = pixelData.perceptualRoughness;
+			//~~~~~~~ water end
+@end

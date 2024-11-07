@@ -67,7 +67,7 @@ fragment @insertpiece( output_type ) main_metal
 		@end
 		@insertpiece( MaterialDecl )
 		@insertpiece( PccManualProbeDecl )
-		@insertpiece( AtmoStructDeclMetal )
+		@insertpiece( SR3_AtmoStructDeclMetal )
 	@end
 	@insertpiece( custom_ps_uniformDeclaration )
 	// END UNIFORM DECLARATION

@@ -1,34 +1,34 @@
-//  params for ALL shaders, fog etc
+//**  params for ALL shaders, fog etc
 
 // property( atmosky_npr )  //** todo?
 
-@piece( AtmoStructDecl )
+@piece( SR3_AtmoStructDecl )
 
-	struct AtmoSettings  // same as AtmoSettingsGpu info in Atmosphere.h
+	struct SR3_AtmoSettings  // same as AtmoSettingsGpu info in Atmosphere.h
 	{
-		//**  fog
+		//**  🌫️ Fog
 		float4 fogDensStartBreak;
 		float4 fogHcolor, fogHparams;
 		float4 fogColourSun, fogColourAway;
 		float4 fogFluidH, fogFluidClr;
 
-		//  grass deform 2 spheres pos,r^2
+		//  🌿 grass deform 2 spheres pos,r^2
 		float4 posSph0, posSph1;
 		
-	    //  time, wind
+	    //  🌪️🍃 time, wind
 		float4 timeWind, windDir;
 	};
 
 	@property( syntax != metal )
 		CONST_BUFFER( AtmoSettingsBuf, @value(atmosky_npr) )
 		{
-			AtmoSettings atmo;
+			SR3_AtmoSettings atmo;
 		};
 	@end
 @end
 
 @property( syntax == metal )
-	@piece( AtmoStructDeclMetal )
+	@piece( SR3_AtmoStructDeclMetal )
 		, constant AtmoSettings &atmo [[buffer(CONST_SLOT_START+@value(atmosky_npr))]]
 	@end
 @end

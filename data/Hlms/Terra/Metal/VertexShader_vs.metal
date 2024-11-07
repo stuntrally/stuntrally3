@@ -37,7 +37,7 @@ vertex PS_INPUT main_metal
 	@property( hlms_shadowcaster )
 		@insertpiece( MaterialDecl )
 	@end
-	@insertpiece( AtmoStructDeclMetal )
+	@insertpiece( SR3_AtmoStructDeclMetal )
 		, texture2d<float, access::read> heightMap [[texture(@value(heightMap))]]
 	@insertpiece( custom_vs_uniformDeclaration )
 	// END UNIFORM DECLARATION

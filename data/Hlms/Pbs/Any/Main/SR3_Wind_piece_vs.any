@@ -1,0 +1,78 @@
+@piece( SR3_Wind )
+
+		//**  🌪️🍃Grass Wind  --------------------------------------------------------
+		@property( grass && !hlms_shadowcaster )
+			if (inVs_uv0.y == 0.0f)  // top
+			{
+				// float4 w = worldMat[2], p = inputPos;
+				float ofs = atmo.timeWind.y, ampl = atmo.timeWind.z, freq = atmo.timeWind.w * 3;
+				float2 dir = atmo.windDir.xy; // * material.userValue[0].x;
+
+				midf2 pos = worldPos.xz;
+				float time = atmo.timeWind.x; // * _h(1.2);
+				float cfreq = 0.9;  // par atmo..
+				float x = sin((time + pos.x * 2.427 * cfreq) * freq) * sin((time + pos.y * 3.427 * cfreq) * freq);
+				float y = cos((time + pos.y * 2.534 * cfreq) * freq) * cos((time + pos.x * 3.534 * cfreq) * freq);
+				worldPos.xz += dir * 0.28 * ofs + float2(x, y) * 1.4 * dir * ampl;
+			}
+
+			//**  grass deform under car  **
+			//--------------------------------------------------------
+			float r = atmo.posSph0.w;  // sphere radius^2
+			if (r > 0.1f)
+			{
+				//()  sphere:  (x - x0)^2 + (y - y0)^2 + (z - z0)^2 = r^2
+				float3 sph = atmo.posSph0.xyz;  // sphere pos
+				float yy = 0.0;
+				@property( tree_wind )  // bushes less
+					yy = 0.5;
+				@end
+				float dx = worldPos.x - sph.x,  dz = worldPos.z - sph.z; //, dy = worldPos.y - sph.y;
+				dx *= dx;  dz *= dz;  //dy *= dy;
+				//if (dx + dy + dz < r)  // sphere
+				if (dx + dz < r)  // circle, very high grasses too
+				{
+					float y_on_sph = yy + sph.y - sqrt(r - dx - dz);
+					if (worldPos.y > y_on_sph)
+						worldPos.y = y_on_sph;
+				}
+				//()  2nd
+				sph = atmo.posSph1.xyz;
+				dx = worldPos.x - sph.x;  dz = worldPos.z - sph.z;
+				dx *= dx;  dz *= dz;
+				if (dx + dz < r)
+				{
+					float y_on_sph = yy + sph.y - sqrt(r - dx - dz);
+					if (worldPos.y > y_on_sph)
+						worldPos.y = y_on_sph;
+				}
+			}
+		@end
+
+		//**  Tree wind  --------------------------------------------------------
+		// property( tree_wind )  // todo: in caster ..
+		@property( tree_wind && !hlms_shadowcaster )
+			{
+				float2 pos = worldPos.xz;
+				float time = atmo.timeWind.x; // * _h(1.2);
+				// float freq = 3.2;  // par atmo..
+				// float offset1 = sin(time + pos.x * 2.427 * freq) * sin(time + pos.y * 3.427 * freq);
+				// float offset2 = cos(time + pos.y * 2.534 * freq) * cos(time + pos.x * 3.534 * freq);
+				// worldPos.xz += float2(offset1, offset2) * 1.4;
+				// worldPos.y += sin(time + uv2.z + position.y + position.x) * uv1.x * uv1.x * uv1.w;
+				// worldPos.x += sin(time + uv2.z ) * uv1.y * uv1.y * uv1.z;
+
+				//  wind var
+				float4 w = worldMat[2], p = inputPos;
+				float ofs = atmo.timeWind.y, ampl = atmo.timeWind.z, freq = atmo.timeWind.w;
+				float2 dir = atmo.windDir.xy; // * material.userValue[0].x;
+				//  sway slow
+				worldPos.x += (sin(freq * (time * 1.51 + w.x * 0.51 + 0.67 * w.z)) * ampl + ofs)* 0.016 * p.y * p.y * dir.x;
+				worldPos.z += (sin(freq * (time * 1.42 + w.x * 0.76 - 0.65 * w.z)) * ampl + ofs)* 0.016 * p.y * p.y * dir.y;
+				//  tiny fast
+				worldPos.y += sin(freq * (time * 3.25 + p.z) * (1.92 + 0.4 * w.y))
+							* sin(freq * (time * 2.52 + p.x) * (2.42 + 2.4 * w.z)) * p.y * p.z * 0.02 * ampl;
+			}
+		@end
+		//--------------------------------------------------------
+@end

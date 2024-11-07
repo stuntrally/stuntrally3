@@ -15,7 +15,7 @@
 	@insertpiece( PassStructDecl )
 	@property( hlms_skeleton || hlms_shadowcaster || hlms_pose || syntax == metal || lower_gpu_overhead )@insertpiece( InstanceStructDecl )@end
 
-	@insertpiece( AtmoStructDecl )
+	@insertpiece( SR3_AtmoStructDecl )
 	@insertpiece( custom_vs_uniformStructDeclaration )
 	// END UNIFORM DECLARATION  VS  Pbs
 
@@ -27,7 +27,24 @@
 	@end
 
     @insertpiece( DeclShadowMapMacros )
-	// insertpiece( DeclAtmosphereNprSkyFuncs )
+	//** insertpiece( DeclAtmosphereNprSkyFuncs )
+
+	@property( accurate_non_uniform_scaled_normals )
+		midf3x3 adjugate( midf3x3 m )
+		{
+			midf3x3 n;
+			n[0][0] = m[1][1] * m[2][2] - m[1][2] * m[2][1];
+			n[0][1] = m[0][2] * m[2][1] - m[0][1] * m[2][2];
+			n[0][2] = m[0][1] * m[1][2] - m[0][2] * m[1][1];
+			n[1][0] = m[1][2] * m[2][0] - m[1][0] * m[2][2];
+			n[1][1] = m[0][0] * m[2][2] - m[0][2] * m[2][0];
+			n[1][2] = m[0][2] * m[1][0] - m[0][0] * m[1][2];
+			n[2][0] = m[1][0] * m[2][1] - m[2][0] * m[1][1];
+			n[2][1] = m[0][1] * m[2][0] - m[0][0] * m[2][1];
+			n[2][2] = m[0][0] * m[1][1] - m[0][1] * m[1][0];
+			return n;
+		}
+	@end
 @end
 
 @property( !hlms_skeleton )
@@ -192,10 +209,18 @@
 
 @piece( VertexTransform )
 	@insertpiece( custom_vs_preTransform )
-	//Lighting is in view space
-	@property( hlms_normal || hlms_qtangent )	outVs.pos		= @insertpiece( CalculatePsPos );  @end
-	@property( hlms_normal || hlms_qtangent )	outVs.normal	= mul( @insertpiece(local_normal), toMidf3x3( worldViewMat ) );  @end
-	@property( normal_map )						outVs.tangent	= mul( @insertpiece(local_tangent), toMidf3x3( worldViewMat ) );  @end
+	//  Lighting is in view space
+	@property( hlms_normal || hlms_qtangent )	outVs.pos		= @insertpiece( CalculatePsPos );@end
+	@property( hlms_normal || hlms_qtangent )
+		midf3x3 worldMat3x3 = toMidf3x3( worldViewMat );
+		@property( accurate_non_uniform_scaled_normals )
+			midf3x3 normalMat = transpose( adjugate( worldMat3x3 ) );
+			outVs.normal = normalize( mul( @insertpiece(local_normal), normalMat ) );
+		@else
+			outVs.normal = mul( @insertpiece(local_normal), worldMat3x3 );
+		@end
+	@end
+	@property( normal_map )						outVs.tangent	= mul( @insertpiece(local_tangent), toMidf3x3( worldViewMat ) );@end
 	@property( !hlms_dual_paraboloid_mapping )
         @property( !hlms_use_uv_baking )
 			@property( !hlms_instanced_stereo )
@@ -273,81 +298,7 @@
 			midf3 worldNorm = mul( inputNormal, toMidf3x3( worldMat ) ).xyz;
 		@end
 
-		//**  Grass Wind  --------------------------------------------------------
-		@property( grass && !hlms_shadowcaster )
-			if (inVs_uv0.y == 0.0f)  // top
-			{
-				// float4 w = worldMat[2], p = inputPos;
-				float ofs = atmo.timeWind.y, ampl = atmo.timeWind.z, freq = atmo.timeWind.w * 3;
-				float2 dir = atmo.windDir.xy; // * material.userValue[0].x;
-
-				midf2 pos = worldPos.xz;
-				float time = atmo.timeWind.x; // * _h(1.2);
-				float cfreq = 0.9;  // par atmo..
-				float x = sin((time + pos.x * 2.427 * cfreq) * freq) * sin((time + pos.y * 3.427 * cfreq) * freq);
-				float y = cos((time + pos.y * 2.534 * cfreq) * freq) * cos((time + pos.x * 3.534 * cfreq) * freq);
-				worldPos.xz += dir * 0.28 * ofs + float2(x, y) * 1.4 * dir * ampl;
-			}
-
-			//**  grass deform under car  **
-			//--------------------------------------------------------
-			float r = atmo.posSph0.w;  // sphere radius^2
-			if (r > 0.1f)
-			{
-				//()  sphere:  (x - x0)^2 + (y - y0)^2 + (z - z0)^2 = r^2
-				float3 sph = atmo.posSph0.xyz;  // sphere pos
-				float yy = 0.0;
-				@property( tree_wind )  // bushes less
-					yy = 0.5;
-				@end
-				float dx = worldPos.x - sph.x,  dz = worldPos.z - sph.z; //, dy = worldPos.y - sph.y;
-				dx *= dx;  dz *= dz;  //dy *= dy;
-				//if (dx + dy + dz < r)  // sphere
-				if (dx + dz < r)  // circle, very high grasses too
-				{
-					float y_on_sph = yy + sph.y - sqrt(r - dx - dz);
-					if (worldPos.y > y_on_sph)
-						worldPos.y = y_on_sph;
-				}
-				//()  2nd
-				sph = atmo.posSph1.xyz;
-				dx = worldPos.x - sph.x;  dz = worldPos.z - sph.z;
-				dx *= dx;  dz *= dz;
-				if (dx + dz < r)
-				{
-					float y_on_sph = yy + sph.y - sqrt(r - dx - dz);
-					if (worldPos.y > y_on_sph)
-						worldPos.y = y_on_sph;
-				}
-			}
-		@end
-
-		//**  Tree wind  --------------------------------------------------------
-		// property( tree_wind )  // todo: in caster ..
-		@property( tree_wind && !hlms_shadowcaster )
-			{
-				float2 pos = worldPos.xz;
-				float time = atmo.timeWind.x; // * _h(1.2);
-				// float freq = 3.2;  // par atmo..
-				// float offset1 = sin(time + pos.x * 2.427 * freq) * sin(time + pos.y * 3.427 * freq);
-				// float offset2 = cos(time + pos.y * 2.534 * freq) * cos(time + pos.x * 3.534 * freq);
-				// worldPos.xz += float2(offset1, offset2) * 1.4;
-				// worldPos.y += sin(time + uv2.z + position.y + position.x) * uv1.x * uv1.x * uv1.w;
-				// worldPos.x += sin(time + uv2.z ) * uv1.y * uv1.y * uv1.z;
-				
-				//  wind var
-				float4 w = worldMat[2], p = inputPos;
-				float ofs = atmo.timeWind.y, ampl = atmo.timeWind.z, freq = atmo.timeWind.w;
-				float2 dir = atmo.windDir.xy; // * material.userValue[0].x;
-				//  sway slow
-				worldPos.x += (sin(freq * (time * 1.51 + w.x * 0.51 + 0.67 * w.z)) * ampl + ofs)* 0.016 * p.y * p.y * dir.x;
-				worldPos.z += (sin(freq * (time * 1.42 + w.x * 0.76 - 0.65 * w.z)) * ampl + ofs)* 0.016 * p.y * p.y * dir.y;
-				//  tiny fast
-				worldPos.y += sin(freq * (time * 3.25 + p.z) * (1.92 + 0.4 * w.y))
-							* sin(freq * (time * 2.52 + p.x) * (2.42 + 2.4 * w.z)) * p.y * p.z * 0.02 * ampl;
-			}
-		@end
-		//--------------------------------------------------------
+		@insertpiece( SR3_Wind )
 	@end
 
 	@insertpiece( PoseTransform )
@@ -377,7 +328,7 @@
 	@insertpiece( DoShadowReceiveVS )
 	@insertpiece( DoShadowCasterVS )
 
-	//insertpiece( DoAtmosphereNprSky )
+	//insertpiece( DoAtmosphereNprSky )  //** no
 
 	/// hlms_uv_count will be 0 on shadow caster passes w/out alpha test
 	@foreach( hlms_uv_count, n )

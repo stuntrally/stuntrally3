@@ -334,7 +334,7 @@ midf3 BRDF_IR( midf3 lightDir, midf3 lightDiffuse, PixelData pixelData )
 		// Rs += pixelData.clearCoatEnvColourS * pixelData.specular.xyz  // par lerp?
 		Rs += pixelData.clearCoatEnvColourS
 			* ( _h(0.04) * clearCoatEnvBRDF.x + clearCoatEnvBRDF.y )
-			* pixelData.clearCoat; // * _h(2.0);
+			* pixelData.clearCoat; // * _h(2.0);  //** clearCoat
 	@end
 
 	finalColour += Rd + Rs;
