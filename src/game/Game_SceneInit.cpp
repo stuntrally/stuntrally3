@@ -263,7 +263,7 @@ void App::LoadCleanUp()
 	LogO("DD-- LoadCleanUp ------DD");
 	updMouse();
 
-	DestroyGI();
+	DestroyGI();  // 🌄
 	
 	if (dstTrk)
 	{
@@ -752,7 +752,7 @@ void App::LoadTrees()
 		scn->grass->Create(this);  // 🌿
 
         if (pSet->gi)
-			InitGI();
+			InitGI();  // 🌄
 	}	
 		
 	//  check for cars inside terrain ___

@@ -189,7 +189,7 @@
 
 
 						<!-- 🕳️ SSAO -->
-						<Widget type="Button" skin="CheckBox" position="28 120 256 24" name="SSAO">
+						<Widget type="Button" skin="CheckBox" position="28 120 356 24" name="SSAO">
 							<Property key="Caption" value="#{SSAO}  #704040 = #{NotDone}"/>
 							<Property key="TextColour" value="0.3 0.7 1"/>
 						</Widget>

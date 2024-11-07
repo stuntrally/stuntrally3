@@ -300,6 +300,8 @@ void App::LoadTrackEv()
 	NewCommon(false);  // full destroy
 	iObjCur = -1;  iEmtCur = -1;
 
+	DestroyGI();  // 🌄
+
 	scn->DestroyRoads();
 	scn->DestroyPace();
 	scn->DestroyTrails();
@@ -380,6 +382,9 @@ void App::LoadTrackEv()
 		scn->LoadRoadDens();
 		scn->CreateVegets();  // trees after objects so they aren't inside them
 		scn->grass->Create(this);  // 🌿
+
+        if (pSet->gi)
+			InitGI();  // 🌄
 	}
 
 

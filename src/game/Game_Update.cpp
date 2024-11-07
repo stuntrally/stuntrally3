@@ -49,15 +49,17 @@ void App::update( float dt )
 {
 	fLastFrameDT = dt;
 
-	if (pSet->ssao)
-		UpdateSSAO();
-	if (pSet->gi)
-		UpdateGI();
-
 	#if 0  //** log big dt
 	if (dt > 0.02)
 		LogO("dt "+fToStr(dt,3,5));
 	#endif
+
+
+	if (pSet->ssao)
+		UpdateSSAO();  // 🕳️
+	if (pSet->gi)
+		UpdateGI();  // 🌄
+
 
 	//  fixes white texture flashes
 	if (bLoading)

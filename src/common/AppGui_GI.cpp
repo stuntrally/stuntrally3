@@ -68,16 +68,16 @@ void AppGui::DestroyGI()
 //-----------------------------------------------------------------------------------
 void AppGui::UpdateGI()
 {
-	//if (mGraphicsSystem->getRenderWindow()->isVisible())
-	//{
-	//    static int frame = 0;
-	//    if (frame > 1)
-	//    {
-	//        mVoxelizer->build( mSceneMgr );
-	//        mVctLighting->update( mSceneMgr, mNumBounces );
-	//    }
-	//    ++frame;
-	//}
+	/*if (mGraphicsSystem->getRenderWindow()->isVisible())
+	{
+	    static int frame = 0;
+	    if (frame > 1)
+	    {
+	        mVoxelizer->build( mSceneMgr );
+	        mVctLighting->update( mSceneMgr, mNumBounces );
+	    }
+	    ++frame;
+	}*/  // ? ^
 
 	if (mIrradianceField)
 	if (GIgetMode() == IfdVct || GIgetMode() == Ifd)
@@ -211,7 +211,7 @@ void AppGui::GInextIrradianceField( int add )
 	}
 }
 
-//  Voxelize scene
+//  🌄🔁 Voxelize scene
 //-----------------------------------------------------------------------------------
 void AppGui::GIVoxelizeScene()
 {
