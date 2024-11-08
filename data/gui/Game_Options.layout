@@ -189,30 +189,30 @@
 
 
 						<!-- 🕳️ SSAO -->
-						<Widget type="Button" skin="CheckBox" position="28 120 356 24" name="SSAO">
+						<Widget type="Button" skin="CheckBox" position="28 70 356 24" name="SSAO">
 							<Property key="Caption" value="#{SSAO}  #704040 = #{NotDone}"/>
 							<Property key="TextColour" value="0.3 0.7 1"/>
 						</Widget>
 
-						<Widget type="TextBox" skin="TextBox" position="32 150 248 24">
+						<Widget type="TextBox" skin="TextBox" position="32 100 248 24">
 							<Property key="Caption" value="#{Brush_Size}"/>
 							<Property key="TextColour" value="0.5 0.7 0.9"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="296 150 48 24" name="SsaoRadiusVal">
+						<Widget type="TextBox" skin="TextBox" position="296 100 48 24" name="SsaoRadiusVal">
 							<Property key="TextColour" value="0.5 0.7 0.9"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="344 150 216 16" name="SsaoRadius">
+						<Widget type="Slider" skin="Slider" position="344 100 216 16" name="SsaoRadius">
 							<Property key="Colour" value="0.5 0.7 0.9"/>
 						</Widget>
 
-						<Widget type="TextBox" skin="TextBox" position="32 180 248 24">
+						<Widget type="TextBox" skin="TextBox" position="32 130 248 24">
 							<Property key="Caption" value="#{Brush_Power}"/>
 							<Property key="TextColour" value="0.5 0.9 0.9"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="296 180 48 24" name="SsaoScaleVal">
+						<Widget type="TextBox" skin="TextBox" position="296 130 48 24" name="SsaoScaleVal">
 							<Property key="TextColour" value="0.5 0.9 0.9"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="344 180 216 16" name="SsaoScale">
+						<Widget type="Slider" skin="Slider" position="344 130 216 16" name="SsaoScale">
 							<Property key="Colour" value="0.5 0.9 0.9"/>
 						</Widget>
 
@@ -221,7 +221,47 @@
 							<Property key="Caption" value="#{GI}  #603030 = #{NotDone}"/>
 							<Property key="TextColour" value="1 0.5 0.7"/>
 						</Widget>
-						
+
+						<Widget type="Button" skin="Button" position="28 260 80 24" name="GInext">
+							<Property key="Caption" value="Next"/>
+							<Property key="Colour" value="0.5 0.97 1.0"/>
+							<Property key="TextColour" value="0.9 0.97 1.0"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="128 260 80 24" name="GIhq">
+							<Property key="Caption" value="HQ"/>
+							<Property key="Colour" value="0.9 0.97 1.0"/>
+							<Property key="TextColour" value="0.9 0.97 1.0"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="228 260 80 24" name="GIvis">
+							<Property key="Caption" value="Vis Next"/>
+							<Property key="Colour" value="0.9 0.57 1.0"/>
+							<Property key="TextColour" value="0.9 0.97 1.0"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="328 260 90 24" name="GIvis2">
+							<Property key="Caption" value="Vis Ifd Probe"/>
+							<Property key="Colour" value="0.9 0.67 1.0"/>
+							<Property key="TextColour" value="0.9 0.97 1.0"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="428 260 90 24" name="GIbncInc">
+							<Property key="Caption" value="Bounces+"/>
+							<Property key="Colour" value="0.9 1.0 0.9"/>
+							<Property key="TextColour" value="0.9 1.0 0.9"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="528 260 90 24" name="GIbncDec">
+							<Property key="Caption" value="Bounces-"/>
+							<Property key="Colour" value="0.8 0.9 1.0"/>
+							<Property key="TextColour" value="0.8 0.9 1.0"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="628 260 90 24" name="GIiso">
+							<Property key="Caption" value="Isotropic"/>
+							<Property key="Colour" value="0.9 1 1.0"/>
+							<Property key="TextColour" value="0.9 1 1.0"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="28 290 648 454" name="GItext">
+							<Property key="TextColour" value="0.8 0.9 1.0"/>
+						</Widget>
+
 
 						<!-- <Widget type="Button" skin="CheckBox" position="28 150 256 24" name="SoftParticles">
 							<Property key="Caption" value="#{SoftParticles}"/>

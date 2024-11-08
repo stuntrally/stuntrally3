@@ -733,13 +733,13 @@ void App::LoadRoad()
 void App::LoadObjects()
 {
 	if (dstTrk)
+	{
 		CreateObjects();
 
-	if (dstTrk)
 		CreateCollects();
 
-	if (dstTrk)
 		CreateFields();
+	}
 }
 
 //  🌳🪨 Vegetation  8

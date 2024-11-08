@@ -6,15 +6,18 @@
 #include "settings.h"
 #include "App.h"
 #include "Cam.h"
-#include "Road.h"
+// #include "Road.h"
 #include "Grass.h"
 #ifndef SR_EDITOR
 	#include "game.h"
 #endif
 #include "CGui.h"
-#include "Slider.h"
-#include "Terra.h"
+// #include "Slider.h"
+// #include "Terra.h"
 #include <OgreCamera.h>
+#include <Vct/OgreVctLighting.h>
+#include <Vct/OgreVctVoxelizer.h>
+#include <IrradianceField/OgreIrradianceField.h>
 #include <MyGUI.h>
 using namespace MyGUI;
 using namespace Ogre;
@@ -228,11 +231,15 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 
 	//  🪄 Effects
 	//------------------------------------------------------------
-	ck= &ckSSAO;			ck->Init("SSAO",		&pSet->ssao);
+	ck= &ckSSAO;			ck->Init("SSAO",		&pSet->ssao);  // 🕳️ SSAO
 	sv= &svSsaoRadius;		sv->Init("SsaoRadius",	&pSet->ssao_radius, 0.1,6.f);  sv->DefaultF(1.f);
 	sv= &svSsaoScale;		sv->Init("SsaoScale",	&pSet->ssao_scale,  0.1,6.f);  sv->DefaultF(1.5f);
 
-	ck= &ckGI;				ck->Init("GI",			&pSet->gi);
+	ck= &ckGI;				ck->Init("GI",			&pSet->gi);  // 🌄 GI
+	txGIinfo = fTxt("GItext");
+	BtnC("GInext", btnGInext);  BtnC("GIhq", btnGIhq);  BtnC("GIiso", btnGIiso);
+	BtnC("GIvis", btnGIvis);  BtnC("GIvis2", btnGIvis2);
+	BtnC("GIbncInc", btnGIbncInc);  BtnC("GIbncDec", btnGIbncDec);
 
 	// ck= &ckAllEffects;	ck->Init("AllEffects",	&pSet->all_effects);  Cev(AllEffects);
 
@@ -298,6 +305,64 @@ void CGuiCom::slFps(SV*)
 
 //  events
 //. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
+//  🌄 GI
+void CGuiCom::btnGInext(WP)
+{
+	app->GInextIrradianceField(1);
+	app->GIText();
+}
+void CGuiCom::btnGIhq(WP)
+{
+	app->GItoggletVctQuality();
+	app->GIText();
+}
+void CGuiCom::btnGIvis(WP)
+{
+	app->GInextVisMode(1);
+	app->GIText();
+}
+void CGuiCom::btnGIvis2(WP)
+{
+	app->GInextIfdProbeVisMode(1);
+	app->GIText();
+}
+void CGuiCom::btnGIbncInc(WP)
+{
+	++app->mNumBounces;
+	if (app->mVctLighting)
+		app->mVctLighting->update( app->mSceneMgr, app->mNumBounces, app->mThinWallCounter );
+	if (app->mIrradianceField)
+		app->mIrradianceField->reset();
+	app->GIText();
+}
+void CGuiCom::btnGIbncDec(WP)
+{
+	if (app->mNumBounces > 0)
+		--app->mNumBounces;
+	if (app->mVctLighting)
+		app->mVctLighting->update( app->mSceneMgr, app->mNumBounces, app->mThinWallCounter );
+	if (app->mIrradianceField)
+		app->mIrradianceField->reset();
+	app->GIText();
+}
+void CGuiCom::btnGIiso(WP)
+{
+	if (app->mVctLighting)
+	{	app->mVctLighting->setAnisotropic( !app->mVctLighting->isAnisotropic() );
+		app->mVctLighting->update( app->mSceneMgr, app->mNumBounces, app->mThinWallCounter );
+	}app->GIText();
+}
+	/*  more -
+	auto giMode = getGiMode();
+	if (giMode == IfdVct || giMode == IfdOnly)
+	{
+		mUseRasterIrradianceField = !mUseRasterIrradianceField;
+		voxelizeScene();
+	}*/
+//-----------------------------------------------------------------------------------
+
+
+//  Tex
 void CGuiCom::cmbTexFilter(CMB)
 {
 	pSet->g.tex_filt = val;
@@ -309,6 +374,7 @@ void CGuiCom::slAnisotropy(SV*)
 	app->SetAnisotropy();
 }
 
+//  Lod
 void CGuiCom::slViewDist(SV*)
 {
 	app->scn->UpdSkyScale();
@@ -422,6 +488,7 @@ void CGuiCom::slCarLightBright(SV*)
 }
 
 
+//  mat ed
 void CGuiCom::btnMatEditor(WP)
 {
 #ifdef SR_EDITOR

@@ -247,6 +247,9 @@ public:
 	SV svSsaoRadius, svSsaoScale;
 	
 	Ck ckGI;
+	Txt txGIinfo =0;
+	void btnGInext(WP), btnGIhq(WP), btnGIvis(WP), btnGIvis2(WP);
+	void btnGIbncInc(WP), btnGIbncDec(WP), btnGIiso(WP);
 
 	// CK(AllEffects);
 	// Ck ckSoftPar, ckHDR, ckBloom, ckMotBlur, ckGodRays;

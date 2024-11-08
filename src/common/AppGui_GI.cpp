@@ -4,6 +4,7 @@
 #include "SceneXml.h"
 #include "CScene.h"
 // #include "CData.h"
+#include "GuiCom.h"
 #include "GraphicsSystem.h"
 
 #include <OgreRoot.h>
@@ -31,7 +32,7 @@ void AppGui::InitGI()
 	mIfdDebugVisMode = IrradianceField::DebugVisualizationNone;
 
 	mVoxelizer = new VctVoxelizer( Id::generateNewId<VctVoxelizer>(),
-			mRoot->getRenderSystem(), mRoot->getHlmsManager(), true );
+		mRoot->getRenderSystem(), mRoot->getHlmsManager(), true );
 
 	mIrradianceField = new IrradianceField( mRoot, mSceneMgr );
 
@@ -41,7 +42,15 @@ void AppGui::InitGI()
 
 	hlmsPbs->setIrradianceField( mIrradianceField );
 
+	LogO("*()* GI init  mode: "+GIstrMode());
+
 	GIVoxelizeScene();  // !
+
+	GItoggletVctQuality();
+	// GInextIrradianceField(1);
+	// GInextVisMode( 1 );
+	// GInextIfdProbeVisMode( 1 );
+	GIText();
 
 	LogO(String("*()* GI Init end: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }
@@ -161,6 +170,7 @@ String AppGui::GIstrMode() const
 	return "None";
 }
 
+
 //-----------------------------------------------------------------------------------
 void AppGui::GInextIfdProbeVisMode( int add )
 {
@@ -210,6 +220,7 @@ void AppGui::GInextIrradianceField( int add )
 	case NumGiModes:  break;
 	}
 }
+
 
 //  🌄🔁 Voxelize scene
 //-----------------------------------------------------------------------------------
@@ -289,4 +300,37 @@ void AppGui::GIVoxelizeScene()
 		fieldAabb.getMinimum(), fieldAabb.getSize(), mVctLighting );
 
 	LogO(String("*[]* GI Voxelize end: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+}
+
+//  info
+//-----------------------------------------------------------------------------------
+void AppGui::GIText()
+{
+	if (!gcom->txGIinfo)  return;
+	HlmsManager *hlmsManager = mRoot->getHlmsManager();
+	assert( dynamic_cast<HlmsPbs *>( hlmsManager->getHlms( HLMS_PBS ) ) );
+	HlmsPbs *hlmsPbs = static_cast<HlmsPbs *>( hlmsManager->getHlms( HLMS_PBS ) );
+
+	static const String visModes[] =
+	{	"Albedo", "Normal", "Emissive", "None", "Lighting"  };
+
+	static const String ifdProbeVisModes[] =
+	{	"Irradiance", "Depth", "None"  };
+
+ 	String s = "GI mode: " + GIstrMode() +
+		"   VCT: " + (hlmsPbs->getVctFullConeCount() ? "HQ" : "LQ");
+ 	s += "\n";
+	if (mVctLighting)
+	{
+		s += String("VCT: ") + (mVctLighting->isAnisotropic() ? "Anisotropic" : "Isotropic");
+		s += "  Num bounces: "+toStr(mNumBounces) + "  thin wall: "+fToStr(mThinWallCounter);
+	}
+ 	s += "\nVis mode: " + visModes[mDebugVisMode];
+
+	auto gi = GIgetMode();
+	if (gi == IfdVct || gi == Ifd)
+	{	s += String("\nGenerate IFD via: ") + (mUseRasterIrradianceField ? "Raster" : "Voxels");
+		s += String("  IFD debug vis: ") + ifdProbeVisModes[mIfdDebugVisMode];
+	}
+	gcom->txGIinfo->setCaption(s);
 }

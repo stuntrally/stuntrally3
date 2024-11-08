@@ -231,5 +231,5 @@ public:
 	void GItoggletVctQuality(), GInextIrradianceField(int add);
 	void GInextVisMode(int add), GInextIfdProbeVisMode(int add);  // visualize
 
-	// void generateDebugText( float timeSinceLast, Ogre::String &outText ) override;
+	void GIText();
 };
