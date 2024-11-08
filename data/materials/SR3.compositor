@@ -1012,8 +1012,6 @@ abstract compositor_node SR3_RenderAbsOld_SSAO
 		// {
 		// 	lod_update_list	off
 
-		// 	// expose dynamic_cubemap
-
 		// 	//Render Overlays
 		// 	overlays	on
 		// 	rq_first	254

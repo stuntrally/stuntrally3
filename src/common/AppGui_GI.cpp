@@ -232,11 +232,23 @@ void AppGui::GIVoxelizeScene()
 	mItems.clear();
 
 	//  add objects
-	for (int i=0; i < scn->sc->objects.size(); ++i)
-	{
-		Object& o = scn->sc->objects[i];
-		mItems.push_back(o.it);
-	}
+	for (const Object& o : scn->sc->objects)
+		if (!o.dyn)  // static
+			mItems.push_back(o.it);
+	
+	//  add roads
+	const int lod = 0;
+	for (const auto& road : scn->roads)
+		for (RoadSeg& rs : road->vSegs)
+		{	Item* it;
+			it = rs.road[lod].it;  if (it)  mItems.push_back(it);
+			it = rs.wall[lod].it;  if (it)  mItems.push_back(it);
+			// it = rs.blend[lod].it;  if (it)  mItems.push_back(it);
+		}
+	
+	//  add fluids
+	for (const auto& fl : scn->refl.fluids)
+		mItems.push_back(fl.item[0]);
 	//--------
 
 	SceneManager *sceneManager = mGraphicsSystem->getSceneManager();

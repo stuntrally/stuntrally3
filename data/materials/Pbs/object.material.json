@@ -147,13 +147,13 @@
 			},
 			"specular" :
 			{
-				"value" : [0.4, 0.4, 0.4],
+				"value" : [0.9, 0.9, 0.9],
 				"texture" : "skyscraper_spec.jpg",
 				"sampler" : "Sampler_10"
 			},
 			"fresnel" :
 			{
-				"value" : 0.6,
+				"value" : 0.8,
 				"mode" : "coeff"
 			},
 			"normal" :
@@ -164,7 +164,7 @@
 			},
 			"roughness" :
 			{
-				"value" : 0.1
+				"value" : 0.15
 			}
 		},
 

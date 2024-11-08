@@ -328,7 +328,8 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 
 				ps->mProfilingId = "Render First-"+si;  // "Opaque + Regular Transparents"
 				ps->mIdentifier = 10001; 
-				ps->mLastRQ = RQG_RoadBlend+1; //RQG_Fluid-1; //199
+				ps->mLastRQ = RQG_Weather;
+				// ps->mLastRQ = RQG_RoadBlend+1; //RQG_Fluid-1; //199
 				ps->setVisibilityMask(RV_view);
 				
 				AddShadows(ps);  // shadows
