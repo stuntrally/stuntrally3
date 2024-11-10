@@ -5,10 +5,10 @@
 #include "CScene.h"
 // #include "CData.h"
 #include "GuiCom.h"
-#include "GraphicsSystem.h"
+#include "Terra.h"
 
 #include <OgreRoot.h>
-// #include <OgreItem.h>
+#include <OgreItem.h>
 #include <OgreCamera.h>
 #include <OgreSceneManager.h>
 #include <OgreHlmsPbs.h>
@@ -28,19 +28,17 @@ void AppGui::InitGI()
 	Ogre::Timer ti;
 	LogO("*()* GI init");
 
-	mDebugVisMode = VctVoxelizer::DebugVisualizationNone;
-	mIfdDebugVisMode = IrradianceField::DebugVisualizationNone;
+	iVctDebugVis = VctVoxelizer::DebugVisualizationNone;
+	iIfdDebugVis = IrradianceField::DebugVisualizationNone;
 
 	mVoxelizer = new VctVoxelizer( Id::generateNewId<VctVoxelizer>(),
 		mRoot->getRenderSystem(), mRoot->getHlmsManager(), true );
 
-	mIrradianceField = new IrradianceField( mRoot, mSceneMgr );
+	mIFD = new IrradianceField( mRoot, mSceneMgr );
 
-	HlmsManager *hlms = mRoot->getHlmsManager();
-	assert( dynamic_cast<HlmsPbs *>( hlms->getHlms( HLMS_PBS ) ) );
-	HlmsPbs *hlmsPbs = static_cast<HlmsPbs *>( hlms->getHlms( HLMS_PBS ) );
+	HlmsPbs* hlmsPbs = getHlmsPbs();
 
-	hlmsPbs->setIrradianceField( mIrradianceField );
+	hlmsPbs->setIrradianceField( mIFD );
 
 	LogO("*()* GI init  mode: "+GIstrMode());
 
@@ -50,7 +48,7 @@ void AppGui::InitGI()
 	// GInextIrradianceField(1);
 	// GInextVisMode( 1 );
 	// GInextIfdProbeVisMode( 1 );
-	GIText();
+	GIupdText();
 
 	LogO(String("*()* GI Init end: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }
@@ -59,8 +57,10 @@ void AppGui::InitGI()
 //-----------------------------------------------------------------------------------
 void AppGui::DestroyGI()
 {
-	delete mIrradianceField;  mIrradianceField = 0;
-	delete mVctLighting;  mVctLighting = 0;
+	delete mIFD;  mIFD = 0;
+	delete mVCT;  mVCT = 0;
+	// mVoxelizer->removeAllItems();
+
 	delete mVoxelizer;  mVoxelizer = 0;
 	{
 		HlmsManager *hlms = mRoot->getHlmsManager();
@@ -88,9 +88,195 @@ void AppGui::UpdateGI()
 	    ++frame;
 	}*/  // ? ^
 
-	if (mIrradianceField)
+	if (mIFD)
 	if (GIgetMode() == IfdVct || GIgetMode() == Ifd)
-		mIrradianceField->update( mUseRasterIrradianceField ? 4u : 200u );
+		mIFD->update( bIfdRaster ? 4u : 200u );
+}
+
+
+//  🌄🔁 Voxelize scene
+//-----------------------------------------------------------------------------------
+void AppGui::GIVoxelizeScene()
+{
+	Ogre::Timer ti;
+	LogO("*[]* GI Voxelize begin");
+
+	mItems.clear();
+
+	LogO("*[]* GI items");
+
+	// mItems.push_back(scn->itSky[0]);  // no-
+	
+	//  add objects
+	for (const Object& o : scn->sc->objects)
+		if (!o.dyn && o.it)  // static
+			mItems.push_back(o.it);
+	
+	//  add roads
+	const int lod = 0;
+	for (const auto& road : scn->roads)
+		for (RoadSeg& rs : road->vSegs)
+		{	Item* it;
+			it = rs.road[lod].it;  if (it)  mItems.push_back(it);
+			it = rs.wall[lod].it;  if (it)  mItems.push_back(it);
+			// it = rs.blend[lod].it;  if (it)  mItems.push_back(it);
+		}
+	
+	//  add fluids  // todo: not for size, too big..
+	// for (const auto& fl : scn->refl.fluids)
+	// 	mItems.push_back(fl.item[0]);
+
+	//  add veget  all  // todo: big only
+	// for (const auto& veg : scn->vegetItemsGI)
+	// 	mItems.push_back(veg);
+	//--------
+
+	mSceneMgr->updateSceneGraph();
+
+	mVoxelizer->removeAllItems();
+
+	//  todo: ter aabb only ..
+	// Aabb terAabb = scn->ter->getWorldAabb();
+	Real tws = scn->sc->tds[0].fTerWorldSize;
+	Aabb terAabb(Vector3(0,0,0), Vector3(tws,tws,tws ));  // h min max.. ?
+	LogO("*[]* GI ter size "+fToStr(tws));
+
+	IrradianceFieldSettings ifdSet;  // IFD cfg
+	ifdSet.mNumRaysPerPixel = iIfdRaysPpx;
+    ifdSet.mIrradianceResolution = iIfdResolution;
+    ifdSet.mDepthProbeResolution = iIfdDepthProbeRes;
+
+	Aabb aabb( Aabb::BOX_NULL );
+
+	if (GIneedsVoxels())
+	{
+		auto itor = mItems.begin(), endt = mItems.end();
+		while (itor != endt)
+			mVoxelizer->addItem( *itor++, false );
+
+		mVoxelizer->autoCalculateRegion();
+		// mVoxelizer->setRegionToVoxelize(false, terAabb, terAabb );  // todo
+
+		int div = 1; //2;  //1 //par?
+		mVoxelizer->dividideOctants( div, div, div );
+
+		mVoxelizer->build( mSceneMgr );
+
+		if (!mVCT)
+		{
+			mVCT = new VctLighting( Id::generateNewId<VctLighting>(), mVoxelizer, true );
+			mVCT->setAllowMultipleBounces( true );
+
+			HlmsPbs* hlmsPbs = getHlmsPbs();
+			hlmsPbs->setVctLighting( mVCT );
+		}
+		mVCT->update( mSceneMgr, iVctBounces, fVctThinWall );
+
+		aabb.setExtents( mVoxelizer->getVoxelOrigin(),
+			mVoxelizer->getVoxelOrigin() + mVoxelizer->getVoxelSize() );
+	}
+
+	if ((GIgetMode() == Ifd || GIgetMode() == IfdVct) && bIfdRaster)
+	{
+		auto itor = mItems.begin(), endt = mItems.end();
+		while (itor != endt)
+		{
+			aabb.merge( (*itor)->getWorldAabb() );
+			++itor;
+		}
+
+		/*for( int i=0; i < 3 ; ++i)
+			ifSet.mNumProbes[i] = 1u;
+		ifSet.mIrradianceResolution = 16u;
+		ifSet.mDepthProbeResolution = 32u;*/
+
+		//  Generate IFD via raster
+		ifdSet.mRasterParams.mWorkspaceName = "IrradianceFieldRasterWorkspace";
+		ifdSet.mRasterParams.mCameraNear = 0.01f;
+		ifdSet.mRasterParams.mCameraFar = aabb.getSize().length() * 2.0f;
+	}
+
+	mIFD->initialize( ifdSet, aabb.getMinimum(), aabb.getSize(), mVCT );
+
+	LogO(String("*[]* GI Voxelize end: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
+}
+
+
+//  🛠️ info text
+//-----------------------------------------------------------------------------------
+void AppGui::GIupdText()
+{
+	if (!gcom->txGIinfo)  return;
+	HlmsManager *hlmsManager = mRoot->getHlmsManager();
+	assert( dynamic_cast<HlmsPbs *>( hlmsManager->getHlms( HLMS_PBS ) ) );
+	HlmsPbs *hlmsPbs = static_cast<HlmsPbs *>( hlmsManager->getHlms( HLMS_PBS ) );
+
+	static const String visModes[] =
+	{	"Albedo", "Normal", "Emissive", "None", "Lighting"  };
+
+	static const String ifdProbeVisModes[] =
+	{	"Irradiance", "Depth", "None"  };
+
+ 	String s = "GI mode: " + GIstrMode() +
+		"   VCT: " + (hlmsPbs->getVctFullConeCount() ? "HQ" : "LQ");
+ 	s += "\n";
+	if (mVCT)
+	{
+		s += String("VCT: ") + (mVCT->isAnisotropic() ? "Anisotropic" : "Isotropic");
+		s += "  Num bounces: "+toStr(iVctBounces) + "  thin wall: "+fToStr(fVctThinWall);
+		auto* vox = mVCT->getVoxelizer();
+		
+		s += String("\nVoxelizer:  ");
+		auto v = vox->getVoxelCellSize();
+		s += "cell: "+fToStr(v.x)+", "+fToStr(v.y)+"  ";
+		v = vox->getVoxelSize();  // region
+		s += "world: "+fToStr(v.x)+", "+fToStr(v.y)+"  ";
+		v = vox->getVoxelResolution();
+		s += "res: "+fToStr(v.x)+", "+fToStr(v.y)+"  ";
+	}
+ 	s += "\nVis mode: " + visModes[iVctDebugVis];
+
+	auto gi = GIgetMode();
+	if (gi == IfdVct || gi == Ifd)
+	{	s += String("\nGenerate IFD via: ") + (bIfdRaster ? "Raster" : "Voxels");
+		s += String("  IFD debug vis: ") + ifdProbeVisModes[iIfdDebugVis];
+	}
+	gcom->txGIinfo->setCaption(s);
+}
+
+
+//  Next GI method
+//-----------------------------------------------------------------------------------
+void AppGui::GInextMethod( int add )
+{
+	GiMode gi = GIgetMode();
+	gi = static_cast<GiMode>( (gi + NumGiModes + add) % NumGiModes );
+
+	if (mIFD)
+		if (gi != Ifd && gi != IfdVct)
+			//  disable IFD vis  while not in use
+			mIFD->setDebugVisualization(
+				IrradianceField::DebugVisualizationNone, 0, iIfdVisSphereVert);
+		else  //  restore IFD vis  if it was in use
+			GIIfdVisUpd();
+
+	auto* hlmsPbs = getHlmsPbs();
+	switch (gi)
+	{
+	case NoGI:
+		hlmsPbs->setIrradianceField( 0 );
+		hlmsPbs->setVctLighting( 0 );  break;
+	case Ifd:
+		hlmsPbs->setIrradianceField( mIFD );
+		hlmsPbs->setVctLighting( 0 );  break;
+	case Vct:
+		hlmsPbs->setIrradianceField( 0 );
+		hlmsPbs->setVctLighting( mVCT );  break;
+	case IfdVct:
+		hlmsPbs->setIrradianceField( mIFD );
+		hlmsPbs->setVctLighting( mVCT );  break;
+	case NumGiModes:  break;
+	}
 }
 
 
@@ -98,29 +284,30 @@ void AppGui::UpdateGI()
 //-----------------------------------------------------------------------------------
 bool AppGui::GIneedsVoxels() const
 {
-	return !( GIgetMode() == Ifd && mUseRasterIrradianceField );
+	return !( GIgetMode() == Ifd && bIfdRaster );
 }
 
+//  next GI mode
 //-----------------------------------------------------------------------------------
-void AppGui::GInextVisMode( int add )
+void AppGui::GInextVctVis( int add )
 {
 	const auto none = VctVoxelizer::DebugVisualizationNone;
 	const auto all = none + 2;
-	mDebugVisMode = (mDebugVisMode + all + add) % all;
+	iVctDebugVis = (iVctDebugVis + all + add) % all;
 
-	if (mDebugVisMode <= none)
+	if (iVctDebugVis <= none)
 	{
-		mVctLighting->setDebugVisualization( false, mSceneMgr );
+		mVCT->setDebugVisualization( false, mSceneMgr );
 		mVoxelizer->setDebugVisualization(
-			static_cast<VctVoxelizer::DebugVisualizationMode>( mDebugVisMode ), mSceneMgr );
+			static_cast<VctVoxelizer::DebugVisualizationMode>( iVctDebugVis ), mSceneMgr );
 	}else
 	{
 		mVoxelizer->setDebugVisualization( none, mSceneMgr );
-		mVctLighting->setDebugVisualization( true, mSceneMgr );
+		mVCT->setDebugVisualization( true, mSceneMgr );
 	}
 
-	const bool showItems = mDebugVisMode == none ||
-		mDebugVisMode == VctVoxelizer::DebugVisualizationEmissive;
+	const bool showItems = iVctDebugVis == none ||
+		iVctDebugVis == VctVoxelizer::DebugVisualizationEmissive;
 
 	auto itor = mItems.begin(), endt = mItems.end();
 	while (itor != endt)
@@ -172,177 +359,25 @@ String AppGui::GIstrMode() const
 
 
 //-----------------------------------------------------------------------------------
-void AppGui::GInextIfdProbeVisMode( int add )
+void AppGui::GInextIfdProbeVis( int add )
 {
 	const auto all = IrradianceField::DebugVisualizationNone + 1;
-	mIfdDebugVisMode = (mIfdDebugVisMode + all + add) % all;
+	iIfdDebugVis = (iIfdDebugVis + all + add) % all;
 
-	SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
-
-	mIrradianceField->setDebugVisualization(
-		static_cast<IrradianceField::DebugVisualizationMode>( mIfdDebugVisMode ),
-		sceneManager, 5u );
+	GIIfdVisUpd();
 }
 
-//-----------------------------------------------------------------------------------
-void AppGui::GInextIrradianceField( int add )
+void AppGui::GIIfdVisUpd()
+{
+	if (!mIFD)  return;
+	mIFD->setDebugVisualization(
+		static_cast<IrradianceField::DebugVisualizationMode>( iIfdDebugVis ),
+		mSceneMgr, iIfdVisSphereVert );
+}
+
+HlmsPbs* AppGui::getHlmsPbs()
 {
 	HlmsManager *hlms = mRoot->getHlmsManager();
-	assert( dynamic_cast<HlmsPbs *>( hlms->getHlms( HLMS_PBS ) ) );
-	HlmsPbs *hlmsPbs = static_cast<HlmsPbs *>( hlms->getHlms( HLMS_PBS ) );
-
-	GiMode gi = GIgetMode();
-	gi = static_cast<GiMode>( (gi + NumGiModes + add) % NumGiModes );
-
-	if (gi != Ifd && gi != IfdVct)
-		  // Disable IFD vis while not in use
-		mIrradianceField->setDebugVisualization( IrradianceField::DebugVisualizationNone, 0,
-												mIrradianceField->getDebugTessellation() );
-	else  // Restore IFD vis if it was in use
-		mIrradianceField->setDebugVisualization(
-			static_cast<IrradianceField::DebugVisualizationMode>( mIfdDebugVisMode ),
-			mGraphicsSystem->getSceneManager(), 5u );
-
-	switch (gi)
-	{
-	case NoGI:
-		hlmsPbs->setIrradianceField( 0 );
-		hlmsPbs->setVctLighting( 0 );  break;
-	case Ifd:
-		hlmsPbs->setIrradianceField( mIrradianceField );
-		hlmsPbs->setVctLighting( 0 );  break;
-	case Vct:
-		hlmsPbs->setIrradianceField( 0 );
-		hlmsPbs->setVctLighting( mVctLighting );  break;
-	case IfdVct:
-		hlmsPbs->setIrradianceField( mIrradianceField );
-		hlmsPbs->setVctLighting( mVctLighting );  break;
-	case NumGiModes:  break;
-	}
-}
-
-
-//  🌄🔁 Voxelize scene
-//-----------------------------------------------------------------------------------
-void AppGui::GIVoxelizeScene()
-{
-	Ogre::Timer ti;
-	LogO("*[]* GI Voxelize begin");
-
-	mItems.clear();
-
-	//  add objects
-	for (const Object& o : scn->sc->objects)
-		if (!o.dyn)  // static
-			mItems.push_back(o.it);
-	
-	//  add roads
-	const int lod = 0;
-	for (const auto& road : scn->roads)
-		for (RoadSeg& rs : road->vSegs)
-		{	Item* it;
-			it = rs.road[lod].it;  if (it)  mItems.push_back(it);
-			it = rs.wall[lod].it;  if (it)  mItems.push_back(it);
-			// it = rs.blend[lod].it;  if (it)  mItems.push_back(it);
-		}
-	
-	//  add fluids
-	for (const auto& fl : scn->refl.fluids)
-		mItems.push_back(fl.item[0]);
-	//--------
-
-	SceneManager *sceneManager = mGraphicsSystem->getSceneManager();
-	sceneManager->updateSceneGraph();
-
-	mVoxelizer->removeAllItems();
-
-	IrradianceFieldSettings ifSettings;
-	Aabb fieldAabb( Aabb::BOX_NULL );
-
-	if (GIneedsVoxels())
-	{
-		auto itor = mItems.begin(), endt = mItems.end();
-		while (itor != endt)
-			mVoxelizer->addItem( *itor++, false );
-
-		mVoxelizer->autoCalculateRegion();
-		mVoxelizer->dividideOctants( 1u, 1u, 1u );
-
-		mVoxelizer->build( sceneManager );
-
-		if (!mVctLighting)
-		{
-			mVctLighting = new VctLighting( Id::generateNewId<VctLighting>(), mVoxelizer, true );
-			mVctLighting->setAllowMultipleBounces( true );
-
-			HlmsManager *hlms = mRoot->getHlmsManager();
-			assert( dynamic_cast<HlmsPbs *>( hlms->getHlms( HLMS_PBS ) ) );
-			HlmsPbs *hlmsPbs = static_cast<HlmsPbs *>( hlms->getHlms( HLMS_PBS ) );
-
-			hlmsPbs->setVctLighting( mVctLighting );
-		}
-
-		mVctLighting->update( sceneManager, mNumBounces, mThinWallCounter );
-
-		fieldAabb.setExtents( mVoxelizer->getVoxelOrigin(),
-								mVoxelizer->getVoxelOrigin() + mVoxelizer->getVoxelSize() );
-	}
-
-	if ((GIgetMode() == Ifd || GIgetMode() == IfdVct) && mUseRasterIrradianceField)
-	{
-		auto itor = mItems.begin(), endt = mItems.end();
-		while (itor != endt)
-		{
-			fieldAabb.merge( (*itor)->getWorldAabb() );
-			++itor;
-		}
-
-		/*for( int i=0; i < 3 ; ++i)
-			ifSettings.mNumProbes[i] = 1u;
-		ifSettings.mIrradianceResolution = 16u;
-		ifSettings.mDepthProbeResolution = 32u;*/
-
-		//  Generate IFD via raster
-		ifSettings.mRasterParams.mWorkspaceName = "IrradianceFieldRasterWorkspace";
-		ifSettings.mRasterParams.mCameraNear = 0.01f;
-		ifSettings.mRasterParams.mCameraFar = fieldAabb.getSize().length() * 2.0f;
-	}
-
-	mIrradianceField->initialize( ifSettings,
-		fieldAabb.getMinimum(), fieldAabb.getSize(), mVctLighting );
-
-	LogO(String("*[]* GI Voxelize end: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
-}
-
-//  info
-//-----------------------------------------------------------------------------------
-void AppGui::GIText()
-{
-	if (!gcom->txGIinfo)  return;
-	HlmsManager *hlmsManager = mRoot->getHlmsManager();
-	assert( dynamic_cast<HlmsPbs *>( hlmsManager->getHlms( HLMS_PBS ) ) );
-	HlmsPbs *hlmsPbs = static_cast<HlmsPbs *>( hlmsManager->getHlms( HLMS_PBS ) );
-
-	static const String visModes[] =
-	{	"Albedo", "Normal", "Emissive", "None", "Lighting"  };
-
-	static const String ifdProbeVisModes[] =
-	{	"Irradiance", "Depth", "None"  };
-
- 	String s = "GI mode: " + GIstrMode() +
-		"   VCT: " + (hlmsPbs->getVctFullConeCount() ? "HQ" : "LQ");
- 	s += "\n";
-	if (mVctLighting)
-	{
-		s += String("VCT: ") + (mVctLighting->isAnisotropic() ? "Anisotropic" : "Isotropic");
-		s += "  Num bounces: "+toStr(mNumBounces) + "  thin wall: "+fToStr(mThinWallCounter);
-	}
- 	s += "\nVis mode: " + visModes[mDebugVisMode];
-
-	auto gi = GIgetMode();
-	if (gi == IfdVct || gi == Ifd)
-	{	s += String("\nGenerate IFD via: ") + (mUseRasterIrradianceField ? "Raster" : "Voxels");
-		s += String("  IFD debug vis: ") + ifdProbeVisModes[mIfdDebugVisMode];
-	}
-	gcom->txGIinfo->setCaption(s);
+	assert( dynamic_cast<HlmsPbs *>(hlms->getHlms(HLMS_PBS)) );
+	return static_cast<HlmsPbs *>(hlms->getHlms(HLMS_PBS));
 }

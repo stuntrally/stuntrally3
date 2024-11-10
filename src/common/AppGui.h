@@ -13,7 +13,7 @@
 
 namespace Ogre
 {	class Root;  class SceneManager;  class Window;  class Camera;
-	class TextureGpu;  class HlmsSamplerblock;
+	class TextureGpu;  class HlmsSamplerblock;  class HlmsPbs;
 	class CompositorWorkspace;  class CompositorWorkspaceDef;  class RenderTargetViewDef;
 	class CompositorNodeDef;  class CompositorTargetDef;  class CompositorPassSceneDef;
 	// namespace v1 {  class Overlay;  }
@@ -209,27 +209,42 @@ public:
 	void InitGI(), UpdateGI(), DestroyGI();
 	void GIVoxelizeScene();
 
+	//  IR  Low quality
+	// Ogre::InstantRadiosity *mIR;
+	//  local cubemaps refl-
+	// Ogre::PccPerPixelGridPlacement 
+
 	//  GI var
+	Ogre::FastArray<Ogre::Item*> mItems;
+	//  VCT  High quality  spec refl
+	Ogre::VctLighting *mVCT =0;
 	Ogre::VctVoxelizer *mVoxelizer =0;
-	Ogre::VctLighting *mVctLighting =0;
-	float mThinWallCounter = 1.f;
+	//  VCT par
+	float fVctThinWall = 1.f;
+	int iVctBounces = 3; //6
 
-	Ogre::IrradianceField *mIrradianceField =0;
-	bool mUseRasterIrradianceField = false;
-
-	int mDebugVisMode, mIfdDebugVisMode;
-	int mNumBounces = 6;
-
-	// TestUtils *mTestUtils =0;
-	Ogre::FastArray<Ogre::Item *> mItems;
+	//  IFD  Med quality  diffuse
+	Ogre::IrradianceField *mIFD =0;
+	bool bIfdRaster = false;  // slow
+	//  IFD par
+	int iIfdRaysPpx = 1;
+	int iIfdResolution = 6;
+	int iIfdDepthProbeRes = 12;
 
 	//  ⛓️ GI util
 	GiMode GIgetMode() const;
 	Ogre::String GIstrMode() const;
 	bool GIneedsVoxels() const;
+	Ogre::HlmsPbs *getHlmsPbs();
 
-	void GItoggletVctQuality(), GInextIrradianceField(int add);
-	void GInextVisMode(int add), GInextIfdProbeVisMode(int add);  // visualize
+	void GItoggletVctQuality(), GInextMethod(int add);
 
-	void GIText();
+	//  🛠️ visualize
+	// TestUtils *mTestUtils =0;
+	int iVctDebugVis, iIfdDebugVis;
+	void GIupdText();  // gui info
+
+	void GInextVctVis(int add), GInextIfdProbeVis(int add);
+	int iIfdVisSphereVert = 4;  // quality, vertex tessellation
+	void GIIfdVisUpd();
 };
