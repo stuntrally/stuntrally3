@@ -285,16 +285,15 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 
 	//  node  New Refract  * * *
 	//------------------------------------------------------------------------------------------------------------------------------------------
-	if (1) //refract)
+	if (refract)
 	{
 		if (split)
 			rtt = AddSplitRTT(si, width, height);
 		
 		/* 1  s1_First  Render  -------------------- */
 		{	nd = AddNode(s1_first+si);
-			nd->addTextureSourceName("rtt_FullOut", 0, inp);  // or rt_renderwindow
 			
-			nd->setNumLocalTextureDefinitions( (ssao ? 5 : 0) + 2 );  //* textures
+			nd->setNumLocalTextureDefinitions( (ssao ? 6 : 0) + 2 );  //* textures
 			{
 				auto* td = nd->addTextureDefinition( "rtt_first" );  // + 2
 				td->format = PFG_UNKNOWN;  td->fsaa = "";  // target_format  // PFG_RGBA8_UNORM_SRGB
@@ -305,7 +304,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				// td->preferDepthTexture = 1;
 				// td->textureFlags = TextureFlags::RenderToTexture;  //- no discard between frames
 
-				if (ssao)  // ssao + 5
+				if (ssao)  // ssao + 6
 				{	td = nd->addTextureDefinition( "gBufferNormals" );
 					td->format = PFG_R10G10B10A2_UNORM;  td->fsaa = "";  // auto
 					//td->textureFlags = TextureFlags::RenderToTexture | TextureFlags::MsaaExplicitResolve;
@@ -323,24 +322,24 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 					td->widthFactor = 0.5f;  td->heightFactor = 0.5f;  //par HQ`
 					td->format = PFG_R16_FLOAT;  td->fsaa = "1";  // off
 					// td->depthBufferId = 0;  //?- depth_pool 0
-					AddRtv(nd, "ssaoTexture", "ssaoTexture");  //`no-?
+					AddRtv(nd, "ssaoTexture", "ssaoTexture");  //no-
 
 					td = nd->addTextureDefinition( "blurHoriz" );
 					td->format = PFG_R16_FLOAT;  td->fsaa = "1";  //td->depthBufferId = 0;
-					AddRtv(nd, "blurHoriz", "blurHoriz");  //, "depthBuffer"); //-
+					AddRtv(nd, "blurHoriz", "blurHoriz");
 
 					td = nd->addTextureDefinition( "blurVertical" );
 					td->format = PFG_R16_FLOAT;  td->fsaa = "1";  //td->depthBufferId = 0;
-					AddRtv(nd, "blurVertical", "blurVertical");  //, "depthBuffer");
+					AddRtv(nd, "blurVertical", "blurVertical");
 
-					// td = nd->addTextureDefinition( "ssaoApply" );
-					// td->format = PFG_UNKNOWN;  td->fsaa = "";  // target_format
-					// AddRtv(nd, "ssaoApply", "ssaoApply"); //, "depthBuffer");  //`
+					td = nd->addTextureDefinition( "ssaoApply" );
+					td->format = PFG_UNKNOWN;  td->fsaa = "";  // target_format
+					AddRtv(nd, "ssaoApply", "ssaoApply", "depthBuffer");
 				}
 			}
 			nd->mCustomIdentifier = "1-first-"+si;
 			
-			nd->setNumTargetPass( (ssao ? 5 : 0) + 1 +2 );  //* targets
+			nd->setNumTargetPass( (ssao ? 5 : 0) + 1 );  //* targets
 			td = nd->addTargetPass( "rtt_first" );
 			td->setNumPasses(1);  //* passes
 			{
@@ -414,7 +413,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 					pq->addQuadTextureSource( 1, depthCopy );
 				}
 
-				td = nd->addTargetPass( "rtt_FullOut"); //ssaoApply" );
+				td = nd->addTargetPass( "ssaoApply" );
 				td->setNumPasses( 1 );  //* passes
 				{
 					auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
@@ -427,17 +426,12 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 					// pq->addQuadTextureSource( 1, "gBufferNormals" );  //* test normals
 				}
 			}
-				//  ⏲️ Hud, 🎛️ Gui  --------
-				if (!split)
-					AddHudGui(td);  // + 2
+			nd->setNumOutputChannels( 2 );  //  out>
+			// nd->mapOutputChannel(0, "rtt_first");
+			nd->mapOutputChannel(0, "ssaoApply");  // 
+			nd->mapOutputChannel(1, "depthBuffer");
 		}
 
-		//  workspace
-		{
-			wd = AddWork( sWork+si );
-			wd->connectExternal( 0, s1_first+si, 0 );  // rtt_FullOut  or  rt_renderwindow
-		}
-#if 0  //!!!
 		/* 2  s2_depth  resolve  ---------- */
 		{	nd = AddNode(s2_depth+si);
 			
@@ -475,7 +469,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 		{	nd = AddNode(s3_Final+si);
 			
 			nd->addTextureSourceName("rtt_FullOut", 0, inp);  // or rt_renderwindow
-			nd->addTextureSourceName("ssaoApply", 1, inp);  //  >in  ssaoApply
+			nd->addTextureSourceName("ssaoApply", 1, inp);  //  >in  ssaoApply  rtt_first
 			nd->addTextureSourceName("depthBuffer", 2, inp);
 			nd->addTextureSourceName("depthBufferNoMsaa", 3, inp);
 
@@ -483,7 +477,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			{
 				auto* td = nd->addTextureDefinition( "rtt_final" );
 				td->format = PFG_UNKNOWN;  td->fsaa = "";  // target_format, auto
-				AddRtv(nd, "rtt_final", "rtt_final", "depthBuffer");
+				AddRtv(nd, "rtt_final", "rtt_final", "depthBuffer");  //, ssao ? "gBufferNormals" : "");
 			}
 
 			nd->mCustomIdentifier = "3-Final-"+si;
@@ -497,7 +491,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				//  Perform exact copy (MSAA-preserving) so we can continue rendering
 				//  into rtt_final. Meanwhile rtt_first will be used for sampling refractions
 				auto* cp = static_cast<CompositorPassDepthCopyDef*>(td->addPass(Ogre::PASS_DEPTHCOPY));
-				cp->setDepthTextureCopy("ssaoApply", "rtt_final");  //*
+				cp->setDepthTextureCopy("ssaoApply", "rtt_final");  //*  rtt_first
 
 				ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
 				ps->setAllLoadActions( LoadAction::Load );
@@ -511,7 +505,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				
 				AddShadows(ps);  // shadows
 				ps->mShadowNodeRecalculation = SHADOW_NODE_REUSE;  // `
-				ps->setUseRefractions("depthBufferNoMsaa", "ssaoApply");  // ~
+				ps->setUseRefractions("depthBufferNoMsaa", "ssaoApply");  // ~  rtt_first
 			}
 
 			//  render / Window  ----
@@ -530,7 +524,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 					AddHudGui(td);  // + 2
 			}
 		}
-	
+
 		//  workspace
 		{
 			wd = AddWork( sWork+si );
@@ -540,7 +534,6 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			wd->connect( s1_first+si, 1, s2_depth+si, 0 );  // depthBuffer
 			wd->connect( s2_depth+si, 0, s3_Final+si, 3 );  // resolvedDepth -> depthBufferNoMsaa
 		}
-#endif  //!!!
 	}
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------
