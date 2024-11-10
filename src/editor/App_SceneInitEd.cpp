@@ -196,6 +196,8 @@ void App::destroyScene()
 {
 	delete ror;
 
+	DestroyGI();
+
 	DestroyEdHud();
 	
 	DestroyRnd2Tex();

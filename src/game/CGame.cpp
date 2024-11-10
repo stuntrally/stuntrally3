@@ -68,6 +68,8 @@ void App::destroyScene()
 {
 	LogO("DD-- destroyScene ------DD");
 	
+	DestroyGI();
+
 	delete dbgdraw;  dbgdraw = 0;
 	
 	// scn->mWaterRTT->destroy();

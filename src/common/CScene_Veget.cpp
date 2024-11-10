@@ -158,6 +158,7 @@ void CScene::CreateVegets()
 				// LogO("tws: "+fToStr(tws)+" tr cnt: "+toStr(cnt)+" c/t2: "+fToStr(cnt/tws/tws,8,10));  //-
 				// LogO(String("col?  ")+(col?"y":"n")+ " ofs x "+fToStr(ofs.x,2)+ " z "+fToStr(ofs.y,2));
 				
+				//  todo: parallel
 				for (int i = 0; i < cnt; ++i)
 				if (iVegetAll < pSet->veg.limit)
 				{
@@ -268,6 +269,7 @@ void CScene::CreateVegets()
 					}
 					// if (!add)  LogO("on rd");
 					if (!add)  continue;  //
+				// end parallel
 
 					//  🟢 Ogre add 1
 					//--------------------------------
@@ -306,6 +308,7 @@ void CScene::CreateVeget1(
 	SceneManager *mgr = app->mSceneMgr;
 	SceneNode *rootNode = mgr->getRootSceneNode( SCENE_STATIC );
 
+	//  item
 	Item *item = mgr->createItem( vg.name,
 		ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME, SCENE_STATIC );
 	if (!vg.mtr.empty())
@@ -321,7 +324,11 @@ void CScene::CreateVeget1(
 		(/*horiz ? pSet->veg.hor_bushes_dist :*/ pSet->veg.bushes_dist) :
 		(/*horiz ? pSet->veg.hor_trees_dist  :*/ pSet->veg.trees_dist);
 	item->setRenderingDistance( dist * setDist );
+	
+	//  vec add
 	vegetItems.push_back(item);
+	if (!veg->bush && veg->farDist > 500)  //par..
+		vegetItemsGI.push_back(item);
 
 	#if 0  //  marker | test
 		Item *item2 = mgr->createItem( "ring_blue_stick.mesh",
@@ -334,6 +341,7 @@ void CScene::CreateVeget1(
 		vegetNodes.push_back(node2);
 	#endif
 
+	//  node
 	SceneNode *node = rootNode->createChildSceneNode( SCENE_STATIC );
 	node->attachObject( item );
 	node->scale( scl * Vector3::UNIT_SCALE );
@@ -449,6 +457,7 @@ void CScene::DestroyVegets()
 	for (auto* item : vegetItems)
 		mgr->destroyItem(item);
 	vegetItems.clear();
+	vegetItemsGI.clear();
 }
 
 void CScene::RecreateVegets()

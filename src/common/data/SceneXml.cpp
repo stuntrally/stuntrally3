@@ -224,7 +224,7 @@ void Scene::UpdVegLayers()
 
 
 //  util
-float Scene::GetDepthInFluids(Vector3 pos)
+float Scene::GetDepthInFluids(Vector3 pos) const
 {
 	float fa = 0.f;
 	for (const FluidBox& fb : fluids)

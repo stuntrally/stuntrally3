@@ -106,7 +106,7 @@ public:
 		bool horiz, const BltCollision* col, int& cntshp);
 	
 	int iVegetAll = 0;  // for info
-	std::vector<Ogre::Item*> vegetItems;
+	std::vector<Ogre::Item*> vegetItems, vegetItemsGI;  // for GI only big
 	std::vector<Ogre::SceneNode*> vegetNodes;
 	
 	//  🌿 Grass

@@ -308,49 +308,49 @@ void CGuiCom::slFps(SV*)
 //  🌄 GI
 void CGuiCom::btnGInext(WP)
 {
-	app->GInextIrradianceField(1);
-	app->GIText();
+	app->GInextMethod(1);
+	app->GIupdText();
 }
 void CGuiCom::btnGIhq(WP)
 {
 	app->GItoggletVctQuality();
-	app->GIText();
+	app->GIupdText();
 }
 void CGuiCom::btnGIvis(WP)
 {
-	app->GInextVisMode(1);
-	app->GIText();
+	app->GInextVctVis(1);
+	app->GIupdText();
 }
 void CGuiCom::btnGIvis2(WP)
 {
-	app->GInextIfdProbeVisMode(1);
-	app->GIText();
+	app->GInextIfdProbeVis(1);
+	app->GIupdText();
 }
 void CGuiCom::btnGIbncInc(WP)
 {
-	++app->mNumBounces;
-	if (app->mVctLighting)
-		app->mVctLighting->update( app->mSceneMgr, app->mNumBounces, app->mThinWallCounter );
-	if (app->mIrradianceField)
-		app->mIrradianceField->reset();
-	app->GIText();
+	++app->iVctBounces;
+	if (app->mVCT)
+		app->mVCT->update( app->mSceneMgr, app->iVctBounces, app->fVctThinWall );
+	if (app->mIFD)
+		app->mIFD->reset();
+	app->GIupdText();
 }
 void CGuiCom::btnGIbncDec(WP)
 {
-	if (app->mNumBounces > 0)
-		--app->mNumBounces;
-	if (app->mVctLighting)
-		app->mVctLighting->update( app->mSceneMgr, app->mNumBounces, app->mThinWallCounter );
-	if (app->mIrradianceField)
-		app->mIrradianceField->reset();
-	app->GIText();
+	if (app->iVctBounces > 0)
+		--app->iVctBounces;
+	if (app->mVCT)
+		app->mVCT->update( app->mSceneMgr, app->iVctBounces, app->fVctThinWall );
+	if (app->mIFD)
+		app->mIFD->reset();
+	app->GIupdText();
 }
 void CGuiCom::btnGIiso(WP)
 {
-	if (app->mVctLighting)
-	{	app->mVctLighting->setAnisotropic( !app->mVctLighting->isAnisotropic() );
-		app->mVctLighting->update( app->mSceneMgr, app->mNumBounces, app->mThinWallCounter );
-	}app->GIText();
+	if (app->mVCT)
+	{	app->mVCT->setAnisotropic( !app->mVCT->isAnisotropic() );
+		app->mVCT->update( app->mSceneMgr, app->iVctBounces, app->fVctThinWall );
+	}app->GIupdText();
 }
 	/*  more -
 	auto giMode = getGiMode();
