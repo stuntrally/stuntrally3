@@ -4,9 +4,13 @@ This section lists changes not yet released, but committed to repositories stunt
 WIP means work in progress, unfinished, still being developed.
 
 - 3 [New tracks](https://groups.f-hub.org/d/ZXVHk6du/new-tracks-in-sr-3-3)
-- Compositor rewrite
+- Compositor rewrite, created in code
   - Apply buttons work for Shadows and Reflections
-  - SplitScreen uses RTTs, Refractions work, fix depth, todo: Old no reflect
+  - SplitScreen uses RTTs, smaller Hud fonts
+    - WIP Refractions work, todo: fix depth, add Old no reflect
+  - WIP Global Illumination ([GI methods](https://ogrecave.github.io/ogre-next/api/latest/_gi_methods.html): IFD+VCT), no terrain
+    - added Gui tab after Effects, has also debug visuals
+  - WIP Started SSAO, bad
 
 ### Version 3.2 - 23.09.2024
 

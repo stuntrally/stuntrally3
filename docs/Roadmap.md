@@ -8,52 +8,57 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 ### SR 3.3
 
-#### New
+#### Effects
 
-new game *video*, editor videos  
+**SSAO** fix, fog fade  
+GI for terrain [issue](https://github.com/OGRECave/ogre-next/issues/475)?  
+HDR, bloom?  
 
-New **tracks**, also with **fields**, add walls  
+**Sounds**: cars, ambient, object hit, info below, new engine? or upd from RoR
+
 
 new road particles  
 new **road** textures, detail mix, vert clr blend
 
 new *Stats* tab, completed: tracks, challs, colls, etc
 
-**SSAO** cd, fog fade?, convert `.compositor` to C++  
+#### Big
 
-**Sounds** cpp, new engine, abient, object hit, info below
+new game *video*, editor videos  
+
+New **tracks**, also with **fields**, add walls  
 
 💎Add **gems** to tracks, more types 3d  
 xml par continuous?, logic btn continue, hid collected gems on start?  
 
-less poly, own collision *_p.mesh for veget/obj/bld, e.g. Cloud shrooms
+test, move to bullet3 ?
+
+#### New
+
+less poly, own collision *_p.mesh for veget/obj/bld, e.g. shrooms on Cloud etc
 
 hud new best time show, win particles-  
 
-ed **key** for obj random rot, yaw  
-
-test, move to bullet3 ?
+**ed key** for obj random rot, yaw  
 
 #### Fix
 
 fix no tire trails  
 fix rivers wrong way  
-fix **ed** fields rot, focus, no cam ray cut, *telep offset*  
+fix **ed** fields rot, focus, *telep offset*, no cam ray cut  
 
 **fix** H2,H1 going through big waters e.g. Islands,  
 and wheels jumping on big ice e.g. FreshBreeze  
 cam tilt jumps on Shore?  
 
+
 #### Fix Ogre
 
-🌊**refract**, depth: pass projmatrix not **inverse**  
+🌊refract, depth: pass projmatrix **not inverse**  
 fix refract underwater top  
-*fix splitscreen* and fsaa broken with refractions  
 
-fix refract depth write, glass pipes not underwater  
-fix compositor / rqg: car glass not refracted, offset  
-more fluids at once, blink on MilkyWay, add compositor depth copy  
-**add** params: refract clr, *depth* clr, emissive fluids?  
+more fluids still blink on MilkyWay  
+shader **params**: refract clr, *depth* clr, emissive fluids?  
 
 🌪️**wind scale** params in json, for all trees, bushes, grass sway own-  
 wind anim shadow **caster** too, ed prv obj no wind-  
@@ -65,7 +70,7 @@ fix .car thrusters lights pos
 ----
 ### New game stuff✨
 
-🏆 new [game Modes](https://stuntrally.tuxfamily.org/mantis/view.php?id=21): [Career](https://forum.freegamedev.net/viewtopic.php?f=79&t=5211)  
+🏆 new [game Modes](https://stuntrally.tuxfamily.org/mantis/view.php?id=21): [**Career**](https://forum.freegamedev.net/viewtopic.php?f=79&t=5211)  
 Score for: drift (sliding on road), air time (jumps etc), hitting dynamic objects  
 
 🕹️ New **Game** elements:  
@@ -79,9 +84,11 @@ Road wall types, [link](https://stuntrally.tuxfamily.org/mantis/view.php?id=6)
 ----
 ### New data
 
-🌧️ **Ambient** [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
-🚗🔊 More car `Sounds`.. todo [task](https://stuntrally.tuxfamily.org/mantis/view.php?id=1), use [engine-sim](https://github.com/stuntrally/stuntrally3/issues/7)  
+🌧️ `Ambient` [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
+🚗🔊 More `car Sounds`.. todo [task](https://stuntrally.tuxfamily.org/mantis/view.php?id=1), use [engine-sim](https://github.com/stuntrally/stuntrally3/issues/7)  
 📦 object hit sounds, reverb change in water, caves, pipes-  
+
+### data
 
 Remove all non **CC** data, [new topic](https://groups.f-hub.org/d/pIoLYCaO/-removing-replacing-data-with-non-cc-lincenses-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800)  
 🌳new [trees](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), normalize .mesh scales fir*, etc  
@@ -94,7 +101,7 @@ broken mygui set scrollview size, gallery list
 ----
 ### Ogre new
 🪄 Effects: **Soft** Particles  
-SSAO, HDR, bloom  
+**HDR**, bloom  
 lens flare [shaders](https://www.shadertoy.com/results?query=lens+flare)  
 sunrays [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)  
 
@@ -108,13 +115,14 @@ sunrays [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)
 ### Ogre cd, restore, optimize
 
 - lit particles, lights on `grass`, grass far fade-
+- **parallelize** vegetation, add test grass, veget on more threads
 - ⛰️ Terrain  
   **shadowmap** fix < 0  
   add emissive, reflect par  
   blendmap also .hlsl or .any for DX  
   read blendmap, for ter wheel **surface** ids, many ters  
-  fix restore *pages visibility*  
-  triplanar only for chosen layers  
+  fix restore **pages** visibility  
+  triplanar **only** for chosen layers  
   fix *triplanar* normalmaps-  
 - 🛣️ Road  
   **Grid** for walls, road, pipes, ed update cell  
@@ -128,7 +136,7 @@ sunrays [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)
   _tools_: fix **scale ter h**, copy horizon, which ter, road  
 
 - ⏲️ `HUD`  
-  fix splitscreen gauges etc  
+  fix **splitscreen** gauges etc  
   _Minimap_ circle, terrain add, fix pos tris  
   btnRplDelete for ghost should also remove its track record from .txt  
 
