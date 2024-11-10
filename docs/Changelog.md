@@ -10,7 +10,7 @@ WIP means work in progress, unfinished, still being developed.
     - WIP Refractions work, todo: fix depth, add Old no reflect
   - WIP Global Illumination ([GI methods](https://ogrecave.github.io/ogre-next/api/latest/_gi_methods.html): IFD+VCT), no terrain
     - added Gui tab after Effects, has also debug visuals
-  - WIP Started SSAO, bad
+  - WIP Started SSAO, not working with FSAA (antialiasing)
 
 ### Version 3.2 - 23.09.2024
 
