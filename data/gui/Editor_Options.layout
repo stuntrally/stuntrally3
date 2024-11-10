@@ -216,53 +216,7 @@
 							<Property key="Colour" value="0.5 0.9 0.9"/>
 						</Widget>
 
-						<!-- 🌄 GI -->
-						<Widget type="Button" skin="CheckBox" position="28 230 356 24" name="GI">
-							<Property key="Caption" value="#{GI}  #603030 = #{NotDone}"/>
-							<Property key="TextColour" value="1 0.5 0.7"/>
-						</Widget>
-
-						<Widget type="Button" skin="Button" position="28 260 80 24" name="GInext">
-							<Property key="Caption" value="Next"/>
-							<Property key="Colour" value="0.5 0.97 1.0"/>
-							<Property key="TextColour" value="0.9 0.97 1.0"/>
-						</Widget>
-						<Widget type="Button" skin="Button" position="128 260 80 24" name="GIhq">
-							<Property key="Caption" value="HQ"/>
-							<Property key="Colour" value="0.9 0.97 1.0"/>
-							<Property key="TextColour" value="0.9 0.97 1.0"/>
-						</Widget>
-						<Widget type="Button" skin="Button" position="228 260 80 24" name="GIvis">
-							<Property key="Caption" value="Vis Next"/>
-							<Property key="Colour" value="0.9 0.57 1.0"/>
-							<Property key="TextColour" value="0.9 0.97 1.0"/>
-						</Widget>
-						<Widget type="Button" skin="Button" position="328 260 90 24" name="GIvis2">
-							<Property key="Caption" value="Vis Ifd Probe"/>
-							<Property key="Colour" value="0.9 0.67 1.0"/>
-							<Property key="TextColour" value="0.9 0.97 1.0"/>
-						</Widget>
-						<Widget type="Button" skin="Button" position="428 260 90 24" name="GIbncInc">
-							<Property key="Caption" value="Bounces+"/>
-							<Property key="Colour" value="0.9 1.0 0.9"/>
-							<Property key="TextColour" value="0.9 1.0 0.9"/>
-						</Widget>
-						<Widget type="Button" skin="Button" position="528 260 90 24" name="GIbncDec">
-							<Property key="Caption" value="Bounces-"/>
-							<Property key="Colour" value="0.8 0.9 1.0"/>
-							<Property key="TextColour" value="0.8 0.9 1.0"/>
-						</Widget>
-						<Widget type="Button" skin="Button" position="628 260 90 24" name="GIiso">
-							<Property key="Caption" value="Isotropic"/>
-							<Property key="Colour" value="0.9 1 1.0"/>
-							<Property key="TextColour" value="0.9 1 1.0"/>
-						</Widget>
-
-						<Widget type="TextBox" skin="TextBox" position="28 290 648 454" name="GItext">
-							<Property key="TextColour" value="0.8 0.9 1.0"/>
-						</Widget>
-
-
+						
 						<!-- <Widget type="Button" skin="CheckBox" position="28 150 256 24" name="SoftParticles">
 							<Property key="Caption" value="#{SoftParticles}"/>
 							<Property key="TextColour" value="1 0.75 0.4"/>
@@ -286,6 +240,62 @@
 							<Property key="TextColour" value="1.0 0.9 0.0"/>
 						</Widget> -->
 					</Widget>
+
+					<!-- 🌄 GI -->
+					<Widget type="TabItem" skin="" position="2 24 738 472">
+						<Property key="Caption" value="#C0A0B0#{GI}"/>
+						<Widget type="ImageBox" skin="ImageBox" position="660 4 56 56">
+							<Property key="ImageCoord" value="640 128 128 128"/>
+							<Property key="Alpha" value="0.4"/>
+							<Property key="ImageTexture" value="gui_icons.png"/>
+						</Widget>
+						<Widget type="Button" skin="CheckBox" position="28 30 356 24" name="GI">
+							<Property key="Caption" value="#{GI}  #603030 = #{NotDone}"/>
+							<Property key="TextColour" value="1 0.5 0.7"/>
+						</Widget>
+
+						<Widget type="Button" skin="Button" position="28 60 80 24" name="GInext">
+							<Property key="Caption" value="Next"/>
+							<Property key="Colour" value="0.5 0.97 1.0"/>
+							<Property key="TextColour" value="0.9 0.97 1.0"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="28 90 80 24" name="GIhq">
+							<Property key="Caption" value="HQ"/>
+							<Property key="Colour" value="0.9 0.97 1.0"/>
+							<Property key="TextColour" value="0.9 0.97 1.0"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="428 260 90 24" name="GIbncInc">
+							<Property key="Caption" value="Bounces+"/>
+							<Property key="Colour" value="0.9 1.0 0.9"/>
+							<Property key="TextColour" value="0.9 1.0 0.9"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="528 260 90 24" name="GIbncDec">
+							<Property key="Caption" value="Bounces-"/>
+							<Property key="Colour" value="0.8 0.9 1.0"/>
+							<Property key="TextColour" value="0.8 0.9 1.0"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="628 260 90 24" name="GIiso">
+							<Property key="Caption" value="Isotropic"/>
+							<Property key="Colour" value="0.9 1 1.0"/>
+							<Property key="TextColour" value="0.9 1 1.0"/>
+						</Widget>
+
+						<Widget type="Button" skin="Button" position="28 260 120 24" name="GIvis">
+							<Property key="Caption" value="Vis Next"/>
+							<Property key="Colour" value="0.9 0.57 1.0"/>
+							<Property key="TextColour" value="0.9 0.97 1.0"/>
+						</Widget>
+						<Widget type="Button" skin="Button" position="228 260 120 24" name="GIvis2">
+							<Property key="Caption" value="Vis IFD Probes"/>
+							<Property key="Colour" value="0.9 0.67 1.0"/>
+							<Property key="TextColour" value="0.9 0.97 1.0"/>
+						</Widget>
+
+						<Widget type="TextBox" skin="TextBox" position="28 290 648 454" name="GItext">
+							<Property key="TextColour" value="0.8 0.9 1.0"/>
+						</Widget>
+					</Widget>
+
 					
 					<!-- GUI fonts scale -->
 					<Widget type="TabItem" skin="" position="2 24 738 472">
