@@ -6,7 +6,7 @@ _How to start the game, configure controller, settings etc._
 The recommended minimum hardware is, at least:
 
 * CPU: 2 cores, 2.4 GHz
-* GPU: dedicated, with 2GB GPU RAM and Open GL 4 supported:  
+* GPU: dedicated, with 2GB VRAM (GPU RAM) and Open GL 4 supported:  
   - Low budget (e.g. Radeon RX 570, GeForce GTX 970, GeForce RTX 3050)  
   - or High (e.g. Radeon RX 6600 XT, GeForce RTX 3070) etc.
   - Link to [GPU benchmark](https://www.videocardbenchmark.net/compare/2954vs3558vs3521vs4495vs4444/) for comparing.
@@ -20,8 +20,8 @@ Old or slow CPUs could make the game not handle simulation correctly and slow do
 Too low GPUs (benchmark score or cores count) will slower rendering,  
 to less than ideal 60 Fps (from display VSync), especially on big, complex, demanding tracks.
 
-The game _was_ developed on a PC with Radeon RX 570, which will likely be optimal (unless you have a better GPU).  
-Using default settings (Higher), it achieved around 60 Fps on all tracks (bit less in complex ones).  
+The game is developed and tested only on a PC with Radeon RX 6600 XT.  
+Using default settings (Higher), it achieved around 60 Fps on all tracks (bit less in dense jungle places etc).  
 
 It is possible to run some tracks (Test* should) on lower hardware, but with low Fps (could be unplayable, below 30).  
 
