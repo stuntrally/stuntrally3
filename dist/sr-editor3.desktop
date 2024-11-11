@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=Stunt Rally 3 Track Editor
+Name[fr]=Éditeur de circuits Stunt Rally 3
+Name[de]=Stunt Rally 3 Streckeneditor
+GenericName=Track editor
+GenericName[de]=Streckeneditor
+GenericName[fr]=Éditeur de circuits
+Comment=Track editor for Stunt Rally
+Comment[de]=Stunt Rally 3 Streckeneditor
+Comment[fi]=Stunt Rally 3 rataeditori
+Comment[fr]=Éditez des circuits pour Stunt Rally
+Exec=sr-editor3
+Icon=sr-editor
+StartupNotify=false
+Terminal=false
+PrefersNonDefaultGPU=true
+Type=Application
+Categories=Game;SportsGame;
