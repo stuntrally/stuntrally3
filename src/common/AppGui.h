@@ -14,8 +14,10 @@
 namespace Ogre
 {	class Root;  class SceneManager;  class Window;  class Camera;
 	class TextureGpu;  class HlmsSamplerblock;  class HlmsPbs;
+	
 	class CompositorWorkspace;  class CompositorWorkspaceDef;  class RenderTargetViewDef;
 	class CompositorNodeDef;  class CompositorTargetDef;  class CompositorPassSceneDef;
+	class CompositorPassQuadDef;
 	// namespace v1 {  class Overlay;  }
 	class Terra;  class HlmsPbsTerraShadows;  class PlanarReflections;
     class VctVoxelizer;  class VctLighting;  class IrradianceField;
@@ -162,10 +164,12 @@ public:
 	std::vector<Ogre::CompositorWorkspaceDef*> vWorkDefs;
 	constexpr static const char* csShadow = "ShadowMapFromCodeShadowNode";
 	
-	//  compositor utils
-	Ogre::CompositorNodeDef* AddNode(Ogre::String name);
+	//  compositor Add, utils
+	Ogre::CompositorNodeDef*      AddNode(Ogre::String name);
 	Ogre::CompositorWorkspaceDef* AddWork(Ogre::String name);
-	Ogre::RenderTargetViewDef* AddRtv(Ogre::CompositorNodeDef* nd,
+	Ogre::CompositorPassQuadDef*  AddQuad(Ogre::CompositorTargetDef* td);
+	Ogre::CompositorPassSceneDef* AddScene(Ogre::CompositorTargetDef* td);
+	Ogre::RenderTargetViewDef*    AddRtv(Ogre::CompositorNodeDef* nd,
 		Ogre::String name, Ogre::String colour, Ogre::String depth="", Ogre::String colour2="");
 
 	Ogre::TextureGpu* AddSplitRTT(Ogre::String id, float width, float height);

@@ -1026,7 +1026,7 @@
 							<Property key="TextColour" value="0.6 0.8 1"/>
 						</Widget>
 						<Widget type="Button" skin="CheckBox" position="32 78 350 24" name="WaterRefraction">
-							<Property key="Caption" value="#{WaterRefraction} * #704040 - #{SplitScreen} ="/>
+							<Property key="Caption" value="#{WaterRefraction} *"/>
 							<Property key="TextColour" value="0.6 0.9 1"/>
 						</Widget>
 

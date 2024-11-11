@@ -114,7 +114,7 @@ String AppGui::getSplitMtr(int splits)
 	return mtr;
 }
 
-//  Add basics
+//  add NodeDef
 CompositorNodeDef* AppGui::AddNode(String name)
 {
 	auto* mgr = mRoot->getCompositorManager2();
@@ -123,6 +123,7 @@ CompositorNodeDef* AppGui::AddNode(String name)
 	LogO("C+-* Add Node " + name);
 	return nd;
 };
+//  add Workspace
 CompositorWorkspaceDef* AppGui::AddWork(String name)
 {
 	auto* mgr = mRoot->getCompositorManager2();
@@ -132,7 +133,20 @@ CompositorWorkspaceDef* AppGui::AddWork(String name)
 	return wd;
 };
 
-//  Add rtv
+//  add pass  Quad
+CompositorPassQuadDef* AppGui::AddQuad(CompositorTargetDef* td)
+{
+	return static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
+}
+
+//  add pass  Scene
+CompositorPassSceneDef* AppGui::AddScene(CompositorTargetDef* td)
+{
+	return static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
+}
+
+
+//  add Rtv
 RenderTargetViewDef* AppGui::AddRtv(Ogre::CompositorNodeDef* nd,
 	String name, String color, String depth, String color2)
 {
@@ -154,7 +168,9 @@ RenderTargetViewDef* AppGui::AddRtv(Ogre::CompositorNodeDef* nd,
 }
 
 
-//  🖼️ texture & rtt  for SplitScreen
+//  🖼️ create  Texture & RTT
+//  final 1 player's view, for SplitScreen combine
+//-----------------------------------------------------------------------------------------
 TextureGpu* AppGui::AddSplitRTT(String id, float width, float height)
 {
 	auto* texMgr = mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
@@ -184,10 +200,10 @@ TextureGpu* AppGui::AddSplitRTT(String id, float width, float height)
 }
 
 //  Add Hud, Gui
-void AppGui::AddHudGui(CompositorTargetDef* td)
+void AppGui::AddHudGui(CompositorTargetDef* td)  // + 2 pass
 {
 	//  ⏲️ Hud  --------
-	auto* ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
+	auto* ps = AddScene(td);  // + scene Hud
 	ps->setAllStoreActions( StoreAction::Store );
 	ps->mProfilingId = "HUD";  ps->mIdentifier = 10007;
 
@@ -196,7 +212,7 @@ void AppGui::AddHudGui(CompositorTargetDef* td)
 	ps->setVisibilityMask(RV_Hud + RV_Particles);
 
 	//  🎛️ Gui, add MyGUI pass  --------
-	auto* gui = td->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);
+	auto* gui = td->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);  // + pass Gui
 	gui->mProfilingId = "GUI";  gui->mIdentifier = 99900;
 }
 
@@ -245,7 +261,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 	//------------------------------------------------------------------------------------------------------------------------------------------
 	if (view >= 50)
 	{
-		{	nd = AddNode(sCombine);
+		{	nd = AddNode(sCombine);  //++ node
 			
 			nd->addTextureSourceName("rt_renderwindow", 0, inp);  // in  wnd
 			for (int i=0; i < splits; ++i)
@@ -259,7 +275,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 
 			//  render Window  ----
 			{
-				auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
+				auto* pq = AddQuad(td);  // + quad
 				pq->setAllLoadActions( LoadAction::DontCare );
 
 				pq->mMaterialName = getSplitMtr(splits);
@@ -291,7 +307,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			rtt = AddSplitRTT(si, width, height);
 		
 		/* 1  s1_First  Render  -------------------- */
-		{	nd = AddNode(s1_first+si);
+		{	nd = AddNode(s1_first+si);  //++ node
 			
 			nd->setNumLocalTextureDefinitions( (ssao ? 6 : 0) + 2 );  //* textures
 			{
@@ -305,12 +321,12 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				// td->textureFlags = TextureFlags::RenderToTexture;  //- no discard between frames
 
 				if (ssao)  // ssao + 6
-				{	td = nd->addTextureDefinition( "gBufferNormals" );
+				{	td = nd->addTextureDefinition( "gNormals" );
 					td->format = PFG_R10G10B10A2_UNORM;  td->fsaa = "";  // auto
 					//td->textureFlags = TextureFlags::RenderToTexture | TextureFlags::MsaaExplicitResolve;
 					td->textureFlags |= TextureFlags::MsaaExplicitResolve;
 				}
-				auto* rtv = AddRtv(nd, "rtt_first", "rtt_first", "depthBuffer", ssao ? "gBufferNormals" : "");
+				auto* rtv = AddRtv(nd, "rtt_first", "rtt_first", "depthBuffer", ssao ? "gNormals" : "");
 				if (ssao)
 				{
 					td = nd->addTextureDefinition( "depthCopy" );
@@ -319,17 +335,17 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 					AddRtv(nd, "depthCopy", "", "depthCopy");
 
 					td = nd->addTextureDefinition( "ssaoTexture" );
-					td->widthFactor = 0.5f;  td->heightFactor = 0.5f;  //par HQ`
+					td->widthFactor = 0.5f;  td->heightFactor = 0.5f;  //par HQ..
 					td->format = PFG_R16_FLOAT;  td->fsaa = "1";  // off
-					// td->depthBufferId = 0;  //?- depth_pool 0
-					AddRtv(nd, "ssaoTexture", "ssaoTexture");  //no-
+					AddRtv(nd, "ssaoTexture", "ssaoTexture");
+					// td->depthBufferId = 0;  //no- depth_pool 0
 
 					td = nd->addTextureDefinition( "blurHoriz" );
-					td->format = PFG_R16_FLOAT;  td->fsaa = "1";  //td->depthBufferId = 0;
+					td->format = PFG_R16_FLOAT;  td->fsaa = "1";
 					AddRtv(nd, "blurHoriz", "blurHoriz");
 
 					td = nd->addTextureDefinition( "blurVertical" );
-					td->format = PFG_R16_FLOAT;  td->fsaa = "1";  //td->depthBufferId = 0;
+					td->format = PFG_R16_FLOAT;  td->fsaa = "1";
 					AddRtv(nd, "blurVertical", "blurVertical");
 
 					td = nd->addTextureDefinition( "ssaoApply" );
@@ -343,7 +359,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			td = nd->addTargetPass( "rtt_first" );
 			td->setNumPasses(1);  //* passes
 			{
-				ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
+				ps = AddScene(td);  // + scene
 				ps->setAllLoadActions( LoadAction::Clear );
 				ps->mClearColour[0] = ColourValue(0.2, 0.4, 0.6, 1.0);  // clr
 				if (ssao)
@@ -355,7 +371,8 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 
 				ps->mProfilingId = "Render First-"+si;  // "Opaque + Regular Transparents"
 				ps->mIdentifier = 10001;
-				ps->mLastRQ = RQG_Weather;
+				// ps->mFirstRQ = 1; //RQG_Terrain;  // todo: sky last
+				ps->mLastRQ = RQG_Weather;  // todo: where are car flares?..
 				// ps->mLastRQ = RQG_RoadBlend+1; //RQG_Fluid-1; //199
 				ps->setVisibilityMask(RV_view);
 				
@@ -365,13 +382,13 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				AddShadows(ps);  // shadows
 			}
 
-			if (ssao)  //  SSAO  +5
+			if (ssao)  //  SSAO  + 5
 			{
 				const String depthCopy = "depthCopy";
 				td = nd->addTargetPass( depthCopy );
 				td->setNumPasses( 1 );  //* passes
 				{
-					auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
+					auto* pq = AddQuad(td);  // + quad
 					pq->setAllLoadActions( LoadAction::DontCare );
 
 					pq->mMaterialName = "Ogre/Depth/DownscaleMax";  pq->mProfilingId = "Depth Downscale";
@@ -381,20 +398,20 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				td = nd->addTargetPass( "ssaoTexture" );
 				td->setNumPasses( 1 );  //* passes
 				{
-					auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
+					auto* pq = AddQuad(td);  // + quad
 					pq->setAllLoadActions( LoadAction::Clear );
 					pq->mClearColour[0] = ColourValue::White;
 
 					pq->mMaterialName = "SSAO/HS";  pq->mProfilingId = "SSAO 1 HS";
 					pq->addQuadTextureSource( 0, depthCopy );  // input
-					pq->addQuadTextureSource( 1, "gBufferNormals" );
+					pq->addQuadTextureSource( 1, "gNormals" );
 					pq->mFrustumCorners = CompositorPassQuadDef::VIEW_SPACE_CORNERS;  // quad_normals  camera_far_corners_view_space
 				}
 
 				td = nd->addTargetPass( "blurHoriz" );
 				td->setNumPasses( 1 );  //* passes
 				{
-					auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
+					auto* pq = AddQuad(td);  // + quad
 					pq->setAllLoadActions( LoadAction::DontCare );
 
 					pq->mMaterialName = "SSAO/BlurH";  pq->mProfilingId = "SSAO 2 BlurH";
@@ -405,7 +422,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				td = nd->addTargetPass( "blurVertical" );
 				td->setNumPasses( 1 );  //* passes
 				{
-					auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
+					auto* pq = AddQuad(td);  // + quad
 					pq->setAllLoadActions( LoadAction::DontCare );
 
 					pq->mMaterialName = "SSAO/BlurV";  pq->mProfilingId = "SSAO 3 BlurV";
@@ -416,24 +433,23 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				td = nd->addTargetPass( "ssaoApply" );
 				td->setNumPasses( 1 );  //* passes
 				{
-					auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
+					auto* pq = AddQuad(td);  // + quad
 					pq->setAllLoadActions( LoadAction::DontCare );
 					
 					pq->mMaterialName = "SSAO/Apply";  pq->mProfilingId = "SSAO Apply";  // input
 					pq->addQuadTextureSource( 0, "blurVertical" );
 					pq->addQuadTextureSource( 1, "rtt_first" );
 					// pq->addQuadTextureSource( 0, "ssaoTexture" );  //* test noisy
-					// pq->addQuadTextureSource( 1, "gBufferNormals" );  //* test normals
+					// pq->addQuadTextureSource( 1, "gNormals" );  //* test normals
 				}
 			}
 			nd->setNumOutputChannels( 2 );  //  out>
-			// nd->mapOutputChannel(0, "rtt_first");
-			nd->mapOutputChannel(0, "ssaoApply");  // 
+			nd->mapOutputChannel(0, ssao ? "ssaoApply" : "rtt_first");
 			nd->mapOutputChannel(1, "depthBuffer");
 		}
 
 		/* 2  s2_depth  resolve  ---------- */
-		{	nd = AddNode(s2_depth+si);
+		{	nd = AddNode(s2_depth+si);  //++ node
 			
 			nd->addTextureSourceName("gBufferDB", 0, inp);  //  >in
 
@@ -453,7 +469,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			td = nd->addTargetPass( "resolvedDB" );
 			td->setNumPasses(1);  //* passes
 			{
-				auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
+				auto* pq = AddQuad(td);  // + quad
 				pq->setAllLoadActions( LoadAction::DontCare );
 				pq->setAllStoreActions( StoreAction::DontCare );
 				pq->mStoreActionColour[0] = StoreAction::StoreOrResolve;
@@ -466,10 +482,10 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 		}
 
 		/* 3  s3_Final  Refractive  ------------------------------  */
-		{	nd = AddNode(s3_Final+si);
+		{	nd = AddNode(s3_Final+si);  //++ node
 			
 			nd->addTextureSourceName("rtt_FullOut", 0, inp);  // or rt_renderwindow
-			nd->addTextureSourceName("ssaoApply", 1, inp);  //  >in  ssaoApply  rtt_first
+			nd->addTextureSourceName("rrt_firstIn", 1, inp);  //  >in  ssaoApply or rtt_first
 			nd->addTextureSourceName("depthBuffer", 2, inp);
 			nd->addTextureSourceName("depthBufferNoMsaa", 3, inp);
 
@@ -477,7 +493,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			{
 				auto* td = nd->addTextureDefinition( "rtt_final" );
 				td->format = PFG_UNKNOWN;  td->fsaa = "";  // target_format, auto
-				AddRtv(nd, "rtt_final", "rtt_final", "depthBuffer");  //, ssao ? "gBufferNormals" : "");
+				AddRtv(nd, "rtt_final", "rtt_final", "depthBuffer");  //-, ssao ? "gNormals" : "");
 			}
 
 			nd->mCustomIdentifier = "3-Final-"+si;
@@ -490,10 +506,11 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			{
 				//  Perform exact copy (MSAA-preserving) so we can continue rendering
 				//  into rtt_final. Meanwhile rtt_first will be used for sampling refractions
-				auto* cp = static_cast<CompositorPassDepthCopyDef*>(td->addPass(Ogre::PASS_DEPTHCOPY));
-				cp->setDepthTextureCopy("ssaoApply", "rtt_final");  //*  rtt_first
+				auto* cp = static_cast<CompositorPassDepthCopyDef*>(
+					td->addPass(Ogre::PASS_DEPTHCOPY));  // + copy
+				cp->setDepthTextureCopy("rrt_firstIn", "rtt_final");
 
-				ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
+				ps = AddScene(td);  // + scene
 				ps->setAllLoadActions( LoadAction::Load );
 				ps->mStoreActionColour[0] = StoreAction::StoreOrResolve;
 				ps->mStoreActionDepth = StoreAction::Store; //DontCare;
@@ -505,14 +522,14 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				
 				AddShadows(ps);  // shadows
 				ps->mShadowNodeRecalculation = SHADOW_NODE_REUSE;  // `
-				ps->setUseRefractions("depthBufferNoMsaa", "ssaoApply");  // ~  rtt_first
+				ps->setUseRefractions("depthBufferNoMsaa", "rrt_firstIn");  // ~
 			}
 
 			//  render / Window  ----
 			td = nd->addTargetPass( "rtt_FullOut" );
-			td->setNumPasses( split ? 1 : 1 + 2 );  //* passes
+			td->setNumPasses( (!split ? 2 : 0) + 1 );  //* passes
 			{
-				auto* pq = static_cast<CompositorPassQuadDef*>(td->addPass(PASS_QUAD));
+				auto* pq = AddQuad(td);  // + quad
 				pq->setAllLoadActions( LoadAction::DontCare );
 				
 				pq->mMaterialName = "Ogre/Copy/4xFP32";
@@ -539,7 +556,10 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 	//------------------------------------------------------------------------------------------------------------------------------------------
 	else  //  node  Old  no refract, no depth  - - -  // todo old split screen ..
 	{
-		{	nd = AddNode(sNode);
+		if (split)
+			rtt = AddSplitRTT(si, width, height);
+
+		{	nd = AddNode(sNode+si);  //++ node
 			
 			//  render window input
 			nd->addTextureSourceName("rt_wnd", 0, inp);  // in  wnd
@@ -547,11 +567,11 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			nd->mCustomIdentifier = "old-1";
 			//if( pass->getParentNode()->getDefinition()->mCustomIdentifier == "CustomString" )
 
-			nd->setNumTargetPass( 1 + 2 );  //* targets
+			nd->setNumTargetPass( (!split ? 2 : 0) + 1 );  //* targets
 
 			td = nd->addTargetPass( "rt_wnd" );
 			{
-				ps = static_cast<CompositorPassSceneDef*>(td->addPass(PASS_SCENE));
+				ps = AddScene(td);  // + scene
 				ps->setAllLoadActions( LoadAction::Clear );
 				ps->setAllStoreActions( StoreAction::Store );
 
@@ -562,12 +582,13 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				AddShadows(ps);  // shadows
 			}
 			//  ⏲️ Hud, 🎛️ Gui  --------
-			AddHudGui(td);  // + 2
+			if (!split)
+				AddHudGui(td);  // + 2
 
 			//  workspace
 			{
-				wd = AddWork( sWork+si );
-				wd->connectExternal( 0, nd->getName(), 0 );  // rt_renderwindow
+				wd = AddWork(sWork+si);
+				wd->connectExternal(0, nd->getName(), 0);  // rt_renderwindow
 			}
 		}
 	}
