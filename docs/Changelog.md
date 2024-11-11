@@ -8,9 +8,9 @@ WIP means work in progress, unfinished, still being developed.
   - Apply buttons work for Shadows and Reflections
   - SplitScreen uses RTTs, smaller Hud fonts
     - WIP Refractions work, todo: fix depth, add Old no reflect
-  - WIP Global Illumination ([GI methods](https://ogrecave.github.io/ogre-next/api/latest/_gi_methods.html): IFD+VCT), no terrain
-    - added Gui tab after Effects, has also debug visuals
-  - WIP Started SSAO, not working with FSAA (antialiasing)
+  - Started SSAO, not working with FSAA (antialiasing)
+  - WIP try, Global Illumination ([GI methods](https://ogrecave.github.io/ogre-next/api/latest/_gi_methods.html): IFD+VCT), no terrain
+    - new Gui tab Advanced after Effects, has also debug visuals
 
 ### Version 3.2 - 23.09.2024
 

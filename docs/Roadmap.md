@@ -11,7 +11,6 @@ Marked: `crucial`, **Next or Big**, _Important_.
 #### Effects
 
 **SSAO** fix, fog fade  
-GI for terrain [issue](https://github.com/OGRECave/ogre-next/issues/475)?  
 HDR, bloom?  
 
 **Sounds**: cars, ambient, object hit, info below, new engine? or upd from RoR
@@ -107,8 +106,10 @@ sunrays [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)
 
 🌀 Add [FastNoise](https://github.com/Auburn/FastNoiseLite) for brushes and ter gen  
 
-🌊 Ocean from Terra, **waves**, vehicle deform, fluid *particles*  
 ⏲️ Gauges with shader? [demo](https://www.shadertoy.com/view/7t3fzs)  
+
+🌊 Ocean from Terra, **waves**, vehicle deform, fluid *particles*  
+GI for terrain [issue](https://github.com/OGRECave/ogre-next/issues/475)?  
 
 
 ----
@@ -151,7 +152,8 @@ tire **trails clr**, no uv tex-
 
 Road noise blend, color per vertex  
 grass density as **RTT**, noise, color  
-inside height fog?  
+
+*inside* height fog?  
 noise 3d? _volumetric_ clouds  
 
 ed _tools_: copy roads which combo,all  
@@ -161,13 +163,15 @@ Grass read Hmap - no index, vertex buffers? texture atlas-
 🖥️ finish render system rest options  
 🖱️ Input mouse bind, 👀 VR mode meh-  
 
-Add SR icons to: game & editor for Windows & Linux, and installer  
-?MyGui CMake .lib, Conan  
+*auto* Add SR icons to: game & editor for Windows & Linux, and installer  
+upmerge MyGui ?CMake .lib, Conan  
+
 .mesh LODs test adjust-  
 water refl vis dist? low gets cut bad  
 Fog, 2 colors cam dir fix-  
+
 gpu mem leaks or renders inactive  
-slow track load, shaders, !ter get h, norm, do parallel  
+slow track load, shaders cache big  
 
 
 ----

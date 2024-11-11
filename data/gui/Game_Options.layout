@@ -243,12 +243,12 @@
 
 					<!-- 🌄 GI -->
 					<Widget type="TabItem" skin="" position="2 24 738 472">
-						<Property key="Caption" value="#C0A0B0#{GI}"/>
-						<Widget type="ImageBox" skin="ImageBox" position="660 4 56 56">
+						<Property key="Caption" value="#604050#{Advanced}"/>
+						<!-- <Widget type="ImageBox" skin="ImageBox" position="660 4 56 56">
 							<Property key="ImageCoord" value="640 128 128 128"/>
 							<Property key="Alpha" value="0.4"/>
 							<Property key="ImageTexture" value="gui_icons.png"/>
-						</Widget>
+						</Widget> -->
 						<Widget type="Button" skin="CheckBox" position="28 30 356 24" name="GI">
 							<Property key="Caption" value="#{GI}  #603030 = #{NotDone}"/>
 							<Property key="TextColour" value="1 0.5 0.7"/>
