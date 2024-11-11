@@ -10,8 +10,8 @@ using namespace Ogre;
 
 
 const float SoundBaseMgr::MAX_DISTANCE	 = 500.f;  // 500
-const float SoundBaseMgr::REF_DISTANCE   = 1.0f;   // 1
-const float SoundBaseMgr::ROLLOFF_FACTOR = 0.05f;  // 0.05 0.1
+const float SoundBaseMgr::REF_DISTANCE   = 1.0f;   // 1  7.5 new
+const float SoundBaseMgr::ROLLOFF_FACTOR = 0.05f;  // 0.05 0.1  1.0 new
 
 
 //  Init

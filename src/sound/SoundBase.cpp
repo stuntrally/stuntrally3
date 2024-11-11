@@ -74,6 +74,8 @@ bool SoundBase::isPlaying()
 
 void SoundBase::setEnabled(bool e)
 {
+	if (enabled == e)
+		return;
 	enabled = e;
 	sound_mgr->recomputeSource(source_id, REASON_PLAY, 0.0f, NULL);
 }
@@ -97,30 +99,40 @@ void SoundBase::stop()
 
 void SoundBase::setGain(float gain1)
 {
+	if (gain == gain1)
+		return;
 	gain = gain1;
 	sound_mgr->recomputeSource(source_id, REASON_GAIN, gain, NULL);
 }
 
 void SoundBase::setLoop(bool loop1)
 {
+	if (loop == loop1)
+		return;
 	loop = loop1;
 	sound_mgr->recomputeSource(source_id, REASON_LOOP, loop ? 1.0f : 0.0f, NULL);
 }
 
 void SoundBase::setPitch(float pitch1)
 {
+	if (pitch == pitch1)
+		return;
 	pitch = pitch1;
 	sound_mgr->recomputeSource(source_id, REASON_PTCH, pitch, NULL);
 }
 
 void SoundBase::setPosition(Ogre::Vector3 pos1)
 {
+	if (pos == pos1)
+		return;
 	pos = pos1;
 	sound_mgr->recomputeSource(source_id, REASON_POS, 0.0f, &pos);
 }
 
 void SoundBase::setVelocity(Ogre::Vector3 vel1)
 {
+	if (vel == vel1)
+		return;
 	vel = vel1;
 	sound_mgr->recomputeSource(source_id, REASON_VEL, 0.0f, &vel);
 }
@@ -129,3 +141,4 @@ void SoundBase::seek(float pos)  // [0..1)
 {
 	sound_mgr->recomputeSource(source_id, REASON_SEEK, pos * samples, NULL);
 }
+
