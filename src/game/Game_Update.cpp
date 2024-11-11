@@ -55,8 +55,8 @@ void App::update( float dt )
 	#endif
 
 
-	if (pSet->ssao)
-		UpdateSSAO();  // 🕳️
+	if (pSet->ssao)  //-
+		UpdateSSAO(mCamera);  // 🕳️
 	if (pSet->gi)
 		UpdateGI();  // 🌄
 

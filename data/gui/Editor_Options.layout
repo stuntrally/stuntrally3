@@ -189,8 +189,8 @@
 
 
 						<!-- 🕳️ SSAO -->
-						<Widget type="Button" skin="CheckBox" position="28 70 356 24" name="SSAO">
-							<Property key="Caption" value="#{SSAO}  #704040 = #{NotDone}"/>
+						<Widget type="Button" skin="CheckBox" position="28 70 556 24" name="SSAO">
+							<Property key="Caption" value="#{SSAO} *"/>
 							<Property key="TextColour" value="0.3 0.7 1"/>
 						</Widget>
 
@@ -249,8 +249,8 @@
 							<Property key="Alpha" value="0.4"/>
 							<Property key="ImageTexture" value="gui_icons.png"/>
 						</Widget> -->
-						<Widget type="Button" skin="CheckBox" position="28 30 356 24" name="GI">
-							<Property key="Caption" value="#{GI}  #603030 = #{NotDone}"/>
+						<Widget type="Button" skin="CheckBox" position="28 30 556 24" name="GI">
+							<Property key="Caption" value="#{GI}  #603030 #{Terrain} = #{NotDone}"/>
 							<Property key="TextColour" value="1 0.5 0.7"/>
 						</Widget>
 

@@ -206,7 +206,7 @@ public:
 	Ogre::Pass *mSSAOPass =0;
 	Ogre::Pass *mApplyPass =0;
 	Ogre::TextureGpu *noiseTexture =0;
-	void InitSSAO(), UpdateSSAO();
+	void InitSSAO(), UpdateSSAO(Ogre::Camera *camera);
 
 
 	//  🌄 GI  ----------------

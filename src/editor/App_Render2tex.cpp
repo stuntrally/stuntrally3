@@ -209,7 +209,7 @@ void App::AddListenerRnd2Tex()
 {
 	if (scn->refl.mWsListener)
 	for (int i=0; i < RT_ALL; ++i)
-		rt[i].ws->addListener(scn->refl.mWsListener);  // prv cam refl y?..
+		rt[i].ws->addListener(scn->refl.mWsListener);
 }
 
 

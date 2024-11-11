@@ -565,7 +565,6 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			nd->addTextureSourceName("rt_wnd", 0, inp);  // in  wnd
 
 			nd->mCustomIdentifier = "old-1";
-			//if( pass->getParentNode()->getDefinition()->mCustomIdentifier == "CustomString" )
 
 			nd->setNumTargetPass( (!split ? 2 : 0) + 1 );  //* targets
 
@@ -575,8 +574,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				ps->setAllLoadActions( LoadAction::Clear );
 				ps->setAllStoreActions( StoreAction::Store );
 
-				ps->mProfilingId = "Render Old";
-				ps->mIdentifier = 21002;
+				ps->mProfilingId = "Render Old";  ps->mIdentifier = 21002;
 				// ps->mLastRQ = 199;  //RQG_Fluid-1  // all
 
 				AddShadows(ps);  // shadows

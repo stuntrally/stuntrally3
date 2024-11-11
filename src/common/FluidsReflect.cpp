@@ -61,6 +61,7 @@ void ReflectListener::workspacePreUpdate( CompositorWorkspace *workspace )
 		mPlanarRefl->beginFrame();
 }
 
+//  Update per view
 //-----------------------------------------------------------------------------------
 void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 {
@@ -70,8 +71,11 @@ void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 		static_cast<const CompositorPassSceneDef *>( pass->getDefinition() );
 
 	auto id = passDef->mIdentifier;
+	#if 0
 	auto s = passDef->mProfilingId;
-	//** LogO("ws pass: "+toStr(id)+" "+s);  //toStr(pass->getParentNode()->getId() ));
+	LogO("ws pass: "+toStr(id)+" "+s);  //toStr(pass->getParentNode()->getId() ));
+	// LogO(pass->getParentNode()->getDefinition()->mCustomIdentifier));
+	#endif
 
 	//  Ignore clear etc  ---
 	if (pass->getType() != PASS_SCENE)
@@ -83,6 +87,10 @@ void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 
 	CompositorPassScene *passScene = static_cast<CompositorPassScene *>( pass );
 	Camera *camera = passScene->getCamera();
+
+	
+	if (app->pSet->ssao)  // 💫🕳️
+		app->UpdateSSAO(camera);
 
 #if 0  // todo: upd ter here? for splitscreen
 	///  ⛰️ Terrain  ----?
@@ -401,6 +409,8 @@ void FluidsReflect::CreateBltFluids()
 
 		btCollisionShape* bshp = 0;
 		bshp = new btBoxShape(btVector3(sx,sy,sz));
+		// bshp = new btBoxShape(btVector3(1.,1.,1.));  //?-
+		// bshp->setLocalScaling(btVector3(sx,sy,sz));
 
 		//  solid surf
 		size_t id = SU_Fluid;  if (fp.solid)  id += fp.surf;
