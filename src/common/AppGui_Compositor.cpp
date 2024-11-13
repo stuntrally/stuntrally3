@@ -77,8 +77,9 @@ using namespace Ogre;
 
 const String
 	sNode = "SR3_New", sWork = "SR3_New_WS",  // Old, no refract
-	s1_first = "SR3_1_Refract_first-",  // new Refract nodes
-	s2_depth = "SR3_2_DepthResolve-",
+	s1_first = "SR3_1_Refract_first-",  // new
+	s2_depth = "SR3_2_DepthResolve-",  // for refract
+	s2_half  = "SR3_2_DepthHalf-",  // for ssao
 	s3_Final = "SR3_3_Refract_Final-",
 	sCombine = "SR3_Combine", sCombineWS = "SR3_Combine_WS";  // new in SplitScreen, last
 
@@ -147,8 +148,8 @@ CompositorPassSceneDef* AppGui::AddScene(CompositorTargetDef* td)
 
 
 //  add Rtv
-RenderTargetViewDef* AppGui::AddRtv(Ogre::CompositorNodeDef* nd,
-	String name, String color, String depth, String color2)
+RenderTargetViewDef* AppGui::AddRtv(CompositorNodeDef* nd,
+	String name, String color, String depth, String color2, String color3)
 {
 	auto* rtv = nd->addRenderTextureView( name );
 	rtv->colourAttachments.clear();
@@ -159,6 +160,10 @@ RenderTargetViewDef* AppGui::AddRtv(Ogre::CompositorNodeDef* nd,
 	}
 	if (!color2.empty())
 	{	at.textureName = color2;
+		rtv->colourAttachments.push_back(at);
+	}
+	if (!color3.empty())
+	{	at.textureName = color3;
 		rtv->colourAttachments.push_back(at);
 	}
 	if (!depth.empty())
@@ -225,7 +230,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 	//  log
 	// pSet->g.water_refract = 1;  //! test
 	const bool refract = pSet->g.water_refract, ssao = pSet->ssao;
-	const bool split = splits > 1;
+	const bool split = splits > 1, msaa = mWindow->getSampleDescription().isMultisample();
 
 	LogO("CC+# Create Compositor   "+getWsInfo());
 	if (view >= 50)
@@ -316,8 +321,6 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 
 				td = nd->addTextureDefinition( "depthBuffer" );
 				td->format = PFG_D32_FLOAT;  td->fsaa = "";  // auto
-				// td->depthBufferFormat = PFG_D32_FLOAT;  //-
-				// td->preferDepthTexture = 1;
 				// td->textureFlags = TextureFlags::RenderToTexture;  //- no discard between frames
 
 				if (ssao)  // ssao + 6
@@ -325,9 +328,13 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 					td->format = PFG_R10G10B10A2_UNORM;  td->fsaa = "";  // auto
 					//td->textureFlags = TextureFlags::RenderToTexture | TextureFlags::MsaaExplicitResolve;
 					td->textureFlags |= TextureFlags::MsaaExplicitResolve;
+
+					td = nd->addTextureDefinition( "gFog" );
+					td->format = PFG_R32_FLOAT;  td->fsaa = "1";  // off
+					td->textureFlags |= TextureFlags::MsaaExplicitResolve;
 				}
-				auto* rtv = AddRtv(nd, "rtt_first", "rtt_first", "depthBuffer", ssao ? "gNormals" : "");
-				if (ssao)
+				AddRtv(nd, "rtt_first", "rtt_first", "depthBuffer", ssao ? "gNormals" : "", ssao ? "gFog" : "");
+				if (ssao)  // todo: move, node ..
 				{
 					td = nd->addTextureDefinition( "depthCopy" );
 					td->widthFactor = 0.5f;  td->heightFactor = 0.5f;  // half
@@ -368,6 +375,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				ps->mStoreActionColour[0] = StoreAction::StoreOrResolve;
 				ps->mStoreActionDepth = StoreAction::Store;
 				ps->mStoreActionStencil = StoreAction::DontCare;
+				// ps->lod_update_list off
 
 				ps->mProfilingId = "Render First-"+si;  // "Opaque + Regular Transparents"
 				ps->mIdentifier = 10001;
@@ -439,6 +447,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 					pq->mMaterialName = "SSAO/Apply";  pq->mProfilingId = "SSAO Apply";  // input
 					pq->addQuadTextureSource( 0, "blurVertical" );
 					pq->addQuadTextureSource( 1, "rtt_first" );
+					pq->addQuadTextureSource( 2, "gFog" );
 					// pq->addQuadTextureSource( 0, "ssaoTexture" );  //* test noisy
 					// pq->addQuadTextureSource( 1, "gNormals" );  //* test normals
 				}
@@ -447,6 +456,39 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			nd->mapOutputChannel(0, ssao ? "ssaoApply" : "rtt_first");
 			nd->mapOutputChannel(1, "depthBuffer");
 		}
+
+		/* 2a  SSAO_DepthDownsampler  ---------- */
+		/*if (ssao)
+		{	nd = AddNode(s2_half+si);  //++ node
+			
+			nd->addTextureSourceName("gBufferDB", 0, inp);  //  >in
+
+			nd->setNumLocalTextureDefinitions(1);  //* textures
+			{
+				auto* td = nd->addTextureDefinition( "depthHalf" );
+				td->widthFactor = 0.5f;  td->heightFactor = 0.5f;  // half
+				td->format = PFG_D32_FLOAT;  td->fsaa = "1";  // off
+
+				AddRtv(nd, "depthHalf", "depthHalf", "");
+			}
+			nd->mCustomIdentifier = "2-depth-"+si;
+
+			nd->setNumTargetPass(1);  //* targets
+			td = nd->addTargetPass( "depthHalf" );
+			td->setNumPasses(1);  //* passes
+			{
+				auto* pq = AddQuad(td);  // + quad
+				pq->setAllLoadActions( LoadAction::DontCare );
+				// pq->setAllStoreActions( StoreAction::DontCare );
+				// pq->mStoreActionColour[0] = StoreAction::StoreOrResolve;
+
+				pq->mMaterialName = msaa ? "Ogre/Depth/DownscaleMax_Subsample0" : "material Ogre/Depth/DownscaleMax";
+				pq->mProfilingId = "Depth Half";
+				pq->addQuadTextureSource( 0, "gBufferDB" );  // input quad
+			}
+			nd->setNumOutputChannels(1);  //  out>
+			nd->mapOutputChannel(0, "resolvedDB");
+		}*/
 
 		/* 2  s2_depth  resolve  ---------- */
 		{	nd = AddNode(s2_depth+si);  //++ node

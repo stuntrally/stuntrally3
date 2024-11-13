@@ -2,6 +2,7 @@
 
 vulkan_layout( ogre_t0 ) uniform texture2D ssaoTexture;
 vulkan_layout( ogre_t1 ) uniform texture2D sceneTexture;
+vulkan_layout( ogre_t2 ) uniform texture2D fogTexture;
 
 vulkan( layout( ogre_s0 ) uniform sampler samplerState0 );
 
@@ -22,10 +23,13 @@ void main()
 {
 	float ssao = texture( vkSampler2D( ssaoTexture, samplerState0 ), inPs.uv0 ).x;
 
-	ssao = clamp(pow(ssao, powerScale), 0.0, 1.0);
+	ssao = clamp( pow(ssao, powerScale), 0.0, 1.0);
 
 	vec4 col = texture( vkSampler2D( sceneTexture, samplerState0 ), inPs.uv0 );
-	
-	//fragColour = vec4( ssao, ssao, ssao, 1.0 ); //Use this if you want SSAO pass only
-	fragColour = vec4( col.xyz * ssao, col.a );
+	float fog = texture( vkSampler2D( fogTexture, samplerState0 ), inPs.uv0 ).x;
+
+	// fragColour = vec4( ssao, ssao, ssao, 1.0 );  // test ssao only
+	// fragColour = vec4( ssao, ssao, fog, 1.0 );  // test fog, ssao  yellow-blue
+
+	fragColour = vec4( mix(col.xyz, col.xyz * ssao, fog), col.a );
 }

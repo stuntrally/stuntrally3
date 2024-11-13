@@ -1,3 +1,15 @@
+@piece( SR3_OutFog4SSAO )
+
+    @property( hlms_gen_normals_gbuffer )
+        //**  fog fade for ssao
+        @property( hlms_fog && !sky )
+            outPs_fog = fogWeight * heightMul;
+        @else
+            outPs_fog = 0.0;
+        @end
+    @end
+@end
+
 @piece( SR3_ApplyFog )
 
     @property( hlms_fog && !sky )

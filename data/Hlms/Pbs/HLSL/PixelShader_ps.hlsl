@@ -21,6 +21,7 @@ struct PS_INPUT
 @property( !hlms_render_depth_only )
 	@property( hlms_gen_normals_gbuffer )
 		#define outPs_normals outPs.normals
+		#define outPs_fog outPs.fog
 	@end
 	@property( hlms_prepass )
 		#define outPs_shadowRoughness outPs.shadowRoughness

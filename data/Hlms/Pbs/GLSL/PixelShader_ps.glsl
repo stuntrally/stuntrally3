@@ -15,6 +15,8 @@ layout(std140) uniform;
 		@property( hlms_gen_normals_gbuffer )
 			#define outPs_normals outNormals
 			layout(location = @counter(rtv_target)) out midf4 outNormals;
+			#define outPs_fog outFog
+			layout(location = @counter(rtv_target)) out float outFog;
 		@end
 		@property( hlms_prepass )
 			#define outPs_shadowRoughness outShadowRoughness

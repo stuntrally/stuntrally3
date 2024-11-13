@@ -435,6 +435,8 @@
 	@property( !hlms_render_depth_only )
 		@property( !hlms_prepass )
 
+			@insertpiece( SR3_OutFog4SSAO )
+
 			//**  emissive terrain
 			@property( emissive_terrain && !hlms_shadowcaster && hlms_lights_directional )
 				// material.kD.xyz  // par..

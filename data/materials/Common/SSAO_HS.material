@@ -291,6 +291,7 @@ fragment_program SSAO_Apply_ps_GLSL glsl
 	{
 		param_named ssaoTexture int 0
 		param_named sceneTexture int 1
+		param_named fogTexture int 2
 	}
 }
 
@@ -338,7 +339,6 @@ material SSAO/Apply
 			vertex_program_ref Ogre/Compositor/Quad_vs
 			{
 			}
-
 			fragment_program_ref SSAO_Apply_ps
 			{
 			}
@@ -348,8 +348,12 @@ material SSAO/Apply
 				filtering			none
 				tex_address_mode	clamp
 			}
-			
 			texture_unit sceneTexture
+			{
+				filtering			none
+				tex_address_mode	clamp
+			}
+			texture_unit fogTexture
 			{
 				filtering			none
 				tex_address_mode	clamp

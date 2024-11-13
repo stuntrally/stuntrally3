@@ -986,6 +986,9 @@
 
 	@property( !hlms_render_depth_only )
 		@property( !hlms_prepass )
+
+			@insertpiece( SR3_OutFog4SSAO )
+
 			@property( hlms_normal || hlms_qtangent )
 
 				//**  gamma  --

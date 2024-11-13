@@ -169,8 +169,10 @@ public:
 	Ogre::CompositorWorkspaceDef* AddWork(Ogre::String name);
 	Ogre::CompositorPassQuadDef*  AddQuad(Ogre::CompositorTargetDef* td);
 	Ogre::CompositorPassSceneDef* AddScene(Ogre::CompositorTargetDef* td);
+	
 	Ogre::RenderTargetViewDef*    AddRtv(Ogre::CompositorNodeDef* nd,
-		Ogre::String name, Ogre::String colour, Ogre::String depth="", Ogre::String colour2="");
+		Ogre::String name, Ogre::String colour, Ogre::String depth="",
+		Ogre::String colour2="", Ogre::String colour3="");
 
 	Ogre::TextureGpu* AddSplitRTT(Ogre::String id, float width, float height);
 	void AddHudGui(Ogre::CompositorTargetDef* td);
