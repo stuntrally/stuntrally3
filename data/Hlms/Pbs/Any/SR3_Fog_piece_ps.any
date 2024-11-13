@@ -3,7 +3,7 @@
     @property( hlms_gen_normals_gbuffer )
         //**  fog fade for ssao
         @property( hlms_fog && !sky )
-            outPs_fog = fogWeight * heightMul;
+            outPs_fog = fogWeight * heightMul * fluidHeight;
         @else
             outPs_fog = 0.0;
         @end

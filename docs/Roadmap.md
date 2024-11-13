@@ -10,7 +10,7 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 #### Effects
 
-**SSAO** fix, fog fade  
+**SSAO** fix FSAA, `rqg, depth`  
 HDR, bloom?  
 
 **Sounds**: cars, ambient, object hit, info below, new engine? or upd from RoR
