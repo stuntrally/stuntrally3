@@ -145,7 +145,7 @@ void AppGui::createPcfShadowNode()
 	ShadowNodeHelper::createShadowNodeWithSettings(
 		mgr, rs->getCapabilities(),
 		// esm ? chooseEsmShadowNode() :
-		"ShadowMapFromCodeShadowNode", spv,
+		csShadow, spv,
 		false,  // esm ?, // fixme ..
 		size2,  // pointLight CubemapRes = 1024u,
 		0.95f,  // pssmLambda = 0.95f,
@@ -156,7 +156,7 @@ void AppGui::createPcfShadowNode()
 		VisibilityFlags::RESERVED_VISIBILITY_FLAGS,  // visibilityMask
 		1.5f,   // xyPadding = 1.5f,
 		RQG_Sky,  		// firstRq = 0u,
-		RQG_Fluid-1
+		RQG_Fluid-1  //**  par
 		// RQG_PipeGlass	// lastRq = 255u
 	);
 	mSceneMgr->setShadowDirectionalLightExtrusionDistance( pSet->g.shadow_dist );
@@ -291,7 +291,7 @@ CompositorWorkspace *AppGui::setupShadowCompositor()
 		assert( dynamic_cast<CompositorPassSceneDef *>( passes[0] ) );
 		CompositorPassSceneDef *passSceneDef =
 			static_cast<CompositorPassSceneDef *>( passes[0] );
-		passSceneDef->mShadowNode = "ShadowMapFromCodeShadowNode";
+		passSceneDef->mShadowNode = csShadow;
 
 		createPcfShadowNode();
 		// createEsmShadowNodes();
@@ -363,7 +363,7 @@ void AppGui::setupShadowNode( bool forEsm )
 	CompositorPassSceneDef *ps =
 		static_cast<CompositorPassSceneDef *>( passes[0] );
 
-	if( forEsm && ps->mShadowNode == "ShadowMapFromCodeShadowNode" )
+	if( forEsm && ps->mShadowNode == csShadow )
 	{
 		destroyShadowMapDebugOverlays();
 		mGraphicsSystem->stopCompositor();
@@ -371,11 +371,11 @@ void AppGui::setupShadowNode( bool forEsm )
 		mGraphicsSystem->restartCompositor();
 		createShadowMapDebugOverlays();
 	}
-	else if( !forEsm && ps->mShadowNode != "ShadowMapFromCodeShadowNode" )
+	else if( !forEsm && ps->mShadowNode != csShadow )
 	{
 		destroyShadowMapDebugOverlays();
 		mGraphicsSystem->stopCompositor();
-		ps->mShadowNode = "ShadowMapFromCodeShadowNode";
+		ps->mShadowNode = csShadow;
 		mGraphicsSystem->restartCompositor();
 		createShadowMapDebugOverlays();
 	}
@@ -404,7 +404,7 @@ void AppGui::createShadowMapDebugOverlays()
 	}
 
 	const String shadowNodeName =
-		isUsingEsm ? chooseEsmShadowNode() : "ShadowMapFromCodeShadowNode";
+		isUsingEsm ? chooseEsmShadowNode() : csShadow;
 
 	CompositorShadowNode *shadowNode = workspace->findShadowNode( shadowNodeName );
 	const CompositorShadowNodeDef *shadowNodeDef = shadowNode->getDefinition();

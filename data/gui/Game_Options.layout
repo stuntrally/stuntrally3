@@ -250,7 +250,7 @@
 							<Property key="ImageTexture" value="gui_icons.png"/>
 						</Widget> -->
 						<Widget type="Button" skin="CheckBox" position="28 30 356 24" name="GI">
-							<Property key="Caption" value="#{GI}  #603030 #{Terrain} = #{NotDone}"/>
+							<Property key="Caption" value="#{GI} *  #603030 = #{NotDone}: #{Terrain}"/>
 							<Property key="TextColour" value="1 0.5 0.7"/>
 						</Widget>
 
