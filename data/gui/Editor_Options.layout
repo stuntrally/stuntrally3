@@ -397,7 +397,7 @@
 					<Widget type="TabItem" skin="" position="2 24 694 272">
 						<Property key="Caption" value="#FFD8B0#{Reflections}"/>
 						<Widget type="Button" skin="Button" position="32 240 200 26" layer="Back" name="ApplyRefl">
-							<Property key="Caption" value="#{Apply}"/>
+							<Property key="Caption" value="#{Apply} ^"/>
 							<Property key="Colour" value="1.0 0.9 0.7"/>
 							<Property key="TextColour" value="1.0 0.9 0.7"/>
 						</Widget>

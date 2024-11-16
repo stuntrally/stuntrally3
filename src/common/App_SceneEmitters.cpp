@@ -7,10 +7,10 @@
 #include "CScene.h"
 #ifdef SR_EDITOR
 	#include "CApp.h"
-	#include "settings.h"
 #else
 	#include "CGame.h"
 #endif
+#include "settings.h"
 #include <OgreCommon.h>
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
@@ -26,6 +26,9 @@ void CScene::CreateEmitters(bool force)
 {
 #ifdef SR_EDITOR
 	if (!app->pSet->bEmitters && !force)
+		return;
+#else	// game
+	if (!app->pSet->particles)
 		return;
 #endif
 	LogO("C--- create Emitters");
