@@ -26,31 +26,31 @@ const Ogre::uint8
 	RQ_GlassV1  = 105,
 	RQ_OVERLAY  = 220,  // 200
 
-	RQG_Sky          = 5,
+	RQG_Sky          = 5,  // ⛅ sky
 
-	RQG_Terrain      = 11,
-	RQG_Horizon1     = 12,  // horiz after terrain to skip most depth
+	RQG_Terrain      = 11,  // ⛰️ main terrain
+	RQG_Horizon1     = 12,  // 🏔️ horiz after terrain, to skip most depth
 	RQG_Horizon2     = 13,
 	
-	RQG_Road         = RQ_7,
-	RQG_RoadBlend    = RQ_7 +1,
+	RQG_Road         = RQ_7,  // 🛣️ roads, rivers, walls
+	RQG_RoadBlend    = RQ_7 +1,  // road blend alpha segs
 
-	RQG_Fluid        = 210,  //RQ_7 +4,  // water etc
-	RQG_Refract      = 211,
-	RQG_Grass        = RQ_7 +5,  // veget grass
-
-	RQG_PipeGlass    = RQ_GlassV2 +2,   // glass pipe road`
-	RQG_AlphaVegObj  = RQ_GlassV2 +3,   // veget,objects transparent
+	RQG_Fluid        = 210,  // 🌊 water,mud etc, old no refract  //RQ_7 +4
+	RQG_Refract      = 211,  // 🪩 refracted
 	
-	RQG_CarGlass     = RQ_GlassV2 +4,   // 
+	RQG_Grass        = RQ_7 +5,  // 🌿 veget grass
+	RQG_CarTrails    = RQ_7 +6,  // v1 trails after glass  //RQ_GlassV1
+
+	RQG_PipeGlass    = RQ_GlassV2 +2,   // ⭕ glass pipe road
+	RQG_AlphaVegObj  = RQ_GlassV2 +3,   // 💎 veget,objects transparent
+	
+	RQG_CarGlass     = RQ_GlassV2 +4,   // 🚗
 	RQG_Ghost        = RQ_GlassV2 +7,   // markers, debug
 
-	RQG_CarTrails    = RQ_7 +6,  //RQ_GlassV1,      // v1 trails after glass
 	RQG_CarParticles = RQ_GlassV1 +3,   // v1 particles after trails
-
 	RQG_Weather      = RQ_GlassV1 +5,   // v1 particles rain etc
 
-	RQG_RoadMarkers  = RQ_OVERLAY,  // ed
+	RQG_RoadMarkers  = RQ_OVERLAY,  // ed  -- ⏲️ Hud start
 	RQG_Hud1         = RQ_OVERLAY +1,
 	RQG_Hud2         = RQ_OVERLAY +2,
 	RQG_Hud3         = RQ_OVERLAY +3;
