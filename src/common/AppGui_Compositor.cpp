@@ -33,42 +33,70 @@
 using namespace Ogre;
 
 
-/*  Legend:   [] Single 🖥️   ++ SplitScreen 👥
+/*  Legend:
+	[]  Single 🖥️
+	++  SplitScreen 👥
+	S   SSAO only 🕳️
+	M   MSAA only (FSAA)
 
-1 s1_first  [Refract_first]
+
+0 S  s0_ssao  [prepare] for ssao 🕳️
+	tex rtt_ssao  \   clr0 unused
+	tex depthHalf |   clr1  (all half size, no fsaa
+	tex gNormals  } rtv
+	tex gFog     /    clr2
+
+	target rtt_ssao
+		pass Scene  opaque only
+
+	out0> gNormals
+	out1> depthHalf
+	out2> gFog
+
+
+1 s1_first  [first]
+	S  in0> gNormals
+	S  in1> depthHalf
+	S  in2> gFog
 	tex depthBuffer \rtv
 	tex rtt_first   /
+
 	target rtt_first
-		pass Scene  opaque,transp
+		pass Scene  opaque,transp ⛰️
 	out0> rtt_first
 	out1> depthBuffer
 
-2 s2_depth  [DepthResolve]
+2 M  s2_depth  [DepthResolve]
 	>in0 gBufferDB  <- depthBuffer
 	tex resolvedDB
+
 	target resolvedDB
 		pass quad  resolve gBufferDB
 	out0> resolvedDB
 
-3 s3_Final  [Refract_Final]
+3 s3_Final  [Final] 🪩
 	>in0 rtt_first    
 	>in1 depthBuffer \
-	>in2 depthBufferNoMsaa  <- resolvedDB
+	>in2 depthBufferNoMsaa  <- resolvedDB M  or depthBuffer if no msaa
 	>in3 rtt_FullOut     or  [] rt_renderwindow
 	tex rtt_final    /rtv depthBuffer
+
 	target rtt_final
 		pass copy    rtt_first to rtt_final
-		pass Scene   Refractive Fluids
+		pass Scene   🌊 Refractive Fluids
 			refractions: depthBufferNoMsaa rtt_first
+
 	target rtt_FullOut   or  [] rt_renderwindow
 		pass quad  copy rtt_final to rtt_FullOut or wnd
 	[]	pass scene  Hud
 	[]	pass scene  Gui
 
-5 ++ sCombine  [Combine]
+
+5 ++  sCombine  [Combine]
 	>in0 rt_renderwindow
 	>in1 rtt_FullIn1  <- rtt_FullOut 1
 	>in2 rtt_FullIn2  <- rtt_FullOut 2  etc more plrs
+
 	target rt_renderwindow
 		pass quad copy  rtt_FullIn to wnd
 	++	pass Hud
@@ -77,11 +105,10 @@ using namespace Ogre;
 
 const String
 	sNode = "SR3_New", sWork = "SR3_New_WS",  // Old, no refract
-	s0_ssao  = "SR3_0_Ssao_prepare-",  // 0
-	s1_first = "SR3_1_Refract_first-",  // new
-	s2_depth = "SR3_2_DepthResolve-",  // for refract
-	s2_half  = "SR3_2_DepthHalf-",  // for ssao
-	s3_Final = "SR3_3_Refract_Final-",
+	s0_ssao  = "SR3_0_prepare-", // 0 prepare 4 ssao
+	s1_first = "SR3_1_First-",   // 1 new  scene  opaque & glass
+	s2_depth = "SR3_2_depth-",   // 2 for refract  fluids only
+	s3_Final = "SR3_3_Final-",   // 3 last
 	sCombine = "SR3_Combine", sCombineWS = "SR3_Combine_WS";  // new in SplitScreen, last
 
 
@@ -312,7 +339,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 		if (split)
 			rtt = AddSplitRTT(si, width, height);
 		
-		/* 0  s0_ssao  Pre render  -------------------- */
+	/* 0  s0_ssao  Pre render  -------------------- */
 		if (ssao)
 		{	nd = AddNode(s0_ssao+si);  //++ node
 			
@@ -356,8 +383,8 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				ps->mProfilingId = "Pre Ssao-"+si;  // Opaque only, no pipe glass
 				ps->mIdentifier = 10001;
 				ps->mFirstRQ = RQG_Sky+1;  // no sky
-				ps->mLastRQ = RQG_Grass+1;
-				ps->setVisibilityMask(RV_view);
+				ps->mLastRQ = RQG_Grass+1;  // todo: add car glass, particles
+				ps->setVisibilityMask(RV_view);  // -..
 				
 				ps->mGenNormalsGBuf = true;
 				// no shadows
@@ -368,7 +395,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			nd->mapOutputChannel(2, "gFog" );
 		}
 
-		/* 1  s1_First  Render  -------------------- */
+	/* 1  s1_First  Render  -------------------- */
 		{	nd = AddNode(s1_first+si);  //++ node
 
 			if (ssao)
@@ -493,8 +520,8 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			nd->mapOutputChannel(1, "depthBuffer");
 		}
 
-		/* 2  s2_depth  resolve  ---------- */
-		// if (msaa)  // todo: ..
+	/* 2  s2_depth  resolve  ---------- */
+		if (msaa)
 		{	nd = AddNode(s2_depth+si);  //++ node
 			
 			nd->addTextureSourceName("gBufferDB", 0, inp);  //  >in
@@ -502,9 +529,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			nd->setNumLocalTextureDefinitions(1);  //* textures
 			{
 				auto* td = nd->addTextureDefinition( "resolvedDB" );
-				td->format = PFG_R32_FLOAT;  // D32 -> R32
-				td->fsaa = "1";  // off
-
+				td->format = PFG_R32_FLOAT;  td->fsaa = "1";  // D32 -> R32  off
 				AddRtv(nd, "resolvedDB", "resolvedDB", "");
 			}
 			nd->mCustomIdentifier = "2-depth-"+si;
@@ -527,7 +552,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			nd->mapOutputChannel(0, "resolvedDB");
 		}
 
-		/* 3  s3_Final  Refractive  ------------------------------  */
+	/* 3  s3_Final  🪩 Final Refractive  ------------------------------  */
 		{	nd = AddNode(s3_Final+si);  //++ node
 			
 			nd->addTextureSourceName("rtt_FullOut", 0, inp);  // or rt_renderwindow
@@ -592,15 +617,20 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 		{
 			wd = AddWork( sWork+si );
 			wd->connectExternal( 0, s3_Final+si, 0 );  // rtt_FullOut  or  rt_renderwindow
+			//  ssao pre render
 			if (ssao)
-			{	wd->connect( s0_ssao+si, 0, s1_first+si, 0 );  // gNormals  ssao pre render
+			{	wd->connect( s0_ssao+si, 0, s1_first+si, 0 );  // gNormals
 				wd->connect( s0_ssao+si, 1, s1_first+si, 1 );  // depthHalf
 				wd->connect( s0_ssao+si, 2, s1_first+si, 2 );  // gFog
 			}
+			//  main
 			wd->connect( s1_first+si, 0, s3_Final+si, 1 );  // rtt_first
 			wd->connect( s1_first+si, 1, s3_Final+si, 2 );  // depthBuffer
-			wd->connect( s1_first+si, 1, s2_depth+si, 0 );  // depthBuffer
-			wd->connect( s2_depth+si, 0, s3_Final+si, 3 );  // resolvedDepth -> depthBufferNoMsaa
+			if (msaa)
+			{	wd->connect( s1_first+si, 1, s2_depth+si, 0 );  // depthBuffer -> gBufferDB
+				wd->connect( s2_depth+si, 0, s3_Final+si, 3 );  // resolvedDepth -> depthBufferNoMsaa
+			}else
+				wd->connect( s1_first+si, 1, s3_Final+si, 3 );  // depthBuffer -> depthBufferNoMsaa
 		}
 	}
 	
