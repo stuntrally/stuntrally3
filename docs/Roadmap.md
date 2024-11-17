@@ -10,16 +10,10 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 #### Effects
 
-**SSAO** fix FSAA, `rqg, depth`  
-HDR, bloom?  
-
 **Sounds**: cars, ambient, object hit, info below, new engine? or upd from RoR
 
-
-new road particles  
-new **road** textures, detail mix, vert clr blend
-
-new *Stats* tab, completed: tracks, challs, colls, etc
+**HDR**, bloom  
+soft particles  
 
 #### Big
 
@@ -35,6 +29,11 @@ test, move to bullet3 ?
 #### New
 
 less poly, own collision *_p.mesh for veget/obj/bld, e.g. shrooms on Cloud etc
+
+new road particles  
+new **road** textures, detail mix, vert clr blend
+
+new *Stats* tab, completed: tracks, challs, colls, etc
 
 hud new best time show, win particles-  
 

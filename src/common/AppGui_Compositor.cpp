@@ -365,8 +365,8 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				td->widthFactor = 0.5f;  td->heightFactor = 0.5f;  // half
 				td->format = PFG_R32_FLOAT;  td->fsaa = "1";  // r
 
-				// AddRtv(nd, "rtt_ssao", "rtt_ssao", "depthHalf", "gNormals", "gFog");
-				AddRtv(nd, "rtt_ssao", "", "depthHalf", "gNormals", "gFog");
+				AddRtv(nd, "rtt_ssao", "rtt_ssao", "depthHalf", "gNormals", "gFog");
+				// AddRtv(nd, "rtt_ssao", "", "depthHalf", "gNormals", "gFog");  //bugs-
 			}
 			nd->mCustomIdentifier = "0-ssao-pre-"+si;
 			
