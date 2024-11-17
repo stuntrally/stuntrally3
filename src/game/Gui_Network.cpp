@@ -540,7 +540,7 @@ void CGui::chatSendMsg()
 	edNetChatMsg->setCaption("");
 }
 
-void CGui::evEdNetGameName(EditPtr ed)
+void CGui::evEdNetGameName(Ed ed)
 {
 	//  game name text changed
 	pSet->netGameName = ed->getCaption();
@@ -548,7 +548,7 @@ void CGui::evEdNetGameName(EditPtr ed)
 	uploadGameInfo();
 }
 
-void CGui::evEdNetPassword(EditPtr)
+void CGui::evEdNetPassword(Ed)
 {
 	//  password changed
 	if (app->mLobbyState != HOSTING || !app->mMasterClient || !app->mClient)  return;
@@ -559,23 +559,23 @@ void CGui::evEdNetPassword(EditPtr)
 
 //  net settings
 
-void CGui::evEdNetNick(EditPtr ed)
+void CGui::evEdNetNick(Ed ed)
 {
 	pSet->nickname = ed->getCaption();
 	if (app->mClient)  app->mClient->updatePlayerInfo(pSet->nickname, sListCar);
 }
 
-void CGui::evEdNetServerIP(EditPtr ed)
+void CGui::evEdNetServerIP(Ed ed)
 {
 	pSet->master_server_address = ed->getCaption();
 }
 
-void CGui::evEdNetServerPort(EditPtr ed)
+void CGui::evEdNetServerPort(Ed ed)
 {
 	pSet->master_server_port = s2i(ed->getCaption());
 }
 
-void CGui::evEdNetLocalPort(EditPtr ed)
+void CGui::evEdNetLocalPort(Ed ed)
 {
 	pSet->local_port = s2i(ed->getCaption());
 }

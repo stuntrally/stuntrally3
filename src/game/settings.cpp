@@ -170,10 +170,10 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 
 	//  🔧 tweak tracks
 	string twk_trk = "tweak_tracks.";
-	if (w)
+	if (w)  // write
 	{	for (auto t : dev_tracks)
 			Param(c,w, twk_trk + t.first, t.second);
-	}else
+	}else  // read
 	{	string trk;  char h;
 		dev_tracks.clear();
 		for (h = '0'; h <= '9'; ++h)  if (c.GetParam(twk_trk + h, trk))  dev_tracks[h] = trk;

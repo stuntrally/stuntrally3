@@ -4,25 +4,19 @@
 #include "Gui_Def.h"
 #include "GuiCom.h"
 #include "paths.h"
-#include "game.h"
-#include "Road.h"
 #include "CGame.h"
-#include "CHud.h"
 #include "CGui.h"
 #include "MultiList2.h"
 #include "Slider.h"
 #include "Gui_Popup.h"
-#include "CData.h"
 #include "TracksXml.h"
 
-// #include <OgreRoot.h>
-// #include <OgreWindow.h>
 #include <OgreOverlay.h>
 #include <OgreWindow.h>
 #include <MyGUI.h>
 #include <MyGUI_Ogre2Platform.h>
 using namespace MyGUI;
-// using namespace Ogre;
+//using namespace Ogre;
 using namespace std;
 
 
@@ -299,22 +293,35 @@ void CGui::InitGui()
 	ck= &ckDevKeys;		ck->Init("DevKeys",		&pSet->dev_keys);
 	sv= &svCarPrv;		sv->Init("CarPrv",		&gPar.carPrv, 0, 3);
 
-	const char* ch = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	int len = strlen(ch);
+	//  quick Tracks  --------
+	vector<string> vt;
+	for (const auto& ti : data->tracks->trks)
+		// if (ti.test || ti.testC)  // only Test-
+		{	auto sc = gcom->GetSceneryColor(ti.name);
+			vt.push_back(sc + ti.name);
+		}
+
+	const char* ch = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXY";  // no Z
+	int len = strlen(ch), h = app->mWindow->getHeight()/2;   // can go too much- 630-
 	for (int i=0; i < len; ++i)
 	{
 		string s = "DevTrk";
 		char c = ch[i];
 		s += string{c};
-		Cmb cb = fCmb(s);
-		if (cb->eventComboAccept.empty())
-			cb->eventComboAccept += newDelegate(this, &CGui::comboDevTrk);
 
-		// cb->addItem("");
+		Cmb(cmb, s, comboDevTrk);
+		cmb->setMaxListLength(h);
+
+		cmb->addItem("");
+		for (const auto& t : vt)
+			cmb->addItem(t);
+	
 		auto f = pSet->dev_tracks.find(c);
 		if (f != pSet->dev_tracks.end())
-			cb->setCaption((*f).second);
-	}
+		{	string t = (*f).second;  auto sc = gcom->GetSceneryColor(t);
+			cmb->setCaption(sc + t);
+	}	}
+
 	//  simulation
 	txSimDetail = fTxt("SimDetail");
 	sv= &svSimQuality;

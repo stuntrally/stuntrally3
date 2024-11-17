@@ -584,11 +584,16 @@ void CGui::btnTweakTireReset(WP)
 }
 
 
-void CGui::comboDevTrk(Cmb wp,  size_t val)
+//  tracks cmb
+void CGui::comboDevTrk(Cmb wp, size_t val)
 {
 	string s = wp->getName();
-	s = s.substr(6,1);  // "DevTrk_"
+	s = s.substr(6,1);  // "DevTrk"
 	char c = s[0];
-	pSet->dev_tracks[c] = wp->getCaption();
-	LogO(s+" "+wp->getCaption());
+	
+	if (wp->getItemNameAt(val).length() < 7)
+		pSet->dev_tracks[c] = "";
+	else
+		pSet->dev_tracks[c] = wp->getItemNameAt(val).substr(7);
+	LogO("DevTrk: " +s+" = "+pSet->dev_tracks[c]);
 }
