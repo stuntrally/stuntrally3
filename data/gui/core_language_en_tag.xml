@@ -941,7 +941,7 @@
 	<!--  Game Input  General replay  -->
 	<Tag name="InputRplCtrl1">Backspace - show/hide controls (hold ctrl to use mouse)</Tag>
 	<Tag name="InputRplCtrl2">P - pause/unpause replay</Tag>
-	<Tag name="InputRplCtrl3">[ , ] - wind backwards/forwards (shift - slow, ctrl,alt - fast)</Tag>
+	<Tag name="InputRplCtrl3">Down, Up - wind backwards/forwards (shift - slow, ctrl,alt - fast)</Tag>
 	<Tag name="InputRplCtrl4">K, L - change camera view to other player</Tag>
 
 	<!--  Game Input  Tweak edit  -->
