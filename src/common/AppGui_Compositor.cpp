@@ -55,9 +55,9 @@ using namespace Ogre;
 
 
 1 s1_first  [first]
-	S  in0> gNormals
-	S  in1> depthHalf
-	S  in2> gFog
+ S	in0> gNormals
+ S	in1> depthHalf
+ S	in2> gFog
 	tex depthBuffer \rtv
 	tex rtt_first   /
 
@@ -66,7 +66,7 @@ using namespace Ogre;
 	out0> rtt_first
 	out1> depthBuffer
 
-2 M  s2_depth  [DepthResolve]
+2 M  s2_depth  [Depth Resolve]
 	>in0 gBufferDB  <- depthBuffer
 	tex resolvedDB
 
@@ -257,7 +257,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 	const auto inp = TextureDefinitionBase::TEXTURE_INPUT;
 	//  log
 	// pSet->g.water_refract = 1;  //! test
-	const bool refract = pSet->g.water_refract, ssao = pSet->ssao;
+	const bool refract = pSet->g.water_refract, ssao = pSet->g.ssao;
 	const bool split = splits > 1, msaa = mWindow->getSampleDescription().isMultisample();
 
 	LogO("CC+# Create Compositor   "+getWsInfo());
@@ -289,7 +289,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 
 
 #ifndef SR_EDITOR  // game
-	//  🪟 Combine last, final wnd
+	//  🪟 5 Combine last, final wnd
 	//  sum all splits (player views) + add one Hud, Gui
 	//------------------------------------------------------------------------------------------------------------------------------------------
 	if (view >= 50)
@@ -340,6 +340,9 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			rtt = AddSplitRTT(si, width, height);
 		
 	/* 0  s0_ssao  Pre render  -------------------- */
+		//  own node, for more control of render RQG, no pipe glass, etc
+		//  could be less Fps, renders more tris, but has no artifacts
+		//  splitting render of pipe glass messed up depth of fluids
 		if (ssao)
 		{	nd = AddNode(s0_ssao+si);  //++ node
 			
@@ -362,7 +365,8 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				td->widthFactor = 0.5f;  td->heightFactor = 0.5f;  // half
 				td->format = PFG_R32_FLOAT;  td->fsaa = "1";  // r
 
-				AddRtv(nd, "rtt_ssao", "rtt_ssao", "depthHalf", "gNormals", "gFog");
+				// AddRtv(nd, "rtt_ssao", "rtt_ssao", "depthHalf", "gNormals", "gFog");
+				AddRtv(nd, "rtt_ssao", "", "depthHalf", "gNormals", "gFog");
 			}
 			nd->mCustomIdentifier = "0-ssao-pre-"+si;
 			
@@ -636,7 +640,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------
 	else  //  node  🖥️ Old  no refract, no depth  - - -
-	{
+	{						// meh todo ssao w/o refract
 		if (split)
 			rtt = AddSplitRTT(si, width, height);
 

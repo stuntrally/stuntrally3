@@ -45,7 +45,6 @@ public:
 	float car_light_bright = 1.f;
 
 	//  🪄 Effects  ----
-	bool ssao =0;
 	float ssao_radius = 1.f, ssao_scale = 1.5f;
 	bool gi =0;
 
@@ -127,6 +126,9 @@ public:
 		int refl_size = 1, refl_skip = 0, refl_faces = 2;
 		float refl_dist = 500.f, refl_lod = 0.4f;  int refl_ibl = 2;
 		// int refl_mode = 1;  // todo: 0 static, 1 single, 2 full
+		
+		//  🕳️ saao  effects
+		bool ssao =0;
 	} g;
 
 	//  📰🔻 Tracks list  ----

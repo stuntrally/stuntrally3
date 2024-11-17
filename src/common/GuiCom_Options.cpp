@@ -231,7 +231,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 
 	//  🪄 Effects
 	//------------------------------------------------------------
-	ck= &ckSSAO;			ck->Init("SSAO",		&pSet->ssao);  // 🕳️ SSAO
+	ck= &ckSSAO;			ck->Init("SSAO",		&pSet->g.ssao);  // 🕳️ SSAO
 	sv= &svSsaoRadius;		sv->Init("SsaoRadius",	&pSet->ssao_radius, 0.1,6.f);  sv->DefaultF(1.f);
 	sv= &svSsaoScale;		sv->Init("SsaoScale",	&pSet->ssao_scale,  0.1,6.f);  sv->DefaultF(1.5f);
 

@@ -536,7 +536,7 @@ void App::LoadScene()  // 3
 	if (dstTrk)
 		scn->CreateAllAtmo();
 
-		if (dstTrk)
+	if (dstTrk)
 		scn->CreateEmitters();  // 🔥
 
 

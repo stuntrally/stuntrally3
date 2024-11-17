@@ -39,7 +39,7 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	Param(c,w, "graph_lights.bright", car_light_bright);
 
 	//  🪄 effects  --------
-	Param(c,w, "video_eff.ssao", ssao);
+	Param(c,w, "video_eff.ssao", g.ssao);
 	Param(c,w, "video_eff.ssao_radius", ssao_radius);	Param(c,w, "video_eff.ssao_scale", ssao_scale);
 
 	Param(c,w, "video_eff.gi", gi);

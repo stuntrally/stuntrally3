@@ -360,7 +360,7 @@ void App::update( float dt )
 	processCamera(mDTime);
 
 
-	if (pSet->ssao)
+	if (pSet->g.ssao)
 		UpdateSSAO(mCamera);  // 🕳️
 	if (pSet->gi)
 		UpdateGI();  // 🌄
