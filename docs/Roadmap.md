@@ -5,61 +5,80 @@ More in [Tasks tracker](https://stuntrally.tuxfamily.org/mantis/view_all_bug_pag
 
 Marked: `crucial`, **Next or Big**, _Important_.
 
-
-### SR 3.3
-
-#### Effects
-
-**Sounds**: cars, ambient, object hit, info below, new engine? or upd from RoR
+----
+### 🪄 Effects
 
 **HDR**, bloom  
-soft particles  
+lens flare [shaders](https://www.shadertoy.com/results?query=lens+flare)  
+sunrays [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)  
+**Soft** Particles  
 
-#### Big
+### 🔉 Sound
 
-new game *video*, editor videos  
+Update `sound engine` from [RoR PR](https://github.com/RigsOfRods/rigs-of-rods/pull/3182)  
+(or replace with [ogre-audiovideo](https://github.com/OGRECave/ogre-audiovideo))
+
+🌧️ **Ambient** [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
+🚗🔊 More `car Sounds`, todo [task](https://stuntrally.tuxfamily.org/mantis/view.php?id=1), use [engine-sim](https://github.com/stuntrally/stuntrally3/issues/7), [muffler spectrum](https://duckduckgo.com/?t=ftsa&q=muffler+spectrum&atb=v395-1&ia=web)?  
+📦 object hit sounds, reverb change in water, caves, pipes-  
+
+### Big
+
+new game *video*, 📽️ *editor videos* all new  
+
 
 New **tracks**, also with **fields**, add walls  
+walls repeat mul uv, more mtr  
 
-💎Add **gems** to tracks, more types 3d  
+💎Add gems to tracks, more types 3d  
 xml par continuous?, logic btn continue, hid collected gems on start?  
 
 test, move to bullet3 ?
 
-#### New
+### New
 
+darken underwater fog from car depth  
 less poly, own collision *_p.mesh for veget/obj/bld, e.g. shrooms on Cloud etc
 
 new road particles  
 new **road** textures, detail mix, vert clr blend
 
-new *Stats* tab, completed: tracks, challs, colls, etc
-
+new *Stats* tab, completed: tracks, challs, colls, etc  
 hud new best time show, win particles-  
 
-**ed key** for obj random rot, yaw  
-
-#### Fix
-
-fix no tire trails  
-fix rivers wrong way  
-fix **ed** fields rot, focus, *telep offset*, no cam ray cut  
-
-**fix** H2,H1 going through big waters e.g. Islands,  
-and wheels jumping on big ice e.g. FreshBreeze  
-cam tilt jumps on Shore?  
+**ed key** for obj random rot, yaw, set up/dn y +-90  
 
 
-#### Fix Ogre
+----
+## Fix Ogre
+
+fix SSAO: skip pipe walls dark, add to depth: particles, car glass  
+`particles` behind fluids  
+
+no tire **trails**  
+
+rivers wrong way  
+waterfalls cut of above  
+
+Pbs particles, fade from fog, soft  
 
 🌊refract, depth: pass projmatrix **not inverse**  
-fix refract underwater top  
+underwater top has no refract  
 
-more fluids still blink on MilkyWay  
+more fluids still blink on MilkyWay, no `depth` write / check  
 shader **params**: refract clr, *depth* clr, emissive fluids?  
 
 🌪️**wind scale** params in json, for all trees, bushes, grass sway own-  
 wind anim shadow **caster** too, ed prv obj no wind-  
+
+
+### Fix
+
+**ed** fields rot, focus, *telep offset*, no cam ray cut  
+
+**H2,H1** going through big waters e.g. Islands,  
+and wheels jumping (ray casts) on big ice e.g. FreshBreeze  
+*cam tilt* jumps on Shore, Treausure, etc?  
 
 fix .car thrusters lights pos  
 **hide** flares with in car camera  
@@ -80,12 +99,6 @@ Road wall types, [link](https://stuntrally.tuxfamily.org/mantis/view.php?id=6)
 
 
 ----
-### New data
-
-🌧️ `Ambient` [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
-🚗🔊 More `car Sounds`.. todo [task](https://stuntrally.tuxfamily.org/mantis/view.php?id=1), use [engine-sim](https://github.com/stuntrally/stuntrally3/issues/7)  
-📦 object hit sounds, reverb change in water, caves, pipes-  
-
 ### data
 
 Remove all non **CC** data, [new topic](https://groups.f-hub.org/d/pIoLYCaO/-removing-replacing-data-with-non-cc-lincenses-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800)  
@@ -93,37 +106,35 @@ Remove all non **CC** data, [new topic](https://groups.f-hub.org/d/pIoLYCaO/-rem
 redo or replace lowest quality meshes: , skyscraper* 🏢  
 
 [Horizons](https://stuntrally.tuxfamily.org/mantis/view.php?id=11), add to rest of tracks  
-broken mygui set scrollview size, gallery list  
 
 
 ----
 ### Ogre new
-🪄 Effects: **Soft** Particles  
-**HDR**, bloom  
-lens flare [shaders](https://www.shadertoy.com/results?query=lens+flare)  
-sunrays [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)  
 
-🌀 Add [FastNoise](https://github.com/Auburn/FastNoiseLite) for brushes and ter gen  
+Terrain new **ssao map** added to shadowmap: normals, ssao pass, from top view  
+🌊 Ocean from Terra, **waves**, vehicle deform, fluid *particles*  
+GI for terrain [issue](https://github.com/OGRECave/ogre-next/issues/475)?  
 
 ⏲️ Gauges with shader? [demo](https://www.shadertoy.com/view/7t3fzs)  
 
-🌊 Ocean from Terra, **waves**, vehicle deform, fluid *particles*  
-GI for terrain [issue](https://github.com/OGRECave/ogre-next/issues/475)?  
+🌀 Add [FastNoise](https://github.com/Auburn/FastNoiseLite) for brushes and ter gen  
 
 
 ----
 ### Ogre cd, restore, optimize
 
-- lit particles, lights on `grass`, grass far fade-
-- **parallelize** vegetation, add test grass, veget on more threads
+*lit* particles, fog  
+lights on `grass` tbn?, grass shader get hmap?, grass far fade-  
+**parallelize** vegetation, add test grass, veget on more threads  
+
 - ⛰️ Terrain  
   **shadowmap** fix < 0  
-  add emissive, reflect par  
-  blendmap also .hlsl or .any for DX  
-  read blendmap, for ter wheel **surface** ids, many ters  
   fix restore **pages** visibility  
   triplanar **only** for chosen layers  
+  add emissive, reflect *par*  
+  read blendmap, for ter wheel **surface** ids, many ters  
   fix *triplanar* normalmaps-  
+  blendmap also .hlsl or .any for DX  
 - 🛣️ Road  
   **Grid** for walls, road, pipes, ed update cell  
   1 mesh with 4 LODs, shader fix specular stretch  
@@ -140,11 +151,11 @@ GI for terrain [issue](https://github.com/OGRECave/ogre-next/issues/475)?
   _Minimap_ circle, terrain add, fix pos tris  
   btnRplDelete for ghost should also remove its track record from .txt  
 
-----
-### restore cd
 
-New tracks add to `champs` 🏆  
-SR 3 📽️ `editor Videos`, all new  
+----
+### old restore cd
+
+add new tracks to `champs` 🏆  
 
 auto road/ter **Surface**: Particles, trail, sounds, from `presets.xml` not per track  
 tire **trails clr**, no uv tex-  
@@ -164,6 +175,7 @@ Grass read Hmap - no index, vertex buffers? texture atlas-
 
 *auto* Add SR icons to: game & editor for Windows & Linux, and installer  
 upmerge MyGui ?CMake .lib, Conan  
+broken mygui set scrollview size, gallery list  
 
 .mesh LODs test adjust-  
 water refl vis dist? low gets cut bad  
