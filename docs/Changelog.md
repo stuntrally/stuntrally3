@@ -5,10 +5,10 @@ WIP means work in progress, unfinished, still being developed.
 
 - 3 [New tracks](https://groups.f-hub.org/d/ZXVHk6du/new-tracks-in-sr-3-3)
 - Compositor rewrite, created in code
-  - Apply buttons work for Shadows and Reflections
-  - SplitScreen uses RTTs, smaller Hud fonts
-    - Refractions work WIP, todo: fix depth, SSAO works too
   - **SSAO** (ambient occlusion), needs Refractions
+  - SplitScreen uses RTTs, smaller Hud fonts
+    - Refractions work, SSAO too
+  - Apply buttons work for Shadows and Reflections
   - WIP try, Global Illumination ([GI methods](https://ogrecave.github.io/ogre-next/api/latest/_gi_methods.html): IFD+VCT), no terrain
     - new Gui tab Advanced after Effects, has also debug visuals
 
