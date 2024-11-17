@@ -16,15 +16,15 @@ public:
 
 	//  wheel
 	bool bWhForce;
-	float whMaxAngVel, whSpinDamp, whForceLong, whForceUp, whSteerMul;
-	float bumpFqX, bumpFqY, bumpAmp, bumpAng;
+	float whMaxAngVel, whSpinDamp, whForceLong, whForceUp, whSteerMul;  // for drive in mud
+	float bumpFqX, bumpFqY, bumpAmp, bumpAng;  // added noise freq and ampl
 	int idParticles;  // index for wheel particles (0water, 1mud soft, 2mud hard, -1 none)
 
 	float fDamage;  // damage per sec, per wheel (div by 4)
 
 	bool solid;  // if true will collide, rigid
 	int surf;   // surface id from name for solid
-	bool deep;  // for pacenotes, true for water (submergable), all others false
+	bool deep;  // for pacenotes,trail,  true for water/gas (submergable), all others false
 	
 	//  fluid fog
 	struct FlFog

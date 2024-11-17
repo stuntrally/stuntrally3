@@ -110,8 +110,8 @@ void CScene::CreateTrail(Cam* cam, int id, bool bHideHudTrail)
 		if (d > dd)
 		{	d = sqrt(d);  // todo: on angle changes..
 
-			float fa = sc->GetDepthInFluids(pos);
-			if (fa > 0.f)  pos.y += fa + 0.2f;  // above fluids
+			float fa = sc->GetDepthInFluids(pos, 1);  // skipDeep
+			if (fa > 0.f)  pos.y += fa + 0.2f;  // get above dense fluids
 
 			const float t = fr.time, dt = t - tOld;
 			const float vel = d / dt * 3.6f;  // kmh

@@ -131,7 +131,7 @@ public:
 	//  💧 Fluids  ~~~
 	std::vector<FluidBox> fluids;
 	FluidsXml* pFluidsXml =0;  //! set this after Load
-	float GetDepthInFluids(Ogre::Vector3 pos) const;
+	float GetDepthInFluids(Ogre::Vector3 pos, bool skipDeep =0) const;
 	
 	//  📦 Objects  []o
 	std::vector<Object> objects;

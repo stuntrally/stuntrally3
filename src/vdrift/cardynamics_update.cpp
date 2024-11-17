@@ -142,7 +142,7 @@ void CARDYNAMICS::UpdateBuoyancy()
 		}
 		body.F.SetZero();  body.T.SetZero();
 		
-		//  damp from height vel
+		//  damp for height vel
 		body.F.z += fp.heightVelRes * -1000.f * body.v.z;
 		
 		///  add buoyancy force

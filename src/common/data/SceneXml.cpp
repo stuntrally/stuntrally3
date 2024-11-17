@@ -224,11 +224,19 @@ void Scene::UpdVegLayers()
 
 
 //  util
-float Scene::GetDepthInFluids(Vector3 pos) const
+float Scene::GetDepthInFluids(Vector3 pos, bool skipDeep) const
 {
 	float fa = 0.f;
 	for (const FluidBox& fb : fluids)
 	{
+		//  skip deep: gas, water,  only allow dense and solid: mud, oil, lava etc
+		if (skipDeep && pFluidsXml)
+		{
+			const FluidParams& fp = pFluidsXml->fls[fb.id];
+			if (fp.deep)
+				continue;
+		}
+
 		//  dont check when above fluid, or below its size
 		if (pos.y < fb.pos.y &&
 			pos.y > fb.pos.y - fb.size.y)
