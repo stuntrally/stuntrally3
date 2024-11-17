@@ -454,7 +454,7 @@ void CGui::InitGui()
 	Cmb(cmbParSmoke,"CmbParSmoke",comboParDust);
 
 	//  surface
-	Cmb(cmbSurface, "Surface", comboSurface);  //1 txt-
+	Cmb(cmbSurface, "CmbSurface", comboSurface);  //1 txt-
 	txtSuBumpWave = fTxt("SuBumpWave");   txtSuFrict  = fTxt("SuFrict");
 	txtSuBumpAmp  = fTxt("SuBumpAmp");	  txtSurfTire = fTxt("SurfTire");
 	txtSuRollDrag = fTxt("SuRollDrag");	  txtSurfType = fTxt("SurfType");

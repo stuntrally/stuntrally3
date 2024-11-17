@@ -1261,7 +1261,7 @@
 						<Widget type="Slider" skin="Slider" position="356 32 220 16" name="FpsMul">
 							<Property key="Colour" value="1.0 0.8 0.8"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="326 32 20 20" name="FpsMulVal">
+						<Widget type="TextBox" skin="TextBox" position="326 32 30 20" name="FpsMulVal">
 							<Property key="TextColour" value="1.0 0.8 0.8"/>
 						</Widget>
 

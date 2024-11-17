@@ -634,9 +634,8 @@ void CGui::comboParDust(Cmb cmb, size_t val)  // par type
 void CGui::comboSurface(Cmb cmb, size_t val)
 {
 	TerLayer* l = GetTerRdLay();
-	//std::string s = cmb->getItemNameAt(val);
-	std::string s = cmbSurface->getCaption();
-	LogO("SURF cmb  = "+s);
+	std::string s = cmb->getItemNameAt(val);
+	// LogO("SURF cmb  = "+s);
 	l->surfName = s;
 	UpdSurfInfo();
 }
