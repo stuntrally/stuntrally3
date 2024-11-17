@@ -122,14 +122,16 @@ public:
 	if (edit && edit->eventEditTextChange.empty())  edit->eventEditTextChange += newDelegate(this, &CGuiCom::event);
 
 	
-//  combo
-#define Cmb(cmb, name, event)  \
+//  combo   _ mode true = no edit, click drops  |  cmb->setMaxListLength(530);
+#define Cmb(cmb, name, event)  \	
 	cmb = fCmb(name);  \
-	if (cmb && cmb->eventComboChangePosition.empty())  cmb->eventComboChangePosition += newDelegate(this, &CGui::event);
+	if (cmb)  {  cmb->setComboModeDrop(true);  \
+		if (cmb->eventComboChangePosition.empty())  cmb->eventComboChangePosition += newDelegate(this, &CGui::event);  }
 
 #define CmbC(cmb, name, event)  \
 	cmb = fCmb(name);  \
-	if (cmb && cmb->eventComboChangePosition.empty())  cmb->eventComboChangePosition += newDelegate(this, &CGuiCom::event);
+	if (cmb)  {  cmb->setComboModeDrop(true);  \
+		if (cmb->eventComboChangePosition.empty())  cmb->eventComboChangePosition += newDelegate(this, &CGuiCom::event);  }
 
 
 //  tab
