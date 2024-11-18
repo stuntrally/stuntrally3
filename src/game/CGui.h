@@ -88,9 +88,9 @@ public:
 	WP panPaintAdj =0, panPaintHSV =0, panPaintMix =0;
 	CK(PaintNewLine);
 
-	SV svPaintType, svPaintRate;
+	SlV(PaintType);  SlV(PaintRate);
+	SlV(PaintFilter);  Txt txPaintFilter =0;
 	Tab tbColorType =0;  void tabColorType(Tab, size_t);
-	void slPaintType(SV*), slPaintRate(SV*);
 
 	SV svPaintH, svPaintS, svPaintV;  // h s v sliders
 	SV svPaintGloss, svPaintRough, svPaintFresnel;  // pbs

@@ -1251,23 +1251,46 @@
 						</Widget>  <!-- panel -->
 
 
-						<!-- paint rate -->
-						<Widget type="ImageBox" skin="ImageBox" position="140 14 20 20">
+						<!-- paint filter all -->
+						<Widget type="ImageBox" skin="ImageBox" position="140 2 20 20">
+							<Property key="ImageTexture" value="gui_icons.png"/>
+							<Property key="ImageCoord" value="640 896 128 128"/>
+							<Property key="Alpha" value="0.6"/>
+							<UserString key="tip" value="#{TerFilter} - #{user}: #{rating}"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="164 4 16 16" name="PaintFilterVal">
+							<Property key="Caption" value="5"/>
+							<Property key="TextColour" value="0.6 0.8 1"/>
+							<UserString key="tip" value="#{TerFilter} - #{user}: #{rating}"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="182 6 70 12" name="PaintFilter">
+							<Property key="Colour" value="0.6 1 1"/>
+							<UserString key="tip" value="#{TerFilter} - #{user}: #{rating}"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="256 4 66 16" name="PaintFilterTxt">
+							<Property key="TextColour" value="0.6 0.5 0.7"/>
+							<UserString key="tip" value="#{TerFilter} % - #{user}: #{rating}"/>
+							<Property key="FontName" value="font.small"/>
+						</Widget>
+
+						<!-- paint rate cur -->
+						<Widget type="ImageBox" skin="ImageBox" position="140 20 20 20">
 							<Property key="ImageTexture" value="track_icons.png"/>
 							<Property key="ImageCoord" value="288 32 32 32"/>
 							<Property key="Alpha" value="0.6"/>
 							<UserString key="tip" value="#{user}: #{rating}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="164 16 16 16" name="PaintRateVal">
+						<Widget type="TextBox" skin="TextBox" position="164 22 16 16" name="PaintRateVal">
 							<Property key="Caption" value="5"/>
 							<Property key="TextColour" value="0.6 0.8 1"/>
 							<UserString key="tip" value="#{user}: #{rating}"/>
+							<Property key="FontName" value="font.small"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="182 18 70 12" name="PaintRate">
+						<Widget type="Slider" skin="Slider" position="182 24 70 12" name="PaintRate">
 							<Property key="Colour" value="0.6 1 1"/>
 							<UserString key="tip" value="#{user}: #{rating}"/>
 						</Widget>
-
+						
 						<!-- Random -->
 						<Widget type="Button" skin="Button" position="12 352 346 24" name="PaintRandom">
 							<Property key="Caption" value="#{CarClrRandom}"/>

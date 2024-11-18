@@ -44,6 +44,7 @@ void CGui::InitGuiCar()
 	imgPaint = fImg("ImgPaint");  imgPaintCur = fImg("ImgPaintCur");
 	txPaintRgb = fTxt("txPaintRgb");
 	sv= &svPaintRate;	sv->Init("PaintRate", &i, 0, 3);  Sev(PaintRate);
+	sv= &svPaintFilter;	sv->Init("PaintFilter", &i, 0, 3);  Sev(PaintRate);
 	
 	sv= &svPaintType;	sv->strMap[0] = TR("#{P_1color}");
 	sv->strMap[1] = TR("#{P_2colors}");  sv->strMap[2] = TR("#{P_3colors}");
@@ -100,7 +101,7 @@ void CGui::InitGuiCar()
 	SldUpd_TireSet();
 
 
-	///  🚗 Car
+	///  🚗 Car Paint
 	//------------------------------------------------------------
 	tbPlrPaint = fTbi("PlrPaints");
 	scvPaints = fScv("scvPaints");
@@ -108,8 +109,8 @@ void CGui::InitGuiCar()
 	Btn("PaintRandom", btnPaintRandom);  //btPaintRandom = btn;
 	Btn("PaintSave", btnPaintSave);  Btn("PaintAdd", btnPaintAdd);  Btn("PaintDel", btnPaintDel);
 	Btn("PaintLoad", btnPaintLoad);  Btn("PaintLoadDef", btnPaintLoadDef);
-
-	sv= &svNumLaps;  sv->Init("NumLaps",  &pSet->gui.num_laps, 1,10, 1.3f);  sv->DefaultI(2);
+	sv= &svPaintFilter;  sv->Init("PaintFilter",  &pSet->paint_filter, 0,3);  sv->DefaultI(1);  Sev(PaintFilter);
+	txPaintFilter = fTxt("PaintFilterTxt");
 
 	//  car stats
 	for (i=0; i < iCarSt; ++i)

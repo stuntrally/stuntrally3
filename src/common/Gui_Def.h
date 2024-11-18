@@ -123,7 +123,7 @@ public:
 
 	
 //  combo   _ mode true = no edit, click drops  |  cmb->setMaxListLength(530);
-#define Cmb(cmb, name, event)  \	
+#define Cmb(cmb, name, event)  \
 	cmb = fCmb(name);  \
 	if (cmb)  {  cmb->setComboModeDrop(true);  \
 		if (cmb->eventComboChangePosition.empty())  cmb->eventComboChangePosition += newDelegate(this, &CGui::event);  }

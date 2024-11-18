@@ -11,6 +11,9 @@ WIP means work in progress, unfinished, still being developed.
   - Apply buttons work for Shadows and Reflections
   - WIP try, Global Illumination ([GI methods](https://ogrecave.github.io/ogre-next/api/latest/_gi_methods.html): IFD+VCT), no terrain
     - new Gui tab Advanced after Effects, has also debug visuals
+- Game
+  - Setup - Paints tab has filter, to show paints only from filter rating and above  
+  but editing paints list must be done w/o filter, on highest value
 
 ### Version 3.2 - 23.09.2024
 

@@ -249,7 +249,7 @@ void CGuiCom::ReInitGuiRSrest()
 			170, y, 220, 22,  Align::Center, "RSc"+toStr(y));
 		cb->setTextColour(Colour(0.6,0.8,1.0));
 		cb->setColour(Colour(0.6,0.8,1.0));
-		cb->setEditReadOnly(true);
+		cb->setEditReadOnly(true);  cb->setComboModeDrop(true);
 		setOrigPos(cb, "OptionsWnd");
 		vwGuiRS.push_back(cb);
 

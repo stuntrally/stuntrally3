@@ -94,6 +94,7 @@ public:
 	bool champ_info =1;
 	int car_ed_tab = 0, tweak_tab = 0;  // gui only
 	int car_clr = -1;  // paints.ini id
+	int paint_filter = 0;  // low
 
 	//  🪟 font, hud
 	float font_hud = 1.f;  // scales

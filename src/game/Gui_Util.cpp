@@ -329,7 +329,7 @@ void CGui::LNext(int rel)
 
 			case TAB_Setup:  // Paints
 				auto& c = pSet->car_clr;
-				auto& v = data->paints->v;
+				auto& v = data->paints->vf;
 				int si = v.size();
 				c = (c + rel + si) % si;
 				pSet->gui.clr[iCurCar] = v[c];

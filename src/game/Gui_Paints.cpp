@@ -196,7 +196,7 @@ void CGui::imgBtnPaint(WP img)
 	auto& c = pSet->car_clr;
 	auto i = s2i(img->getUserString("i"));
 	
-	auto& v = data->paints->v;
+	auto& v = data->paints->vf;
 	int si = v.size();
 	if (c >= si)  c = -1;  //return;  }
 	if (i < 0 || i >= si)  return;
@@ -247,7 +247,7 @@ void CGui::btnPaintRandom(WP)
 	//  🎨 pick random from list
 	if (!pSet->paintAdj)
 	{	
-		auto& v = data->paints->v;
+		auto& v = data->paints->vf;
 		int si = v.size() - 1;
 		pSet->car_clr = Math::RangeRandom(0, si);
 		pSet->gui.clr[i] = v[pSet->car_clr];
@@ -306,6 +306,12 @@ void CGui::btnPaintLoad(WP)
 }
 
 //  upd all
+void CGui::slPaintFilter(SV*)
+{
+	UpdPaints();
+	UpdPaintImgs();
+}
+
 void CGui::slPaintRate(SV*)
 {
 	// todo: drag freezes
@@ -356,7 +362,7 @@ void CGui::UpdPaintImgs()
 {
 	Ogre::Timer ti;
 	auto* p = data->paints;
-	const int all = p->v.size(),
+	const int //all = p->v.size(),
 		clrRow = p->perRow, sx = p->imgSize;
 	
 	//  destroy old
@@ -393,6 +399,33 @@ void CGui::UpdPaintImgs()
 		return img;
 	};
 
+	//  pepass filter, fills vf
+	p->vf.clear();
+	const int all1 = p->v.size();
+	std::string group, old_group;  // gui txt title
+	bool new_line = false;  // gui
+	group = "";  old_group = "";
+
+	for (int i=0; i < all1; ++i)
+	{
+		auto cl = p->v[i];
+		bool add = cl.rate >= pSet->paint_filter;
+		
+		if (!cl.group.empty())
+			group = cl.group;
+	
+		if (add)
+		{
+			if (old_group != group)
+				cl.group = group;
+			else
+				cl.group = "";
+			
+			p->vf.push_back(cl);
+			old_group = group;
+		}
+	}
+
 	//  Grid palette  --------------------
 	int x = 0, y = 0, x0 = 5, y0 = 5;
 	int px = x0, py = y0, rmax = 0;  // pos
@@ -401,15 +434,20 @@ void CGui::UpdPaintImgs()
 		x = 0;  px = x0;
 		++y;  py += sx + 6 + 2*rmax/3;  rmax = 0;
 	};
+
+	const int all = p->vf.size();
 	for (int i=0; i < all; ++i)
 	{
-		auto& cl = p->v[i];
+		auto cl = p->vf[i];
 		const int r = cl.rate * 6;
 		rmax = max(rmax, r);
-
-		//  group text  ----
+		
+		//  group text  ------
 		if (!cl.group.empty())
 		{
+			if (px != x0)
+				inc_y();
+			
 			Txt txt = scv->createWidget<TextBox>("TextBox",
 				px, py+6,
 				320, sx, Align::Left);
@@ -425,63 +463,70 @@ void CGui::UpdPaintImgs()
 			inc_y();
 		}
 
-		//  create clr img 1..3  ------
-		Img img = 0, im2 = 0, im3 = 0;
-		switch (cl.type)
-		{
-		case CP_OneClr:
-			img = AddImg(scv, r,1, px,py, sx-1,sx-1, 0, 1, &cl.clr[0]);
-			break;
-		
-		case CP_DiffSpec:
-		{
-			int p2 =  8 *sx/32, s2 = 24 *sx/32;
-			img = AddImg(scv, r,1, px,py, sx-1,sx-1, 0, 1, &cl.clr[0]);
-			im2 = AddImg(img, r,0, p2, 0, sx-1,sx-1, 3, 0, &cl.clr[1]);
-		}	break;
-		
-		case CP_3Clrs:
-		{	int p2 =  0 *sx/32, s2 = 33 *sx/32;
-			int p3 = 14 *sx/32, s3 = 20 *sx/32;
-			float m = min(1.f, cl.paintMulAll / 0.3f);
-			img = AddImg(scv, r,1, px,py, sx-1,sx-1, 0, 1, &cl.paints[2], m);
-			im2 = AddImg(img, r,0, p2,p2, s2,s2, 3, 0, &cl.paints[1]);
-			im3 = AddImg(img, r,0, p3,p3, s3,s3, 3, 0, &cl.paints[0]);
-		}	break;
+		// bool add = cl.rate >= pSet->paint_filter;
+		// if (add)
+		{	//++ady;
+			//  create clr img 1..3  ------
+			Img img = 0, im2 = 0, im3 = 0;
+			switch (cl.type)
+			{
+			case CP_OneClr:
+				img = AddImg(scv, r,1, px,py, sx-1,sx-1, 0, 1, &cl.clr[0]);
+				break;
+			
+			case CP_DiffSpec:
+			{
+				int p2 =  8 *sx/32, s2 = 24 *sx/32;
+				img = AddImg(scv, r,1, px,py, sx-1,sx-1, 0, 1, &cl.clr[0]);
+				im2 = AddImg(img, r,0, p2, 0, sx-1,sx-1, 3, 0, &cl.clr[1]);
+			}	break;
+			
+			case CP_3Clrs:
+			{	int p2 =  0 *sx/32, s2 = 33 *sx/32;
+				int p3 = 14 *sx/32, s3 = 20 *sx/32;
+				float m = min(1.f, cl.paintMulAll / 0.3f);
+				img = AddImg(scv, r,1, px,py, sx-1,sx-1, 0, 1, &cl.paints[2], m);
+				im2 = AddImg(img, r,0, p2,p2, s2,s2, 3, 0, &cl.paints[1]);
+				im3 = AddImg(img, r,0, p3,p3, s3,s3, 3, 0, &cl.paints[0]);
+			}	break;
+			}
+			cl.y = py;
+			
+			//  shine  rough  * `  ----
+			int s1 = cl.rough * 2.5f * sx + 2;  s1 = min(64, s1);  // 32
+			im2 = AddImg(img, r,0, 0,0, s1,s1, 1, 0, 0);
+			
+			float a = cl.gloss * cl.clear_coat * 2.f;  a = min(1.f, a);
+			im2->setAlpha(a);
+			// if (!cl.one_clr)  // own spec
+			// 	img2->setColour(cl.clr[1]);
+
+
+			a = 1.f - cl.rough * 0.5f;
+			// img->setAlpha(a);  // *
+			
+			//  gui main  ----
+			img->eventMouseButtonClick += newDelegate(this, &CGui::imgBtnPaint);
+
+			img->setUserString("i", toStr(i));
+			img->setUserString("tip", toStr(i)+"\n"+TR("#{TipCarColor}"));
+			img->setNeedToolTip(true);
+			img->eventToolTip += newDelegate(gcom, &CGuiCom::notifyToolTip);
+			
+			imgsPaint.push_back(img);
+
+			//  inc pos  ---
+			++x;  px += sx + r;
 		}
-		cl.y = py;
-		
-		//  shine  rough  * `  ----
-		int s1 = cl.rough * 2.5f * sx + 2;  s1 = min(64, s1);  // 32
-		im2 = AddImg(img, r,0, 0,0, s1,s1, 1, 0, 0);
-		
-		float a = cl.gloss * cl.clear_coat * 2.f;  a = min(1.f, a);
-		im2->setAlpha(a);
-		// if (!cl.one_clr)  // own spec
-		// 	img2->setColour(cl.clr[1]);
-
-
-		a = 1.f - cl.rough * 0.5f;
-		// img->setAlpha(a);  // *
-		
-		//  gui main  ----
-		img->eventMouseButtonClick += newDelegate(this, &CGui::imgBtnPaint);
-
-		img->setUserString("i", toStr(i));
-		img->setUserString("tip", toStr(i)+"\n"+TR("#{TipCarColor}"));
-		img->setNeedToolTip(true);
-		img->eventToolTip += newDelegate(gcom, &CGuiCom::notifyToolTip);
-		
-		imgsPaint.push_back(img);
-
-
-		//  inc pos  ---
-		++x;  px += sx + r;
 		if (x >= clrRow || cl.new_line)
 			inc_y();
 	}
 	if (bGI)  // resize
 		gcom->doSizeGUI(tbPlrPaint->getEnumerator());
+
+	float fp = 100.f * all / all1;
+	if (txPaintFilter)
+		txPaintFilter->setCaption(fToStr(fp,0) + "%");
 	
 	UpdPaintCur();
 	LogO(String(":::* Time upd Paints: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");

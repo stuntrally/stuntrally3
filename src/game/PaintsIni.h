@@ -45,7 +45,7 @@ const int MaxPaints = 990;  // par max ini
 class PaintsIni
 {
 public:
-	std::vector<CarPaint> v;
+	std::vector<CarPaint> v, vf;  // orig from ini and filtered
 	int perRow = 12, imgSize = 18;  // gui params
 	
 //------------------------------------------

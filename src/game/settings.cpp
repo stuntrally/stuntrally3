@@ -137,6 +137,7 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "gui.champ_tab", champ_type);		Param(c,w, "gui.champ_info", champ_info);
 	Param(c,w, "gui.chall_tab", chall_type);		Param(c,w, "gui.collect_tab", collect_type);
 	Param(c,w, "gui.car_clr", car_clr);
+	Param(c,w, "gui.paint_filter", paint_filter);
 	//  🎚️ hud size
 	Param(c,w, "hud_size.gauges", size_gauges);			Param(c,w, "hud_size.arrow", size_arrow);
 	Param(c,w, "hud_size.minimap", size_minimap);		Param(c,w, "hud_size.minipos", size_minipos);

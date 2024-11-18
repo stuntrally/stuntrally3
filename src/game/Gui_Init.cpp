@@ -384,6 +384,8 @@ void CGui::InitGui()
 	if (valLocPlayers)
 		valLocPlayers->setCaption(toStr(pSet->gui.local_players));
 
+	sv= &svNumLaps;  sv->Init("NumLaps",  &pSet->gui.num_laps, 1,10, 1.3f);  sv->DefaultI(2);
+
 
 	//  🆕 Startup  ------------------------------------------------------------
 	// ck= &ckShowPics;	ck->Init("ShowPictures",&pSet->loadingbackground);

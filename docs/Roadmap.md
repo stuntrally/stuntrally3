@@ -5,6 +5,7 @@ More in [Tasks tracker](https://stuntrally.tuxfamily.org/mantis/view_all_bug_pag
 
 Marked: `crucial`, **Next or Big**, _Important_.
 
+
 ----
 ### 🪄 Effects
 
@@ -12,6 +13,8 @@ Marked: `crucial`, **Next or Big**, _Important_.
 lens flare [shaders](https://www.shadertoy.com/results?query=lens+flare)  
 sunrays [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)  
 **Soft** Particles  
+old motion blur  
+
 
 ### 🔉 Sound
 
