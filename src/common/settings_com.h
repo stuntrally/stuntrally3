@@ -127,8 +127,9 @@ public:
 		float refl_dist = 500.f, refl_lod = 0.4f;  int refl_ibl = 2;
 		// int refl_mode = 1;  // todo: 0 static, 1 single, 2 full
 		
-		//  🕳️ saao  effects
-		bool ssao =0;
+		//  🪄 effects  2x
+		bool ssao =0;  // 🕳️ saao
+		bool hdr =0;  // 🌅 HDR
 	} g;
 
 	//  📰🔻 Tracks list  ----

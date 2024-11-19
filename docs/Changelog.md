@@ -14,6 +14,7 @@ WIP means work in progress, unfinished, still being developed.
 - Game
   - Setup - Paints tab has filter, to show paints only from filter rating and above  
   but editing paints list must be done w/o filter, on highest value
+- Gui comboboxes open on click (whole, not just on down arrow)
 
 ### Version 3.2 - 23.09.2024
 

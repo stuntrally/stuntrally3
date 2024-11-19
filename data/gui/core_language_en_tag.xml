@@ -799,7 +799,7 @@
 
 	<!--  Effects  HDR  not used  -->
 	<Tag name="HDRTab">HDR</Tag>
-	<Tag name="HDR">HDR+Bloom</Tag>
+	<Tag name="HDR">HDR and Bloom (High Dynamic Range)</Tag>
 	<Tag name="HDRAdaptationScale">Adapt Scale</Tag>
 	<Tag name="HDRIntensity">Bloom Intensity</Tag>
 	<Tag name="HDROrigImage">Bloom Darken</Tag>

@@ -33,11 +33,12 @@
 using namespace Ogre;
 
 
-/*  Legend:
+/*  Legend, marks for only:
 	[]  Single 🖥️
 	++  SplitScreen 👥
-	S   SSAO only 🕳️
-	M   MSAA only (FSAA)
+	S   SSAO 🕳️
+	M   MSAA (FSAA)  antialiasing
+	H   HDR ..
 
 
 0 S  s0_ssao  [prepare] for ssao 🕳️
@@ -256,9 +257,10 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 {
 	const auto inp = TextureDefinitionBase::TEXTURE_INPUT;
 	//  log
-	// pSet->g.water_refract = 1;  //! test
-	const bool refract = pSet->g.water_refract, ssao = pSet->g.ssao;
-	const bool split = splits > 1, msaa = mWindow->getSampleDescription().isMultisample();
+	const bool refract = pSet->g.water_refract,
+		ssao = pSet->g.ssao, hdr = pSet->g.hdr,
+		split = splits > 1,
+		msaa = mWindow->getSampleDescription().isMultisample();
 
 	LogO("CC+# Create Compositor   "+getWsInfo());
 	if (view >= 50)
@@ -600,6 +602,8 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				ps->setUseRefractions("depthBufferNoMsaa", "rrt_firstIn");  // ~
 			}
 
+			//  hdr ..
+
 			//  render / Window  ----
 			td = nd->addTargetPass( "rtt_FullOut" );
 			td->setNumPasses( (!split ? 2 : 0) + 1 );  //* passes
@@ -686,6 +690,7 @@ void AppGui::SetupCompositors()
 {
 	LogO("CC## Setup Compositor    "+getWsInfo());
 	auto* mgr = mRoot->getCompositorManager2();
+	const bool hdr = pSet->g.hdr;
 	
 #ifndef SR_EDITOR  // game
 	const int views = pSet->game.local_players;
@@ -777,7 +782,22 @@ void AppGui::SetupCompositors()
 		mCamera = c->cam;
 
 		//  🪄 Create []  ----
-		CreateCompositor(-1, 1,  1.f, 1.f);
+		IdString wsName;
+		if (!hdr)
+		{
+			CreateCompositor(-1, 1,  1.f, 1.f);
+			wsName = sWork + "0";
+		}
+		else  // test hdr
+		{
+			CompositorManager2 *compositorManager = mRoot->getCompositorManager2();
+			RenderSystem *renderSystem = mRoot->getRenderSystem();
+			const RenderSystemCapabilities *caps = renderSystem->getCapabilities();
+
+			wsName = "HdrWorkspace";
+			if (mWindow->isMultisample() && caps->hasCapability( RSC_EXPLICIT_FSAA_RESOLVE ))
+				wsName = "HdrWorkspaceMsaa";
+		}
 
 		//  render Window external channels  ----
 		CompositorChannelVec chWnd( mCubeReflTex ? 2 : 1 );
@@ -785,7 +805,6 @@ void AppGui::SetupCompositors()
 		if (mCubeReflTex)
 			chWnd[1] = mCubeReflTex;  // 🔮
 
-		const IdString wsName( sWork + "0" );
 		auto ws = mgr->addWorkspace( mSceneMgr, chWnd,  c->cam, wsName, true );
 		// ws->addListener(listener);
 		vWorkspaces.push_back(ws);

@@ -87,8 +87,7 @@ void CScene::CreateSun()
 	ndSun = rootNode->createChildSceneNode();
 	ndSun->attachObject( sun );
 
-	// sun->setPowerScale( 1.f );  // should be 1 with HDR
-	sun->setPowerScale( Math::PI );  //** par
+	sun->setPowerScale( Math::PI );  // set in upd
 	
 	UpdSun();
 }
@@ -317,7 +316,12 @@ void CScene::UpdSun(float dt)
 	sun->setDirection(dir);
 	ndSun->_getFullTransformUpdated();
 
-	sun->setPowerScale( Math::PI );  // 💡 brightness simple
+	//  🌞 sun bright scale
+	sun->setPowerScale( app->pSet->g.hdr
+		? 10 * Math::PI  //par!.. ed sc xml
+		: Math::PI );
+	
+	//  💡 brightness simple
 	float bright = 0.9f*1.3f * app->pSet->bright, contrast = app->pSet->contrast;
 	sun->setDiffuseColour( sc->lDiff.GetClr() * 2.2f  * bright * contrast);
 	sun->setSpecularColour(sc->lSpec.GetClr() * 0.75f * bright * contrast);

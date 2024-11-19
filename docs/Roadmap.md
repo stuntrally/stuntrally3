@@ -59,9 +59,10 @@ fix SSAO: skip pipe walls dark, add to depth: particles, car glass
 `particles` behind fluids  
 
 no tire **trails**  
+specular on terrain  
 
 rivers wrong way  
-waterfalls cut of above  
+waterfalls refract cuts off above  
 
 Pbs particles, fade from fog, soft  
 

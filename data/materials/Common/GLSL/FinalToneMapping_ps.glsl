@@ -10,22 +10,39 @@ in block
 } inPs;
 
 //See Hable_John_Uncharted2_HDRLighting.pptx
-//See http://filmicgames.com/archives/75
 //See https://expf.wordpress.com/2010/05/04/reinhards_tone_mapping_operator/
+
 /*const float A = 0.15;
 const float B = 0.50;
 const float C = 0.10;
 const float D = 0.20;
 const float E = 0.02;
 const float F = 0.30;
-const float W = 11.2;*/
-const float A = 0.22;
+const float W = 11.2;/**/
+
+/*const float A = 0.22;  // saturated
+const float B = 0.13;
+const float C = 0.10;
+const float D = 0.520;
+const float E = 0.01;
+const float F = 0.130;
+const float W = 5.2;/**/
+
+/*const float A = 0.122;  // bright
+const float B = 0.43;
+const float C = 0.30;
+const float D = 0.120;
+const float E = 0.1;
+const float F = 0.530;
+const float W = 11.2;/**/
+
+/**/const float A = 0.22;  // org
 const float B = 0.3;
 const float C = 0.10;
 const float D = 0.20;
 const float E = 0.01;
 const float F = 0.30;
-const float W = 11.2;
+const float W = 11.2;/**/
 
 vec3 FilmicTonemap( vec3 x )
 {
@@ -58,6 +75,7 @@ void main()
 	vSample.xyz	+= fromSRGB( texture( vkSampler2D( bloomRt, samplerBilinear ),
 									  inPs.uv0 ).xyz ) * 16.0;
 	vSample.xyz  = FilmicTonemap( vSample.xyz ) / FilmicTonemap( W );
+	
 	//vSample.xyz  = vSample.xyz / (1 + vSample.xyz); //Reinhard Simple
 	vSample.xyz  = ( vSample.xyz - 0.5 ) * 1.25 + 0.5 + 0.11;
 

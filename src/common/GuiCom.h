@@ -243,6 +243,8 @@ public:
 	SlV(CarLightBright);
 
 	//  🪄 Effects  --------------------------
+	Ck ckHDR;
+
 	Ck ckSSAO;
 	SV svSsaoRadius, svSsaoScale;
 	
