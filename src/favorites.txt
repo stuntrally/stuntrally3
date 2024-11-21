@@ -13,7 +13,7 @@
 /home/user/.config/stuntrally3/editor.cfg|-=- ed .cfg -=- ⚙️
 /home/user/.config/stuntrally3/Ogre_ed.log|Editor .log 🟢
 /home/user/.config/stuntrally3/ogre_ed.cfg
-/home/user/_sr/src/btOgre2/README.md|- Readme 🖼️
+/home/user/_sr/Readme.md|- Readme 🖼️
 /home/user/_sr/src/emojis.txt|emojis ✨
 /home/user/_sr/config/tracks.ini|tracks ini 🏞️
 /home/user/_sr/data/gui/core_language_en_tag.xml|Gui -- en xml 🎛️

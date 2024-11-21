@@ -473,9 +473,10 @@ Seems fixed for each frame, but IIRC does assert on new track load. Thus for Deb
 Also [post](https://forums.ogre3d.org/viewtopic.php?p=554822#p554822), leaking GPU RAM inactive and  
 Exception: `Mapping the buffer twice within the same frame detected!`.
 
+
 ### Workspaces 🪄
 
-Workspace basically is the setup for rendering one view target, only like reflection, shadow, etc and lastly screen.  
+Workspace basically is the setup for rendering one player's view target, only like reflection, shadow, etc and lastly screen.  
 Many compositor Workspaces are created from code (telling how to render stuff, also few extra for editor minimap RTT).  
 Creating is in `.log` lines with: `--++ WS add:`, and in cpp code by any `addWorkspace`.  
 
@@ -485,6 +486,7 @@ based on `Samples/2.0/ApiUsage/ShadowMapFromCode/ShadowMapFromCode.cpp`.
 _Todo:_ only 3 PSSM splits work, no other count. ESM (Sh_Soft) is also broken.
 
 Parts of [post](https://forums.ogre3d.org/viewtopic.php?p=553666#p553666) with info.
+
 
 ### Workspace Listener
 
@@ -499,16 +501,21 @@ _Todo:_ use `#define MANUAL_RTT_UPD` so editor won't drop Fps so much (rendering
 Needs fix: in minimap and preview camera all gets dark (shadowed).  
 Possibly relevant [link](https://forums.ogre3d.org/viewtopic.php?p=556401#p556401).
 
+
 ## Effects
 
-_ToDo:_ From Ogre-Next samples to use:
-- **ReconstructPosFromDepth** (water, soft particles) also [topic](https://forums.ogre3d.org/viewtopic.php?t=97096&sid=5b5762532f55a6b74f28e1404b1d54bb), [maybe](https://forums.ogre3d.org/viewtopic.php?t=97059&sid=5b5762532f55a6b74f28e1404b1d54bb)
-- **Refractions** (water)
+Based on Ogre-Next samples
+
+### Done:
+- Refractions (water)
+- SSAO, based on Ogre-Next Sample_Tutorial_SSAO
+- WIP GI: Test_Voxelizer (IFD, VCT) - _no Terrain_
+
+### _ToDo:_
+- Sample_**HDR** (with bloom), Sample_Tutorial_**SSAO**
+- GI todo?: InstantRadiosity (main), LocalCubemaps refl, ImageVoxelizer CIVCT
+- ReconstructPosFromDepth ? (soft particles) also [topic](https://forums.ogre3d.org/viewtopic.php?t=97096&sid=5b5762532f55a6b74f28e1404b1d54bb), [maybe](https://forums.ogre3d.org/viewtopic.php?t=97059&sid=5b5762532f55a6b74f28e1404b1d54bb)
 - Sky_Postprocess (no?)
 - InterpolationLoop (meh, later)
-
-Effects:
-- Sample_**HDR** (with bloom), Sample_Tutorial_**SSAO**
-- Lastly GI: InstantRadiosity (main), ImageVoxelizer (VCT), LocalCubemaps refl
 - meh: OpenVR, StereoRendering
 - to fix: ShadowMapDebugging, ShadowMapFromCode
