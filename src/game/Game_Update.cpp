@@ -61,12 +61,9 @@ void App::update( float dt )
 		UpdateGI();  // 🌄
 
 
-	//  fixes white texture flashes
 	if (bLoading)
-	{
-		auto* texMgr = mRoot->getRenderSystem()->getTextureGpuManager();
-		texMgr->waitForStreamingCompletion();  // while..
-	}
+		WaitForTex();
+	
 
 	//  🕹️ Input upd  ----
 	mInputCtrl->update(dt);

@@ -225,7 +225,7 @@ OGRE_ARCH_TYPE != OGRE_ARCHITECTURE_32
 #endif
 
 
-//  
+//  textures
 //-----------------------------------------------------------------------------------
 void AppGui::InitCommonTex()
 {
@@ -251,7 +251,7 @@ void AppGui::LoadCommonTex()
 	for (auto name : mapCommonTex)
 		LoadTex(name.first, false);
 
-	texMgr->waitForStreamingCompletion();
+	WaitForTex();
 }
 
  void AppGui::LoadTex(Ogre::String fname, bool wait)
@@ -263,5 +263,22 @@ void AppGui::LoadCommonTex()
 	tex->scheduleTransitionTo( GpuResidency::Resident );
 
 	if (wait)
+		WaitForTex();
+}
+
+//  Wait for Tex load .. still bad
+//  to fix white texture flashes
+void AppGui::WaitForTex()
+{
+	auto* texMgr = mRoot->getRenderSystem()->getTextureGpuManager();
+	texMgr->waitForStreamingCompletion();
+#if 0  // crash on load next
+	const int old = texMgr->getLoadRequestsCounter();
+	mRoot->renderOneFrame();
+	if (old != texMgr->getLoadRequestsCounter())
+	{
 		texMgr->waitForStreamingCompletion();
+		mRoot->renderOneFrame();
+	}
+#endif
 }

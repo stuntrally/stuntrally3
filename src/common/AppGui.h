@@ -120,7 +120,7 @@ public:
 	// void setTightMemoryBudget(), setRelaxedMemoryBudget();
 	std::map<std::string, int> mapCommonTex;  // preload and don't unload
 	void InitCommonTex(), LoadCommonTex();
-	void LoadTex(Ogre::String fname, bool wait=true);
+	void LoadTex(Ogre::String fname, bool wait=true), WaitForTex();
 
 
 	//  🆕 Init  ----------------
