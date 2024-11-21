@@ -67,18 +67,19 @@ using namespace Ogre;
 	out0> rtt_first
 	out1> depthBuffer
 
-2 M  s2_depth  [Depth Resolve]
+2  s2_depth  [Depth Resolve]
 	>in0 gBufferDB  <- depthBuffer
 	tex resolvedDB
 
 	target resolvedDB
-		pass quad  resolve gBufferDB
+	M	pass quad  resolve gBufferDB  \
+	M-	pass copy  gBufferDB  / or
 	out0> resolvedDB
 
 3 s3_Final  [Final] 🪩
 	>in0 rtt_first    
 	>in1 depthBuffer \
-	>in2 depthBufferNoMsaa  <- resolvedDB M  or depthBuffer if no msaa
+	>in2 depthBufferNoMsaa  <- resolvedDB
 	>in3 rtt_FullOut     or  [] rt_renderwindow
 	tex rtt_final    /rtv depthBuffer
 
@@ -108,7 +109,7 @@ const String
 	sNode = "SR3_New", sWork = "SR3_New_WS",  // Old, no refract
 	s0_ssao  = "SR3_0_prepare-", // 0 prepare 4 ssao
 	s1_first = "SR3_1_First-",   // 1 new  scene  opaque & glass
-	s2_depth = "SR3_2_depth-",   // 2 for refract  fluids only
+	s2_depth = "SR3_2_depth-",   // 2 for refract  resolve / copy depth
 	s3_Final = "SR3_3_Final-",   // 3 last
 	sCombine = "SR3_Combine", sCombineWS = "SR3_Combine_WS";  // new in SplitScreen, last
 
@@ -245,7 +246,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 
 				td = nd->addTextureDefinition( "gFog" );
 				td->widthFactor = 0.5f;  td->heightFactor = 0.5f;  // half
-				td->format = PFG_R32_FLOAT;  td->fsaa = "1";  // r
+				td->format = PFG_R16_FLOAT;  td->fsaa = "1";  // r  R32-
 
 				AddRtv(nd, "rtt_ssao", "rtt_ssao", "depthHalf", "gNormals", "gFog");
 				// AddRtv(nd, "rtt_ssao", "", "depthHalf", "gNormals", "gFog");  //bugs-
@@ -270,7 +271,14 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				ps->mIdentifier = 10001;
 				ps->mFirstRQ = RQG_Sky+1;  // no sky
 				ps->mLastRQ = RQG_Grass+1;  // todo: add car glass, particles
-				ps->setVisibilityMask(RV_view);  // -..
+				ps->mLastRQ = RQG_Weather+1;
+				ps->setVisibilityMask(
+				// 	RV_Terrain + RV_Vegetation + RV_VegetGrass +
+				// 	RV_Objects + (refract ? 0 : RV_Fluid) +
+				// 	RV_Car + RV_CarGlass +
+				// 	RV_Particles
+				// );
+					RV_view);  // -..
 				
 				ps->mGenNormalsGBuf = true;
 				// no shadows
@@ -292,7 +300,8 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			nd->setNumLocalTextureDefinitions( (ssao ? 4 : 0) + 2 );  //* textures
 			{
 				auto* td = nd->addTextureDefinition( "rtt_first" );  // + 2
-				td->format = PFG_UNKNOWN;  td->fsaa = "";  // target_format  // PFG_RGBA8_UNORM_SRGB
+				td->format = hdr ? PFG_RGBA16_FLOAT : PFG_UNKNOWN;  td->fsaa = "";
+				// target_format  // PFG_RGBA8_UNORM_SRGB ^
 
 				td = nd->addTextureDefinition( "depthBuffer" );
 				td->format = PFG_D32_FLOAT;  td->fsaa = "";  // auto
@@ -406,8 +415,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			nd->mapOutputChannel(1, "depthBuffer");
 		}
 
-	/* 2  s2_depth  resolve  ---------- */
-		if (msaa)
+	/* 2  s2_depth  resolve / copy depth  ---------- */
 		{	nd = AddNode(s2_depth+si);  //++ node
 			
 			nd->addTextureSourceName("gBufferDB", 0, inp);  //  >in
@@ -420,19 +428,29 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			}
 			nd->mCustomIdentifier = "2-depth-"+si;
 
-			//  We need to "downsample/resolve" DepthBuffer because the impact
-			//  performance on Refractions is gigantic
 			nd->setNumTargetPass(1);  //* targets
 			td = nd->addTargetPass( "resolvedDB" );
 			td->setNumPasses(1);  //* passes
 			{
-				auto* pq = AddQuad(td);  // + quad
-				pq->setAllLoadActions( LoadAction::DontCare );
-				pq->setAllStoreActions( StoreAction::DontCare );
-				pq->mStoreActionColour[0] = StoreAction::StoreOrResolve;
+				//  We need to "downsample/resolve" DepthBuffer because the impact
+				//  performance on Refractions is gigantic
+				if (msaa)
+				{
+					auto* pq = AddQuad(td);  // + quad
+					pq->setAllLoadActions( LoadAction::DontCare );
+					pq->setAllStoreActions( StoreAction::DontCare );
+					pq->mStoreActionColour[0] = StoreAction::StoreOrResolve;
 
-				pq->mMaterialName = "Ogre/Resolve/1xFP32_Subsample0";  pq->mProfilingId = "Depth Resolve";
-				pq->addQuadTextureSource( 0, "gBufferDB" );  // input quad
+					pq->mMaterialName = "Ogre/Resolve/1xFP32_Subsample0";  pq->mProfilingId = "Depth Resolve";
+					pq->addQuadTextureSource( 0, "gBufferDB" );  // input quad
+				}
+				else  // need to copy, no fsaa, since we write and read from this copy
+				{
+					auto* cp = static_cast<CompositorPassDepthCopyDef*>(
+						td->addPass(Ogre::PASS_DEPTHCOPY));  // + copy
+					cp->setDepthTextureCopy("gBufferDB", "resolvedDB");
+					cp->mProfilingId = "depth copy";  // for Refractions
+				}
 			}
 			nd->setNumOutputChannels(1);  //  out>
 			nd->mapOutputChannel(0, "resolvedDB");
@@ -466,6 +484,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				auto* cp = static_cast<CompositorPassDepthCopyDef*>(
 					td->addPass(Ogre::PASS_DEPTHCOPY));  // + copy
 				cp->setDepthTextureCopy("rrt_firstIn", "rtt_final");
+				cp->mProfilingId = "copy first to final";
 
 				ps = AddScene(td);  // + scene
 				ps->setAllLoadActions( LoadAction::Load );
@@ -483,6 +502,10 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			}
 
 			//  hdr ..
+			if (hdr)
+			{
+				// todo: add
+			}
 
 			//  render / Window  ----
 			td = nd->addTargetPass( "rtt_FullOut" );
@@ -514,11 +537,8 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			//  main
 			wd->connect( s1_first+si, 0, s3_Final+si, 1 );  // rtt_first
 			wd->connect( s1_first+si, 1, s3_Final+si, 2 );  // depthBuffer
-			if (msaa)
-			{	wd->connect( s1_first+si, 1, s2_depth+si, 0 );  // depthBuffer -> gBufferDB
-				wd->connect( s2_depth+si, 0, s3_Final+si, 3 );  // resolvedDepth -> depthBufferNoMsaa
-			}else
-				wd->connect( s1_first+si, 1, s3_Final+si, 3 );  // depthBuffer -> depthBufferNoMsaa
+			wd->connect( s1_first+si, 1, s2_depth+si, 0 );  // depthBuffer -> gBufferDB
+			wd->connect( s2_depth+si, 0, s3_Final+si, 3 );  // resolvedDB -> depthBufferNoMsaa
 		}
 	}
 	
