@@ -767,8 +767,8 @@ void SplineRoad::createSeg_Meshes(
 			
 			auto que = 
 				refra ? RQG_Refract : 
-				//IsTrail() ? RQG_RoadBlend /*: RQG_Hud1*/ : // ?
 				IsRiver() ? RQG_Fluid :
+				//IsTrail() ? RQG_RoadBlend /*: RQG_Hud1*/ : // ?
 				pipeGlass ? RQG_PipeGlass : RQG_Road;
 			it->setRenderQueueGroup(que);
 			if (it2)  it2->setRenderQueueGroup(que);

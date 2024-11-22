@@ -122,8 +122,8 @@ void AppGui::AddHudGui(CompositorTargetDef* td)  // + 2 pass
 	ps->setAllStoreActions( StoreAction::Store );
 	ps->mProfilingId = "HUD";  ps->mIdentifier = 10007;
 
-	ps->mFirstRQ = RQG_RoadMarkers;  // 220
-	ps->mLastRQ = RQG_Hud3+1;  // 223
+	ps->mFirstRQ = RQG_RoadMarkers;
+	ps->mLastRQ = RQG_Hud3+1;
 	ps->setVisibilityMask(RV_Hud + RV_Particles);
 
 	//  🎛️ Gui, add MyGUI pass  --------
@@ -222,7 +222,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 		if (split)
 			rtt = AddSplitRTT(si, width, height);
 		
-	/* 0  s0_ssao  Pre render  -------------------- */
+	// 0  s0_ssao  Pre render  ------------------------------------------------------------
 		//  own node, for more control of render RQG, no pipe glass, etc
 		//  could be less Fps, renders more tris, but has no artifacts
 		//  splitting render of pipe glass messed up depth of fluids
@@ -268,19 +268,15 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				// ps->lod_update_list off
 
 				ps->mProfilingId = "Pre Ssao-"+si;  // Opaque only, no pipe glass
-				// ps->mIdentifier = 10001;
+				ps->mIdentifier = 10001;  //?
 				ps->mFirstRQ = RQG_Sky+1;  // no sky
-				ps->mLastRQ = RQG_Grass+1;  // todo: add car glass, particles
-				// ps->mLastRQ = RQG_Weather+1;
-					// RQG_PipeGlass -  RV_NoSSAO ..
-					// RQG_AlphaVegObj -
+				ps->mLastRQ = RQG_Grass+1;
 				ps->setVisibilityMask(
 					RV_Terrain | RV_Road |
 					RV_Vegetation | RV_VegetGrass | 
 					RV_Objects | (refract ? 0 : RV_Fluid) |
 					RV_Car | RV_CarGlass  // | RV_Particles
-				);
-					// RV_view);  // -..
+				);	// RV_view);  //- hud?
 				
 				ps->mGenNormalsGBuf = true;
 				// no shadows
@@ -292,7 +288,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			nd->mapOutputChannel(2, "gFog" );
 		}
 
-	/* 1  s1_First  Render  -------------------- */
+	// 1  s1_First  Render  ------------------------------------------------------------
 		{	nd = AddNode(s1_first+si);  //++ node
 
 			if (ssao)
@@ -347,12 +343,10 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				ps->mStoreActionStencil = StoreAction::DontCare;
 				// ps->lod_update_list off  //?
 
-				ps->mProfilingId = "Render First-"+si;  // ⛰️ "Opaque + Regular Transparents"
+				ps->mProfilingId = "Render First-"+si;  // ⛰️ Opaque only
 				ps->mIdentifier = 10001;
 				// ps->mFirstRQ = 1; //RQG_Terrain;
 				ps->mLastRQ = RQG_CarParticles;  // before
-				// ps->mLastRQ = RQG_Weather+1;
-				// ps->mLastRQ = RQG_RoadBlend+1; //RQG_Fluid-1; //199
 				ps->setVisibilityMask(RV_view);
 				
 				// ps->mExposedTextures.push_back("") mCubeReflTex  // todo.. add
@@ -360,7 +354,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				AddShadows(ps);  // shadows
 			}
 
-			if (ssao)  //  SSAO  + 4
+			if (ssao)  //  SSAO  + 4  ----------------
 			{
 				const String depthCopy = "depthHalf";
 
@@ -419,7 +413,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			nd->mapOutputChannel(1, "depthBuffer");
 		}
 
-	/* 2  s2_depth  resolve / copy depth  ---------- */
+	// 2  s2_depth  resolve / copy Depth  ------------------------------
 		{	nd = AddNode(s2_depth+si);  //++ node
 			
 			nd->addTextureSourceName("gBufferDB", 0, inp);  //  >in
@@ -452,13 +446,14 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				{
 					auto* pq = AddQuad(td);  // + quad
 					pq->setAllLoadActions( LoadAction::DontCare );
+					pq->setAllStoreActions( StoreAction::DontCare );
+					pq->mStoreActionColour[0] = StoreAction::StoreOrResolve;
 					
-					pq->mMaterialName = "Ogre/Copy/1xFP32";
-					pq->mProfilingId = "depth copy";
+					pq->mMaterialName = "Ogre/Copy/1xFP32";  pq->mProfilingId = "Depth copy";
 					pq->addQuadTextureSource( 0, "gBufferDB" );  // input
 				}
-				/*else  // need to copy, no fsaa, since we write and read from this copy
-				{
+				/*else
+				{	// bad_
 					auto* cp = static_cast<CompositorPassDepthCopyDef*>(
 						td->addPass(Ogre::PASS_DEPTHCOPY));  // + copy
 					cp->setDepthTextureCopy("gBufferDB", "resolvedDB");
@@ -469,7 +464,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			nd->mapOutputChannel(0, "resolvedDB");
 		}
 
-	/* 3  s3_Final  🪩 Final Refractive  ------------------------------  */
+	// 3  s3_Final  🪩 Final Refractive  ------------------------------------------------------------
 		{	nd = AddNode(s3_Final+si);  //++ node
 			
 			nd->addTextureSourceName("rtt_FullOut", 0, inp);  // or rt_renderwindow
@@ -510,6 +505,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				ps->mFirstRQ = RQG_Fluid;  ps->mLastRQ = RQG_Refract+1;
 				ps->setVisibilityMask(RV_Fluid);  // 🌊
 				
+				// ps->mEnableForwardPlus = 0;  //?
 				AddShadows(ps);  // shadows
 				ps->mShadowNodeRecalculation = SHADOW_NODE_REUSE;  // `
 				ps->setUseRefractions("depthBufferNoMsaa", "rrt_firstIn");  // ~
@@ -523,15 +519,15 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 
 				ps->mProfilingId = "Particles";  ps->mIdentifier = 10001;
 				ps->mFirstRQ = RQG_CarParticles;  ps->mLastRQ = RQG_Hud3+1; //RQG_Weather+1;
-				ps->setVisibilityMask(
-					// RV_view );
+				ps->setVisibilityMask(  // RV_view );
 					RV_Hud3D[plr] | RV_Particles );
 				
-				AddShadows(ps);  // shadows
-				ps->mShadowNodeRecalculation = SHADOW_NODE_REUSE;  // `
+				ps->mEnableForwardPlus = 0;
+				// AddShadows(ps);  // no shadows
+				// ps->mShadowNodeRecalculation = SHADOW_NODE_REUSE;  // `
 			}
 
-			//  hdr ..
+			//  hdr ..  ----------------
 			if (hdr)
 			{
 				// todo: add
@@ -544,7 +540,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				auto* pq = AddQuad(td);  // + quad
 				pq->setAllLoadActions( LoadAction::DontCare );
 				
-				pq->mMaterialName = "Ogre/Copy/4xFP32";
+				pq->mMaterialName = "Ogre/Copy/4xFP32";  // needed? merge above
 				pq->mProfilingId = "Copy to Window";
 				pq->addQuadTextureSource( 0, "rtt_final" );  // input
 
@@ -554,7 +550,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			}
 		}
 
-		//  workspace
+		//  workspace  ----------------
 		{
 			wd = AddWork( sWork+si );
 			wd->connectExternal( 0, s3_Final+si, 0 );  // rtt_FullOut  or  rt_renderwindow
