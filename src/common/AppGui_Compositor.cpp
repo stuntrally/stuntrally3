@@ -268,20 +268,23 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				// ps->lod_update_list off
 
 				ps->mProfilingId = "Pre Ssao-"+si;  // Opaque only, no pipe glass
-				ps->mIdentifier = 10001;
+				// ps->mIdentifier = 10001;
 				ps->mFirstRQ = RQG_Sky+1;  // no sky
 				ps->mLastRQ = RQG_Grass+1;  // todo: add car glass, particles
-				ps->mLastRQ = RQG_Weather+1;
+				// ps->mLastRQ = RQG_Weather+1;
+					// RQG_PipeGlass -  RV_NoSSAO ..
+					// RQG_AlphaVegObj -
 				ps->setVisibilityMask(
-				// 	RV_Terrain + RV_Vegetation + RV_VegetGrass +
-				// 	RV_Objects + (refract ? 0 : RV_Fluid) +
-				// 	RV_Car + RV_CarGlass +
-				// 	RV_Particles
-				// );
-					RV_view);  // -..
+					RV_Terrain | RV_Road |
+					RV_Vegetation | RV_VegetGrass | 
+					RV_Objects | (refract ? 0 : RV_Fluid) |
+					RV_Car | RV_CarGlass  // | RV_Particles
+				);
+					// RV_view);  // -..
 				
 				ps->mGenNormalsGBuf = true;
 				// no shadows
+				ps->mEnableForwardPlus = 0;
 			}
 			nd->setNumOutputChannels( 3 );  //  out>  vvv
 			nd->mapOutputChannel(0, "gNormals");
@@ -344,10 +347,11 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				ps->mStoreActionStencil = StoreAction::DontCare;
 				// ps->lod_update_list off  //?
 
-				ps->mProfilingId = "Render First-"+si;  // "Opaque + Regular Transparents"
+				ps->mProfilingId = "Render First-"+si;  // ⛰️ "Opaque + Regular Transparents"
 				ps->mIdentifier = 10001;
 				// ps->mFirstRQ = 1; //RQG_Terrain;
-				ps->mLastRQ = RQG_Weather+1;  // todo: where are car flares?..
+				ps->mLastRQ = RQG_CarParticles;  // before
+				// ps->mLastRQ = RQG_Weather+1;
 				// ps->mLastRQ = RQG_RoadBlend+1; //RQG_Fluid-1; //199
 				ps->setVisibilityMask(RV_view);
 				
@@ -446,11 +450,20 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				}
 				else  // need to copy, no fsaa, since we write and read from this copy
 				{
+					auto* pq = AddQuad(td);  // + quad
+					pq->setAllLoadActions( LoadAction::DontCare );
+					
+					pq->mMaterialName = "Ogre/Copy/1xFP32";
+					pq->mProfilingId = "depth copy";
+					pq->addQuadTextureSource( 0, "gBufferDB" );  // input
+				}
+				/*else  // need to copy, no fsaa, since we write and read from this copy
+				{
 					auto* cp = static_cast<CompositorPassDepthCopyDef*>(
 						td->addPass(Ogre::PASS_DEPTHCOPY));  // + copy
 					cp->setDepthTextureCopy("gBufferDB", "resolvedDB");
 					cp->mProfilingId = "depth copy";  // for Refractions
-				}
+				}/**/
 			}
 			nd->setNumOutputChannels(1);  //  out>
 			nd->mapOutputChannel(0, "resolvedDB");
@@ -475,9 +488,9 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 
 			nd->setNumTargetPass( 2 );  //* targets
 
-			//  🌊 Refracted  Fluids  ----
+			//  🌊 Final  ----
 			td = nd->addTargetPass( "rtt_final" );
-			td->setNumPasses(2);  //* passes
+			td->setNumPasses(3);  //* passes
 			{
 				//  Perform exact copy (MSAA-preserving) so we can continue rendering
 				//  into rtt_final. Meanwhile rtt_first will be used for sampling refractions
@@ -486,6 +499,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				cp->setDepthTextureCopy("rrt_firstIn", "rtt_final");
 				cp->mProfilingId = "copy first to final";
 
+				//  🌊 Refracted  Fluids
 				ps = AddScene(td);  // + scene
 				ps->setAllLoadActions( LoadAction::Load );
 				ps->mStoreActionColour[0] = StoreAction::StoreOrResolve;
@@ -493,12 +507,28 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				ps->mStoreActionStencil = StoreAction::DontCare;
 
 				ps->mProfilingId = "Refractive Fluids";  ps->mIdentifier = 10002;
-				ps->mFirstRQ = RQG_Fluid;  ps->mLastRQ = RQG_Refract+1;  // 210, 211
-				ps->setVisibilityMask(RV_Fluid);  // 0x00000002
+				ps->mFirstRQ = RQG_Fluid;  ps->mLastRQ = RQG_Refract+1;
+				ps->setVisibilityMask(RV_Fluid);  // 🌊
 				
 				AddShadows(ps);  // shadows
 				ps->mShadowNodeRecalculation = SHADOW_NODE_REUSE;  // `
 				ps->setUseRefractions("depthBufferNoMsaa", "rrt_firstIn");  // ~
+
+				//  💭 particles, pacenotes
+				ps = AddScene(td);  // + scene
+				ps->setAllLoadActions( LoadAction::Load );
+				ps->mStoreActionColour[0] = StoreAction::StoreOrResolve;
+				ps->mStoreActionDepth = StoreAction::Store; //DontCare;
+				ps->mStoreActionStencil = StoreAction::DontCare;
+
+				ps->mProfilingId = "Particles";  ps->mIdentifier = 10001;
+				ps->mFirstRQ = RQG_CarParticles;  ps->mLastRQ = RQG_Hud3+1; //RQG_Weather+1;
+				ps->setVisibilityMask(
+					// RV_view );
+					RV_Hud3D[plr] | RV_Particles );
+				
+				AddShadows(ps);  // shadows
+				ps->mShadowNodeRecalculation = SHADOW_NODE_REUSE;  // `
 			}
 
 			//  hdr ..
