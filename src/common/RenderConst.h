@@ -34,13 +34,13 @@ const Ogre::uint8
 	RQG_Horizon1     = 12,  // 🏔️ horiz after terrain, to skip most depth
 	RQG_Horizon2     = 13,
 	
-	RQG_Road         = RQ_7,  // 🛣️ roads, rivers, walls
+	RQG_Road         = RQ_7,     // 🛣️ roads, rivers, walls
 	RQG_RoadBlend    = RQ_7 +1,  // road blend alpha segs
 	//  end of opaques
 
 	//  🌊 fluids, refract
-	RQG_Fluid        = RQ_7 +3, //210,  // 🌊 water,mud etc, old no refract  //RQ_7 +4
-	RQG_Refract      = RQ_7 +4, //211,  // 🪩 refracted
+	RQG_Fluid        = RQ_7 +3,  // 🌊 water,mud etc, old no refract  //RQ_7 +4
+	RQG_Refract      = RQ_7 +4,  // 🪩 refracted
 	
 	//  💎 glass, transparent
 	RQG_Grass        = RQ_7 +5,  // 🌿 veget grass

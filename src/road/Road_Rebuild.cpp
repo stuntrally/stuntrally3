@@ -28,12 +28,13 @@ using std::vector;  using std::min;  using std::max;
 // #define USE_GRID_R
 // #define USE_GRID_W
 
-//  bridge, walls
-// +y     road       decor 1   decor 2   decor 3
-// |      2-1  6-5    21--07    1/0\7      1-0
-// 0--+x  | 0--7 |    |    |   2<   >6   2|   |7
-//        3______4    34--56    3\4/5    3|   |6
-//                                         4_5
+//  bridge, Walls:  - cross sections -
+//
+// +y     road       pipe        decor 1   decor 2   decor 3  
+// |      2-1  6-5   2-1\  /6-5   21--07    1/0\7      1-0    
+// 0--+x  | 0--7 |    \  07  /    |    |   2<   >6   2|   |7  
+//        3______4      \  /      34--56    3\4/5    3|   |6  
+//                       34                            4_5    
 //  📏 wall front indices
 const static int WFid[6][3] =
 	{{2,1,0},{3,2,0},{5,4,7},{6,5,7}, {7,3,0},{4,3,7}};
@@ -46,14 +47,14 @@ struct WallWidthPnt
 const static int ciwW = 7;  // wall  width steps  todo: any, vector
 const static WallWidthPnt wallWidth[ciwW+1][3] = {  // section shape
 	//  road wall                       //  pipe wall                      //  on pipe                      
-	{{-0.5f, -0.0f, 0.0f,  1.0f, 0.0f}, {-0.28f, 0.68f,0.0f, -1.0f, 0.0f}, {-0.14f, 1.5f, 0.0f, -1.0f, 0.0f}},
-	{{-0.5f,  1.2f, 0.5f,  0.5f, 0.5f}, {-0.28f, 0.5f, 0.2f, -0.5f, 0.5f}, {-0.14f, 1.4f, 0.2f, -0.5f, 0.5f}},
-	{{-0.56f, 1.2f, 0.2f, -0.5f, 0.5f}, {-0.28f, 0.0f, 0.2f, -0.5f, 0.0f}, {-0.14f, 1.3f, 0.2f, -0.5f, 0.0f}},
-	{{-0.56f,-0.9f, 1.6f, -0.5f,-0.5f}, {-0.2f, -0.9f, 0.5f, -0.1f,-0.5f}, {-0.1f,  1.2f, 0.5f, -0.1f,-0.5f}},
-	{{ 0.56f,-0.9f, 3.0f,  0.5f,-0.5f}, { 0.2f, -0.9f, 0.5f,  0.1f,-0.5f}, { 0.1f,  1.2f, 0.5f,  0.1f,-0.5f}},
-	{{ 0.56f, 1.2f, 1.6f,  0.5f, 0.5f}, { 0.28f, 0.0f, 0.2f,  0.5f, 0.0f}, { 0.14f, 1.3f, 0.2f,  0.5f, 0.0f}},
-	{{ 0.5f,  1.2f, 0.2f, -0.5f, 0.5f}, { 0.28f, 0.5f, 0.2f,  0.5f, 0.5f}, { 0.14f, 1.4f, 0.2f,  0.5f, 0.5f}},
-	{{ 0.5f, -0.0f, 0.5f, -1.0f, 0.0f}, { 0.28f, 0.68f,0.2f,  1.0f, 0.0f}, { 0.14f, 1.5f, 0.2f,  1.0f, 0.0f}}};
+	{{-0.5f, -0.0f, 0.0f,  1.0f, 0.0f}, {-0.0f, -0.2f, 0.0f,  0.0f, 1.0f}, {-0.14f, 1.5f, 0.0f, -1.0f, 0.0f}},
+	{{-0.5f,  1.2f, 0.5f,  0.5f, 0.5f}, {-0.2f,  0.27f,0.5f,  0.0f, 1.0f}, {-0.14f, 1.4f, 0.2f, -0.5f, 0.5f}},
+	{{-0.56f, 1.2f, 0.2f, -0.5f, 0.5f}, {-0.28f, 0.57f,0.2f, -0.5f, 0.5f}, {-0.14f, 1.3f, 0.2f, -0.5f, 0.0f}},
+	{{-0.56f,-0.9f, 1.6f, -0.5f,-0.5f}, {-0.21f,-0.9f, 1.6f, -0.5f,-0.5f}, {-0.1f,  1.2f, 0.5f, -0.1f,-0.5f}},
+	{{ 0.56f,-0.9f, 3.0f,  0.5f,-0.5f}, { 0.21f,-0.9f, 3.0f,  0.5f,-0.5f}, { 0.1f,  1.2f, 0.5f,  0.1f,-0.5f}},
+	{{ 0.56f, 1.2f, 1.6f,  0.5f, 0.5f}, { 0.28f, 0.57f,1.6f,  0.5f, 0.5f}, { 0.14f, 1.3f, 0.2f,  0.5f, 0.0f}},
+	{{ 0.5f,  1.2f, 0.2f, -0.5f, 0.5f}, { 0.2f,  0.27f,0.2f, -0.0f, 1.0f}, { 0.14f, 1.4f, 0.2f,  0.5f, 0.5f}},
+	{{ 0.5f, -0.0f, 0.5f, -1.0f, 0.0f}, { 0.0f, -0.2f, 0.5f, -0.0f, 1.0f}, { 0.14f, 1.5f, 0.2f,  1.0f, 0.0f}}};
 const static WallWidthPnt wallDecor[ciwW+1][3] = {  // section shape
 	//  wall decor 1                    //  decor 2-                       // decor 3-
 	{{ 0.5f,  0.5f, 0.0f,  0.0f, 1.0f}, { 0.0f,  1.0f, 0.0f,  0.0f, 1.0f}, { 0.5f,  1.0f, 0.0f,  0.0f, 1.0f}},
@@ -757,8 +758,8 @@ void SplineRoad::createSeg_Meshes(
 	//  🛣️ road  vis, que  ----
 	if (HasRoad())
 	{
-		auto it = rs.road[lod].it,
-			it2 = rs.road[lod].it2;
+		auto *it = rs.road[lod].it,
+			*it2 = rs.road[lod].it2;
 		if (it)
 		{	
 			bool refra = 0;  // todo ?
@@ -770,6 +771,7 @@ void SplineRoad::createSeg_Meshes(
 				IsRiver() ? RQG_Fluid :
 				//IsTrail() ? RQG_RoadBlend /*: RQG_Hud1*/ : // ?
 				pipeGlass ? RQG_PipeGlass : RQG_Road;
+			// LogO("road que: " + toStr(que));
 			it->setRenderQueueGroup(que);
 			if (it2)  it2->setRenderQueueGroup(que);
 			
@@ -786,8 +788,8 @@ void SplineRoad::createSeg_Meshes(
 	}	}
 	if (DS.hasBlend)  // Blend >
 	{
-		auto it = rs.blend[lod].it,
-			it2 = rs.blend[lod].it2;
+		auto *it = rs.blend[lod].it,
+			*it2 = rs.blend[lod].it2;
 		if (it)
 		{	auto que = RQG_RoadBlend;
 			it->setRenderQueueGroup(que);

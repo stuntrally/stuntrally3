@@ -76,7 +76,7 @@ void SEmitter::UpdEmitter()
 
 	Vector3 dir = SplineRoad::GetRot(yaw, pitch);
 	ps->getEmitter(0)->setDirection(dir);
-	LogO("Emit dir "+toStr(dir));
+	// LogO("Emit dir "+toStr(dir));
 	//ps->getEmitter(0)->setAngle(roll);
 	//ps->getEmitter(0)->setParticleVelocity(minVel,maxVel);  // todo?
 	//ps->getEmitter(0)->setMinTimeToLive(minTime);
