@@ -25,7 +25,7 @@
 🏛️[Forum](https://groups.f-hub.org/stunt-rally/) - discussions, tracks, content - [how to join](https://groups.f-hub.org/d/2ftpShKs/) info on top  
 New Issue, on [github](https://github.com/stuntrally/stuntrally3/issues) - needs account
 
-🪧[Reddit](https://www.reddit.com/r/stuntrally/)  
+not used: 🪧[Reddit](https://www.reddit.com/r/stuntrally/)  
 Matrix (e.g. with [element app](https://element.io/download)) chat room: #stuntrally:matrix.org  
 📜[Old Forum](https://forum.freegamedev.net/viewforum.php?f=77) - old archive, SR 2.x  
 
@@ -116,10 +116,7 @@ Before reporting bugs or issues, be sure to [Read before posting](https://groups
 Then create a [new issue on github](https://github.com/stuntrally/stuntrally3/issues/new) (if not present already)  
 or a topic on [New Forum](https://groups.f-hub.org/stunt-rally/) (if already joined, [how to](https://groups.f-hub.org/d/2ftpShKs/)).
 
-Other way is to use:
-[Discord](https://discord.gg/TywnXxAtR6) (also for chat),
-[Reddit](https://www.reddit.com/r/stuntrally/) or
-[github discussions](https://github.com/stuntrally/stuntrally3/discussions).  
+For chat we use: [Discord](https://discord.gg/TywnXxAtR6).
 
 ## 🤝Contributing
 

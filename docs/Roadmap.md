@@ -55,11 +55,10 @@ hud new best time show, win particles-
 ----
 ## Fix Ogre
 
-fix SSAO: skip pipe walls dark, add to depth: particles, car glass  
-`particles` behind fluids  
+SSAO: add to depth? car glass  
 
 no tire **trails**  
-specular on terrain  
+no specular on terrain  
 
 rivers wrong way  
 waterfalls refract cuts off above  
