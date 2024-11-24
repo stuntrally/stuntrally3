@@ -275,8 +275,8 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 					RV_Terrain | RV_Road |
 					RV_Vegetation | RV_VegetGrass | 
 					RV_Objects | (refract ? 0 : RV_Fluid) |
-					RV_Car | RV_CarGlass  // | RV_Particles
-				);	// RV_view);  //- hud?
+					RV_Car | RV_CarGlass |  // | RV_Particles
+					RV_Hud3D[plr]);  // trail
 				
 				ps->mGenNormalsGBuf = true;
 				// no shadows
@@ -345,8 +345,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 
 				ps->mProfilingId = "Render First-"+si;  // ⛰️ Opaque only
 				ps->mIdentifier = 10001;
-				// ps->mFirstRQ = 1; //RQG_Terrain;
-				ps->mLastRQ = RQG_CarParticles;  // before
+				ps->mLastRQ = RQG_PipeGlass;  // before
 				ps->setVisibilityMask(RV_view);
 				
 				// ps->mExposedTextures.push_back("") mCubeReflTex  // todo.. add
@@ -507,10 +506,10 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				
 				// ps->mEnableForwardPlus = 0;  //?
 				AddShadows(ps);  // shadows
-				ps->mShadowNodeRecalculation = SHADOW_NODE_REUSE;  // `
+				ps->mShadowNodeRecalculation = SHADOW_NODE_REUSE;  //`
 				ps->setUseRefractions("depthBufferNoMsaa", "rrt_firstIn");  // ~
 
-				//  💭 particles, pacenotes
+				//  ⭕ glass pipes, 💭 particles, pacenotes
 				ps = AddScene(td);  // + scene
 				ps->setAllLoadActions( LoadAction::Load );
 				ps->mStoreActionColour[0] = StoreAction::StoreOrResolve;
@@ -518,13 +517,14 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				ps->mStoreActionStencil = StoreAction::DontCare;
 
 				ps->mProfilingId = "Particles";  ps->mIdentifier = 10001;
-				ps->mFirstRQ = RQG_CarParticles;  ps->mLastRQ = RQG_Hud3+1; //RQG_Weather+1;
-				ps->setVisibilityMask(  // RV_view );
+				ps->mFirstRQ = RQG_PipeGlass;  ps->mLastRQ = RQG_Hud3+1;
+				ps->setVisibilityMask(
+					RV_Road | RV_Vegetation |  // transparent only
 					RV_Hud3D[plr] | RV_Particles );
 				
-				ps->mEnableForwardPlus = 0;
-				// AddShadows(ps);  // no shadows
-				// ps->mShadowNodeRecalculation = SHADOW_NODE_REUSE;  // `
+				// ps->mEnableForwardPlus = 0;  //?
+				AddShadows(ps);  // no shadows
+				ps->mShadowNodeRecalculation = SHADOW_NODE_REUSE;  //`
 			}
 
 			//  hdr ..  ----------------

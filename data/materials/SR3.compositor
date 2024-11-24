@@ -12,7 +12,7 @@ compositor_node HdrRenderingNode
 			{
 				all				clear
 				// clear_colour	0.2 0.4 0.6 1
-				clear_colour	6.667 13.333 20 1
+				// clear_colour	6.667 13.333 20 1
 				clear_colour	13.333 26.667 40 1
 			}
 			store
@@ -74,8 +74,8 @@ compositor_node HdrPostprocessingNode
 
 	//For maximum quality use these as FLOAT16_RGBA, however they're slower on
 	//AMD cards (0.748ms slower on AMD Radeon HD 7770 at 1920x1080).
-	//texture rtBlur0	256 256 PFG_RGBA16_FLOAT	depth_pool 0
-	//texture rtBlur1	256 256 PFG_RGBA16_FLOAT	depth_pool 0
+	// texture rtBlur0	256 256 PFG_RGBA16_FLOAT	depth_pool 0
+	// texture rtBlur1	256 256 PFG_RGBA16_FLOAT	depth_pool 0
 
 	texture rtBlur0	256 256 PFG_R10G10B10A2_UNORM	depth_pool 0
 	texture rtBlur1	256 256 PFG_R10G10B10A2_UNORM	depth_pool 0
@@ -157,6 +157,7 @@ compositor_node HdrPostprocessingNode
 			material	HDR/BrightPass_Start
 			input		0	rt0
 			input		1	lumRt0
+			// input		1	rtIter0  // test
 
 			profiling_id "Bloom (Start)"
 		}
@@ -274,6 +275,7 @@ compositor_node HdrPostprocessingNode
 			input		0	rt0
 			input		1	lumRt0
 			input		2	rtBlur0
+			// input		2	rt0  // test
 
 			profiling_id "HDR Final ToneMapping"
 		}
