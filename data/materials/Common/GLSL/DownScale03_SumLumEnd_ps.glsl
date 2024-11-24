@@ -44,5 +44,5 @@ void main()
 	float oldLum = texture( vkSampler2D( oldLumRt, samplerPoint ), vec2( 0.0, 0.0 ) ).x;
 
 	//Adapt luminicense based 75% per second.
-	fragColour = mix( newLum, oldLum, pow( 0.25, timeSinceLast ) );
+	fragColour = mix( newLum, oldLum, pow( 0.25, timeSinceLast /* *0.3 slower */ ) );
 }

@@ -25,7 +25,10 @@ vulkan( layout( ogre_P0 ) uniform Params { )
 	uniform vec4 invTex0Size;
 vulkan( }; )
 
-#define NUM_SAMPLES 11
+// #define NUM_SAMPLES 11
+// #define NUM_SAMPLES 65
+// #define NUM_SAMPLES 31
+#define NUM_SAMPLES 15
 
 void main()
 {

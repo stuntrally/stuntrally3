@@ -25,6 +25,41 @@ in block
 //for x in range(0, 16):
 //	printMorton(x)
 
+/*
+vec3 makeBloom(float lod, vec2 offset, vec2 bCoord){
+    
+    vec2 pixelSize = 1.0 / vec2(iResolution.x, iResolution.y);
+
+    offset += pixelSize;
+
+    float lodFactor = exp2(lod);
+
+    vec3 bloom = vec3(0.0);
+    vec2 scale = lodFactor * pixelSize;
+
+    vec2 coord = (bCoord.xy-offset)*lodFactor;
+    float totalWeight = 0.0;
+
+    if (any(greaterThanEqual(abs(coord - 0.5), scale + 0.5)))
+        return vec3(0.0);
+
+    for (int i = -5; i < 5; i++) {
+        for (int j = -5; j < 5; j++) {
+
+            float wg = pow(1.0-length(vec2(i,j)) * 0.125,6.0);
+
+            bloom = pow(texture(iChannel0,vec2(i,j) * scale + lodFactor * pixelSize + coord, lod).rgb,vec3(2.2))*wg + bloom;
+            totalWeight += wg;
+
+        }
+    }
+
+    bloom /= totalWeight;
+
+    return bloom;
+}
+/**/
+
 const vec2 c_offsets[16] = vec2[16]
 (
 	vec2( 0, 0 ), vec2( 1, 0 ), vec2( 0, 1 ), vec2( 1, 1 ),
@@ -53,7 +88,7 @@ void main()
 	//We would need 64x64 samples, but we only sample 4x4, therefore we sample one
 	//pixel and skip 15, then repeat. We perform:
 	//(ViewportResolution / TargetResolution) / 4
-	vec2 ratio = tex0Size.xy * viewportSize.zw * 0.25;
+	vec2 ratio = tex0Size.xy * viewportSize.zw * 4 * 0.25;  //?
 
 	vec3 vSample	= texture( vkSampler2D( rt0, samplerState ), inPs.uv0 ).xyz;
 	float sampleLum	= dot( vSample, c_luminanceCoeffs ) + 0.0001;
@@ -69,7 +104,6 @@ void main()
 		//fLogLuminance += log( clamp( sampleLum, c_minLuminance, c_maxLuminance ) );
 		fLogLuminance += log( sampleLum * 1024.0 );
 	}
-
 	fLogLuminance *= 0.0625; // /= 16.0;
 
 	fragColour = fLogLuminance;

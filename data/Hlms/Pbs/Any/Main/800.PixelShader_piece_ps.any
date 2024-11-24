@@ -489,7 +489,11 @@
 			else
 				pixelData.viewDir = midf3_c( normalize( -inPs.pos ) );
 		@end
-		pixelData.NdotV		= saturate( dot( pixelData.normal, pixelData.viewDir ) );
+		// property( grass )  // todo: lit grass ..
+		// 	pixelData.NdotV = 0.0;
+		// else
+			pixelData.NdotV		= saturate( dot( pixelData.normal, pixelData.viewDir ) );
+		// end
 	@end
 
 	@property( !ambient_fixed || vct_num_probes )
@@ -993,7 +997,7 @@
 
 				//**  gamma  --
 				@property( !sky )
-					finalColour.xyz = pow(finalColour, midf3_c(1.15, 1.15, 1.15) );
+					 finalColour.xyz = pow(finalColour, midf3_c(1.15, 1.15, 1.15) );
 				@end
 
 				@property( !hw_gamma_write )

@@ -253,11 +253,12 @@
 
 @piece( DefaultBodyVS )
 	// Define inputPos using inVs_vertex.
-	@property( hlms_pose )
-		float4 inputPos = inVs_vertex; // We need inputPos as lvalue for PoseTransform
-	@else
-		#define inputPos inVs_vertex
-	@end
+	// property( hlms_pose )
+	// 	float4 inputPos = inVs_vertex; // We need inputPos as lvalue for PoseTransform
+	// else
+	// 	#define inputPos inVs_vertex
+	// end
+	float4 inputPos = inVs_vertex;
 
 	@property( !hlms_shadowcaster )
 		@property( hlms_colour )  //**  Pbs vertex color

@@ -461,7 +461,7 @@
 			},
 			"emissive" :
 			{
-				"value" : [1, 1, 1],
+				"value" : [1.001, 1.001, 1.001],
 				"texture" : "day_clouds_04_blue.jpg",
 				"sampler" : "Sampler_Sky"
 			}

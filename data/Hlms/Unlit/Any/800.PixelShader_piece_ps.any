@@ -139,7 +139,7 @@
 
 
 	//**  gamma  --  Gui etc
-	diffuseCol.xyz = pow(diffuseCol.xyz, midf3_c(1.15, 1.15, 1.15));
+	 diffuseCol.xyz = pow(diffuseCol.xyz, midf3_c(1.15, 1.15, 1.15));
 
 	@insertpiece( custom_ps_preLights )
 
