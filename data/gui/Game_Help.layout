@@ -2,7 +2,7 @@
 <MyGUI type="Layout" version="3.2.0">
 
 	<!-- Game Stats -->
-	<Widget type="Window" skin="WindowC" position="844 696 800 600" align="Center" layer="Overlapped" name="StatsWnd">
+	<Widget type="Window" skin="WindowC" position="844 696 800 600" align="Center" layer="Popup" name="StatsWnd">
 		<Property key="MinSize" value="500 400"/>
 		<Property key="Caption" value="#{GameStatistics}"/>
 		<Property key="Alpha" value="1.0"/>
@@ -27,6 +27,18 @@
 			<Property key="ImageCoord" value="768 128 128 128"/>
 			<Property key="Alpha" value="1.0"/>
 			<Property key="ImageTexture" value="gui_icons.png"/>
+		</Widget>
+
+		<Widget type="Button" skin="Button" position="2 540 126 38" name="CloseStats">
+			<Property key="Caption" value="#{Close}"/>
+			<Property key="TextColour" value="0.8 0.9 1.0"/>
+			<Property key="Colour" value="0.8 0.9 1.0"/>
+			<Widget type="ImageBox" skin="ImageBox" position="0 0 32 32">
+				<Property key="ImageTexture" value="gui_icons.png"/>
+				<Property key="ImageCoord" value="256 384 128 128"/>
+				<Property key="Alpha" value="0.7"/>
+				<Property key="NeedMouse" value="false"/>
+			</Widget>
 		</Widget>
 
 		<Widget type="EditBox" skin="EditBoxStretch" position="132 8 660 590" name="EdStats">

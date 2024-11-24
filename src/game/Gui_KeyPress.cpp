@@ -634,14 +634,16 @@ void App::channelChanged(ICS::Channel *channel, float currentValue, float previo
 	//  Gui on/off  or close wnds
 	if (action(A_ShowOptions) && !alt)
 	{
-		Wnd wnd = mWndNetEnd;
-		if (wnd && wnd->getVisible())  {  wnd->setVisible(false);  // hide netw end
-			return;  }
+		Wnd wnd = mWndNetEnd;  //  hide wnd
+		if (wnd && wnd->getVisible()){  wnd->setVisible(false);  return;  }  // netw end
 		else
 		{	wnd = mWndChampEnd;
-			if (wnd && wnd->getVisible())  wnd->setVisible(false);  // hide champs end
+			if (wnd && wnd->getVisible())  wnd->setVisible(false);  // champs end
 			wnd = mWndChallEnd;
-			if (wnd && wnd->getVisible())  wnd->setVisible(false);  // chall
+			if (wnd && wnd->getVisible())  wnd->setVisible(false);  // chall end
+			wnd = mWndStats;
+			if (wnd && wnd->getVisible()){  wnd->setVisible(false);  return;  }  // stats
+
 			gui->toggleGui(true);
 			return;
 		}

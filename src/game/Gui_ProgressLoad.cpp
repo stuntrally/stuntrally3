@@ -7,6 +7,7 @@
 #include "CollectXml.h"
 #include "paths.h"
 #include "CGui.h"
+#include "CGame.h"
 #include <MyGUI.h>
 using namespace std;
 using namespace Ogre;
@@ -18,13 +19,28 @@ using namespace MyGUI;
 //-----------------------------------------------------------------------------------------------
 void CGui::FillGameStats()
 {
-	String s;
-	int pr[3] = {0,0,0};  // prizes counts, 0 bronze, 1 silver, 2 gold
+	String s, t = "   ";
 	int won = 0, all = 0;
+
+	int pr[3] = {0,0,0};  // prizes counts, 0 bronze, 1 silver, 2 gold
+	auto strPr = [&]()
+	{
+		int pa = pr[0]+pr[1]+pr[2];  if (pa==0)  pa = 1;
+		return //TR("#C080FF#{Prizes}: ") +
+			StrPrize(1)+": "+toStr(pr[0])+"  " +
+			StrPrize(2)+": "+toStr(pr[1])+"  " +
+			StrPrize(3)+": "+toStr(pr[2])+" - " +fToStr(100.f*pr[2]/pa) +"% \n\n";
+	};
+	auto strWon = [&]()
+	{
+		if (all == 0)  all = 1;
+		return t + toStr(won)+" / "+toStr(all)+" - "+fToStr(100.f*won/all);
+	};
 
 	for (int rev = 0; rev < 2; ++rev)
 	{
 		//  tutorials  ---
+		won = 0;  all = 0;
 		for (auto& ch : progress[rev].chs)
 		if (ch.tutorial)
 		{
@@ -32,8 +48,7 @@ void CGui::FillGameStats()
 				++won;
 			++all;
 		}
-		if (all == 0)  all = 1;
-		s += TR("#FFC020#{Tutorial}\n") + "#FFD0B0"+toStr(won)+" / "+toStr(all)+" - "+fToStr(100.f*won/all)+" %\n\n";
+		s += TR("#FFC020#{Tutorial}\n") + "#FFD0B0" + strWon() + " %\n\n";
 
 		//  championships  ---
 		won = 0;  all = 0;
@@ -44,8 +59,7 @@ void CGui::FillGameStats()
 				++won;
 			++all;
 		}
-		if (all == 0)  all = 1;
-		s += TR("#B0FFB0#{Championship}\n") + "#D0FFD0"+toStr(won)+" / "+toStr(all)+" - "+fToStr(100.f*won/all)+" %\n\n";
+		s += TR("#B0FFB0#{Championship}\n") + "#D0FFD0" + strWon() + " %\n\n";
 
 		//  challenges  ---
 		won = 0;  all = 0;  // zero
@@ -60,8 +74,7 @@ void CGui::FillGameStats()
 			}
 			++all;
 		}
-		if (all == 0)  all = 1;
-		s += TR("#B0B0FF#{Challenge}\n") + "#D0D0FF"+toStr(won)+" / "+toStr(all)+" -  "+fToStr(100.f*won/all)+" %\n\n";
+		s += TR("#B0B0FF#{Challenge}\n") + "#D0D0FF" + strWon() + " %  -  "+strPr();
 		
 		if (rev == 0)
 			s += TR("#C0FF00#{Reverse} ----\n\n");
@@ -80,13 +93,21 @@ void CGui::FillGameStats()
 		}
 		++all;
 	}
-	if (all == 0)  all = 1;
-	s += TR("#C080FF#{Collection}\n") + "#D0A0FF"+toStr(won)+" / "+toStr(all)+" -  "+fToStr(100.f*won/all)+" %\n\n";
+	s += TR("#C080FF#{Collection}\n") + "#D0A0FF" + strWon() + " %  -  "+strPr();
 
 	// career ? TR("#FF8080#{Career}") :
 
+	// todo: new stats, achievements?
+	//  % driven/visited tracks, sceneries, vehicles
+	//  far, highest jumps m-  loop types-
+
 	if (edStats)
 		edStats->setCaption(s);
+}
+
+void CGui::btnCloseStats(WP)
+{
+	app->mWndStats->setVisible(false);
 }
 
 

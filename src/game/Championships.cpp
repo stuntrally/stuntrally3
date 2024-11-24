@@ -285,6 +285,7 @@ void CGui::ProgressSaveChamp(bool upgGui)
 		return;
 	ChampsListUpdate();
 	listChampChng(liChamps, liChamps->getIndexSelected());
+	FillGameStats();
 }
 
 

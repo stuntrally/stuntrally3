@@ -265,6 +265,7 @@ void CGui::ProgressSaveChall(bool upgGui)
 		return;
 	ChallsListUpdate();
 	listChallChng(liChalls, liChalls->getIndexSelected());
+	FillGameStats();
 }
 
 

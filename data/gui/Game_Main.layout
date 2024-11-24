@@ -459,7 +459,7 @@
 		<Widget type="Button" skin="Button" position="108 512 404 50" name="BtnGames7">
 			<Property key="Caption" value="#{GameStatistics}"/>
 			<Property key="Colour" value="0.6 0.8 0.9"/>
-			<Property key="TextColour" value="0.7 0.9 1.0"/>
+			<Property key="TextColour" value="0.6 0.8 0.9"/>
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="FontName" value="font.big"/>
 		</Widget>

@@ -160,6 +160,7 @@ void CGui::InitGui()
 	{	Btn("BtnLesson"+toStr(i), btnLesson);  }
 
 	edStats = fEd("EdStats");  // game stats
+	Btn("CloseStats", btnCloseStats);
 	FillGameStats();
 
 

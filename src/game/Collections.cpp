@@ -198,6 +198,7 @@ void CGui::ProgressSaveCollect(bool upgGui)
 		return;
 	CollectListUpdate();
 	listCollectChng(liCollect, liCollect->getIndexSelected());
+	FillGameStats();
 }
 
 
