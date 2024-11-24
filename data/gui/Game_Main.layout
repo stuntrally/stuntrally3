@@ -402,7 +402,7 @@
 			<UserString key="tip" value="#{ChallInfo2}\n#{ChallInfo}"/>
 		</Widget>
 
-		<!--  +8 img  0 pan  +12 btn   +72  rows  0 y = 12 84 156 228 300 372 444 516  -->
+		<!--  +8 img  0 pan  +12 btn   +72  rows  0 y = 12 84 156 228 300 372 444 516 -580 -->
 
 		<Widget type="ImageBox" skin="ImageBox" position="532 308 56 56">
 			<Property key="ImageCoord" value="768 128 128 128"/>
@@ -443,6 +443,45 @@
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="FontName" value="font.big"/>
 		</Widget> -->
+		
+		<!-- stats -->
+		<Widget type="ImageBox" skin="ImageBox" position="32 508 56 56">
+			<Property key="ImageCoord" value="128 896 128 128"/>
+			<Property key="InheritsAlpha" value="false"/>
+			<Property key="ImageTexture" value="gui_icons.png"/>
+			<Property key="Colour" value="0.5 0.8 0.6"/>
+		</Widget>
+		<Widget type="ImageBox" skin="ImageBox" position="92 500 436 72" name="PanGames7">
+			<Property key="Colour" value="0.7 0.9 1.0"/>
+			<Property key="ImageTexture" value="menu_cur.png"/>
+			<Property key="InheritsAlpha" value="false"/>
+		</Widget>
+		<Widget type="Button" skin="Button" position="108 512 404 50" name="BtnGames7">
+			<Property key="Caption" value="#{GameStatistics}"/>
+			<Property key="Colour" value="0.6 0.8 0.9"/>
+			<Property key="TextColour" value="0.7 0.9 1.0"/>
+			<Property key="InheritsAlpha" value="false"/>
+			<Property key="FontName" value="font.big"/>
+		</Widget>
+
+		<!-- back -->
+		<Widget type="ImageBox" skin="ImageBox" position="32 580 56 56">
+			<Property key="ImageCoord" value="256 896 128 128"/>
+			<Property key="InheritsAlpha" value="false"/>
+			<Property key="ImageTexture" value="gui_icons.png"/>
+		</Widget>
+		<Widget type="ImageBox" skin="ImageBox" position="92 572 436 72" name="PanGames8">
+			<Property key="Colour" value="0.9 0.9 0.9"/>
+			<Property key="ImageTexture" value="menu_cur.png"/>
+			<Property key="InheritsAlpha" value="false"/>
+		</Widget>
+		<Widget type="Button" skin="Button" position="108 584 404 50" name="BtnGames8">
+			<Property key="Caption" value="&lt;#{BackMenu}"/>
+			<Property key="Colour" value="0.8 0.8 0.8"/>
+			<Property key="TextColour" value="0.9 0.9 0.9"/>
+			<Property key="InheritsAlpha" value="false"/>
+			<Property key="FontName" value="font.big"/>
+		</Widget>
 
 
 		<Widget type="Button" skin="Button" position="868 572 88 88" name="btnGameInfo">
@@ -456,24 +495,7 @@
 				<Property key="NeedMouse" value="false"/>
 			</Widget>
 		</Widget>
-		
-		<Widget type="ImageBox" skin="ImageBox" position="32 580 56 56">
-			<Property key="ImageCoord" value="256 896 128 128"/>
-			<Property key="InheritsAlpha" value="false"/>
-			<Property key="ImageTexture" value="gui_icons.png"/>
-		</Widget>
-		<Widget type="ImageBox" skin="ImageBox" position="92 572 436 72" name="PanGames7">
-			<Property key="Colour" value="0.9 0.9 0.9"/>
-			<Property key="ImageTexture" value="menu_cur.png"/>
-			<Property key="InheritsAlpha" value="false"/>
-		</Widget>
-		<Widget type="Button" skin="Button" position="108 584 404 50" name="BtnGames7">
-			<Property key="Caption" value="&lt;#{BackMenu}"/>
-			<Property key="Colour" value="0.8 0.8 0.8"/>
-			<Property key="TextColour" value="0.9 0.9 0.9"/>
-			<Property key="InheritsAlpha" value="false"/>
-			<Property key="FontName" value="font.big"/>
-		</Widget>
+
 	</Widget>
 
 </MyGUI>

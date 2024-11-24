@@ -150,6 +150,8 @@ void CGui::btnMainMenu(WP wp)
 
 		case Games_Collection: GuiShortcut(MN_Collect, TAB_Champs, -1, i);  break;
 		// case Games_Career:     GuiShortcut(MN_Career,  TAB_Champs, -1, i);  break;
+		
+		case Games_Stats:      app->mWndStats->setVisible(true);  break;
 		case Games_Back:       pSet->iMenu = MN1_Setup;  break;
 		}
 		app->gui->toggleGui(false);

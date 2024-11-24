@@ -28,7 +28,7 @@ public:
 
 	std::vector<ChampTrack> trks;
 	Champ();
-	bool isTut() const {  return type < 2;  }
+	bool isTutorial() const {  return type < 2;  }
 };
 
 
@@ -48,7 +48,7 @@ public:
 class ProgressTrack
 {
 public:
-	float points;
+	float points = 0.f;
 	ProgressTrack();
 };
 
@@ -62,6 +62,7 @@ public:
 	//  for ver changed checking..
 	std::string name;
 	int ver;
+	bool tutorial;
 	
 	std::vector<ProgressTrack> trks;
 	ProgressChamp();

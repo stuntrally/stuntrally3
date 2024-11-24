@@ -205,6 +205,8 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 			
 			case Games_Collection: gui->GuiShortcut(MN_Collect, TAB_Champs);  break;
 			// case Games_Career:     gui->GuiShortcut(MN_Career,  TAB_Champs);  break;
+			
+			case Games_Stats:      mWndStats->setVisible(true);  break;
 			case Games_Back:       pSet->iMenu = MN1_Setup;  break;
 			}
 			gui->toggleGui(false);  return;
@@ -231,10 +233,10 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 	}
 
 	//  ctrl-F1  Welcome wnd
-	if (skey == key(F1) && ctrl)
+	if (skey == key(F1))
 	{
-		mWndWelcome->setVisible(true);
-		return;
+		if (ctrl) {  mWndWelcome->setVisible(true);  return;  }
+		if (alt)  {  mWndStats->setVisible(!mWndStats->getVisible());  return;  }
 	}
 
 

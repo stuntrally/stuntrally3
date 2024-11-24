@@ -1,6 +1,48 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <MyGUI type="Layout" version="3.2.0">
 
+	<!-- Game Stats -->
+	<Widget type="Window" skin="WindowC" position="844 696 800 600" align="Center" layer="Overlapped" name="StatsWnd">
+		<Property key="MinSize" value="500 400"/>
+		<Property key="Caption" value="#{GameStatistics}"/>
+		<Property key="Alpha" value="1.0"/>
+		<Property key="Snap" value="true"/>
+
+		<Widget type="ImageBox" skin="ImageBox" position="2 10 96 96">
+			<Property key="ImageCoord" value="0 128 128 128"/>
+			<Property key="Alpha" value="1.0"/>
+			<Property key="ImageTexture" value="gui_icons.png"/>
+		</Widget>
+		<Widget type="ImageBox" skin="ImageBox" position="2 110 96 96">
+			<Property key="ImageCoord" value="0 256 128 128"/>
+			<Property key="Alpha" value="1.0"/>
+			<Property key="ImageTexture" value="gui_icons.png"/>
+		</Widget>
+		<Widget type="ImageBox" skin="ImageBox" position="2 210 96 96">
+			<Property key="ImageCoord" value="0 384 128 128"/>
+			<Property key="Alpha" value="1.0"/>
+			<Property key="ImageTexture" value="gui_icons.png"/>
+		</Widget>
+		<Widget type="ImageBox" skin="ImageBox" position="2 310 96 96">
+			<Property key="ImageCoord" value="768 128 128 128"/>
+			<Property key="Alpha" value="1.0"/>
+			<Property key="ImageTexture" value="gui_icons.png"/>
+		</Widget>
+
+		<Widget type="EditBox" skin="EditBoxStretch" position="132 8 660 590" name="EdStats">
+			<Property key="ReadOnly" value="true"/>
+			<Property key="MultiLine" value="true"/>
+			<Property key="WordWrap" value="true"/>
+			<Property key="VisibleHScroll" value="false"/>
+			<Property key="VisibleVScroll" value="true"/>
+			<Property key="MaxTextLength" value="9000"/>
+			<Property key="TextColour" value="0.86 0.94 1"/>
+			<Property key="Colour" value="0.4 0.5 0.6"/>
+		</Widget>
+	</Widget>
+
+
+	<!-- Help -->
 	<Widget type="Window" skin="WindowC" position="844 696 800 600" align="Center" layer="Overlapped" name="HelpWnd">
 		<Property key="MinSize" value="500 400"/>
 		<Property key="Caption" value="#{Help}"/>
@@ -65,12 +107,19 @@
 					<Property key="Colour" value="0.9 0.9 0.6"/>
 				</Widget>
 
-				<Widget type="Button" skin="Button" position="32 220 300 28" name="OpenForum">
+				<Widget type="Button" skin="Button" position="32 220 300 28" name="OpenChat">
+					<Property key="Caption" value="#{Chat}"/>
+					<Property key="TextAlign" value="Center"/>
+					<Property key="TextColour" value="0.5 0.9 1.0"/>
+					<Property key="Colour" value="0.5 1.0 1.0"/>
+				</Widget>
+				<Widget type="Button" skin="Button" position="32 260 300 28" name="OpenForum">
 					<Property key="Caption" value="#{Forum}"/>
 					<Property key="TextAlign" value="Center"/>
 					<Property key="TextColour" value="0.5 0.7 1.0"/>
 					<Property key="Colour" value="0.5 0.7 1.0"/>
 				</Widget>
+
 				<Widget type="Button" skin="Button" position="432 100 300 28" name="OpenEdTut">
 					<Property key="Caption" value="#{TrackEditorTutorial}"/>
 					<Property key="TextAlign" value="Center"/>
@@ -89,7 +138,7 @@
 					<Property key="TextColour" value="0.7 0.9 0.9"/>
 					<Property key="Colour" value="0.7 0.9 0.9"/>
 				</Widget>
-				<Widget type="Button" skin="Button" position="32 300 300 28" name="OpenDonations">
+				<Widget type="Button" skin="Button" position="432 300 300 28" name="OpenDonations">
 					<Property key="Caption" value="#{Donations}"/>
 					<Property key="TextAlign" value="Center"/>
 					<Property key="TextColour" value="0.9 0.7 1.0"/>
@@ -183,6 +232,7 @@
 					<Property key="ImageCoord" value="256 640 128 128"/>
 					<Property key="Alpha" value="0.5"/>
 					<Property key="ImageTexture" value="gui_icons.png"/>
+					<Property key="Colour" value="0.25 0.95 0.25"/>
 				</Widget>
 				<Widget type="ImageBox" skin="ImageBox" position="660 48 72 72">
 					<Property key="ImageCoord" value="256 256 128 128"/>

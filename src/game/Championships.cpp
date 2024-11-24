@@ -225,7 +225,7 @@ void CGui::btnChampStageStart(WP)
 		app->mWndChampStage->setVisible(false);
 
 		// tutorial, tutorial hard, normal, hard, very hard, scenery, test
-		bool tut = ch.isTut();
+		bool tut = ch.isTutorial();
 		const int ui[8] = {0,1,2,3,4,5,0,0};
 		if (imgChampEndCup)
 			imgChampEndCup->setImageCoord(IntCoord(ui[std::min(7, std::max(0, ch.type))]*128,0,128,256));
@@ -377,7 +377,7 @@ void CGui::ChampionshipAdvance(float timeCur)
 		
 		//  upd champ end [window]
 		String s = 
-			TR(ch.isTut() ? /*"#{Tutorial}"*/"" : "#{Championship}:  ") + ch.name + "\n" +
+			TR(ch.isTutorial() ? /*"#{Tutorial}"*/"" : "#{Championship}:  ") + ch.name + "\n" +
 			TR("#{TotalScore}") + ": " + fToStr(pc.points,1,5);
 		edChampEnd->setCaption(s);
 		//mWndChampEnd->setVisible(true);  // show after stage end
@@ -399,7 +399,7 @@ void CGui::ChampFillStageInfo(bool finished)
 	s = "#80FFE0"+ ch.name + "\n\n" +
 		"#80FFC0"+ TR("#{Stage}") + ":  " + toStr(pc.curTrack+1) + " / " + toStr(ch.trks.size()) + "\n" +
 		"#80FF80"+ TR("#{Track}") + ":  " + trk.name + "\n\n";
-	app->mWndChampStage->setCaption(TR(ch.isTut() ? "#{Tutorial}" : "#{Championship}"));
+	app->mWndChampStage->setCaption(TR(ch.isTutorial() ? "#{Tutorial}" : "#{Championship}"));
 
 	if (!finished)  // track info at start
 	{

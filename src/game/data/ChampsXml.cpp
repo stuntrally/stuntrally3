@@ -119,7 +119,7 @@ ProgressTrack::ProgressTrack() :
 {	}
 
 ProgressChamp::ProgressChamp() :
-	curTrack(0), points(0.f), ver(0)
+	curTrack(0), points(0.f), ver(0), tutorial(0)
 {	}
 
 

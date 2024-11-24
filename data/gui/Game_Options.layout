@@ -189,36 +189,36 @@
 
 
 						<!-- 🕳️ SSAO -->
-						<Widget type="Button" skin="CheckBox" position="28 10 556 24" name="SSAO">
-							<Property key="Caption" value="#{SSAO} **"/>
+						<Widget type="Button" skin="CheckBox" position="28 30 556 24" name="SSAO">
+							<Property key="Caption" value="#{SSAO} **  #7090B0 #{WaterRefraction} - #{Needed}"/>
 							<Property key="TextColour" value="0.3 0.7 1"/>
 						</Widget>
 
-						<Widget type="TextBox" skin="TextBox" position="32 40 248 24">
+						<Widget type="TextBox" skin="TextBox" position="32 60 248 24">
 							<Property key="Caption" value="#{Brush_Size}"/>
 							<Property key="TextColour" value="0.5 0.7 0.9"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="296 40 48 24" name="SsaoRadiusVal">
+						<Widget type="TextBox" skin="TextBox" position="296 60 48 24" name="SsaoRadiusVal">
 							<Property key="TextColour" value="0.5 0.7 0.9"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="344 40 216 16" name="SsaoRadius">
+						<Widget type="Slider" skin="Slider" position="344 60 216 16" name="SsaoRadius">
 							<Property key="Colour" value="0.5 0.7 0.9"/>
 						</Widget>
 
-						<Widget type="TextBox" skin="TextBox" position="32 70 248 24">
+						<Widget type="TextBox" skin="TextBox" position="32 90 248 24">
 							<Property key="Caption" value="#{Brush_Power}"/>
 							<Property key="TextColour" value="0.5 0.9 0.9"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="296 70 48 24" name="SsaoScaleVal">
+						<Widget type="TextBox" skin="TextBox" position="296 90 48 24" name="SsaoScaleVal">
 							<Property key="TextColour" value="0.5 0.9 0.9"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="344 70 216 16" name="SsaoScale">
+						<Widget type="Slider" skin="Slider" position="344 90 216 16" name="SsaoScale">
 							<Property key="Colour" value="0.5 0.9 0.9"/>
 						</Widget>
 
 						<!-- 🌅 HDR -->
-						<Widget type="Button" skin="CheckBox" position="28 110 556 24" name="HDR">
-							<Property key="Caption" value="#{HDR} **"/>
+						<Widget type="Button" skin="CheckBox" position="28 130 556 24" name="HDR">
+							<Property key="Caption" value="#{HDR} ** #603030 = #{NotDone}"/>
 							<Property key="TextColour" value="1 0.8 0.5"/>
 						</Widget>
 

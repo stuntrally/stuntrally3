@@ -1674,6 +1674,10 @@
 	<Tag name="HintGraphics">To adjust graphics to your card press Screen button.</Tag>
 	<Tag name="HintInput">To check keys used in game or reassign them, or to configure controller press Input button.</Tag>
 
+	<!--  Game play statistics  -->
+	<Tag name="GameStatistics">Game Statistics</Tag>
+	
+
 	<!--  TIP  Track  messages  -->
 	<Tag name="TrackNotFound">Track not found !</Tag>
 	<Tag name="TipReverse">Reverse track direction.</Tag>

@@ -69,7 +69,7 @@ void CGui::InitGui()
 	//  dialog wnds  --[]--
 	app->mWndMaterials = fWnd("MaterialsWnd");  app->mWndTrkFilt = fWnd("TrackFilterWnd");
 	app->mWndWelcome = fWnd("WelcomeWnd");
-	app->mWndStats = fWnd("StatsWnd");
+	app->mWndStats = fWnd("StatsWnd");  app->mWndStats->setVisible(false);
 
 	app->mWndChampStage = fWnd("WndChampStage");  app->mWndChampStage->setVisible(false);
 	app->mWndChampEnd   = fWnd("WndChampEnd");    app->mWndChampEnd->setVisible(false);
@@ -158,6 +158,9 @@ void CGui::InitGui()
 	Btn("btnHowToBack", btnHowToBack);
 	for (int i=1; i <= 7; ++i)
 	{	Btn("BtnLesson"+toStr(i), btnLesson);  }
+
+	edStats = fEd("EdStats");  // game stats
+	FillGameStats();
 
 
 	///  🎚️ Sliders
@@ -290,6 +293,7 @@ void CGui::InitGui()
 	sv= &svDbgTxtClr;	sv->Init("DbgTxtClr",	&pSet->car_dbgtxtclr, 0, 1);  //-
 	sv= &svDbgTxtCnt;	sv->Init("DbgTxtCnt",	&pSet->car_dbgtxtcnt, 0, 8);
 
+
 	//  🔧 Tweak  ------------------------------------------------------------
 	ck= &ckDevKeys;		ck->Init("DevKeys",		&pSet->dev_keys);
 	sv= &svCarPrv;		sv->Init("CarPrv",		&gPar.carPrv, 0, 3);
@@ -330,6 +334,7 @@ void CGui::InitGui()
 		sv->strMap[2] = TR("#{GraphicsAll_High}");  sv->strMap[3] = TR("#{GraphicsAll_Ultra}");
 							sv->Init("SimQuality",	&pSet->g.sim_quality, 0,3);  Sev(SimQuality);
 	slSimQuality(0);
+
 
 	//  🔨 Game  ------------------------------------------------------------
 	ck= &ckVegetCollis;		ck->Init("VegetCollis",		&pSet->gui.collis_veget);

@@ -467,6 +467,7 @@ public:
 	void ProgressSaveChamp(bool upgGui=true), ProgressSaveChall(bool upgGui=true);
 	void ProgressSaveCollect(bool upgGui=true);
 	void ProgressLoadChamp(), ProgressLoadChall(), ProgressLoadCollect();
+	Ed edStats =0;  // game stats
 	void FillGameStats();
 
 	//  load

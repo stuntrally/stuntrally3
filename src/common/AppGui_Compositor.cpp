@@ -270,7 +270,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				ps->mProfilingId = "Pre Ssao-"+si;  // Opaque only, no pipe glass
 				ps->mIdentifier = 10001;  //?
 				ps->mFirstRQ = RQG_Sky+1;  // no sky
-				ps->mLastRQ = RQG_Grass+1;
+				ps->mLastRQ = RQG_Hud3+1; //RQG_Grass+1;  trail?
 				ps->setVisibilityMask(
 					RV_Terrain | RV_Road |
 					RV_Vegetation | RV_VegetGrass | 
@@ -509,7 +509,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				ps->mShadowNodeRecalculation = SHADOW_NODE_REUSE;  //`
 				ps->setUseRefractions("depthBufferNoMsaa", "rrt_firstIn");  // ~
 
-				//  ⭕ glass pipes, 💭 particles, pacenotes
+				//  ⭕ glass pipes, car glass, 💭 particles, pacenotes
 				ps = AddScene(td);  // + scene
 				ps->setAllLoadActions( LoadAction::Load );
 				ps->mStoreActionColour[0] = StoreAction::StoreOrResolve;
@@ -519,6 +519,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				ps->mProfilingId = "Particles";  ps->mIdentifier = 10001;
 				ps->mFirstRQ = RQG_PipeGlass;  ps->mLastRQ = RQG_Hud3+1;
 				ps->setVisibilityMask(
+					RV_CarGlass |
 					RV_Road | RV_Vegetation |  // transparent only
 					RV_Hud3D[plr] | RV_Particles );
 				

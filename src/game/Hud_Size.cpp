@@ -95,7 +95,7 @@ void CHud::Size()
 			bx = std::min(bx, xMax -180);  // not too near to vel
 
 		//  ⏲️ gear, vel
-		const float f = 1.f; //pSet->font_hud;  //?
+		const float f = 1.f; //pSet->font_hud * getHudScale();  //?
 		if (h.txGear)  h.txGear->setPosition(gx*f, (gy +10)*f);
 		if (h.bckGear) h.bckGear->setPosition((gx-12)*f, (gy +10)*f);
 

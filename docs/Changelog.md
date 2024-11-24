@@ -9,11 +9,14 @@ WIP means work in progress, unfinished, still being developed.
   - SplitScreen uses RTTs, smaller Hud fonts
     - Refractions work, SSAO too
   - Apply buttons work for Shadows and Reflections
-  - WIP try, Global Illumination ([GI methods](https://ogrecave.github.io/ogre-next/api/latest/_gi_methods.html): IFD+VCT), no terrain
-    - new Gui tab Advanced after Effects, has also debug visuals
+  - WIP try, *not useful*, no effect on terrain [issue](https://github.com/OGRECave/ogre-next/issues/475)  
+    Global Illumination ([GI methods](https://ogrecave.github.io/ogre-next/api/latest/_gi_methods.html): IFD+VCT),
+    on new Gui tab Advanced after Effects, has also debug visuals.
 - Game
-  - Setup - Paints tab has filter, to show paints only from filter rating and above  
-  but editing paints list must be done w/o filter, on highest value
+  - Setup - Paints tab has filter, to show paints only from filter rating and above.  
+    But editing paints list must be done w/o filter, on highest value.
+    Pressing Random (or Space) sets random from visible list.
+  - *Statistics* window with list of completed game tutorials, championships, challenges, collections
 - Gui comboboxes open on click (whole, not just on down arrow)
 
 ### Version 3.2 - 23.09.2024
