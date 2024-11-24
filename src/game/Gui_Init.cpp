@@ -69,6 +69,7 @@ void CGui::InitGui()
 	//  dialog wnds  --[]--
 	app->mWndMaterials = fWnd("MaterialsWnd");  app->mWndTrkFilt = fWnd("TrackFilterWnd");
 	app->mWndWelcome = fWnd("WelcomeWnd");
+	app->mWndStats = fWnd("StatsWnd");
 
 	app->mWndChampStage = fWnd("WndChampStage");  app->mWndChampStage->setVisible(false);
 	app->mWndChampEnd   = fWnd("WndChampEnd");    app->mWndChampEnd->setVisible(false);
@@ -579,8 +580,8 @@ void CGui::InitGui()
 
 	//  🔗 open url btns  -------------
 	Btn("BtnTrackEditor", btnTrackEditor);
-	Btn("OpenWelcome", btnWelcome);  Btn("OpenWebsite", btnWebsite);   Btn("OpenSources", btnSources);
-	Btn("OpenForum",   btnForum);    Btn("OpenDonations", btnDonations);
+	Btn("OpenWelcome", btnWelcome);   Btn("OpenWebsite", btnWebsite);  Btn("OpenSources", btnSources);
+	Btn("OpenChat",    btnOpenChat);  Btn("OpenForum",   btnForum);    Btn("OpenDonations", btnDonations);
 	//  wiki
 	Btn("OpenWiki",  btnWiki);   Btn("OpenWikiInput", btnWikiInput);
 	Btn("OpenEdTut", btnEdTut);  Btn("OpenTransl", btnTransl);  // mplr?

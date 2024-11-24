@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "RenderConst.h"
 #include "Def_Str.h"
-#include "paths.h"
 #include "settings.h"
 #include "SceneClasses.h"
 #include "App.h"

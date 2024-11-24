@@ -46,7 +46,7 @@ enum GiMode
 //    Ogre, MyGui, settings, Fps bar, utils
 //    Shadows, Reflection cube
 //--------------------------------------------------------------------------------
-class AppGui : public BGui
+class AppGui : public BaseGui
 {
 public:
 	//  .cfg set  ----------------

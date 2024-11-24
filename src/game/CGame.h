@@ -5,11 +5,10 @@
 #include "TrackGhost.h"
 #include "cardefs.h"
 #include "CarPosInfo.h"
-// #include "networkcallbacks.hpp"
-#include "ICSChannelListener.h"
 #include "PreviewTex.h"
+
 #include <thread>
-//#include <OgreTextureGpu.h>
+#include "ICSChannelListener.h"
 #include <OgreHlmsDatablock.h>
 #include <OgrePrerequisites.h>
 

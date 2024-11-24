@@ -1,6 +1,5 @@
 #pragma once
 #include "BaseApp.h"
-#include "tracksurface.h"
 #include "Gui_Def.h"
 #include "SliderValue.h"
 
@@ -23,7 +22,7 @@ class HlmsPbsDbCar;
 namespace Ogre {  class HlmsPbsDatablock;  }
 
 
-class CGui : public BGui
+class CGui : public BaseGui
 {
 public:
 	CGui(App* app1);

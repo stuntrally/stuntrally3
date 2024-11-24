@@ -29,7 +29,7 @@ struct TrkL
 };
 
 
-class CGuiCom : public BGui
+class CGuiCom : public BaseGui
 {
 public:
 	App* app =0;

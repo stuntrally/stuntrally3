@@ -21,7 +21,7 @@ class SplineRoad;  class CarModel;
 class GraphView;   class HudRenderable;
 
 
-class CHud : public BGui
+class CHud : public BaseGui
 {
 public:
 	App* app =0;

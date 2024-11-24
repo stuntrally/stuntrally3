@@ -31,7 +31,7 @@ struct CarL
 };
 
 
-class CGui : public BGui
+class CGui : public BaseGui
 	, public ICS::DetectingBindingListener
 	, public GameClientCallback, public MasterClientCallback
 {
@@ -464,8 +464,10 @@ public:
 	ProgressCareer career;
 
 	Chall* pChall =0;  // current challenge or 0 if not
-	void ProgressSaveChamp(bool upgGui=true), ProgressSaveChall(bool upgGui=true), ProgressSaveCollect(bool upgGui=true);
+	void ProgressSaveChamp(bool upgGui=true), ProgressSaveChall(bool upgGui=true);
+	void ProgressSaveCollect(bool upgGui=true);
 	void ProgressLoadChamp(), ProgressLoadChall(), ProgressLoadCollect();
+	void FillGameStats();
 
 	//  load
 	void Ch_XmlLoad();
@@ -585,5 +587,5 @@ public:
 
 	void btnTrackEditor(WP);  // start ed exe
 	void btnWelcome(WP), btnWebsite(WP), btnWiki(WP), btnWikiInput(WP);
-	void btnForum(WP), btnSources(WP), btnEdTut(WP), btnTransl(WP), btnDonations(WP);
+	void btnOpenChat(WP), btnForum(WP), btnSources(WP), btnEdTut(WP), btnTransl(WP), btnDonations(WP);
 };

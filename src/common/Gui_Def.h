@@ -12,8 +12,9 @@ namespace MyGUI
 class SliderValue;  class Check;
 
 
-//  Base Gui
-class BGui
+//  Base for Gui  ----
+//  with shorcuts for common MyGui controls
+class BaseGui
 {
 public:
 	#define TD(w,n)  typedef MyGUI::w* n
@@ -27,7 +28,7 @@ public:
 };
 
 
-///  short Arguments for events
+///  short  Arguments for events  ----
 #define CMB  Cmb wp,  size_t val
 #define TAB  Tab tab, size_t id
 
@@ -47,7 +48,7 @@ public:
 #define CevC(ev)  if (ck->event.empty())  ck->event += newDelegate(this, &CGuiCom::chk##ev)
 
 
-///  short Finding widgets
+///  short  Finding widgets  ----
 #define fWP(s)   mGui->findWidget<Widget>(s)
 #define fWnd(s)  mGui->findWidget<Window>(s)
 #define fBtn(s)  mGui->findWidget<Button>(s)

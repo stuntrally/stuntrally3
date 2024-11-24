@@ -6,10 +6,14 @@ More in [Tasks tracker](https://stuntrally.tuxfamily.org/mantis/view_all_bug_pag
 Marked: `crucial`, **Next or Big**, _Important_.
 
 
+### 3.3
+
+new game *video*, 📽️ *editor videos*? all new  
+
 ----
 ### 🪄 Effects
 
-**HDR**, bloom  
+HDR, bloom  
 lens flare [shaders](https://www.shadertoy.com/results?query=lens+flare)  
 sunrays [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)  
 **Soft** Particles  
@@ -26,9 +30,6 @@ Update `sound engine` from [RoR PR](https://github.com/RigsOfRods/rigs-of-rods/p
 📦 object hit sounds, reverb change in water, caves, pipes-  
 
 ### Big
-
-new game *video*, 📽️ *editor videos* all new  
-
 
 New **tracks**, also with **fields**, add walls  
 walls repeat mul uv, more mtr  
@@ -55,18 +56,22 @@ hud new best time show, win particles-
 ----
 ## Fix Ogre
 
+move all from SR3.compositor to AppGui_Compositor.cpp  
+manual update ed RTTs^  
+fix ed RTTs no fluids
+
 SSAO: add to depth? car glass  
 
 no tire **trails**  
 no specular on terrain  
 
 rivers wrong way  
-waterfalls refract cuts off above  
+waterfalls refract cuts off above cam y  
 
 Pbs particles, fade from fog, soft  
 
 🌊refract, depth: pass projmatrix **not inverse**  
-underwater top has no refract  
+underwater top has no surface, refract  
 
 more fluids still blink on MilkyWay, no `depth` write / check  
 shader **params**: refract clr, *depth* clr, emissive fluids?  

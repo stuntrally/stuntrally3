@@ -125,7 +125,7 @@ public:
 		mWndHelp =0, mWndOpts =0,  // common in game & ed
 		mWndMaterials =0, mWndTrkFilt =0,  // common 🛠️ tools
 		
-		mWndWelcome =0, mWndHowTo =0,
+		mWndWelcome =0, mWndHowTo =0, mWndStats =0, 
 		mWndRpl =0, mWndRplTxt =0,  // 📽️ rpl controls
 		mWndNetEnd =0, mWndTweak =0,  // 📡 netw
 		mWndChampStage =0, mWndChampEnd =0,  // 🏆champ
