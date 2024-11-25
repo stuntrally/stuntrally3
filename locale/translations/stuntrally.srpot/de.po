@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-25 20:44+0100\n"
-"PO-Revision-Date: 2024-09-15 11:09+0000\n"
+"PO-Revision-Date: 2024-11-25 21:00+0000\n"
 "Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/de/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.9-dev\n"
 
 #. General 
 #: data/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -289,7 +289,7 @@ msgstr "Forum"
 #: data/gui/Game_Help.layout:122 ..Help.Support.Button
 msgctxt "Chat"
 msgid "Chat"
-msgstr ""
+msgstr "Chat"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:147 ..Help.Support.Button
@@ -1975,7 +1975,7 @@ msgstr "Anomalie"
 #. Scenery names 
 msgctxt "SC_PostApo"
 msgid "PostApo"
-msgstr ""
+msgstr "PostApo"
 
 #. Vehicle Paint names 
 #: data/gui/Editor.layout:590 ..Editor.Terrain.Light.Text
@@ -3554,21 +3554,21 @@ msgstr "Effekte aktivieren"
 #: data/gui/Game_Options.layout:192
 msgctxt "SSAO"
 msgid "SSAO (Ambient Occlusion)"
-msgstr ""
+msgstr "SSAO (Umgebungsokklusion)"
 
 #. Effects  Main  not used 
 #: data/gui/Editor_Options.layout:258 ..Options.Screen.Advanced.Check
 #: data/gui/Game_Options.layout:258
 msgctxt "GI"
 msgid "Global Illumination"
-msgstr ""
+msgstr "Globale Beleuchtung"
 
 #. Effects  Main  not used 
 #: data/gui/Editor_Options.layout:226 ..Options.Screen.Effects.Check
 #: data/gui/Game_Options.layout:226
 msgctxt "SoftParticles"
 msgid "Soft Particles"
-msgstr ""
+msgstr "Weiche Partikeln"
 
 #. Effects  Main  not used 
 #: data/gui/Editor_Options.layout:177 ..Options.Screen.Effects.Check
@@ -3642,7 +3642,7 @@ msgstr "HDR"
 #: data/gui/Game_Options.layout:220
 msgctxt "HDR"
 msgid "HDR and Bloom (High Dynamic Range)"
-msgstr ""
+msgstr "HDR und Bloom (hoher dynamischer Bereich)"
 
 #. Effects  HDR  not used 
 #: data/gui/Editor_Options.layout:236 ..Options.Screen.Effects.Text
@@ -4254,6 +4254,8 @@ msgstr "P - Replay pausieren/fortsetzen"
 msgctxt "InputRplCtrl3"
 msgid "Down, Up - wind backwards/forwards (shift - slow, ctrl,alt - fast)"
 msgstr ""
+"Abwärts, Aufwärts - rückwärts/vorwärts spulen (Shift - langsam, Strg, Alt - "
+"schnell)"
 
 #. Game Input  General replay 
 #: data/gui/Game_Options.layout:434 ..Options.Input.General.Text
@@ -5852,7 +5854,7 @@ msgstr "Gebiete"
 #: data/gui/Editor_Help.layout:958 ..Help.Input/help.Fields.Text
 msgctxt "InputFieldsTelepEnd"
 msgid "Enter - toggle teleport end edit"
-msgstr ""
+msgstr "Enter - Teleport Ende bearbeiten umschalten"
 
 #. Tools 
 #: data/gui/Editor_Help.layout:238 ..Help.Input/help.Shortcuts.Text
@@ -7442,7 +7444,7 @@ msgstr ""
 #: ..NewGame-GameTypes.Button
 msgctxt "GameStatistics"
 msgid "Game Statistics"
-msgstr ""
+msgstr "Spielstatistik"
 
 #. TIP  Track  messages 
 #: src/game/Game_SceneInit.cpp:239
