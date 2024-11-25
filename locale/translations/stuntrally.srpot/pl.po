@@ -10,16 +10,16 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-25 20:44+0100\n"
-"PO-Revision-Date: 2024-11-25 17:00+0000\n"
-"Last-Translator: Leon Król <leon@gajda.co.uk>\n"
+"PO-Revision-Date: 2024-11-25 21:00+0000\n"
+"Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
-"(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && ("
+"n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
 "n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 "X-Generator: Weblate 5.9-dev\n"
 
@@ -290,7 +290,7 @@ msgstr "Forum"
 #: data/gui/Game_Help.layout:122 ..Help.Support.Button
 msgctxt "Chat"
 msgid "Chat"
-msgstr ""
+msgstr "Czat"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:147 ..Help.Support.Button
@@ -3559,21 +3559,21 @@ msgstr "Efekty włączone"
 #: data/gui/Game_Options.layout:192
 msgctxt "SSAO"
 msgid "SSAO (Ambient Occlusion)"
-msgstr ""
+msgstr "SSAO (Okluzja otoczenia)"
 
 #. Effects  Main  not used 
 #: data/gui/Editor_Options.layout:258 ..Options.Screen.Advanced.Check
 #: data/gui/Game_Options.layout:258
 msgctxt "GI"
 msgid "Global Illumination"
-msgstr ""
+msgstr "Globalne oświetlenie"
 
 #. Effects  Main  not used 
 #: data/gui/Editor_Options.layout:226 ..Options.Screen.Effects.Check
 #: data/gui/Game_Options.layout:226
 msgctxt "SoftParticles"
 msgid "Soft Particles"
-msgstr ""
+msgstr "Miękkie Cząstki"
 
 #. Effects  Main  not used 
 #: data/gui/Editor_Options.layout:177 ..Options.Screen.Effects.Check
@@ -3647,7 +3647,7 @@ msgstr "HDR"
 #: data/gui/Game_Options.layout:220
 msgctxt "HDR"
 msgid "HDR and Bloom (High Dynamic Range)"
-msgstr ""
+msgstr "HDR i Połysk (wysoki zakres dynamiczny światła)"
 
 #. Effects  HDR  not used 
 #: data/gui/Editor_Options.layout:236 ..Options.Screen.Effects.Text
@@ -4262,6 +4262,7 @@ msgstr "P - pauza/wznów powtórkę"
 msgctxt "InputRplCtrl3"
 msgid "Down, Up - wind backwards/forwards (shift - slow, ctrl,alt - fast)"
 msgstr ""
+"Dół, Góra - przewijaj w tył/do przodu (shift - wolno, ctrl,alt - szybko)"
 
 #. Game Input  General replay 
 #: data/gui/Game_Options.layout:434 ..Options.Input.General.Text
@@ -7444,7 +7445,7 @@ msgstr ""
 #: ..NewGame-GameTypes.Button
 msgctxt "GameStatistics"
 msgid "Game Statistics"
-msgstr ""
+msgstr "Statystyki Gry"
 
 #. TIP  Track  messages 
 #: src/game/Game_SceneInit.cpp:239
