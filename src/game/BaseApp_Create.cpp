@@ -62,9 +62,12 @@ BaseApp::~BaseApp()
 	DestroyGui();
 
 	//  save inputs
-	mInputCtrl->save(PATHS::UserConfigDir() + "/input.xml");
+	if (mInputCtrl)
+		mInputCtrl->save(PATHS::UserConfigDir() + "/input.xml");
 	delete mInputCtrl;
+	
 	for (int i=0; i < MAX_Players; ++i)
+	if (mInputCtrlPlayer[i])
 	{
 		mInputCtrlPlayer[i]->save(PATHS::UserConfigDir() + "/input_p" + toStr(i) + ".xml");
 		delete mInputCtrlPlayer[i];

@@ -40,6 +40,7 @@ App::App()
 void App::ShutDown()
 {
 	Quit();
+	if (mThread)
 	if (mThread->joinable())
 		mThread->join();
 	delete mThread;

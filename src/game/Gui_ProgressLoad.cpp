@@ -77,7 +77,7 @@ void CGui::FillGameStats()
 		s += TR("#B0B0FF#{Challenge}\n") + "#D0D0FF" + strWon() + " %  -  "+strPr();
 		
 		if (rev == 0)
-			s += TR("#C0FF00#{Reverse} ----\n\n");
+			s += TR("#C0FF00----  #{Reverse}\n\n");
 	}
 
 	//  collections  ---
@@ -93,6 +93,7 @@ void CGui::FillGameStats()
 		}
 		++all;
 	}
+	s += TR("#C0D0E0----\n");
 	s += TR("#C080FF#{Collection}\n") + "#D0A0FF" + strWon() + " %  -  "+strPr();
 
 	// career ? TR("#FF8080#{Career}") :
