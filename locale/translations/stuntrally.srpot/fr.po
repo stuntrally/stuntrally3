@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-25 20:44+0100\n"
-"PO-Revision-Date: 2024-09-15 11:09+0000\n"
+"PO-Revision-Date: 2024-11-25 21:00+0000\n"
 "Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/fr/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % "
 "1000000 == 0 ? 1 : 2;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.9-dev\n"
 
 #. General 
 #: data/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -286,7 +286,7 @@ msgstr "Forum"
 #: data/gui/Game_Help.layout:122 ..Help.Support.Button
 msgctxt "Chat"
 msgid "Chat"
-msgstr ""
+msgstr "Chat"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:147 ..Help.Support.Button
@@ -745,19 +745,19 @@ msgstr "Liste"
 #: src/common/GuiCom_Track.cpp:246
 msgctxt "ViewListUser"
 msgid "List user"
-msgstr ""
+msgstr "Liste des utilisateurs"
 
 #. MAIN  Track 
 #: src/common/GuiCom_Track.cpp:247
 msgctxt "ViewListDetail"
 msgid "List wide"
-msgstr ""
+msgstr "Liste large"
 
 #. MAIN  Track 
 #: src/common/GuiCom_Track.cpp:247
 msgctxt "ViewGalleryList"
 msgid "Gallery list"
-msgstr ""
+msgstr "Galerie"
 
 #. MAIN  Track 
 #: src/common/GuiCom_Track.cpp:248
@@ -3548,7 +3548,7 @@ msgstr "Effets activés"
 #: data/gui/Game_Options.layout:192
 msgctxt "SSAO"
 msgid "SSAO (Ambient Occlusion)"
-msgstr ""
+msgstr "SSAO (occlusion ambiante)"
 
 #. Effects  Main  not used 
 #: data/gui/Editor_Options.layout:258 ..Options.Screen.Advanced.Check
@@ -5157,7 +5157,7 @@ msgstr ""
 #: data/gui/Editor.layout:394 ..Editor.Sun.Wind.Text
 msgctxt "Frequency"
 msgid "Frequency"
-msgstr ""
+msgstr "Fréquence"
 
 #. Terrain  surface  params 
 #: data/gui/Editor.layout:382 ..Editor.Sun.Wind.Text
