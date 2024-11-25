@@ -82,7 +82,7 @@ GraphicsSystem::GraphicsSystem(
 
 	mLogCfgFolder( logCfgPath ),  // in/out: ogre.cfg  out: Ogre.log
 	mCacheFolder( cachePath ),    // out: shaders etc
-	mResourcePath( resourcePath ),  // in: for resources2.cfg only
+	mResourcePath( resourcePath ),  // in: for resources3.cfg only
 	mPluginsFolder( pluginsPath ),  // in: ./  same as binary
 
 	mOverlaySystem( 0 ),
@@ -92,7 +92,7 @@ GraphicsSystem::GraphicsSystem(
 	mThreadWeight( 0 ),
 
 	mQuit( false ),
-	mAlwaysAskForConfig( app->pSet->ogre_dialog ),
+	mAlwaysAskForConfig( app->pSet->ogre_dialog ),  //**  init cfg
 	//  hlms cache files, and debug in shaders/
 	mUseHlmsDiskCache( app->pSet->cache_hlms ),
 	mUseMicrocodeCache( app->pSet->cache_shaders ),
@@ -120,7 +120,7 @@ GraphicsSystem::GraphicsSystem(
 		mCacheFolder = filesystemLayer.getWritablePath( "" );
 	}*/
 
-	const Args& a = MainEntryPoints::args;
+	const Args& a = MainEntryPoints::args;  //**
 	if (a.has("c") || a.has("cfg"))
 		mAlwaysAskForConfig = true;
 }
@@ -570,26 +570,27 @@ void GraphicsSystem::addResourceLocation( const String &archName, const String &
 void GraphicsSystem::setupResources()
 {
 	// Load resource paths from config file
-	ConfigFile cf;
-	cf.load( AndroidSystems::openFile( mResourcePath + "resources2.cfg" ) );
+	ConfigFile cf;  // PATHS::GameConfigDir() +"/"+
+	cf.load( AndroidSystems::openFile( mResourcePath + "resources3.cfg" ) );
 
 	// Go through all sections & settings in the file
 	ConfigFile::SectionIterator seci = cf.getSectionIterator();
 
 	String secName, typeName, archName;
-	while( seci.hasMoreElements() )
+	while (seci.hasMoreElements())
 	{
 		secName = seci.peekNextKey();
 		ConfigFile::SettingsMultiMap *settings = seci.getNext();
 
-		if( secName != "Hlms" )
+		if (secName != "Hlms")
 		{
 			ConfigFile::SettingsMultiMap::iterator i;
 			for (i = settings->begin(); i != settings->end(); ++i)
 			{
 				typeName = i->first;
-				archName = i->second;
+				archName = PATHS::Data() + "/" + i->second;
 				addResourceLocation( archName, typeName, secName );
+				// std::cout << "  ADD:   "<< archName <<"  "<< typeName <<"  "<< secName << std::endl;
 			}
 		}
 	}
@@ -629,20 +630,7 @@ void GraphicsSystem::loadResources()
 //--------------------------------------------------------------------------------------------------------------------------------
 void GraphicsSystem::registerHlms()
 {
-	ConfigFile cf;
-	cf.load( AndroidSystems::openFile( mResourcePath + "resources2.cfg" ) );
-	String cfgDir = cf.getSetting( "Templates", "Hlms", "" );
-
-#if OGRE_PLATFORM == OGRE_PLATFORM_APPLE || OGRE_PLATFORM == OGRE_PLATFORM_APPLE_IOS
-	String rootDir = macBundlePath() + '/' + cfgDir;
-#else
-	String rootDir = mResourcePath + cfgDir;
-#endif
-
-	if( rootDir.empty() )
-		rootDir = AndroidSystems::isAndroid() ? "/" : "./";
-	else if( *(rootDir.end() - 1) != '/' )
-		rootDir += "/";
+	String rootDir = PATHS::Data()+"/";
 
 	//  At this point rootHlmsFolder should be a valid path to the Hlms data folder
 

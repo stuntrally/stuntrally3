@@ -183,7 +183,7 @@ dev - root folder
    sr3 - has this repo
       bin - output binaries
          Debug
-         Release - has stuntrally3, sr3-editor, plugins.cfg, resources2.cfg
+         Release - has stuntrally3, sr3-editor, plugins.cfg
          RelWithDebInfo
       data
          tracks - has Test1-Flat, Test3-Bumps - cloned tracks3 repo (or old tracks)

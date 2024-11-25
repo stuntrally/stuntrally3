@@ -55,32 +55,6 @@ class GameGraphicsSystem final : public GraphicsSystem
 	void setupResources() override
 	{
 		GraphicsSystem::setupResources();
-
-		ConfigFile cf;
-		cf.load( AndroidSystems::openFile( mResourcePath + "resources2.cfg" ) );
-
-		String orgDir = cf.getSetting( "Templates", "Hlms", "" );
-
-		if( orgDir.empty() )
-			orgDir = AndroidSystems::isAndroid() ? "/" : "./";
-		else if( *(orgDir.end() - 1) != '/' )
-			orgDir += "/";
-
-		const int count = 5;
-		const char *c_locations[count] =
-		{
-			"materials/Terrain",
-			"materials/Terrain/GLSL",
-			"materials/Terrain/HLSL",
-			"materials/Terrain/Metal",
-			"materials/Pbs"
-		};
-
-		for( size_t i=0; i < count; ++i )
-		{
-			String dataFolder = orgDir + c_locations[i];
-			addResourceLocation( dataFolder, getMediaReadArchiveType(), "General" );
-		}
 	}
 
 	//  🌠 Hlms
@@ -89,20 +63,7 @@ class GameGraphicsSystem final : public GraphicsSystem
 	{
 		GraphicsSystem::registerHlms();
 
-		ConfigFile cf;
-		cf.load( AndroidSystems::openFile( mResourcePath + "resources2.cfg" ) );
-
-	#if OGRE_PLATFORM == OGRE_PLATFORM_APPLE || OGRE_PLATFORM == OGRE_PLATFORM_APPLE_IOS
-		String rootHlmsFolder = macBundlePath() + '/' +
-			cf.getSetting( "Templates", "Hlms", "" );
-	#else
-		String rootDir = mResourcePath +
-			cf.getSetting( "Templates", "Hlms", "" );
-	#endif
-		if( rootDir.empty() )
-			rootDir = AndroidSystems::isAndroid() ? "/" : "./";
-		else if( *(rootDir.end() - 1) != '/' )
-			rootDir += "/";
+		String rootDir = PATHS::Data()+"/";
 
 		RenderSystem *rs = mRoot->getRenderSystem();
 		String name = rs->getName(), syntax = "GLSL";
@@ -168,7 +129,7 @@ public:
 			pluginsPath )
 		, mTerraWorkspaceListener( 0 )
 	{
-		mResourcePath = resourcePath; //"./";  // todo: ?
+		mResourcePath = resourcePath;
 	}
 };
 
@@ -192,8 +153,7 @@ void MainEntryPoints::createSystems(
 		app, app,
 		PATHS::UserConfigDir()+"/",
 		PATHS::CacheDir()+"/",
-		String("./"),  // todo: ? check run from other dir than exe
-		// PATHS::GameConfigDir()+"/",  // todo: config/resources2.cfg
+		PATHS::GameConfigDir()+"/",
 		String("./") );
 
 	app->mGraphicsSystem = graphicsSystem;

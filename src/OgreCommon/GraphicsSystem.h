@@ -181,7 +181,7 @@ public:
 	bool getAlwaysAskForConfig() const { return mAlwaysAskForConfig; }
 
 	const Ogre::String& getPluginsFolder() const        { return mPluginsFolder; }
-	const Ogre::String& getResourcePath() const         { return mResourcePath; }
+	// const Ogre::String& getResourcePath() const         { return mResourcePath; }
 	const char *        getMediaReadArchiveType() const;
 
 	// virtual void stopCompositor();
