@@ -17,14 +17,14 @@
 	You should have received a copy of the GNU General Public License
 	along with Rigs of Rods. If not, see <http://www.gnu.org/licenses/>.
 */
+//  Modified by CryHam for SR3
 
-// #ifdef USE_OPENAL
 
 #include "Sound.h"
 #include "SoundManager.h"
 
 using namespace Ogre;
-using namespace RoR;
+
 
 Sound::Sound(ALuint buffer, SoundManager* soundManager, int sourceIndex) :
 	buffer(buffer)
@@ -81,7 +81,9 @@ void Sound::computeAudibility(Vector3 pos)
 	}
 	else
 	{
-		audibility = gain * (sound_manager->REFERENCE_DISTANCE / (sound_manager->REFERENCE_DISTANCE + (sound_manager->ROLLOFF_FACTOR * (distance - sound_manager->REFERENCE_DISTANCE))));
+		audibility = gain * (sound_manager->REFERENCE_DISTANCE /
+			(sound_manager->REFERENCE_DISTANCE +
+				(sound_manager->ROLLOFF_FACTOR * (distance - sound_manager->REFERENCE_DISTANCE))));
 	}
 }
 

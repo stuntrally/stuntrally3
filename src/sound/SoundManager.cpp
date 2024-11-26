@@ -18,17 +18,17 @@
     You should have received a copy of the GNU General Public License
     along with Rigs of Rods. If not, see <http://www.gnu.org/licenses/>.
 */
+//  Modified by CryHam for SR3
 
-// #ifdef USE_OPENAL
 
 #include "SoundManager.h"
-
 #include "Declare.h"
 #include "Sound.h"
 
 #include <OgreResourceGroupManager.h>
 
 #define LOGSTREAM Ogre::LogManager::getSingleton().stream() << "@@ "
+
 
 bool _checkALErrors(const char* filename, int linenum)
 {
@@ -45,8 +45,8 @@ bool _checkALErrors(const char* filename, int linenum)
 
 #define hasALErrors() _checkALErrors(__FILE__, __LINE__)
 
-using namespace RoR;
 using namespace Ogre;
+
 
 const float SoundManager::MAX_DISTANCE = 500.0f;
 const float SoundManager::ROLLOFF_FACTOR = 1.0f;
@@ -134,7 +134,7 @@ SoundManager::SoundManager()
                     LOG("SoundManager: Reverb engine disabled");
             }
 
-            if(m_efx_reverb_engine == EfxReverbEngine::EAXREVERB)
+            if (m_efx_reverb_engine == EfxReverbEngine::EAXREVERB)
             {
                 if (alGetEnumValue("AL_EFFECT_EAXREVERB") != 0)
                 {
@@ -146,13 +146,13 @@ SoundManager::SoundManager()
                     m_efx_reverb_engine = EfxReverbEngine::REVERB;
                 }
             }
-            else if(m_efx_reverb_engine == EfxReverbEngine::REVERB)
+            else if (m_efx_reverb_engine == EfxReverbEngine::REVERB)
             {
                 LOG("SoundManager: Using OpenAL standard reverb");
             }
 
             // create effect slot for the listener
-            if(!this->alIsAuxiliaryEffectSlot(m_listener_slot))
+            if (!this->alIsAuxiliaryEffectSlot(m_listener_slot))
             {
                 alGetError();
 
@@ -209,7 +209,7 @@ SoundManager::SoundManager()
         alSourcef(hardware_sources[hardware_sources_num], AL_MAX_DISTANCE, MAX_DISTANCE);
 
         // connect source to listener slot effect
-        if(Audio::audio_enable_efx)
+        if (Audio::audio_enable_efx)
         {
             alSource3i(hardware_sources[hardware_sources_num], AL_AUXILIARY_SEND_FILTER, m_listener_slot, 0, AL_FILTER_NULL);
         }
@@ -222,8 +222,6 @@ SoundManager::SoundManager()
     {
         hardware_sources_map[i] = -1;
     }
-
-
 }
 
 SoundManager::~SoundManager()
@@ -232,9 +230,9 @@ SoundManager::~SoundManager()
     alDeleteSources(MAX_HARDWARE_SOURCES, hardware_sources);
     alDeleteBuffers(MAX_AUDIO_BUFFERS, audio_buffers);
 
-    if(m_efx_is_available)
+    if (m_efx_is_available)
     {
-        if(this->alIsFilter(m_efx_outdoor_obstruction_lowpass_filter_id))
+        if (this->alIsFilter(m_efx_outdoor_obstruction_lowpass_filter_id))
         {
             this->alDeleteFilters(1, &m_efx_outdoor_obstruction_lowpass_filter_id);
         }
@@ -261,9 +259,10 @@ SoundManager::~SoundManager()
     LOG("SoundManager destroyed.");
 }
 
+
 void SoundManager::CleanUp()
 {
-    if(m_efx_is_available)
+    if (m_efx_is_available)
     {
         m_listener_efx_reverb_properties = nullptr;
         if (this->alIsAuxiliaryEffectSlot(m_listener_slot))
@@ -294,6 +293,7 @@ const EFXEAXREVERBPROPERTIES* SoundManager::GetEfxProperties(const std::string& 
         return nullptr;
     }
 }
+
 
 void SoundManager::PrepopulateEfxPropertiesMap()
 {
@@ -379,10 +379,10 @@ void SoundManager::Update(const float dt_sec)
     recomputeAllSources();
     UpdateAlListener();
 
-    if(Audio::audio_enable_efx)
+    if (Audio::audio_enable_efx)
     {
         // apply filters to sources when appropriate
-        for(int hardware_index = 0; hardware_index < hardware_sources_num; hardware_index++)
+        for (int hardware_index = 0; hardware_index < hardware_sources_num; hardware_index++)
         {
             // update air absorption factor
             alSourcef(hardware_sources[hardware_index], AL_AIR_ABSORPTION_FACTOR, m_air_absorption_factor);
@@ -424,9 +424,10 @@ void SoundManager::SetListenerEnvironment(const EFXEAXREVERBPROPERTIES* listener
     m_listener_efx_reverb_properties = listener_reverb_properties;
 }
 
+
 void SoundManager::UpdateListenerEffectSlot(const float dt_sec)
 {
-    if(m_listener_efx_reverb_properties == nullptr)
+    if (m_listener_efx_reverb_properties == nullptr)
     {
         this->SmoothlyUpdateAlAuxiliaryEffectSlot(dt_sec, m_listener_slot, nullptr);
         return;
@@ -451,6 +452,7 @@ void SoundManager::UpdateListenerEffectSlot(const float dt_sec)
     this->SmoothlyUpdateAlAuxiliaryEffectSlot(dt_sec, m_listener_slot, &current_environmental_properties);
 }
 
+
 void SoundManager::SmoothlyUpdateAlAuxiliaryEffectSlot(const float dt_sec, const ALuint slot_id, const EFXEAXREVERBPROPERTIES* target)
 {
     const float time_to_target = 0.333f; // seconds to reach the target properties from the current properties
@@ -472,7 +474,7 @@ void SoundManager::SmoothlyUpdateAlAuxiliaryEffectSlot(const float dt_sec, const
 
     ALuint efx_effect_id;
     // create new AL effect if not existing
-    if(m_efx_effect_id_map.find(slot_id) == m_efx_effect_id_map.end())
+    if (m_efx_effect_id_map.find(slot_id) == m_efx_effect_id_map.end())
     {
         efx_effect_id = this->CreateAlEffect(target);
         m_efx_effect_id_map[slot_id] = efx_effect_id;
@@ -568,6 +570,7 @@ void SoundManager::SmoothlyUpdateAlAuxiliaryEffectSlot(const float dt_sec, const
     this->alAuxiliaryEffectSloti(slot_id, AL_EFFECTSLOT_EFFECT, efx_effect_id);
 }
 
+
 std::tuple<Ogre::Vector3, float, float> SoundManager::ComputeEarlyReflectionsProperties() const
 {
     const float     max_distance = 2.0f;
@@ -618,7 +621,7 @@ std::tuple<Ogre::Vector3, float, float> SoundManager::ComputeEarlyReflectionsPro
 
         // check for nearby actors
         const ActorPtrVec& actors = Audio::GetGameContext()->GetActorManager()->GetActors();
-        for(const ActorPtr& actor : actors)
+        for (const ActorPtr& actor : actors)
         {
             // ignore own truck if player is driving one
             if (actor == Audio::GetGameContext()->GetPlayerCharacter()->GetActorCoupling()) { continue; }
@@ -632,7 +635,7 @@ std::tuple<Ogre::Vector3, float, float> SoundManager::ComputeEarlyReflectionsPro
 */
         closest_surface_distance = std::min(closest_surface_distance, closest_surface_distance_in_this_direction);
 
-        if(closest_surface_distance_in_this_direction <= max_distance)
+        if (closest_surface_distance_in_this_direction <= max_distance)
         {
             early_reflections_pan += raycast_direction * (max_distance - closest_surface_distance_in_this_direction);
         }
@@ -684,6 +687,7 @@ std::tuple<Ogre::Vector3, float, float> SoundManager::ComputeEarlyReflectionsPro
 
     return std::make_tuple(early_reflections_pan, early_reflections_gain, early_reflections_delay);
 }
+
 
 ALuint SoundManager::CreateAlEffect(const EFXEAXREVERBPROPERTIES* efx_properties) const
 {
@@ -746,11 +750,11 @@ ALuint SoundManager::CreateAlEffect(const EFXEAXREVERBPROPERTIES* efx_properties
     }
 
     error = alGetError();
-    if(error != AL_NO_ERROR)
+    if (error != AL_NO_ERROR)
     {
         LOG("SoundManager: Could not create EFX effect:" + TOSTRING(alGetString(error)));
 
-        if(this->alIsEffect(effect))
+        if (this->alIsEffect(effect))
             this->alDeleteEffects(1, &effect);
         return 0;
     }
@@ -766,7 +770,7 @@ void SoundManager::DeleteAlEffect(const ALuint efx_effect_id) const
     this->alDeleteEffects(1, &efx_effect_id);
 
     error = alGetError();
-    if(error != AL_NO_ERROR)
+    if (error != AL_NO_ERROR)
     {
         LOG("SoundManager: Could not delete EFX effect: " + TOSTRING(alGetString(error)));
     }
@@ -776,6 +780,7 @@ bool compareByAudibility(std::pair<int, float> a, std::pair<int, float> b)
 {
     return a.second > b.second;
 }
+
 
 // called when the camera moves
 void SoundManager::recomputeAllSources()
@@ -820,13 +825,14 @@ void SoundManager::recomputeAllSources()
 #endif
 }
 
+
 void SoundManager::UpdateObstructionFilter(const int hardware_index) const
 {
     // todo: audio restore
 #if 0
-    if(hardware_sources_map[hardware_index] == -1) { return; } // no sound assigned to hardware source
+    if (hardware_sources_map[hardware_index] == -1) { return; } // no sound assigned to hardware source
 
-    if(!Audio::audio_enable_obstruction)
+    if (!Audio::audio_enable_obstruction)
     {
         // detach the obstruction filter in case it was attached when the feature was previously enabled
         alSourcei(hardware_sources[hardware_index], AL_DIRECT_FILTER, AL_FILTER_NULL);
@@ -839,7 +845,7 @@ void SoundManager::UpdateObstructionFilter(const int hardware_index) const
     // TODO: Simulate diffraction path.
 
     // always obstruct sounds if the player is in a vehicle
-    if(Audio::GetSoundScriptManager()->ListenerIsInsideThePlayerCoupledActor())
+    if (Audio::GetSoundScriptManager()->ListenerIsInsideThePlayerCoupledActor())
     {
         obstruction_detected = true;
     }
@@ -860,7 +866,7 @@ void SoundManager::UpdateObstructionFilter(const int hardware_index) const
         intersection = Audio::GetGameContext()->GetTerrain()->GetCollisions()->intersectsTerrain(direct_path_to_sound, distance_to_sound);
         obstruction_detected = intersection.first;
 
-        if(!obstruction_detected)
+        if (!obstruction_detected)
         {
             // perform line of sight check against collision meshes
             // for this to work correctly, the direction vector of the ray must have
@@ -873,7 +879,7 @@ void SoundManager::UpdateObstructionFilter(const int hardware_index) const
         direction_to_sound.normalise();
         direct_path_to_sound.setDirection(direction_to_sound);
 
-        if(!obstruction_detected)
+        if (!obstruction_detected)
         {
             // perform line of sight check agains collision boxes
             for (const collision_box_t& collision_box : Audio::GetGameContext()->GetTerrain()->GetCollisions()->getCollisionBoxes())
@@ -889,12 +895,12 @@ void SoundManager::UpdateObstructionFilter(const int hardware_index) const
             }
         }
 
-        if(!obstruction_detected)
+        if (!obstruction_detected)
         {
             // perform line of sight check against actors
             const ActorPtrVec& actors = Audio::GetGameContext()->GetActorManager()->GetActors();
             bool soundsource_belongs_to_current_actor = false;
-            for(const ActorPtr actor : actors)
+            for (const ActorPtr actor : actors)
             {
                 // Trucks shouldn't obstruct their own sound sources since the
                 // obstruction is most likely already contained in the recording.
@@ -927,7 +933,7 @@ void SoundManager::UpdateObstructionFilter(const int hardware_index) const
         }
     }
 
-    if(obstruction_detected)
+    if (obstruction_detected)
     {
         // Apply obstruction filter to the source
         alSourcei(hardware_sources[hardware_index], AL_DIRECT_FILTER, m_efx_outdoor_obstruction_lowpass_filter_id);
@@ -939,6 +945,7 @@ void SoundManager::UpdateObstructionFilter(const int hardware_index) const
     }
 #endif
 }
+
 
 void SoundManager::recomputeSource(int source_index, int reason, float vfl, Vector3* vvec)
 {
@@ -1025,6 +1032,7 @@ void SoundManager::recomputeSource(int source_index, int reason, float vfl, Vect
     }
 }
 
+
 void SoundManager::assign(int source_index, int hardware_index)
 {
     if (!audio_device)
@@ -1089,6 +1097,7 @@ void SoundManager::setMasterVolume(float v)
     alListenerf(AL_GAIN, v);
 }
 
+
 SoundPtr SoundManager::createSound(String filename, Ogre::String resource_group_name /* = "" */)
 {
     if (!audio_device)
@@ -1132,6 +1141,7 @@ SoundPtr SoundManager::createSound(String filename, Ogre::String resource_group_
 
     return audio_sources[m_audio_sources_in_use_count++];
 }
+
 
 bool SoundManager::loadWAVFile(String filename, ALuint buffer, Ogre::String resource_group_name /*= ""*/)
 {
@@ -1319,5 +1329,3 @@ bool SoundManager::loadWAVFile(String filename, ALuint buffer, Ogre::String reso
 
     return false;
 }
-
-// #endif // USE_OPENAL

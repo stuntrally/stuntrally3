@@ -17,8 +17,7 @@
     You should have received a copy of the GNU General Public License
     along with Rigs of Rods. If not, see <http://www.gnu.org/licenses/>.
 */
-
-// #ifdef USE_OPENAL
+//  Modified by CryHam for SR3
 
 
 #include "SoundScriptManager.h"
@@ -346,7 +345,7 @@ void SoundScriptManager::update(float dt_sec,
 
         // todo: audio new restore
         // const auto water = Audio::GetGameContext()->GetTerrain()->getWater();
-        m_listener_is_underwater = 0;  // (water != nullptr ? water->IsUnderWater(listener_position) : false);
+        listener_underwater = 0;  // (water != nullptr ? water->IsUnderWater(listener_position) : false);
 
         /*ActorPtr actor_of_player = Audio::GetGameContext()->GetPlayerCharacter()->GetActorCoupling();
         if (actor_of_player != nullptr)
@@ -357,7 +356,7 @@ void SoundScriptManager::update(float dt_sec,
         {
             m_listener_is_inside_the_player_coupled_actor = false;
         }*/
-        m_listener_is_inside_the_player_coupled_actor = 0;
+        listener_inside_player = 0;
 
         SetListenerEnvironment(camera_position);
         sound_manager->Update(dt_sec);
@@ -384,7 +383,7 @@ void SoundScriptManager::SetListenerEnvironment(Vector3 listener_position)
 
     if (Audio::audio_engine_controls_environmental_audio)
     {
-        if(ListenerIsUnderwater())
+        if (ListenerUnderwater())
         {
             sound_manager->SetSpeedOfSound(1522.0f); // assume listener is in sea water (i.e. salt water)
             /*
@@ -416,7 +415,7 @@ void SoundScriptManager::SetListenerEnvironment(Vector3 listener_position)
 const EFXEAXREVERBPROPERTIES* SoundScriptManager::GetReverbPresetAt(const Ogre::Vector3 position) const
 {
     // for the listener we do additional checks
-    if(position == sound_manager->GetListenerPosition())
+    if (position == sound_manager->GetListenerPosition())
     {
         if (!Audio::audio_force_listener_efx_preset.empty())
         {
@@ -426,7 +425,7 @@ const EFXEAXREVERBPROPERTIES* SoundScriptManager::GetReverbPresetAt(const Ogre::
 /*  // todo: audio new restore
     const auto water = Audio::GetGameContext()->GetTerrain()->getWater();
     bool position_is_underwater = (water != nullptr ? water->IsUnderWater(position) : false);
-    if(position_is_underwater)
+    if (position_is_underwater)
     {
         return sound_manager->GetEfxProperties("EFX_REVERB_PRESET_UNDERWATER");
     }
@@ -438,14 +437,14 @@ const EFXEAXREVERBPROPERTIES* SoundScriptManager::GetReverbPresetAt(const Ogre::
         {
             const Ogre::AxisAlignedBox collision_box_aab = Ogre::AxisAlignedBox(collision_box.lo, collision_box.hi);
 
-            if(collision_box_aab.contains(position))
+            if (collision_box_aab.contains(position))
             {
                 return sound_manager->GetEfxProperties(collision_box.reverb_preset_name);
             }
         }
     }
 */
-    if(position == sound_manager->GetListenerPosition())
+    if (position == sound_manager->GetListenerPosition())
     {
         return sound_manager->GetEfxProperties(Audio::audio_default_listener_efx_preset);
     }
@@ -603,7 +602,7 @@ void SoundScriptManager::removeInstance(const SoundScriptInstancePtr& ssi)
     }
 
     // Finally remove the instance from list
-    EraseIf(instances, [ssi](const SoundScriptInstancePtr& instance) { return ssi == instance; });
+    EraseIf (instances, [ssi](const SoundScriptInstancePtr& instance) { return ssi == instance; });
 }
 
 void SoundScriptManager::parseScript(DataStreamPtr& stream, const String& groupName)

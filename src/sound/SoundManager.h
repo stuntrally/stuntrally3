@@ -18,8 +18,8 @@
     You should have received a copy of the GNU General Public License
     along with Rigs of Rods. If not, see <http://www.gnu.org/licenses/>.
 */
+//  Modified by CryHam for SR3
 
-// #ifdef USE_OPENAL
 
 #pragma once
 
@@ -33,22 +33,11 @@
 #include <OgreVector3.h>
 #include <OgreString.h>
 
-#ifdef __APPLE__
-  #include <OpenAL/al.h>
-  #include <OpenAL/alc.h>
-  #include <OpenAL/alext.h>
-  #include <OpenAL/efx-presets.h>
-#else
-  #include <AL/al.h>
-  #include <AL/alc.h>
-  #include <AL/alext.h>
-  #include <AL/efx-presets.h>
-#endif // __APPLE__
+#include <AL/al.h>
+#include <AL/alc.h>
+#include <AL/alext.h>
+#include <AL/efx-presets.h>
 
-namespace RoR {
-
-/// @addtogroup Audio
-/// @{
 
 class SoundManager
 {
@@ -245,23 +234,30 @@ private:
     ALuint                                          m_listener_slot = 0;
     ALuint                                          m_efx_outdoor_obstruction_lowpass_filter_id = 0;
     float                                           m_air_absorption_factor = 1.0f;
+    
     EfxReverbEngine                                 m_efx_reverb_engine = EfxReverbEngine::NONE;
     const EFXEAXREVERBPROPERTIES*                   m_listener_efx_reverb_properties = nullptr;
     std::map<std::string, EFXEAXREVERBPROPERTIES>   m_efx_properties_map;
     std::map<ALuint, ALuint>                        m_efx_effect_id_map;  //<! maps from auxiliary effect slot id to effect id
+    
     LPALGENEFFECTS                                  alGenEffects = nullptr;
     LPALDELETEEFFECTS                               alDeleteEffects = nullptr;
+    
     LPALISEFFECT                                    alIsEffect = nullptr;
     LPALEFFECTI                                     alEffecti = nullptr;
     LPALEFFECTF                                     alEffectf = nullptr;
     LPALEFFECTFV                                    alEffectfv = nullptr;
+    
     LPALGENFILTERS                                  alGenFilters = nullptr;
     LPALDELETEFILTERS                               alDeleteFilters = nullptr;
+
     LPALISFILTER                                    alIsFilter = nullptr;
     LPALFILTERI                                     alFilteri = nullptr;
     LPALFILTERF                                     alFilterf = nullptr;
+    
     LPALGENAUXILIARYEFFECTSLOTS                     alGenAuxiliaryEffectSlots = nullptr;
     LPALDELETEAUXILIARYEFFECTSLOTS                  alDeleteAuxiliaryEffectSlots = nullptr;
+    
     LPALISAUXILIARYEFFECTSLOT                       alIsAuxiliaryEffectSlot = nullptr;
     LPALAUXILIARYEFFECTSLOTI                        alAuxiliaryEffectSloti = nullptr;
     LPALAUXILIARYEFFECTSLOTF                        alAuxiliaryEffectSlotf = nullptr;
@@ -320,9 +316,3 @@ private:
      */
     void    UpdateObstructionFilter(const int hardware_index) const;
 };
-
-/// @}
-
-} // namespace RoR
-
-// #endif // USE_OPENAL

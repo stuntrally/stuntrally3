@@ -18,8 +18,8 @@
     You should have received a copy of the GNU General Public License
     along with Rigs of Rods. If not, see <http://www.gnu.org/licenses/>.
 */
+//  Modified by CryHam for SR3
 
-// #ifdef USE_OPENAL
 
 #pragma once
 
@@ -27,7 +27,6 @@
 #include "RefCountingObjectPtr.h"
 #include "Sound.h"
 #include "SoundManager.h"
-
 // #include <OgreScriptLoader.h>
 
 #ifdef __APPLE__
@@ -36,18 +35,17 @@
   #include <AL/efx-presets.h>
 #endif
 
-#define SOUND_PLAY_ONCE(_ACTOR_, _TRIG_)        App::GetSoundScriptManager()->trigOnce    ( (_ACTOR_), (_TRIG_) )
-#define SOUND_START(_ACTOR_, _TRIG_)            App::GetSoundScriptManager()->trigStart   ( (_ACTOR_), (_TRIG_) )
-#define SOUND_STOP(_ACTOR_, _TRIG_)             App::GetSoundScriptManager()->trigStop    ( (_ACTOR_), (_TRIG_) )
-#define SOUND_TOGGLE(_ACTOR_, _TRIG_)           App::GetSoundScriptManager()->trigToggle  ( (_ACTOR_), (_TRIG_) )
-#define SOUND_KILL(_ACTOR_, _TRIG_)             App::GetSoundScriptManager()->trigKill    ( (_ACTOR_), (_TRIG_) )
-#define SOUND_GET_STATE(_ACTOR_, _TRIG_)        App::GetSoundScriptManager()->getTrigState( (_ACTOR_), (_TRIG_) )
-#define SOUND_MODULATE(_ACTOR_, _MOD_, _VALUE_) App::GetSoundScriptManager()->modulate    ( (_ACTOR_), (_MOD_), (_VALUE_) )
+// #define SOUND_PLAY_ONCE(_ACTOR_, _TRIG_)        App::GetSoundScriptManager()->trigOnce    ( (_ACTOR_), (_TRIG_) )
+// #define SOUND_START(_ACTOR_, _TRIG_)            App::GetSoundScriptManager()->trigStart   ( (_ACTOR_), (_TRIG_) )
+// #define SOUND_STOP(_ACTOR_, _TRIG_)             App::GetSoundScriptManager()->trigStop    ( (_ACTOR_), (_TRIG_) )
+// #define SOUND_TOGGLE(_ACTOR_, _TRIG_)           App::GetSoundScriptManager()->trigToggle  ( (_ACTOR_), (_TRIG_) )
+// #define SOUND_KILL(_ACTOR_, _TRIG_)             App::GetSoundScriptManager()->trigKill    ( (_ACTOR_), (_TRIG_) )
+// #define SOUND_GET_STATE(_ACTOR_, _TRIG_)        App::GetSoundScriptManager()->getTrigState( (_ACTOR_), (_TRIG_) )
+// #define SOUND_MODULATE(_ACTOR_, _MOD_, _VALUE_) App::GetSoundScriptManager()->modulate    ( (_ACTOR_), (_MOD_), (_VALUE_) )
 
-namespace RoR {
 
-/// @addtogroup Audio
-/// @{
+namespace RoR
+{
 
 enum {
     MAX_SOUNDS_PER_SCRIPT = 16,
@@ -178,35 +176,48 @@ enum SoundLinkTypes {
     SL_MAX
 };
 
+
+//  Template
+//-----------------------------------------------------------------------------------------------------
 class SoundScriptTemplate : public RefCountingObject<SoundScriptTemplate>
 {
     friend class SoundScriptManager;
     friend class SoundScriptInstance;
 
 public:
-
     SoundScriptTemplate(Ogre::String name, Ogre::String groupname, Ogre::String filename, bool baseTemplate);
     virtual ~SoundScriptTemplate() override {};
 
     // 'sound' attribute getters for AngelScript
-    int getNumSounds() { return free_sound; }
-    Ogre::String getSoundName(int pos) { if (pos >= 0 && pos < free_sound) { return sound_names[pos]; } else { return ""; } }
-    float getSoundPitch(int pos) { if (pos >= 0 && pos < free_sound) { return sound_pitches[pos]; } else { return 0.f; } }
+    int getNumSounds() {  return free_sound;  }
+    Ogre::String getSoundName(int pos)
+    {
+        if (pos >= 0 && pos < free_sound)
+            return sound_names[pos];
+        else
+            return "";
+    }
+    float getSoundPitch(int pos)
+    {
+        if (pos >= 0 && pos < free_sound)
+            return sound_pitches[pos];
+        else
+            return 0.f;
+    }
 
     // start/stop sound attribute getters for AngelScript
-    Ogre::String getStartSoundName() { return start_sound_name; }
-    float getStartSoundPitch() { return start_sound_pitch; }
-    Ogre::String getStopSoundName() { return stop_sound_name; }
-    float getStopSoundPitch() { return stop_sound_pitch; }
+    Ogre::String getStartSoundName() {  return start_sound_name;  }
+    float getStartSoundPitch()       {  return start_sound_pitch;  }
+    Ogre::String getStopSoundName()  {  return stop_sound_name;  }
+    float getStopSoundPitch()        {  return stop_sound_pitch;  }
 
     // other getters for AngelScript
-    Ogre::String getName() { return name; }
-    Ogre::String getFileName() { return file_name; }
-    Ogre::String getGroupName() { return group_name; }
-    bool isBaseTemplate() { return base_template; }
+    Ogre::String getName()      {  return name;  }
+    Ogre::String getFileName()  {  return file_name;  }
+    Ogre::String getGroupName() {  return group_name;  }
+    bool isBaseTemplate()       {  return base_template;  }
 
 private:
-
     int parseModulation(Ogre::String str);
     bool setParameter(Ogre::StringVector vec);
 
@@ -240,14 +251,19 @@ private:
     int          free_sound;
 };
 
+
+//  Instance
+//-----------------------------------------------------------------------------------------------------
 class SoundScriptInstance : public RefCountingObject<SoundScriptInstance>
 {
     friend class SoundScriptManager;
 
 public:
-
-    SoundScriptInstance(int actor_id, SoundScriptTemplatePtr templ, SoundManager* sm, Ogre::String instancename, int soundLinkType=SL_DEFAULT, int soundLinkItemId=-1);
-    virtual ~SoundScriptInstance() override {};
+    SoundScriptInstance(int actor_id, SoundScriptTemplatePtr templ,
+        SoundManager* sm, Ogre::String instancename,
+        int soundLinkType = SL_DEFAULT, int soundLinkItemId = -1);
+    virtual ~SoundScriptInstance() override
+    {   };
 
     void runOnce();
     void setEnabled(bool e);
@@ -259,15 +275,27 @@ public:
     void stop();
     void kill();
 
-    SoundScriptTemplatePtr getTemplate() { return templ; }
-    const SoundPtr& getStartSound() { return start_sound; }
-    const SoundPtr& getStopSound() { return stop_sound; }
-    const SoundPtr& getSound(int pos) { if (pos >= 0 && pos < templ->free_sound) { return sounds[pos]; } else { return SOUNDPTR_NULL; } }
-    float getStartSoundPitchgain() { return start_sound_pitchgain; }
-    float getStopSoundPitchgain() { return stop_sound_pitchgain; }
-    float getSoundPitchgain(int pos) { if (pos >= 0 && pos < templ->free_sound) { return sounds_pitchgain[pos]; } else { return 0.f; } }
-    int getActorInstanceId() { return actor_id; }
-    const Ogre::String& getInstanceName() { return instance_name; }
+    SoundScriptTemplatePtr getTemplate() {  return templ;  }
+    const SoundPtr& getStartSound()      {  return start_sound;  }
+    const SoundPtr& getStopSound()       {  return stop_sound;  }
+    const SoundPtr& getSound(int pos)
+    {  
+        if (pos >= 0 && pos < templ->free_sound)
+            return sounds[pos];
+        else
+            return SOUNDPTR_NULL;
+    }
+    float getStartSoundPitchgain() {  return start_sound_pitchgain;  }
+    float getStopSoundPitchgain()  {  return stop_sound_pitchgain;  }
+    float getSoundPitchgain(int pos)
+    {
+        if (pos >= 0 && pos < templ->free_sound)
+            return sounds_pitchgain[pos];
+        else
+            return 0.f;
+    }
+    int getActorInstanceId()              {  return actor_id;  }
+    const Ogre::String& getInstanceName() {  return instance_name;  }
 
     static const float PITCHDOWN_FADE_FACTOR;
     static const float PITCHDOWN_CUTOFF_FACTOR;
@@ -276,7 +304,6 @@ public:
     static const SoundPtr SOUNDPTR_NULL; // Dummy value to be returned as const reference.
 
 private:
-
     float pitchgain_cutoff(float sourcepitch, float targetpitch);
 
     Ogre::String instance_name;
@@ -295,73 +322,65 @@ private:
     int sound_link_item_id; // holds the item number this is for
 };
 
+
+//  Manager
+//-----------------------------------------------------------------------------------------------------
 class SoundScriptManager : public Ogre::ScriptLoader
 {
 public:
-
     SoundScriptManager();
     ~SoundScriptManager();
 
     // ScriptLoader interface
-    const Ogre::StringVector& getScriptPatterns(void) const;
+    const Ogre::StringVector& getScriptPatterns() const;
     void parseScript(Ogre::DataStreamPtr& stream, const Ogre::String& groupName);
-    Ogre::Real getLoadingOrder(void) const;
+    Ogre::Real getLoadingOrder() const;
 
-    SoundScriptInstancePtr createInstance(Ogre::String templatename, int actor_id, int soundLinkType=SL_DEFAULT, int soundLinkItemId=-1);
+    SoundScriptInstancePtr createInstance(Ogre::String templatename,
+        int actor_id, int soundLinkType = SL_DEFAULT, int soundLinkItemId = -1);
     void removeInstance(const SoundScriptInstancePtr& ssi);
-    std::vector<SoundScriptInstancePtr>& getAllInstances() { return instances; }
-    SoundScriptTemplatePtr getTemplate(Ogre::String name) { return templates[name]; }
-    std::map <Ogre::String, SoundScriptTemplatePtr>& getAllTemplates() { return templates; }
+
+    std::vector<SoundScriptInstancePtr>& getAllInstances() {  return instances;  }
+    SoundScriptTemplatePtr getTemplate(Ogre::String name)  {  return templates[name];  }
+    std::map <Ogre::String, SoundScriptTemplatePtr>& getAllTemplates() {  return templates;  }
 
     // functions
     void trigOnce    (int actor_id, int trig, int linkType = SL_DEFAULT, int linkItemID=-1);
-    void trigOnce    (const ActorPtr& actor, int trig, int linkType = SL_DEFAULT, int linkItemID=-1);
     void trigStart   (int actor_id, int trig, int linkType = SL_DEFAULT, int linkItemID=-1);
-    void trigStart   (const ActorPtr& actor, int trig, int linkType = SL_DEFAULT, int linkItemID=-1);
     void trigStop    (int actor_id, int trig, int linkType = SL_DEFAULT, int linkItemID=-1);
-    void trigStop    (const ActorPtr& actor, int trig, int linkType = SL_DEFAULT, int linkItemID=-1);
     void trigToggle  (int actor_id, int trig, int linkType = SL_DEFAULT, int linkItemID=-1);
-    void trigToggle  (const ActorPtr& actor, int trig, int linkType = SL_DEFAULT, int linkItemID=-1);
-    void trigKill	 (int actor_id, int trig, int linkType = SL_DEFAULT, int linkItemID = -1);
-    void trigKill    (const ActorPtr& actor, int trig, int linkType = SL_DEFAULT, int linkItemID = -1);
+    void trigKill	 (int actor_id, int trig, int linkType = SL_DEFAULT, int linkItemID=-1);
     bool getTrigState(int actor_id, int trig, int linkType = SL_DEFAULT, int linkItemID=-1);
-    bool getTrigState(const ActorPtr& actor, int trig, int linkType = SL_DEFAULT, int linkItemID=-1);
     void modulate    (int actor_id, int mod, float value, int linkType = SL_DEFAULT, int linkItemID=-1);
-    void modulate    (const ActorPtr& actor, int mod, float value, int linkType = SL_DEFAULT, int linkItemID=-1);
 
     void setEnabled(bool state);
 
     void SetDopplerFactor(float doppler_factor);
     void SetListener(Ogre::Vector3 position, Ogre::Vector3 direction, Ogre::Vector3 up, Ogre::Vector3 velocity);
-    void setLoadingBaseSounds(bool value) { loading_base = value; };
+    void setLoadingBaseSounds(bool value) {  loading_base = value;  };
 
-    bool isDisabled() { return disabled; }
+    bool isDisabled() {  return disabled;  }
 
     // void update(float dt_sec, Ogre::SceneNode* camera_node);
     void update(float dt_sec, Ogre::Camera* camera_node);
 
-    /**
-     * @return True if the listener position is below water level. False otherwise.
-     */
-    bool ListenerIsUnderwater() const { return m_listener_is_underwater; }
+    //  True if the listener position is below water level. False otherwise.
+    bool ListenerUnderwater() const {  return listener_underwater;  }
 
-    /**
-     * @return True if the listener position is inside the AABB of the actor the player character is coupled to. False otherwise.
-     */
-    bool ListenerIsInsideThePlayerCoupledActor() const { return m_listener_is_inside_the_player_coupled_actor; }
+    //  True if the listener position is inside the AABB of the actor the player character is coupled to. False otherwise.
+    bool ListenerInsidePlayer() const {  return listener_inside_player;  }
 
-    SoundManager* getSoundManager() { return sound_manager; }
+    SoundManager* getSoundManager() {  return sound_manager;  }
 
 private:
-
     SoundScriptTemplatePtr createTemplate(Ogre::String name, Ogre::String groupname, Ogre::String filename);
     void skipToNextCloseBrace(Ogre::DataStreamPtr& chunk);
     void skipToNextOpenBrace(Ogre::DataStreamPtr& chunk);
 
     bool disabled;
     bool loading_base;
-    bool m_listener_is_underwater = false;
-    bool m_listener_is_inside_the_player_coupled_actor = false;
+    bool listener_underwater = false;
+    bool listener_inside_player = false;
     float max_distance;
     float reference_distance;
     float rolloff_factor;
@@ -371,7 +390,7 @@ private:
     std::map <Ogre::String, SoundScriptTemplatePtr> templates;
     std::vector<SoundScriptInstancePtr> instances;
 
-    // instances lookup tables - using `std::array<>` because it does bounds checking under VisualStudio/Debug.
+    //  instances lookup tables - using `std::array<>` because it does bounds checking under VisualStudio/Debug.
     std::array<int, SS_MAX_TRIG> free_trigs;
     std::array<SoundScriptInstancePtr, SS_MAX_TRIG* MAX_INSTANCES_PER_GROUP> trigs;
 
@@ -381,8 +400,8 @@ private:
     std::array<int, SS_MAX_MOD> free_gains;
     std::array<SoundScriptInstancePtr, SS_MAX_MOD* MAX_INSTANCES_PER_GROUP> gains;
 
-    // state map
-    // soundLinks, soundItems, actor_ids, triggers
+    //  state map
+    //  soundLinks, soundItems, actor_ids, triggers
     std::map <int, std::map <int, std::map <int, std::map <int, bool > > > > state_map;
 
     /**
@@ -396,18 +415,5 @@ private:
     SoundManager* sound_manager;
 };
 
-/// @}
 
 } // namespace RoR
-
-// #else // USE_OPENAL
-
-// #define SOUND_PLAY_ONCE(_ACTOR_, _TRIG_)
-// #define SOUND_START(_ACTOR_, _TRIG_)
-// #define SOUND_STOP(_ACTOR_, _TRIG_)
-// #define SOUND_TOGGLE(_ACTOR_, _TRIG_)
-// #define SOUND_KILL(_ACTOR_, _TRIG_)
-// #define SOUND_GET_STATE(_ACTOR_, _TRIG_) (false)
-// #define SOUND_MODULATE(_ACTOR_, _MOD_, _VALUE_)
-
-// #endif // USE_OPENAL
