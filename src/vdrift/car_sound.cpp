@@ -33,18 +33,20 @@ using namespace Ogre;
 bool CAR::LoadSounds(const std::string & carpath)
 {
 	Ogre::Timer ti;
-/*	bool ss = pApp->pSet->game.local_players > 1;  // 👥 split screen same volume
+	// todo:
+	bool ss = pApp->pSet->game.local_players > 1;  // 👥 split screen same volume
 	CARsounds& s = sounds;
 	
-	SoundMgr* snd = pGame->snd;
-	
+	auto* snd = pGame->snd;
+		
 	//  📈 engine
 	const string& eng = dynamics.engine.sound_name;
-	s.engine = snd->createInstance(eng);  s.engine->set2D(ss);
-	s.engine->setEngine(true);  s.engine->start();  // 🔉
+	s.engine = snd->createInstance(eng);  //s.engine->set2D(ss);
+	// s.engine->setEngine(true);  //
+	s.engine->start();  // 🔉
 	
 	//  turbo
-	const string& turbo = dynamics.turbo.sound_name;
+/*	const string& turbo = dynamics.turbo.sound_name;
 	if (!turbo.empty())
 	{	s.turbo = snd->createInstance(turbo);  s.turbo->set2D(ss);
 		s.turbo->setEngine(true);  s.turbo->start();  // 🔉
@@ -67,12 +69,12 @@ bool CAR::LoadSounds(const std::string & carpath)
 	}
 
 	//  🔨 crashes, hit
-	for (i = 0; i < Ncrashsounds; ++i)
+	for (int i = 0; i < Ncrashsounds; ++i)
 	{	string cn = "crash/";  int n=i+1;  cn += toStr(n/10)+toStr(n%10);
-		s.crash[i] = snd->createInstance(cn);  s.crash[i]->set2D(ss);
+		s.crash[i] = snd->createInstance(cn);  //s.crash[i]->set2D(ss);
 	}
-	s.scrap   = snd->createInstance("crash/scrap");    s.scrap->set2D(ss);
-	s.screech = snd->createInstance("crash/screech");  s.screech->set2D(ss);
+	s.scrap   = snd->createInstance("crash/scrap");    //s.scrap->set2D(ss);
+	s.screech = snd->createInstance("crash/screech");  //s.screech->set2D(ss);
 
 	//  todo: allow variations per track, from scene.xml
 	//  🌪️ environment
@@ -124,8 +126,8 @@ void CAR::CARsounds::SetNumWheels(int n)
 //  💥 destroy
 void CAR::CARsounds::Destroy()
 {
-/*	delete engine;
-	delete turbo;
+	// engine->Release();  // not needed?
+/*	delete turbo;
 	int i;
 	for (i = 0; i < gravel.size(); ++i)  // tires
 	{
@@ -156,7 +158,7 @@ void CAR::UpdateSounds(float dt)
 {
 	//  get data  //
 	//  note: Damage is updated here
-	bool bSound = 0;//!pGame->snd->isDisabled();
+	bool bSound = !pGame->snd->isDisabled();
 	CARsounds& s = sounds;
 	
 	float rpm, throttle, speed, dynVel;  bool hitp = false;
@@ -285,13 +287,11 @@ void CAR::UpdateSounds(float dt)
 		fCarScreech = gain;
 	}
 	
-	//  engine pos  //todo: vel..
-	Vector3 ep, ev = Vector3::ZERO;
-	ep = Axes::toOgre(engPos);
+	//  engine pos
+	Vector3 ep = Axes::toOgre(engPos);
 
 
 //))  🔉💫 update sounds  ---------------------------------------------------------------
-#if 0
 if (bSound)
 {
 	///  📈 engine  ====
@@ -306,9 +306,10 @@ if (bSound)
 		gain = throttle * 0.5 + 0.5;  // par
 		s.engine->setPitch(rpm);
 	}
-	s.engine->setPosition(ep, ev);
+	s.engine->setPosition(ep);
 	s.engine->setGain(gain * dynamics.engine_vol_mul * pSet->vol_engine);
 	
+#if 0
 	//  turbo
 	if (s.turbo)
 	{	s.turbo->setPosition(ep, ev);
@@ -446,8 +447,8 @@ if (bSound)
 	s.water_cont->setGain(std::min(1.f, velW * 1.5f) * pSet->vol_fl_cont);
 	s.water_cont->setPitch(std::max(0.7f, std::min(1.3f, velW)));
 	s.water_cont->setPosition(ep, ev);
-}
 #endif
+}
 //))  sounds 🔊  ---------------------------------------------------------------
 	
 	

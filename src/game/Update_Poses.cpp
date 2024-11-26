@@ -280,10 +280,10 @@ void App::newPoses(float time)  // time only for camera update
 						bool chs = champ || chall;
 						
 						if (!chs && !collect)
-						{	/*if (newbest)  // 🔉
+						{	if (newbest)  // 🔉
 								pGame->snd_lapbest->start();
 							else
-								pGame->snd_lap->start();/**/
+								pGame->snd_lap->start();
 						}
 						ghost.Clear();
 						
@@ -372,8 +372,8 @@ void App::newPoses(float time)  // time only for camera update
 									scn->trail[id]->trailSegId =
 										(inc * (i - scn->road->iChkId1) + (rev ? 0 : 1) + ncs) % ncs;
 
-								// if (pSet->snd_chk && locar)
-								// 	pGame->snd_chk->start();  // 🔉
+								if (pSet->snd_chk && locar)
+									pGame->snd_chk->start();  // 🔉
 							}
 							else
 							if (!collect &&  //?
@@ -385,8 +385,8 @@ void App::newPoses(float time)  // time only for camera update
 								if (carM->iInWrongChk != carM->iInChk)
 								{	carM->iInWrongChk = carM->iInChk;
 									
-									// if (pSet->snd_chkwr && locar)
-									// 	pGame->snd_chkwr->start();  // 🔉
+									if (pSet->snd_chkwr && locar)
+										pGame->snd_chkwr->start();  // 🔉
 							}	}
 							break;
 						}

@@ -237,9 +237,9 @@ void CGui::btnChampStageStart(WP)
 
 		///  sound  🔉
 		if (iChSnd < 0)
-		{}	//	pGame->snd_fail->start();
+			pGame->snd_fail->start();
 		else
-		{	//pGame->snd_win[iChSnd]->start();
+		{	pGame->snd_win[iChSnd]->start();
 			hud->cup[iChSnd].ShowCup();
 		}
 		return;
@@ -342,11 +342,11 @@ void CGui::ChampionshipAdvance(float timeCur)
 	app->updMouse();
 
 	//  sound  🔉
-	/*if (passed)
+	if (passed)
 		pGame->snd_stage->start();
 	else
 		pGame->snd_fail->start();
-	*/
+
 
 	if (!last || (last && !passed))
 	{

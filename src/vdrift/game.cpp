@@ -433,7 +433,7 @@ void GAME::LoadHudSounds()
 {
 	Ogre::Timer ti;
 
-/*	snd_chk = snd->createInstance("hud/chk");
+	snd_chk = snd->createInstance("hud/chk");
 	snd_chkwr = snd->createInstance("hud/chkwrong");
 	snd_lap = snd->createInstance("hud/lap");
 	snd_lapbest = snd->createInstance("hud/lapbest");
@@ -441,7 +441,7 @@ void GAME::LoadHudSounds()
 	snd_fail = snd->createInstance("hud/fail");
 	for (int i=0; i < 3; ++i)
 		snd_win[i] = snd->createInstance("hud/win"+toStr(i));
-/**/
+
 	UpdHudSndVol();
 	LogO(":::* Time Hud Sounds: "+ fToStr(ti.getMilliseconds(),0,3) +" ms");
 }
@@ -449,7 +449,7 @@ void GAME::LoadHudSounds()
 void GAME::UpdHudSndVol()
 {
 	float g = pSet->vol_hud;
-/*	snd_chk->setGain(g);
+	snd_chk->setGain(g);
 	snd_chkwr->setGain(g);
 	snd_lap->setGain(g);
 	snd_lapbest->setGain(g);
@@ -457,12 +457,11 @@ void GAME::UpdHudSndVol()
 	snd_fail->setGain(g);
 	for (int i=0; i < 3; ++i)
 		snd_win[i]->setGain(g);
-	/**/
 }
 
 void GAME::DeleteHudSounds()
 {
-/*
+/*	// todo: not needed ?
 	delete snd_chk;  snd_chk = 0;
 	delete snd_chkwr;  snd_chkwr = 0;
 	delete snd_lap;  snd_lap = 0;
