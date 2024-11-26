@@ -19,17 +19,16 @@
     along with Rigs of Rods. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifdef USE_OPENAL
+// #ifdef USE_OPENAL
 
 #pragma once
 
-#include "AngelScriptBindings.h"
-#include "Application.h"
+// #include "Application.h"
 #include "RefCountingObjectPtr.h"
 #include "Sound.h"
 #include "SoundManager.h"
 
-#include <OgreScriptLoader.h>
+// #include <OgreScriptLoader.h>
 
 #ifdef __APPLE__
   #include <OpenAL/efx-presets.h>
@@ -338,7 +337,8 @@ public:
 
     bool isDisabled() { return disabled; }
 
-    void update(float dt_sec);
+    // void update(float dt_sec, Ogre::SceneNode* camera_node);
+    void update(float dt_sec, Ogre::Camera* camera_node);
 
     /**
      * @return True if the listener position is below water level. False otherwise.
@@ -400,14 +400,14 @@ private:
 
 } // namespace RoR
 
-#else // USE_OPENAL
+// #else // USE_OPENAL
 
-#define SOUND_PLAY_ONCE(_ACTOR_, _TRIG_)
-#define SOUND_START(_ACTOR_, _TRIG_)
-#define SOUND_STOP(_ACTOR_, _TRIG_)
-#define SOUND_TOGGLE(_ACTOR_, _TRIG_)
-#define SOUND_KILL(_ACTOR_, _TRIG_)
-#define SOUND_GET_STATE(_ACTOR_, _TRIG_) (false)
-#define SOUND_MODULATE(_ACTOR_, _MOD_, _VALUE_)
+// #define SOUND_PLAY_ONCE(_ACTOR_, _TRIG_)
+// #define SOUND_START(_ACTOR_, _TRIG_)
+// #define SOUND_STOP(_ACTOR_, _TRIG_)
+// #define SOUND_TOGGLE(_ACTOR_, _TRIG_)
+// #define SOUND_KILL(_ACTOR_, _TRIG_)
+// #define SOUND_GET_STATE(_ACTOR_, _TRIG_) (false)
+// #define SOUND_MODULATE(_ACTOR_, _MOD_, _VALUE_)
 
-#endif // USE_OPENAL
+// #endif // USE_OPENAL

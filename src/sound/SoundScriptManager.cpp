@@ -18,17 +18,19 @@
     along with Rigs of Rods. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifdef USE_OPENAL
+// #ifdef USE_OPENAL
+
 
 #include "SoundScriptManager.h"
 
-#include "Actor.h"
-#include "CameraManager.h"
-#include "GameContext.h"
-#include "IWater.h"
+// #include "Actor.h"
+// #include "CameraManager.h"
+// #include "GameContext.h"
+// #include "IWater.h"
+#include "OgreCamera.h"
 #include "Sound.h"
 #include "SoundManager.h"
-#include "Utils.h"
+// #include "Utils.h"
 
 #include <OgreResourceGroupManager.h>
 
@@ -39,6 +41,23 @@ const float SoundScriptInstance::PITCHDOWN_FADE_FACTOR = 3.0f;
 const float SoundScriptInstance::PITCHDOWN_CUTOFF_FACTOR = 5.0f;
 
 const SoundPtr SoundScriptInstance::SOUNDPTR_NULL; // Dummy value to be returned as const reference.
+
+
+
+//  Audio  static  // todo: audio rem, use pSet
+float Audio::audio_master_volume                        = 1.0;
+bool Audio::audio_enable_creak                         = false;
+bool Audio::audio_enable_obstruction                   = false;
+bool Audio::audio_enable_reflection_panning            = false;
+std::string Audio::audio_device_name;
+float Audio::audio_doppler_factor                      = 1.0;
+bool Audio::audio_menu_music                          = false;
+bool Audio::audio_enable_efx                          = true;
+bool Audio::audio_engine_controls_environmental_audio = true;
+int Audio::audio_efx_reverb_engine                    = 2;  //(int)EfxReverbEngine::EAXREVERB
+std::string Audio::audio_default_listener_efx_preset;
+std::string Audio::audio_force_listener_efx_preset;
+
 
 SoundScriptManager::SoundScriptManager() :
     disabled(true)
@@ -109,7 +128,7 @@ void SoundScriptManager::trigOnce(const ActorPtr& actor, int trig, int linkType,
 
     if (actor)
     {
-        trigOnce(actor->ar_instance_id, trig, linkType, linkItemID);
+        // trigOnce(actor->ar_instance_id, trig, linkType, linkItemID);
     }
 }
 
@@ -137,7 +156,7 @@ void SoundScriptManager::trigStart(const ActorPtr& actor, int trig, int linkType
 
     if (actor)
     {
-        trigStart(actor->ar_instance_id, trig, linkType, linkItemID);
+        // trigStart(actor->ar_instance_id, trig, linkType, linkItemID);
     }
 }
 
@@ -168,7 +187,7 @@ void SoundScriptManager::trigStop(const ActorPtr& actor, int trig, int linkType,
 
     if (actor)
     {
-        trigStop(actor->ar_instance_id, trig, linkType, linkItemID);
+        // trigStop(actor->ar_instance_id, trig, linkType, linkItemID);
     }
 }
 
@@ -198,7 +217,7 @@ void SoundScriptManager::trigKill(const ActorPtr& actor, int trig, int linkType,
 
     if (actor)
     {
-        trigKill(actor->ar_instance_id, trig, linkType, linkItemID);
+        // trigKill(actor->ar_instance_id, trig, linkType, linkItemID);
     }
 }
 
@@ -228,7 +247,7 @@ void SoundScriptManager::trigToggle(const ActorPtr& actor, int trig, int linkTyp
 
     if (actor)
     {
-        trigToggle(actor->ar_instance_id, trig, linkType, linkItemID);
+        // trigToggle(actor->ar_instance_id, trig, linkType, linkItemID);
     }
 }
 
@@ -248,10 +267,10 @@ bool SoundScriptManager::getTrigState(const ActorPtr& actor, int trig, int linkT
     if (disabled)
         return false;
 
-    if (actor)
-        return getTrigState(actor->ar_instance_id, trig, linkType, linkItemID);
-    else
-        return false;
+    // if (actor)
+    //     return getTrigState(actor->ar_instance_id, trig, linkType, linkItemID);
+    // else
+    //     return false;
 }
 
 bool SoundScriptManager::getTrigState(int actor_id, int trig, int linkType, int linkItemID)
@@ -269,7 +288,7 @@ void SoundScriptManager::modulate(const ActorPtr& actor, int mod, float value, i
 
     if (actor)
     {
-        modulate(actor->ar_instance_id, mod, value, linkType, linkItemID);
+        // modulate(actor->ar_instance_id, mod, value, linkType, linkItemID);
     }
 }
 
@@ -307,12 +326,14 @@ void SoundScriptManager::modulate(int actor_id, int mod, float value, int linkTy
     }
 }
 
-void SoundScriptManager::update(float dt_sec)
+void SoundScriptManager::update(float dt_sec,
+    Ogre::Camera* camera_node)
+    //Ogre::SceneNode* camera_node)
 {
-    if (App::sim_state->getEnum<SimState>() == SimState::RUNNING ||
-        App::sim_state->getEnum<SimState>() == SimState::EDITOR_MODE)
+    // if (Audio::sim_state->getEnum<SimState>() == SimState::RUNNING ||
+    //     Audio::sim_state->getEnum<SimState>() == SimState::EDITOR_MODE)
     {
-        Ogre::SceneNode* camera_node = App::GetCameraManager()->GetCameraNode();
+        // Ogre::SceneNode* camera_node = Audio::GetCameraManager()->GetCameraNode();
         static Vector3 last_camera_position;
         Ogre::Vector3 camera_position = camera_node->getPosition();
         Vector3 camera_velocity = (camera_position - last_camera_position) / dt_sec;
@@ -323,10 +344,11 @@ void SoundScriptManager::update(float dt_sec)
         SetListener(camera_position, camera_direction, camera_up, camera_velocity);
         Ogre::Vector3 listener_position = sound_manager->GetListenerPosition();
 
-        const auto water = App::GetGameContext()->GetTerrain()->getWater();
-        m_listener_is_underwater = (water != nullptr ? water->IsUnderWater(listener_position) : false);
+        // todo: audio new restore
+        // const auto water = Audio::GetGameContext()->GetTerrain()->getWater();
+        m_listener_is_underwater = 0;  // (water != nullptr ? water->IsUnderWater(listener_position) : false);
 
-        ActorPtr actor_of_player = App::GetGameContext()->GetPlayerCharacter()->GetActorCoupling();
+        /*ActorPtr actor_of_player = Audio::GetGameContext()->GetPlayerCharacter()->GetActorCoupling();
         if (actor_of_player != nullptr)
         {
             m_listener_is_inside_the_player_coupled_actor = actor_of_player->ar_bounding_box.contains(listener_position);
@@ -334,10 +356,15 @@ void SoundScriptManager::update(float dt_sec)
         else
         {
             m_listener_is_inside_the_player_coupled_actor = false;
-        }
+        }*/
+        m_listener_is_inside_the_player_coupled_actor = 0;
 
         SetListenerEnvironment(camera_position);
         sound_manager->Update(dt_sec);
+        
+        // for (auto& in : instances)  // test-
+        // if (in)
+            // removeInstance(in);
     }
 }
 
@@ -355,7 +382,7 @@ void SoundScriptManager::SetListenerEnvironment(Vector3 listener_position)
 
     const EFXEAXREVERBPROPERTIES* listener_reverb_properties = nullptr;
 
-    if (App::audio_engine_controls_environmental_audio->getBool())
+    if (Audio::audio_engine_controls_environmental_audio)
     {
         if(ListenerIsUnderwater())
         {
@@ -373,13 +400,13 @@ void SoundScriptManager::SetListenerEnvironment(Vector3 listener_position)
             sound_manager->SetAirAbsorptionFactor(1.0f);
         }
 
-        if (App::audio_enable_efx->getBool())
+        if (Audio::audio_enable_efx)
         {
             listener_reverb_properties = GetReverbPresetAt(listener_position);
         }
     }
 
-    if (App::audio_enable_efx->getBool())
+    if (Audio::audio_enable_efx)
     {
         // always update the environment in case it was changed via console or script
         sound_manager->SetListenerEnvironment(listener_reverb_properties);
@@ -391,13 +418,13 @@ const EFXEAXREVERBPROPERTIES* SoundScriptManager::GetReverbPresetAt(const Ogre::
     // for the listener we do additional checks
     if(position == sound_manager->GetListenerPosition())
     {
-        if (!App::audio_force_listener_efx_preset->getStr().empty())
+        if (!Audio::audio_force_listener_efx_preset.empty())
         {
-            return sound_manager->GetEfxProperties(App::audio_force_listener_efx_preset->getStr());
+            return sound_manager->GetEfxProperties(Audio::audio_force_listener_efx_preset);
         }
     }
-
-    const auto water = App::GetGameContext()->GetTerrain()->getWater();
+/*  // todo: audio new restore
+    const auto water = Audio::GetGameContext()->GetTerrain()->getWater();
     bool position_is_underwater = (water != nullptr ? water->IsUnderWater(position) : false);
     if(position_is_underwater)
     {
@@ -405,7 +432,7 @@ const EFXEAXREVERBPROPERTIES* SoundScriptManager::GetReverbPresetAt(const Ogre::
     }
 
     // check if position is inside a collision box with a reverb_preset assigned to it
-    for (const collision_box_t& collision_box : App::GetGameContext()->GetTerrain()->GetCollisions()->getCollisionBoxes())
+    for (const collision_box_t& collision_box : Audio::GetGameContext()->GetTerrain()->GetCollisions()->getCollisionBoxes())
     {
         if (!collision_box.reverb_preset_name.empty())
         {
@@ -417,10 +444,10 @@ const EFXEAXREVERBPROPERTIES* SoundScriptManager::GetReverbPresetAt(const Ogre::
             }
         }
     }
-
+*/
     if(position == sound_manager->GetListenerPosition())
     {
-        return sound_manager->GetEfxProperties(App::audio_default_listener_efx_preset->getStr());
+        return sound_manager->GetEfxProperties(Audio::audio_default_listener_efx_preset);
     }
     else
     {
@@ -467,6 +494,7 @@ SoundScriptInstancePtr SoundScriptManager::createInstance(Ogre::String templaten
 
     if (templates.find(templatename) == templates.end())
     {
+        LOG("SoundScriptManager: not found template: "+templatename);
         return NULL; // found no template with this name
     }
 
@@ -588,7 +616,8 @@ void SoundScriptManager::parseScript(DataStreamPtr& stream, const String& groupN
 
     while (!stream->eof())
     {
-        line = SanitizeUtf8String(stream->getLine());
+        // line = SanitizeUtf8String(stream->getLine());
+        line = stream->getLine();
         // ignore comments & blanks
         if (!(line.length() == 0 || line.substr(0, 2) == "//"))
         {
@@ -850,7 +879,7 @@ bool SoundScriptTemplate::setParameter(Ogre::StringVector vec)
             trigger_source = SS_TRIG_GEARSLIDE;
             return true;
         };
-        if (vec[1] == String("creak") && App::audio_enable_creak->getBool())
+        if (vec[1] == String("creak") && Audio::audio_enable_creak)
         {
             trigger_source = SS_TRIG_CREAK;
             return true;
@@ -1563,4 +1592,4 @@ void SoundScriptInstance::setEnabled(bool e)
     }
 }
 
-#endif // USE_OPENAL
+// #endif // USE_OPENAL

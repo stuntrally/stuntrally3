@@ -6,11 +6,11 @@
 
 #pragma once
 
-#include <angelscript.h>
+// #include <angelscript.h>
 
 #include <mutex> // Against accidental threaded access
-#include "Application.h" // Provides access to AppContext
-#include "AppContext.h" // Stores main thread ID for debug checking
+#include "Declare.h" // Provides access to AppContext
+//#include "AppContext.h" // Stores main thread ID for debug checking
 
 
 #if !defined(RefCoutingObject_DEBUGTRACE)
@@ -19,7 +19,8 @@
 
 #if !defined(RefCountingObject_ASSERT)
 #   include <cassert>
-#   define RefCountingObject_ASSERT(_Expr_) assert(_Expr_)
+// #   define RefCountingObject_ASSERT(_Expr_) assert(_Expr_)
+#   define RefCountingObject_ASSERT(_Expr_)
 #endif
 
 /// Self reference-counting objects, as requred by AngelScript garbage collector.
@@ -62,7 +63,7 @@ public:
         }
     }
 
-    static void  RegisterRefCountingObject(AS_NAMESPACE_QUALIFIER asIScriptEngine* engine, const char* name)
+    /*static void  RegisterRefCountingObject(AS_NAMESPACE_QUALIFIER asIScriptEngine* engine, const char* name)
     {
         int r;
 
@@ -76,7 +77,7 @@ public:
         // Registering the addref/release behaviours
         r = engine->RegisterObjectBehaviour(name, asBEHAVE_ADDREF, "void f()", asMETHOD(T,AddRef), asCALL_THISCALL); RefCountingObject_ASSERT( r >= 0 );
         r = engine->RegisterObjectBehaviour(name, asBEHAVE_RELEASE, "void f()", asMETHOD(T,Release), asCALL_THISCALL); RefCountingObject_ASSERT( r >= 0 );
-    }
+    }*/
 
     int m_refcount = 0;
     std::mutex m_refcount_mtx; // Against accidental threaded access

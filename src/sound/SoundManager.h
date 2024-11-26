@@ -19,14 +19,14 @@
     along with Rigs of Rods. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifdef USE_OPENAL
+// #ifdef USE_OPENAL
 
 #pragma once
 
-#include "Actor.h"
-#include "Application.h"
-#include "Collisions.h"
-#include "GameContext.h"
+// #include "Actor.h"
+// #include "Application.h"
+// #include "Collisions.h"
+// #include "GameContext.h"
 #include "Sound.h"
 #include "SoundScriptManager.h"
 
@@ -325,4 +325,4 @@ private:
 
 } // namespace RoR
 
-#endif // USE_OPENAL
+// #endif // USE_OPENAL

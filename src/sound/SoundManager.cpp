@@ -19,16 +19,16 @@
     along with Rigs of Rods. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifdef USE_OPENAL
+// #ifdef USE_OPENAL
 
 #include "SoundManager.h"
 
-#include "Application.h"
+#include "Declare.h"
 #include "Sound.h"
 
 #include <OgreResourceGroupManager.h>
 
-#define LOGSTREAM Ogre::LogManager::getSingleton().stream() << "[RoR|Audio] "
+#define LOGSTREAM Ogre::LogManager::getSingleton().stream() << "@@ "
 
 bool _checkALErrors(const char* filename, int linenum)
 {
@@ -52,20 +52,21 @@ const float SoundManager::MAX_DISTANCE = 500.0f;
 const float SoundManager::ROLLOFF_FACTOR = 1.0f;
 const float SoundManager::REFERENCE_DISTANCE = 7.5f;
 
+
 SoundManager::SoundManager()
 {
-    if (App::audio_device_name->getStr() == "")
+    if (Audio::audio_device_name == "")
     {
         LOGSTREAM << "No audio device configured, opening default.";
         audio_device = alcOpenDevice(nullptr);
     }
     else
     {
-        audio_device = alcOpenDevice(App::audio_device_name->getStr().c_str());
+        audio_device = alcOpenDevice(Audio::audio_device_name.c_str());
         if (!audio_device)
         {
-            LOGSTREAM << "Failed to open configured audio device \"" << App::audio_device_name->getStr() << "\", opening default.";
-            App::audio_device_name->setStr("");
+            LOGSTREAM << "Failed to open configured audio device \"" << Audio::audio_device_name << "\", opening default.";
+            Audio::audio_device_name = "";
             audio_device = alcOpenDevice(nullptr);
         }
     }
@@ -121,10 +122,10 @@ SoundManager::SoundManager()
         alAuxiliaryEffectSlotf = (LPALAUXILIARYEFFECTSLOTF)alGetProcAddress("alAuxiliaryEffectSlotf");
         alAuxiliaryEffectSlotfv = (LPALAUXILIARYEFFECTSLOTFV)alGetProcAddress("alAuxiliaryEffectSlotfv");
 
-        if (App::audio_enable_efx->getBool())
+        if (Audio::audio_enable_efx)
         {
             // allow user to change reverb engines at will
-            switch(App::audio_efx_reverb_engine->getEnum<EfxReverbEngine>())
+            switch(Audio::audio_efx_reverb_engine)
             {
                 case EfxReverbEngine::EAXREVERB: m_efx_reverb_engine = EfxReverbEngine::EAXREVERB; break;
                 case EfxReverbEngine::REVERB:    m_efx_reverb_engine = EfxReverbEngine::REVERB; break;
@@ -193,7 +194,7 @@ SoundManager::SoundManager()
     else
     {
         LOG("SoundManager: OpenAL EFX extension not found, disabling EFX");
-        App::audio_enable_efx->setVal(false);
+        Audio::audio_enable_efx = false;
     }
 
     // generate the AL sources
@@ -208,13 +209,13 @@ SoundManager::SoundManager()
         alSourcef(hardware_sources[hardware_sources_num], AL_MAX_DISTANCE, MAX_DISTANCE);
 
         // connect source to listener slot effect
-        if(App::audio_enable_efx->getBool())
+        if(Audio::audio_enable_efx)
         {
             alSource3i(hardware_sources[hardware_sources_num], AL_AUXILIARY_SEND_FILTER, m_listener_slot, 0, AL_FILTER_NULL);
         }
     }
 
-    alDopplerFactor(App::audio_doppler_factor->getFloat());
+    alDopplerFactor(Audio::audio_doppler_factor);
     alSpeedOfSound(343.3f);
 
     for (int i = 0; i < MAX_HARDWARE_SOURCES; i++)
@@ -378,7 +379,7 @@ void SoundManager::Update(const float dt_sec)
     recomputeAllSources();
     UpdateAlListener();
 
-    if(App::audio_enable_efx->getBool())
+    if(Audio::audio_enable_efx)
     {
         // apply filters to sources when appropriate
         for(int hardware_index = 0; hardware_index < hardware_sources_num; hardware_index++)
@@ -434,7 +435,7 @@ void SoundManager::UpdateListenerEffectSlot(const float dt_sec)
     EFXEAXREVERBPROPERTIES current_environmental_properties = *m_listener_efx_reverb_properties;
 
     // early reflections panning, delay and strength
-    if (App::audio_enable_reflection_panning->getBool() && m_efx_reverb_engine == EfxReverbEngine::EAXREVERB)
+    if (Audio::audio_enable_reflection_panning && m_efx_reverb_engine == EfxReverbEngine::EAXREVERB)
     {
         std::tuple<Ogre::Vector3, float, float> target_early_reflections_properties = this->ComputeEarlyReflectionsProperties();
 
@@ -450,30 +451,30 @@ void SoundManager::UpdateListenerEffectSlot(const float dt_sec)
     this->SmoothlyUpdateAlAuxiliaryEffectSlot(dt_sec, m_listener_slot, &current_environmental_properties);
 }
 
-void SoundManager::SmoothlyUpdateAlAuxiliaryEffectSlot(const float dt_sec, const ALuint slot_id, const EFXEAXREVERBPROPERTIES* target_efx_properties)
+void SoundManager::SmoothlyUpdateAlAuxiliaryEffectSlot(const float dt_sec, const ALuint slot_id, const EFXEAXREVERBPROPERTIES* target)
 {
     const float time_to_target = 0.333f; // seconds to reach the target properties from the current properties
     const float step = std::min(dt_sec / time_to_target, 1.0f);
-    static std::map<ALuint, EFXEAXREVERBPROPERTIES> current_efx_properties_of_slot;
+    static std::map<ALuint, EFXEAXREVERBPROPERTIES> cur;  // current_efx_properties_of_slot
 
-    if (target_efx_properties == nullptr)
+    if (target == nullptr)
     {
         this->alAuxiliaryEffectSloti(slot_id, AL_EFFECTSLOT_EFFECT, AL_EFFECTSLOT_NULL);
         return;
     }
 
-    const auto it = current_efx_properties_of_slot.find(slot_id);
-    if (it == current_efx_properties_of_slot.end())
+    const auto it = cur.find(slot_id);
+    if (it == cur.end())
     {
         // previously unseen effect slot, set a starting point
-        current_efx_properties_of_slot[slot_id] = *target_efx_properties;
+        cur[slot_id] = *target;
     }
 
     ALuint efx_effect_id;
     // create new AL effect if not existing
     if(m_efx_effect_id_map.find(slot_id) == m_efx_effect_id_map.end())
     {
-        efx_effect_id = this->CreateAlEffect(target_efx_properties);
+        efx_effect_id = this->CreateAlEffect(target);
         m_efx_effect_id_map[slot_id] = efx_effect_id;
     }
     else
@@ -482,80 +483,80 @@ void SoundManager::SmoothlyUpdateAlAuxiliaryEffectSlot(const float dt_sec, const
     }
 
     // compute intermediate step between current and target properties using linear interpolation based on time step
-    current_efx_properties_of_slot[slot_id] =
+    cur[slot_id] =
     {
-        current_efx_properties_of_slot[slot_id].flDensity                      + step * (target_efx_properties->flDensity             - current_efx_properties_of_slot[slot_id].flDensity),
-        current_efx_properties_of_slot[slot_id].flDiffusion                    + step * (target_efx_properties->flDiffusion           - current_efx_properties_of_slot[slot_id].flDiffusion),
-        current_efx_properties_of_slot[slot_id].flGain                         + step * (target_efx_properties->flGain                - current_efx_properties_of_slot[slot_id].flGain),
-        current_efx_properties_of_slot[slot_id].flGainHF                       + step * (target_efx_properties->flGainHF              - current_efx_properties_of_slot[slot_id].flGainHF),
-        current_efx_properties_of_slot[slot_id].flGainLF                       + step * (target_efx_properties->flGainLF              - current_efx_properties_of_slot[slot_id].flGainLF),
-        current_efx_properties_of_slot[slot_id].flDecayTime                    + step * (target_efx_properties->flDecayTime           - current_efx_properties_of_slot[slot_id].flDecayTime),
-        current_efx_properties_of_slot[slot_id].flDecayHFRatio                 + step * (target_efx_properties->flDecayHFRatio        - current_efx_properties_of_slot[slot_id].flDecayHFRatio),
-        current_efx_properties_of_slot[slot_id].flDecayLFRatio                 + step * (target_efx_properties->flDecayLFRatio        - current_efx_properties_of_slot[slot_id].flDecayLFRatio),
-        current_efx_properties_of_slot[slot_id].flReflectionsGain              + step * (target_efx_properties->flReflectionsGain     - current_efx_properties_of_slot[slot_id].flReflectionsGain),
-        current_efx_properties_of_slot[slot_id].flReflectionsDelay             + step * (target_efx_properties->flReflectionsDelay    - current_efx_properties_of_slot[slot_id].flReflectionsDelay),
-        current_efx_properties_of_slot[slot_id].flReflectionsPan[0]            + step * (target_efx_properties->flReflectionsPan[0]   - current_efx_properties_of_slot[slot_id].flReflectionsPan[0]),
-        current_efx_properties_of_slot[slot_id].flReflectionsPan[1]            + step * (target_efx_properties->flReflectionsPan[1]   - current_efx_properties_of_slot[slot_id].flReflectionsPan[1]),
-        current_efx_properties_of_slot[slot_id].flReflectionsPan[2]            + step * (target_efx_properties->flReflectionsPan[2]   - current_efx_properties_of_slot[slot_id].flReflectionsPan[2]),
-        current_efx_properties_of_slot[slot_id].flLateReverbGain               + step * (target_efx_properties->flLateReverbGain      - current_efx_properties_of_slot[slot_id].flLateReverbGain),
-        current_efx_properties_of_slot[slot_id].flLateReverbDelay              + step * (target_efx_properties->flLateReverbDelay     - current_efx_properties_of_slot[slot_id].flLateReverbDelay),
-        current_efx_properties_of_slot[slot_id].flLateReverbPan[0]             + step * (target_efx_properties->flLateReverbPan[0]    - current_efx_properties_of_slot[slot_id].flLateReverbPan[0]),
-        current_efx_properties_of_slot[slot_id].flLateReverbPan[1]             + step * (target_efx_properties->flLateReverbPan[1]    - current_efx_properties_of_slot[slot_id].flLateReverbPan[1]),
-        current_efx_properties_of_slot[slot_id].flLateReverbPan[2]             + step * (target_efx_properties->flLateReverbPan[2]    - current_efx_properties_of_slot[slot_id].flLateReverbPan[2]),
-        current_efx_properties_of_slot[slot_id].flEchoTime                     + step * (target_efx_properties->flEchoTime            - current_efx_properties_of_slot[slot_id].flEchoTime),
-        current_efx_properties_of_slot[slot_id].flEchoDepth                    + step * (target_efx_properties->flEchoDepth           - current_efx_properties_of_slot[slot_id].flEchoDepth),
-        current_efx_properties_of_slot[slot_id].flModulationTime               + step * (target_efx_properties->flModulationTime      - current_efx_properties_of_slot[slot_id].flModulationTime),
-        current_efx_properties_of_slot[slot_id].flModulationDepth              + step * (target_efx_properties->flModulationDepth     - current_efx_properties_of_slot[slot_id].flModulationDepth),
-        current_efx_properties_of_slot[slot_id].flAirAbsorptionGainHF          + step * (target_efx_properties->flAirAbsorptionGainHF - current_efx_properties_of_slot[slot_id].flAirAbsorptionGainHF),
-        current_efx_properties_of_slot[slot_id].flHFReference                  + step * (target_efx_properties->flHFReference         - current_efx_properties_of_slot[slot_id].flHFReference),
-        current_efx_properties_of_slot[slot_id].flLFReference                  + step * (target_efx_properties->flLFReference         - current_efx_properties_of_slot[slot_id].flLFReference),
-        current_efx_properties_of_slot[slot_id].flRoomRolloffFactor            + step * (target_efx_properties->flRoomRolloffFactor   - current_efx_properties_of_slot[slot_id].flRoomRolloffFactor),
-        static_cast<int>(std::round(current_efx_properties_of_slot[slot_id].iDecayHFLimit + step * (target_efx_properties->iDecayHFLimit - current_efx_properties_of_slot[slot_id].iDecayHFLimit))),
+        cur[slot_id].flDensity             + step * (target->flDensity             - cur[slot_id].flDensity),
+        cur[slot_id].flDiffusion           + step * (target->flDiffusion           - cur[slot_id].flDiffusion),
+        cur[slot_id].flGain                + step * (target->flGain                - cur[slot_id].flGain),
+        cur[slot_id].flGainHF              + step * (target->flGainHF              - cur[slot_id].flGainHF),
+        cur[slot_id].flGainLF              + step * (target->flGainLF              - cur[slot_id].flGainLF),
+        cur[slot_id].flDecayTime           + step * (target->flDecayTime           - cur[slot_id].flDecayTime),
+        cur[slot_id].flDecayHFRatio        + step * (target->flDecayHFRatio        - cur[slot_id].flDecayHFRatio),
+        cur[slot_id].flDecayLFRatio        + step * (target->flDecayLFRatio        - cur[slot_id].flDecayLFRatio),
+        cur[slot_id].flReflectionsGain     + step * (target->flReflectionsGain     - cur[slot_id].flReflectionsGain),
+        cur[slot_id].flReflectionsDelay    + step * (target->flReflectionsDelay    - cur[slot_id].flReflectionsDelay),
+        cur[slot_id].flReflectionsPan[0]   + step * (target->flReflectionsPan[0]   - cur[slot_id].flReflectionsPan[0]),
+        cur[slot_id].flReflectionsPan[1]   + step * (target->flReflectionsPan[1]   - cur[slot_id].flReflectionsPan[1]),
+        cur[slot_id].flReflectionsPan[2]   + step * (target->flReflectionsPan[2]   - cur[slot_id].flReflectionsPan[2]),
+        cur[slot_id].flLateReverbGain      + step * (target->flLateReverbGain      - cur[slot_id].flLateReverbGain),
+        cur[slot_id].flLateReverbDelay     + step * (target->flLateReverbDelay     - cur[slot_id].flLateReverbDelay),
+        cur[slot_id].flLateReverbPan[0]    + step * (target->flLateReverbPan[0]    - cur[slot_id].flLateReverbPan[0]),
+        cur[slot_id].flLateReverbPan[1]    + step * (target->flLateReverbPan[1]    - cur[slot_id].flLateReverbPan[1]),
+        cur[slot_id].flLateReverbPan[2]    + step * (target->flLateReverbPan[2]    - cur[slot_id].flLateReverbPan[2]),
+        cur[slot_id].flEchoTime            + step * (target->flEchoTime            - cur[slot_id].flEchoTime),
+        cur[slot_id].flEchoDepth           + step * (target->flEchoDepth           - cur[slot_id].flEchoDepth),
+        cur[slot_id].flModulationTime      + step * (target->flModulationTime      - cur[slot_id].flModulationTime),
+        cur[slot_id].flModulationDepth     + step * (target->flModulationDepth     - cur[slot_id].flModulationDepth),
+        cur[slot_id].flAirAbsorptionGainHF + step * (target->flAirAbsorptionGainHF - cur[slot_id].flAirAbsorptionGainHF),
+        cur[slot_id].flHFReference         + step * (target->flHFReference         - cur[slot_id].flHFReference),
+        cur[slot_id].flLFReference         + step * (target->flLFReference         - cur[slot_id].flLFReference),
+        cur[slot_id].flRoomRolloffFactor   + step * (target->flRoomRolloffFactor   - cur[slot_id].flRoomRolloffFactor),
+        static_cast<int>(std::round(cur[slot_id].iDecayHFLimit + step * (target->iDecayHFLimit - cur[slot_id].iDecayHFLimit))),
     };
 
     // update AL effect to intermediate values
     switch (m_efx_reverb_engine)
     {
         case EfxReverbEngine::EAXREVERB:
-            this->alEffectf( efx_effect_id, AL_EAXREVERB_DENSITY,               current_efx_properties_of_slot[slot_id].flDensity);
-            this->alEffectf( efx_effect_id, AL_EAXREVERB_DIFFUSION,             current_efx_properties_of_slot[slot_id].flDiffusion);
-            this->alEffectf( efx_effect_id, AL_EAXREVERB_GAIN,                  current_efx_properties_of_slot[slot_id].flGain);
-            this->alEffectf( efx_effect_id, AL_EAXREVERB_GAINHF,                current_efx_properties_of_slot[slot_id].flGainHF);
-            this->alEffectf( efx_effect_id, AL_EAXREVERB_GAINLF,                current_efx_properties_of_slot[slot_id].flGainLF);
-            this->alEffectf( efx_effect_id, AL_EAXREVERB_DECAY_TIME,            current_efx_properties_of_slot[slot_id].flDecayTime);
-            this->alEffectf( efx_effect_id, AL_EAXREVERB_DECAY_HFRATIO,         current_efx_properties_of_slot[slot_id].flDecayHFRatio);
-            this->alEffectf( efx_effect_id, AL_EAXREVERB_DECAY_LFRATIO,         current_efx_properties_of_slot[slot_id].flDecayLFRatio);
-            this->alEffectf( efx_effect_id, AL_EAXREVERB_REFLECTIONS_GAIN,      current_efx_properties_of_slot[slot_id].flReflectionsGain);
-            this->alEffectf( efx_effect_id, AL_EAXREVERB_REFLECTIONS_DELAY,     current_efx_properties_of_slot[slot_id].flReflectionsDelay);
-            this->alEffectfv(efx_effect_id, AL_EAXREVERB_REFLECTIONS_PAN,       current_efx_properties_of_slot[slot_id].flReflectionsPan);
-            this->alEffectf( efx_effect_id, AL_EAXREVERB_LATE_REVERB_GAIN,      current_efx_properties_of_slot[slot_id].flLateReverbGain);
-            this->alEffectf( efx_effect_id, AL_EAXREVERB_LATE_REVERB_DELAY,     current_efx_properties_of_slot[slot_id].flLateReverbDelay);
-            this->alEffectfv(efx_effect_id, AL_EAXREVERB_LATE_REVERB_PAN,       current_efx_properties_of_slot[slot_id].flLateReverbPan);
-            this->alEffectf( efx_effect_id, AL_EAXREVERB_ECHO_TIME,             current_efx_properties_of_slot[slot_id].flEchoTime);
-            this->alEffectf( efx_effect_id, AL_EAXREVERB_ECHO_DEPTH,            current_efx_properties_of_slot[slot_id].flEchoDepth);
-            this->alEffectf( efx_effect_id, AL_EAXREVERB_MODULATION_TIME,       current_efx_properties_of_slot[slot_id].flModulationTime);
-            this->alEffectf( efx_effect_id, AL_EAXREVERB_MODULATION_DEPTH,      current_efx_properties_of_slot[slot_id].flModulationDepth);
-            this->alEffectf( efx_effect_id, AL_EAXREVERB_AIR_ABSORPTION_GAINHF, current_efx_properties_of_slot[slot_id].flAirAbsorptionGainHF);
-            this->alEffectf( efx_effect_id, AL_EAXREVERB_HFREFERENCE,           current_efx_properties_of_slot[slot_id].flHFReference);
-            this->alEffectf( efx_effect_id, AL_EAXREVERB_LFREFERENCE,           current_efx_properties_of_slot[slot_id].flLFReference);
-            this->alEffectf( efx_effect_id, AL_EAXREVERB_ROOM_ROLLOFF_FACTOR,   current_efx_properties_of_slot[slot_id].flRoomRolloffFactor);
-            this->alEffecti( efx_effect_id, AL_EAXREVERB_DECAY_HFLIMIT,         current_efx_properties_of_slot[slot_id].iDecayHFLimit);
+            this->alEffectf( efx_effect_id, AL_EAXREVERB_DENSITY,               cur[slot_id].flDensity);
+            this->alEffectf( efx_effect_id, AL_EAXREVERB_DIFFUSION,             cur[slot_id].flDiffusion);
+            this->alEffectf( efx_effect_id, AL_EAXREVERB_GAIN,                  cur[slot_id].flGain);
+            this->alEffectf( efx_effect_id, AL_EAXREVERB_GAINHF,                cur[slot_id].flGainHF);
+            this->alEffectf( efx_effect_id, AL_EAXREVERB_GAINLF,                cur[slot_id].flGainLF);
+            this->alEffectf( efx_effect_id, AL_EAXREVERB_DECAY_TIME,            cur[slot_id].flDecayTime);
+            this->alEffectf( efx_effect_id, AL_EAXREVERB_DECAY_HFRATIO,         cur[slot_id].flDecayHFRatio);
+            this->alEffectf( efx_effect_id, AL_EAXREVERB_DECAY_LFRATIO,         cur[slot_id].flDecayLFRatio);
+            this->alEffectf( efx_effect_id, AL_EAXREVERB_REFLECTIONS_GAIN,      cur[slot_id].flReflectionsGain);
+            this->alEffectf( efx_effect_id, AL_EAXREVERB_REFLECTIONS_DELAY,     cur[slot_id].flReflectionsDelay);
+            this->alEffectfv(efx_effect_id, AL_EAXREVERB_REFLECTIONS_PAN,       cur[slot_id].flReflectionsPan);
+            this->alEffectf( efx_effect_id, AL_EAXREVERB_LATE_REVERB_GAIN,      cur[slot_id].flLateReverbGain);
+            this->alEffectf( efx_effect_id, AL_EAXREVERB_LATE_REVERB_DELAY,     cur[slot_id].flLateReverbDelay);
+            this->alEffectfv(efx_effect_id, AL_EAXREVERB_LATE_REVERB_PAN,       cur[slot_id].flLateReverbPan);
+            this->alEffectf( efx_effect_id, AL_EAXREVERB_ECHO_TIME,             cur[slot_id].flEchoTime);
+            this->alEffectf( efx_effect_id, AL_EAXREVERB_ECHO_DEPTH,            cur[slot_id].flEchoDepth);
+            this->alEffectf( efx_effect_id, AL_EAXREVERB_MODULATION_TIME,       cur[slot_id].flModulationTime);
+            this->alEffectf( efx_effect_id, AL_EAXREVERB_MODULATION_DEPTH,      cur[slot_id].flModulationDepth);
+            this->alEffectf( efx_effect_id, AL_EAXREVERB_AIR_ABSORPTION_GAINHF, cur[slot_id].flAirAbsorptionGainHF);
+            this->alEffectf( efx_effect_id, AL_EAXREVERB_HFREFERENCE,           cur[slot_id].flHFReference);
+            this->alEffectf( efx_effect_id, AL_EAXREVERB_LFREFERENCE,           cur[slot_id].flLFReference);
+            this->alEffectf( efx_effect_id, AL_EAXREVERB_ROOM_ROLLOFF_FACTOR,   cur[slot_id].flRoomRolloffFactor);
+            this->alEffecti( efx_effect_id, AL_EAXREVERB_DECAY_HFLIMIT,         cur[slot_id].iDecayHFLimit);
             break;
 
         case EfxReverbEngine::REVERB:
-            this->alEffectf( efx_effect_id, AL_REVERB_DENSITY,               current_efx_properties_of_slot[slot_id].flDensity);
-            this->alEffectf( efx_effect_id, AL_REVERB_DIFFUSION,             current_efx_properties_of_slot[slot_id].flDiffusion);
-            this->alEffectf( efx_effect_id, AL_REVERB_GAIN,                  current_efx_properties_of_slot[slot_id].flGain);
-            this->alEffectf( efx_effect_id, AL_REVERB_GAINHF,                current_efx_properties_of_slot[slot_id].flGainHF);
-            this->alEffectf( efx_effect_id, AL_REVERB_DECAY_TIME,            current_efx_properties_of_slot[slot_id].flDecayTime);
-            this->alEffectf( efx_effect_id, AL_REVERB_DECAY_HFRATIO,         current_efx_properties_of_slot[slot_id].flDecayHFRatio);
-            this->alEffectf( efx_effect_id, AL_REVERB_REFLECTIONS_GAIN,      current_efx_properties_of_slot[slot_id].flReflectionsGain);
-            this->alEffectf( efx_effect_id, AL_REVERB_REFLECTIONS_DELAY,     current_efx_properties_of_slot[slot_id].flReflectionsDelay);
-            this->alEffectf( efx_effect_id, AL_REVERB_LATE_REVERB_GAIN,      current_efx_properties_of_slot[slot_id].flLateReverbGain);
-            this->alEffectf( efx_effect_id, AL_REVERB_LATE_REVERB_DELAY,     current_efx_properties_of_slot[slot_id].flLateReverbDelay);
-            this->alEffectf( efx_effect_id, AL_REVERB_AIR_ABSORPTION_GAINHF, current_efx_properties_of_slot[slot_id].flAirAbsorptionGainHF);
-            this->alEffectf( efx_effect_id, AL_REVERB_ROOM_ROLLOFF_FACTOR,   current_efx_properties_of_slot[slot_id].flRoomRolloffFactor);
-            this->alEffectf( efx_effect_id, AL_REVERB_DECAY_HFLIMIT,         current_efx_properties_of_slot[slot_id].iDecayHFLimit);
+            this->alEffectf( efx_effect_id, AL_REVERB_DENSITY,               cur[slot_id].flDensity);
+            this->alEffectf( efx_effect_id, AL_REVERB_DIFFUSION,             cur[slot_id].flDiffusion);
+            this->alEffectf( efx_effect_id, AL_REVERB_GAIN,                  cur[slot_id].flGain);
+            this->alEffectf( efx_effect_id, AL_REVERB_GAINHF,                cur[slot_id].flGainHF);
+            this->alEffectf( efx_effect_id, AL_REVERB_DECAY_TIME,            cur[slot_id].flDecayTime);
+            this->alEffectf( efx_effect_id, AL_REVERB_DECAY_HFRATIO,         cur[slot_id].flDecayHFRatio);
+            this->alEffectf( efx_effect_id, AL_REVERB_REFLECTIONS_GAIN,      cur[slot_id].flReflectionsGain);
+            this->alEffectf( efx_effect_id, AL_REVERB_REFLECTIONS_DELAY,     cur[slot_id].flReflectionsDelay);
+            this->alEffectf( efx_effect_id, AL_REVERB_LATE_REVERB_GAIN,      cur[slot_id].flLateReverbGain);
+            this->alEffectf( efx_effect_id, AL_REVERB_LATE_REVERB_DELAY,     cur[slot_id].flLateReverbDelay);
+            this->alEffectf( efx_effect_id, AL_REVERB_AIR_ABSORPTION_GAINHF, cur[slot_id].flAirAbsorptionGainHF);
+            this->alEffectf( efx_effect_id, AL_REVERB_ROOM_ROLLOFF_FACTOR,   cur[slot_id].flRoomRolloffFactor);
+            this->alEffectf( efx_effect_id, AL_REVERB_DECAY_HFLIMIT,         cur[slot_id].iDecayHFLimit);
             break;
 
         case EfxReverbEngine::NONE:
@@ -592,9 +593,10 @@ std::tuple<Ogre::Vector3, float, float> SoundManager::ComputeEarlyReflectionsPro
         raycast_direction.normalise();
         // accompany direction vector for how the intersectsTris function works
 
+        // todo: audio restore
         // check for nearby collision meshes
-        Ray ray = Ray(m_listener_position, raycast_direction * max_distance * App::GetGameContext()->GetTerrain()->GetCollisions()->GetCellSize());
-        std::pair<bool, Ogre::Real> intersection = App::GetGameContext()->GetTerrain()->GetCollisions()->intersectsTris(ray);
+/*        Ray ray = Ray(m_listener_position, raycast_direction * max_distance * Audio::GetGameContext()->GetTerrain()->GetCollisions()->GetCellSize());
+        std::pair<bool, Ogre::Real> intersection = Audio::GetGameContext()->GetTerrain()->GetCollisions()->intersectsTris(ray);
 
         if (intersection.first)
         {
@@ -604,7 +606,7 @@ std::tuple<Ogre::Vector3, float, float> SoundManager::ComputeEarlyReflectionsPro
         ray.setDirection(ray.getDirection().normalisedCopy());
 
         // check for nearby collision boxes
-        for (const collision_box_t& collision_box : App::GetGameContext()->GetTerrain()->GetCollisions()->getCollisionBoxes())
+/*      for (const collision_box_t& collision_box : Audio::GetGameContext()->GetTerrain()->GetCollisions()->getCollisionBoxes())
         {
             if (!collision_box.enabled || collision_box.virt) { continue; }
             intersection = ray.intersects(Ogre::AxisAlignedBox(collision_box.lo, collision_box.hi));
@@ -615,11 +617,11 @@ std::tuple<Ogre::Vector3, float, float> SoundManager::ComputeEarlyReflectionsPro
         }
 
         // check for nearby actors
-        const ActorPtrVec& actors = App::GetGameContext()->GetActorManager()->GetActors();
+        const ActorPtrVec& actors = Audio::GetGameContext()->GetActorManager()->GetActors();
         for(const ActorPtr& actor : actors)
         {
             // ignore own truck if player is driving one
-            if (actor == App::GetGameContext()->GetPlayerCharacter()->GetActorCoupling()) { continue; }
+            if (actor == Audio::GetGameContext()->GetPlayerCharacter()->GetActorCoupling()) { continue; }
 
             intersection = ray.intersects(actor->ar_bounding_box);
             if (intersection.first && intersection.second <= max_distance)
@@ -627,7 +629,7 @@ std::tuple<Ogre::Vector3, float, float> SoundManager::ComputeEarlyReflectionsPro
                 closest_surface_distance_in_this_direction = std::min(closest_surface_distance_in_this_direction, intersection.second);
             }
         }
-
+*/
         closest_surface_distance = std::min(closest_surface_distance, closest_surface_distance_in_this_direction);
 
         if(closest_surface_distance_in_this_direction <= max_distance)
@@ -820,9 +822,11 @@ void SoundManager::recomputeAllSources()
 
 void SoundManager::UpdateObstructionFilter(const int hardware_index) const
 {
+    // todo: audio restore
+#if 0
     if(hardware_sources_map[hardware_index] == -1) { return; } // no sound assigned to hardware source
 
-    if(!App::audio_enable_obstruction->getBool())
+    if(!Audio::audio_enable_obstruction)
     {
         // detach the obstruction filter in case it was attached when the feature was previously enabled
         alSourcei(hardware_sources[hardware_index], AL_DIRECT_FILTER, AL_FILTER_NULL);
@@ -835,7 +839,7 @@ void SoundManager::UpdateObstructionFilter(const int hardware_index) const
     // TODO: Simulate diffraction path.
 
     // always obstruct sounds if the player is in a vehicle
-    if(App::GetSoundScriptManager()->ListenerIsInsideThePlayerCoupledActor())
+    if(Audio::GetSoundScriptManager()->ListenerIsInsideThePlayerCoupledActor())
     {
         obstruction_detected = true;
     }
@@ -853,7 +857,7 @@ void SoundManager::UpdateObstructionFilter(const int hardware_index) const
         Ray direct_path_to_sound = Ray(m_listener_position, direction_to_sound);
 
         // perform line of sight check against terrain
-        intersection = App::GetGameContext()->GetTerrain()->GetCollisions()->intersectsTerrain(direct_path_to_sound, distance_to_sound);
+        intersection = Audio::GetGameContext()->GetTerrain()->GetCollisions()->intersectsTerrain(direct_path_to_sound, distance_to_sound);
         obstruction_detected = intersection.first;
 
         if(!obstruction_detected)
@@ -861,7 +865,7 @@ void SoundManager::UpdateObstructionFilter(const int hardware_index) const
             // perform line of sight check against collision meshes
             // for this to work correctly, the direction vector of the ray must have
             // the length of the distance from the listener to the sound
-            intersection = App::GetGameContext()->GetTerrain()->GetCollisions()->intersectsTris(direct_path_to_sound);
+            intersection = Audio::GetGameContext()->GetTerrain()->GetCollisions()->intersectsTris(direct_path_to_sound);
             obstruction_detected = intersection.first;
         }
 
@@ -872,7 +876,7 @@ void SoundManager::UpdateObstructionFilter(const int hardware_index) const
         if(!obstruction_detected)
         {
             // perform line of sight check agains collision boxes
-            for (const collision_box_t& collision_box : App::GetGameContext()->GetTerrain()->GetCollisions()->getCollisionBoxes())
+            for (const collision_box_t& collision_box : Audio::GetGameContext()->GetTerrain()->GetCollisions()->getCollisionBoxes())
             {
                 if (!collision_box.enabled || collision_box.virt) { continue; }
 
@@ -888,7 +892,7 @@ void SoundManager::UpdateObstructionFilter(const int hardware_index) const
         if(!obstruction_detected)
         {
             // perform line of sight check against actors
-            const ActorPtrVec& actors = App::GetGameContext()->GetActorManager()->GetActors();
+            const ActorPtrVec& actors = Audio::GetGameContext()->GetActorManager()->GetActors();
             bool soundsource_belongs_to_current_actor = false;
             for(const ActorPtr actor : actors)
             {
@@ -933,6 +937,7 @@ void SoundManager::UpdateObstructionFilter(const int hardware_index) const
         // reset direct filter for the source in case it has been set previously
         alSourcei(hardware_sources[hardware_index], AL_DIRECT_FILTER, AL_FILTER_NULL);
     }
+#endif
 }
 
 void SoundManager::recomputeSource(int source_index, int reason, float vfl, Vector3* vvec)
@@ -965,7 +970,7 @@ void SoundManager::recomputeSource(int source_index, int reason, float vfl, Vect
                 break;
             case Sound::REASON_STOP: alSourceStop(hw_source);
                 break;
-            case Sound::REASON_GAIN: alSourcef(hw_source, AL_GAIN, vfl * App::audio_master_volume->getFloat());
+            case Sound::REASON_GAIN: alSourcef(hw_source, AL_GAIN, vfl * Audio::audio_master_volume);
                 break;
             case Sound::REASON_LOOP: alSourcei(hw_source, AL_LOOPING, (vfl > 0.5) ? AL_TRUE : AL_FALSE);
                 break;
@@ -1032,7 +1037,7 @@ void SoundManager::assign(int source_index, int hardware_index)
 
     // the hardware source is supposed to be stopped!
     alSourcei(hw_source, AL_BUFFER, audio_source->buffer);
-    alSourcef(hw_source, AL_GAIN, audio_source->gain * App::audio_master_volume->getFloat());
+    alSourcef(hw_source, AL_GAIN, audio_source->gain * Audio::audio_master_volume);
     alSourcei(hw_source, AL_LOOPING, (audio_source->loop) ? AL_TRUE : AL_FALSE);
     alSourcef(hw_source, AL_PITCH, audio_source->pitch);
     alSource3f(hw_source, AL_POSITION, audio_source->position.x, audio_source->position.y, audio_source->position.z);
@@ -1072,7 +1077,7 @@ void SoundManager::resumeAllSounds()
     if (!audio_device)
         return;
     // no mutex needed
-    alListenerf(AL_GAIN, App::audio_master_volume->getFloat());
+    alListenerf(AL_GAIN, Audio::audio_master_volume);
 }
 
 void SoundManager::setMasterVolume(float v)
@@ -1080,7 +1085,7 @@ void SoundManager::setMasterVolume(float v)
     if (!audio_device)
         return;
     // no mutex needed
-    App::audio_master_volume->setVal(v); // TODO: Use 'pending' mechanism and set externally, only 'apply' here.
+    Audio::audio_master_volume = v; // TODO: Use 'pending' mechanism and set externally, only 'apply' here.
     alListenerf(AL_GAIN, v);
 }
 
@@ -1315,4 +1320,4 @@ bool SoundManager::loadWAVFile(String filename, ALuint buffer, Ogre::String reso
     return false;
 }
 
-#endif // USE_OPENAL
+// #endif // USE_OPENAL

@@ -18,7 +18,7 @@
 	along with Rigs of Rods. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifdef USE_OPENAL
+// #ifdef USE_OPENAL
 
 #include "Sound.h"
 #include "SoundManager.h"
@@ -167,4 +167,4 @@ void Sound::setVelocity(Ogre::Vector3 vel)
 	sound_manager->recomputeSource(source_index, REASON_VLCT, 0.0f, &vel);
 }
 
-#endif // USE_OPENAL
+// #endif // USE_OPENAL

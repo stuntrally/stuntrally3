@@ -18,11 +18,11 @@
     along with Rigs of Rods. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifdef USE_OPENAL
+// #ifdef USE_OPENAL
 
 #pragma once
 
-#include "Application.h"
+// #include "Application.h"
 #include "RefCountingObject.h"
 
 #ifdef __APPLE__
@@ -102,4 +102,4 @@ private:
 
 } // namespace RoR
 
-#endif // USE_OPENAL
+// #endif // USE_OPENAL
