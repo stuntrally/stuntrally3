@@ -178,19 +178,20 @@ void App::update( float dt )
 		{
 			updatePoses(dt);
 
-			// 🔉  carModels[0]->cam
-			pGame->snd->update(dt, mCamera);  // here?
+			// 🔉 update 3d audio listener position
+			// here?, carModels[0]->cam
+			pGame->snd->update(dt, mCamera);
 
-			/* test *
-			static float tm = 0.f;
+			//  test  crash > 256  // todo: not auto removed..
+			/*static float tm = 0.f;
 			tm += dt;
 			if (tm > 0.04f)
 			{	tm = 0.f;
 
-				RoR::SoundScriptInstancePtr sound = pGame->snd->createInstance("shift1", -1);
+				SoundScriptInstancePtr sound = pGame->snd->createInstance("shift/1", -1);
 				sound->setPosition(Ogre::Vector3::ZERO);
-				sound->start();
-				sound->Release();				
+				sound->runOnce();
+				// sound->Release();				
 			}/**/
 
 			if (!carModels.empty())

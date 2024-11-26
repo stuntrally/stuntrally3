@@ -30,9 +30,9 @@ using std::vector;  using std::min;  using std::max;
 
 //  bridge, Walls:  - cross sections -
 //
-// +y     road       pipe        decor 1   decor 2   decor 3  
+// y+     road       pipe        decor 1   decor 2   decor 3  
 // |      2-1  6-5   2-1\  /6-5   21--07    1/0\7      1-0    
-// 0--+x  | 0--7 |    \  07  /    |    |   2<   >6   2|   |7  
+// 0--x+  | 0--7 |    \  07  /    |    |   2<   >6   2|   |7  
 //        3______4      \  /      34--56    3\4/5    3|   |6  
 //                       34                            4_5    
 //  📏 wall front indices

@@ -559,7 +559,7 @@ void PaceNotes::Rebuild(SplineRoad* road, Scene* sc, bool reversed)
 
 
 	///:  only real signs
-	#ifndef SR_EDITOR  // game
+#ifndef SR_EDITOR  // game
 	vPS.clear();
 	for (i=0; i < vPN.size(); ++i)
 		if (vPN[i].use == 1)
@@ -575,7 +575,7 @@ void PaceNotes::Rebuild(SplineRoad* road, Scene* sc, bool reversed)
 		//LogO("SS "+toStr(vPS[i].id));
 	}
 	Reset();
-	#endif
+#endif
 
 	CreateHR();
 	

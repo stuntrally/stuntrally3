@@ -57,8 +57,8 @@ std::string Audio::audio_default_listener_efx_preset;
 std::string Audio::audio_force_listener_efx_preset;
 
 
-SoundScriptManager::SoundScriptManager() :
-    disabled(true)
+SoundScriptManager::SoundScriptManager()
+    : disabled(true)
     , loading_base(false)
     , instance_counter(0)
     , max_distance(500.0f)
@@ -253,22 +253,22 @@ void SoundScriptManager::modulate(int actor_id, int mod, float value, int linkTy
 }
 
 void SoundScriptManager::update(float dt_sec,
-    Ogre::Camera* camera_node)
-    //Ogre::SceneNode* camera_node)
+    Camera* camera_node)
+    //SceneNode* camera_node)
 {
     // if (Audio::sim_state->getEnum<SimState>() == SimState::RUNNING ||
     //     Audio::sim_state->getEnum<SimState>() == SimState::EDITOR_MODE)
     {
-        // Ogre::SceneNode* camera_node = Audio::GetCameraManager()->GetCameraNode();
+        // SceneNode* camera_node = Audio::GetCameraManager()->GetCameraNode();
         static Vector3 last_camera_position;
-        Ogre::Vector3 camera_position = camera_node->getPosition();
+        Vector3 camera_position = camera_node->getPosition();
         Vector3 camera_velocity = (camera_position - last_camera_position) / dt_sec;
         last_camera_position = camera_position;
-        Ogre::Vector3 camera_up = camera_node->getOrientation() * Ogre::Vector3::UNIT_Y;
-        // Direction points down -Z by default (adapted from Ogre::Camera)
-        Ogre::Vector3 camera_direction = camera_node->getOrientation() * -Ogre::Vector3::UNIT_Z;
+        Vector3 camera_up = camera_node->getOrientation() * Vector3::UNIT_Y;
+        // Direction points down -Z by default (adapted from Camera)
+        Vector3 camera_direction = camera_node->getOrientation() * -Vector3::UNIT_Z;
         SetListener(camera_position, camera_direction, camera_up, camera_velocity);
-        Ogre::Vector3 listener_position = sound_manager->GetListenerPosition();
+        Vector3 listener_position = sound_manager->GetListenerPosition();
 
         // todo: audio new restore
         // const auto water = Audio::GetGameContext()->GetTerrain()->getWater();
@@ -339,7 +339,7 @@ void SoundScriptManager::SetListenerEnvironment(Vector3 listener_position)
     }
 }
 
-const EFXEAXREVERBPROPERTIES* SoundScriptManager::GetReverbPresetAt(const Ogre::Vector3 position) const
+const EFXEAXREVERBPROPERTIES* SoundScriptManager::GetReverbPresetAt(const Vector3 position) const
 {
     // for the listener we do additional checks
     if (position == sound_manager->GetListenerPosition())
@@ -362,7 +362,7 @@ const EFXEAXREVERBPROPERTIES* SoundScriptManager::GetReverbPresetAt(const Ogre::
     {
         if (!collision_box.reverb_preset_name.empty())
         {
-            const Ogre::AxisAlignedBox collision_box_aab = Ogre::AxisAlignedBox(collision_box.lo, collision_box.hi);
+            const AxisAlignedBox collision_box_aab = AxisAlignedBox(collision_box.lo, collision_box.hi);
 
             if (collision_box_aab.contains(position))
             {
@@ -415,7 +415,7 @@ SoundScriptTemplatePtr SoundScriptManager::createTemplate(
 }
 
 SoundScriptInstancePtr SoundScriptManager::createInstance(
-    Ogre::String templatename, int actor_id, int soundLinkType, int soundLinkItemId)
+    String templatename, int actor_id, int soundLinkType, int soundLinkItemId)
 {
     //first, search template
     SoundScriptTemplatePtr templ = NULL;
@@ -467,7 +467,6 @@ SoundScriptInstancePtr SoundScriptManager::createInstance(
     {
         inst->start();
     }
-
     return inst;
 }
 
@@ -580,7 +579,7 @@ void SoundScriptManager::parseScript(DataStreamPtr& stream, const String& groupN
                 {
                     // attribute
                     // split params on space
-                    Ogre::StringVector veclineparams = StringUtil::split(line, "\t ", 0);
+                    StringVector veclineparams = StringUtil::split(line, "\t ", 0);
 
                     if (!sst->setParameter(veclineparams))
                     {
@@ -622,8 +621,8 @@ void SoundScriptManager::setEnabled(bool state)
 
 //=====================================================================
 
-SoundScriptTemplate::SoundScriptTemplate(String name, String groupname, String filename, bool baseTemplate) :
-    base_template(baseTemplate)
+SoundScriptTemplate::SoundScriptTemplate(String name, String groupname, String filename, bool baseTemplate)
+    : base_template(baseTemplate)
     , file_name(filename)
     , group_name(groupname)
     , free_sound(0)
@@ -645,7 +644,7 @@ SoundScriptTemplate::SoundScriptTemplate(String name, String groupname, String f
 {
 }
 
-bool SoundScriptTemplate::setParameter(Ogre::StringVector vec)
+bool SoundScriptTemplate::setParameter(StringVector vec)
 {
     if (vec.empty())
         return false;
