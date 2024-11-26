@@ -284,31 +284,21 @@ bool GAME::LoadSusp()
 ///  🔉 Sound Init
 bool GAME::InitializeSound()
 {
+	using namespace Ogre;
 	Ogre::Timer ti;
 
 	snd = new SoundScriptManager();
-	snd->setLoadingBaseSounds(true);
+	// snd->setLoadingBaseSounds(true);
 	
 /*	snd = new SoundMgr();
 	snd->Init(pSet->snd_device, pSet->snd_reverb);
 	snd->setMasterVolume(0.f);
 */
-	using namespace Ogre;
 
-
-	//  sounds.cfg  ----
-	string path = "sounds1.cfg";   // sounds.cfg";
-/*	ifstream fi;
-	fi.open(path.c_str(), ios_base::binary);
-	if (!fi)
-	{	LogO("@  Can't load " + path);  return false;  }
-*/
-	// FileStreamDataStream fd(&fi,false);
-	DataStreamPtr ds = Ogre::ResourceGroupManager::getSingleton().openResource(path); //, "Default");
-
+	//  load sounds1.cfg  ----
+	string path = "sounds1.cfg";
+	DataStreamPtr ds = ResourceGroupManager::getSingleton().openResource(path);
 	snd->parseScript(ds, "General");
-	// fd.close();
-	// fi.close();
 
 /*	snd->setMasterVolume(pSet->vol_master);
 

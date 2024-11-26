@@ -140,8 +140,8 @@ bool CAR::Load(class App* pApp1,
 
 
 	//  🔉 load sounds
-	/*if (!pGame->snd->isDisabled())
-		LoadSounds(carpath);/**/
+	if (!pGame->snd->isDisabled())
+		LoadSounds(carpath);
 
 	//mz_nominalmax = (GetTireMaxMz(FRONT_LEFT) + GetTireMaxMz(FRONT_RIGHT))*0.5;  //!! ff
 

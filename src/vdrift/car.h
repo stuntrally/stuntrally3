@@ -4,6 +4,7 @@
 #include "cardefs.h"
 #include "suspensionbump.h"
 #include "crashdetection.h"
+#include "SoundScriptManager.h"
 
 namespace protocol {  struct CarStatePackage;  }
 class Sound;  class GAME;  class App;  class CarModel;
@@ -172,7 +173,8 @@ public:
 	struct CARsounds
 	{
 		//  📈 engine
-		Sound* engine =0, *turbo =0;
+		SoundScriptInstancePtr engine;
+		Sound *turbo =0;
 		
 		//  ⚫ tires  todo: more surfaces..
 		std::vector<Sound*> asphalt, grass, gravel, bump;
