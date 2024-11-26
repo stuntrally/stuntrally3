@@ -168,5 +168,3 @@ void Sound::setVelocity(Ogre::Vector3 vel)
 	this->velocity = vel;
 	sound_manager->recomputeSource(source_index, REASON_VLCT, 0.0f, &vel);
 }
-
-// #endif // USE_OPENAL

@@ -399,7 +399,8 @@ Real SoundScriptManager::getLoadingOrder(void) const
     return 1000.0f;
 }
 
-SoundScriptTemplatePtr SoundScriptManager::createTemplate(String name, String groupname, String filename)
+SoundScriptTemplatePtr SoundScriptManager::createTemplate(
+    String name, String groupname, String filename)
 {
     // first, search if there is a template name collision
     if (templates.find(name) != templates.end())
@@ -413,7 +414,8 @@ SoundScriptTemplatePtr SoundScriptManager::createTemplate(String name, String gr
     return ssi;
 }
 
-SoundScriptInstancePtr SoundScriptManager::createInstance(Ogre::String templatename, int actor_id, int soundLinkType, int soundLinkItemId)
+SoundScriptInstancePtr SoundScriptManager::createInstance(
+    Ogre::String templatename, int actor_id, int soundLinkType, int soundLinkItemId)
 {
     //first, search template
     SoundScriptTemplatePtr templ = NULL;
@@ -439,7 +441,9 @@ SoundScriptInstancePtr SoundScriptManager::createInstance(Ogre::String templaten
         return NULL; // reached limit!
     }
 
-    SoundScriptInstancePtr inst = new SoundScriptInstance(actor_id, templ, sound_manager, templ->file_name + "-" + TOSTRING(actor_id) + "-" + TOSTRING(instance_counter), soundLinkType, soundLinkItemId);
+    SoundScriptInstancePtr inst = new SoundScriptInstance(
+        actor_id, templ, sound_manager, templ->file_name + "-" + TOSTRING(actor_id) + "-" + TOSTRING(instance_counter),
+        soundLinkType, soundLinkItemId);
     instances.push_back(inst);
     instance_counter++;
 
@@ -650,337 +654,28 @@ bool SoundScriptTemplate::setParameter(Ogre::StringVector vec)
     {
         if (vec.size() < 2)
             return false;
-        if (vec[1] == String("engine"))
-        {
-            trigger_source = SS_TRIG_ENGINE;
-            return true;
-        };
-        if (vec[1] == String("aeroengine1"))
-        {
-            trigger_source = SS_TRIG_AEROENGINE1;
-            return true;
-        };
-        if (vec[1] == String("aeroengine2"))
-        {
-            trigger_source = SS_TRIG_AEROENGINE2;
-            return true;
-        };
-        if (vec[1] == String("aeroengine3"))
-        {
-            trigger_source = SS_TRIG_AEROENGINE3;
-            return true;
-        };
-        if (vec[1] == String("aeroengine4"))
-        {
-            trigger_source = SS_TRIG_AEROENGINE4;
-            return true;
-        };
-        if (vec[1] == String("aeroengine5"))
-        {
-            trigger_source = SS_TRIG_AEROENGINE5;
-            return true;
-        };
-        if (vec[1] == String("aeroengine6"))
-        {
-            trigger_source = SS_TRIG_AEROENGINE6;
-            return true;
-        };
-        if (vec[1] == String("aeroengine7"))
-        {
-            trigger_source = SS_TRIG_AEROENGINE7;
-            return true;
-        };
-        if (vec[1] == String("aeroengine8"))
-        {
-            trigger_source = SS_TRIG_AEROENGINE8;
-            return true;
-        };
-        if (vec[1] == String("horn"))
-        {
-            trigger_source = SS_TRIG_HORN;
-            return true;
-        };
-        if (vec[1] == String("brake"))
-        {
-            trigger_source = SS_TRIG_BRAKE;
-            return true;
-        };
-        if (vec[1] == String("pump"))
-        {
-            trigger_source = SS_TRIG_PUMP;
-            return true;
-        };
-        if (vec[1] == String("starter"))
-        {
-            trigger_source = SS_TRIG_STARTER;
-            return true;
-        };
-        if (vec[1] == String("turbo_BOV"))
-        {
-            trigger_source = SS_TRIG_TURBOBOV;
-            return true;
-        };
-        if (vec[1] == String("turbo_waste_gate"))
-        {
-            trigger_source = SS_TRIG_TURBOWASTEGATE;
-            return true;
-        };
-        if (vec[1] == String("turbo_back_fire"))
-        {
-            trigger_source = SS_TRIG_TURBOBACKFIRE;
-            return true;
-        };
-        if (vec[1] == String("always_on"))
-        {
-            trigger_source = SS_TRIG_ALWAYSON;
-            return true;
-        };
-        if (vec[1] == String("repair"))
-        {
-            trigger_source = SS_TRIG_REPAIR;
-            return true;
-        };
-        if (vec[1] == String("air"))
-        {
-            trigger_source = SS_TRIG_AIR;
-            return true;
-        };
-        if (vec[1] == String("gpws_ap_disconnect"))
-        {
-            trigger_source = SS_TRIG_GPWS_APDISCONNECT;
-            return true;
-        };
-        if (vec[1] == String("gpws_10"))
-        {
-            trigger_source = SS_TRIG_GPWS_10;
-            return true;
-        };
-        if (vec[1] == String("gpws_20"))
-        {
-            trigger_source = SS_TRIG_GPWS_20;
-            return true;
-        };
-        if (vec[1] == String("gpws_30"))
-        {
-            trigger_source = SS_TRIG_GPWS_30;
-            return true;
-        };
-        if (vec[1] == String("gpws_40"))
-        {
-            trigger_source = SS_TRIG_GPWS_40;
-            return true;
-        };
-        if (vec[1] == String("gpws_50"))
-        {
-            trigger_source = SS_TRIG_GPWS_50;
-            return true;
-        };
-        if (vec[1] == String("gpws_100"))
-        {
-            trigger_source = SS_TRIG_GPWS_100;
-            return true;
-        };
-        if (vec[1] == String("gpws_pull_up"))
-        {
-            trigger_source = SS_TRIG_GPWS_PULLUP;
-            return true;
-        };
-        if (vec[1] == String("gpws_minimums"))
-        {
-            trigger_source = SS_TRIG_GPWS_MINIMUMS;
-            return true;
-        };
-        if (vec[1] == String("air_purge"))
-        {
-            trigger_source = SS_TRIG_AIR_PURGE;
-            return true;
-        };
-        if (vec[1] == String("shift"))
-        {
-            trigger_source = SS_TRIG_SHIFT;
-            return true;
-        };
-        if (vec[1] == String("gear_slide"))
-        {
-            trigger_source = SS_TRIG_GEARSLIDE;
-            return true;
-        };
+        if (vec[1] == String("engine"))          {  trigger_source = SS_TRIG_ENGINE;  return true;  }
+        if (vec[1] == String("aeroengine1"))     {  trigger_source = SS_TRIG_AEROENGINE1;  return true;  }
+        if (vec[1] == String("aeroengine2"))     {  trigger_source = SS_TRIG_AEROENGINE2;  return true;  }
+        if (vec[1] == String("brake"))           {  trigger_source = SS_TRIG_BRAKE;  return true;  }
+        if (vec[1] == String("starter"))         {  trigger_source = SS_TRIG_STARTER;  return true;  }
+        if (vec[1] == String("turbo_BOV"))       {  trigger_source = SS_TRIG_TURBOBOV;  return true;  }
+        if (vec[1] == String("turbo_waste_gate")){  trigger_source = SS_TRIG_TURBOWASTEGATE;  return true;  }
+        if (vec[1] == String("turbo_back_fire")) {  trigger_source = SS_TRIG_TURBOBACKFIRE;  return true;  }
+        if (vec[1] == String("always_on"))       {  trigger_source = SS_TRIG_ALWAYSON;  return true;  }
+        if (vec[1] == String("repair"))          {  trigger_source = SS_TRIG_REPAIR;  return true;  }
+        if (vec[1] == String("air"))             {  trigger_source = SS_TRIG_AIR;  return true;  }
+        if (vec[1] == String("shift"))           {  trigger_source = SS_TRIG_SHIFT;  return true;  }
+        if (vec[1] == String("gear_slide"))      {  trigger_source = SS_TRIG_GEARSLIDE;  return true;  }
         if (vec[1] == String("creak") && Audio::audio_enable_creak)
-        {
-            trigger_source = SS_TRIG_CREAK;
-            return true;
-        };
-        if (vec[1] == String("break"))
-        {
-            trigger_source = SS_TRIG_BREAK;
-            return true;
-        };
-        if (vec[1] == String("screetch"))
-        {
-            trigger_source = SS_TRIG_SCREETCH;
-            return true;
-        };
-        if (vec[1] == String("parking_brake"))
-        {
-            trigger_source = SS_TRIG_PARK;
-            return true;
-        };
-        if (vec[1] == String("antilock"))
-        {
-            trigger_source = SS_TRIG_ALB_ACTIVE;
-            return true;
-        };
-        if (vec[1] == String("tractioncontrol"))
-        {
-            trigger_source = SS_TRIG_TC_ACTIVE;
-            return true;
-        };
-        if (vec[1] == String("afterburner1"))
-        {
-            trigger_source = SS_TRIG_AFTERBURNER1;
-            return true;
-        };
-        if (vec[1] == String("afterburner2"))
-        {
-            trigger_source = SS_TRIG_AFTERBURNER2;
-            return true;
-        };
-        if (vec[1] == String("afterburner3"))
-        {
-            trigger_source = SS_TRIG_AFTERBURNER3;
-            return true;
-        };
-        if (vec[1] == String("afterburner4"))
-        {
-            trigger_source = SS_TRIG_AFTERBURNER4;
-            return true;
-        };
-        if (vec[1] == String("afterburner5"))
-        {
-            trigger_source = SS_TRIG_AFTERBURNER5;
-            return true;
-        };
-        if (vec[1] == String("afterburner6"))
-        {
-            trigger_source = SS_TRIG_AFTERBURNER6;
-            return true;
-        };
-        if (vec[1] == String("afterburner7"))
-        {
-            trigger_source = SS_TRIG_AFTERBURNER7;
-            return true;
-        };
-        if (vec[1] == String("afterburner8"))
-        {
-            trigger_source = SS_TRIG_AFTERBURNER8;
-            return true;
-        };
-        if (vec[1] == String("avionic_chat_01"))
-        {
-            trigger_source = SS_TRIG_AVICHAT01;
-            return true;
-        };
-        if (vec[1] == String("avionic_chat_02"))
-        {
-            trigger_source = SS_TRIG_AVICHAT02;
-            return true;
-        };
-        if (vec[1] == String("avionic_chat_03"))
-        {
-            trigger_source = SS_TRIG_AVICHAT03;
-            return true;
-        };
-        if (vec[1] == String("avionic_chat_04"))
-        {
-            trigger_source = SS_TRIG_AVICHAT04;
-            return true;
-        };
-        if (vec[1] == String("avionic_chat_05"))
-        {
-            trigger_source = SS_TRIG_AVICHAT05;
-            return true;
-        };
-        if (vec[1] == String("avionic_chat_06"))
-        {
-            trigger_source = SS_TRIG_AVICHAT06;
-            return true;
-        };
-        if (vec[1] == String("avionic_chat_07"))
-        {
-            trigger_source = SS_TRIG_AVICHAT07;
-            return true;
-        };
-        if (vec[1] == String("avionic_chat_08"))
-        {
-            trigger_source = SS_TRIG_AVICHAT08;
-            return true;
-        };
-        if (vec[1] == String("avionic_chat_09"))
-        {
-            trigger_source = SS_TRIG_AVICHAT09;
-            return true;
-        };
-        if (vec[1] == String("avionic_chat_10"))
-        {
-            trigger_source = SS_TRIG_AVICHAT10;
-            return true;
-        };
-        if (vec[1] == String("avionic_chat_11"))
-        {
-            trigger_source = SS_TRIG_AVICHAT11;
-            return true;
-        };
-        if (vec[1] == String("avionic_chat_12"))
-        {
-            trigger_source = SS_TRIG_AVICHAT12;
-            return true;
-        };
-        if (vec[1] == String("avionic_chat_13"))
-        {
-            trigger_source = SS_TRIG_AVICHAT13;
-            return true;
-        };
-        if (vec[1] == String("aoa_horn"))
-        {
-            trigger_source = SS_TRIG_AOA;
-            return true;
-        };
-        if (vec[1] == String("ignition"))
-        {
-            trigger_source = SS_TRIG_IGNITION;
-            return true;
-        };
-        if (vec[1] == String("reverse_gear"))
-        {
-            trigger_source = SS_TRIG_REVERSE_GEAR;
-            return true;
-        };
-        if (vec[1] == String("turn_signal"))
-        {
-            trigger_source = SS_TRIG_TURN_SIGNAL;
-            return true;
-        };
-        if (vec[1] == String("turn_signal_tick"))
-        {
-            trigger_source = SS_TRIG_TURN_SIGNAL_TICK;
-            return true;
-        };
-        if (vec[1] == String("turn_signal_warn_tick"))
-        {
-            trigger_source = SS_TRIG_TURN_SIGNAL_WARN_TICK;
-            return true;
-        };
-        if (vec[1] == String("linked_command"))
-        {
-            trigger_source = SS_TRIG_LINKED_COMMAND;
-            return true;
-        };
-        if (vec[1] == String("main_menu"))
-        {
-            trigger_source = SS_TRIG_MAIN_MENU;
-            return true;
-        };
-
+                                                 {  trigger_source = SS_TRIG_CREAK;  return true;  }
+        if (vec[1] == String("screetch"))        {  trigger_source = SS_TRIG_SCREETCH;  return true;  }
+        if (vec[1] == String("afterburner1"))    {  trigger_source = SS_TRIG_AFTERBURNER1;  return true;  }
+        if (vec[1] == String("afterburner2"))    {  trigger_source = SS_TRIG_AFTERBURNER2;  return true;  }
+        if (vec[1] == String("ignition"))        {  trigger_source = SS_TRIG_IGNITION;  return true;  }
+        if (vec[1] == String("reverse_gear"))    {  trigger_source = SS_TRIG_REVERSE_GEAR;  return true;  }
+        if (vec[1] == String("linked_command"))  {  trigger_source = SS_TRIG_LINKED_COMMAND;  return true;  }
+        if (vec[1] == String("main_menu"))       {  trigger_source = SS_TRIG_MAIN_MENU;  return true;  }
         return false;
     }
 
@@ -1078,82 +773,36 @@ bool SoundScriptTemplate::setParameter(Ogre::StringVector vec)
         free_sound++;
         return true;
     }
-
     return false;
 }
 
 int SoundScriptTemplate::parseModulation(String str)
 {
-    if (str == String("none"))
-        return SS_MOD_NONE;
-    if (str == String("engine_rpm"))
-        return SS_MOD_ENGINE;
-    if (str == String("turbo_rpm"))
-        return SS_MOD_TURBO;
-    if (str == String("aeroengine1_rpm"))
-        return SS_MOD_AEROENGINE1;
-    if (str == String("aeroengine2_rpm"))
-        return SS_MOD_AEROENGINE2;
-    if (str == String("aeroengine3_rpm"))
-        return SS_MOD_AEROENGINE3;
-    if (str == String("aeroengine4_rpm"))
-        return SS_MOD_AEROENGINE4;
-    if (str == String("aeroengine5_rpm"))
-        return SS_MOD_AEROENGINE5;
-    if (str == String("aeroengine6_rpm"))
-        return SS_MOD_AEROENGINE6;
-    if (str == String("aeroengine7_rpm"))
-        return SS_MOD_AEROENGINE7;
-    if (str == String("aeroengine8_rpm"))
-        return SS_MOD_AEROENGINE8;
-    if (str == String("wheel_speed_kmph"))
-        return SS_MOD_WHEELSPEED;
-    if (str == String("injector_ratio"))
-        return SS_MOD_INJECTOR;
-    if (str == String("torque_nm"))
-        return SS_MOD_TORQUE;
-    if (str == String("gearbox_rpm"))
-        return SS_MOD_GEARBOX;
-    if (str == String("creak"))
-        return SS_MOD_CREAK;
-    if (str == String("break"))
-        return SS_MOD_BREAK;
-    if (str == String("screetch"))
-        return SS_MOD_SCREETCH;
-    if (str == String("pump_rpm"))
-        return SS_MOD_PUMP;
-    if (str == String("aeroengine1_throttle"))
-        return SS_MOD_THROTTLE1;
-    if (str == String("aeroengine2_throttle"))
-        return SS_MOD_THROTTLE2;
-    if (str == String("aeroengine3_throttle"))
-        return SS_MOD_THROTTLE3;
-    if (str == String("aeroengine4_throttle"))
-        return SS_MOD_THROTTLE4;
-    if (str == String("aeroengine5_throttle"))
-        return SS_MOD_THROTTLE5;
-    if (str == String("aeroengine6_throttle"))
-        return SS_MOD_THROTTLE6;
-    if (str == String("aeroengine7_throttle"))
-        return SS_MOD_THROTTLE7;
-    if (str == String("aeroengine8_throttle"))
-        return SS_MOD_THROTTLE8;
-    if (str == String("air_speed_knots"))
-        return SS_MOD_AIRSPEED;
-    if (str == String("angle_of_attack_degree"))
-        return SS_MOD_AOA;
-    if (str == String("linked_command_rate"))
-        return SS_MOD_LINKED_COMMANDRATE;
-    if (str == String("music_volume"))
-        return SS_MOD_MUSIC_VOLUME;
-
+    if (str == String("none"))                 return SS_MOD_NONE;
+    if (str == String("engine_rpm"))           return SS_MOD_ENGINE;
+    if (str == String("turbo_rpm"))            return SS_MOD_TURBO;
+    if (str == String("aeroengine1_rpm"))      return SS_MOD_AEROENGINE1;
+    if (str == String("aeroengine2_rpm"))      return SS_MOD_AEROENGINE2;
+    if (str == String("wheel_speed_kmph"))     return SS_MOD_WHEELSPEED;
+    if (str == String("gearbox_rpm"))          return SS_MOD_GEARBOX;
+    if (str == String("creak"))                return SS_MOD_CREAK;
+    if (str == String("break"))                return SS_MOD_BREAK;
+    if (str == String("screetch"))             return SS_MOD_SCREETCH;
+    if (str == String("aeroengine1_throttle")) return SS_MOD_THROTTLE1;
+    if (str == String("aeroengine2_throttle")) return SS_MOD_THROTTLE2;
+    if (str == String("air_speed_knots"))      return SS_MOD_AIRSPEED;
+    if (str == String("linked_command_rate"))  return SS_MOD_LINKED_COMMANDRATE;
+    if (str == String("music_volume"))         return SS_MOD_MUSIC_VOLUME;
     return -1;
 }
 
 //====================================================================
 
-SoundScriptInstance::SoundScriptInstance(int actor_id, SoundScriptTemplatePtr templ, SoundManager* sound_manager, String instancename, int soundLinkType, int soundLinkItemId) :
-    actor_id(actor_id)
+SoundScriptInstance::SoundScriptInstance(
+        int actor_id, SoundScriptTemplatePtr templ,
+        SoundManager* sound_manager, String instancename,
+        int soundLinkType, int soundLinkItemId)
+    : actor_id(actor_id)
     , instance_name(instancename)
     , templ(templ)
     , sound_manager(sound_manager)
@@ -1343,7 +992,8 @@ float SoundScriptInstance::pitchgain_cutoff(float sourcepitch, float targetpitch
     }
 
     // linear fading
-    return (targetpitch - sourcepitch / PITCHDOWN_CUTOFF_FACTOR) / (sourcepitch / PITCHDOWN_FADE_FACTOR - sourcepitch / PITCHDOWN_CUTOFF_FACTOR);
+    return (targetpitch - sourcepitch / PITCHDOWN_CUTOFF_FACTOR)
+         / (sourcepitch / PITCHDOWN_FADE_FACTOR - sourcepitch / PITCHDOWN_CUTOFF_FACTOR);
 }
 
 void SoundScriptInstance::setGain(float value)
@@ -1517,5 +1167,3 @@ void SoundScriptInstance::setEnabled(bool e)
         }
     }
 }
-
-// #endif // USE_OPENAL
