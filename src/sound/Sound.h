@@ -17,24 +17,16 @@
     You should have received a copy of the GNU General Public License
     along with Rigs of Rods. If not, see <http://www.gnu.org/licenses/>.
 */
+//  Modified by CryHam for SR3
 
-// #ifdef USE_OPENAL
 
 #pragma once
 
 // #include "Application.h"
 #include "RefCountingObject.h"
 
-#ifdef __APPLE__
-#   include <OpenAL/al.h>
-#else
-#   include <AL/al.h>
-#endif // __APPLE__
+#include <AL/al.h>
 
-namespace RoR {
-
-/// @addtogroup Audio
-/// @{
 
 class Sound : public RefCountingObject<Sound>
 {
@@ -97,9 +89,3 @@ private:
     // must not be changed during the lifetime of this object
     int source_index;
 };
-
-/// @}
-
-} // namespace RoR
-
-// #endif // USE_OPENAL

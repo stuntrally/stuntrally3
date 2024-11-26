@@ -286,7 +286,7 @@ bool GAME::InitializeSound()
 {
 	Ogre::Timer ti;
 
-	snd = new RoR::SoundScriptManager();
+	snd = new SoundScriptManager();
 	snd->setLoadingBaseSounds(true);
 	
 /*	snd = new SoundMgr();
@@ -338,7 +338,8 @@ bool GAME::InitializeSound()
 	#define SOUND_GET_STATE(_ACTOR_, _TRIG_)        App::GetSoundScriptManager()->getTrigState( (_ACTOR_), (_TRIG_) )
 	#define SOUND_MODULATE(_ACTOR_, _MOD_, _VALUE_) App::GetSoundScriptManager()->modulate    ( (_ACTOR_), (_MOD_), (_VALUE_) )
 
-#if 0
+//-------------------------------------------------------------------	
+#if 0  // WIP
 	{
 		// just started
 		App::GetSoundScriptManager()->trigStop(ar_instance_id, SS_TRIG_LINKED_COMMAND, SL_COMMAND, -i);
@@ -360,7 +361,6 @@ bool GAME::InitializeSound()
 
 void Actor::updateSoundSources()
 {
-#ifdef USE_OPENAL
     if (App::GetSoundScriptManager()->isDisabled())
         return;
     for (int i = 0; i < ar_num_soundsources; i++)
@@ -372,7 +372,6 @@ void Actor::updateSoundSources()
     //also this, so it is updated always, and for any vehicle
     SOUND_MODULATE(ar_instance_id, SS_MOD_AIRSPEED, ar_nodes[0].Velocity.length() * 1.9438);
     SOUND_MODULATE(ar_instance_id, SS_MOD_WHEELSPEED, ar_wheel_speed * 3.6);
-#endif //OPENAL
 }
 
 void Actor::updateVisual(float dt)
@@ -381,7 +380,6 @@ void Actor::updateVisual(float dt)
     autoBlinkReset();
     updateSoundSources();
 
-#ifdef USE_OPENAL
     //airplane radio chatter
     if (ar_driveable == AIRPLANE && ar_state != ActorState::LOCAL_SLEEPING)
     {
@@ -393,12 +391,10 @@ void Actor::updateVisual(float dt)
             m_avionic_chatter_timer = Math::RangeRandom(11, 30);
         }
     }
-#endif //openAL
-
+...
 
 void Actor::muteAllSounds()
 {
-#ifdef USE_OPENAL
     if (ar_state == ActorState::DISPOSED)
         return;
 
@@ -407,12 +403,10 @@ void Actor::muteAllSounds()
         if (ar_soundsources[i].ssi)
             ar_soundsources[i].ssi->setEnabled(false);
     }
-#endif // USE_OPENAL
 }
 
 void Actor::unmuteAllSounds()
 {
-#ifdef USE_OPENAL
     if (ar_state == ActorState::DISPOSED)
         return;
 
@@ -421,13 +415,11 @@ void Actor::unmuteAllSounds()
         bool enabled = (ar_soundsources[i].type == -2 || ar_soundsources[i].type == ar_current_cinecam);
         ar_soundsources[i].ssi->setEnabled(enabled);
     }
-#endif // USE_OPENAL
 }
 
 void Actor::NotifyActorCameraChanged()
 {
     // change sound setup
-#ifdef USE_OPENAL
     if (ar_state == ActorState::DISPOSED)
         return;
 
@@ -436,13 +428,10 @@ void Actor::NotifyActorCameraChanged()
         bool enabled = (ar_soundsources[i].type == -2 || ar_soundsources[i].type == ar_current_cinecam);
         ar_soundsources[i].ssi->setEnabled(enabled);
     }
-#endif // USE_OPENAL
-
     // NOTE: Prop visibility now updated in GfxActor::UpdateProps() ~ only_a_ptr, 06/2018
-
-
 }
 #endif
+//-------------------------------------------------------------------	
 
 	LogO("@  Sound init ok.");
 	return true;

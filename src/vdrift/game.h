@@ -9,7 +9,7 @@
 #include <thread>
 
 class App;  class SETTINGS;
-namespace RoR {  class SoundScriptManager;  }
+class SoundScriptManager;
 
 
 class GAME
@@ -75,10 +75,9 @@ public:
 
 
 	//  🔉 Sound  ----
-	RoR::SoundScriptManager* snd =0;
+	SoundScriptManager* snd =0;
 
-	/*SoundMgr* snd =0;
-	Sound* snd_chk =0, *snd_chkwr =0,
+	/*Sound* snd_chk =0, *snd_chkwr =0,
 		*snd_lap =0, *snd_lapbest =0,
 		*snd_stage =0, *snd_win[3]={0,0,0}, *snd_fail =0,
 		*snd_ambient =0;/**/

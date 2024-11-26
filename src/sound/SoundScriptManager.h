@@ -29,23 +29,8 @@
 #include "SoundManager.h"
 // #include <OgreScriptLoader.h>
 
-#ifdef __APPLE__
-  #include <OpenAL/efx-presets.h>
-#else
-  #include <AL/efx-presets.h>
-#endif
+#include <AL/efx-presets.h>
 
-// #define SOUND_PLAY_ONCE(_ACTOR_, _TRIG_)        App::GetSoundScriptManager()->trigOnce    ( (_ACTOR_), (_TRIG_) )
-// #define SOUND_START(_ACTOR_, _TRIG_)            App::GetSoundScriptManager()->trigStart   ( (_ACTOR_), (_TRIG_) )
-// #define SOUND_STOP(_ACTOR_, _TRIG_)             App::GetSoundScriptManager()->trigStop    ( (_ACTOR_), (_TRIG_) )
-// #define SOUND_TOGGLE(_ACTOR_, _TRIG_)           App::GetSoundScriptManager()->trigToggle  ( (_ACTOR_), (_TRIG_) )
-// #define SOUND_KILL(_ACTOR_, _TRIG_)             App::GetSoundScriptManager()->trigKill    ( (_ACTOR_), (_TRIG_) )
-// #define SOUND_GET_STATE(_ACTOR_, _TRIG_)        App::GetSoundScriptManager()->getTrigState( (_ACTOR_), (_TRIG_) )
-// #define SOUND_MODULATE(_ACTOR_, _MOD_, _VALUE_) App::GetSoundScriptManager()->modulate    ( (_ACTOR_), (_MOD_), (_VALUE_) )
-
-
-namespace RoR
-{
 
 enum {
     MAX_SOUNDS_PER_SCRIPT = 16,
@@ -414,6 +399,3 @@ private:
 
     SoundManager* sound_manager;
 };
-
-
-} // namespace RoR

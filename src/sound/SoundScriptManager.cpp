@@ -34,7 +34,6 @@
 #include <OgreResourceGroupManager.h>
 
 using namespace Ogre;
-using namespace RoR;
 
 const float SoundScriptInstance::PITCHDOWN_FADE_FACTOR = 3.0f;
 const float SoundScriptInstance::PITCHDOWN_CUTOFF_FACTOR = 5.0f;
@@ -120,16 +119,6 @@ SoundScriptManager::~SoundScriptManager()
         delete sound_manager;
 }
 
-void SoundScriptManager::trigOnce(const ActorPtr& actor, int trig, int linkType, int linkItemID)
-{
-    if (disabled)
-        return;
-
-    if (actor)
-    {
-        // trigOnce(actor->ar_instance_id, trig, linkType, linkItemID);
-    }
-}
 
 void SoundScriptManager::trigOnce(int actor_id, int trig, int linkType, int linkItemID)
 {
@@ -148,16 +137,6 @@ void SoundScriptManager::trigOnce(int actor_id, int trig, int linkType, int link
     }
 }
 
-void SoundScriptManager::trigStart(const ActorPtr& actor, int trig, int linkType, int linkItemID)
-{
-    if (disabled)
-        return;
-
-    if (actor)
-    {
-        // trigStart(actor->ar_instance_id, trig, linkType, linkItemID);
-    }
-}
 
 void SoundScriptManager::trigStart(int actor_id, int trig, int linkType, int linkItemID)
 {
@@ -167,7 +146,6 @@ void SoundScriptManager::trigStart(int actor_id, int trig, int linkType, int lin
         return;
 
     state_map[linkType][linkItemID][actor_id][trig] = true;
-
     for (int i = 0; i < free_trigs[trig]; i++)
     {
         const SoundScriptInstancePtr& inst = trigs[trig + i * SS_MAX_TRIG];
@@ -179,16 +157,6 @@ void SoundScriptManager::trigStart(int actor_id, int trig, int linkType, int lin
     }
 }
 
-void SoundScriptManager::trigStop(const ActorPtr& actor, int trig, int linkType, int linkItemID)
-{
-    if (disabled)
-        return;
-
-    if (actor)
-    {
-        // trigStop(actor->ar_instance_id, trig, linkType, linkItemID);
-    }
-}
 
 void SoundScriptManager::trigStop(int actor_id, int trig, int linkType, int linkItemID)
 {
@@ -209,16 +177,6 @@ void SoundScriptManager::trigStop(int actor_id, int trig, int linkType, int link
     }
 }
 
-void SoundScriptManager::trigKill(const ActorPtr& actor, int trig, int linkType, int linkItemID)
-{
-    if (disabled)
-        return;
-
-    if (actor)
-    {
-        // trigKill(actor->ar_instance_id, trig, linkType, linkItemID);
-    }
-}
 
 void SoundScriptManager::trigKill(int actor_id, int trig, int linkType, int linkItemID)
 {
@@ -239,16 +197,6 @@ void SoundScriptManager::trigKill(int actor_id, int trig, int linkType, int link
     }
 }
 
-void SoundScriptManager::trigToggle(const ActorPtr& actor, int trig, int linkType, int linkItemID)
-{
-    if (disabled)
-        return;
-
-    if (actor)
-    {
-        // trigToggle(actor->ar_instance_id, trig, linkType, linkItemID);
-    }
-}
 
 void SoundScriptManager::trigToggle(int actor_id, int trig, int linkType, int linkItemID)
 {
@@ -261,17 +209,6 @@ void SoundScriptManager::trigToggle(int actor_id, int trig, int linkType, int li
         trigStart(actor_id, trig, linkType, linkItemID);
 }
 
-bool SoundScriptManager::getTrigState(const ActorPtr& actor, int trig, int linkType, int linkItemID)
-{
-    if (disabled)
-        return false;
-
-    // if (actor)
-    //     return getTrigState(actor->ar_instance_id, trig, linkType, linkItemID);
-    // else
-    //     return false;
-}
-
 bool SoundScriptManager::getTrigState(int actor_id, int trig, int linkType, int linkItemID)
 {
     if (disabled)
@@ -280,16 +217,6 @@ bool SoundScriptManager::getTrigState(int actor_id, int trig, int linkType, int 
     return state_map[linkType][linkItemID][actor_id][trig];
 }
 
-void SoundScriptManager::modulate(const ActorPtr& actor, int mod, float value, int linkType, int linkItemID)
-{
-    if (disabled)
-        return;
-
-    if (actor)
-    {
-        // modulate(actor->ar_instance_id, mod, value, linkType, linkItemID);
-    }
-}
 
 void SoundScriptManager::modulate(int actor_id, int mod, float value, int linkType, int linkItemID)
 {
