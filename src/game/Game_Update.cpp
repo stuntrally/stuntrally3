@@ -29,6 +29,7 @@
 #include <OgreWindow.h>
 #include "Terra.h"
 // #include "Atmosphere.h"
+#include "SoundScriptManager.h"
 
 #include "ICSInputControlSystem.h"
 #include <SDL_keycode.h>
@@ -176,6 +177,21 @@ void App::update( float dt )
 		if (pGame && iLoad1stFrames == -2)
 		{
 			updatePoses(dt);
+
+			// 🔉  carModels[0]->cam
+			pGame->snd->update(dt, mCamera);  // here?
+
+			/* test *
+			static float tm = 0.f;
+			tm += dt;
+			if (tm > 0.04f)
+			{	tm = 0.f;
+
+				RoR::SoundScriptInstancePtr sound = pGame->snd->createInstance("shift1", -1);
+				sound->setPosition(Ogre::Vector3::ZERO);
+				sound->start();
+				sound->Release();				
+			}/**/
 
 			if (!carModels.empty())
 			{

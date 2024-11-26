@@ -8,13 +8,15 @@
 #include "cardefs.h"
 #include <math.h>
 
-#include "SoundMgr.h"
-#include "SoundBase.h"
-#include "SoundBaseMgr.h"
-#include "numprocessors.h"
+#include "SoundScriptManager.h"
+// #include "Sound.h"
+#include "Declare.h"
+// #include "SoundMgr.h"
+// #include "SoundBase.h"
+// #include "SoundBaseMgr.h"
+// #include "numprocessors.h"
 #include "quickprof.h"
 #include "tracksurface.h"
-#include "forcefeedback.h"
 
 #include "paths.h"
 #include "settings.h"
@@ -26,10 +28,10 @@
 #include "CScene.h"
 #include "CGame.h"
 #include "CInput.h"
-#include "FollowCamera.h"
 #include "ICSInputControlSystem.h"
 #include <OgreTimer.h>
 #include <OgreDataStream.h>
+#include <OgreSharedPtr.h>
 
 #define M_PI  3.14159265358979323846
 using namespace std;
@@ -283,27 +285,32 @@ bool GAME::LoadSusp()
 bool GAME::InitializeSound()
 {
 	Ogre::Timer ti;
+
+	snd = new RoR::SoundScriptManager();
+	snd->setLoadingBaseSounds(true);
 	
-	snd = new SoundMgr();
+/*	snd = new SoundMgr();
 	snd->Init(pSet->snd_device, pSet->snd_reverb);
 	snd->setMasterVolume(0.f);
+*/
 	using namespace Ogre;
 
 
 	//  sounds.cfg  ----
-	ifstream fi;
-	string path = PATHS::Sounds()+"/sounds.cfg";
+	string path = "sounds1.cfg";   // sounds.cfg";
+/*	ifstream fi;
 	fi.open(path.c_str(), ios_base::binary);
 	if (!fi)
 	{	LogO("@  Can't load " + path);  return false;  }
-	
-	FileStreamDataStream fd(&fi,false);
-	snd->parseScript(&fd);
-	fd.close();
-	fi.close();
+*/
+	// FileStreamDataStream fd(&fi,false);
+	DataStreamPtr ds = Ogre::ResourceGroupManager::getSingleton().openResource(path); //, "Default");
 
-	snd->setMasterVolume(pSet->vol_master);
+	snd->parseScript(ds, "General");
+	// fd.close();
+	// fi.close();
 
+/*	snd->setMasterVolume(pSet->vol_master);
 
 	LogO(":::* Time Sounds: "+ fToStr(ti.getMilliseconds(),0,3) +" ms");
 	if (snd->sound_mgr->isDisabled())
@@ -312,7 +319,131 @@ bool GAME::InitializeSound()
 		return false;
 	}else
 		LoadHudSounds();  //`
-	
+*/
+	// snd->SetListener(/*position:*/Ogre::Vector3::ZERO, /*direction:*/Ogre::Vector3::ZERO, /*up:*/Ogre::Vector3::UNIT_Y, /*velocity:*/Ogre::Vector3::ZERO);
+	// snd->getSoundManager()->CleanUp();
+
+    // snd->update(dt);  // update 3d audio listener position
+
+	// RoR::SoundScriptInstancePtr sound = snd->createInstance("shift1", -1); //SoundScriptInstance::ACTOR_ID_UNKNOWN);
+	// sound->setPosition(Ogre::Vector3::ZERO); //node->getPosition());
+	// sound->start();
+
+
+	#define SOUND_PLAY_ONCE(_ACTOR_, _TRIG_)        App::GetSoundScriptManager()->trigOnce    ( (_ACTOR_), (_TRIG_) )
+	#define SOUND_START(_ACTOR_, _TRIG_)            App::GetSoundScriptManager()->trigStart   ( (_ACTOR_), (_TRIG_) )
+	#define SOUND_STOP(_ACTOR_, _TRIG_)             App::GetSoundScriptManager()->trigStop    ( (_ACTOR_), (_TRIG_) )
+	#define SOUND_TOGGLE(_ACTOR_, _TRIG_)           App::GetSoundScriptManager()->trigToggle  ( (_ACTOR_), (_TRIG_) )
+	#define SOUND_KILL(_ACTOR_, _TRIG_)             App::GetSoundScriptManager()->trigKill    ( (_ACTOR_), (_TRIG_) )
+	#define SOUND_GET_STATE(_ACTOR_, _TRIG_)        App::GetSoundScriptManager()->getTrigState( (_ACTOR_), (_TRIG_) )
+	#define SOUND_MODULATE(_ACTOR_, _MOD_, _VALUE_) App::GetSoundScriptManager()->modulate    ( (_ACTOR_), (_MOD_), (_VALUE_) )
+
+#if 0
+	{
+		// just started
+		App::GetSoundScriptManager()->trigStop(ar_instance_id, SS_TRIG_LINKED_COMMAND, SL_COMMAND, -i);
+		App::GetSoundScriptManager()->trigStart(ar_instance_id, SS_TRIG_LINKED_COMMAND, SL_COMMAND, i);
+		vst = 0;
+	}
+	else if (vst == -1)
+	{
+		// just stopped
+		App::GetSoundScriptManager()->trigStop(ar_instance_id, SS_TRIG_LINKED_COMMAND, SL_COMMAND, i);
+		vst = 0;
+	}
+	else if (vst == 0)
+	{
+		// already running, modulate
+		App::GetSoundScriptManager()->modulate(ar_instance_id, SS_MOD_LINKED_COMMANDRATE, v, SL_COMMAND, i);
+	}
+
+
+void Actor::updateSoundSources()
+{
+#ifdef USE_OPENAL
+    if (App::GetSoundScriptManager()->isDisabled())
+        return;
+    for (int i = 0; i < ar_num_soundsources; i++)
+    {
+        // TODO: Investigate segfaults after terrain reloads ~ ulteq 11/2018
+        ar_soundsources[i].ssi->setPosition(ar_nodes[ar_soundsources[i].nodenum].AbsPosition);
+        ar_soundsources[i].ssi->setVelocity(ar_nodes[ar_soundsources[i].nodenum].Velocity);
+    }
+    //also this, so it is updated always, and for any vehicle
+    SOUND_MODULATE(ar_instance_id, SS_MOD_AIRSPEED, ar_nodes[0].Velocity.length() * 1.9438);
+    SOUND_MODULATE(ar_instance_id, SS_MOD_WHEELSPEED, ar_wheel_speed * 3.6);
+#endif //OPENAL
+}
+
+void Actor::updateVisual(float dt)
+{
+    Vector3 ref(Vector3::UNIT_Y);
+    autoBlinkReset();
+    updateSoundSources();
+
+#ifdef USE_OPENAL
+    //airplane radio chatter
+    if (ar_driveable == AIRPLANE && ar_state != ActorState::LOCAL_SLEEPING)
+    {
+        // play random chatter at random time
+        m_avionic_chatter_timer -= dt;
+        if (m_avionic_chatter_timer < 0)
+        {
+            SOUND_PLAY_ONCE(ar_instance_id, SS_TRIG_AVICHAT01 + Math::RangeRandom(0, 12));
+            m_avionic_chatter_timer = Math::RangeRandom(11, 30);
+        }
+    }
+#endif //openAL
+
+
+void Actor::muteAllSounds()
+{
+#ifdef USE_OPENAL
+    if (ar_state == ActorState::DISPOSED)
+        return;
+
+    for (int i = 0; i < ar_num_soundsources; i++)
+    {
+        if (ar_soundsources[i].ssi)
+            ar_soundsources[i].ssi->setEnabled(false);
+    }
+#endif // USE_OPENAL
+}
+
+void Actor::unmuteAllSounds()
+{
+#ifdef USE_OPENAL
+    if (ar_state == ActorState::DISPOSED)
+        return;
+
+    for (int i = 0; i < ar_num_soundsources; i++)
+    {
+        bool enabled = (ar_soundsources[i].type == -2 || ar_soundsources[i].type == ar_current_cinecam);
+        ar_soundsources[i].ssi->setEnabled(enabled);
+    }
+#endif // USE_OPENAL
+}
+
+void Actor::NotifyActorCameraChanged()
+{
+    // change sound setup
+#ifdef USE_OPENAL
+    if (ar_state == ActorState::DISPOSED)
+        return;
+
+    for (int i = 0; i < ar_num_soundsources; i++)
+    {
+        bool enabled = (ar_soundsources[i].type == -2 || ar_soundsources[i].type == ar_current_cinecam);
+        ar_soundsources[i].ssi->setEnabled(enabled);
+    }
+#endif // USE_OPENAL
+
+    // NOTE: Prop visibility now updated in GfxActor::UpdateProps() ~ only_a_ptr, 06/2018
+
+
+}
+#endif
+
 	LogO("@  Sound init ok.");
 	return true;
 }
@@ -322,7 +453,8 @@ bool GAME::InitializeSound()
 void GAME::LoadHudSounds()
 {
 	Ogre::Timer ti;
-	snd_chk = snd->createInstance("hud/chk");
+
+/*	snd_chk = snd->createInstance("hud/chk");
 	snd_chkwr = snd->createInstance("hud/chkwrong");
 	snd_lap = snd->createInstance("hud/lap");
 	snd_lapbest = snd->createInstance("hud/lapbest");
@@ -330,7 +462,7 @@ void GAME::LoadHudSounds()
 	snd_fail = snd->createInstance("hud/fail");
 	for (int i=0; i < 3; ++i)
 		snd_win[i] = snd->createInstance("hud/win"+toStr(i));
-	
+/**/
 	UpdHudSndVol();
 	LogO(":::* Time Hud Sounds: "+ fToStr(ti.getMilliseconds(),0,3) +" ms");
 }
@@ -338,7 +470,7 @@ void GAME::LoadHudSounds()
 void GAME::UpdHudSndVol()
 {
 	float g = pSet->vol_hud;
-	snd_chk->setGain(g);
+/*	snd_chk->setGain(g);
 	snd_chkwr->setGain(g);
 	snd_lap->setGain(g);
 	snd_lapbest->setGain(g);
@@ -346,10 +478,12 @@ void GAME::UpdHudSndVol()
 	snd_fail->setGain(g);
 	for (int i=0; i < 3; ++i)
 		snd_win[i]->setGain(g);
+	/**/
 }
 
 void GAME::DeleteHudSounds()
 {
+/*
 	delete snd_chk;  snd_chk = 0;
 	delete snd_chkwr;  snd_chkwr = 0;
 	delete snd_lap;  snd_lap = 0;
@@ -358,6 +492,7 @@ void GAME::DeleteHudSounds()
 	delete snd_fail;  snd_fail = 0;
 	for (int i=0; i < 3; ++i)
 	{	delete snd_win[i];  snd_win[i] = 0;  }
+/**/
 }
 
 
@@ -383,8 +518,7 @@ void GAME::End()
 	//  sounds 🔊
 	DeleteHudSounds();
 
-	delete snd;  snd = 0;  // SoundMgr
-
+	delete snd;  snd = 0;
 
 	///+  save settings first incase later deinits cause crashes
 	pSet->Save(PATHS::SettingsFile(0));
@@ -472,9 +606,9 @@ void GAME::AdvanceGameLogic(double dt)
 	//if (track.Loaded())
 	{
 		if (pause && controls.first)
-			snd->setPaused(true);
+		{}	//	snd->setPaused(true);  // 🔉
 		else
-		{	snd->setPaused(false);
+		{	//	snd->setPaused(false);
 
 			PROFILER.beginBlock("-physics");
 
@@ -570,7 +704,7 @@ bool GAME::NewGameDoLoadMisc(float pre_time, std::string ambient_name, float amb
 	//  sounds 🔊  ----
 	LoadHudSounds();
 
-	snd->sound_mgr->CreateSources();  //))
+	/*snd->sound_mgr->CreateSources();  //)) 🔉 todo: ambient
 
 	if (!ambient_name.empty())
 	{
@@ -579,7 +713,7 @@ bool GAME::NewGameDoLoadMisc(float pre_time, std::string ambient_name, float amb
 		vol_ambient = ambient_vol;
 		snd_ambient->setGain(vol_ambient * pSet->vol_ambient);
 		snd_ambient->start();  // 🔉 is during load..
-	}
+	}/**/
 	return true;
 }
 
@@ -598,11 +732,11 @@ void GAME::LeaveGame(bool dstTrk)
 	cars.clear();
 
 	//  sounds 🔊  ----
-	if (snd && hadCars)
+	/*if (snd && hadCars)
 		snd->sound_mgr->DestroySources(false);  //))
-	
+	*/
 	DeleteHudSounds();  //` todo: dont, mark to not destroy hud sources
-	delete snd_ambient;  snd_ambient = 0;
+	//delete snd_ambient;  snd_ambient = 0;
 	
 	timer.Unload();
 
@@ -669,9 +803,9 @@ void GAME::ProcessNewSettings()
 		//controls.first->SetAutoClutch(settings->rear_inv);
 	}
 	//  snd vol 🔊
-	snd->setMasterVolume(pSet->vol_master);
-	if (snd_ambient)
-		snd_ambient->setGain(vol_ambient * pSet->vol_ambient);
+	// snd->setMasterVolume(pSet->vol_master);
+	// if (snd_ambient)
+	// 	snd_ambient->setGain(vol_ambient * pSet->vol_ambient);
 }
 
 void GAME::UpdateForceFeedback(float dt)

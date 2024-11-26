@@ -1,18 +1,15 @@
 #pragma once
-#include "dbl.h"
 #include "car.h"
 #include "collision_world.h"
-// #include "collision_contact.h"
 #include "carcontrolmap_local.h"
 #include "cartire.h"
 #include "tracksurface.h"
 #include "timer.h"
-// #include "forcefeedback.h"
-//#include "SoundMgr.h"
 #include <OgreTimer.h>
 #include <thread>
 
-class SoundMgr;  class Sound;  class App;  class SETTINGS;
+class App;  class SETTINGS;
+namespace RoR {  class SoundScriptManager;  }
 
 
 class GAME
@@ -78,11 +75,13 @@ public:
 
 
 	//  🔉 Sound  ----
-	SoundMgr* snd =0;
+	RoR::SoundScriptManager* snd =0;
+
+	/*SoundMgr* snd =0;
 	Sound* snd_chk =0, *snd_chkwr =0,
 		*snd_lap =0, *snd_lapbest =0,
 		*snd_stage =0, *snd_win[3]={0,0,0}, *snd_fail =0,
-		*snd_ambient =0;
+		*snd_ambient =0;/**/
 	float vol_ambient = 1.f;
 	void UpdHudSndVol(), DeleteHudSounds();
 
