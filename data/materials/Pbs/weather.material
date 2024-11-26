@@ -60,7 +60,7 @@ hlms TireTrail unlit
 	depth_write off
 	depth_bias 3
 	cull_mode none
-	// diffuse_map trail.png  // todo: alpha borders
+	// diffuse_map trail.png  // todo: fix in ogre, for alpha borders ..
 	//diffuse_address_mode mirror  // 2d texture not supported
 }
 
@@ -144,7 +144,7 @@ hlms FluidWater unlit
 	diffuse_map fluid-water.png
 	scene_blend alpha_blend
 	alpha_rejection greater 64
-	depth_write	off
+	depth_write off
 }
 
 hlms FluidMudWhite unlit

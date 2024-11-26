@@ -581,6 +581,7 @@ void CarModel::Create()
 				{
 					par[p][w] = mSceneMgr->createParticleSystem(sName[p]);  ToDel(par[p][w]);
 					par[p][w]->setVisibilityFlags(RV_Particles);
+					// par[p][w]->setRenderQueueGroup(RQG_CarParticles);  // in UpdParsTrails
 					SceneNode* np = ndRoot->createChildSceneNode();  ToDel(np);
 					np->attachObject(par[p][w]);
 					par[p][w]->getEmitter(0)->setEmissionRate(0.f);

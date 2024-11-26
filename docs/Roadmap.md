@@ -60,9 +60,6 @@ move all from SR3.compositor to AppGui_Compositor.cpp
 manual update ed RTTs^  
 fix ed RTTs no fluids
 
-SSAO: add to depth? car glass  
-
-no tire **trails**  
 no specular on terrain  
 
 rivers wrong way  
