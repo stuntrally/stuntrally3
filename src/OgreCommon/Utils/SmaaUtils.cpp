@@ -69,7 +69,7 @@ namespace Demo
 		else if( caps->isShaderProfileSupported( "glsl330" ) )
 			preprocessorDefines += "SMAA_GLSL_3=1,";
 
-		for( size_t i=0; i<sizeof(materialNames) / sizeof(materialNames[0]); ++i )
+		for (size_t i=0; i<sizeof(materialNames) / sizeof(materialNames[0]); ++i)
 		{
 			Ogre::MaterialPtr material = Ogre::MaterialManager::getSingleton().load(
 						materialNames[i],

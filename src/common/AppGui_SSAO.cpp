@@ -39,18 +39,18 @@ void AppGui::InitSSAO()
 {
 	//  Create SSAO kernel samples
 	float kernelSamples[64][4];
-	for( size_t i = 0; i < 64u; ++i )
+	for (size_t i = 0; i < 64u; ++i)
 	{
-		//            Vector3 sample( 10, 10, 10 );
-		//            while( sample.squaredLength() > 1.0f )
-		//            {
-		//                sample = Vector3( Math::RangeRandom(  -1.0f, 1.0f ),
-		//                                  Math::RangeRandom(  -1.0f, 1.0f ),
-		//                                  Math::RangeRandom(  0.01f, 1.0f ) );
-		////                sample = Vector3( Math::RangeRandom(  -0.1f, 0.1f ),
-		////                                  Math::RangeRandom(  -0.1f, 0.1f ),
-		////                                  Math::RangeRandom(  0.5f, 1.0f ) );
-		//            }
+		// Vector3 sample( 10, 10, 10 );
+		// while( sample.squaredLength() > 1.0f )
+		// {
+		//     sample = Vector3( Math::RangeRandom(  -1.0f, 1.0f ),
+		//                       Math::RangeRandom(  -1.0f, 1.0f ),
+		//                       Math::RangeRandom(  0.01f, 1.0f ) );
+		////     sample = Vector3( Math::RangeRandom(  -0.1f, 0.1f ),
+		////                       Math::RangeRandom(  -0.1f, 0.1f ),
+		////                       Math::RangeRandom(  0.5f, 1.0f ) );
+		// }
 		Vector3 sample = Vector3( Math::RangeRandom( -1.0f, 1.0f ),
 								Math::RangeRandom( -1.0f, 1.0f ),
 								Math::RangeRandom( 0.0f, 1.0f ) );
@@ -81,9 +81,9 @@ void AppGui::InitSSAO()
 	stagingTexture->startMapRegion();
 	TextureBox texBox = stagingTexture->mapRegion( 2u, 2u, 1u, 1u, PFG_RGBA8_SNORM );
 
-	for( size_t j = 0; j < texBox.height; ++j )
+	for (size_t j = 0; j < texBox.height; ++j)
 	{
-		for( size_t i = 0; i < texBox.width; ++i )
+		for (size_t i = 0; i < texBox.width; ++i)
 		{
 			Vector3 noise = Vector3( Math::RangeRandom( -1.0f, 1.0f ),
 									Math::RangeRandom( -1.0f, 1.0f ), 0.0f );

@@ -52,7 +52,7 @@ void GraphicsSystem::gameEntityAdded( const GameEntityManager::CreatedGameEntity
 		StringVector materialNames = cge->gameEntity->mMoDefinition->submeshMaterials;
 		size_t minMaterials = std::min( materialNames.size(), item->getNumSubItems() );
 
-		for( size_t i=0; i<minMaterials; ++i )
+		for (size_t i=0; i<minMaterials; ++i)
 		{
 			item->getSubItem( i )->setDatablockOrMaterialName(
 				materialNames[i], cge->gameEntity->mMoDefinition->resourceGroup );

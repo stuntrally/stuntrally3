@@ -281,7 +281,7 @@ Cam* AppGui::CreateCamera(String name,
 	const Ogre::Real eyeDistance = 0.5f;
 	const Ogre::Real eyeFocusDistance = 0.45f;
 
-	for( int i = 0; i < 2; ++i )
+	for (int i = 0; i < 2; ++i)
 	{
 		const Ogre::Vector3 camPos( eyeDistance * ( Ogre::Real( i ) * 2 - 1 ), 0, 0 );
 		mEyeCameras[i]->setPosition( camPos );

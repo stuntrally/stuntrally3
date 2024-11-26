@@ -25,7 +25,7 @@ MATHVECTOR<Dbl,3> CARDYNAMICS::GetWheelPosition(WHEEL_POSITION wp, Dbl displacem
 QUATERNION<Dbl> CARDYNAMICS::GetWheelOrientation(WHEEL_POSITION wp) const
 {
 	QUATERNION<Dbl> siderot;
-	if(wp == FRONT_RIGHT || wp == REAR_RIGHT || wp == REAR2_RIGHT || wp == REAR3_RIGHT)
+	if (wp == FRONT_RIGHT || wp == REAR_RIGHT || wp == REAR2_RIGHT || wp == REAR3_RIGHT)
 	{
 		siderot.Rotate(PI_d, 0, 0, 1);
 	}
@@ -299,13 +299,13 @@ void CARDYNAMICS::ApplyForce(const MATHVECTOR<Dbl,3> & force, const MATHVECTOR<D
 void CARDYNAMICS::ApplyTorque(const MATHVECTOR<Dbl,3> & torque)
 {
 	body.ApplyTorque(torque);
-	//if(torque.MagnitudeSquared() > 1E-6)
+	//if (torque.MagnitudeSquared() > 1E-6)
 	//	chassis->applyTorque(ToBulletVector(torque));
 }
 
 void CARDYNAMICS::UpdateWheelVelocity()
 {
-	for(int i = 0; i < numWheels; ++i)
+	for (int i = 0; i < numWheels; ++i)
 	{
 		wheel_velocity[i] = body.GetVelocity(wheel_position[i] - body.GetPosition());
 		//btVector3 offset = ToBulletVector(wheel_position[i]) - chassis->getCenterOfMassPosition();
@@ -315,7 +315,7 @@ void CARDYNAMICS::UpdateWheelVelocity()
 
 void CARDYNAMICS::UpdateWheelTransform()
 {
-	for(int i = 0; i < numWheels; ++i)
+	for (int i = 0; i < numWheels; ++i)
 	{
 		wheel_position[i] = GetWheelPositionAtDisplacement(WHEEL_POSITION(i), suspension[i].GetDisplacementPercent());
 		wheel_orientation[i] = Orientation() * GetWheelSteeringAndSuspensionOrientation(WHEEL_POSITION(i));

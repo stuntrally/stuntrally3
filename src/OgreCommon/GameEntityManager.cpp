@@ -64,7 +64,7 @@ GameEntity* GameEntityManager::addGameEntity( Ogre::SceneMemoryMgrTypes type,
 	aquireTransformSlot( slot, bufferIdx );
 
 	gameEntity->mTransformBufferIdx = bufferIdx;
-	for( size_t i = 0; i < NUM_GAME_ENTITY_BUFFERS; ++i )
+	for (size_t i = 0; i < NUM_GAME_ENTITY_BUFFERS; ++i)
 	{
 		gameEntity->mTransform[i] = mTransformBuffers[bufferIdx] + slot + cNumTransforms * i;
 		memcpy( gameEntity->mTransform[i], &cge.initialTransform, sizeof(GameEntityTransform) );
