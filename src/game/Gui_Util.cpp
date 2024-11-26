@@ -9,7 +9,7 @@
 #include "TracksXml.h"
 #include "GuiCom.h"
 #include "game.h"
-#include "SoundMgr.h"
+// #include "SoundMgr.h"
 #include "gameclient.hpp"
 
 #include "MultiList2.h"
@@ -70,8 +70,8 @@ void CGui::toggleGui(bool toggle)
 	if (toggle)
 		app->isFocGui = !app->isFocGui;
 	
-	// if (pGame && pGame->snd)
-	pGame->snd->setMasterVolume(app->isFocGui ? 0.0 : pSet->vol_master);
+	// 🔉  if (pGame && pGame->snd)
+	// pGame->snd->setMasterVolume(app->isFocGui ? 0.0 : pSet->vol_master);
 
 	const bool gui = app->isFocGui;
 	const int mnu = pSet->iMenu;

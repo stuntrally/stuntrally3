@@ -20,20 +20,20 @@
 #include "tobullet.h"
 #include "game.h"
 // #include "SplitScreen.h"  // num plr
-#include "SoundMgr.h"
-#include "SoundBase.h"
-#include "SoundBaseMgr.h"
+// #include "SoundMgr.h"
+// #include "SoundBase.h"
+// #include "SoundBaseMgr.h"
 #include <OgreCamera.h>
 using namespace std;
 using namespace Ogre;
 
 
-//  🆕 Load
+//  🔉🆕 Load
 //--------------------------------------------------------------------------------------------------------------------------
 bool CAR::LoadSounds(const std::string & carpath)
 {
 	Ogre::Timer ti;
-	bool ss = pApp->pSet->game.local_players > 1;  // 👥 split screen same volume
+/*	bool ss = pApp->pSet->game.local_players > 1;  // 👥 split screen same volume
 	CARsounds& s = sounds;
 	
 	SoundMgr* snd = pGame->snd;
@@ -86,7 +86,7 @@ bool CAR::LoadSounds(const std::string & carpath)
 	s.mud        = snd->createInstance("mud1");        s.mud->set2D(ss);
 	s.mud_cont   = snd->createInstance("mud_cont");    s.mud_cont->set2D(ss);
 	s.water_cont = snd->createInstance("water_cont");  s.water_cont->set2D(ss);
-
+*/
 	LogO(":::* Time car Sounds: "/*+carpath+" "*/+ fToStr(ti.getMilliseconds(),0,3) +" ms");
 	return true;
 }
@@ -124,7 +124,7 @@ void CAR::CARsounds::SetNumWheels(int n)
 //  💥 destroy
 void CAR::CARsounds::Destroy()
 {
-	delete engine;
+/*	delete engine;
 	delete turbo;
 	int i;
 	for (i = 0; i < gravel.size(); ++i)  // tires
@@ -146,6 +146,7 @@ void CAR::CARsounds::Destroy()
 		delete water[i];
 
 	delete mud;  delete mud_cont;  delete water_cont;
+/**/
 }
 
 
@@ -155,7 +156,7 @@ void CAR::UpdateSounds(float dt)
 {
 	//  get data  //
 	//  note: Damage is updated here
-	bool bSound = !pGame->snd->isDisabled();
+	bool bSound = 0;//!pGame->snd->isDisabled();
 	CARsounds& s = sounds;
 	
 	float rpm, throttle, speed, dynVel;  bool hitp = false;
@@ -289,7 +290,8 @@ void CAR::UpdateSounds(float dt)
 	ep = Axes::toOgre(engPos);
 
 
-//))  💫 update sounds 🔊  ---------------------------------------------------------------
+//))  🔉💫 update sounds  ---------------------------------------------------------------
+#if 0
 if (bSound)
 {
 	///  📈 engine  ====
@@ -415,7 +417,7 @@ if (bSound)
 		Sound* snd = /*mud ? s.mud : */s.water[i];
 		
 		//LogO("fluid hit i"+toStr(i)+" g"+toStr(gain)+" "+(mud?"mud":"wtr"));
-		if (!snd->isAudible())
+		/*if (!snd->isAudible())
 		{
 			snd->setGain(gain * pSet->vol_fl_splash * (mud ? 0.6f : 1.f));
 			snd->setPosition(ep, ev);
@@ -428,7 +430,7 @@ if (bSound)
 			snd->setGain(gain * pSet->vol_fl_splash);
 			snd->setPosition(ep, ev);
 			snd->start();  // 🔉
-		}	}
+		}	}/**/
 	}
 	s.fluidHitOld = fluidHit;
 
@@ -445,6 +447,7 @@ if (bSound)
 	s.water_cont->setPitch(std::max(0.7f, std::min(1.3f, velW)));
 	s.water_cont->setPosition(ep, ev);
 }
+#endif
 //))  sounds 🔊  ---------------------------------------------------------------
 	
 	
@@ -466,13 +469,13 @@ if (bSound)
 
 			if (s.crashtime[i] > /*ti*/0.4f)  //!crashsound.isAudible())
 			{
-				if (bSound)
+				/*if (bSound)  // 🔉
 				{
 					s.crash[i]->setGain(gain * pSet->vol_car_crash);
 					if (hitp)
 					s.crash[i]->setPosition(hp, ev);
 					s.crash[i]->start();  // 🔉
-				}
+				}/**/
 				s.crashtime[i] = 0.f;
 				
 				/// <><> Damage <><> 
@@ -494,8 +497,8 @@ if (bSound)
 			s.crashtime[i] += dt;
 	
 
-	//  🔨 crash scrap and screech
-	if (bSound)
+	//  🔉🔨 crash scrap and screech
+	/*if (bSound)
 	{
 		s.scrap->setGain(fCarScrap * pSet->vol_car_scrap);
 		if (hitp)
@@ -504,7 +507,7 @@ if (bSound)
 		s.screech->setGain(fCarScreech * pSet->vol_car_scrap * 0.6f);
 		if (hitp)
 		s.screech->setPosition(hp, ev);
-	}
+	}/**/
 
 
 	/// <><> 🔨 Damage <><> 

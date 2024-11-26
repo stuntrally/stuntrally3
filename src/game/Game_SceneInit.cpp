@@ -13,8 +13,8 @@
 #include "CGui.h"
 #include "game.h"
 #include "PaceNotes.h"
-#include "SoundMgr.h"
-#include "SoundBaseMgr.h"
+// #include "SoundMgr.h"
+// #include "SoundBaseMgr.h"
 #include "FollowCamera.h"
 #include "CarModel.h"
 #include "BtOgreExtras.h"
@@ -415,8 +415,8 @@ void App::LoadGame()
 		pGame->NewGameDoLoadTrack();
 	}
 
-	//  set normal reverb
-	pGame->snd->sound_mgr->SetReverb(scn->sc->revSet.normal);
+	//  🔉 set normal reverb
+	// pGame->snd->sound_mgr->SetReverb(scn->sc->revSet.normal);
 	
 	//  upd car abs,tcs,sss
 	pGame->ProcessNewSettings();

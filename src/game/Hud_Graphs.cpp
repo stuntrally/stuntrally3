@@ -4,9 +4,9 @@
 #include "CGui.h"
 #include "game.h"
 #include "car.h"
-#include "SoundBaseMgr.h"
-#include "SoundMgr.h"
-#include "SoundBase.h"
+// #include "SoundBaseMgr.h"
+// #include "SoundMgr.h"
+// #include "SoundBase.h"
 #include "PaceNotes.h"
 #include "Road.h"
 #include "SceneXml.h"
@@ -371,6 +371,7 @@ void App::GraphsNewVals()				// Game
 	size_t gsi = graphs.size();
 	switch (pSet->graphs_type)
 	{
+#if 0
 	case Gh_Sound:  //  🔊 sounds
 	if (gsi >= 5)
 	{
@@ -416,6 +417,7 @@ void App::GraphsNewVals()				// Game
 		}
 		graphs[3]->SetVisible(info);  graphs[4]->SetVisible(info);
 	}	break;
+#endif
 
 	case Gh_Checks:  //  🔵 checkpoints
 		if (gsi >= 2 && !carModels.empty())

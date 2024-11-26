@@ -15,11 +15,13 @@
 #include "quickprof.h"
 #include "dbl.h"
 #include "gameclient.hpp"
-#include "SoundMgr.h"
+// #include "SoundMgr.h"
 // #include "Slider.h"
 // #include "SplitScreen.h"
 #include "settings.h"
 #include "CarModel.h"
+#include "SoundScriptManager.h"
+
 #include <Ogre.h>
 #include <MyGUI.h>
 // #include <OgreCamera.h>
@@ -278,10 +280,10 @@ void App::newPoses(float time)  // time only for camera update
 						bool chs = champ || chall;
 						
 						if (!chs && !collect)
-						{	if (newbest)  // 🔉
+						{	/*if (newbest)  // 🔉
 								pGame->snd_lapbest->start();
 							else
-								pGame->snd_lap->start();
+								pGame->snd_lap->start();/**/
 						}
 						ghost.Clear();
 						
@@ -314,7 +316,7 @@ void App::newPoses(float time)  // time only for camera update
 									if (pSet->game.local_players > 1)
 									{
 										int n = std::min(2, std::max(0, 3 - carIdWin));
-										pGame->snd_win[n]->start();  // 🔉
+										// pGame->snd_win[n]->start();  // 🔉
 									}
 									carM->iWonPlace = carIdWin++;
 								}
@@ -370,8 +372,8 @@ void App::newPoses(float time)  // time only for camera update
 									scn->trail[id]->trailSegId =
 										(inc * (i - scn->road->iChkId1) + (rev ? 0 : 1) + ncs) % ncs;
 
-								if (pSet->snd_chk && locar)
-									pGame->snd_chk->start();  // 🔉
+								// if (pSet->snd_chk && locar)
+								// 	pGame->snd_chk->start();  // 🔉
 							}
 							else
 							if (!collect &&  //?
@@ -383,8 +385,8 @@ void App::newPoses(float time)  // time only for camera update
 								if (carM->iInWrongChk != carM->iInChk)
 								{	carM->iInWrongChk = carM->iInChk;
 									
-									if (pSet->snd_chkwr && locar)
-										pGame->snd_chkwr->start();  // 🔉
+									// if (pSet->snd_chkwr && locar)
+									// 	pGame->snd_chkwr->start();  // 🔉
 							}	}
 							break;
 						}
@@ -415,7 +417,8 @@ void App::newPoses(float time)  // time only for camera update
 				Vector3 x,y,z;
 				carPoses[qn][c].camRot.ToAxes(x,y,z);
 				bool camCar = carM->fCam && carM->fCam->TypeCar();  // fix
-				pGame->snd->setCamera(carPoses[qn][c].camPos, camCar ? -y : -z, camCar ? -z : y, Vector3::ZERO);
+				
+				//** pGame->snd->setCamera(carPoses[qn][c].camPos, camCar ? -y : -z, camCar ? -z : y, Vector3::ZERO);
 			}
 		}
 	}

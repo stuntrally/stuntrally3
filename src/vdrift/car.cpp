@@ -17,7 +17,7 @@
 #include "CarModel.h"
 #include "FollowCamera.h"  //+ camera pos
 #include "PaceNotes.h"  //+ pace reset
-#include "SoundMgr.h"
+// #include "SoundMgr.h"
 #include "tobullet.h"
 #include "game.h"  //sound
 
@@ -139,9 +139,9 @@ bool CAR::Load(class App* pApp1,
 	cd.SetABS(abs);  cd.SetTCS(tcs);
 
 
-	//  load sounds
-	if (!pGame->snd->isDisabled())
-		LoadSounds(carpath);
+	//  🔉 load sounds
+	/*if (!pGame->snd->isDisabled())
+		LoadSounds(carpath);/**/
 
 	//mz_nominalmax = (GetTireMaxMz(FRONT_LEFT) + GetTireMaxMz(FRONT_RIGHT))*0.5;  //!! ff
 

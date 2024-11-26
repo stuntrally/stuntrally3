@@ -14,7 +14,7 @@
 #include "CData.h"
 #include "PresetsXml.h"
 
-#include "SoundMgr.h"
+// #include "SoundMgr.h"
 #include "ShapeData.h"
 #include <BulletCollision/CollisionDispatch/btCollisionObject.h>
 #include <BulletCollision/CollisionShapes/btCollisionShape.h>
@@ -300,14 +300,14 @@ void App::UpdCollects()
 		}else
 			LogO("|! collect not found in progress, wont save! "+col.name);
 
-		if (iCollected == all)  // 🔉 end snd
+		/*if (iCollected == all)  // 🔉 end snd
 		{	if (best)
 				pGame->snd_lapbest->start();
 			else
 				pGame->snd_lap->start();
 		}else
 			pGame->snd_chk->start();  // 🔉 one
-
+		*/
 		gui->ProgressSaveCollect(1);  // save
 	}
 }

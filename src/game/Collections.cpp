@@ -12,7 +12,7 @@
 #include "CHud.h"
 #include "CGui.h"
 #include "MultiList2.h"
-#include "SoundMgr.h"
+// #include "SoundMgr.h"
 #include "settings.h"
 #include <MyGUI.h>
 using namespace std;

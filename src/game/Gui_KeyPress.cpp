@@ -14,8 +14,8 @@
 #include "Slider.h"
 #include "FollowCamera.h"
 #include "CarModel.h"
-#include "SoundMgr.h"
-#include "SoundBaseMgr.h"
+// #include "SoundMgr.h"
+// #include "SoundBaseMgr.h"
 #include <MyGUI.h>
 using namespace std;
 using namespace Ogre;
