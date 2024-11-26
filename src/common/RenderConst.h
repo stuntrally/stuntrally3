@@ -22,8 +22,8 @@
 //------------------------------------------------------------------------
 const Ogre::uint8
 	RQ_7        = 70,
-	RQ_GlassV2  = 80,
-	RQ_GlassV1  = 105,  //105, 225
+	RQ_GlassV2  = 80,   // < 100 or >= 200
+	RQ_GlassV1  = 105,  // >= 100 or >= 225  V1_
 	RQ_OVERLAY  = 220,  // 200
 
 	//  ⛅ sky
@@ -44,7 +44,7 @@ const Ogre::uint8
 	
 	//  💎 glass, transparent
 	RQG_Grass        = RQ_7 +5,  // 🌿 veget grass
-	RQG_CarTrails    = RQ_7 +6,  // v1 trails after glass  //RQ_GlassV1
+	RQG_CarTrails    = RQ_GlassV1 +6,  // v1 trails after glass  //RQ_GlassV1
 
 	RQG_PipeGlass    = RQ_GlassV2 +2,   // ⭕ glass pipe road
 	RQG_AlphaVegObj  = RQ_GlassV2 +3,   // 💎 veget,objects transparent
