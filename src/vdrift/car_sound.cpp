@@ -46,10 +46,10 @@ bool CAR::LoadSounds(const std::string & carpath)
 	s.engine->start();  // 🔉
 	
 	//  turbo
-/*	const string& turbo = dynamics.turbo.sound_name;
+	const string& turbo = dynamics.turbo.sound_name;
 	if (!turbo.empty())
 	{	s.turbo = snd->createInstance(turbo);  s.turbo->set2D(ss);
-		s.turbo->setEngine(true);  s.turbo->start();  // 🔉
+		/*s.turbo->setEngine(true);*/  s.turbo->start();  // 🔉
 	}
 
 	//  ⚫ wheels, tires
@@ -73,8 +73,8 @@ bool CAR::LoadSounds(const std::string & carpath)
 	{	string cn = "crash/";  int n=i+1;  cn += toStr(n/10)+toStr(n%10);
 		s.crash[i] = snd->createInstance(cn);  //s.crash[i]->set2D(ss);
 	}
-	s.scrap   = snd->createInstance("crash/scrap");    //s.scrap->set2D(ss);
-	s.screech = snd->createInstance("crash/screech");  //s.screech->set2D(ss);
+	s.scrap   = snd->createInstance("crash/scrap");    s.scrap->set2D(ss);
+	s.screech = snd->createInstance("crash/screech");  s.screech->set2D(ss);
 
 	//  todo: allow variations per track, from scene.xml
 	//  🌪️ environment
@@ -88,7 +88,7 @@ bool CAR::LoadSounds(const std::string & carpath)
 	s.mud        = snd->createInstance("mud1");        s.mud->set2D(ss);
 	s.mud_cont   = snd->createInstance("mud_cont");    s.mud_cont->set2D(ss);
 	s.water_cont = snd->createInstance("water_cont");  s.water_cont->set2D(ss);
-*/
+
 	LogO(":::* Time car Sounds: "/*+carpath+" "*/+ fToStr(ti.getMilliseconds(),0,3) +" ms");
 	return true;
 }
@@ -126,6 +126,29 @@ void CAR::CARsounds::SetNumWheels(int n)
 //  💥 destroy
 void CAR::CARsounds::Destroy()
 {
+	// todo:
+    // stop all the Sounds
+	// pGame->snd->removeInstance()
+	// engine->stop();
+/*
+    for (int i = SS_TRIG_NONE + 1; i < SS_MAX_TRIG; i++)
+    {
+		trigStop
+        SOUND_STOP(this, i);
+    }
+    muteAllSounds();
+		ssi->setEnabled(false);
+
+    for (int i = 0; i < ar_num_soundsources; i++)
+    {
+        if (ar_soundsources[i].ssi)
+        {
+            App::GetSoundScriptManager()->removeInstance(ar_soundsources[i].ssi);
+            ar_soundsources[i].ssi = nullptr;
+        }
+    }
+    ar_num_soundsources = 0;
+*/
 	// engine->Release();  // not needed?
 /*	delete turbo;
 	int i;
@@ -309,10 +332,9 @@ if (bSound)
 	s.engine->setPosition(ep);
 	s.engine->setGain(gain * dynamics.engine_vol_mul * pSet->vol_engine);
 	
-#if 0
 	//  turbo
 	if (s.turbo)
-	{	s.turbo->setPosition(ep, ev);
+	{	s.turbo->setPosition(ep);
 		auto& tb = dynamics.turbo;
 		s.turbo->setPitch(rpm / tb.rpm_max);
 
@@ -330,7 +352,7 @@ if (bSound)
 
 		float maxgain = 0.6f, pitchvar = 0.4f, pmul = 1.f;
 
-		Sound* snd = s.gravel[i];
+		SoundScriptInstancePtr& snd = s.gravel[i];
 		switch (surfType[i])
 		{
 		case TRACKSURFACE::ASPHALT:		snd = s.asphalt[i];  maxgain = 0.4f;  pitchvar = 0.40f;  pmul = 0.8f;  break;
@@ -349,7 +371,7 @@ if (bSound)
 		pitch = pitch + (1.f - pitchvar);
 		pitch = std::min(2.f, std::max(0.25f, pitch ));
 
-		snd->setPosition(wh, ev);
+		snd->setPosition(wh);
 		snd->setGain(squeal[i]*maxgain * pSet->vol_tires);
 		snd->setPitch(pitch * pmul);
 		//  mute others
@@ -379,7 +401,7 @@ if (bSound)
 					//LogO("bump "+toStr(i)+" "+fToStr(gain));
 				}
 			}
-			s.bump[i]->setPosition(wh, ev);  //par gain, time fade
+			s.bump[i]->setPosition(wh);  //par gain, time fade
 			float gain = 0.5f + 0.7f*s.bumpvol[i] - s.bumptime[i]*(2.f+2.f*s.bumpvol[i]);
 			gain = std::max(0.f, std::min(1.0f, gain));
 
@@ -399,11 +421,11 @@ if (bSound)
 	if (gain > 1.f)	gain = 1.f;
 	
 	s.wind->setGain(gain * pSet->vol_env);
-	s.wind->setPosition(ep, ev);
+	s.wind->setPosition(ep);
 
 	//  💨 boost
-	s.boost->setGain(boostVal * 0.55f * pSet->vol_engine);
-	s.boost->setPosition(ep, ev);  //back?-
+	s.boost->setGain(boostVal); // * 0.55f * pSet->vol_engine);
+	s.boost->setPosition(ep);  //back?-
 
 
 	//  💧 fluids - hit  ~~~~
@@ -415,23 +437,23 @@ if (bSound)
 	{
 		int i = std::min(Nwatersounds-1, (int)(dynVel / 15.f));
 		float gain = std::min(3.0f, 0.3f + dynVel / 30.f);
-		Sound* snd = /*mud ? s.mud : */s.water[i];
+		SoundScriptInstancePtr& snd = /*mud ? s.mud : */s.water[i];
 		
 		//LogO("fluid hit i"+toStr(i)+" g"+toStr(gain)+" "+(mud?"mud":"wtr"));
-		/*if (!snd->isAudible())
+		// if (!snd->isAudible())
 		{
 			snd->setGain(gain * pSet->vol_fl_splash * (mud ? 0.6f : 1.f));
-			snd->setPosition(ep, ev);
-			snd->start();  // 🔉
+			snd->setPosition(ep);
+			// snd->start();  // 🔉
 		}
 
-		if (s.mud)  {  Sound* snd = s.mud;
-		if (!snd->isAudible())
+		if (s.mud)  {  SoundScriptInstancePtr& snd = s.mud;
+		// if (!snd->isAudible())  // todo: fixme
 		{
 			snd->setGain(gain * pSet->vol_fl_splash);
-			snd->setPosition(ep, ev);
-			snd->start();  // 🔉
-		}	}/**/
+			snd->setPosition(ep);
+			// snd->start();  // 🔉
+		}	}
 	}
 	s.fluidHitOld = fluidHit;
 
@@ -440,14 +462,13 @@ if (bSound)
 		s.whMudSpin * 2.5f : 0.f;
 	s.mud_cont->setGain(std::min(1.f, velM) * pSet->vol_fl_cont * 0.85f);
 	s.mud_cont->setPitch(std::max(0.7f, std::min(/*3.f*/2.f, velM * 0.35f)));
-	s.mud_cont->setPosition(ep, ev);
+	s.mud_cont->setPosition(ep);
 
 	float velW = !mud && whH_all > 0.1f && whH_all < 3.9f ?
 		dynVel / 30.f : 0.f;
 	s.water_cont->setGain(std::min(1.f, velW * 1.5f) * pSet->vol_fl_cont);
 	s.water_cont->setPitch(std::max(0.7f, std::min(1.3f, velW)));
-	s.water_cont->setPosition(ep, ev);
-#endif
+	s.water_cont->setPosition(ep);
 }
 //))  sounds 🔊  ---------------------------------------------------------------
 	
@@ -470,13 +491,13 @@ if (bSound)
 
 			if (s.crashtime[i] > /*ti*/0.4f)  //!crashsound.isAudible())
 			{
-				/*if (bSound)  // 🔉
+				if (bSound)  // 🔉
 				{
 					s.crash[i]->setGain(gain * pSet->vol_car_crash);
 					if (hitp)
-					s.crash[i]->setPosition(hp, ev);
+					s.crash[i]->setPosition(hp);
 					s.crash[i]->start();  // 🔉
-				}/**/
+				}
 				s.crashtime[i] = 0.f;
 				
 				/// <><> Damage <><> 
@@ -499,20 +520,21 @@ if (bSound)
 	
 
 	//  🔉🔨 crash scrap and screech
-	/*if (bSound)
+	if (bSound)
 	{
 		s.scrap->setGain(fCarScrap * pSet->vol_car_scrap);
 		if (hitp)
-		s.scrap->setPosition(hp, ev);
+		s.scrap->setPosition(hp);
 
 		s.screech->setGain(fCarScreech * pSet->vol_car_scrap * 0.6f);
 		if (hitp)
-		s.screech->setPosition(hp, ev);
-	}/**/
+		s.screech->setPosition(hp);
+	}
 
 
 	/// <><> 🔨 Damage <><> 
 	if (dmg)
 		if (dynamics.fDamage > 100.f)  dynamics.fDamage = 100.f;
 }
+
 #endif

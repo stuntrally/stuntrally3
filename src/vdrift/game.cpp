@@ -9,12 +9,8 @@
 #include <math.h>
 
 #include "SoundScriptManager.h"
+#include "SoundDeclare.h"
 // #include "Sound.h"
-#include "Declare.h"
-// #include "SoundMgr.h"
-// #include "SoundBase.h"
-// #include "SoundBaseMgr.h"
-// #include "numprocessors.h"
 #include "quickprof.h"
 #include "tracksurface.h"
 
@@ -287,29 +283,31 @@ bool GAME::InitializeSound()
 	using namespace Ogre;
 	Ogre::Timer ti;
 
+	Audio::audio_device_name = pSet->snd_device;
+	Audio::audio_efx_reverb_engine = 
+    	pSet->snd_reverb ? EAXREVERB : NONE;  // REVERB
+	Audio::audio_master_volume = pSet->vol_master;
+
 	snd = new SoundScriptManager();
 	// snd->setLoadingBaseSounds(true);
+	// snd->setMasterVolume(0.f);  //?
 	
-/*	snd = new SoundMgr();
-	snd->Init(pSet->snd_device, pSet->snd_reverb);
-	snd->setMasterVolume(0.f);
-*/
-
-	//  load sounds1.cfg  ----
-	string path = "sounds1.cfg";
+	//  load sounds cfg  ----
+	string path = "sounds.cfg";
 	DataStreamPtr ds = ResourceGroupManager::getSingleton().openResource(path);
 	snd->parseScript(ds, "General");
 
-/*	snd->setMasterVolume(pSet->vol_master);
+	Audio::audio_master_volume = pSet->vol_master;
+	snd->getSoundManager()->setMasterVolume(pSet->vol_master);
 
 	LogO(":::* Time Sounds: "+ fToStr(ti.getMilliseconds(),0,3) +" ms");
-	if (snd->sound_mgr->isDisabled())
+	if (snd->isDisabled())
 	{
 		LogO("@  Sound init - Disabled.");
 		return false;
 	}else
-		LoadHudSounds();  //`
-*/
+		LoadHudSounds();  //` in GAME?-
+
 	// snd->SetListener(/*position:*/Ogre::Vector3::ZERO, /*direction:*/Ogre::Vector3::ZERO, /*up:*/Ogre::Vector3::UNIT_Y, /*velocity:*/Ogre::Vector3::ZERO);
 	// snd->getSoundManager()->CleanUp();
 
@@ -680,7 +678,7 @@ bool GAME::NewGameDoLoadMisc(float pre_time, std::string ambient_name, float amb
 	timer.AddCar("ghost");
 
 	//  sounds 🔊  ----
-	LoadHudSounds();
+	// LoadHudSounds();  //-
 
 	/*snd->sound_mgr->CreateSources();  //)) 🔉 todo: ambient
 
@@ -781,9 +779,9 @@ void GAME::ProcessNewSettings()
 		//controls.first->SetAutoClutch(settings->rear_inv);
 	}
 	//  snd vol 🔊
-	// snd->setMasterVolume(pSet->vol_master);
-	// if (snd_ambient)
-	// 	snd_ambient->setGain(vol_ambient * pSet->vol_ambient);
+	snd->getSoundManager()->setMasterVolume(pSet->vol_master);
+	if (snd_ambient)
+		snd_ambient->setGain(vol_ambient * pSet->vol_ambient);
 }
 
 void GAME::UpdateForceFeedback(float dt)

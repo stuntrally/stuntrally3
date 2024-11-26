@@ -198,6 +198,8 @@ public:
     void start();
     void stop();
     void kill();
+    void set2D(bool b) {  setGain(0.001f);  start();  }  // todo: ..
+    void seek(float f) {  }
 
     SoundScriptTemplatePtr getTemplate() {  return templ;  }
     const SoundPtr& getStartSound()      {  return start_sound;  }
@@ -319,10 +321,10 @@ private:
     std::array<SoundScriptInstancePtr, SS_MAX_TRIG* MAX_INSTANCES_PER_GROUP> trigs;
 
     std::array<int, SS_MAX_MOD> free_pitches;
-    std::array<SoundScriptInstancePtr, SS_MAX_MOD* MAX_INSTANCES_PER_GROUP> pitches;
+    std::array<SoundScriptInstancePtr, SS_MAX_MOD * MAX_INSTANCES_PER_GROUP> pitches;
     
     std::array<int, SS_MAX_MOD> free_gains;
-    std::array<SoundScriptInstancePtr, SS_MAX_MOD* MAX_INSTANCES_PER_GROUP> gains;
+    std::array<SoundScriptInstancePtr, SS_MAX_MOD * MAX_INSTANCES_PER_GROUP> gains;
 
     //  state map
     //  soundLinks, soundItems, actor_ids, triggers

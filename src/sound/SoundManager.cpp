@@ -22,7 +22,7 @@
 
 
 #include "SoundManager.h"
-#include "Declare.h"
+#include "SoundDeclare.h"
 #include "Sound.h"
 
 #include <OgreResourceGroupManager.h>
@@ -106,17 +106,22 @@ SoundManager::SoundManager()
         // Get OpenAL function pointers
         alGenEffects = (LPALGENEFFECTS)alGetProcAddress("alGenEffects");
         alDeleteEffects = (LPALDELETEEFFECTS)alGetProcAddress("alDeleteEffects");
+        
         alIsEffect = (LPALISEFFECT)alGetProcAddress("alIsEffect");
         alEffecti = (LPALEFFECTI)alGetProcAddress("alEffecti");
         alEffectf = (LPALEFFECTF)alGetProcAddress("alEffectf");
         alEffectfv = (LPALEFFECTFV)alGetProcAddress("alEffectfv");
+        
         alGenFilters = (LPALGENFILTERS)alGetProcAddress("alGenFilters");
         alDeleteFilters = (LPALDELETEFILTERS)alGetProcAddress("alDeleteFilters");
+        
         alIsFilter = (LPALISFILTER)alGetProcAddress("alIsFilter");
         alFilteri = (LPALFILTERI)alGetProcAddress("alFilteri");
         alFilterf = (LPALFILTERF)alGetProcAddress("alFilterf");
+        
         alGenAuxiliaryEffectSlots = (LPALGENAUXILIARYEFFECTSLOTS)alGetProcAddress("alGenAuxiliaryEffectSlots");
         alDeleteAuxiliaryEffectSlots = (LPALDELETEAUXILIARYEFFECTSLOTS)alGetProcAddress("alDeleteAuxiliaryEffectSlots");
+        
         alIsAuxiliaryEffectSlot = (LPALISAUXILIARYEFFECTSLOT)alGetProcAddress("alIsAuxiliaryEffectSlot");
         alAuxiliaryEffectSloti = (LPALAUXILIARYEFFECTSLOTI)alGetProcAddress("alAuxiliaryEffectSloti");
         alAuxiliaryEffectSlotf = (LPALAUXILIARYEFFECTSLOTF)alGetProcAddress("alAuxiliaryEffectSlotf");

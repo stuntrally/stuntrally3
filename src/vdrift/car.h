@@ -173,24 +173,23 @@ public:
 	struct CARsounds
 	{
 		//  📈 engine
-		SoundScriptInstancePtr engine;
-		Sound *turbo =0;
+		SoundScriptInstancePtr engine, turbo;
 		
 		//  ⚫ tires  todo: more surfaces..
-		std::vector<Sound*> asphalt, grass, gravel, bump;
+		std::vector<SoundScriptInstancePtr> asphalt, grass, gravel, bump;
 		//  bump for tires hit, suspension
 		
 		//  🔨 crash, hit
-		std::vector<Sound*> crash;
+		std::vector<SoundScriptInstancePtr> crash;
 		std::vector<float> crashtime, bumptime, bumpvol;
-		Sound* scrap =0, *screech =0;  // continuous
+		SoundScriptInstancePtr scrap, screech;  // continuous
 		
 		// 🌪️ environment
-		Sound* wind =0, *boost =0;
+		SoundScriptInstancePtr wind =0, boost =0;
 		
 		// 💧 fluids
-		Sound* mud =0, *mud_cont =0,*water_cont =0;
-		std::vector<Sound*> water;
+		SoundScriptInstancePtr mud =0, mud_cont =0, water_cont =0;
+		std::vector<SoundScriptInstancePtr> water;
 		bool fluidHitOld = 0;  float whMudSpin = 0.f;  ///new vars, for snd
 
 		CARsounds();

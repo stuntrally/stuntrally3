@@ -5,12 +5,11 @@
 // See license (MIT) at the bottom of this file.
 
 #pragma once
-
 // #include <angelscript.h>
 
 #include <mutex> // Against accidental threaded access
-#include "Declare.h" // Provides access to AppContext
-//#include "AppContext.h" // Stores main thread ID for debug checking
+#include "SoundDeclare.h"  // Provides access to AppContext
+//#include "AppContext.h"  // Stores main thread ID for debug checking
 
 
 #if !defined(RefCoutingObject_DEBUGTRACE)

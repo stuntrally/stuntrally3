@@ -554,7 +554,8 @@ void SoundScriptManager::parseScript(DataStreamPtr& stream, const String& groupN
             {
                 // no current SoundScript
                 // so first valid data should be a SoundScript name
-                LOG("SoundScriptManager: creating template "+line);
+                
+                // LOG("SoundScriptManager: creating template "+line);
                 sst = createTemplate(line, groupName, stream->getName());
                 if (!sst)
                 {
@@ -832,7 +833,7 @@ SoundScriptInstance::SoundScriptInstance(
     setPitch(0.0f);
     setGain(1.0f);
 
-    LOG("SoundScriptInstance: instance created: "+instancename);
+    LOG("S--+ sound created: "+instancename);
 }
 
 void SoundScriptInstance::setPitch(float value)
