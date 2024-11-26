@@ -118,7 +118,7 @@ void GraphicsSystem::loadHlmsDiskCache()
 
 	if( mUseHlmsDiskCache )
 	{
-		for( size_t i = HLMS_LOW_LEVEL + 1u; i < HLMS_MAX; ++i )
+		for (size_t i = HLMS_LOW_LEVEL + 1u; i < HLMS_MAX; ++i)
 		{
 			Hlms *hlms = hlmsManager->getHlms( static_cast<HlmsTypes>( i ) );
 			if( hlms )
@@ -159,7 +159,7 @@ void GraphicsSystem::saveHlmsDiskCache()
 
 		if( mUseHlmsDiskCache )
 		{
-			for( size_t i = HLMS_LOW_LEVEL + 1u; i < HLMS_MAX; ++i )
+			for (size_t i = HLMS_LOW_LEVEL + 1u; i < HLMS_MAX; ++i)
 			{
 				Hlms *hlms = hlmsManager->getHlms( static_cast<HlmsTypes>( i ) );
 				if( hlms )

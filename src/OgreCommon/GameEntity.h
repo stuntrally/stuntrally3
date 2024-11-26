@@ -28,6 +28,7 @@ struct GameEntityTransform
 	Ogre::Vector3       vScale;
 };
 
+
 struct GameEntity
 {
 private:
@@ -43,13 +44,11 @@ public:
 	//Your custom pointers go here, i.e. physics representation.
 	//used only by Logic thread (hkpEntity, btRigidBody, etc)
 
-	//----------------------------------------
 	// Used by both Logic and Graphics threads
 	//----------------------------------------
 	GameEntityTransform     *mTransform[NUM_GAME_ENTITY_BUFFERS];
 	Ogre::SceneMemoryMgrTypes       mType;
 
-	//----------------------------------------
 	// Read-only
 	//----------------------------------------
 	MovableObjectDefinition const   *mMoDefinition;
@@ -64,11 +63,12 @@ public:
 		mMoDefinition( moDefinition ),
 		mTransformBufferIdx( 0 )
 	{
-		for( int i=0; i<NUM_GAME_ENTITY_BUFFERS; ++i )
+		for (int i=0; i < NUM_GAME_ENTITY_BUFFERS; ++i)
 			mTransform[i] = 0;
 	}
 
-	Ogre::uint32 getId() const          { return mId; }
+	Ogre::uint32 getId() const
+	{	return mId;  }
 
 	bool operator < ( const GameEntity *_r ) const
 	{

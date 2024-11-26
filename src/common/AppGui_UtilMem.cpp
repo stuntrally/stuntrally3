@@ -41,11 +41,11 @@ void AppGui::unloadTexturesFromUnusedMaterials(
 	OGRE_ASSERT_HIGH( dynamic_cast<T *>( datablock ) );
 	T *derivedDatablock = static_cast<T *>( datablock );
 
-	for( size_t texUnit = 0; texUnit < MaxNumTextures; ++texUnit )
+	for (size_t texUnit = 0; texUnit < MaxNumTextures; ++texUnit)
 	{
 		// Check each texture from the material
 		TextureGpu *tex = derivedDatablock->getTexture( (uint8_t)texUnit );
-		if( tex )
+		if (tex)
 		{
 			// If getLinkedRenderables is empty, then the material is not in use,
 			// and thus so is potentially the texture
@@ -67,10 +67,10 @@ void AppGui::unloadTexturesFromUnusedMaterials()
 
 	// Check each material from each Hlms (except low level) to see if their material is
 	// currently in use. If it's not, then its textures may be not either
-	for( size_t i = HLMS_PBS; i < HLMS_MAX; ++i )
+	for (size_t i = HLMS_PBS; i < HLMS_MAX; ++i)
 	{
 		Hlms *hlms = hlmsManager->getHlms( static_cast<HlmsTypes>( i ) );
-		if( hlms )
+		if (hlms)
 		{
 			const Hlms::HlmsDatablockMap &datablocks = hlms->getDatablockMap();
 

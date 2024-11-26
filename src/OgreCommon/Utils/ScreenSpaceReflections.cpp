@@ -46,7 +46,7 @@ namespace Demo
 	void ScreenSpaceReflections::update( Ogre::Camera *camera )
 	{
 		Ogre::Vector2 projectionAB = camera->getProjectionParamsAB();
-		for( int i=0; i<2; ++i )
+		for (int i=0; i<2; ++i)
 		{
 			//The division will keep "linearDepth" in the shader in the [0; 1] range.
 			//projectionAB.y /= camera->getFarClipDistance();

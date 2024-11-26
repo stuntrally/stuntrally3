@@ -704,7 +704,7 @@ void App::BltWorldDestroy()
 void App::BltClear()
 {
 	if (world)
-	for(int i = world->getNumCollisionObjects() - 1; i >= 0; i--)
+	for (int i = world->getNumCollisionObjects() - 1; i >= 0; i--)
 	{
 		btCollisionObject* obj = world->getCollisionObjectArray()[i];
 		btRigidBody* body = btRigidBody::upcast(obj);
@@ -732,13 +732,13 @@ void App::BltClear()
 	}
 	shapes.resize(0);
 	
-	for(int i = 0; i < meshes.size(); i++)
+	for (int i = 0; i < meshes.size(); i++)
 	{
 		delete meshes[i];
 	}
 	meshes.resize(0);
 	
-	for(int i = 0; i < actions.size(); i++)
+	for (int i = 0; i < actions.size(); i++)
 	{
 		world->removeAction(actions[i]);
 	}

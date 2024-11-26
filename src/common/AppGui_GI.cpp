@@ -185,7 +185,7 @@ void AppGui::GIVoxelizeScene()
 			++itor;
 		}
 
-		/*for( int i=0; i < 3 ; ++i)
+		/*for (int i=0; i < 3; ++i)
 			ifSet.mNumProbes[i] = 1u;
 		ifSet.mIrradianceResolution = 16u;
 		ifSet.mDepthProbeResolution = 32u;*/

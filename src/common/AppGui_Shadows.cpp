@@ -83,7 +83,7 @@ void AppGui::createPcfShadowNode()
 	sp.numPssmSplits = min(4, max(2, pSet->g.shadow_count ));
 
 	sp.resolution[0].x = size1;  sp.resolution[0].y = size1;
-	for( size_t i = 1u; i < 4u; ++i )
+	for (size_t i = 1u; i < 4u; ++i)
 	{	sp.resolution[i].x = size2;  sp.resolution[i].y = size2;  }
 	//  [0 ]
 	//  [  ]
@@ -409,7 +409,7 @@ void AppGui::createShadowMapDebugOverlays()
 	CompositorShadowNode *shadowNode = workspace->findShadowNode( shadowNodeName );
 	const CompositorShadowNodeDef *shadowNodeDef = shadowNode->getDefinition();
 
-	for( size_t i = 0u; i < 5u; ++i )
+	for (size_t i = 0u; i < 5u; ++i)
 	{
 		const String datablockName( "depthShadow" + StringConverter::toString( i ) );
 		HlmsUnlitDatablock *depthShadow =
@@ -439,7 +439,7 @@ void AppGui::createShadowMapDebugOverlays()
 	mDebugOverlayPSSM = mgr.create( "PSSM Overlays" );
 	mDebugOverlaySpotlights = mgr.create( "Spotlight overlays" );
 
-	for( int i = 0; i < 3; ++i )
+	for (int i = 0; i < 3; ++i)
 	{
 		//  Create a panel
 		v1::OverlayContainer *panel =
@@ -452,7 +452,7 @@ void AppGui::createShadowMapDebugOverlays()
 		mDebugOverlayPSSM->add2D( panel );
 	}
 
-	for( int i = 3; i < 5; ++i )
+	for (int i = 3; i < 5; ++i)
 	{
 		// Create a panel
 		v1::OverlayContainer *panel =

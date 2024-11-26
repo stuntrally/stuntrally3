@@ -436,7 +436,7 @@ void App::ToggleObjSim()
 	if (!objSim)  // off sim
 	{
 		//  Destroy blt world
-		for(int i = world->getNumCollisionObjects() - 1; i >= 0; i--)
+		for (int i = world->getNumCollisionObjects() - 1; i >= 0; i--)
 		{
 			btCollisionObject* obj = world->getCollisionObjectArray()[i];
 			delete obj->getCollisionShape();

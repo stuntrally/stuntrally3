@@ -97,8 +97,8 @@ Vector3 SplineBase::interpolate(int id, Real t) const
 	const Vector3& p1 = mP[id].pos, p2 = mP[id1].pos;
 
 	//  special cases
-	if (t == 0.0f)	    return p1;
-	else if(t == 1.0f)  return p2;
+	if (t == 0.0f)	     return p1;
+	else if (t == 1.0f)  return p2;
 
 	const Vector3& n1 = mP[id].tan, n2 = mP[id1].tan;
 
@@ -117,8 +117,8 @@ Real SplineBase::interpWidth(int id, Real t) const
 {
 	int id1 = getNext(id);
 	const Real& p1 = mP[id].width, p2 = mP[id1].width;
-	if (t == 0.0f)	    return p1;
-	else if(t == 1.0f)  return p2;
+	if (t == 0.0f)	     return p1;
+	else if (t == 1.0f)  return p2;
 	const Real& n1 = mP[id].wtan,  n2 = mP[id1].wtan;
 
 	Real t2 = t*t, t3 = t2*t;

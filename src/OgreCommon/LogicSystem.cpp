@@ -32,7 +32,7 @@ LogicSystem::LogicSystem( GameState *gameState ) :
 {
 	//mCurrentTransformIdx is 1, 0 and NUM_GAME_ENTITY_BUFFERS - 1 are taken by GraphicsSytem at startup
 	//The range to fill is then [2; NUM_GAME_ENTITY_BUFFERS-1]
-	for( Ogre::uint32 i=2; i<NUM_GAME_ENTITY_BUFFERS-1; ++i )
+	for (Ogre::uint32 i=2; i < NUM_GAME_ENTITY_BUFFERS-1; ++i)
 		mAvailableTransformIdx.push_back( i );
 }
 LogicSystem::~LogicSystem()
