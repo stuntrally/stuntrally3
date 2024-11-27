@@ -22,12 +22,12 @@ old motion blur
 
 ### 🔉 Sound
 
-Update `sound engine` from [RoR PR](https://github.com/RigsOfRods/rigs-of-rods/pull/3182)  
+sound engine from [RoR PR](https://github.com/RigsOfRods/rigs-of-rods/pull/3182), branch sound fix..  
 (or replace with [ogre-audiovideo](https://github.com/OGRECave/ogre-audiovideo))
 
 🌧️ **Ambient** [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
 🚗🔊 More `car Sounds`, todo [task](https://stuntrally.tuxfamily.org/mantis/view.php?id=1), use [engine-sim](https://github.com/stuntrally/stuntrally3/issues/7), [muffler spectrum](https://duckduckgo.com/?t=ftsa&q=muffler+spectrum&atb=v395-1&ia=web)?  
-📦 object hit sounds, reverb change in water, caves, pipes-  
+📦 object *hit* sounds, reverb change in water, caves, pipes-  
 
 ### Big
 
@@ -51,14 +51,15 @@ new *Stats* tab, completed: tracks, challs, colls, etc
 hud new best time show, win particles-  
 
 **ed key** for obj random rot, yaw, set up/dn y +-90  
+add arrow for emit dir  
 
 
 ----
 ## Fix Ogre
 
-move all from SR3.compositor to AppGui_Compositor.cpp  
+move **ed**, all from SR3.compositor to AppGui_Compositor.cpp  
 manual update ed RTTs^  
-fix ed RTTs no fluids
+`fix` ed RTTs **no** fluids
 
 no specular on terrain  
 
@@ -67,10 +68,9 @@ waterfalls refract cuts off above cam y
 
 Pbs particles, fade from fog, soft  
 
-🌊refract, depth: pass projmatrix **not inverse**  
+🌊refract, depth: pass projmatrix `not` **inverse**  
 underwater top has no surface, refract  
 
-more fluids still blink on MilkyWay, no `depth` write / check  
 shader **params**: refract clr, *depth* clr, emissive fluids?  
 
 🌪️**wind scale** params in json, for all trees, bushes, grass sway own-  
@@ -79,10 +79,10 @@ wind anim shadow **caster** too, ed prv obj no wind-
 
 ### Fix
 
-**ed** fields rot, focus, *telep offset*, no cam ray cut  
+**ed** fields rot, focus, telep `offset`, no cam ray cut  
 
-**H2,H1** going through big waters e.g. Islands,  
-and wheels jumping (ray casts) on big ice e.g. FreshBreeze  
+`rays casts?` **H2,H1** going through big waters e.g. Islands,  
+wheels jumping on big ice e.g. FreshBreeze,  
 *cam tilt* jumps on Shore, Treausure, etc?  
 
 fix .car thrusters lights pos  
