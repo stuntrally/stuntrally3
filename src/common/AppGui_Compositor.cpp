@@ -270,7 +270,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				ps->mProfilingId = "Pre Ssao-"+si;  // Opaque only, no pipe glass
 				ps->mIdentifier = 10001;  //?
 				ps->mFirstRQ = RQG_Sky+1;  // no sky
-				ps->mLastRQ = RQG_Hud3+1; //RQG_Grass+1;  trail?
+				ps->mLastRQ = RQG_Grass+1;  // RQG_Hud3+1;  trail?-
 				ps->setVisibilityMask(
 					RV_Terrain | RV_Road |
 					RV_Vegetation | RV_VegetGrass | 

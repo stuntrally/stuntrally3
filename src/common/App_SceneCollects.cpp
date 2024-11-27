@@ -92,7 +92,7 @@ void App::CreateCollect(int i)
 	c.nd = mSceneMgr->getRootSceneNode(SCENE_DYNAMIC)->createChildSceneNode();
 	c.nd->setPosition(c.pos);
 	c.nd->setScale(c.scale * col->scale * Vector3::UNIT_SCALE);
-	c.nd->attachObject(c.it);  c.it->setVisibilityFlags(RV_Objects);  //?
+	c.nd->attachObject(c.it);  c.it->setVisibilityFlags(RV_Road);  // RV_Objects-
 
 	c.ndBeam = c.nd->createChildSceneNode(SCENE_DYNAMIC);
 	c.ndBeam->setPosition(c.scale * Vector3(0.f, -5.f, 0.f));  // below
