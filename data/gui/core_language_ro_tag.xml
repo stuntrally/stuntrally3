@@ -37,6 +37,7 @@
 	<Tag name="Homepage">Homepage</Tag>
 	<Tag name="DocumentationWiki">Documentation (Wiki)</Tag>
 	<Tag name="Forum">Forum</Tag>
+	<Tag name="Chat">Chat</Tag>
 	<Tag name="Sources">Sources</Tag>
 	<Tag name="TrackEditorTutorial">Track Editor Tutorials</Tag>
 	<Tag name="Translations">Translations</Tag>
@@ -299,6 +300,7 @@
 	<Tag name="SC_Marble">Marble</Tag>
 	<Tag name="SC_Spring">Direcție(roată)</Tag>
 	<Tag name="SC_Anomaly">Anomaly</Tag>
+	<Tag name="SC_PostApo">PostApo</Tag>
 	<Tag name="P_Red">Red</Tag>
 	<Tag name="P_Orange">Orange</Tag>
 	<Tag name="P_Yellow">Yellow</Tag>
@@ -533,8 +535,9 @@
 	<Tag name="FOV">View angle</Tag>
 	<Tag name="Effects">Efecte</Tag>
 	<Tag name="AllEffects">Effects Enabled</Tag>
-	<Tag name="ssao">SSAO</Tag>
-	<Tag name="softparticles">Soft Particles</Tag>
+	<Tag name="SSAO">SSAO (Ambient Occlusion)</Tag>
+	<Tag name="GI">Global Illumination</Tag>
+	<Tag name="SoftParticles">Soft Particles</Tag>
 	<Tag name="Bloom">Încețoșare</Tag>
 	<Tag name="Intensity">Intensitate</Tag>
 	<Tag name="OrigImage">Întunecare</Tag>
@@ -547,7 +550,7 @@
 	<Tag name="Small">Small</Tag>
 	<Tag name="Big">Big</Tag>
 	<Tag name="HDRTab">HDR</Tag>
-	<Tag name="HDR">HDR+Bloom</Tag>
+	<Tag name="HDR">HDR and Bloom (High Dynamic Range)</Tag>
 	<Tag name="HDRAdaptationScale">Adapt Scale</Tag>
 	<Tag name="HDRIntensity">Bloom Intensity</Tag>
 	<Tag name="HDROrigImage">Bloom Darken</Tag>
@@ -648,7 +651,7 @@
 	<Tag name="InputFocusFind">Ctrl-F  go to find box</Tag>
 	<Tag name="InputRplCtrl1">Backspace - show/hide controls (hold ctrl to use mouse)</Tag>
 	<Tag name="InputRplCtrl2">P - pause/unpause replay</Tag>
-	<Tag name="InputRplCtrl3">[ , ] - wind backwards/forwards (shift - slow, ctrl,alt - fast)</Tag>
+	<Tag name="InputRplCtrl3">Down, Up - wind backwards/forwards (shift - slow, ctrl,alt - fast)</Tag>
 	<Tag name="InputRplCtrl4">K, L - change camera view to other player</Tag>
 	<Tag name="TweakEdit1">Alt-Z - toggle tweak window (car edit)</Tag>
 	<Tag name="TweakEdit2">Alt-Shift-Z - save file and reload game</Tag>
@@ -1122,6 +1125,7 @@
 	<Tag name="HintScreen">To change screen resolution and adjust graphics to your card press Screen button.</Tag>
 	<Tag name="HintGraphics">To adjust graphics to your card press Screen button.</Tag>
 	<Tag name="HintInput">To check keys used in game or reassign them, or to configure controller press Input button.</Tag>
+	<Tag name="GameStatistics">Game Statistics</Tag>
 	<Tag name="TrackNotFound">Track not found !</Tag>
 	<Tag name="TipReverse">Direcția traseului inversă</Tag>
 	<Tag name="TipNewGame">Pornește joc pe traseu nou sau repornește pe cel curent.</Tag>
@@ -1369,7 +1373,7 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="GameVersion">3.2</Tag>
+	<Tag name="GameVersion">3.3</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
 </MyGUI>

@@ -37,6 +37,7 @@
 	<Tag name="Homepage">Página Inicial</Tag>
 	<Tag name="DocumentationWiki">Documentação (Wiki)</Tag>
 	<Tag name="Forum">Fórum</Tag>
+	<Tag name="Chat">Chat</Tag>
 	<Tag name="Sources">Fontes</Tag>
 	<Tag name="TrackEditorTutorial">Tutoriais do Editor de Pistas</Tag>
 	<Tag name="Translations">Traduções</Tag>
@@ -299,6 +300,7 @@
 	<Tag name="SC_Marble">Marble</Tag>
 	<Tag name="SC_Spring">Direção</Tag>
 	<Tag name="SC_Anomaly">Anomaly</Tag>
+	<Tag name="SC_PostApo">PostApo</Tag>
 	<Tag name="P_Red">Pronto</Tag>
 	<Tag name="P_Orange">Alterar</Tag>
 	<Tag name="P_Yellow">FlorestaAmarela</Tag>
@@ -533,8 +535,9 @@
 	<Tag name="FOV">Ângulo de visão</Tag>
 	<Tag name="Effects">Efeitos</Tag>
 	<Tag name="AllEffects">Efeitos Habilitados</Tag>
-	<Tag name="ssao">SSAO</Tag>
-	<Tag name="softparticles">Soft Particles</Tag>
+	<Tag name="SSAO">SSAO (Ambient Occlusion)</Tag>
+	<Tag name="GI">Global Illumination</Tag>
+	<Tag name="SoftParticles">Soft Particles</Tag>
 	<Tag name="Bloom">Bloom</Tag>
 	<Tag name="Intensity">Intensidade</Tag>
 	<Tag name="OrigImage">Darken</Tag>
@@ -547,7 +550,7 @@
 	<Tag name="Small">Pequeno</Tag>
 	<Tag name="Big">Grande</Tag>
 	<Tag name="HDRTab">HDR</Tag>
-	<Tag name="HDR">HDR+Bloom</Tag>
+	<Tag name="HDR">HDR and Bloom (High Dynamic Range)</Tag>
 	<Tag name="HDRAdaptationScale">Adapt Scale</Tag>
 	<Tag name="HDRIntensity">Intensidade do Bloom</Tag>
 	<Tag name="HDROrigImage">Bloom Darken</Tag>
@@ -648,7 +651,7 @@
 	<Tag name="InputFocusFind">Ctrl-F ir para caixa de busca</Tag>
 	<Tag name="InputRplCtrl1">Backspace - mostra/esconde controles (segure ctrl para usar o mouse)</Tag>
 	<Tag name="InputRplCtrl2">P - pausa/continua replay</Tag>
-	<Tag name="InputRplCtrl3">[ , ] - retroceder/avançar (shift - lento, ctrl,alt - rápido)</Tag>
+	<Tag name="InputRplCtrl3">Down, Up - wind backwards/forwards (shift - slow, ctrl,alt - fast)</Tag>
 	<Tag name="InputRplCtrl4">K, L - muda visão da câmera para outro jogador</Tag>
 	<Tag name="TweakEdit1">Alt-Z - alterna janela de ajustes (edição do carro)</Tag>
 	<Tag name="TweakEdit2">Alt-Shift-Z - salva arquivo e recarrega o jogo</Tag>
@@ -1122,6 +1125,7 @@
 	<Tag name="HintScreen">Para mudar a resolução da tela e ajustar os gráficos de acordo com sua placa, pressione o botão Tela.</Tag>
 	<Tag name="HintGraphics">To adjust graphics to your card press Screen button.</Tag>
 	<Tag name="HintInput">Para checar as teclas usadas no jogo, reatribuí-las, ou configurar um controle, pressione o botão Entrada.</Tag>
+	<Tag name="GameStatistics">Game Statistics</Tag>
 	<Tag name="TrackNotFound">Pista não encontrada !</Tag>
 	<Tag name="TipReverse">Inverter direção da pista.</Tag>
 	<Tag name="TipNewGame">Iniciar jogo em nova pista ou Reiniciar na atual.</Tag>
@@ -1369,7 +1373,7 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="GameVersion">3.2</Tag>
+	<Tag name="GameVersion">3.3</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
 </MyGUI>

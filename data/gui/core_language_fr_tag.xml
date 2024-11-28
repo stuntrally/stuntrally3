@@ -37,6 +37,7 @@
 	<Tag name="Homepage">Page d'accueil</Tag>
 	<Tag name="DocumentationWiki">Documentation (Wiki)</Tag>
 	<Tag name="Forum">Forum</Tag>
+	<Tag name="Chat">Chat</Tag>
 	<Tag name="Sources">Sources</Tag>
 	<Tag name="TrackEditorTutorial">Didacticiels de l'éditeur de piste</Tag>
 	<Tag name="Translations">Traductions</Tag>
@@ -99,9 +100,9 @@
 	<Tag name="Reverse">Inverser</Tag>
 	<Tag name="Find">Rechercher</Tag>
 	<Tag name="ViewList">Liste</Tag>
-	<Tag name="ViewListUser">List user</Tag>
-	<Tag name="ViewListDetail">List wide</Tag>
-	<Tag name="ViewGalleryList">Gallery list</Tag>
+	<Tag name="ViewListUser">Liste des utilisateurs</Tag>
+	<Tag name="ViewListDetail">Liste large</Tag>
+	<Tag name="ViewGalleryList">Galerie</Tag>
 	<Tag name="ViewGallery">Galerie</Tag>
 	<Tag name="TrackBestTime">Meilleur temps</Tag>
 	<Tag name="TrackAvgSpeed">Vitesse moyenne</Tag>
@@ -299,6 +300,7 @@
 	<Tag name="SC_Marble">Marbre</Tag>
 	<Tag name="SC_Spring">Printemps</Tag>
 	<Tag name="SC_Anomaly">Anomalie</Tag>
+	<Tag name="SC_PostApo">PostApo</Tag>
 	<Tag name="P_Red">Rouge</Tag>
 	<Tag name="P_Orange">Orange</Tag>
 	<Tag name="P_Yellow">Jaune</Tag>
@@ -533,8 +535,9 @@
 	<Tag name="FOV">Champ de vision</Tag>
 	<Tag name="Effects">Effets</Tag>
 	<Tag name="AllEffects">Effets activés</Tag>
-	<Tag name="ssao">SSAO</Tag>
-	<Tag name="softparticles">Particules adoucies</Tag>
+	<Tag name="SSAO">SSAO (occlusion ambiante)</Tag>
+	<Tag name="GI">Global Illumination</Tag>
+	<Tag name="SoftParticles">Soft Particles</Tag>
 	<Tag name="Bloom">Ébouissement</Tag>
 	<Tag name="Intensity">Intensité</Tag>
 	<Tag name="OrigImage">Assombrir</Tag>
@@ -547,7 +550,7 @@
 	<Tag name="Small">Petit</Tag>
 	<Tag name="Big">Gros</Tag>
 	<Tag name="HDRTab">HDR</Tag>
-	<Tag name="HDR">HDR + ébouissement</Tag>
+	<Tag name="HDR">HDR and Bloom (High Dynamic Range)</Tag>
 	<Tag name="HDRAdaptationScale">Adapter l'échelle</Tag>
 	<Tag name="HDRIntensity">Intensité d'éblouissement</Tag>
 	<Tag name="HDROrigImage">Intensité de l'ébouissement</Tag>
@@ -648,7 +651,7 @@
 	<Tag name="InputFocusFind">Ctrl-F aller à la boîte de recherche</Tag>
 	<Tag name="InputRplCtrl1">Retour arrière - montrer/cacher les contrôles (CTRL enfoncée pour utiliser la souris)</Tag>
 	<Tag name="InputRplCtrl2">P - mettre en pause/reprendre le replay</Tag>
-	<Tag name="InputRplCtrl3">[ , ] - aller en avant/arrière (Maj. - lent, Ctrl,Alt - rapide)</Tag>
+	<Tag name="InputRplCtrl3">Down, Up - wind backwards/forwards (shift - slow, ctrl,alt - fast)</Tag>
 	<Tag name="InputRplCtrl4">K, L - changer la vue de la caméra vers un autre joueur.</Tag>
 	<Tag name="TweakEdit1">Alt-Z - afficher la fenêtre d'édition de voiture</Tag>
 	<Tag name="TweakEdit2">Alt-Maj.-Z - sauvegarder et recharger</Tag>
@@ -777,7 +780,7 @@
 	<Tag name="Surface">Surface</Tag>
 	<Tag name="Type">Type</Tag>
 	<Tag name="BumpWavelen">Bump:  WaveLen</Tag>
-	<Tag name="Frequency">Frequency</Tag>
+	<Tag name="Frequency">Fréquence</Tag>
 	<Tag name="Amplitude">Amplitude</Tag>
 	<Tag name="Friction">Friction</Tag>
 	<Tag name="RollingDrag">Rolling Drag</Tag>
@@ -1122,6 +1125,7 @@
 	<Tag name="HintScreen">Pour changer la définition de l'écran et adjuster les réglages graphiques, cliquez sur Écran.</Tag>
 	<Tag name="HintGraphics">Pour ajuster les graphiques sur votre carte graphique, appuyez sur le bouton Écran.</Tag>
 	<Tag name="HintInput">Pour voir les touches utilisées dans le jeu ou les changer, ou pour configurer une manette ou un volant, cliquez sur Contrôles.</Tag>
+	<Tag name="GameStatistics">Game Statistics</Tag>
 	<Tag name="TrackNotFound">Circuit non trouvé !</Tag>
 	<Tag name="TipReverse">Inverse la direction du circuit.</Tag>
 	<Tag name="TipNewGame">Démarrer une partie sur un nouveau circuit ou redémarrer sur le circuit actuel.</Tag>
@@ -1369,7 +1373,7 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="GameVersion">3.2</Tag>
+	<Tag name="GameVersion">3.3</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
 </MyGUI>

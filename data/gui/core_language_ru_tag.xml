@@ -37,6 +37,7 @@
 	<Tag name="Homepage">Homepage</Tag>
 	<Tag name="DocumentationWiki">Documentation (Wiki)</Tag>
 	<Tag name="Forum">Forum</Tag>
+	<Tag name="Chat">Chat</Tag>
 	<Tag name="Sources">Sources</Tag>
 	<Tag name="TrackEditorTutorial">Track Editor Tutorials</Tag>
 	<Tag name="Translations">Translations</Tag>
@@ -299,6 +300,7 @@
 	<Tag name="SC_Marble">Marble</Tag>
 	<Tag name="SC_Spring">Управление</Tag>
 	<Tag name="SC_Anomaly">Anomaly</Tag>
+	<Tag name="SC_PostApo">PostApo</Tag>
 	<Tag name="P_Red">Готов</Tag>
 	<Tag name="P_Orange">Изменить</Tag>
 	<Tag name="P_Yellow">Зол.Лес</Tag>
@@ -533,8 +535,9 @@
 	<Tag name="FOV">Вид ракурсом</Tag>
 	<Tag name="Effects">Эффекты</Tag>
 	<Tag name="AllEffects">Вкл. эффекты</Tag>
-	<Tag name="ssao">SSAO</Tag>
-	<Tag name="softparticles">Мягкие частицы</Tag>
+	<Tag name="SSAO">SSAO (Ambient Occlusion)</Tag>
+	<Tag name="GI">Global Illumination</Tag>
+	<Tag name="SoftParticles">Soft Particles</Tag>
 	<Tag name="Bloom">Свечение</Tag>
 	<Tag name="Intensity">Интен.</Tag>
 	<Tag name="OrigImage">Затемнение</Tag>
@@ -547,7 +550,7 @@
 	<Tag name="Small">Мелкий</Tag>
 	<Tag name="Big">Большой</Tag>
 	<Tag name="HDRTab">HDR</Tag>
-	<Tag name="HDR">HDR+свеч.</Tag>
+	<Tag name="HDR">HDR and Bloom (High Dynamic Range)</Tag>
 	<Tag name="HDRAdaptationScale">Адап. гамма</Tag>
 	<Tag name="HDRIntensity">Интен. свеч.</Tag>
 	<Tag name="HDROrigImage">Затемнение</Tag>
@@ -648,7 +651,7 @@
 	<Tag name="InputFocusFind">Ctrl-F  поисковик</Tag>
 	<Tag name="InputRplCtrl1">Backspace - пок./скрыть индик. (держи Ctrl для мыши)</Tag>
 	<Tag name="InputRplCtrl2">P - пауза/играть повтор</Tag>
-	<Tag name="InputRplCtrl3">[ , ] - назад/вперёд (Shift - медленно, Ctrl, Alt - быстро)</Tag>
+	<Tag name="InputRplCtrl3">Down, Up - wind backwards/forwards (shift - slow, ctrl,alt - fast)</Tag>
 	<Tag name="InputRplCtrl4">K, L - изм. вид камеры другого игрока</Tag>
 	<Tag name="TweakEdit1">Alt-Z - окно наладки (ред. авто)</Tag>
 	<Tag name="TweakEdit2">Alt-Shift-Z - сохр. файл и перезагр. игру</Tag>
@@ -1122,6 +1125,7 @@
 	<Tag name="HintScreen">Чтобы изменить разрешение экрана и настроить графику нажми кнопку Экран.</Tag>
 	<Tag name="HintGraphics">To adjust graphics to your card press Screen button.</Tag>
 	<Tag name="HintInput">Чтобы узнать кнопки исп. в игре или переназначить их, или сконф. контролер нажми кнопку Ввод.</Tag>
+	<Tag name="GameStatistics">Game Statistics</Tag>
 	<Tag name="TrackNotFound">Трасса не найдена !</Tag>
 	<Tag name="TipReverse">Обратное направление трассы.</Tag>
 	<Tag name="TipNewGame">Начать игру на новой трассе или перезапустить текущую.</Tag>
@@ -1369,7 +1373,7 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="GameVersion">3.2</Tag>
+	<Tag name="GameVersion">3.3</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
 </MyGUI>

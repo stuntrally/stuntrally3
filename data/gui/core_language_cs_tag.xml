@@ -37,6 +37,7 @@
 	<Tag name="Homepage">Domovská stránka</Tag>
 	<Tag name="DocumentationWiki">Dokumentace (Wiki)</Tag>
 	<Tag name="Forum">Fórum</Tag>
+	<Tag name="Chat">Chat</Tag>
 	<Tag name="Sources">Zdroje</Tag>
 	<Tag name="TrackEditorTutorial">Návody pro editor tratí</Tag>
 	<Tag name="Translations">Překlady</Tag>
@@ -299,6 +300,7 @@
 	<Tag name="SC_Marble">Marble</Tag>
 	<Tag name="SC_Spring">Zatáčení</Tag>
 	<Tag name="SC_Anomaly">Anomaly</Tag>
+	<Tag name="SC_PostApo">PostApo</Tag>
 	<Tag name="P_Red">Připraveno</Tag>
 	<Tag name="P_Orange">Změnit</Tag>
 	<Tag name="P_Yellow">Žlutý les</Tag>
@@ -533,8 +535,9 @@
 	<Tag name="FOV">Zorné pole</Tag>
 	<Tag name="Effects">Efekty</Tag>
 	<Tag name="AllEffects">Efekty povoleny</Tag>
-	<Tag name="ssao">SSAO</Tag>
-	<Tag name="softparticles">Měkké částice</Tag>
+	<Tag name="SSAO">SSAO (Ambient Occlusion)</Tag>
+	<Tag name="GI">Global Illumination</Tag>
+	<Tag name="SoftParticles">Soft Particles</Tag>
 	<Tag name="Bloom">Odlesk</Tag>
 	<Tag name="Intensity">Síla</Tag>
 	<Tag name="OrigImage">Ztmavení</Tag>
@@ -547,7 +550,7 @@
 	<Tag name="Small">Malý</Tag>
 	<Tag name="Big">Velké</Tag>
 	<Tag name="HDRTab">HDR</Tag>
-	<Tag name="HDR">HDR+odlesk</Tag>
+	<Tag name="HDR">HDR and Bloom (High Dynamic Range)</Tag>
 	<Tag name="HDRAdaptationScale">Míra přizpůsobení</Tag>
 	<Tag name="HDRIntensity">Síla lesku</Tag>
 	<Tag name="HDROrigImage">Ztmavení lesku</Tag>
@@ -648,7 +651,7 @@
 	<Tag name="InputFocusFind">Ctrl+F  - jít do vyhledávacího pole</Tag>
 	<Tag name="InputRplCtrl1">Backspace - ukázat/skrýt ovládání (podržet Ctrl pro použití myši)</Tag>
 	<Tag name="InputRplCtrl2">P - pozastavit/opět spustit přehrávání</Tag>
-	<Tag name="InputRplCtrl3">[ , ] - přetočit zpět/vpřed (Shift - pomalu, Ctrl, Alt - rychle)</Tag>
+	<Tag name="InputRplCtrl3">Down, Up - wind backwards/forwards (shift - slow, ctrl,alt - fast)</Tag>
 	<Tag name="InputRplCtrl4">K, L - změnit pohled kamery na jiného hráče</Tag>
 	<Tag name="TweakEdit1">Alt+Z - přepnout do okna pro vylepšení (úpravy vozu)</Tag>
 	<Tag name="TweakEdit2">Alt+Shift+Z - uložit soubor a hru nahrát znovu</Tag>
@@ -1122,6 +1125,7 @@
 	<Tag name="HintScreen">Pro změnu rozlišení obrazovky a změnu nastavení obrazu podle vaší grafické karty stiskněte tlačítko Obrazovka.</Tag>
 	<Tag name="HintGraphics">To adjust graphics to your card press Screen button.</Tag>
 	<Tag name="HintInput">K prohlédnutí kláves používaných ve hře nebo k jejich změně či opětovnému přiřazení stiskněte tlačítko Vstup.</Tag>
+	<Tag name="GameStatistics">Game Statistics</Tag>
 	<Tag name="TrackNotFound">Trať nenalezena!</Tag>
 	<Tag name="TipReverse">Obrátit směr trati.</Tag>
 	<Tag name="TipNewGame">Začít závod na nové trati nebo spustit znovu nynější.</Tag>
@@ -1369,7 +1373,7 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="GameVersion">3.2</Tag>
+	<Tag name="GameVersion">3.3</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
 </MyGUI>

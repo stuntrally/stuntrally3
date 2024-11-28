@@ -37,6 +37,7 @@
 	<Tag name="Homepage">Homepage</Tag>
 	<Tag name="DocumentationWiki">Documentation (Wiki)</Tag>
 	<Tag name="Forum">Forum</Tag>
+	<Tag name="Chat">Chat</Tag>
 	<Tag name="Sources">Sources</Tag>
 	<Tag name="TrackEditorTutorial">Track Editor Tutorials</Tag>
 	<Tag name="Translations">Translations</Tag>
@@ -299,6 +300,7 @@
 	<Tag name="SC_Marble">Marble</Tag>
 	<Tag name="SC_Spring">Sterzare</Tag>
 	<Tag name="SC_Anomaly">Anomaly</Tag>
+	<Tag name="SC_PostApo">PostApo</Tag>
 	<Tag name="P_Red">Pronto</Tag>
 	<Tag name="P_Orange">Cambia</Tag>
 	<Tag name="P_Yellow">ForestaGialla</Tag>
@@ -533,8 +535,9 @@
 	<Tag name="FOV">Visualizza angolo</Tag>
 	<Tag name="Effects">Effetti</Tag>
 	<Tag name="AllEffects">Effetti abilitati</Tag>
-	<Tag name="ssao">SSAO</Tag>
-	<Tag name="softparticles">Particelle leggere</Tag>
+	<Tag name="SSAO">SSAO (Ambient Occlusion)</Tag>
+	<Tag name="GI">Global Illumination</Tag>
+	<Tag name="SoftParticles">Soft Particles</Tag>
 	<Tag name="Bloom">Bloom</Tag>
 	<Tag name="Intensity">Intensità</Tag>
 	<Tag name="OrigImage">Oscurità</Tag>
@@ -547,7 +550,7 @@
 	<Tag name="Small">Piccolo</Tag>
 	<Tag name="Big">Grande</Tag>
 	<Tag name="HDRTab">HDR</Tag>
-	<Tag name="HDR">HDR+Bloom</Tag>
+	<Tag name="HDR">HDR and Bloom (High Dynamic Range)</Tag>
 	<Tag name="HDRAdaptationScale">Adatta la scala</Tag>
 	<Tag name="HDRIntensity">Intensità del bloom</Tag>
 	<Tag name="HDROrigImage">Oscurità bloom</Tag>
@@ -648,7 +651,7 @@
 	<Tag name="InputFocusFind">Ctrl-F  barra di ricerca</Tag>
 	<Tag name="InputRplCtrl1">Backspace - mostra/nascondi i controlli (tieni premuto ctrl per usare il mouse)</Tag>
 	<Tag name="InputRplCtrl2">P - ferma/riavvia il replay</Tag>
-	<Tag name="InputRplCtrl3">[ , ] - vento in avanti/all'indietro (shift - lento, ctrl,alt -veloce)</Tag>
+	<Tag name="InputRplCtrl3">Down, Up - wind backwards/forwards (shift - slow, ctrl,alt - fast)</Tag>
 	<Tag name="InputRplCtrl4">K, L - guarda camera di un altro giocatore</Tag>
 	<Tag name="TweakEdit1">Alt-Z - vai alla finestra ottimizza (modifica auto)</Tag>
 	<Tag name="TweakEdit2">Alt-Shift-Z - salva il file e ricarica il gioco</Tag>
@@ -1122,6 +1125,7 @@
 	<Tag name="HintScreen">To change screen resolution and adjust graphics to your card press Screen button.</Tag>
 	<Tag name="HintGraphics">To adjust graphics to your card press Screen button.</Tag>
 	<Tag name="HintInput">To check keys used in game or reassign them, or to configure controller press Input button.</Tag>
+	<Tag name="GameStatistics">Game Statistics</Tag>
 	<Tag name="TrackNotFound">Pista non trovata!</Tag>
 	<Tag name="TipReverse">Direzione di pista al contrario.</Tag>
 	<Tag name="TipNewGame">Inizia il gioco su una nuova pista oppure riavvia quella attuale.</Tag>
@@ -1369,7 +1373,7 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="GameVersion">3.2</Tag>
+	<Tag name="GameVersion">3.3</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
 </MyGUI>

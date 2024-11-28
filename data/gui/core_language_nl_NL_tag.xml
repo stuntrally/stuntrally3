@@ -37,6 +37,7 @@
 	<Tag name="Homepage">Officiële website</Tag>
 	<Tag name="DocumentationWiki">Documentatie (wiki)</Tag>
 	<Tag name="Forum">Forum</Tag>
+	<Tag name="Chat">Chat</Tag>
 	<Tag name="Sources">Bronnen</Tag>
 	<Tag name="TrackEditorTutorial">Hulp omtrent bewerken van parcours</Tag>
 	<Tag name="Translations">Vertalingen</Tag>
@@ -299,6 +300,7 @@
 	<Tag name="SC_Marble">Marble</Tag>
 	<Tag name="SC_Spring">Spring</Tag>
 	<Tag name="SC_Anomaly">Anomaly</Tag>
+	<Tag name="SC_PostApo">PostApo</Tag>
 	<Tag name="P_Red">Klaar</Tag>
 	<Tag name="P_Orange">Aanpassen</Tag>
 	<Tag name="P_Yellow">Geel bos</Tag>
@@ -533,8 +535,9 @@
 	<Tag name="FOV">Kijkhoek</Tag>
 	<Tag name="Effects">Effecten</Tag>
 	<Tag name="AllEffects">Effecten inschakelen</Tag>
-	<Tag name="ssao">SSAO</Tag>
-	<Tag name="softparticles">Zachte deeltjes</Tag>
+	<Tag name="SSAO">SSAO (Ambient Occlusion)</Tag>
+	<Tag name="GI">Global Illumination</Tag>
+	<Tag name="SoftParticles">Soft Particles</Tag>
 	<Tag name="Bloom">Gloeiing</Tag>
 	<Tag name="Intensity">Intensiteit</Tag>
 	<Tag name="OrigImage">Verduisteren</Tag>
@@ -547,7 +550,7 @@
 	<Tag name="Small">Klein</Tag>
 	<Tag name="Big">Groot</Tag>
 	<Tag name="HDRTab">HDR</Tag>
-	<Tag name="HDR">HDR+Gloeiing</Tag>
+	<Tag name="HDR">HDR and Bloom (High Dynamic Range)</Tag>
 	<Tag name="HDRAdaptationScale">Automatisch</Tag>
 	<Tag name="HDRIntensity">Gloeiingsintensiteit</Tag>
 	<Tag name="HDROrigImage">Gloeiingsverduistering</Tag>
@@ -648,7 +651,7 @@
 	<Tag name="InputFocusFind">Ctrl-F  go to find box</Tag>
 	<Tag name="InputRplCtrl1">Backspace - show/hide controls (hold ctrl to use mouse)</Tag>
 	<Tag name="InputRplCtrl2">P - pause/unpause replay</Tag>
-	<Tag name="InputRplCtrl3">[ , ] - wind backwards/forwards (shift - slow, ctrl,alt - fast)</Tag>
+	<Tag name="InputRplCtrl3">Down, Up - wind backwards/forwards (shift - slow, ctrl,alt - fast)</Tag>
 	<Tag name="InputRplCtrl4">K, L - change camera view to other player</Tag>
 	<Tag name="TweakEdit1">Alt-Z - toggle tweak window (car edit)</Tag>
 	<Tag name="TweakEdit2">Alt-Shift-Z - save file and reload game</Tag>
@@ -1122,6 +1125,7 @@
 	<Tag name="HintScreen">Klik op de schermknop om de resolutie en grafische instellingen aan te passen.</Tag>
 	<Tag name="HintGraphics">To adjust graphics to your card press Screen button.</Tag>
 	<Tag name="HintInput">To check keys used in game or reassign them, or to configure controller press Input button.</Tag>
+	<Tag name="GameStatistics">Game Statistics</Tag>
 	<Tag name="TrackNotFound">Dit parcours is niet aangetroffen!</Tag>
 	<Tag name="TipReverse">Keer de rijrichting om.</Tag>
 	<Tag name="TipNewGame">Start een spel op een nieuw parcours of herstart het huidige.</Tag>
@@ -1369,7 +1373,7 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="GameVersion">3.2</Tag>
+	<Tag name="GameVersion">3.3</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
 </MyGUI>

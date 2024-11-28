@@ -37,6 +37,7 @@
 	<Tag name="Homepage">Startseite</Tag>
 	<Tag name="DocumentationWiki">Dokumentation (Wiki)</Tag>
 	<Tag name="Forum">Forum</Tag>
+	<Tag name="Chat">Chat</Tag>
 	<Tag name="Sources">Quellen</Tag>
 	<Tag name="TrackEditorTutorial">Tutorials zum Strecken Editor</Tag>
 	<Tag name="Translations">Übersetzungen</Tag>
@@ -299,6 +300,7 @@
 	<Tag name="SC_Marble">Marmor</Tag>
 	<Tag name="SC_Spring">Frühling</Tag>
 	<Tag name="SC_Anomaly">Anomalie</Tag>
+	<Tag name="SC_PostApo">PostApo</Tag>
 	<Tag name="P_Red">Rot</Tag>
 	<Tag name="P_Orange">Orange</Tag>
 	<Tag name="P_Yellow">Gelb</Tag>
@@ -533,8 +535,9 @@
 	<Tag name="FOV">Gesichtsfeld</Tag>
 	<Tag name="Effects">Effekte</Tag>
 	<Tag name="AllEffects">Effekte aktivieren</Tag>
-	<Tag name="ssao">SSAO</Tag>
-	<Tag name="softparticles">Weiche Partikel</Tag>
+	<Tag name="SSAO">SSAO (Umgebungsokklusion)</Tag>
+	<Tag name="GI">Globale Beleuchtung</Tag>
+	<Tag name="SoftParticles">Weiche Partikeln</Tag>
 	<Tag name="Bloom">Überstrahlung</Tag>
 	<Tag name="Intensity">Intensität</Tag>
 	<Tag name="OrigImage">Abdunkeln</Tag>
@@ -547,7 +550,7 @@
 	<Tag name="Small">Klein</Tag>
 	<Tag name="Big">Groß</Tag>
 	<Tag name="HDRTab">HDR</Tag>
-	<Tag name="HDR">HDR+Überstrahlung</Tag>
+	<Tag name="HDR">HDR und Bloom (hoher dynamischer Bereich)</Tag>
 	<Tag name="HDRAdaptationScale">Adaptionsrate</Tag>
 	<Tag name="HDRIntensity">Überstrahlungsintensität</Tag>
 	<Tag name="HDROrigImage">Überstrahlung abdunkeln</Tag>
@@ -648,7 +651,7 @@
 	<Tag name="InputFocusFind">Strg-F Suche fokussieren</Tag>
 	<Tag name="InputRplCtrl1">Rücktaste - Steuerung zeigen/verbergen (Strg für Maus)</Tag>
 	<Tag name="InputRplCtrl2">P - Replay pausieren/fortsetzen</Tag>
-	<Tag name="InputRplCtrl3">[ , ] - vor/zurückspulen (Umschalt - langsam, Strg,Alt - schnell)</Tag>
+	<Tag name="InputRplCtrl3">Abwärts, Aufwärts - rückwärts/vorwärts spulen (Shift - langsam, Strg, Alt - schnell)</Tag>
 	<Tag name="InputRplCtrl4">K, L - Anderen Spieler für Kamera auswählen</Tag>
 	<Tag name="TweakEdit1">Alt-Z - Feineinstellungsfenster umschalten (Auto bearbeiten)</Tag>
 	<Tag name="TweakEdit2">Alt-Umschalt-Z - Datei speichern und Spiel laden</Tag>
@@ -880,7 +883,7 @@
 	<Tag name="ObjRocks">Steine</Tag>
 	<Tag name="Group">Gruppe</Tag>
 	<Tag name="Fields">Gebiete</Tag>
-	<Tag name="InputFieldsTelepEnd">Enter - toggle teleport end edit</Tag>
+	<Tag name="InputFieldsTelepEnd">Enter - Teleport Ende bearbeiten umschalten</Tag>
 	<Tag name="Tools">Werkzeuge</Tag>
 	<Tag name="SourceTrack">Bezugsquelle</Tag>
 	<Tag name="ChngTrkTab">aus dem Tab »Strecke«</Tag>
@@ -1122,6 +1125,7 @@
 	<Tag name="HintScreen">Um die Bildschirmauflösung und die Grafikeinstellungen Ihrer Grafikkarte zu ändern, betätigen Sie den »Bildschirm«-Knopf.</Tag>
 	<Tag name="HintGraphics">Um die Grafik an Ihre Karte anzupassen, drücken Sie die Taste Bildschirm.</Tag>
 	<Tag name="HintInput">Um die Tastenbelegung zu betrachten oder zu ändern oder die Controller zu konfigurieren, betätigen Sie den »Eingabe«-Knopf.</Tag>
+	<Tag name="GameStatistics">Spielstatistik</Tag>
 	<Tag name="TrackNotFound">Strecke nicht gefunden!</Tag>
 	<Tag name="TipReverse">Streckenrichtung umkehren.</Tag>
 	<Tag name="TipNewGame">Ein Spiel auf neuer Strecke starten oder auf der aktuellen Strecke neu starten.</Tag>
@@ -1369,7 +1373,7 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="GameVersion">3.2</Tag>
+	<Tag name="GameVersion">3.3</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
 </MyGUI>

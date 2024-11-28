@@ -37,6 +37,7 @@
 	<Tag name="Homepage">Strona główna</Tag>
 	<Tag name="DocumentationWiki">Dokumentacja (Wiki)</Tag>
 	<Tag name="Forum">Forum</Tag>
+	<Tag name="Chat">Czat</Tag>
 	<Tag name="Sources">Źródła</Tag>
 	<Tag name="TrackEditorTutorial">Przewodniki Edytora Tras</Tag>
 	<Tag name="Translations">Tłumaczenia</Tag>
@@ -299,6 +300,7 @@
 	<Tag name="SC_Marble">Marmur</Tag>
 	<Tag name="SC_Spring">Wiosna</Tag>
 	<Tag name="SC_Anomaly">Anomalia</Tag>
+	<Tag name="SC_PostApo">PostApo</Tag>
 	<Tag name="P_Red">Czerwony</Tag>
 	<Tag name="P_Orange">Pomarańczowy</Tag>
 	<Tag name="P_Yellow">Żółty</Tag>
@@ -533,8 +535,9 @@
 	<Tag name="FOV">Kąt widzenia</Tag>
 	<Tag name="Effects">Efekty</Tag>
 	<Tag name="AllEffects">Efekty włączone</Tag>
-	<Tag name="ssao">SSAO</Tag>
-	<Tag name="softparticles">Gładkie cząstki</Tag>
+	<Tag name="SSAO">SSAO (Okluzja otoczenia)</Tag>
+	<Tag name="GI">Globalne oświetlenie</Tag>
+	<Tag name="SoftParticles">Miękkie Cząstki</Tag>
 	<Tag name="Bloom">Poświata</Tag>
 	<Tag name="Intensity">Intensywność</Tag>
 	<Tag name="OrigImage">Ściemnienie</Tag>
@@ -547,7 +550,7 @@
 	<Tag name="Small">Małe</Tag>
 	<Tag name="Big">Duże</Tag>
 	<Tag name="HDRTab">HDR</Tag>
-	<Tag name="HDR">HDR+Blask</Tag>
+	<Tag name="HDR">HDR i Połysk (wysoki zakres dynamiczny światła)</Tag>
 	<Tag name="HDRAdaptationScale">Skala dostosowania</Tag>
 	<Tag name="HDRIntensity">Intensywność blasku</Tag>
 	<Tag name="HDROrigImage">Ściemnienie blasku</Tag>
@@ -648,7 +651,7 @@
 	<Tag name="InputFocusFind">Ctrl-F idź do pola szukaj</Tag>
 	<Tag name="InputRplCtrl1">Backspace - pokaż/ukryj kontrolki (przytrzymaj ctrl by użyć myszy)</Tag>
 	<Tag name="InputRplCtrl2">P - pauza/wznów powtórkę</Tag>
-	<Tag name="InputRplCtrl3">[ , ] - przewiń do tyłu/do przodu (shift - wolno, ctrl,alt - szybko)</Tag>
+	<Tag name="InputRplCtrl3">Dół, Góra - przewijaj w tył/do przodu (shift - wolno, ctrl,alt - szybko)</Tag>
 	<Tag name="InputRplCtrl4">K, L - zmień kamerę na innego gracza</Tag>
 	<Tag name="TweakEdit1">Alt-Z - przełącz okno dostosowywania (edycja auta)</Tag>
 	<Tag name="TweakEdit2">Alt-Shift-Z - zapisz plik i przeładuj grę</Tag>
@@ -1122,6 +1125,7 @@
 	<Tag name="HintScreen">Aby zmienić rozdzielczość ekranu i dopasować grafikę do Twojej karty naciśnij przycisk Ekran.</Tag>
 	<Tag name="HintGraphics">By dostosować opcje do karty graficznej naciśnij Ekran.</Tag>
 	<Tag name="HintInput">By zobaczyć klawisze używane w grze, przypisać je, albo skonfigurować kontroler, naciśnij przycisk Wejście.</Tag>
+	<Tag name="GameStatistics">Statystyki Gry</Tag>
 	<Tag name="TrackNotFound">Brak trasy!</Tag>
 	<Tag name="TipReverse">Odwrotny kierunek trasy.</Tag>
 	<Tag name="TipNewGame">Zacznij grę na nowej trasie lub od nowa na obecnej.</Tag>
@@ -1369,7 +1373,7 @@
 	<Tag name="LANG_nl_NL">Nederlands (nl)</Tag>
 	<Tag name="LANG_hu_HU">Magyar (hu)</Tag>
 	<Tag name="LANG_ja">日本語 (ja)</Tag>
-	<Tag name="GameVersion">3.2</Tag>
+	<Tag name="GameVersion">3.3</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 
 </MyGUI>
