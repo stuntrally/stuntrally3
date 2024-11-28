@@ -75,7 +75,7 @@ void CData::Load(std::map <std::string, int>* surf_map, bool check)
 	user->LoadXml(pUser + "/tracks.xml", tracks);
 	
 	pre->LoadXml(path + "/presets.xml");
-	LogO(String("L*** Loaded Presets  sky: ") + toStr(pre->sky.size())+
+	LogO(String("L*** Loaded Presets") +
 		"  sky: " + toStr(pre->sky.size()) +
 		"  ter: " + toStr(pre->ter.size()) +
 		"  road: " + toStr(pre->rd.size()) +

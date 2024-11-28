@@ -59,7 +59,7 @@ SoundTemplate* SoundMgr::createTemplate(String name, String filename)
 }
 
 
-Sound* SoundMgr::createInstance(Ogre::String name)
+Sound* SoundMgr::createInstance(String name)
 {
 	//  search template
 	if (templates.find(name) == templates.end())
@@ -120,7 +120,7 @@ void SoundMgr::parseScript(FileStreamDataStream* stream)
 				else
 				{	//  attribute
 					//  split params on space
-					Ogre::StringVector veclineparams = StringUtil::split(line, "\t ", 0);
+					StringVector veclineparams = StringUtil::split(line, "\t ", 0);
 
 					if (!sst->setParameter(veclineparams))
 						LogO("@  Bad SoundScript attribute line: '"+line);
@@ -174,7 +174,7 @@ SoundTemplate::SoundTemplate(String name1, String filename1)
 {
 }
 
-bool SoundTemplate::setParameter(Ogre::StringVector vec)
+bool SoundTemplate::setParameter(StringVector vec)
 {
 	if (vec.empty())  return false;
 

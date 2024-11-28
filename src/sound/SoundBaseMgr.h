@@ -32,7 +32,7 @@ public:
 
 	//  const
 	static const float MAX_DISTANCE, REF_DISTANCE, ROLLOFF_FACTOR;
-	static const unsigned int HW_SRC = 256;  //par
+	static const unsigned int HW_SRC = 256;  //par, set..
 	static const unsigned int MAX_BUFFERS = 1024;  //
 
 	//  reverb  ---

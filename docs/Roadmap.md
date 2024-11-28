@@ -8,26 +8,34 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 ### 3.3
 
-new game *video*, 📽️ *editor videos*? all new  
+📽️ new game *video*  
+*editor videos*? all new  
 
 ----
 ### 🪄 Effects
 
-HDR, bloom  
-lens flare [shaders](https://www.shadertoy.com/results?query=lens+flare)  
-sunrays [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)  
-**Soft** Particles  
-old motion blur  
+- HDR, bloom, [fix fireflies](https://catlikecoding.com/unity/tutorials/custom-srp/hdr/)  
+- lens flare, [shaders](https://www.shadertoy.com/results?query=lens+flare)  
+- sunrays, [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)  
+- **Soft** Particles  
+- old motion blur  
 
 
 ### 🔉 Sound
 
 sound engine from [RoR PR](https://github.com/RigsOfRods/rigs-of-rods/pull/3182), branch sound fix..  
-(or replace with [ogre-audiovideo](https://github.com/OGRECave/ogre-audiovideo))
+or replace with [ogre-audiovideo](https://github.com/OGRECave/ogre-audiovideo))  
+or add **new** code for:
+- dynamic hit [sounds pool](https://github.com/kcat/openal-soft/issues/972#issuecomment-1934265230) (e.g. 10), auto removed after play
+- ambient sound, reload buffer for track
+- more tire sounds, load only used (few, pool e.g. 2), or:
+- init more sources, gui opt, [ref 1](https://github.com/kcat/openal-soft/issues/736), [ref 2](https://github.com/kcat/openal-soft/issues/972)
 
 🌧️ **Ambient** [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
-🚗🔊 More `car Sounds`, todo [task](https://stuntrally.tuxfamily.org/mantis/view.php?id=1), use [engine-sim](https://github.com/stuntrally/stuntrally3/issues/7), [muffler spectrum](https://duckduckgo.com/?t=ftsa&q=muffler+spectrum&atb=v395-1&ia=web)?  
-📦 object *hit* sounds, reverb change in water, caves, pipes-  
+🚗🔊 More `car Sounds`, todo [task](https://stuntrally.tuxfamily.org/mantis/view.php?id=1), use [engine-sim](https://github.com/stuntrally/stuntrally3/issues/7), exhaust [muffler spectrum](https://duckduckgo.com/?t=ftsa&q=muffler+spectrum&atb=v395-1&ia=web)?  
+📦 object *hit* sounds  
+underwater low pass filter, in-car or back exhaust filters-  
+reverb change in water, caves, pipes-  
 
 ### Big
 
@@ -41,13 +49,12 @@ test, move to bullet3 ?
 
 ### New
 
-darken underwater fog from car depth  
+underwater: darken fog from car depth, *fix* issues [at end](https://catlikecoding.com/unity/tutorials/flow/looking-through-water/)  
 less poly, own collision *_p.mesh for veget/obj/bld, e.g. shrooms on Cloud etc
 
 new road particles  
 new **road** textures, detail mix, vert clr blend
 
-new *Stats* tab, completed: tracks, challs, colls, etc  
 hud new best time show, win particles-  
 
 **ed key** for obj random rot, yaw, set up/dn y +-90  
@@ -57,9 +64,9 @@ add arrow for emit dir
 ----
 ## Fix Ogre
 
+`fix` ed RTTs **no** fluids  
 move **ed**, all from SR3.compositor to AppGui_Compositor.cpp  
 manual update ed RTTs^  
-`fix` ed RTTs **no** fluids
 
 no specular on terrain  
 

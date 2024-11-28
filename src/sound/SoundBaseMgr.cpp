@@ -71,10 +71,17 @@ bool SoundBaseMgr::Init(std::string snd_device, bool reverb1)
 	if (efx == ALC_FALSE)		LogO("@  EFX extention not found !");
 	else if (efx == ALC_TRUE)	LogO("@  EFX extension found.");
 
+	// ALint attr[7/*reverb ? 7 : 4*/] = { 0 };
+	// attr[0] = ALC_MONO_SOURCES;
+	// attr[1] = 4*1024;  // ok, can do more HW_SRC = 4096
+	// attr[2] = ALC_STEREO_SOURCES;
+	// attr[3] = 256;
+	// attr[4] = ALC_MAX_AUXILIARY_SENDS;
+	// attr[5] = 4;
+
 	ALint attr[4] = { 0 };
 	attr[0] = ALC_MAX_AUXILIARY_SENDS;
 	attr[1] = 4;
-
 
 	//  context
 	context = alcCreateContext(device, reverb ? attr : NULL);
@@ -189,6 +196,7 @@ void SoundBaseMgr::CreateSources()
 		//LogO(toStr(i)+" +SRC: "+toStr(hw_sources[i]));
 		++hw_sources_num;
 	}
+	LogO("@ @  Created hw sources: "+toStr(hw_sources_num)+" / "+toStr(HW_SRC));
 
 	for (i = 0; i < HW_SRC; ++i)
 		hw_sources_map[i] = -1;

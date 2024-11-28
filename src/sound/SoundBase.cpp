@@ -19,7 +19,7 @@ void SoundBase::computeAudibility(Vector3 pos1)
 	//audibility = 1.f;
 	//return;
 	
-	//  disable sound?
+	//  disabled sound
 	if (!enabled)
 	{
 		audibility = 0.0f;
@@ -42,7 +42,7 @@ void SoundBase::computeAudibility(Vector3 pos1)
 		return;
 	}
 	
-	//  hud
+	//  hud or splitscreen
 	if (is2D)
 	{
 		audibility = gain;
@@ -67,7 +67,7 @@ bool SoundBase::isPlaying()
 	{
 		int value = 0;
 		alGetSourcei((ALuint)sound_mgr->getHwSource(hw_id), AL_SOURCE_STATE, &value);
-		return (value == AL_PLAYING);
+		return value == AL_PLAYING;
 	}
 	return false;
 }
