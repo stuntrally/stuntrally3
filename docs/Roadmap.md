@@ -30,6 +30,7 @@ or add **new** code for:
 - ambient sound, reload buffer for track
 - more tire sounds, load only used (few, pool e.g. 2), or:
 - init more sources, gui opt, [ref 1](https://github.com/kcat/openal-soft/issues/736), [ref 2](https://github.com/kcat/openal-soft/issues/972)
+- ed mode, track sounds: waterfall, volcano, river..
 
 🌧️ **Ambient** [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
 🚗🔊 More `car Sounds`, todo [task](https://stuntrally.tuxfamily.org/mantis/view.php?id=1), use [engine-sim](https://github.com/stuntrally/stuntrally3/issues/7), exhaust [muffler spectrum](https://duckduckgo.com/?t=ftsa&q=muffler+spectrum&atb=v395-1&ia=web)?  
@@ -68,7 +69,14 @@ add arrow for emit dir
 move **ed**, all from SR3.compositor to AppGui_Compositor.cpp  
 manual update ed RTTs^  
 
-no specular on terrain  
+split screen: no **fog** in fluids, no refract **depth** with fsaa  
+win place twice 1st on Oc, 3plr?  
+car glass reflect cube sky pos bad on Test1-Flat?  
+-each car own reflect cube  
+
+own rqg for veget on horiz? to skip in wtr refl etc
+
+specular on terrain  
 
 rivers wrong way  
 waterfalls refract cuts off above cam y  

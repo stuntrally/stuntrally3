@@ -5,7 +5,7 @@ WIP means work in progress, unfinished, still being developed.
 
 - 3 [New tracks](https://groups.f-hub.org/d/ZXVHk6du/new-tracks-in-sr-3-3)
 - Compositor rewrite, created in code
-  - **SSAO** (ambient occlusion), needs Refractions
+  - **SSAO** (ambient occlusion, on Effects tab), needs Refractions
   - SplitScreen uses RTTs, smaller Hud fonts
     - Refractions work, SSAO too
   - Apply buttons work for Shadows and Reflections
@@ -13,10 +13,11 @@ WIP means work in progress, unfinished, still being developed.
     Global Illumination ([GI methods](https://ogrecave.github.io/ogre-next/api/latest/_gi_methods.html): IFD+VCT),
     on new Gui tab Advanced after Effects, has also debug visuals.
 - Game
-  - Setup - Paints tab has filter, to show paints only from filter rating and above.  
+  - Setup - Paints tab new *filter* slider, to show paints only from filter rating and above.  
     But editing paints list must be done w/o filter, on highest value.
     Pressing Random (or Space) sets random from visible list.
   - *Statistics* window with list of completed game tutorials, championships, challenges, collections
+  - restored tire trails, but still 1 color, meh
 - Gui comboboxes open on click (whole, not just on down arrow)
 
 ### Version 3.2 - 23.09.2024
