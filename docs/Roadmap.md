@@ -14,10 +14,10 @@ Marked: `crucial`, **Next or Big**, _Important_.
 ----
 ### 🪄 Effects
 
-- HDR, bloom, [fix fireflies](https://catlikecoding.com/unity/tutorials/custom-srp/hdr/)  
-- lens flare, [shaders](https://www.shadertoy.com/results?query=lens+flare)  
+- lens *flare*, [shaders](https://www.shadertoy.com/results?query=lens+flare), [code](https://nehe.gamedev.net/tutorial/3d_lens_flare_with_occlusion_testing/16007/)  
 - sunrays, [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)  
-- **Soft** Particles  
+- HDR, bloom, [fix fireflies](https://catlikecoding.com/unity/tutorials/custom-srp/hdr/), adjust all tracks  
+- *Soft* Particles  
 - old motion blur  
 
 
@@ -27,7 +27,6 @@ sound engine from [RoR PR](https://github.com/RigsOfRods/rigs-of-rods/pull/3182)
 or replace with [ogre-audiovideo](https://github.com/OGRECave/ogre-audiovideo))  
 or add **new** code for:
 - dynamic hit [sounds pool](https://github.com/kcat/openal-soft/issues/972#issuecomment-1934265230) (e.g. 10), auto removed after play
-- ambient sound, reload buffer for track
 - more tire sounds, load only used (few, pool e.g. 2), or:
 - init more sources, gui opt, [ref 1](https://github.com/kcat/openal-soft/issues/736), [ref 2](https://github.com/kcat/openal-soft/issues/972)
 - ed mode, track sounds: waterfall, volcano, river..
@@ -77,6 +76,8 @@ car glass reflect cube sky pos bad on Test1-Flat?
 own rqg for veget on horiz? to skip in wtr refl etc
 
 specular on terrain  
+trails after particles/clouds  
+car glass, pipes, beam etc not visible in fluid if seen from above  
 
 rivers wrong way  
 waterfalls refract cuts off above cam y  

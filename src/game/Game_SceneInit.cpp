@@ -267,6 +267,8 @@ void App::LoadCleanUp()
 	
 	if (dstTrk)
 	{
+		pGame->snd->DestroyAmbient();  // 🔉
+
 		scn->refl.DestroyFluids();
 		scn->refl.DestroyRTT();
 
@@ -323,7 +325,7 @@ void App::LoadCleanUp()
 	{
 		scn->DelRoadDens();
 		scn->grass->Destroy();  // 🌿
-		scn->DestroyVegets();    // 🌳🪨
+		scn->DestroyVegets();   // 🌳🪨
 
 		DestroyObjects(true);   // 📦🏢
 		DestroyCollects(true);  // 💎
@@ -820,6 +822,13 @@ void App::LoadView(int c)
 //  ⏱️ HUD etc  10 last
 void App::LoadMisc()
 {
+/*	static int a = 1;
+	pGame->snd->CreateAmbient("ambient/"+toStr(a));  // 🔉
+	++a;
+	if (a > 2)  a = 1;
+	// sc->ambientSnd
+	// sc->ambientVol
+*/
 	bool rev = pSet->game.track_reversed;	
 	/**if (pGame && !pGame->cars.empty())  //todo: move this into gui track tab chg evt, for cur game type
 		gcom->UpdGuiRdStats(scn->road, scn->sc, gcom->sListTrack,

@@ -82,7 +82,7 @@ SoundBase* SoundBaseMgr::createSound(String file, String name)
 bool SoundBaseMgr::loadWAVFile(String file, ALuint buffer, int& outSamples)
 {
 	outSamples = 0;
-	//LogO("@  Loading WAV file "+file);
+	LogO("@  Loading WAV: "+file);
 
 	// create the Stream
 	std::string path = PATHS::Sounds()+"/"+file;
@@ -180,8 +180,9 @@ bool SoundBaseMgr::loadWAVFile(String file, ALuint buffer, int& outSamples)
 	free(bdata);
 
 	if (error != AL_NO_ERROR)
-	{	LogO("@  OpenAL error while loading buffer for "+file+" : "+toStr(error));  return false;  }
-
+	{	LogO("@  OpenAL error while loading buffer for "+file+" : "+toStr(error));
+		return false;
+	}
 	fd.close();  fi.close();
 	return true;
 }
@@ -192,7 +193,7 @@ bool SoundBaseMgr::loadWAVFile(String file, ALuint buffer, int& outSamples)
 bool SoundBaseMgr::loadOGGFile(String file, ALuint buffer, int& outSamples)
 {
 	outSamples = 0;
-	//LogO("Loading OGG file "+file);
+	LogO("Loading OGG: "+file);
 
 	String path = PATHS::Sounds()+"/"+file;
 	FILE* fp = fopen(path.c_str(), "rb");
@@ -231,13 +232,15 @@ bool SoundBaseMgr::loadOGGFile(String file, ALuint buffer, int& outSamples)
 		delete[] bdata;  // stream will be closed by itself
 
 		if (error != AL_NO_ERROR)
-		{	LogO("@  OpenAL error while loading buffer for "+file+" : "+toStr(error));  return false;  }
-
-		//note: no need to call fclose(); ov_clear does it for us
+		{	LogO("@  OpenAL error while loading buffer for "+file+" : "+toStr(error));
+			return false;
+		}
+		// note: no need to call fclose(); ov_clear does it for us
 		ov_clear(&oggFile);
 		return true;
 	}
-	LogO("@  Can't open OGG sound file: "+file);  return false;
+	LogO("@  Can't open OGG sound file: "+file);
+	return false;
 }
 
 

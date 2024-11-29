@@ -47,7 +47,7 @@ void SoundBase::computeAudibility(Vector3 pos1)
 	{
 		audibility = gain;
 		return;
-	}		
+	}
 
 	//  3d
 	float distance = (pos1 - pos).length();

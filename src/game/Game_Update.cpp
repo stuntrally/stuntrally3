@@ -55,7 +55,7 @@ void App::update( float dt )
 	#endif
 
 
-	if (pSet->g.ssao)  //-
+	if (pSet->g.ssao)  //- in ReflectListener::passEarlyPreExecute
 		UpdateSSAO(mCamera);  // 🕳️
 	if (pSet->gi)
 		UpdateGI();  // 🌄

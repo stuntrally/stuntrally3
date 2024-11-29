@@ -5,7 +5,7 @@
 #include <AL/al.h>
 #include <AL/alc.h>
 #include <AL/efx.h>
-class SoundBase;  struct REVERB_PRESET;
+class SoundBase;  class SoundDynamic;  struct REVERB_PRESET;
 
 //#define REVERB_BROWSER  // 🧰 _Tool_  keys 1,2: change prev,next reverb preset
 
@@ -32,23 +32,24 @@ public:
 
 	//  const
 	static const float MAX_DISTANCE, REF_DISTANCE, ROLLOFF_FACTOR;
-	static const unsigned int HW_SRC = 256;  //par, set..
+	static const unsigned int CREATE_SRC = 256;  //par, context, all
+	static const unsigned int ALL_SRC = 226;  //par, set.. const sources[], rest is for dynamic pool
 	static const unsigned int MAX_BUFFERS = 1024;  //
 
 	//  reverb  ---
 	void SetReverb(std::string name);
 
-	bool reverb;
+	bool reverb =1;
 	std::string sReverb;  // info
 	void InitReverbMap();
 	std::map <std::string, int> mapReverbs;
 	ALuint LoadEffect(const REVERB_PRESET* reverb);
 
 	//  var
-	int hw_sources_num;  // total number of available hardware sources < HW_SRC
-	int hw_sources_use;
-	int sources_use;
-	int buffers_use, buffers_used_max;
+	int hw_sources_num = 0;  // total number of available hardware sources < ALL_SRC
+	int hw_sources_use = 0;
+	int sources_use = 0;
+	int buffers_use = 0, buffers_used_max = 0;
 
 //private:
 	void recomputeAllSources();
@@ -62,17 +63,22 @@ public:
 	bool loadWAVFile(Ogre::String file, ALuint buffer, int& outSamples);
 	bool loadOGGFile(Ogre::String file, ALuint buffer, int& outSamples);
 
-	//  ambient sound (own, low level)
-	// ALuint amb_source, amb_buffer;
-
 	
-	//  active audio sources (hardware sources)
+	//  SR3 new, dynamic sounds  ----
+	SoundDynamic* ambient =0;  // one, looped, always play
+
+	// std::list<SoundDynamic*> dynamics;  // auto removed
+	// void UpdateDynamic(float dt);
+
+
+	//  audio sources  ----
+	std::vector<SoundBase*> sources;
+
+	//  active audio hardware sources
 	std::vector<int>  hw_sources_map;   // stores the hardware index for each source. -1 = unmapped
 	std::vector<ALuint> hw_sources;     // this buffer contains valid AL handles up to hw_sources_num
 
-	//  audio sources
-	std::vector<SoundBase*> sources;
-	
+
 	//  helper for calculating the most audible sources
 	std::pair<int, float> src_audible[MAX_BUFFERS];
 	
@@ -82,17 +88,18 @@ public:
 
 	Ogre::Vector3 camera_position{0,0,0};
 
-	//  al vars
-	ALCdevice*  device;
-	ALCcontext* context;
+	//  AL vars  ----
+	ALCdevice*  device =0;
+	ALCcontext* context =0;
 
-	ALuint slot, effect;
+	ALuint slot =0, effect =0;
 
-	float master_volume;
+	float master_volume = 1.f;
 
 
-	//  function pointers
+	//  AL function pointers
 	bool _checkALErrors(const char* file, int line);
+private:
 	LPALGENEFFECTS alGenEffects;
 	LPALDELETEEFFECTS alDeleteEffects;
 	LPALISEFFECT alIsEffect;

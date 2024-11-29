@@ -8,7 +8,7 @@
 namespace Ogre  {  class FileStreamDataStream;  }
 class SoundBase;  class SoundBaseMgr;
 
-const int MAX_SOUNDS_PER_SCRIPT = 12;  // per 1 template, todo: vector<
+const int MAX_SOUNDS_PER_SCRIPT = 12;  // per 1 template, todo? vector<
 
 
 ///  sound template  from .cfg to create
@@ -86,7 +86,12 @@ public:
 
 	void parseScript(Ogre::FileStreamDataStream* stream);  // sounds.cfg
 
+
 	Sound* createInstance(Ogre::String templ);  // new Sound
+
+	void CreateAmbient(Ogre::String templ);
+	void DestroyAmbient();
+
 
 	void setPaused(bool mute);
 	void setMasterVolume(float vol);

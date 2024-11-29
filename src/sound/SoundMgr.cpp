@@ -2,6 +2,7 @@
 #include "Def_Str.h"
 #include "SoundMgr.h"
 #include "SoundBase.h"
+#include "SoundDynamic.h"
 #include "SoundBaseMgr.h"
 #include <OgreDataStream.h>
 #include <OgreException.h>
@@ -63,7 +64,10 @@ Sound* SoundMgr::createInstance(String name)
 {
 	//  search template
 	if (templates.find(name) == templates.end())
+	{
+		LogO("@ sound template not found in .cfg: "+name);
 		return NULL;
+	}
 
 	SoundTemplate* templ = templates[name];
 
@@ -199,7 +203,7 @@ bool SoundTemplate::setParameter(StringVector vec)
 		if (vec.size() < 3)  return false;
 		if (free_sound >= MAX_SOUNDS_PER_SCRIPT)
 		{
-			LogO("@  SoundScript: Reached MAX_SOUNDS_PER_SCRIPT limit (" + toStr(MAX_SOUNDS_PER_SCRIPT) + ")");
+			LogO("@  Reached MAX_SOUNDS_PER_SCRIPT limit (" + toStr(MAX_SOUNDS_PER_SCRIPT) + ")");
 			return false;
 		}
 		sound_pitches[free_sound] = StringConverter::parseReal(vec[1]);  // unpitched = 0.0
@@ -368,7 +372,7 @@ bool Sound::isAudible()
 void Sound::runOnce()
 {
 	if (start_sound)
-		 if (start_sound->isPlaying())  return;
+	if (start_sound->isPlaying())  return;
 		else start_sound->play();
 
 	for (int i=0; i < templ->free_sound; ++i)
@@ -382,7 +386,7 @@ void Sound::runOnce()
 		}
 
 	if (stop_sound)
-		 if (stop_sound->isPlaying())  return;
+	if (stop_sound->isPlaying())  return;
 		else stop_sound->play();
 }
 
@@ -437,4 +441,37 @@ void Sound::setEnabled(bool e)
 	for (int i=0; i < templ->free_sound; ++i)
 		if (sounds[i])
 			sounds[i]->setEnabled(e);
+}
+
+
+//  New ambient
+//---------------------------------------------------------------------
+void SoundMgr::CreateAmbient(String name)
+{
+	if (sound_mgr->ambient)
+		DestroyAmbient();
+
+	//  search template
+	if (templates.find(name) == templates.end())
+	{
+		LogO("@ sound ambient template not found in .cfg: "+name);
+		return;
+	}
+	LogO("@ sound ambient create: "+name);
+
+	SoundTemplate* templ = templates[name];
+
+	sound_mgr->ambient = new SoundDynamic(sound_mgr);
+	sound_mgr->ambient->Create(templ->sound_names[0], true, true, 0);
+}
+
+void SoundMgr::DestroyAmbient()
+{
+	if (!sound_mgr->ambient)
+		return;
+	sound_mgr->ambient->stop();
+	sound_mgr->ambient->Destroy();
+	
+	delete sound_mgr->ambient;
+	sound_mgr->ambient = 0;
 }

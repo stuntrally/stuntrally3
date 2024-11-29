@@ -17,13 +17,9 @@ const float SoundBaseMgr::ROLLOFF_FACTOR = 0.05f;  // 0.05 0.1  1.0 new
 //  Init
 //---------------------------------------------------------------------------------------------
 SoundBaseMgr::SoundBaseMgr()
-	:buffers_use(0), buffers_used_max(0), sources_use(0)
-	,hw_sources_use(0), hw_sources_num(0)
-	,context(NULL), device(NULL)
-	,slot(0), effect(0), master_volume(1.f)
 {
-	hw_sources_map.resize(HW_SRC,0);
-	hw_sources.resize(HW_SRC,0);
+	hw_sources_map.resize(ALL_SRC,0);
+	hw_sources.resize(ALL_SRC,0);
 	sources.resize(MAX_BUFFERS,0);
 	buffers.resize(MAX_BUFFERS,0);
 	buffer_file.resize(MAX_BUFFERS);
@@ -73,7 +69,7 @@ bool SoundBaseMgr::Init(std::string snd_device, bool reverb1)
 
 	// ALint attr[7/*reverb ? 7 : 4*/] = { 0 };
 	// attr[0] = ALC_MONO_SOURCES;
-	// attr[1] = 4*1024;  // ok, can do more HW_SRC = 4096
+	// attr[1] = pSet->;  //4*1024;  // ok, can do more CREATE_SRC = 4096
 	// attr[2] = ALC_STEREO_SOURCES;
 	// attr[3] = 256;
 	// attr[4] = ALC_MAX_AUXILIARY_SENDS;
@@ -118,10 +114,12 @@ bool SoundBaseMgr::Init(std::string snd_device, bool reverb1)
 	//  get function pointers
 	alGenEffects    = (LPALGENEFFECTS)alGetProcAddress("alGenEffects");
 	alDeleteEffects = (LPALDELETEEFFECTS)alGetProcAddress("alDeleteEffects");
+	
 	alIsEffect = (LPALISEFFECT)alGetProcAddress("alIsEffect");
 	alEffecti  = (LPALEFFECTI)alGetProcAddress("alEffecti");
 	alEffectf  = (LPALEFFECTF)alGetProcAddress("alEffectf");
 	alEffectfv = (LPALEFFECTFV)alGetProcAddress("alEffectfv");
+	
 	alGenAuxiliaryEffectSlots = (LPALGENAUXILIARYEFFECTSLOTS)alGetProcAddress("alGenAuxiliaryEffectSlots");
 	alAuxiliaryEffectSloti = (LPALAUXILIARYEFFECTSLOTI)alGetProcAddress("alAuxiliaryEffectSloti");
 	alDeleteAuxiliaryEffectSlots = (LPALDELETEAUXILIARYEFFECTSLOTS)alGetProcAddress("alDeleteAuxiliaryEffectSlots");
@@ -129,6 +127,7 @@ bool SoundBaseMgr::Init(std::string snd_device, bool reverb1)
 
 	//  doppler
 	alDopplerFactor(0.f);  // 1.f  todo: vel..
+	//alSpeedOfSound(343.3f);
 	//alDopplerVelocity(343.f);
 
 	alDistanceModel(AL_INVERSE_DISTANCE_CLAMPED);  //+
@@ -183,7 +182,7 @@ void SoundBaseMgr::CreateSources()
 	if (!device)  return;
 	LogO("@ @  Creating hw sources.");
 	int i;
-	for (i = 0; i < HW_SRC; ++i)
+	for (i = 0; i < ALL_SRC; ++i)
 	{
 		alGetError();
 		alGenSources(1, &hw_sources[i]);
@@ -196,9 +195,9 @@ void SoundBaseMgr::CreateSources()
 		//LogO(toStr(i)+" +SRC: "+toStr(hw_sources[i]));
 		++hw_sources_num;
 	}
-	LogO("@ @  Created hw sources: "+toStr(hw_sources_num)+" / "+toStr(HW_SRC));
+	LogO("@ @  Created hw sources: "+toStr(hw_sources_num)+" / "+toStr(ALL_SRC));
 
-	for (i = 0; i < HW_SRC; ++i)
+	for (i = 0; i < ALL_SRC; ++i)
 		hw_sources_map[i] = -1;
 
 	buffers_used_max = buffers_use;  // save for info
@@ -212,7 +211,7 @@ void SoundBaseMgr::DestroySources(bool all)
 	
 	LogO("@ @  Destroying hw sources.");
 	int i;
-	for (int i = 0; i < HW_SRC; ++i)
+	for (int i = 0; i < ALL_SRC; ++i)
 	{
 		//LogO(toStr(i)+" -SRC: "+toStr(hw_sources[i]));
 		alSourceStop(hw_sources[i]);
@@ -361,7 +360,7 @@ void SoundBaseMgr::recomputeSource(int id, int reason, float fl, Vector3* vec)
 			}else
 			{
 				//  now, compute who is the faintest
-				//  note: we know the table m_hardware_sources_map is full!
+				//  note: we know hw_sources_map is full!
 				float fv = 1.0f;
 				int al_faintest = 0;
 				for (int i=0; i < hw_sources_num; i++)
