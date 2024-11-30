@@ -253,23 +253,6 @@ SoundBaseMgr::~SoundBaseMgr()
 }
 
 
-//  💫 Update
-//-----------------------------------------------------------------------------------
-void SoundBaseMgr::setCamera(Vector3 pos, Vector3 dir, Vector3 up, Vector3 vel)
-{
-	if (!device)  return;
-	camera_position = pos;
-	recomputeAllSources();
-
-	float o[6];
-	o[0] = dir.x;  o[1] = dir.y;  o[2] = dir.z;
-	o[3] = up.x;  o[4] = up.y;  o[5] = up.z;
-
-	alListener3f(AL_POSITION, pos.x, pos.y, pos.z);
-	alListener3f(AL_VELOCITY, vel.x, vel.y, vel.z);
-	alListenerfv(AL_ORIENTATION, o);
-}
-
 bool compareByAudibility(std::pair<int, float> a, std::pair<int, float> b)
 {
 	return a.second > b.second;
@@ -449,4 +432,31 @@ void SoundBaseMgr::setMasterVolume(float vol)
 	if (!device)  return;
 	master_volume = vol;
 	alListenerf(AL_GAIN, master_volume);
+}
+
+
+//  💫 Update
+//-----------------------------------------------------------------------------------
+void SoundBaseMgr::setCamera(Vector3 pos, Vector3 dir, Vector3 up, Vector3 vel)
+{
+	if (!device)  return;
+	camera_position = pos;
+	
+	recomputeAllSources();
+
+	float o[6];
+	o[0] = dir.x;  o[1] = dir.y;  o[2] = dir.z;
+	o[3] = up.x;  o[4] = up.y;  o[5] = up.z;
+
+	alListener3f(AL_POSITION, pos.x, pos.y, pos.z);
+	alListener3f(AL_VELOCITY, vel.x, vel.y, vel.z);
+	alListenerfv(AL_ORIENTATION, o);
+}
+
+void SoundBaseMgr::Update(float dt)
+{
+	// ambient
+	// todo: cam vel.. doppler
+
+	// check dynamic, remove finished
 }

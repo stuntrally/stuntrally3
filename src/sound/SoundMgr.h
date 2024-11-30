@@ -83,6 +83,7 @@ public:
 	SoundMgr();
 	~SoundMgr();
 	bool Init(std::string snd_device, bool reverb);
+	void Update(float dt);
 
 	void parseScript(Ogre::FileStreamDataStream* stream);  // sounds.cfg
 

@@ -20,6 +20,7 @@ public:
 	//  main  ---
 	bool Init(std::string snd_device, bool reverb1);
 	void CreateSources(), DestroySources(bool all=false);  // for game reload
+	void Update(float dt);
 
 	SoundBase* createSound(Ogre::String file, Ogre::String name);
 
@@ -65,7 +66,7 @@ public:
 
 	
 	//  SR3 new, dynamic sounds  ----
-	SoundDynamic* ambient =0;  // one, looped, always play
+	SoundDynamic* ambient =0;  // one, 2d, looped, always play
 
 	// std::list<SoundDynamic*> dynamics;  // auto removed
 	// void UpdateDynamic(float dt);
