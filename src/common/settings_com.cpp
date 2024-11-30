@@ -101,18 +101,21 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 
 
 	//  🔊 Sounds  --------
-	Param(c,w, "sound.device", s.snd_device);			Param(c,w, "sound.reverb", s.snd_reverb);
-	Param(c,w, "sound.volume", s.vol_master);			Param(c,w, "sound.ambient", s.vol_ambient);
+	Param(c,w, "sound.volume", s.vol_master);				Param(c,w, "sound.ambient", s.vol_ambient);
 #ifndef SR_EDITOR  // game only
-	Param(c,w, "sound.vol_engine", s.vol_engine);		Param(c,w, "sound.vol_turbo", s.vol_turbo);
-	Param(c,w, "sound.vol_tires", s.vol_tires);			Param(c,w, "sound.vol_env", s.vol_env);
+	Param(c,w, "sound.vol_engine", s.vol_engine);			Param(c,w, "sound.vol_turbo", s.vol_turbo);
+	Param(c,w, "sound.vol_tires", s.vol_tires);				Param(c,w, "sound.vol_env", s.vol_env);
 	Param(c,w, "sound.vol_susp", s.vol_susp);
-	Param(c,w, "sound.vol_fl_splash", s.vol_fl_splash);	Param(c,w, "sound.vol_fl_cont", s.vol_fl_cont);
-	Param(c,w, "sound.vol_car_crash", s.vol_car_crash);	Param(c,w, "sound.vol_car_scrap", s.vol_car_scrap);
+	Param(c,w, "sound.vol_fl_splash", s.vol_fl_splash);		Param(c,w, "sound.vol_fl_cont", s.vol_fl_cont);
+	Param(c,w, "sound.vol_car_crash", s.vol_car_crash);		Param(c,w, "sound.vol_car_scrap", s.vol_car_scrap);
 	Param(c,w, "sound.hud_vol", s.vol_hud);
-	Param(c,w, "sound.hud_chk", s.snd_chk);				Param(c,w, "sound.hud_chk_wrong", s.snd_chkwr);
-#endif
-
+	Param(c,w, "sound.hud_chk", s.snd_chk);					Param(c,w, "sound.hud_chk_wrong", s.snd_chkwr);
+#endif  // snd setup
+	Param(c,w, "sound_config.device", s.snd_device);		Param(c,w, "sound_config.reverb", s.snd_reverb);
+	Param(c,w, "sound_config.cnt_sources", s.cnt_sources);	Param(c,w, "sound_config.cnt_dynamics", s.cnt_dynamics);
+	Param(c,w, "sound_config.cnt_buffers", s.cnt_buffers);
+	Param(c,w, "sound_config.ref_dist", s.ref_dist);		Param(c,w, "sound_config.rolloff", s.rolloff);
+	Param(c,w, "sound_config.max_dist", s.max_dist);
 
 	//  🪟 font  ----
 	Param(c,w, "font.gui", font_gui);

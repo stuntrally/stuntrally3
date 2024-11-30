@@ -33,9 +33,7 @@ public:
 
 
 	//  const
-	static const float MAX_DISTANCE, REF_DISTANCE, ROLLOFF_FACTOR;
-	static const unsigned int CREATE_SRC = 256;  //par, context, all
-	static const unsigned int ALL_SRC = 226;  //par, set.. const sources[], rest is for dynamic pool
+	float MAX_DISTANCE, REF_DISTANCE, ROLLOFF_FACTOR;
 	static const unsigned int MAX_BUFFERS = 1024;  //
 
 	//  reverb  ---

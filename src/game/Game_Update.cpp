@@ -2,26 +2,21 @@
 #include "par.h"
 #include "Def_Str.h"
 #include "CScene.h"
-// #include "SceneXml.h"
-// #include "CData.h"
 #include "settings.h"
 #include "CHud.h"
 #include "CGui.h"
 #include "GuiCom.h"
 #include "CGame.h"
 #include "game.h"
-// #include "SoundMgr.h"
-// #include "CarPosInfo.h"
 #include "CarModel.h"
 #include "FollowCamera.h"
-// #include "carcontrolmap_local.h"
-// #include "CInput.h"
 #include "Road.h"
 #include "PaceNotes.h"
+#include "gameclient.hpp"
+#include "SoundMgr.h"
+
 #include "GraphicsSystem.h"
 #include "BtOgreExtras.h"
-#include "gameclient.hpp"
-
 #include <OgreVector3.h>
 #include <OgreSceneManager.h>
 #include <OgreRoot.h>
@@ -162,6 +157,8 @@ void App::update( float dt )
 			for (int c = 0; c < carModels.size(); ++c)
 				hud->Update(c, dt);
 			hud->Update(-1, dt);
+
+			pGame->snd->Update(dt);  // 🔊
 		
 
 			///  📉 graphs update  -._/\_-.

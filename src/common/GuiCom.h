@@ -270,7 +270,10 @@ public:
 	SV svVolTires, svVolSusp, svVolEnv;
 	SV svVolFlSplash, svVolFlCont, svVolCarCrash, svVolCarScrap;
 	Ck ckSndChk, ckSndChkWr;
-#endif
+#endif  // setup
+	SV svSndRefDist, svSndRolloff, svSndMaxDist;
+	SV svSndBuf, svSndSrc, svSndSrcDyn;
+
 
 	//  ⚙️ Settings  --------------------------
 	//  startup common	

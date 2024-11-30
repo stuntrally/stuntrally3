@@ -250,7 +250,8 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	// ck= &ckSoftPar;		ck->Init("SoftParticles",&pSet->softparticles);  Cev(EffUpdShd);
 
 
-	//  🔉 Sound  --------
+	//  🔉 Sound
+	//------------------------------------------------------------
 	sv= &svVolMaster;	sv->Init("VolMaster",	&pSet->s.vol_master, 0.f, 2.0f);  sv->DefaultF(1.55f);  SevC(VolMaster);
 	sv= &svVolAmbient;	sv->Init("VolAmbient",	&pSet->s.vol_ambient, 0.f, 2.0f);  sv->DefaultF(1.f);
 
@@ -269,9 +270,17 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 
 	ck= &ckSndChk;		ck->Init("SndChk",		&pSet->s.snd_chk);
 	ck= &ckSndChkWr;	ck->Init("SndChkWr",    &pSet->s.snd_chkwr);
-#endif
+#endif  // setup
 	ck= &ckReverb;		ck->Init("ChkReverb",   &pSet->s.snd_reverb);
 	sv= &svVolHud;		sv->Init("VolHud",		&pSet->s.vol_hud,    0.f, 2.f);  sv->DefaultF(0.75f);  SevC(VolHud);
+
+	sv= &svSndBuf;      sv->Init("SndBuf",      &pSet->s.cnt_buffers, 256, 2048, 2); sv->DefaultI(1024);
+	sv= &svSndSrc;      sv->Init("SndSrc",      &pSet->s.cnt_sources, 64, 1024, 2); sv->DefaultI(244);
+	sv= &svSndSrcDyn;   sv->Init("SndSrcDyn",   &pSet->s.cnt_dynamics, 6, 256, 2);  sv->DefaultI(12);
+
+	sv= &svSndRefDist;	sv->Init("SndRefDist", &pSet->s.ref_dist, 0.01f, 100.f, 2.f);  sv->DefaultF(1.f);
+	sv= &svSndMaxDist;	sv->Init("SndMaxDist", &pSet->s.max_dist, 0.01f, 1500.f, 2.f);  sv->DefaultF(500.f);
+	sv= &svSndRolloff;	sv->Init("SndRolloff", &pSet->s.rolloff,  0.00f, 1.f, 2.f);  sv->DefaultF(0.05f);
 
 
 	//  ⚙️ Settings  🆕 Startup common 

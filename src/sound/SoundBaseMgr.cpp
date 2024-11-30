@@ -6,12 +6,10 @@
 #include <AL/alext.h>
 #include <AL/efx.h>
 #include "SoundReverbSets.h"
+#include "settings.h"
+#include <vector>
 using namespace Ogre;
-
-
-const float SoundBaseMgr::MAX_DISTANCE	 = 500.f;  // 500
-const float SoundBaseMgr::REF_DISTANCE   = 1.0f;   // 1  7.5 new
-const float SoundBaseMgr::ROLLOFF_FACTOR = 0.05f;  // 0.05 0.1  1.0 new
+using namespace std;
 
 
 //  Init
@@ -19,11 +17,16 @@ const float SoundBaseMgr::ROLLOFF_FACTOR = 0.05f;  // 0.05 0.1  1.0 new
 SoundBaseMgr::SoundBaseMgr(SETTINGS* pSet1)
 	:pSet(pSet1)
 {
-	hw_sources_map.resize(ALL_SRC,0);
-	hw_sources.resize(ALL_SRC,0);
+	hw_sources_map.resize(pSet->s.cnt_sources,0);
+	hw_sources.resize(pSet->s.cnt_sources,0);
+
 	sources.resize(MAX_BUFFERS,0);
 	buffers.resize(MAX_BUFFERS,0);
 	buffer_file.resize(MAX_BUFFERS);
+
+	MAX_DISTANCE = 500.f;  // 500
+	REF_DISTANCE = 1.0f;   // 1  7.5 new
+	ROLLOFF_FACTOR = 0.05f;  // 0.05 0.1  1.0 new
 }
 
 void logList(const char *list)
@@ -68,20 +71,15 @@ bool SoundBaseMgr::Init(std::string snd_device, bool reverb1)
 	if (efx == ALC_FALSE)		LogO("@  EFX extention not found !");
 	else if (efx == ALC_TRUE)	LogO("@  EFX extension found.");
 
-	// ALint attr[7/*reverb ? 7 : 4*/] = { 0 };
-	// attr[0] = ALC_MONO_SOURCES;
-	// attr[1] = pSet->;  //4*1024;  // ok, can do more CREATE_SRC = 4096
-	// attr[2] = ALC_STEREO_SOURCES;
-	// attr[3] = 256;
-	// attr[4] = ALC_MAX_AUXILIARY_SENDS;
-	// attr[5] = 4;
-
-	ALint attr[4] = { 0 };
-	attr[0] = ALC_MAX_AUXILIARY_SENDS;
-	attr[1] = 4;
+	std::vector<ALint> attr;
+	attr.push_back(ALC_MONO_SOURCES);  attr.push_back(pSet->s.cntAll());
+	attr.push_back(ALC_STEREO_SOURCES);  attr.push_back(pSet->s.cnt_sources / 10);  //?..
+	if (reverb)
+	{	attr.push_back(ALC_MAX_AUXILIARY_SENDS);  attr.push_back(4);  }
+	attr.push_back(0);  // end array
 
 	//  context
-	context = alcCreateContext(device, reverb ? attr : NULL);
+	context = alcCreateContext(device, &attr[0]);
 	if (context == NULL ||
 		alcMakeContextCurrent(context) == ALC_FALSE)
 	{
@@ -128,9 +126,14 @@ bool SoundBaseMgr::Init(std::string snd_device, bool reverb1)
 
 	//  doppler
 	alDopplerFactor(0.f);  // 1.f  todo: vel..
-	//alSpeedOfSound(343.3f);
-	//alDopplerVelocity(343.f);
-
+	alSpeedOfSound(343.3f);
+	/*	// alDopplerVelocity(1.f);
+		// SetAirAbsorptionFactor(1.0f);
+        if (IsUnderwater())
+            SetSpeedOfSound(1522.0f); // assume listener is in sea water (i.e. salt water)
+            SetAirAbsorptionFactor(0.00668f);
+            alSourcef(source, AL_AIR_ABSORPTION_FACTOR, m_air_absorption_factor);
+	*/
 	alDistanceModel(AL_INVERSE_DISTANCE_CLAMPED);  //+
 
 	//  reverb
@@ -182,23 +185,24 @@ void SoundBaseMgr::CreateSources()
 {
 	if (!device)  return;
 	LogO("@ @  Creating hw sources.");
-	int i;
-	for (i = 0; i < ALL_SRC; ++i)
+	
+	int i, ss = pSet->s.cnt_sources;
+	for (i = 0; i < ss; ++i)
 	{
 		alGetError();
 		alGenSources(1, &hw_sources[i]);
 		//alSource3i(source, AL_AUXILIARY_SEND_FILTER, slot, 0, AL_FILTER_NULL);
 
 		if (alGetError() != AL_NO_ERROR)  break;
-		alSourcef(hw_sources[i], AL_REFERENCE_DISTANCE, REF_DISTANCE);
-		alSourcef(hw_sources[i], AL_ROLLOFF_FACTOR, ROLLOFF_FACTOR);
-		alSourcef(hw_sources[i], AL_MAX_DISTANCE, MAX_DISTANCE);
+		alSourcef(hw_sources[i], AL_REFERENCE_DISTANCE, pSet->s.ref_dist);
+		alSourcef(hw_sources[i], AL_ROLLOFF_FACTOR, pSet->s.rolloff);
+		alSourcef(hw_sources[i], AL_MAX_DISTANCE, pSet->s.max_dist);
 		//LogO(toStr(i)+" +SRC: "+toStr(hw_sources[i]));
 		++hw_sources_num;
 	}
-	LogO("@ @  Created hw sources: "+toStr(hw_sources_num)+" / "+toStr(ALL_SRC));
+	LogO("@ @  Created hw sources: "+toStr(hw_sources_num)+" / "+toStr(ss));
 
-	for (i = 0; i < ALL_SRC; ++i)
+	for (i = 0; i < ss; ++i)
 		hw_sources_map[i] = -1;
 
 	buffers_used_max = buffers_use;  // save for info
@@ -212,7 +216,7 @@ void SoundBaseMgr::DestroySources(bool all)
 	
 	LogO("@ @  Destroying hw sources.");
 	int i;
-	for (int i = 0; i < ALL_SRC; ++i)
+	for (int i = 0; i < pSet->s.cnt_sources; ++i)
 	{
 		//LogO(toStr(i)+" -SRC: "+toStr(hw_sources[i]));
 		alSourceStop(hw_sources[i]);

@@ -79,8 +79,10 @@ specular on terrain
 trails after particles/clouds  
 car glass, pipes, beam etc not visible in fluid if seen from above  
 
-rivers wrong way  
-waterfalls refract cuts off above cam y  
+rqg rivers after water  
+river alpha fade last segs  
+*rivers* wrong way  
+waterfalls refract *cuts* off above cam y  
 
 Pbs particles, fade from fog, soft  
 

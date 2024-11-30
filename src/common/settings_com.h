@@ -145,7 +145,15 @@ public:
 			vol_car_crash =1.f, vol_car_scrap =1.f;
 		bool snd_chk = 0, snd_chkwr = 1;  // play hud
 	#endif
+		//  setup
 		bool snd_reverb = 1;  std::string snd_device;
+	
+		//  8 players * (10? car + 8 wheels * 2 surfaces)
+		// int detail;  // less/more sounds todo ..
+		int cnt_buffers = 1024, cnt_sources = 244, cnt_dynamics = 12;  // 256
+		int cntAll() {  return cnt_sources + cnt_dynamics;  }
+
+		float max_dist = 500.f, ref_dist = 1.f, rolloff = 0.05f;
 	} s;
 
 	//  📰🔻 Tracks list  ----
