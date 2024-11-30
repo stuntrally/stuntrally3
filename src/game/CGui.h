@@ -295,14 +295,6 @@ public:
 	/// 📊 Options  game only
 	///-----------------------------------------------------------------------------------------------------------------
 	
-	//  🔉 Sound
-	SlV(VolMaster);  SlV(VolHud);
-	SV svVolAmbient;
-	SV svVolEngine, svVolTurbo;
-	SV svVolTires, svVolSusp, svVolEnv;
-	SV svVolFlSplash, svVolFlCont, svVolCarCrash, svVolCarScrap;
-	Ck ckSndChk, ckSndChkWr, ckReverb;
-
 	CK(Reverse);  // 🏞️ track
 
 	//  ✨ Particles, Trails

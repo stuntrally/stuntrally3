@@ -182,27 +182,6 @@ void CGui::InitGui()
 	sv= &svParticles;	sv->Init("Particles",	&pSet->particles_len, 0.f, 4.f, 2.f);  sv->DefaultF(1.5f);
 	sv= &svTrails;		sv->Init("Trails",		&pSet->trails_len,    0.f, 4.f, 2.f);  sv->DefaultF(3.f);
 
-	//  🔉 Sound  --------
-	sv= &svVolMaster;	sv->Init("VolMaster",	&pSet->vol_master, 0.f, 2.0f);  sv->DefaultF(1.55f);  Sev(VolMaster);
-// sv= &svVolAmbient;	sv->Init("VolAmbient",	&pSet->vol_ambient, 0.f, 2.0f);  sv->DefaultF(1.f);  Sev(VolMaster);
-	ck= &ckReverb;		ck->Init("ChkReverb",   &pSet->snd_reverb);
-
-	sv= &svVolEngine;	sv->Init("VolEngine",	&pSet->vol_engine, 0.f, 1.4f);  sv->DefaultF(0.58f);
-	sv= &svVolTurbo;	sv->Init("VolTurbo",	&pSet->vol_turbo, 0.f, 1.6f);  sv->DefaultF(1.f);
-
-	sv= &svVolTires;	sv->Init("VolTires",	&pSet->vol_tires,  0.f, 1.4f);  sv->DefaultF(0.856f);
-	sv= &svVolSusp;		sv->Init("VolSusp",		&pSet->vol_susp,   0.f, 1.4f);  sv->DefaultF(0.474f);
-	sv= &svVolEnv;		sv->Init("VolEnv",		&pSet->vol_env,    0.f, 1.4f);  sv->DefaultF(0.748f);
-
-	sv= &svVolFlSplash;	sv->Init("VolFlSplash",	&pSet->vol_fl_splash, 0.f, 1.4f);  sv->DefaultF(0.636f);
-	sv= &svVolFlCont;	sv->Init("VolFlCont",	&pSet->vol_fl_cont,   0.f, 1.4f);  sv->DefaultF(0.878f);
-	sv= &svVolCarCrash;	sv->Init("VolCarCrash",	&pSet->vol_car_crash, 0.f, 1.4f);  sv->DefaultF(0.608f);
-	sv= &svVolCarScrap;	sv->Init("VolCarScrap",	&pSet->vol_car_scrap, 0.f, 1.4f);  sv->DefaultF(0.915f);
-
-	sv= &svVolHud;		sv->Init("VolHud",		&pSet->vol_hud,    0.f, 2.f);  sv->DefaultF(0.75f);  Sev(VolHud);
-	ck= &ckSndChk;		ck->Init("SndChk",		&pSet->snd_chk);
-	ck= &ckSndChkWr;	ck->Init("SndChkWr",    &pSet->snd_chkwr);
-
 
 	///  ✅ View Checks
 	//------------------------------------------------------------------------

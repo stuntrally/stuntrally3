@@ -305,7 +305,7 @@ if (bSound)
 		s.engine->setPitch(rpm);
 	}
 	s.engine->setPosition(ep, ev);
-	s.engine->setGain(gain * dynamics.engine_vol_mul * pSet->vol_engine);
+	s.engine->setGain(gain * dynamics.engine_vol_mul * pSet->s.vol_engine);
 	
 	//  turbo
 	if (s.turbo)
@@ -316,7 +316,7 @@ if (bSound)
 		gain = (rpm - tb.rpm_min) / (tb.rpm_max - tb.rpm_min);
 		gain = min(1.f, max(0.001f, gain));
 		float thr = throttle * tb.vol_max + tb.vol_idle;
-		s.turbo->setGain(thr * gain * pSet->vol_turbo * pSet->vol_engine);
+		s.turbo->setGain(thr * gain * pSet->s.vol_turbo * pSet->s.vol_engine);
 	}
 
 
@@ -347,7 +347,7 @@ if (bSound)
 		pitch = std::min(2.f, std::max(0.25f, pitch ));
 
 		snd->setPosition(wh, ev);
-		snd->setGain(squeal[i]*maxgain * pSet->vol_tires);
+		snd->setGain(squeal[i]*maxgain * pSet->s.vol_tires);
 		snd->setPitch(pitch * pmul);
 		//  mute others
 		if (snd != s.asphalt[i])  s.asphalt[i]->setGain(0.f);
@@ -380,7 +380,7 @@ if (bSound)
 			float gain = 0.5f + 0.7f*s.bumpvol[i] - s.bumptime[i]*(2.f+2.f*s.bumpvol[i]);
 			gain = std::max(0.f, std::min(1.0f, gain));
 
-			s.bump[i]->setGain(gain * pSet->vol_susp);
+			s.bump[i]->setGain(gain * pSet->s.vol_susp);
 			if (s.bumptime[i] < 5.f)
 				s.bumptime[i] += dt;
 		}
@@ -395,11 +395,11 @@ if (bSound)
 	gain *= 0.02f;	gain *= gain;
 	if (gain > 1.f)	gain = 1.f;
 	
-	s.wind->setGain(gain * pSet->vol_env);
+	s.wind->setGain(gain * pSet->s.vol_env);
 	s.wind->setPosition(ep, ev);
 
 	//  💨 boost
-	s.boost->setGain(boostVal * 0.55f * pSet->vol_engine);
+	s.boost->setGain(boostVal * 0.55f * pSet->s.vol_engine);
 	s.boost->setPosition(ep, ev);  //back?-
 
 
@@ -417,7 +417,7 @@ if (bSound)
 		//LogO("fluid hit i"+toStr(i)+" g"+toStr(gain)+" "+(mud?"mud":"wtr"));
 		if (!snd->isAudible())
 		{
-			snd->setGain(gain * pSet->vol_fl_splash * (mud ? 0.6f : 1.f));
+			snd->setGain(gain * pSet->s.vol_fl_splash * (mud ? 0.6f : 1.f));
 			snd->setPosition(ep, ev);
 			snd->start();  // 🔉
 		}
@@ -425,7 +425,7 @@ if (bSound)
 		if (s.mud)  {  Sound* snd = s.mud;
 		if (!snd->isAudible())
 		{
-			snd->setGain(gain * pSet->vol_fl_splash);
+			snd->setGain(gain * pSet->s.vol_fl_splash);
 			snd->setPosition(ep, ev);
 			snd->start();  // 🔉
 		}	}
@@ -435,13 +435,13 @@ if (bSound)
 	//  🌊 fluids - continuous
 	float velM = mud && whH_all > 0.1f ?
 		s.whMudSpin * 2.5f : 0.f;
-	s.mud_cont->setGain(std::min(1.f, velM) * pSet->vol_fl_cont * 0.85f);
+	s.mud_cont->setGain(std::min(1.f, velM) * pSet->s.vol_fl_cont * 0.85f);
 	s.mud_cont->setPitch(std::max(0.7f, std::min(/*3.f*/2.f, velM * 0.35f)));
 	s.mud_cont->setPosition(ep, ev);
 
 	float velW = !mud && whH_all > 0.1f && whH_all < 3.9f ?
 		dynVel / 30.f : 0.f;
-	s.water_cont->setGain(std::min(1.f, velW * 1.5f) * pSet->vol_fl_cont);
+	s.water_cont->setGain(std::min(1.f, velW * 1.5f) * pSet->s.vol_fl_cont);
 	s.water_cont->setPitch(std::max(0.7f, std::min(1.3f, velW)));
 	s.water_cont->setPosition(ep, ev);
 }
@@ -468,7 +468,7 @@ if (bSound)
 			{
 				if (bSound)
 				{
-					s.crash[i]->setGain(gain * pSet->vol_car_crash);
+					s.crash[i]->setGain(gain * pSet->s.vol_car_crash);
 					if (hitp)
 					s.crash[i]->setPosition(hp, ev);
 					s.crash[i]->start();  // 🔉
@@ -497,11 +497,11 @@ if (bSound)
 	//  🔨 crash scrap and screech
 	if (bSound)
 	{
-		s.scrap->setGain(fCarScrap * pSet->vol_car_scrap);
+		s.scrap->setGain(fCarScrap * pSet->s.vol_car_scrap);
 		if (hitp)
 		s.scrap->setPosition(hp, ev);
 
-		s.screech->setGain(fCarScreech * pSet->vol_car_scrap * 0.6f);
+		s.screech->setGain(fCarScreech * pSet->s.vol_car_scrap * 0.6f);
 		if (hitp)
 		s.screech->setPosition(hp, ev);
 	}

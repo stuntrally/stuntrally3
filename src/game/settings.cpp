@@ -202,18 +202,6 @@ void SETTINGS::Serialize(bool w, CONFIGFILE & c)
 	Param(c,w, "sim.quality", g.sim_quality);
 	Param(c,w, "sim.thread_sleep", thread_sleep);	Param(c,w, "sim.perf_speed", perf_speed);
 	//Param(c,w, "sim.gui_sleep", gui_sleep);
-
-
-	//  🔊 sound
-	Param(c,w, "sound.device", snd_device);			Param(c,w, "sound.reverb", snd_reverb);
-	Param(c,w, "sound.volume", vol_master);			Param(c,w, "sound.ambient", vol_ambient);  // todo: in ed too..
-	Param(c,w, "sound.vol_engine", vol_engine);		Param(c,w, "sound.vol_turbo", vol_turbo);
-	Param(c,w, "sound.vol_tires", vol_tires);		Param(c,w, "sound.vol_env", vol_env);
-	Param(c,w, "sound.vol_susp", vol_susp);
-	Param(c,w, "sound.vol_fl_splash", vol_fl_splash);	Param(c,w, "sound.vol_fl_cont", vol_fl_cont);
-	Param(c,w, "sound.vol_car_crash", vol_car_crash);	Param(c,w, "sound.vol_car_scrap", vol_car_scrap);
-	Param(c,w, "sound.hud_vol", vol_hud);
-	Param(c,w, "sound.hud_chk", snd_chk);			Param(c,w, "sound.hud_chk_wrong", snd_chkwr);
 }
 
 SETTINGS::SETTINGS()

@@ -168,17 +168,8 @@ public:
 	bool loadingbackground = 1, show_welcome = 1;
 	bool paintAdj = 0;
 
-	//  🔊 sound
-	float vol_master = 1.f, vol_hud = 1.f,
-		vol_ambient = 1.f,
-		vol_engine = 0.6f, vol_turbo = 1.f,
-		vol_tires =1.f, vol_susp =1.f, vol_env =1.f,
-		vol_fl_splash =1.f, vol_fl_cont =1.f,
-		vol_car_crash =1.f, vol_car_scrap =1.f;
-	bool snd_chk = 0, snd_chkwr = 1;  // play hud
-	bool snd_reverb = 1;  std::string snd_device;
 
-	//  💫 sim freq (1/interval timestep)
+	//  💫 sim freq  (1/interval timestep)
 	float game_fq = 160.f, blt_fq = 160.f;
 	int blt_iter = 24, dyn_iter = 60;
 	// guicom::g.sim_quality, sets above from presets

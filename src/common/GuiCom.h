@@ -262,6 +262,16 @@ public:
 	// SV svHDRBloomInt, svHDRBloomOrig;
 
 
+	//  🔉 Sound  --------------------------
+	SlV(VolMaster);  SlV(VolHud);
+	SV svVolAmbient;  Ck ckReverb;
+#ifndef SR_EDITOR  // game
+	SV svVolEngine, svVolTurbo;
+	SV svVolTires, svVolSusp, svVolEnv;
+	SV svVolFlSplash, svVolFlCont, svVolCarCrash, svVolCarScrap;
+	Ck ckSndChk, ckSndChkWr;
+#endif
+
 	//  ⚙️ Settings  --------------------------
 	//  startup common	
 	Ck ckStartInMain, ckAutoStart, ckEscQuits;

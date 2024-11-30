@@ -8,22 +8,14 @@
 #include "paths.h"
 
 #include "game.h"
-#include "CData.h"
-#include "TracksXml.h"
-// #include "PaceNotes.h"
 #include "Road.h"
 #include "CGame.h"
 #include "CHud.h"
 #include "CGui.h"
-// #include "SplitScreen.h"
 #include "CarModel.h"
 #include "GraphView.h"
 
-#include "Slider.h"
 #include "MultiList2.h"
-// #include <OgreCamera.h>
-// #include <OgreSceneNode.h>
-// #include "RenderBoxScene.h"
 #include <MyGUI.h>
 using namespace std;
 using namespace Ogre;
@@ -337,7 +329,7 @@ void CGui::comboGraphs(CMB)
 }
 
 
-//  [Effects]  . . . . . . . . . . . . . . . . . . . .    ---- ------ ----    . . . . . . . . . . . . . . . . . . . .
+//  🪄 Effects  . . . . . . . . . . . . . . . . . . . .    ---- ------ ----    . . . . . . . . . . . . . . . . . . . .
 
 /*void CGui::chkAllEffects(Ck*)
 {
@@ -358,18 +350,6 @@ void CGui::slEffUpd(SV*)
 {
 	if (bGI)  app->refreshCompositor();
 }*/
-
-
-//  🔊 Sound
-void CGui::slVolMaster(SV*)
-{
-	pGame->ProcessNewSettings();
-}
-
-void CGui::slVolHud(SV*)
-{
-	pGame->UpdHudSndVol();
-}
 
 
 //  👈 Hints  How to play

@@ -38,7 +38,7 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	Param(c,w, "video.bright", bright);			Param(c,w, "video.contrast", contrast);
 	Param(c,w, "graph_lights.bright", car_light_bright);
 
-	//  🪄 effects  --------
+	//  🪄 Effects  --------
 	Param(c,w, "video_eff.ssao", g.ssao);
 	Param(c,w, "video_eff.ssao_radius", ssao_radius);	Param(c,w, "video_eff.ssao_scale", ssao_scale);
 
@@ -51,7 +51,7 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	// Param(c,w, "video_eff.boost_fov", boost_fov);
 
 
-	//  📊 graphics  --------
+	//  📊 Graphics  ----------------
 	Param(c,w, "graph_detail.preset", preset);
 	
 	//  🖼️ textures
@@ -98,6 +98,20 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	Param(c,w, "graph_reflect.skip_frames", g.refl_skip);	Param(c,w, "graph_reflect.faces_once", g.refl_faces);
 	Param(c,w, "graph_reflect.dist", g.refl_dist);			Param(c,w, "graph_reflect.lod", g.refl_lod);
 	Param(c,w, "graph_reflect.ibl", g.refl_ibl);			// Param(c,w, "graph_reflect.mode", g.refl_mode);
+
+
+	//  🔊 Sounds  --------
+	Param(c,w, "sound.device", s.snd_device);			Param(c,w, "sound.reverb", s.snd_reverb);
+	Param(c,w, "sound.volume", s.vol_master);			Param(c,w, "sound.ambient", s.vol_ambient);
+#ifndef SR_EDITOR  // game only
+	Param(c,w, "sound.vol_engine", s.vol_engine);		Param(c,w, "sound.vol_turbo", s.vol_turbo);
+	Param(c,w, "sound.vol_tires", s.vol_tires);			Param(c,w, "sound.vol_env", s.vol_env);
+	Param(c,w, "sound.vol_susp", s.vol_susp);
+	Param(c,w, "sound.vol_fl_splash", s.vol_fl_splash);	Param(c,w, "sound.vol_fl_cont", s.vol_fl_cont);
+	Param(c,w, "sound.vol_car_crash", s.vol_car_crash);	Param(c,w, "sound.vol_car_scrap", s.vol_car_scrap);
+	Param(c,w, "sound.hud_vol", s.vol_hud);
+	Param(c,w, "sound.hud_chk", s.snd_chk);				Param(c,w, "sound.hud_chk_wrong", s.snd_chkwr);
+#endif
 
 
 	//  🪟 font  ----
