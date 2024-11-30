@@ -95,6 +95,8 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 	{
 		case WND_Track:   tab = mTabsTrack;  sub = gui->vSubTabsTrack[tab->getIndexSelected()];  break;
 		case WND_Edit:    tab = mTabsEdit;   sub = gui->vSubTabsEdit[tab->getIndexSelected()];  break;
+		case WND_EdObj:   tab = mTabsEdObj;  sub = gui->vSubTabsEdObj[tab->getIndexSelected()];  break;
+		
 		case WND_Help:    tab = sub = gui->vSubTabsHelp[1];  iTab1 = 0;  break;
 		case WND_Options: tab = mTabsOpts;   sub = gui->vSubTabsOpts[tab->getIndexSelected()];  break;
 		default:  break;
@@ -353,11 +355,12 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 
 		case key(U):  gui->GuiShortcut(WND_Edit, TAB_Surface);   return;  // U Surfaces  ⚫💭
 		case key(R):  gui->GuiShortcut(WND_Edit, TAB_Road);      return;  // R Road  🛣️
+		
 		case key(X):  switch (edMode)
-		{	case ED_Fluids:    gui->GuiShortcut(WND_Edit, TAB_Fluids);    return;  // X Fluids  💧🌊
-			case ED_Particles: gui->GuiShortcut(WND_Edit, TAB_Particles); return;  // X Particles  🔥
+		{	case ED_Fluids:    gui->GuiShortcut(WND_EdObj, TABo_Fluids);    return;  // X Fluids  💧🌊
+			case ED_Particles: gui->GuiShortcut(WND_EdObj, TABo_Particles); return;  // X Particles  🔥
 			default:
-			case ED_Objects:   gui->GuiShortcut(WND_Edit, TAB_Objects);   return;  // X Objects   📦
+			case ED_Objects:   gui->GuiShortcut(WND_EdObj, TABo_Objects);   return;  // X Objects   📦
 		}	return;
 		case key(C):  gui->GuiShortcut(WND_Options, 1);	  return;  // C Screen  🖥️
 		case key(A):  gui->GuiShortcut(WND_Options, 2);   return;  // A Graphics  📊

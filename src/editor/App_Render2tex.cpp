@@ -87,7 +87,7 @@ void App::CreateRnd2Tex()
 			//  🎥 Camera
 			if (r.cam)
 			{	scMgr->destroyCamera(r.cam);  r.cam = 0;  }
-			if( !r.cam && !prv3D)  // prv has own
+			if (!r.cam && !prv3D)  // prv has own
 			{
 				r.cam = scMgr->createCamera( "EdRttCam" + si, true );
 				bool btm = i == RT_RoadDens;

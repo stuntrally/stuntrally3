@@ -95,7 +95,7 @@ protected:
 
 
 	//  🪧 main menu  1 level
-	Wnd mWMainMenu =0, mWndTrack =0, mWndEdit =0;
+	Wnd mWMainMenu =0, mWndTrack =0, mWndEdit =0, mWndEdObj =0;
 	Img mMainPanels[WND_ALL] ={0,};
 	Btn mMainBtns[WND_ALL] ={0,};
 
@@ -103,7 +103,7 @@ protected:
 	Wnd mWndHelp =0, mWndOpts =0,  // common in game & ed
 		mWndMaterials =0, mWndTrkFilt =0;  // common 🛠️ tools
 	Wnd mWndPick =0;
-	Tab mTabsTrack =0, mTabsEdit =0,  // main tabs on windows
+	Tab mTabsTrack =0, mTabsEdit =0, mTabsEdObj =0,  // main tabs on windows
 		mTabsHelp =0, mTabsOpts =0, mTabsMat =0;  // common tabs
 
 	

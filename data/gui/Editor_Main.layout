@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MyGUI type="Layout" version="3.2.0">
 
-	<Widget type="Window" skin="WindowC" position="1740 24 500 610" align="Center" layer="Overlapped" name="MainMenuWnd">
+	<Widget type="Window" skin="WindowC" position="1740 24 500 730" align="Center" layer="Overlapped" name="MainMenuWnd">
 		<Property key="MinSize" value="500 400"/>
 		<Property key="Caption" value="#{SREditorVersion} #{GameVersion}"/>
 		<Property key="Alpha" value="0.7"/>
 		<Property key="Snap" value="true"/>
 		<UserString key="NotSized" value="1"/>
 
-		<Widget type="ImageBox" skin="ImageBox" position="0 410 496 169">
+		<Widget type="ImageBox" skin="ImageBox" position="0 530 496 169">
 			<Property key="ImageTexture" value="stuntrally-logo.jpg"/>
 			<!-- <Property key="ImageCoord" value="0 0 1892 645"/>  2.933  0.341 -->
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
+
+		<!-- +12 img  0 pan  +12 btn   +72  rows  0 y = 44 128 212 296 380  _ed  -->
 
 		<Widget type="ImageBox" skin="ImageBox" position="28 56 56 56">
 			<Property key="ImageCoord" value="0 896 128 128"/>
@@ -51,16 +53,35 @@
 		</Widget>
 
 		<Widget type="ImageBox" skin="ImageBox" position="28 224 56 56">
-			<Property key="ImageCoord" value="0 640 128 128"/>
+			<Property key="ImageCoord" value="384 768 128 128"/>
+			<Property key="Colour" value="0.8 0.6 0.4"/>
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="ImageTexture" value="gui_icons.png"/>
 		</Widget>
 		<Widget type="ImageBox" skin="ImageBox" position="88 212 372 80" name="PanMenu2">
 			<Property key="ImageTexture" value="menu_cur.png"/>
-			<Property key="Colour" value="0.4 0.7 1"/>
+			<Property key="Colour" value="0.8 0.8 0.8"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
 		<Widget type="Button" skin="Button" position="100 224 348 56" name="BtnMenu2">
+			<Property key="Caption" value="#{Objects}"/>
+			<Property key="Colour" value="0.8 0.8 0.8"/>
+			<Property key="TextColour" value="0.75 0.8 0.85"/>
+			<Property key="InheritsAlpha" value="false"/>
+			<Property key="FontName" value="font.big"/>
+		</Widget>
+
+		<Widget type="ImageBox" skin="ImageBox" position="28 328 56 56">
+			<Property key="ImageCoord" value="0 640 128 128"/>
+			<Property key="InheritsAlpha" value="false"/>
+			<Property key="ImageTexture" value="gui_icons.png"/>
+		</Widget>
+		<Widget type="ImageBox" skin="ImageBox" position="88 316 372 80" name="PanMenu3">
+			<Property key="ImageTexture" value="menu_cur.png"/>
+			<Property key="Colour" value="0.4 0.7 1"/>
+			<Property key="InheritsAlpha" value="false"/>
+		</Widget>
+		<Widget type="Button" skin="Button" position="100 328 348 56" name="BtnMenu3">
 			<Property key="Caption" value="#{Help}"/>
 			<Property key="Colour" value="0.4 0.7 1"/>
 			<Property key="TextColour" value="0.75 0.9 1"/>
@@ -68,17 +89,17 @@
 			<Property key="FontName" value="font.big"/>
 		</Widget>
 
-		<Widget type="ImageBox" skin="ImageBox" position="28 308 56 56">
+		<Widget type="ImageBox" skin="ImageBox" position="28 412 56 56">
 			<Property key="ImageCoord" value="0 768 128 128"/>
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="ImageTexture" value="gui_icons.png"/>
 		</Widget>
-		<Widget type="ImageBox" skin="ImageBox" position="88 296 372 80" name="PanMenu3">
+		<Widget type="ImageBox" skin="ImageBox" position="88 400 372 80" name="PanMenu4">
 			<Property key="ImageTexture" value="menu_cur.png"/>
 			<Property key="Colour" value="0.7 0.7 1"/>
 			<Property key="InheritsAlpha" value="false"/>
 		</Widget>
-		<Widget type="Button" skin="Button" position="100 308 348 56" name="BtnMenu3">
+		<Widget type="Button" skin="Button" position="100 412 348 56" name="BtnMenu4">
 			<Property key="Caption" value="#{Options}"/>
 			<Property key="Colour" value="0.7 0.7 1"/>
 			<Property key="TextColour" value="0.8 0.8 1"/>

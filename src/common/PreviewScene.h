@@ -7,7 +7,7 @@ namespace Ogre
 }
 
 //  separate 3d scene
-//  in ed for object preview
+//  in ed for veget or object preview
 //  in game could be for garage, vehicle
 
 class PreviewScene

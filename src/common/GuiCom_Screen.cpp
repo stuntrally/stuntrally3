@@ -57,6 +57,7 @@ void CGuiCom::ResizeOptWnd()
 #else  // editor
 	app->mWndTrack->setCoord(xm, ym, xo, yo);
 	app->mWndEdit->setCoord(xm, ym, xo, yo);
+	app->mWndEdObj->setCoord(xm, ym, xo, yo);
 #endif  // both, common
 	app->mWndTrkFilt->setCoord(xm, ym+50, xo, yo);
 	app->mWndHelp->setCoord(xm, ym, xo, yo);

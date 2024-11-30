@@ -49,7 +49,8 @@ public:
 	void FillPickLists();
 
 	Txt valTrk[2] ={0,0};
-	std::vector<Tab> vSubTabsTrack, vSubTabsEdit,
+	std::vector<Tab> vSubTabsTrack,
+		vSubTabsEdit, vSubTabsEdObj,
 		vSubTabsHelp, vSubTabsOpts, vSubTabsMat;
 	
 	//  util

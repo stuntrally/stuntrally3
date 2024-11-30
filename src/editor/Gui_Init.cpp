@@ -52,14 +52,16 @@ void CGui::InitGui()
 		app->vwGui.insert(app->vwGui.end(), v.begin(), v.end());
 	};
 	Load("Common");  Load("MaterialEditor");
-	Load("Editor_Main");   Load("Editor");  Load("Editor_Track");
+	Load("Editor_Main");   Load("Editor_Track");
+	Load("Editor");        Load("Editor_Objects");
 	Load("Editor_Utils");  Load("Editor_Tools");
 	Load("Editor_Help");   Load("Editor_Options");
 
 
 	//  🪟 main windows  ----
 	app->mWMainMenu = fWnd("MainMenuWnd");
-	app->mWndTrack = fWnd("TrackWnd");  app->mWndEdit = fWnd("EditorWnd");
+	app->mWndTrack = fWnd("TrackWnd");
+	app->mWndEdit = fWnd("EditorWnd");  app->mWndEdObj = fWnd("EdObjWnd");
 	app->mWndOpts = fWnd("OptionsWnd"); app->mWndHelp = fWnd("HelpWnd");  // common
 	app->mWndMaterials = fWnd("MaterialsWnd");
 	
@@ -92,6 +94,7 @@ void CGui::InitGui()
 	TabPtr tab,sub;
 	fTabW("TabWndTrack");  app->mTabsTrack = tab;
 	fTabW("TabWndEdit");   app->mTabsEdit = tab;
+	fTabW("TabWndEdObj");  app->mTabsEdObj = tab;
 	fTabW("TabWndOpts");   app->mTabsOpts = tab;
 	fTabW("TabWndHelp");   app->mTabsHelp = tab;
 	fTabW("TabWndMat");    app->mTabsMat = tab;
@@ -104,12 +107,20 @@ void CGui::InitGui()
 		sub = gcom->FindSubTab(app->mTabsTrack->getItemAt(u));
 		vSubTabsTrack.push_back(sub);
 	}
+
 	vSubTabsEdit.clear();
 	for (u=0; u < app->mTabsEdit->getItemCount(); ++u)
 	{
 		sub = gcom->FindSubTab(app->mTabsEdit->getItemAt(u));
 		vSubTabsEdit.push_back(sub);
 	}
+	vSubTabsEdObj.clear();
+	for (u=0; u < app->mTabsEdObj->getItemCount(); ++u)
+	{
+		sub = gcom->FindSubTab(app->mTabsEdObj->getItemAt(u));
+		vSubTabsEdObj.push_back(sub);
+	}
+
 	vSubTabsHelp.clear();
 	for (u=0; u < app->mTabsHelp->getItemCount(); ++u)
 	{
@@ -122,6 +133,7 @@ void CGui::InitGui()
 		sub = gcom->FindSubTab(app->mTabsOpts->getItemAt(u));
 		vSubTabsOpts.push_back(sub);
 	}
+
 	vSubTabsMat.clear();
 	for (u=0; u < app->mTabsMat->getItemCount(); ++u)
 	{

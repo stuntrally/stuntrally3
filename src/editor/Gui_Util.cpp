@@ -280,6 +280,8 @@ void App::UpdVisGui()
 	
 	mWndTrack->setVisible(notMain && pSet->inMenu == WND_Track);
 	mWndEdit->setVisible(notMain && pSet->inMenu == WND_Edit);
+	mWndEdObj->setVisible(notMain && pSet->inMenu == WND_EdObj);
+	
 	mWndHelp->setVisible(notMain && pSet->inMenu == WND_Help);
 	mWndOpts->setVisible(notMain && pSet->inMenu == WND_Options);
 	
@@ -406,7 +408,8 @@ void App::togPrvCam()
 //.......................................................................................
 void CGui::GuiShortcut(WND_Types wnd, int tab, int subtab)
 {
-	if (subtab == -1 && (!app->bGuiFocus || pSet->inMenu != wnd))  subtab = -2;  // cancel subtab cycling
+	if (subtab == -1 && (!app->bGuiFocus || pSet->inMenu != wnd))
+		subtab = -2;  // cancel subtab cycling
 
 	if (!app->bGuiFocus)
 	if (app->edMode != ED_PrvCam)  {
@@ -421,6 +424,8 @@ void CGui::GuiShortcut(WND_Types wnd, int tab, int subtab)
 	switch (wnd)
 	{	case WND_Track:		tabs = app->mTabsTrack; subt = &vSubTabsTrack; break;
 		case WND_Edit:		tabs = app->mTabsEdit;  subt = &vSubTabsEdit;  break;
+		case WND_EdObj:		tabs = app->mTabsEdObj; subt = &vSubTabsEdObj;  break;
+		
 		case WND_Help:		tabs = app->mTabsHelp;  subt = &vSubTabsHelp;  break;
 		case WND_Options:	tabs = app->mTabsOpts;  subt = &vSubTabsOpts;  break;
 		case WND_Materials:	tabs = app->mTabsMat;   subt = &vSubTabsMat;  break;
