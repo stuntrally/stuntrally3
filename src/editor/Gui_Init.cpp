@@ -95,6 +95,7 @@ void CGui::InitGui()
 	fTabW("TabWndTrack");  app->mTabsTrack = tab;
 	fTabW("TabWndEdit");   app->mTabsEdit = tab;
 	fTabW("TabWndEdObj");  app->mTabsEdObj = tab;
+	
 	fTabW("TabWndOpts");   app->mTabsOpts = tab;
 	fTabW("TabWndHelp");   app->mTabsHelp = tab;
 	fTabW("TabWndMat");    app->mTabsMat = tab;

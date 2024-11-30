@@ -363,24 +363,26 @@ int main(int argc, char* argv[])
 	string pLay = path + "data/gui/";
 	
 	vecstr lay, lay_n;
-	const vecstr lays = // todo list dir, auto
+	const vecstr lays = // todo: list dir, auto
 	{	"Common",
-		"Editor_Help",
 		"Editor",
+		"Editor_Help",
 		"Editor_Main",
+		"Editor_Objects",
 		"Editor_Options",
 		"Editor_Tools",
 		"Editor_Track",
 		"Editor_Utils",
-		"Game_Help",
 		"Game",
+		"Game_Help",
 		"Game_Main",
 		"Game_Options",
 		"Game_Replay",
 		"Game_Tweak",
 		"Game_Utils",
 		"MaterialEditor",
-		"MessageBox"};
+		"MessageBox"
+	};
 	for (auto s : lays)
 	{	lay.push_back(s + ".layout");    lay_n.push_back(s);
 	}

@@ -398,9 +398,11 @@ void App::update( float dt )
 	//--  3d view upd  (is global in window)
 	static bool oldVis = false;
 	int tab = mTabsEdit->getIndexSelected(),
+		tabO = mTabsEdObj->getIndexSelected(),
 		st5 = gui->vSubTabsEdit[TAB_Veget]->getIndexSelected();
-	bool vis = mWndEdit && mWndEdit->getVisible() &&
-		(tab == TAB_Objects || tab == TAB_Veget && st5 == 1);
+	bool vis =
+		(mWndEdObj && mWndEdObj->getVisible() && tabO == TABo_Objects) ||
+		(mWndEdit && mWndEdit->getVisible() && tab == TAB_Veget && st5 == 1);
 
 	if (oldVis != vis && rt[RT_PreView3D].nd)
 	{	oldVis = vis;

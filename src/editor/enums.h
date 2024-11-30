@@ -23,10 +23,8 @@ enum TABS_Track
 {
 	TabTrk_Back=0,
 	TabTrk_Track,
-	TabTrk_Tools,
-	TabTrk_Game,
-	TabTrk_Warnings,
-	TabTrk_Export,
+	TabTrk_Tools, TabTrk_Game,
+	TabTrk_Warnings, TabTrk_Export,
 	TabsTrk_ALL
 };
 
@@ -41,7 +39,7 @@ enum TABS_Edit
 
 enum TABS_EdObj
 {
-	TABo_Objects=0,
+	TABo_Back=0, TABo_Objects,
 	TABo_Fluids, TABo_Particles,
 	TabsEdObj_ALL
 };
