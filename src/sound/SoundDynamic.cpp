@@ -67,79 +67,75 @@ void SoundDynamic::setPitch(float pitch1)
 	alSourcef(source, AL_PITCH, pitch);
 }
 
-void SoundDynamic::setPosition(Vector3 pos1)
-{
-	if (!enabled)  return;
-	if (pos == pos1)
-		return;
-	pos = pos1;
-	alSource3f(source, AL_POSITION, pos.x, pos.y, pos.z);
-}
-
-void SoundDynamic::setVelocity(Vector3 vel1)
-{
-	if (!enabled)  return;
-	if (vel == vel1)
-		return;
-	vel = vel1;
-	alSource3f(source, AL_VELOCITY, vel.x, vel.y, vel.z);
-}
-
 void SoundDynamic::seek(float pos)  // [0..1)
 {
 	if (!enabled)  return;
 	alSourcei(source, AL_SAMPLE_OFFSET, pos * samples);
 }
 
-//  create
+
+//  🔉🆕 Create Dynamic Sound
+//......................................................................................................
 bool SoundDynamic::Create(string file, bool loop1, bool b2d, SceneNode* nd)
 {
 	if (enabled)
 		return false;  // already
 
+	//  create
 	alGenBuffers(1, &buffer);
 	if (sound_mgr->hasALErrors())
-		return false;
-
-
-	//  load file  ----
-	if (file.length() < 4)
 	{
-		LogO("@  Sound Create name too short: "+file);
+		LogO("@  Warning: not enough buffers to play: "+file);
+		alDeleteBuffers(1, &buffer);
 		return false;
 	}
-	String ext = file.substr(file.length()-3);
+
+	//  load file  ----
+	if (file.length() <= 4)
+	{
+		LogO("@  Error: name too short: "+file);
+		return false;
+	}
+	String ext = file.substr(file.length()-3);  // tolower-
 	if (ext == "wav")
 	{
 		if (!sound_mgr->loadWAVFile(file, buffer, samples))
-		{	//  error
+		{
 			alDeleteBuffers(1, &buffer);
-			enabled = false;
 			return false;
 		}
 	}else if (ext == "ogg")
 	{
 		if (!sound_mgr->loadOGGFile(file, buffer, samples))
-		{	//  error
+		{
 			alDeleteBuffers(1, &buffer);
-			enabled = false;
 			return false;
 		}
 	}else
-		LogO("@  Not supported sound file extension: "+ext);
+		LogO("@  Error: not supported extension: "+ext);
 
 
 	alGenSources(1, &source);
 	if (sound_mgr->hasALErrors())
+	{
+		LogO("@  Warning: not enough sources to play: "+file);
+		alDeleteBuffers(1, &buffer);
 		return false;
-
-	loop = loop1;
-	is2D = b2d;
-	node = nd;
+	}
 
 	alSourcei(source, AL_BUFFER, buffer);
 	if (sound_mgr->hasALErrors())
+	{
+		LogO("@  Error: can't bind buffer: "+ext);
+		alDeleteSources(1, &source);
+		alDeleteBuffers(1, &buffer);
 		return false;
+	}
+
+	//  setup  ----
+	loop = loop1;
+	is2D = b2d;
+	node = nd;
 
 	if (!is2D)
 	{
@@ -159,6 +155,7 @@ bool SoundDynamic::Create(string file, bool loop1, bool b2d, SceneNode* nd)
 			alSource3f(source, AL_VELOCITY, 0.f, 0.f, 0.f);
 		}
 	}
+	//  todo: gain, pitch in .cfg
 	alSourcef(source, AL_GAIN, /*gain * */ sound_mgr->master_volume);
 	alSourcei(source, AL_LOOPING, loop ? AL_TRUE : AL_FALSE);
 	alSourcef(source, AL_PITCH, 1.f);  //pitch);
@@ -175,6 +172,7 @@ bool SoundDynamic::Create(string file, bool loop1, bool b2d, SceneNode* nd)
 	return true;
 }
 
+//  🔉💥 destroy
 void SoundDynamic::Destroy()
 {
 	if (!enabled)
@@ -184,10 +182,16 @@ void SoundDynamic::Destroy()
 	enabled = false;
 }
 
-	
-void SoundDynamic::Update()
+
+//  🔉💫 update
+void SoundDynamic::Update(float dt)
 {
-	if (!node)  return;
+	if (!node || is2D || dt < 0.001f)  return;
+	
 	auto pos = node->getPosition();
-	// todo: vel dt..
+	alSource3f(source, AL_POSITION, pos.x, pos.y, pos.z);
+
+	Vector3 vel = (pos - posOld) / dt;
+	alSource3f(source, AL_VELOCITY, vel.x, vel.y, vel.z);
+	posOld = pos;
 }

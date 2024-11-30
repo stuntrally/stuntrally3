@@ -22,15 +22,12 @@ public:
 	bool Create(std::string file, bool loop1=1, bool b2d=1, Ogre::SceneNode* nd=0);
 	void Destroy();
 	
-	void Update();
-	Ogre::SceneNode* node = 0;
+	void Update(float dt);
+	Ogre::SceneNode* node = 0;  // auto set pos and vel
 	// Ogre::String name;
 
 	void setPitch(float pitch);
 	void setGain(float gain);
-
-	void setPosition(Ogre::Vector3 pos);
-	void setVelocity(Ogre::Vector3 vel);
 
 	void setLoop(bool loop);
 	// void setEnabled(bool e);
@@ -60,8 +57,8 @@ public:
 	bool enabled =0;  // not loaded
 	// bool should_play =1;
 
-	Ogre::Vector3 pos{0,0,0};
-	Ogre::Vector3 vel{0,0,0};
+	Ogre::Vector3 posOld{0,0,0};
+	// Ogre::Vector3 vel{0,0,0};
 
 	SoundBaseMgr* sound_mgr =0;
 };
