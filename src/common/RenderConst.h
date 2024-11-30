@@ -60,7 +60,8 @@ const Ogre::uint8
 	RQG_RoadMarkers  = RQ_OVERLAY,  // ed
 	RQG_Hud1         = RQ_OVERLAY +1,  // ⏲️ Hud start ----
 	RQG_Hud2         = RQ_OVERLAY +2,
-	RQG_Hud3         = RQ_OVERLAY +3;
+	RQG_Hud3         = RQ_OVERLAY +3,
+	RQG_Hud4         = RQ_OVERLAY +4;  // ed only, after gui
 
 
 //  Visibility Flags  used in setVisibility  few same in SR3.compositor

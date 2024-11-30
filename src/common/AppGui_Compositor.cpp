@@ -115,7 +115,12 @@ const String
 
 
 //  Add Hud, Gui  ----------------
-void AppGui::AddHudGui(CompositorTargetDef* td)  // + 2 pass
+#ifdef SR_EDITOR
+	#define nHudGui 3  // ed 1 more
+#else
+	#define nHudGui 2
+#endif
+void AppGui::AddHudGui(CompositorTargetDef* td)  // + 3 ed, + 2 game  pass
 {
 	//  ⏲️ Hud  --------
 	auto* ps = AddScene(td);  // + scene Hud
@@ -129,6 +134,17 @@ void AppGui::AddHudGui(CompositorTargetDef* td)  // + 2 pass
 	//  🎛️ Gui, add MyGUI pass  --------
 	auto* gui = td->addPass(PASS_CUSTOM, MyGUI::OgreCompositorPassProvider::mPassId);  // + pass Gui
 	gui->mProfilingId = "GUI";  gui->mIdentifier = 99900;
+
+#ifdef SR_EDITOR
+	//  🌍 ed Hud after Gui  --------
+	ps = AddScene(td);  // + scene Hud 2
+	ps->setAllStoreActions( StoreAction::Store );
+	ps->mProfilingId = "HUD2";  ps->mIdentifier = 10007;
+
+	ps->mFirstRQ = RQG_Hud4;
+	ps->mLastRQ = RQG_Hud4+1;
+	ps->setVisibilityMask(RV_Hud + RV_Particles);
+#endif
 }
 
 
@@ -187,7 +203,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 
 			nd->setNumTargetPass(1);  //* targets
 			td = nd->addTargetPass( "rt_renderwindow" );
-			td->setNumPasses( 1 + 2 );  //* passes
+			td->setNumPasses( 1 + nHudGui );  //* passes
 
 			//  render Window  ----
 			{
@@ -201,7 +217,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				pq->mProfilingId = "Combine to Window";
 
 				//  ⏲️ Hud, 🎛️ Gui  --------
-				AddHudGui(td);  // + 2
+				AddHudGui(td);  // +
 			}
 		}
 		//  workspace Full last
@@ -536,7 +552,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 
 			//  render / Window  ----
 			td = nd->addTargetPass( "rtt_FullOut" );
-			td->setNumPasses( (!split ? 2 : 0) + 1 );  //* passes
+			td->setNumPasses( 1 + (!split ? nHudGui : 0) );  //* passes
 			{
 				auto* pq = AddQuad(td);  // + quad
 				pq->setAllLoadActions( LoadAction::DontCare );
@@ -547,7 +563,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 
 				//  ⏲️ Hud, 🎛️ Gui  --------
 				if (!split)
-					AddHudGui(td);  // + 2
+					AddHudGui(td);  // +
 			}
 		}
 
@@ -582,7 +598,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 
 			nd->mCustomIdentifier = "old-1";
 
-			nd->setNumTargetPass( (!split ? 2 : 0) + 1 );  //* targets
+			nd->setNumTargetPass( 1 + (!split ? nHudGui : 0) );  //* targets
 
 			td = nd->addTargetPass( "rt_wnd" );
 			{
@@ -597,7 +613,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			}
 			//  ⏲️ Hud, 🎛️ Gui  --------
 			if (!split)
-				AddHudGui(td);  // + 2
+				AddHudGui(td);  // +
 
 			//  workspace
 			{

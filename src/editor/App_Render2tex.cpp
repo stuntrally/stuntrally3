@@ -155,7 +155,8 @@ void App::CreateRnd2Tex()
 			// String sMtr = "circle_smooth";
 			r.hr = new HudRenderable(sMtr, mSceneMgr,
 				OT_TRIANGLE_LIST,
-				true, false, RV_Hud, RQG_Hud2, 1);
+				true, false, RV_Hud,
+				prv3D ? RQG_Hud4 : RQG_Hud2, 1);
 
 			/*r.hr->begin();  Real a = 0.3f;
 			r.hr->position(a,0, 0);  r.hr->texUV(0,1);
