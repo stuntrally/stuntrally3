@@ -370,7 +370,7 @@ void App::newPoses(float time)  // time only for camera update
 									scn->trail[id]->trailSegId =
 										(inc * (i - scn->road->iChkId1) + (rev ? 0 : 1) + ncs) % ncs;
 
-								if (pSet->snd_chk && locar)
+								if (pSet->s.snd_chk && locar)
 									pGame->snd_chk->start();  // 🔉
 							}
 							else
@@ -383,7 +383,7 @@ void App::newPoses(float time)  // time only for camera update
 								if (carM->iInWrongChk != carM->iInChk)
 								{	carM->iInWrongChk = carM->iInChk;
 									
-									if (pSet->snd_chkwr && locar)
+									if (pSet->s.snd_chkwr && locar)
 										pGame->snd_chkwr->start();  // 🔉
 							}	}
 							break;

@@ -250,6 +250,30 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	// ck= &ckSoftPar;		ck->Init("SoftParticles",&pSet->softparticles);  Cev(EffUpdShd);
 
 
+	//  🔉 Sound  --------
+	sv= &svVolMaster;	sv->Init("VolMaster",	&pSet->s.vol_master, 0.f, 2.0f);  sv->DefaultF(1.55f);  SevC(VolMaster);
+	sv= &svVolAmbient;	sv->Init("VolAmbient",	&pSet->s.vol_ambient, 0.f, 2.0f);  sv->DefaultF(1.f);
+
+#ifndef SR_EDITOR  // game
+	sv= &svVolEngine;	sv->Init("VolEngine",	&pSet->s.vol_engine, 0.f, 1.4f);  sv->DefaultF(0.58f);
+	sv= &svVolTurbo;	sv->Init("VolTurbo",	&pSet->s.vol_turbo, 0.f, 1.6f);  sv->DefaultF(1.f);
+
+	sv= &svVolTires;	sv->Init("VolTires",	&pSet->s.vol_tires,  0.f, 1.4f);  sv->DefaultF(0.856f);
+	sv= &svVolSusp;		sv->Init("VolSusp",		&pSet->s.vol_susp,   0.f, 1.4f);  sv->DefaultF(0.474f);
+	sv= &svVolEnv;		sv->Init("VolEnv",		&pSet->s.vol_env,    0.f, 1.4f);  sv->DefaultF(0.748f);
+
+	sv= &svVolFlSplash;	sv->Init("VolFlSplash",	&pSet->s.vol_fl_splash, 0.f, 1.4f);  sv->DefaultF(0.636f);
+	sv= &svVolFlCont;	sv->Init("VolFlCont",	&pSet->s.vol_fl_cont,   0.f, 1.4f);  sv->DefaultF(0.878f);
+	sv= &svVolCarCrash;	sv->Init("VolCarCrash",	&pSet->s.vol_car_crash, 0.f, 1.4f);  sv->DefaultF(0.608f);
+	sv= &svVolCarScrap;	sv->Init("VolCarScrap",	&pSet->s.vol_car_scrap, 0.f, 1.4f);  sv->DefaultF(0.915f);
+
+	ck= &ckSndChk;		ck->Init("SndChk",		&pSet->s.snd_chk);
+	ck= &ckSndChkWr;	ck->Init("SndChkWr",    &pSet->s.snd_chkwr);
+#endif
+	ck= &ckReverb;		ck->Init("ChkReverb",   &pSet->s.snd_reverb);
+	sv= &svVolHud;		sv->Init("VolHud",		&pSet->s.vol_hud,    0.f, 2.f);  sv->DefaultF(0.75f);  SevC(VolHud);
+
+
 	//  ⚙️ Settings  🆕 Startup common 
 	//------------------------------------------------------------
 	// ck= &ckVRmode;  ck->Init("VRmode", &pSet->vr_mode);  // todo: meh
@@ -497,5 +521,24 @@ void CGuiCom::btnMatEditor(WP)
 	app->gui->GuiShortcut(WND_Materials, 1);
 #else
 	app->gui->GuiShortcut(MN_Materials, 1);
+#endif
+}
+
+//  🔊 Sound
+void CGuiCom::slVolMaster(SV*)
+{
+#ifndef SR_EDITOR
+	app->pGame->ProcessNewSettings();
+#else
+	// todo ed snd..
+#endif
+}
+
+void CGuiCom::slVolHud(SV*)
+{
+#ifndef SR_EDITOR
+	app->pGame->UpdHudSndVol();
+#else
+	// todo ed snd..
 #endif
 }

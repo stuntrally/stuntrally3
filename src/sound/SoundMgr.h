@@ -6,7 +6,7 @@
 #include <map>
 
 namespace Ogre  {  class FileStreamDataStream;  }
-class SoundBase;  class SoundBaseMgr;
+class SoundBase;  class SoundBaseMgr;  class SETTINGS;
 
 const int MAX_SOUNDS_PER_SCRIPT = 12;  // per 1 template, todo? vector<
 
@@ -80,8 +80,10 @@ private:
 class SoundMgr
 {
 public:
-	SoundMgr();
+	SoundMgr(SETTINGS* pSet1);
 	~SoundMgr();
+	SETTINGS* pSet =0;
+
 	bool Init(std::string snd_device, bool reverb);
 	void Update(float dt);
 

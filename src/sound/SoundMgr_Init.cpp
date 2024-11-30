@@ -11,13 +11,13 @@ using namespace Ogre;
 
 //  Init
 //---------------------------------------------------------------------------------------
-SoundMgr::SoundMgr()
-	:disabled(true), sound_mgr(0)
+SoundMgr::SoundMgr(SETTINGS* pSet1)
+	:disabled(true), sound_mgr(0), pSet(pSet1)
 {	}
 
 bool SoundMgr::Init(std::string snd_device, bool reverb)
 {
-	sound_mgr = new SoundBaseMgr();
+	sound_mgr = new SoundBaseMgr(pSet);
 
 	bool ok = sound_mgr->Init(snd_device, reverb);
 	if (!ok)

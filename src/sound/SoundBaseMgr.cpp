@@ -16,7 +16,8 @@ const float SoundBaseMgr::ROLLOFF_FACTOR = 0.05f;  // 0.05 0.1  1.0 new
 
 //  Init
 //---------------------------------------------------------------------------------------------
-SoundBaseMgr::SoundBaseMgr()
+SoundBaseMgr::SoundBaseMgr(SETTINGS* pSet1)
+	:pSet(pSet1)
 {
 	hw_sources_map.resize(ALL_SRC,0);
 	hw_sources.resize(ALL_SRC,0);

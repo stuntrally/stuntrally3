@@ -38,7 +38,6 @@ using namespace std;
 ///  🌟 ctor
 GAME::GAME(SETTINGS* pSettings)
 	:pSet(pSettings)
-	//,framerate(0.01f),  ///~  0.004+  o:0.01
 	,framerate(1.0 / pSettings->game_fq)
 {
 	controls.first = NULL;
@@ -284,8 +283,8 @@ bool GAME::InitializeSound()
 {
 	Ogre::Timer ti;
 	
-	snd = new SoundMgr();
-	snd->Init(pSet->snd_device, pSet->snd_reverb);
+	snd = new SoundMgr(pSet);
+	snd->Init(pSet->s.snd_device, pSet->s.snd_reverb);
 	snd->setMasterVolume(0.f);
 	using namespace Ogre;
 
@@ -302,7 +301,7 @@ bool GAME::InitializeSound()
 	fd.close();
 	fi.close();
 
-	snd->setMasterVolume(pSet->vol_master);
+	snd->setMasterVolume(pSet->s.vol_master);
 
 
 	LogO(":::* Time Sounds: "+ fToStr(ti.getMilliseconds(),0,3) +" ms");
@@ -337,7 +336,7 @@ void GAME::LoadHudSounds()
 
 void GAME::UpdHudSndVol()
 {
-	float g = pSet->vol_hud;
+	float g = pSet->s.vol_hud;
 	snd_chk->setGain(g);
 	snd_chkwr->setGain(g);
 	snd_lap->setGain(g);
@@ -572,14 +571,6 @@ bool GAME::NewGameDoLoadMisc(float pre_time, std::string ambient_name, float amb
 
 	snd->sound_mgr->CreateSources();  //))
 
-	if (!ambient_name.empty())
-	{
-		snd_ambient = snd->createInstance(ambient_name);
-		snd_ambient->set2D(true);
-		vol_ambient = ambient_vol;
-		snd_ambient->setGain(vol_ambient * pSet->vol_ambient);
-		snd_ambient->start();  // 🔉 is during load..
-	}
 	return true;
 }
 
@@ -602,7 +593,6 @@ void GAME::LeaveGame(bool dstTrk)
 		snd->sound_mgr->DestroySources(false);  //))
 	
 	DeleteHudSounds();  //` todo: dont, mark to not destroy hud sources
-	delete snd_ambient;  snd_ambient = 0;
 	
 	timer.Unload();
 
@@ -669,9 +659,7 @@ void GAME::ProcessNewSettings()
 		//controls.first->SetAutoClutch(settings->rear_inv);
 	}
 	//  snd vol 🔊
-	snd->setMasterVolume(pSet->vol_master);
-	if (snd_ambient)
-		snd_ambient->setGain(vol_ambient * pSet->vol_ambient);
+	snd->setMasterVolume(pSet->s.vol_master);
 }
 
 void GAME::UpdateForceFeedback(float dt)
@@ -709,7 +697,6 @@ void GAME::UpdateForceFeedback(float dt)
 	}
 #endif
 }
-
 
 
 void GAME::UpdateTimer()

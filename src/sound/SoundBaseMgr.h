@@ -5,7 +5,7 @@
 #include <AL/al.h>
 #include <AL/alc.h>
 #include <AL/efx.h>
-class SoundBase;  class SoundDynamic;  struct REVERB_PRESET;
+class SoundBase;  class SoundDynamic;  struct REVERB_PRESET;  class SETTINGS;
 
 //#define REVERB_BROWSER  // 🧰 _Tool_  keys 1,2: change prev,next reverb preset
 
@@ -14,8 +14,9 @@ class SoundBaseMgr
 {
 	friend class SoundBase;
 public:
-	SoundBaseMgr();
+	SoundBaseMgr(SETTINGS* pSet1);
 	~SoundBaseMgr();
+	SETTINGS* pSet =0;
 
 	//  main  ---
 	bool Init(std::string snd_device, bool reverb1);

@@ -61,7 +61,7 @@ public:
 
 	unsigned int frame = 0, displayframe = 0;  // physics, display frame counters
 	double clocktime = 0.0, target_time = 0.0;  // elapsed wall clock time
-	const double framerate = 1.0 / 160.0;
+	/*const*/ double framerate = 1.0 / 160.0;
 	float fps_min = 0.f, fps_max = 0.f;
 
 	bool benchmode = 0, profilingmode = 0, pause = 0;
@@ -81,9 +81,7 @@ public:
 	SoundMgr* snd =0;
 	Sound* snd_chk =0, *snd_chkwr =0,
 		*snd_lap =0, *snd_lapbest =0,
-		*snd_stage =0, *snd_win[3]={0,0,0}, *snd_fail =0,
-		*snd_ambient =0;
-	float vol_ambient = 1.f;
+		*snd_stage =0, *snd_win[3]={0,0,0}, *snd_fail =0;
 	void UpdHudSndVol(), DeleteHudSounds();
 
 
