@@ -16,7 +16,7 @@
 				<Property key="Colour" value="1 0.6 0.2"/>
 			</Widget>
 
-<!-- ============================================================================================================================================= -->
+<!-- ............................................................................................................................................. -->
 			<!-- 📦🏢 Objects -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#D0D0D0#{Objects}"/>
@@ -60,32 +60,80 @@
 
 			</Widget>
 
-			<!-- ============================================================================================================================================= -->
+<!-- ............................................................................................................................................. -->
 			<!-- 💧 Fluids -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#80C0FF#{Fluids}"/>
-				<!-- <Widget type="TextBox" skin="TextBox" position="14 16 128 24">
-					<Property key="Caption" value="#{ObjDynamic}"/>
-					<Property key="TextColour" value="0.6 0.82 1.0"/>
-				</Widget> -->
+
 				<Widget type="ListBox" skin="ListBox" position="12 40 166 500" name="FluidsList">
 					<Property key="Colour" value="0.6 0.8 1"/>
 				</Widget>
 
 			</Widget>
 
-			<!-- ============================================================================================================================================= -->
+<!-- ............................................................................................................................................. -->
 			<!-- ✨ Particles -->
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#C0C080#{Particles}"/>
-				<!-- <Widget type="TextBox" skin="TextBox" position="14 16 128 24">
-					<Property key="Caption" value="#{ObjDynamic}"/>
-					<Property key="TextColour" value="0.6 0.82 1.0"/>
-				</Widget> -->
+
 				<Widget type="ListBox" skin="ListBox" position="12 40 166 500" name="ParticlesList">
 					<Property key="Colour" value="0.8 0.8 0.8"/>
 				</Widget>
 
+			</Widget>
+
+
+			<!-- NEW -->
+<!-- ............................................................................................................................................. -->
+			<!-- 🎆 Fields -->
+			<Widget type="TabItem" skin="" position="2 24 794 562">
+				<Property key="Caption" value="#C080FF#{Fields}"/>
+
+				<!-- todo -->
+				<Widget type="TextBox" skin="TextBox" position="260 16 190 24">
+					<Property key="Caption" value="#{NotDone}"/>
+					<Property key="TextColour" value="0.95 0.7 0.7"/>
+				</Widget>
+			</Widget>
+
+<!-- ............................................................................................................................................. -->
+			<!-- 💡 Lights -->
+			<Widget type="TabItem" skin="" position="2 24 794 562">
+				<Property key="Caption" value="#FFF870#{Lights}"/>
+
+				<!-- todo -->
+				<Widget type="TextBox" skin="TextBox" position="260 16 190 24">
+					<Property key="Caption" value="#{NotDone}"/>
+					<Property key="TextColour" value="0.95 0.7 0.7"/>
+				</Widget>
+			</Widget>
+
+<!-- ............................................................................................................................................. -->
+			<!-- 🔉 Sounds -->
+			<Widget type="TabItem" skin="" position="2 24 794 562">
+				<Property key="Caption" value="#80C0FF#{Sounds}"/>
+
+				<!-- todo -->
+				<Widget type="TextBox" skin="TextBox" position="260 16 190 24">
+					<Property key="Caption" value="#{NotDone}"/>
+					<Property key="TextColour" value="0.95 0.7 0.7"/>
+				</Widget>
+			</Widget>
+
+<!-- ............................................................................................................................................. -->
+			<!-- 🎇 Entities -->
+			<Widget type="TabItem" skin="" position="2 24 794 562">
+				<Property key="Caption" value="#E0C0E0#{Entities}"/>
+
+				<Widget type="ListBox" skin="ListBox" position="12 40 166 500" name="EntitiesList">
+					<Property key="Colour" value="0.9 0.8 0.9"/>
+				</Widget>
+
+				<!-- todo -->
+				<Widget type="TextBox" skin="TextBox" position="260 16 190 24">
+					<Property key="Caption" value="#{NotDone}"/>
+					<Property key="TextColour" value="0.95 0.7 0.7"/>
+				</Widget>
 			</Widget>
 
 		</Widget>

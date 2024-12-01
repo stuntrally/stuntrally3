@@ -13,11 +13,16 @@ WIP means work in progress, unfinished, still being developed.
     Global Illumination ([GI methods](https://ogrecave.github.io/ogre-next/api/latest/_gi_methods.html): IFD+VCT),
     on new Gui tab Advanced after Effects, has also debug visuals.
 - Game
+  - WIP ambient track sound (rain, etc)
+  - WIP dynamic object hit sounds
   - Setup - Paints tab new *filter* slider, to show paints only from filter rating and above.  
     But editing paints list must be done w/o filter, on highest value.
     Pressing Random (or Space) sets random from visible list.
   - *Statistics* window with list of completed game tutorials, championships, challenges, collections
   - restored tire trails, but still 1 color, meh
+- Editor
+  - Split Edit window to own with: Objects, Fluids, Particles, etc
+  - 3D model preview on top of Gui
 - Gui comboboxes open on click (whole, not just on down arrow)
 
 ### Version 3.2 - 23.09.2024

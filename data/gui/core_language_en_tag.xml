@@ -1279,7 +1279,7 @@
 	<Tag name="Tile">Tile</Tag>
 
 
-	<!--  Editor tools  -->
+	<!--  Editor Objects  verious  -->
 	<Tag name="CarStart">Car Start</Tag>
 	<Tag name="Fluids">Fluids</Tag>
 
@@ -1293,6 +1293,9 @@
 
 	<Tag name="Fields">Fields</Tag>
 	<Tag name="InputFieldsTelepEnd">Enter - toggle teleport end edit</Tag>
+
+	<Tag name="Sounds">Sounds</Tag>
+	<Tag name="Entities">Entities</Tag>
 
 
 	<!--  Tools  -->
