@@ -171,6 +171,9 @@ public:
 	std::string material;  // variant, default if empty
 	bool stat = false;  // force static, if has .bullet
 	bool shadow = true;
+	
+	bool playSound =0;  // play
+	std::string sound;  // hit 🔉  // todo: from presets
 
 	Ogre::SceneNode* nd = 0;  // 🟢 ogre
 	Ogre::Item* it = 0;
@@ -266,7 +269,8 @@ public:
 class SEntity       // Entity 😮 todo
 //  Any combination of stuff
 //  e.g. lamp,  bonfire, flaming barrel, mine, magnetic ball
-//  flying plane,  cloud with thunder, opening gate, water jet, laser turret
+//  flying plane,  cloud with thunder, opening gate,
+//  homing water jet, laser turret
 {
 public:
 	Ogre::Vector3 pos{0,0,0}, scale{1,1,1};

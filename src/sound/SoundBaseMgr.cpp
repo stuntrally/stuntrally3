@@ -2,6 +2,7 @@
 #include "Def_Str.h"
 #include "SoundBase.h"
 #include "SoundBaseMgr.h"
+#include "SoundDynamic.h"
 #include <AL/alc.h>
 #include <AL/alext.h>
 #include <AL/efx.h>
@@ -20,13 +21,13 @@ SoundBaseMgr::SoundBaseMgr(SETTINGS* pSet1)
 	hw_sources_map.resize(pSet->s.cnt_sources,0);
 	hw_sources.resize(pSet->s.cnt_sources,0);
 
-	sources.resize(MAX_BUFFERS,0);
-	buffers.resize(MAX_BUFFERS,0);
-	buffer_file.resize(MAX_BUFFERS);
+	sources.resize(pSet->s.cnt_buffers,0);
+	buffers.resize(pSet->s.cnt_buffers,0);
+	buffer_file.resize(pSet->s.cnt_buffers);
 
-	MAX_DISTANCE = 500.f;  // 500
-	REF_DISTANCE = 1.0f;   // 1  7.5 new
-	ROLLOFF_FACTOR = 0.05f;  // 0.05 0.1  1.0 new
+	// MAX_DISTANCE = 500.f;  // 500
+	// REF_DISTANCE = 1.0f;   // 1  7.5 new
+	// ROLLOFF_FACTOR = 0.05f;  // 0.05 0.1  1.0 new
 }
 
 void logList(const char *list)
@@ -239,7 +240,7 @@ SoundBaseMgr::~SoundBaseMgr()
 
 		//  sources and buffers
 		DestroySources(true);
-		alDeleteBuffers(MAX_BUFFERS, &buffers[0]);
+		alDeleteBuffers(pSet->s.cnt_buffers, &buffers[0]);
 	}
 
 	//  context and device
@@ -458,10 +459,28 @@ void SoundBaseMgr::setCamera(Vector3 pos, Vector3 dir, Vector3 up, Vector3 vel)
 	alListenerfv(AL_ORIENTATION, o);
 }
 
+
 void SoundBaseMgr::Update(float dt)
 {
-	// ambient
+	//  ambient-
 	// todo: cam vel.. doppler
 
-	// check dynamic, remove finished
+
+	//  check all dynamic, remove finished
+	int i = 0;
+	auto it = dynamics.begin();
+	while (it != dynamics.end())
+	{
+		if (!(*it)->isPlaying())
+		{
+			// (*it)->stop();
+			(*it)->Destroy();
+			it = dynamics.erase(it);
+		}
+		else
+			++it;
+		++i;
+	}
+	cnt_dynamic = i;
+	// LogO(toStr(i));
 }

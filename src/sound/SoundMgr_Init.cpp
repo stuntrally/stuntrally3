@@ -9,7 +9,7 @@
 using namespace Ogre;
 
 
-//  Init
+//  🌟 Init
 //---------------------------------------------------------------------------------------
 SoundMgr::SoundMgr(SETTINGS* pSet1)
 	:disabled(true), sound_mgr(0), pSet(pSet1)
@@ -38,7 +38,7 @@ SoundMgr::~SoundMgr()
 	delete sound_mgr;
 }
 
-//  create template
+//  📄 create template
 //---------------------------------------------------------------------------------------
 SoundTemplate* SoundMgr::createTemplate(String name, String filename)
 {
@@ -53,7 +53,7 @@ SoundTemplate* SoundMgr::createTemplate(String name, String filename)
 }
 
 
-//  create Sound
+//  🆕 create Sound
 //---------------------------------------------------------------------------------------
 Sound* SoundMgr::createInstance(String name)
 {
@@ -80,7 +80,7 @@ Sound* SoundMgr::createInstance(String name)
 }
 
 
-//  Parse
+//  📄 Parse
 //---------------------------------------------------------------------------------------
 void SoundMgr::parseScript(FileStreamDataStream* stream)
 {
@@ -203,7 +203,7 @@ bool SoundTemplate::setParameter(StringVector vec)
 }
 
 
-///  Sound ctor
+///  🆕🌟 Sound ctor
 //---------------------------------------------------------------------------------------------------------
 int Sound::instances = 0;
 
@@ -230,7 +230,7 @@ Sound::Sound(SoundTemplate* tpl, SoundBaseMgr* mgr1)
 	//LogO("@  Sound created: "+name+" "+toStr(tpl->free_sound));
 }
 
-Sound::~Sound()
+Sound::~Sound()  // 💥 dtor
 {
 	--instances;
 	delete start_sound;
@@ -242,7 +242,7 @@ Sound::~Sound()
 }
 
 
-//  New ambient
+//  🆕 New Ambient
 //---------------------------------------------------------------------
 void SoundMgr::CreateAmbient(String name)
 {
@@ -272,4 +272,29 @@ void SoundMgr::DestroyAmbient()
 	
 	delete sound_mgr->ambient;
 	sound_mgr->ambient = 0;
+}
+
+
+//  🆕 New Dynamic 🛢️📦
+void SoundMgr::CreateDynamic(String name, Ogre::SceneNode* node)
+{
+	//  search template
+	if (templates.find(name) == templates.end())
+	{
+		LogO("@ sound dynamic, template not found in .cfg: "+name);
+		return;
+	}
+	// LogO("@ sound dynamic create: "+name);
+
+	SoundTemplate* templ = templates[name];
+
+	auto* dyn = new SoundDynamic(sound_mgr);
+	bool ok = dyn->Create(templ->start_name, false, false, node);
+	if (!ok)
+		delete dyn;
+	else
+	{	
+		dyn->play();
+		sound_mgr->dynamics.push_back(dyn);
+	}
 }

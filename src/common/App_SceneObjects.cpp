@@ -215,6 +215,7 @@ void App::CreateObjects()
 			{
 				o.ms = fileLoader->ms;  // 1 only
 				o.rb = fileLoader->rb;  // 1 only
+				o.rb->setUserPointer(new ShapeData(ST_Object, 0, 0, 0, 0, 0, 0.f, &o));  ///~~
 
 				/*int nshp = fileLoader->getNumCollisionShapes();
 				for (int i=0; i < nshp; ++i)

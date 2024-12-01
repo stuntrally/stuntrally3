@@ -37,10 +37,12 @@ void IntTickCallback(btDynamicsWorld* world, btScalar timeStep)
 		//if (pA && pB)
 		{
 			ShapeData* sdA = (ShapeData*)pA, *sdB = (ShapeData*)pB,
-				*sdCar =0, *sdFluid =0, *sdWheel =0, *sdCollect =0, *sdField =0, *sdDamp =0;
+				*sdCar =0, *sdFluid =0, *sdWheel =0,
+				*sdCollect =0, *sdField =0, *sdDamp =0, *sdObj =0;
 
 			if (sdA) {
 					 if (sdA->type == ST_Car)  sdCar = sdA;
+				else if (sdA->type == ST_Object) sdObj = sdA;
 				else if (sdA->type == ST_Fluid)  sdFluid = sdA;
 				else if (sdA->type == ST_Wheel)  sdWheel = sdA;
 				else if (sdA->type == ST_Damp)   sdDamp = sdA;
@@ -48,6 +50,7 @@ void IntTickCallback(btDynamicsWorld* world, btScalar timeStep)
 				else if (sdA->type == ST_Collect)  sdCollect = sdA;  }
 			if (sdB) {
 					 if (sdB->type == ST_Car)  sdCar = sdB;
+				else if (sdB->type == ST_Object) sdObj = sdB;
 				else if (sdB->type == ST_Fluid)  sdFluid = sdB;
 				else if (sdB->type == ST_Wheel)  sdWheel = sdB;
 				else if (sdB->type == ST_Damp)   sdDamp = sdB;
@@ -71,6 +74,19 @@ void IntTickCallback(btDynamicsWorld* world, btScalar timeStep)
 				sdCar->pCarDyn->inFields.push_back(sdField->pField);
 			}
 
+			if (sdObj)
+			{
+				int num = contactManifold->getNumContacts();
+				for (int j=0; j < num; ++j)
+				{
+					btManifoldPoint& pt = contactManifold->getContactPoint(j);
+					btScalar f = pt.getAppliedImpulse() * timeStep;
+					if (f > 3.f)  // par.. 6`  2-
+					{
+						sdObj->pObj->playSound =1;  // play
+						LogO("obj hit: "+toStr(i)+" "+toStr(j)+" "+fToStr(f,2,4));
+				}	}
+			}
 
 			if (trigger)
 				continue;  // ignore

@@ -5,7 +5,7 @@
 #include <OgreStringVector.h>
 #include <map>
 
-namespace Ogre  {  class FileStreamDataStream;  }
+namespace Ogre  {  class FileStreamDataStream;  class SceneNode;  }
 class SoundBase;  class SoundBaseMgr;  class SETTINGS;
 
 const int MAX_SOUNDS_PER_SCRIPT = 12;  // per 1 template, todo? vector<
@@ -90,10 +90,13 @@ public:
 	void parseScript(Ogre::FileStreamDataStream* stream);  // sounds.cfg
 
 
+	//  template name from .cfg
 	Sound* createInstance(Ogre::String templ);  // new Sound
 
 	void CreateAmbient(Ogre::String templ);
 	void DestroyAmbient();
+
+	void CreateDynamic(Ogre::String templ, Ogre::SceneNode* node);
 
 
 	void setPaused(bool mute);

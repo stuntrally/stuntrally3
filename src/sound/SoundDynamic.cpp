@@ -76,7 +76,7 @@ void SoundDynamic::seek(float pos)  // [0..1)
 
 //  🔉🆕 Create Dynamic Sound
 //......................................................................................................
-bool SoundDynamic::Create(string file, bool loop1, bool b2d, SceneNode* nd)
+bool SoundDynamic::Create(string file, bool loop1, bool is2d, SceneNode* nd)
 {
 	if (enabled)
 		return false;  // already
@@ -134,7 +134,7 @@ bool SoundDynamic::Create(string file, bool loop1, bool b2d, SceneNode* nd)
 
 	//  setup  ----
 	loop = loop1;
-	is2D = b2d;
+	is2D = is2d;
 	node = nd;
 
 	if (!is2D)

@@ -566,6 +566,14 @@ void App::updatePoses(float time)
 			o.pos[0] = p.x();  o.pos[1] = p.y();  o.pos[2] = p.z();
 			o.rot[0] = q.x();  o.rot[1] = q.y();  o.rot[2] = q.z();  o.rot[3] = q.w();
 			o.SetFromBlt();
+			
+			if (o.playSound)
+			{	o.playSound =0;
+				//  test +
+				// pGame->snd->CreateDynamic("water3", o.nd); //o.sound);
+				// pGame->snd->CreateDynamic("hud/chk", o.nd); //o.sound);
+				// pGame->snd->CreateDynamic("hud/chkwrong", o.nd); //o.sound);
+			}
 		}
 	}
 

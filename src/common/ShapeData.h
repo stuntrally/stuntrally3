@@ -24,13 +24,14 @@ enum EShapeType
 	ST_Car=0,  //  car body
 	ST_Fluid, ST_Wheel,  //  fluid area, wheel fluid trigger
 	ST_Collect,  //  💎 collectible item trigger
-	ST_Field,   //  🎆 field, one of FieldTypes
-	ST_Damp,   //  🌿 veget bush, slowing
+	ST_Field,    //  🎆 field, one of FieldTypes
+	ST_Damp,     //  🌿 veget bush, slowing
+	ST_Object,   //  🛢️📦 dynamic object
 	ST_Other
 };
 
 class CARDYNAMICS;
-class FluidBox;  class SCollect;  class SField;
+class FluidBox;  class SCollect;  class SField;  class Object;
 
 class ShapeData
 {
@@ -43,15 +44,18 @@ public:
 	SCollect* pCol;  // 💎
 	SField* pField;  // 🎆
 	float fDamp;  // 🌿 veget bush
+	Object* pObj;
 
 	ShapeData( EShapeType type1, CARDYNAMICS* pCarDyn1 =0,
 		FluidBox* pFluid1 =0, int whNum1 =0,
 		SCollect* pCol1 =0,
-		SField* pField1 =0, float fDamp1 =0.f)
+		SField* pField1 =0, float fDamp1 =0.f,
+		Object* pObj1=0)  // todo: shorter?
 		
 		: type(type1), pCarDyn(pCarDyn1)
 		, pFluid(pFluid1), whNum(whNum1)
 		, pCol(pCol1)
 		, pField(pField1), fDamp(fDamp1)
+		, pObj(pObj1)
 	{	}
 };

@@ -32,10 +32,6 @@ public:
 	bool isDisabled() {  return device == 0;  }
 
 
-	//  const
-	float MAX_DISTANCE, REF_DISTANCE, ROLLOFF_FACTOR;
-	static const unsigned int MAX_BUFFERS = 1024;  //
-
 	//  reverb  ---
 	void SetReverb(std::string name);
 
@@ -67,8 +63,8 @@ public:
 	//  SR3 new, dynamic sounds  ----
 	SoundDynamic* ambient =0;  // one, 2d, looped, always play
 
-	// std::list<SoundDynamic*> dynamics;  // auto removed
-	// void UpdateDynamic(float dt);
+	std::list<SoundDynamic*> dynamics;  // auto removed
+	int cnt_dynamic = 0;  // stat, playing
 
 
 	//  audio sources  ----

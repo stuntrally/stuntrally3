@@ -19,7 +19,7 @@ class SoundDynamic
 
 public:
 	SoundDynamic(SoundBaseMgr* sound_mgr1);
-	bool Create(std::string file, bool loop1=1, bool b2d=1, Ogre::SceneNode* nd=0);
+	bool Create(std::string file, bool loop1=1, bool is2d=1, Ogre::SceneNode* nd=0);
 	void Destroy();
 	
 	void Update(float dt);
