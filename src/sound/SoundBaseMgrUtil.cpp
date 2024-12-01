@@ -6,6 +6,7 @@
 #include <AL/alc.h>
 #include <AL/alext.h>
 #include "SoundReverbSets.h"
+#include "settings.h"
 #include <OgreDataStream.h>
 #include <vorbis/vorbisfile.h>
 using namespace Ogre;
@@ -17,9 +18,9 @@ SoundBase* SoundBaseMgr::createSound(String file, String name)
 {
 	if (!device)  return NULL;
 
-	if (buffers_use >= MAX_BUFFERS)
+	if (buffers_use >= pSet->s.cnt_buffers)
 	{
-		LogO("@  SoundManager: Reached MAX_AUDIO_BUFFERS limit (" + toStr(MAX_BUFFERS) + ")");
+		LogO("@  SoundManager: Reached MAX_AUDIO_BUFFERS limit (" + toStr(pSet->s.cnt_buffers) + ")");
 		return NULL;
 	}
 

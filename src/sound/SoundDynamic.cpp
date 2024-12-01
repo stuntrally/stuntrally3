@@ -2,6 +2,7 @@
 #include "Def_Str.h"
 #include "SoundDynamic.h"
 #include "SoundBaseMgr.h"
+#include "settings.h"
 #include <AL/al.h>
 using namespace Ogre;
 using namespace std;
@@ -140,9 +141,10 @@ bool SoundDynamic::Create(string file, bool loop1, bool is2d, SceneNode* nd)
 	if (!is2D)
 	{
 		//  3d fade
-		alSourcef(source, AL_REFERENCE_DISTANCE, sound_mgr->REF_DISTANCE);
-		alSourcef(source, AL_ROLLOFF_FACTOR, sound_mgr->ROLLOFF_FACTOR);
-		alSourcef(source, AL_MAX_DISTANCE, sound_mgr->MAX_DISTANCE);
+		auto& cfg = sound_mgr->pSet->s;
+		alSourcef(source, AL_REFERENCE_DISTANCE, cfg.ref_dist);
+		alSourcef(source, AL_ROLLOFF_FACTOR, cfg.rolloff);
+		alSourcef(source, AL_MAX_DISTANCE, cfg.max_dist);
 
 		//  3d use reverb
 		if (sound_mgr->reverb)

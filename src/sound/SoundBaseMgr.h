@@ -76,7 +76,7 @@ public:
 
 
 	//  helper for calculating the most audible sources
-	std::pair<int, float> src_audible[MAX_BUFFERS];
+	std::vector<std::pair<int, float>> src_audible;
 	
 	//  audio buffers: Array of AL buffers and filenames
 	std::vector<ALuint>  buffers;

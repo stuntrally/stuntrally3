@@ -2,6 +2,7 @@
 #include "Def_Str.h"
 #include "SoundBase.h"
 #include "SoundBaseMgr.h"
+#include "settings.h"
 using namespace Ogre;
 
 
@@ -51,14 +52,15 @@ void SoundBase::computeAudibility(Vector3 pos1)
 
 	//  3d
 	float distance = (pos1 - pos).length();
+	const auto& cfg = sound_mgr->pSet->s;
 	
-	if (distance > sound_mgr->MAX_DISTANCE)
+	if (distance > cfg.max_dist)
 		audibility = 0.0f;
-	else if (distance < sound_mgr->REF_DISTANCE)
+	else if (distance < cfg.ref_dist)
 		audibility = gain;
 	else  //  same eq as in alDistanceModel
-		audibility = gain * (sound_mgr->REF_DISTANCE /
-			(sound_mgr->REF_DISTANCE + sound_mgr->ROLLOFF_FACTOR * (distance - sound_mgr->REF_DISTANCE) ) );
+		audibility = gain * (cfg.ref_dist /
+			(cfg.ref_dist + cfg.rolloff * (distance - cfg.ref_dist) ) );
 }
 
 bool SoundBase::isPlaying()

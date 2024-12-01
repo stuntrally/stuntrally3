@@ -21,6 +21,7 @@ SoundBaseMgr::SoundBaseMgr(SETTINGS* pSet1)
 	hw_sources_map.resize(pSet->s.cnt_sources,0);
 	hw_sources.resize(pSet->s.cnt_sources,0);
 
+	src_audible.resize(pSet->s.cnt_buffers);
 	sources.resize(pSet->s.cnt_buffers,0);
 	buffers.resize(pSet->s.cnt_buffers,0);
 	buffer_file.resize(pSet->s.cnt_buffers);
@@ -280,7 +281,8 @@ void SoundBaseMgr::recomputeAllSources()
 	//  sort first 'num_hardware_sources' sources by audibility
 	//  see: https://en.wikipedia.org/wiki/Selection_algorithm
 	if (sources_use - 1 > hw_sources_num)
-		std::nth_element(src_audible, src_audible+hw_sources_num, src_audible+sources_use-1, compareByAudibility);
+		std::nth_element(src_audible.begin(), src_audible.begin() + hw_sources_num,
+						src_audible.begin() + sources_use-1, compareByAudibility);
 
 	//  retire out of range sources first
 	for (i=0; i < sources_use; i++)
@@ -478,7 +480,10 @@ void SoundBaseMgr::Update(float dt)
 			it = dynamics.erase(it);
 		}
 		else
+		{
+			(*it)->Update(dt);
 			++it;
+		}
 		++i;
 	}
 	cnt_dynamic = i;
