@@ -134,6 +134,10 @@
 					<Property key="Caption" value="#{NotDone}"/>
 					<Property key="TextColour" value="0.95 0.7 0.7"/>
 				</Widget>
+				<Widget type="TextBox" skin="TextBox" position="260 16 190 24">
+					<Property key="Caption" value="#{NotDone}"/>
+					<Property key="TextColour" value="0.95 0.7 0.7"/>
+				</Widget>
 			</Widget>
 
 		</Widget>

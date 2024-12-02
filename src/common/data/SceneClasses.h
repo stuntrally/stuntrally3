@@ -160,7 +160,7 @@ public:
 };
 
 
-//  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+//  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 class Object		//  📦 Object - mesh (static🪨) or prop (dynamic)
 {
 public:
@@ -265,7 +265,7 @@ public:
 };
 
 
-//  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+//  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 class SEntity       // Entity 😮 todo
 //  Any combination of stuff
 //  e.g. lamp,  bonfire, flaming barrel, mine, magnetic ball

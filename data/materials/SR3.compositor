@@ -489,8 +489,8 @@ compositor_node Rtt_Terrain
 			// expose demo_dynamic_cubemap
 
 			visibility_mask  0x00000002
-			rq_first  210
-			rq_last   212
+			rq_first  73
+			rq_last   75
 
 			overlays	off
 			use_refractions	depthBuffer rtt_first
@@ -839,8 +839,8 @@ compositor_node Rtt_View3D
 			// expose demo_dynamic_cubemap
 
 			visibility_mask  0x00000002
-			rq_first  210
-			rq_last   212
+			rq_first  73
+			rq_last   75
 
 			overlays	off
 			use_refractions	depthBuffer rtt_first
