@@ -210,14 +210,21 @@
 							<Property key="Colour" value="0.5 0.9 0.9"/>
 						</Widget>
 
-						<!-- * LensFlare -->
+						<!-- 🔆 LensFlare -->
 						<Widget type="Button" skin="CheckBox" position="28 130 556 24" name="LensFlare">
-							<Property key="Caption" value="#{LensFlare} ** #603030 = #{NotDone}"/>
+							<Property key="Caption" value="#{LensFlare} * #603030 = #{NotDone}"/>
 							<Property key="TextColour" value="0.84 0.87 0.9"/>
 						</Widget>
+						
+						<!-- 🌄 SunBeams -->
+						<Widget type="Button" skin="CheckBox" position="28 160 556 24" name="SunBeams">
+							<Property key="Caption" value="#{SunBeams} * #603030 = #{NotDone}"/>
+							<Property key="TextColour" value="0.8 0.8 0.6"/>
+						</Widget>
+
 
 						<!-- 🌅 HDR -->
-						<Widget type="Button" skin="CheckBox" position="28 160 556 24" name="HDR">
+						<Widget type="Button" skin="CheckBox" position="28 190 556 24" name="HDR">
 							<Property key="Caption" value="#{HDR} ** #603030 = #{NotDone}"/>
 							<Property key="TextColour" value="0.8 0.7 0.4"/>
 						</Widget>
@@ -242,7 +249,7 @@
 					</Widget>
 
 
-					<!-- 🌄 GI -->
+					<!-- 🌇 GI -->
 					<Widget type="TabItem" skin="" position="2 24 738 472">
 						<Property key="Caption" value="#604050#{Advanced}"/>
 						<!-- <Widget type="ImageBox" skin="ImageBox" position="660 4 56 56">

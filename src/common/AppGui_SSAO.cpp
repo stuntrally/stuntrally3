@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "App.h"
 #include "settings.h"
+#include "SceneXml.h"
 #include "GraphicsSystem.h"
 
 #include <OgreRoot.h>
@@ -165,7 +166,7 @@ void AppGui::InitSSAO()
 
 //  🕳️💫 Update
 //-----------------------------------------------------------------------------------
-void AppGui::UpdateSSAO(Camera* camera)
+void AppGui::UpdSSAO(Camera* camera)
 {
 	GpuProgramParametersSharedPtr psParams = mSSAOPass->getFragmentProgramParameters();
 #if OGRE_NO_VIEWPORT_ORIENTATIONMODE == 0
@@ -193,36 +194,105 @@ void AppGui::InitLens()
 	// GpuProgramParametersSharedPtr psParams = mLensPass->getFragmentProgramParameters();
 }
 
-void AppGui::UpdateLens(Camera *camera)
+void AppGui::UpdLens(Camera *camera)
 {
 	if (!mLensPass || !camera)  return;
 	GpuProgramParametersSharedPtr psParams = mLensPass->getFragmentProgramParameters();
 
-	// scn->sc->sun  dir to pos..
-	// camera->getViewMatrix()
-	// camera->getProjectionMatrix()
-	static float ti = 0.f;  // test
-	ti += 0.016f* 0.1f;
-	Vector2 uv(cosf(ti)*0.5f, sinf(ti)*0.5f);
+	Vector3 p = scn->sunDir * -10000.f;
+	p.y = -p.y;
+	// Vector4 pos{p.x, p.y, p.z, 1.f};
+	// camera->projectSphere()
+	// pos = pos * camera->getViewMatrix() * camera->getProjectionMatrix();
+
+	Vector3 pos2D = camera->getProjectionMatrix() * (camera->getViewMatrix() * p);
+	// Real x =  pos2D.x * 0.5f + 0.5f;
+	// Real y = -pos2D.y * 0.5f + 0.5f;
+	// Vector2 uv(x,y);
+	Vector2 uv(pos2D.x, pos2D.y);
+/*
+	// pos.x /= mWindow->getWidth();
+	// pos.y /= mWindow->getHeight();
+*/
+/*
+	// get camera and light world positions
+	Vector3 lightPosition_ws = p;  //lightNode()->_getDerivedPosition();
+	Vector3 cameraPosition_ws = camera->getDerivedPosition();
+	// compute distance
+	float lc_distance_ws = cameraPosition_ws.distance(lightPosition_ws);
+
+	// compute geometry vectors update
+	Matrix4 vm = camera->getViewMatrix();
+	// light position in camera space
+	Vector3 lightPosition = vm * lightPosition_ws;
+
+	Vector2 uv(lightPosition.x, lightPosition.y);
+	
+	// camera position in camera space
+	Vector3 cameraPosition = Vector3(0,0,0);
+	Vector3 cameraDirection = camera->getDirection(); // should be (0 0 -1)
+	// camera to light vector
+	Vector3 light_vector = lightPosition - cameraPosition;
+	light_vector.normalise();
+*/
+/*
+	Real LightDistance  = p.distance(mCamera->getPosition());
+	Vector3 CameraVect  = camera->getDirection();  // normalized vector (length 1)
+
+	CameraVect = camera->getPosition() + (LightDistance * CameraVect);
+
+	// The LensFlare effect takes place along this vector.
+	Vector3 LFvect = (CameraVect - p);
+
+	Vector2 uv(LFvect.x, LFvect.y);
+*/
+	// static float ti = 0.f;  // test
+	// ti += 0.016f* 0.1f;
+	// Vector2 uv(cosf(ti)*cosf(ti*1.3f)*0.5f, sinf(ti)*0.5f);
+	// psParams->setNamedConstant( "uvSunPos", uv );
+	LogO(toStr(uv));
 	psParams->setNamedConstant( "uvSunPos", uv );
 }
 
 
+//  🌄 Sun beams
+//--------------------------------------------------------------------------------------------------------------
+void AppGui::InitSunbeams()
+{
+	MaterialPtr material =
+		std::static_pointer_cast<Material>( MaterialManager::getSingleton().load(
+			"LensFlare", ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME ) );
 
-//  all post effects
+	mLensPass = material->getTechnique(0)->getPass(0);
+	// GpuProgramParametersSharedPtr psParams = mLensPass->getFragmentProgramParameters();
+}
+
+void AppGui::UpdSunbeams(Camera *cam)
+{
+
+}
+
+
+//  All post effects
 //--------------------------------------------------------------------------------------------------------------
 void AppGui::InitEffects()
 {
 	InitSSAO();
 	InitLens();
+	InitSunbeams();
 }
 
-void AppGui::UpdateEffects(Camera *camera)
+void AppGui::UpdateEffects(Camera *cam)
 {
 	if (pSet->g.ssao)  //- in ReflectListener::passEarlyPreExecute too
-		UpdateSSAO(camera);  // 🕳️
+		UpdSSAO(cam);  // 🕳️
+	
 	if (pSet->g.lens_flare)
-		UpdateLens(camera);  // 🔆
+		UpdLens(cam);  // 🔆
+	
+	if (pSet->g.sunbeams)
+		UpdSunbeams(cam);  // 🌄
+	
 	if (pSet->gi)
-		UpdateGI();  // 🌄
+		UpdateGI();  // 🌇
 }

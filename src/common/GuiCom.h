@@ -246,7 +246,7 @@ public:
 	Ck ckSSAO;
 	SV svSsaoRadius, svSsaoScale;
 
-	Ck ckLensFlare;
+	Ck ckLensFlare, ckSunbemas;
 	Ck ckHDR;
 	
 	Ck ckGI;

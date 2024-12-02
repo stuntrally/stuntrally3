@@ -303,7 +303,7 @@ void App::LoadTrackEv()
 	NewCommon(false);  // full destroy
 	iObjCur = -1;  iEmtCur = -1;
 
-	DestroyGI();  // 🌄
+	DestroyGI();  // 🌇
 
 	scn->DestroyRoads();
 	scn->DestroyPace();
@@ -387,7 +387,7 @@ void App::LoadTrackEv()
 		scn->grass->Create(this);  // 🌿
 
         if (pSet->gi)
-			InitGI();  // 🌄
+			InitGI();  // 🌇
 	}
 
 

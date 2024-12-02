@@ -44,16 +44,6 @@ public:
 	float bright = 1.f, contrast = 1.f;  //, gamma = 1.15f;
 	float car_light_bright = 1.f;
 
-	//  🪄 Effects  ----
-	float ssao_radius = 1.f, ssao_scale = 1.5f;
-	bool gi =0;
-
-	// bool all_effects =0;
-	// bool soft_particles, lens_flare;  // todo: 1st
-	// bool hdr, bloom;  // todo: 2nd
-	// bool god_rays, motion_blur;  // todo: 3rd
-	// float bloom_int, bloom_orig, blur_intensity;
-
 
 	//  Hud  ----
 	bool vr_mode = 0;  // 👀 forces 1 player
@@ -69,7 +59,7 @@ public:
 	bool trail_show =1;
 
 
-	//  📊 Graphics  ----
+	//  📊 Graphics  ----------------
 	int preset = 4;  // last set, info only
 	bool hud_on =1;  // 0 won't create it, in ed hides dialogs
 	bool collectRandomClr =0;
@@ -127,13 +117,23 @@ public:
 		float refl_dist = 500.f, refl_lod = 0.4f;  int refl_ibl = 2;
 		// int refl_mode = 1;  // todo: 0 static, 1 single, 2 full
 		
-		//  🪄 effects  2x
-		bool ssao =0;  // 🕳️ saao
-		bool lens_flare =0;  // *
-		bool hdr =0;  // 🌅 HDR
+		//  🪄 effects  4x
+		bool ssao =0;  // 🕳️
+		bool lens_flare =0;  // 🔆
+		bool sunbeams =0;  // 🌄
+		bool hdr =0;  // 🌅 bloom
 	} g;
 
-	//  🔊 Sounds
+	//  🪄 effects params  --------
+	float ssao_radius = 1.f, ssao_scale = 1.5f;
+	bool gi =0;  // not in presets-
+
+	// bool all_effects =0;  //?
+	// bool soft_particles, motion_blur;
+	// float bloom_int, bloom_orig, blur_intensity;
+
+
+	//  🔊 Sounds  ------------
 	struct Sound
 	{
 		//  volume
@@ -157,11 +157,11 @@ public:
 		float max_dist = 500.f, ref_dist = 1.f, rolloff = 0.05f;
 	} s;
 
-	//  📰🔻 Tracks list  ----
+
+	//  📰🔻 Tracks list  ------------
 	//  view, sort column, filter on
 	int tracks_view =0, tracks_sort =2;
 	bool tracks_sortup =1, tracks_filter =0;
-
 
 	bool col_vis[TV_ALL][COL_VIS];  // visible columns for track views
 	int  col_fil[2][COL_FIL];  // filtering range for columns 0min-1max

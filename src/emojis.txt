@@ -13,9 +13,9 @@ You can search in code by emoji for all that is related to it.
             Trees  🏢 caves buildings      rain snow     🔨 Damage hit      ❌ wrong chk     ⭕ Pipe         🔴 brake         
  🌳🪨 Veget-ation                      🌪️🍃 wind         💨 Boost                           ➰➿ Loop                         
  🪴 Bush 🍄shroom  🎆 Fields   fld                       ⏪ Rewind          🎨 paint                                           
- 🌿 Grass  grs       accelerate lift   🪐🌌🛸 Space                                                                            
-                   🎇 entities  ent    ⛈️🌋 Extreme                                                           
-                                       🫧 Anomaly                                                             
+ 🌿 Grass  grs       accelerate lift                                                                                            
+                   🎇 Entities-  ent                                                                           
+                                                                                                              
  ____________      ______              _____          _______           ______           ________      _______              ________
  Components        Game                GUI            GUI-2             Code             Code-2        Tools                Render
                                                                                                                           
@@ -29,12 +29,22 @@ You can search in code by emoji for all that is related to it.
  📽️ Replay  rpl    💎 Collection       📉 Graphs      🔗 url                per frame                  🧪 test  src       
                    💷 Career-                         🖱️ Mouse         🔁 Refresh        👆 pick  ed                       🌠 Hlms  shader
  👻 Ghost  gho                         📝 Help         ⌨️ Keys                 single     🚧 cursor     🏗️👷 Editor  ed     🪄 compositor
- 👈 Hint  lesson                       ❔ tooltip                      🌈 Colors  clr    📍 marker     🎳 Bullet collis    🕳️ SSAO
-                                                       🗺️ language     🔺 triangle  tri   ⚠ warnings   🎯 ray cast         🌄 GI-
- 👥 Split-screen                       🖼️ image  prv   🔤 text         ⭐ user           🖌️ brush      🌐 Wireframe        🌅 HDR
- 📡 Multi-player                       📰 View  gui    🔠 font                                                              🔆 lens flare
+ 👈 Hint  lesson                       ❔ tooltip                      🌈 Colors  clr    📍 marker     🎳 Bullet collis    
+                                                       🗺️ language     🔺 triangle  tri   ⚠ warnings   🎯 ray cast          
+ 👥 Split-screen                       🖼️ image  prv   🔤 text         ⭐ user           🖌️ brush      🌐 Wireframe        
+ 📡 Multi-player                       📰 View  gui    🔠 font                                                              
     mplr network                       🔻 Filter       🧊 3d view                                                           
-                                                                                                                             
-                                                                                                                          
- 🌅⛲ 🏜️🌴🌲  💻🕑📑  📂🔒👤  🧹⛏️🧱🛢️  🎲🎉  ➕➖ ❗❓  🔶🟪 🔙  🪣⛔🛞 
+
+ _______           _________
+ Effects           Scenery
+
+ 🕳️ SSAO           🪐 Unident  🌌 Space  🛸 Alien
+ 🌇 GI-            ⛈️ extreme  🌋 Volcanic
+ 🌅 HDR            🫧 Anomaly
+ 🔆 lens flare     🏜️ Desert  🌴 Islands  🌳 Jungle  🌲 Forest
+ 🌄 sunbeams       
+
+
+
+ ⛲  💻🕑📑  📂🔒👤  🧹⛏️🧱  🎲🎉  ➕➖ ❗❓  🔶🟪 🔙  🪣⛔🛞 
  no img:  ☀️ ☁️  ⚡ ❄️  ⚙️  ☢️ ⚠  ☑️ ✔️ ✖️  ↗️ ↕️ ↔️ ↩  

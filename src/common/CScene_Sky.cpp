@@ -310,6 +310,7 @@ void CScene::UpdSun(float dt)
 {
 	if (!sun)  return;
 	Vector3 dir = SplineRoad::GetRot(sc->ldYaw - sc->skyYaw, -sc->ldPitch);
+	sunDir = dir.normalisedCopy();
 	// sun->setDiffuseColour( 0.0, 1.0, 0.0);
 	// sun->setSpecularColour(0.0, 0.0, 1.0);
 

@@ -1,0 +1,66 @@
+
+//-----------------------------------------------------------------------------
+// GLSL shaders
+fragment_program SunBeams_ps_GLSL glsl
+{
+	source SunBeams_ps.glsl
+	default_params
+	{
+		param_named depthTexture int 0
+		param_named sceneTexture int 1
+	}
+}
+
+// GLSL Vulkan shaders
+fragment_program SunBeams_ps_VK glslvk
+{
+	source SunBeams_ps.glsl
+}
+
+// HLSL shaders
+fragment_program SunBeams_ps_HLSL hlsl
+{
+	source SunBeams_ps.hlsl
+	entry_point main
+	target ps_5_0 ps_4_0 ps_4_0_level_9_1 ps_4_0_level_9_3
+}
+
+fragment_program SunBeams_ps unified
+{
+	delegate SunBeams_ps_GLSL
+	delegate SunBeams_ps_VK
+	delegate SunBeams_ps_HLSL
+}
+
+// Material definition
+material SunBeams
+{
+	technique
+	{
+		pass
+		{
+			depth_check off
+			depth_write off
+
+			cull_hardware none
+
+			vertex_program_ref Ogre/Compositor/Quad_vs
+			{
+			}
+			fragment_program_ref SunBeams_ps
+			{
+			}
+
+			texture_unit depthTexture
+			{
+				filtering			none
+				tex_address_mode	clamp
+			}
+			texture_unit sceneTexture
+			{
+				filtering			none
+				tex_address_mode	clamp
+			}
+		}
+	}
+}

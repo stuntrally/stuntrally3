@@ -211,14 +211,18 @@ public:
 	Ogre::Pass *mSSAOPass =0;
 	Ogre::Pass *mApplyPass =0;
 	Ogre::TextureGpu *noiseTexture =0;
-	void InitSSAO(), UpdateSSAO(Ogre::Camera *camera);
+	void InitSSAO(), UpdSSAO(Ogre::Camera *camera);
 
 	//  🔆 Lens flare
 	Ogre::Pass *mLensPass =0;
-	void InitLens(), UpdateLens(Ogre::Camera *camera);
+	void InitLens(), UpdLens(Ogre::Camera *camera);
+
+	//  🌄 Sunbeams
+	// Ogre::Pass *mSunbeamsPass =0;
+	void InitSunbeams(), UpdSunbeams(Ogre::Camera *camera);
 
 
-	//  🌄 GI  ----------------
+	//  🌇 GI  ----------------
 	void InitGI(), UpdateGI(), DestroyGI();
 	void GIVoxelizeScene();
 

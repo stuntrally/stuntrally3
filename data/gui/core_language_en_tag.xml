@@ -784,7 +784,7 @@
 	<Tag name="GI">Global Illumination</Tag>
 
 	<Tag name="LensFlare">Lens flare</Tag>
-	<Tag name="godrays">God Rays</Tag>
+	<Tag name="SunBeams">Sunbeams</Tag>
 
 	<Tag name="Bloom">Bloom</Tag>
 	<Tag name="Intensity">Intensity</Tag>

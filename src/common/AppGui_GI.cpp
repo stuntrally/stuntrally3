@@ -21,7 +21,7 @@
 using namespace Ogre;
 
 
-//  🌄🆕 GI Init
+//  🌇🆕 GI Init
 //-----------------------------------------------------------------------------------
 void AppGui::InitGI()
 {
@@ -53,7 +53,7 @@ void AppGui::InitGI()
 	LogO(String("*()* GI Init end: ") + fToStr(ti.getMilliseconds(),0,3) + " ms");
 }
 
-//  🌄💥 GI destroy
+//  🌇💥 GI destroy
 //-----------------------------------------------------------------------------------
 void AppGui::DestroyGI()
 {
@@ -73,7 +73,7 @@ void AppGui::DestroyGI()
 	// delete mTestUtils;  mTestUtils = 0;
 }
 
-//  🌄💫 GI update
+//  🌇💫 GI update
 //-----------------------------------------------------------------------------------
 void AppGui::UpdateGI()
 {
@@ -94,7 +94,7 @@ void AppGui::UpdateGI()
 }
 
 
-//  🌄🔁 Voxelize scene
+//  🌇🔁 Voxelize scene
 //-----------------------------------------------------------------------------------
 void AppGui::GIVoxelizeScene()
 {
