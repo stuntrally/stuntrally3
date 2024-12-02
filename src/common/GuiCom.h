@@ -243,10 +243,11 @@ public:
 	SlV(CarLightBright);
 
 	//  🪄 Effects  --------------------------
-	Ck ckHDR;
-
 	Ck ckSSAO;
 	SV svSsaoRadius, svSsaoScale;
+
+	Ck ckLensFlare;
+	Ck ckHDR;
 	
 	Ck ckGI;
 	Txt txGIinfo =0;

@@ -129,6 +129,7 @@ public:
 		
 		//  🪄 effects  2x
 		bool ssao =0;  // 🕳️ saao
+		bool lens_flare =0;  // *
 		bool hdr =0;  // 🌅 HDR
 	} g;
 

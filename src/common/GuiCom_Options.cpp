@@ -235,6 +235,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	sv= &svSsaoRadius;		sv->Init("SsaoRadius",	&pSet->ssao_radius, 0.1,6.f, 1.5f);  sv->DefaultF(1.8f);
 	sv= &svSsaoScale;		sv->Init("SsaoScale",	&pSet->ssao_scale,  0.1,6.f, 1.5f);  sv->DefaultF(1.8f);
 
+	ck= &ckLensFlare;		ck->Init("LensFlare",	&pSet->g.lens_flare);  // *
 	ck= &ckHDR;				ck->Init("HDR",			&pSet->g.hdr);  // 🌅 HDR
 
 	ck= &ckGI;				ck->Init("GI",			&pSet->gi);  // 🌄 GI

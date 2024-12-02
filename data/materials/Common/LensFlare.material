@@ -1,0 +1,66 @@
+
+//-----------------------------------------------------------------------------
+// GLSL shaders
+fragment_program LensFlare_ps_GLSL glsl
+{
+	source LensFlare_ps.glsl
+	default_params
+	{
+		param_named depthTexture int 0
+		param_named sceneTexture int 1
+	}
+}
+
+// GLSL Vulkan shaders
+fragment_program LensFlare_ps_VK glslvk
+{
+	source LensFlare_ps.glsl
+}
+
+// HLSL shaders
+fragment_program LensFlare_ps_HLSL hlsl
+{
+	source LensFlare_ps.hlsl
+	entry_point main
+	target ps_5_0 ps_4_0 ps_4_0_level_9_1 ps_4_0_level_9_3
+}
+
+fragment_program LensFlare_ps unified
+{
+	delegate LensFlare_ps_GLSL
+	delegate LensFlare_ps_VK
+	delegate LensFlare_ps_HLSL
+}
+
+// Material definition
+material LensFlare
+{
+	technique
+	{
+		pass
+		{
+			depth_check off
+			depth_write off
+
+			cull_hardware none
+
+			vertex_program_ref Ogre/Compositor/Quad_vs
+			{
+			}
+			fragment_program_ref LensFlare_ps
+			{
+			}
+
+			texture_unit depthTexture
+			{
+				filtering			none
+				tex_address_mode	clamp
+			}
+			texture_unit sceneTexture
+			{
+				filtering			none
+				tex_address_mode	clamp
+			}
+		}
+	}
+}

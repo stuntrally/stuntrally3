@@ -153,12 +153,14 @@ void AppGui::AddHudGui(CompositorTargetDef* td)  // + 3 ed, + 2 game  pass
 TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float height)
 {
 	const auto inp = TextureDefinitionBase::TEXTURE_INPUT;
-	//  log
+	//  cfg
 	const bool refract = pSet->g.water_refract,
 		ssao = pSet->g.ssao, hdr = pSet->g.hdr,
+		lens = pSet->g.lens_flare,
 		split = splits > 1,
 		msaa = mWindow->getSampleDescription().isMultisample();
 
+	//  log
 	LogO("CC+# Create Compositor   "+getWsInfo());
 	if (view >= 50)
 		LogO("CC=# Combine screen "+toStr(view));
@@ -487,16 +489,20 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			nd->addTextureSourceName("depthBuffer", 2, inp);
 			nd->addTextureSourceName("depthBufferNoMsaa", 3, inp);
 
-			nd->setNumLocalTextureDefinitions( 1 );  //* textures
+			nd->setNumLocalTextureDefinitions( (lens ? 1 : 0) + 1 );  //* textures
 			{
 				auto* td = nd->addTextureDefinition( "rtt_final" );
 				td->format = PFG_UNKNOWN;  td->fsaa = "";  // target_format, auto
 				AddRtv(nd, "rtt_final", "rtt_final", "depthBuffer");
-			}
+			if (lens)
+			{	auto* td = nd->addTextureDefinition( "rtt_lens" );
+				td->format = PFG_UNKNOWN;  td->fsaa = "";  // target_format, auto
+				AddRtv(nd, "rtt_lens", "rtt_lens", "depthBuffer");
+			}	}
 
 			nd->mCustomIdentifier = "3-Final-"+si;
 
-			nd->setNumTargetPass( 2 );  //* targets
+			nd->setNumTargetPass( (lens ? 1 : 0) + 2 );  //* targets
 
 			//  🌊 Final  ----
 			td = nd->addTargetPass( "rtt_final" );
@@ -550,6 +556,20 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				// todo: add
 			}
 
+			if (lens)
+			{
+				td = nd->addTargetPass( "rtt_lens" );
+				td->setNumPasses( 1 );  //* passes
+				{
+					auto* pq = AddQuad(td);  // + quad
+					pq->setAllLoadActions( LoadAction::Clear );
+					
+					pq->mMaterialName = "LensFlare";  pq->mProfilingId = "Lens Flare";  // input
+					pq->addQuadTextureSource( 0, "depthBufferNoMsaa" );
+					pq->addQuadTextureSource( 1, "rtt_final" );
+				}
+			}
+
 			//  render / Window  ----
 			td = nd->addTargetPass( "rtt_FullOut" );
 			td->setNumPasses( 1 + (!split ? nHudGui : 0) );  //* passes
@@ -559,7 +579,9 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				
 				pq->mMaterialName = "Ogre/Copy/4xFP32";  // needed? merge above
 				pq->mProfilingId = "Copy to Window";
-				pq->addQuadTextureSource( 0, "rtt_final" );  // input
+				pq->addQuadTextureSource( 0,
+					lens ? "rtt_lens" :
+					"rtt_final" );  // input
 
 				//  ⏲️ Hud, 🎛️ Gui  --------
 				if (!split)
