@@ -36,11 +36,10 @@ using namespace Ogre;
 // . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 void App::CreateRnd2Tex()
 {
-	const char* strWs[RT_ALL] = {
+	LogO("C-+E ed Create Rnd2Tex");
+	const char* strWs[RT_ALL] = {  //  names in SR3.compositor
 		"Rtt_RoadDens", "Rtt_RoadPreview", "Rtt_Terrain",
-		// "SR3_Render1",
-		"Rtt_View3D",
-		"Rtt_PreView3D"};
+		"Rtt_View3D", "Rtt_ObjPrv3D"};
 		
 	auto* texMgr = mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
 	auto* wsMgr = mRoot->getCompositorManager2();
@@ -50,7 +49,7 @@ void App::CreateRnd2Tex()
 
 	for (int i=0; i < RT_ALL; ++i)
 	{
-		bool full = i == RT_View3D, prv3D = i == RT_PreView3D;
+		bool view3D = i == RT_View3D, prv3D = i == RT_ObjPrv3D, ter = i == RT_Terrain;
 		auto& r = rt[i];
 		String si = toStr(i); //, sMtr = "road_mini_"+si;
 		{
@@ -99,7 +98,7 @@ void App::CreateRnd2Tex()
 				r.cam->setFarClipDistance(50000);  // r.cam->setUseRenderingDistance(true);
 				r.cam->setAspectRatio(1.0);
 				
-				if (!full)  // ortho proj
+				if (!view3D)  // ortho 2d proj
 				{	r.cam->setProjectionType(PT_ORTHOGRAPHIC);
 					r.cam->setOrthoWindow(tws, tws);
 					// r.cam->setOrthoWindow(tws / div, tws / div);  // todo: ?
@@ -113,26 +112,33 @@ void App::CreateRnd2Tex()
 				// r.cam->setCastShadows(false);
 			}
 
-			//  🪄 Workspace  ----
-			const String name( "EdRttWrk" + si );  // created from code
-			if( !wsMgr->hasWorkspaceDefinition( name ) )
+			//  🪄 Workspace def  ----
+			String wsName( "EdRttWrk" + si );  // created from code
+			/*if (view3D) // || ter)  // todo: ..
+			{	int ii = i + 2;
+				auto si = toStr(ii+1);
+				wsName = "SR3_New_WS"+si;
+				CreateCompositor(ii, 0, 1.f, 1.f);  // ignored
+			}else
+			*/
+			if( !wsMgr->hasWorkspaceDefinition( wsName ) )
 			{
-				auto* w = wsMgr->addWorkspaceDefinition( name );
+				auto* w = wsMgr->addWorkspaceDefinition( wsName );
 				// w->mEnableForwardPlus = false;
 				w->connectExternal( 0, strWs[i], 0 );
 			}else
-				LogO("Workspace already exists: "+name);
+				LogO("Workspace already exists: "+wsName);
 
 		// #define MANUAL_RTT_UPD  // todo: terrain shadowed..?
 
 			//  add Workspace
-			LogO(String("--++ WS add:  Ed ")+strWs[i]+", all: "+toStr(wsMgr->getNumWorkspaces()));
+			LogO(String("--++ WS add:  Ed ")+strWs[i]+"  "+wsName+"  all: "+toStr(wsMgr->getNumWorkspaces()));
 
 			CompositorChannelVec chan(1);
 			chan[0] = r.rtt;
 
 			auto* cam = prv3D ? prvScene.cam : r.cam;
-			r.ws = wsMgr->addWorkspace( scMgr, chan, cam, name,
+			r.ws = wsMgr->addWorkspace( scMgr, chan, cam, wsName,
 		#ifndef MANUAL_RTT_UPD
 				true, 2 /*-1 ?*/ );  //! slower
 			// r.ws->setEnabled(false);
@@ -271,6 +277,8 @@ void App::DestroyEdHud()
 //  💥 destroy
 void App::DestroyRnd2Tex()
 {
+	LogO("D-=E ed Destroy Rnd2Tex");
+
 	auto* texMgr = mSceneMgr->getDestinationRenderSystem()->getTextureGpuManager();
 	auto* cmpMgr = mRoot->getCompositorManager2();
 

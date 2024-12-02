@@ -514,7 +514,7 @@ compositor_node Rtt_Terrain
 
 //  🧊 3d preview  other scene  single object,veget
 //------------------------------------------------------------------------------------
-compositor_node Rtt_PreView3D
+compositor_node Rtt_ObjPrv3D
 {
 	in 0 rt_output
 
