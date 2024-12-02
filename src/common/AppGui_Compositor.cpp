@@ -550,12 +550,13 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				ps->mShadowNodeRecalculation = SHADOW_NODE_REUSE;  //`
 			}
 
-			//  hdr ..  ----------------
+			//  🌅 Hdr  ----------------
 			if (hdr)
 			{
 				// todo: add
 			}
 
+			//  🔆 Lens flare  ----------------
 			if (lens)
 			{
 				td = nd->addTargetPass( "rtt_lens" );

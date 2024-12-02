@@ -153,7 +153,7 @@ void App::createScene01()
 	// mCamera->setFarClipDistance( pSet->view_distance );
 	// mCamera->setLodBias( pSet->lod_bias );
 
-	InitSSAO();
+	InitEffects();
 
 
 	LogO(">>>>>>>> Init SR done ----");

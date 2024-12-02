@@ -10,6 +10,11 @@ in block
 	vec2 uv0;
 } inPs;
 
+vulkan( layout( ogre_P0 ) uniform Params { )
+	uniform vec2 uvSunPos;
+	//.. asp, color, var
+vulkan( }; )
+
 vulkan_layout( location = 0 )
 out vec4 fragColour;
 
@@ -111,11 +116,11 @@ void main()
 	float asp = 1920.0 / 1200.0;  //iResolution.x/iResolution.y;  // todo: fix aspect ratio..
 	uv.x *= asp;
 
-	vec2 mouse = vec2(-0.4, -0.4);  // todo: par sun pos in screen space
-	mouse.x *= asp;
+	vec2 sun = uvSunPos;  // todo: par sun pos in screen space
+	sun.x *= asp;
 
 	// fragColour.xyz +=
-	vec3 color = vec3(1.0,1.05,1.1) * lensflare(uv, mouse);
+	vec3 color = vec3(1.0,1.05,1.1) * lensflare(uv, sun);
 	color = cc(color, 0.5, 0.1);
 	fragColour.xyz += color; // * color;
 

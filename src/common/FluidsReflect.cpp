@@ -89,8 +89,7 @@ void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 	Camera *camera = passScene->getCamera();
 
 	
-	if (app->pSet->g.ssao)  // 💫🕳️
-		app->UpdateSSAO(camera);
+	app->UpdateEffects(camera);  // 💫
 
 #if 0  // todo: upd ter here? for splitscreen
 	///  ⛰️ Terrain  ----?

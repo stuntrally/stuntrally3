@@ -8,14 +8,12 @@
 #include <OgreVector3.h>
 #include <OgreWindow.h>
 #include <OgreSceneManager.h>
-// #include <OgreTextureGpuManager.h>
 
 #include <OgreHlmsManager.h>
 #include <Compositor/OgreCompositorManager2.h>
 #include <Compositor/OgreCompositorNodeDef.h>
 #include <Compositor/OgreCompositorNode.h>
 #include <Compositor/OgreCompositorWorkspace.h>
-// #include <Compositor/OgreCompositorWorkspaceDef.h>
 #include <Compositor/OgreCompositorWorkspaceListener.h>
 #include <Compositor/Pass/PassScene/OgreCompositorPassSceneDef.h>
 
@@ -34,7 +32,8 @@
 using namespace Ogre;
 
 
-//---------------------------------------------------------------------------------
+//  🕳️ SSAO
+//--------------------------------------------------------------------------------------------------------------
 void AppGui::InitSSAO()
 {
 	//  Create SSAO kernel samples
@@ -179,52 +178,51 @@ void AppGui::UpdateSSAO(Camera* camera)
 
 	GpuProgramParametersSharedPtr psParamsApply = mApplyPass->getFragmentProgramParameters();
 	psParamsApply->setNamedConstant( "powerScale", pSet->ssao_scale );
-return;
-//
+}
 
-	//  Reconstruct position from depth. Position is needed in SSAO
-	//  We need to set the parameters based on camera to the
-	//  shader so that the un-projection works as expected
-	// Camera *camera = mCamera;  //mGraphicsSystem->getCamera();
-	Vector2 projectionAB = camera->getProjectionParamsAB();
-	//  The division will keep "linearDepth" in the shader in the [0; 1] range.
-	projectionAB.y /= camera->getFarClipDistance();
-	psParams->setNamedConstant( "projectionParams", projectionAB );
 
-	//  other uniforms
-/*	psParams->setNamedConstant( "kernelRadius", pSet->ssao_radius );
-	psParams->setNamedConstant(
-		"noiseScale",
-		Vector2(
-			( Real( mGraphicsSystem->getRenderWindow()->getWidth() ) * 0.5f ) / 2.0f,
-			( Real( mGraphicsSystem->getRenderWindow()->getHeight() ) * 0.5f ) / 2.0f ) );
-	psParams->setNamedConstant( "invKernelSize", 1.0f / 64.0f );
-	psParams->setNamedConstant( "sampleDirs", (float *)kernelSamples, 64, 4 );
-*/
-	//  blur shader uniforms
-	MaterialPtr materialBlurH =
+//  🔆 Lens flare
+//--------------------------------------------------------------------------------------------------------------
+void AppGui::InitLens()
+{
+	MaterialPtr material =
 		std::static_pointer_cast<Material>( MaterialManager::getSingleton().load(
-			"SSAO/BlurH", ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME ) );
+			"LensFlare", ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME ) );
 
-	Pass *passBlurH = materialBlurH->getTechnique( 0 )->getPass( 0 );
-	GpuProgramParametersSharedPtr psParamsBlurH = passBlurH->getFragmentProgramParameters();
-	psParamsBlurH->setNamedConstant( "projectionParams", projectionAB );
+	mLensPass = material->getTechnique(0)->getPass(0);
+	// GpuProgramParametersSharedPtr psParams = mLensPass->getFragmentProgramParameters();
+}
 
-	MaterialPtr materialBlurV =
-		std::static_pointer_cast<Material>( MaterialManager::getSingleton().load(
-			"SSAO/BlurV", ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME ) );
+void AppGui::UpdateLens(Camera *camera)
+{
+	if (!mLensPass || !camera)  return;
+	GpuProgramParametersSharedPtr psParams = mLensPass->getFragmentProgramParameters();
 
-	Pass *passBlurV = materialBlurV->getTechnique( 0 )->getPass( 0 );
-	GpuProgramParametersSharedPtr psParamsBlurV = passBlurV->getFragmentProgramParameters();
-	psParamsBlurV->setNamedConstant( "projectionParams", projectionAB );
+	// scn->sc->sun  dir to pos..
+	// camera->getViewMatrix()
+	// camera->getProjectionMatrix()
+	static float ti = 0.f;  // test
+	ti += 0.016f* 0.1f;
+	Vector2 uv(cosf(ti)*0.5f, sinf(ti)*0.5f);
+	psParams->setNamedConstant( "uvSunPos", uv );
+}
 
-	//  apply shader uniforms
-	MaterialPtr materialApply =
-		std::static_pointer_cast<Material>( MaterialManager::getSingleton().load(
-			"SSAO/Apply", ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME ) );
 
-	// Pass *passApply = materialApply->getTechnique( 0 )->getPass( 0 );
-	// mApplyPass = passApply;
-	// GpuProgramParametersSharedPtr psParamsApply = passApply->getFragmentProgramParameters();
-	// psParamsApply->setNamedConstant( "powerScale", pSet->ssao_scale );
+
+//  all post effects
+//--------------------------------------------------------------------------------------------------------------
+void AppGui::InitEffects()
+{
+	InitSSAO();
+	InitLens();
+}
+
+void AppGui::UpdateEffects(Camera *camera)
+{
+	if (pSet->g.ssao)  //- in ReflectListener::passEarlyPreExecute too
+		UpdateSSAO(camera);  // 🕳️
+	if (pSet->g.lens_flare)
+		UpdateLens(camera);  // 🔆
+	if (pSet->gi)
+		UpdateGI();  // 🌄
 }

@@ -357,10 +357,7 @@ void App::update( float dt )
 	processCamera(mDTime);
 
 
-	if (pSet->g.ssao)
-		UpdateSSAO(mCamera);  // 🕳️
-	if (pSet->gi)
-		UpdateGI();  // 🌄
+	UpdateEffects(mCamera);
 
 	
 	///  gui
@@ -404,9 +401,9 @@ void App::update( float dt )
 		(mWndEdObj && mWndEdObj->getVisible() && tabO == TABo_Objects) ||
 		(mWndEdit && mWndEdit->getVisible() && tab == TAB_Veget && st5 == 1);
 
-	if (oldVis != vis && rt[RT_PreView3D].nd)
+	if (oldVis != vis && rt[RT_ObjPrv3D].nd)
 	{	oldVis = vis;
-		rt[RT_PreView3D].nd->setVisible(vis);
+		rt[RT_ObjPrv3D].nd->setVisible(vis);
 		// gui->viewCanvas->setVisible(vis);
 	}
 	if (gui->tiViewUpd >= 0.f)

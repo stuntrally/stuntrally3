@@ -204,11 +204,18 @@ public:
 	// std::vector<Ogre::CompositorWorkspace*> mWorkspaces;
 
 
+	//  Effects post
+	void InitEffects(), UpdateEffects(Ogre::Camera *camera);
+
 	//  🕳️ SSAO  ----------------
 	Ogre::Pass *mSSAOPass =0;
 	Ogre::Pass *mApplyPass =0;
 	Ogre::TextureGpu *noiseTexture =0;
 	void InitSSAO(), UpdateSSAO(Ogre::Camera *camera);
+
+	//  🔆 Lens flare
+	Ogre::Pass *mLensPass =0;
+	void InitLens(), UpdateLens(Ogre::Camera *camera);
 
 
 	//  🌄 GI  ----------------

@@ -139,7 +139,8 @@ void App::createScene01()  // once, init
 	// mViewport->setVisibilityMask(RV_MaskAll);  // hide prv cam rect
 
 
-	InitSSAO();  //-^
+	InitEffects();
+	
 
 	CreatePreviews();
 	
