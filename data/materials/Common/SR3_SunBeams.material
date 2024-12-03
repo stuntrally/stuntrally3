@@ -3,7 +3,7 @@
 // GLSL shaders
 fragment_program SunBeams_ps_GLSL glsl
 {
-	source SunBeams_ps.glsl
+	source SR3_SunBeams_ps.glsl
 	default_params
 	{
 		param_named depthTexture int 0
@@ -14,13 +14,13 @@ fragment_program SunBeams_ps_GLSL glsl
 // GLSL Vulkan shaders
 fragment_program SunBeams_ps_VK glslvk
 {
-	source SunBeams_ps.glsl
+	source SR3_SunBeams_ps.glsl
 }
 
-// HLSL shaders
+// HLSL shaders  todo
 fragment_program SunBeams_ps_HLSL hlsl
 {
-	source SunBeams_ps.hlsl
+	source SR3_SunBeams_ps.hlsl
 	entry_point main
 	target ps_5_0 ps_4_0 ps_4_0_level_9_1 ps_4_0_level_9_3
 }
@@ -53,7 +53,7 @@ material SunBeams
 
 			texture_unit depthTexture
 			{
-				filtering			none
+				filtering			linear
 				tex_address_mode	clamp
 			}
 			texture_unit sceneTexture

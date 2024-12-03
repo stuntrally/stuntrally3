@@ -12,14 +12,14 @@ in block
 
 vulkan( layout( ogre_P0 ) uniform Params { )
 	uniform vec2 uvSunPos;
-	//.. par
+	//.. par fog clr
 vulkan( }; )
 
 vulkan_layout( location = 0 )
 out vec4 fragColour;
 
 
-//#define DITHER  // dithering toggle, tex
+//#define DITHER  // todo, dithering, tex 8x8
 #define QUALITY  3  //par hq..
 
 // #define DECAY     0.974
@@ -31,56 +31,56 @@ out vec4 fragColour;
 	#define SAMPLES  256
 	#define DENSITY  0.98
 	#define WEIGHT   0.25
-#else
+#endif
 #if (QUALITY==2)  // med
 	#define SAMPLES  64
 	#define DENSITY  0.97
 	#define WEIGHT   0.25
-#else
+#endif
 #if (QUALITY==1)  // low
 	#define SAMPLES  32
 	#define DENSITY  0.95
 	#define WEIGHT   0.25
-#else  // lowest
+#endif
+#if (QUALITY==0)  // lowest
 	#define SAMPLES  16
 	#define DENSITY  0.93
 	#define WEIGHT   0.36
-#endif
-#endif
 #endif
 
 
 void main()
 {
-    vec2 lightpos = uvSunPos;
 	vec2 uv = inPs.uv0;
+
+	#define dep(uv, val)  ( (texture( vkSampler2D( depthTexture, texSampler ), uv).x * 1000.0) < 0.01 ? val : 0.0 )
    	
 	//  light, objects
-	float occ = 0.0;  //texture( vkSampler2D( sceneTexture, texSampler ), inPs.uv0 ).r;
-	float obj = texture( vkSampler2D( depthTexture, texSampler ), uv ).r * 1090.0 < 0.01f ? 1.0 : 0.0;
+	// float occ = 0.0;
+	float occ = dep(uv, 1.0);
     // #ifdef DITHER
-    	// float dither = texture(iChannel1, fragCoord/iChannelResolution[1].xy).r;  //?-
+    	// float dither = texture(ditherTexture, fragCoord/iChannelResolution[1].xy).r;  //?-
     // #endif
 
-    vec2 dtc = (uv - lightpos) * (1.0 / float(SAMPLES) * DENSITY);
+    vec2 uvStep = (uv - uvSunPos) * (1.0 / float(SAMPLES) * DENSITY);
     float illumDecay = 1.;
     
 	for (int i=0; i < SAMPLES; i++)
     {
-        uv -= dtc;
+        uv -= uvStep;
         // #ifdef DITHER
-        	// float s = texture(iChannel0, uv+(dtc*dither)).x;
+        	// float s = texture(depth, uv + (uvStep * dither)).x;
         // #else
-        	// float s = texture(iChannel0, uv).x;
-			float s = texture( vkSampler2D( depthTexture, texSampler ), uv ).r * 1090.0 < 0.01f ? 0.2 : 0.0;  // obj
+			float s = dep(uv, 0.2);
         // #endif
         s *= illumDecay * WEIGHT;
         occ += s;
         illumDecay *= DECAY;
     }
         
-	fragColour = texture( vkSampler2D( sceneTexture, texSampler ), uv ).xyz;
+	fragColour = texture( vkSampler2D( sceneTexture, texSampler ), inPs.uv0 );
 
-	vec3 rays = vec3(0.0, 0.0, obj * 0.333) + occ*EXPOSURE;
-	fragColour += rays;
+	//  par clr sun,fog
+	vec3 rays = vec3(1.0, 0.8, 0.6) * occ * EXPOSURE;
+	fragColour.xyz += rays;  
 }
