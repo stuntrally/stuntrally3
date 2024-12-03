@@ -11,8 +11,9 @@ in block
 } inPs;
 
 vulkan( layout( ogre_P0 ) uniform Params { )
-	uniform vec2 uvSunPos;
-	//.. asp, color, var
+	uniform vec4 uvSunPos_Fade;
+	// uniform vec4 efxClrSun;
+	//.. asp, var
 vulkan( }; )
 
 vulkan_layout( location = 0 )
@@ -41,12 +42,13 @@ vec3 lensflare(vec2 uv, vec2 pos)
 	vec2 main = uv - pos;
 	vec2 uvd = uv*(length(uv));
 
-	// float ang = atan(main.x,main.y);
-	float dist = length(main);  dist = pow(dist, 0.1);
-	// float n = noise(vec2(ang*16.0,dist*32.0));
+	float dist = length(main), distUV = dist;  dist = pow(dist, 0.1);
+	float ang = atan(main.x,main.y);
+	// float n = noise(vec2(ang*16.0,dist*32.0));  // todo: star
 
-	float f0 = 1.0/(length(uv-pos)*16.0+1.0);  //*16
+	float f0 = 1.0 / (distUV*64.0+1.0);  //*16
 
+	f0 = f0 + f0*(sin(sin(ang*2.+pos.x)*4.0 - cos(ang*3.+pos.y)*16.)*.1 + dist*.1 + .8);
 	// f0 = f0 + f0*(sin(noise(sin(ang*2.+pos.x)*4.0 - cos(ang*3.+pos.y))*16.)*.1 + dist*.1 + .8);
 
 	float f1 = max(0.01-pow(length(uv+1.2*pos),1.9),.0)*7.0;
@@ -84,36 +86,43 @@ vec3 lensflare(vec2 uv, vec2 pos)
 
 	// return c;
 	return c * c;
-	// return vec3(pow(c.x,2.1),pow(c.y,2.1),pow(c.z,2.1));
+	// return vec3(pow(c.x,3.1),pow(c.y,3.1),pow(c.z,3.1));
 }
 
 vec3 mod_clr(vec3 color, float factor,float factor2)  // color modifier
 {
 	float w = color.x+color.y+color.z;
-	return mix(color,vec3(w)*factor,w*factor2);
+	return mix(color, vec3(w)*factor, w*factor2);
 }
 
 void main()
 {
-	//  sample depth around sun for dim factor  // todo: not here for every pixel, once in a pass
+	vec2 uvSun = uvSunPos_Fade.xy;
+	vec2 uv = inPs.uv0 - vec2(0.5, 0.5);
+	
+	//  meh-  sample depth around sun for dim factor
+	// todo: not here for every pixel, once in a rtt pass
 	// float dim = 1.0;
-	// float dim = max(0.0, 1.0 - texture( vkSampler2D( depthTexture, texSampler ), uvSunPos ).x * 10000.0);
-	#define dep(uv)  ( (texture( vkSampler2D( depthTexture, texSampler ), uv).x * 1000.0) < 0.01 ? 0.0 : 1.0 )
-	// float dim = dep(uvSunPos);
+	// float dim = max(0.0, 1.0 - texture( vkSampler2D( depthTexture, texSampler ), uvSun ).x * 10000.0);
+	#define getDepth(uv)  ( (texture( vkSampler2D( depthTexture, texSampler ), uv).x * 1000.0) < 0.01 ? 0.0 : 1.0 )
+	// float dim = dep(uvSunPos_Fade);
 	float sum =
-		dep( uvSunPos ) +
-		dep( uvSunPos +vec2(-0.0006, 0.00 ) ) +
-		dep( uvSunPos +vec2( 0.0006, 0.00 ) ) +
-		dep( uvSunPos +vec2( 0.00  ,-0.0006) ) +
-		dep( uvSunPos +vec2( 0.00  , 0.0006) );
+		getDepth( uvSun ) +  // todo pixel size-
+		getDepth( uvSun +vec2(-0.0006, 0.00 ) ) +
+		getDepth( uvSun +vec2( 0.0006, 0.00 ) ) +
+		getDepth( uvSun +vec2( 0.00  ,-0.0006) ) +
+		getDepth( uvSun +vec2( 0.00  , 0.0006) );
 	float dim = max(0.0, 1.0 - sum / 5.0);
 
-	vec2 uv = inPs.uv0 - vec2(0.5, 0.5);
+	// if (uv.x > 1.5 || uv.y > 1.5 ||
+	// 	uv.x <-0.5 || uv.y <-0.5)
+	// 	dim = 0.0;  // out, opposite-
 
-	vec3 color = vec3(1.2, 1.1, 1.0) * lensflare(uv, uvSunPos);
+	vec3 color = vec3(1.2, 1.1, 1.0) * lensflare(uv, uvSun );
 	// vec3 color = vec3(1.0, 1.05, 1.1) * lensflare(uv, sun);
-	// color -= noise(inPs.uv0.xy)*.015;
-	color = mod_clr(color, 0.5, 0.1) * dim;
+	// color -= noise(inPs.uv0.xy) * 0.015;
+	color = mod_clr(color, 0.5, 0.1)
+		* dim * uvSunPos_Fade.z;  // fade
 	
 	fragColour = texture( vkSampler2D( sceneTexture, texSampler ), inPs.uv0 );
 	fragColour.xyz += color;

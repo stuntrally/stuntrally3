@@ -213,21 +213,21 @@
 
 						<!-- 🔆 LensFlare -->
 						<Widget type="Button" skin="CheckBox" position="28 130 556 24" name="LensFlare">
-							<Property key="Caption" value="#{LensFlare} * #603030 = #{NotDone}"/>
+							<Property key="Caption" value="#{LensFlare} * #605030 = #{WIP}"/>
 							<Property key="TextColour" value="0.84 0.87 0.9"/>
 						</Widget>
 						
 						<!-- 🌄 SunBeams -->
 						<Widget type="Button" skin="CheckBox" position="28 160 556 24" name="SunBeams">
-							<Property key="Caption" value="#{SunBeams} * #603030 = #{NotDone}"/>
+							<Property key="Caption" value="#{SunBeams} * #605030 = #{WIP}"/>
 							<Property key="TextColour" value="0.8 0.8 0.6"/>
 						</Widget>
 
 
 						<!-- 🌅 HDR -->
-						<Widget type="Button" skin="CheckBox" position="28 190 556 24" name="HDR">
+						<Widget type="Button" skin="CheckBox" position="28 200 556 24" name="HDR">
 							<Property key="Caption" value="#{HDR} ** #603030 = #{NotDone}"/>
-							<Property key="TextColour" value="0.8 0.7 0.4"/>
+							<Property key="TextColour" value="0.8 0.6 0.3"/>
 						</Widget>
 
 						<!-- <Widget type="Button" skin="CheckBox" position="28 150 256 24" name="SoftParticles">

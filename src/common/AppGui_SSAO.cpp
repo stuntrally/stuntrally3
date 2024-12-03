@@ -31,6 +31,7 @@
 #include <OgreStagingTexture.h>
 #include <Compositor/Pass/PassScene/OgreCompositorPassScene.h>
 using namespace Ogre;
+using namespace std;
 
 
 //  🕳️ SSAO
@@ -187,8 +188,14 @@ void AppGui::UpdSunPos(Camera *camera)
 	//  project sun pos to screen
 	Vector3 p = scn->sunDir * -10000.f;  // very far
 	Vector3 p2 = camera->getProjectionMatrix() * (camera->getViewMatrix() * p);
-	sunPos2d.x =  p2.x * 0.5f;
-	sunPos2d.y = -p2.y * 0.5f;
+	
+	auto& v = uvSunPos_Fade;
+	v.x =  p2.x * 0.5f;
+	v.y = -p2.y * 0.5f;
+	v.z = max(0.f, min(1.f, -scn->sunDir.dotProduct(camera->getDirection()) ));
+	v.w = 0.f;
+	
+	// sunClr = scn->sc->lDiff + scn->sc->lSpec;  // or own par..
 }
 
 
@@ -205,7 +212,7 @@ void AppGui::UpdLens()
 {
 	if (!mLensPass)  return;
 	GpuProgramParametersSharedPtr psParams = mLensPass->getFragmentProgramParameters();
-	psParams->setNamedConstant( "uvSunPos", sunPos2d );
+	psParams->setNamedConstant( "uvSunPos_Fade", uvSunPos_Fade );
 }
 
 
@@ -222,7 +229,7 @@ void AppGui::UpdSunbeams()
 {
 	if (!mSunbeamsPass)  return;
 	GpuProgramParametersSharedPtr psParams = mSunbeamsPass->getFragmentProgramParameters();
-	psParams->setNamedConstant( "uvSunPos", sunPos2d );
+	psParams->setNamedConstant( "uvSunPos_Fade", uvSunPos_Fade );
 }
 
 
