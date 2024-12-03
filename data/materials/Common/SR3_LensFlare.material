@@ -3,7 +3,7 @@
 // GLSL shaders
 fragment_program LensFlare_ps_GLSL glsl
 {
-	source LensFlare_ps.glsl
+	source SR3_LensFlare_ps.glsl
 	default_params
 	{
 		param_named depthTexture int 0
@@ -14,13 +14,13 @@ fragment_program LensFlare_ps_GLSL glsl
 // GLSL Vulkan shaders
 fragment_program LensFlare_ps_VK glslvk
 {
-	source LensFlare_ps.glsl
+	source SR3_LensFlare_ps.glsl
 }
 
-// HLSL shaders
+// HLSL shaders  todo
 fragment_program LensFlare_ps_HLSL hlsl
 {
-	source LensFlare_ps.hlsl
+	source SR3_LensFlare_ps.hlsl
 	entry_point main
 	target ps_5_0 ps_4_0 ps_4_0_level_9_1 ps_4_0_level_9_3
 }

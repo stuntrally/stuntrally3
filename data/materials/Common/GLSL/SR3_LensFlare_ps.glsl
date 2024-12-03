@@ -95,18 +95,26 @@ vec3 mod_clr(vec3 color, float factor,float factor2)  // color modifier
 
 void main()
 {
-	fragColour = texture( vkSampler2D( sceneTexture, texSampler ), inPs.uv0 );
-
-	// todo: sample depth around sun for dim factor
-	// fragColour.z = texture( vkSampler2D( depthTexture, texSampler ), inPs.uv0 ).x * 1000;
-	//..
+	//  sample depth around sun for dim factor  // todo: not here for every pixel, once in a pass
+	// float dim = 1.0;
+	// float dim = max(0.0, 1.0 - texture( vkSampler2D( depthTexture, texSampler ), uvSunPos ).x * 10000.0);
+	#define dep(uv)  ( (texture( vkSampler2D( depthTexture, texSampler ), uv).x * 1000.0) < 0.01 ? 0.0 : 1.0 )
+	// float dim = dep(uvSunPos);
+	float sum =
+		dep( uvSunPos ) +
+		dep( uvSunPos +vec2(-0.0006, 0.00 ) ) +
+		dep( uvSunPos +vec2( 0.0006, 0.00 ) ) +
+		dep( uvSunPos +vec2( 0.00  ,-0.0006) ) +
+		dep( uvSunPos +vec2( 0.00  , 0.0006) );
+	float dim = max(0.0, 1.0 - sum / 5.0);
 
 	vec2 uv = inPs.uv0 - vec2(0.5, 0.5);
-	vec2 sun = uvSunPos;
 
-	vec3 color = vec3(1.2, 1.1, 1.0) * lensflare(uv, sun);
+	vec3 color = vec3(1.2, 1.1, 1.0) * lensflare(uv, uvSunPos);
 	// vec3 color = vec3(1.0, 1.05, 1.1) * lensflare(uv, sun);
 	// color -= noise(inPs.uv0.xy)*.015;
-	color = mod_clr(color, 0.5, 0.1);
+	color = mod_clr(color, 0.5, 0.1) * dim;
+	
+	fragColour = texture( vkSampler2D( sceneTexture, texSampler ), inPs.uv0 );
 	fragColour.xyz += color;
 }
