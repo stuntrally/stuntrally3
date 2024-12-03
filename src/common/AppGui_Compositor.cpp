@@ -489,20 +489,27 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			nd->addTextureSourceName("depthBuffer", 2, inp);
 			nd->addTextureSourceName("depthBufferNoMsaa", 3, inp);
 
-			nd->setNumLocalTextureDefinitions( (lens||sunbeams ? 1 : 0) + 1 );  //* textures
+			const int post = (lens ? 1 : 0) + (sunbeams ? 1 : 0);
+			
+			nd->setNumLocalTextureDefinitions( post + 1 );  //* textures
 			{
 				auto* td = nd->addTextureDefinition( "rtt_final" );
 				td->format = PFG_UNKNOWN;  td->fsaa = "";  // target_format, auto
 				AddRtv(nd, "rtt_final", "rtt_final", "depthBuffer");
-			if (lens||sunbeams)
+			if (lens)
 			{	auto* td = nd->addTextureDefinition( "rtt_lens" );
-				td->format = PFG_UNKNOWN;  td->fsaa = "";  // target_format, auto
+				td->format = PFG_UNKNOWN;  td->fsaa = "";
 				AddRtv(nd, "rtt_lens", "rtt_lens", "depthBuffer");
+			}
+			if (sunbeams)
+			{	auto* td = nd->addTextureDefinition( "rtt_beams" );
+				td->format = PFG_UNKNOWN;  td->fsaa = "";
+				AddRtv(nd, "rtt_beams", "rtt_beams", "depthBuffer");
 			}	}
 
 			nd->mCustomIdentifier = "3-Final-"+si;
 
-			nd->setNumTargetPass( (lens||sunbeams ? 1 : 0) + 2 );  //* targets
+			nd->setNumTargetPass( post + 2 );  //* targets
 
 			//  🌊 Final  ----
 			td = nd->addTargetPass( "rtt_final" );
@@ -549,6 +556,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				AddShadows(ps);  // no shadows
 				ps->mShadowNodeRecalculation = SHADOW_NODE_REUSE;  //`
 			}
+			String final = "rtt_final";  // last rtt
 
 			//  🌅 Hdr  ----------------
 			if (hdr)
@@ -563,27 +571,29 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				td->setNumPasses( 1 );  //* passes
 				{
 					auto* pq = AddQuad(td);  // + quad
-					pq->setAllLoadActions( LoadAction::Clear );
+					pq->setAllLoadActions( LoadAction::DontCare );
 					
 					pq->mMaterialName = "LensFlare";  pq->mProfilingId = "Lens Flare";  // input
 					pq->addQuadTextureSource( 0, "depthBufferNoMsaa" );
-					pq->addQuadTextureSource( 1, "rtt_final" );
+					pq->addQuadTextureSource( 1, final );
 				}
-			}else  // todo: both..
+				final = "rtt_lens";
+			}
 
 			//  🌄 Sunbeams  ----------------
 			if (sunbeams)
 			{
-				td = nd->addTargetPass( "rtt_lens" );
+				td = nd->addTargetPass( "rtt_beams" );
 				td->setNumPasses( 1 );  //* passes
 				{
 					auto* pq = AddQuad(td);  // + quad
-					pq->setAllLoadActions( LoadAction::Clear );
+					pq->setAllLoadActions( LoadAction::DontCare );
 					
 					pq->mMaterialName = "SunBeams";  pq->mProfilingId = "Sunbeams";  // input
 					pq->addQuadTextureSource( 0, "depthBufferNoMsaa" );
-					pq->addQuadTextureSource( 1, "rtt_final" );
+					pq->addQuadTextureSource( 1, final );
 				}
+				final = "rtt_beams";
 			}
 
 			//  render / Window  ----
@@ -593,11 +603,9 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				auto* pq = AddQuad(td);  // + quad
 				pq->setAllLoadActions( LoadAction::DontCare );
 				
-				pq->mMaterialName = "Ogre/Copy/4xFP32";  // needed? merge above
+				pq->mMaterialName = "Ogre/Copy/4xFP32";  // needed? merge above-
 				pq->mProfilingId = "Copy to Window";
-				pq->addQuadTextureSource( 0,
-					lens||sunbeams ? "rtt_lens" :
-					"rtt_final" );  // input
+				pq->addQuadTextureSource( 0, final );  // input
 
 				//  ⏲️ Hud, 🎛️ Gui  --------
 				if (!split)

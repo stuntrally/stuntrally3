@@ -214,7 +214,8 @@ public:
 	void InitSSAO(), UpdSSAO(Ogre::Camera *camera);
 
 	//  🔆 Lens flare
-	Ogre::Vector2 sunPos2d;  // on screen
+	Ogre::Vector4 uvSunPos_Fade;  // on screen
+	Ogre::Vector4 efxClrSun, efxClrRays;  // params for post effects
 	void UpdSunPos(Ogre::Camera *camera);
 
 	Ogre::Pass *mLensPass =0;
