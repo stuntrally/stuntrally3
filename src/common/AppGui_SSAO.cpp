@@ -181,77 +181,31 @@ void AppGui::UpdSSAO(Camera* camera)
 	psParamsApply->setNamedConstant( "powerScale", pSet->ssao_scale );
 }
 
+//  💫 common util  🔆🌄
+void AppGui::UpdSunPos(Camera *camera)
+{
+	//  project sun pos to screen
+	Vector3 p = scn->sunDir * -10000.f;  // very far
+	Vector3 p2 = camera->getProjectionMatrix() * (camera->getViewMatrix() * p);
+	sunPos2d.x =  p2.x * 0.5f;
+	sunPos2d.y = -p2.y * 0.5f;
+}
+
 
 //  🔆 Lens flare
 //--------------------------------------------------------------------------------------------------------------
 void AppGui::InitLens()
 {
-	MaterialPtr material =
-		std::static_pointer_cast<Material>( MaterialManager::getSingleton().load(
-			"LensFlare", ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME ) );
-
+	MaterialPtr material = std::static_pointer_cast<Material>( MaterialManager::getSingleton().load(
+		"LensFlare", ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME ) );
 	mLensPass = material->getTechnique(0)->getPass(0);
-	// GpuProgramParametersSharedPtr psParams = mLensPass->getFragmentProgramParameters();
 }
 
-void AppGui::UpdLens(Camera *camera)
+void AppGui::UpdLens()
 {
-	if (!mLensPass || !camera)  return;
+	if (!mLensPass)  return;
 	GpuProgramParametersSharedPtr psParams = mLensPass->getFragmentProgramParameters();
-
-	Vector3 p = scn->sunDir * -10000.f;
-	p.y = -p.y;
-	// Vector4 pos{p.x, p.y, p.z, 1.f};
-	// camera->projectSphere()
-	// pos = pos * camera->getViewMatrix() * camera->getProjectionMatrix();
-
-	Vector3 pos2D = camera->getProjectionMatrix() * (camera->getViewMatrix() * p);
-	// Real x =  pos2D.x * 0.5f + 0.5f;
-	// Real y = -pos2D.y * 0.5f + 0.5f;
-	// Vector2 uv(x,y);
-	Vector2 uv(pos2D.x, pos2D.y);
-/*
-	// pos.x /= mWindow->getWidth();
-	// pos.y /= mWindow->getHeight();
-*/
-/*
-	// get camera and light world positions
-	Vector3 lightPosition_ws = p;  //lightNode()->_getDerivedPosition();
-	Vector3 cameraPosition_ws = camera->getDerivedPosition();
-	// compute distance
-	float lc_distance_ws = cameraPosition_ws.distance(lightPosition_ws);
-
-	// compute geometry vectors update
-	Matrix4 vm = camera->getViewMatrix();
-	// light position in camera space
-	Vector3 lightPosition = vm * lightPosition_ws;
-
-	Vector2 uv(lightPosition.x, lightPosition.y);
-	
-	// camera position in camera space
-	Vector3 cameraPosition = Vector3(0,0,0);
-	Vector3 cameraDirection = camera->getDirection(); // should be (0 0 -1)
-	// camera to light vector
-	Vector3 light_vector = lightPosition - cameraPosition;
-	light_vector.normalise();
-*/
-/*
-	Real LightDistance  = p.distance(mCamera->getPosition());
-	Vector3 CameraVect  = camera->getDirection();  // normalized vector (length 1)
-
-	CameraVect = camera->getPosition() + (LightDistance * CameraVect);
-
-	// The LensFlare effect takes place along this vector.
-	Vector3 LFvect = (CameraVect - p);
-
-	Vector2 uv(LFvect.x, LFvect.y);
-*/
-	// static float ti = 0.f;  // test
-	// ti += 0.016f* 0.1f;
-	// Vector2 uv(cosf(ti)*cosf(ti*1.3f)*0.5f, sinf(ti)*0.5f);
-	// psParams->setNamedConstant( "uvSunPos", uv );
-	LogO(toStr(uv));
-	psParams->setNamedConstant( "uvSunPos", uv );
+	psParams->setNamedConstant( "uvSunPos", sunPos2d );
 }
 
 
@@ -259,17 +213,16 @@ void AppGui::UpdLens(Camera *camera)
 //--------------------------------------------------------------------------------------------------------------
 void AppGui::InitSunbeams()
 {
-	MaterialPtr material =
-		std::static_pointer_cast<Material>( MaterialManager::getSingleton().load(
-			"LensFlare", ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME ) );
-
-	mLensPass = material->getTechnique(0)->getPass(0);
-	// GpuProgramParametersSharedPtr psParams = mLensPass->getFragmentProgramParameters();
+	MaterialPtr material = std::static_pointer_cast<Material>( MaterialManager::getSingleton().load(
+		"SunBeams", ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME ) );
+	mSunbeamsPass = material->getTechnique(0)->getPass(0);
 }
 
-void AppGui::UpdSunbeams(Camera *cam)
+void AppGui::UpdSunbeams()
 {
-
+	if (!mSunbeamsPass)  return;
+	GpuProgramParametersSharedPtr psParams = mSunbeamsPass->getFragmentProgramParameters();
+	psParams->setNamedConstant( "uvSunPos", sunPos2d );
 }
 
 
@@ -282,16 +235,21 @@ void AppGui::InitEffects()
 	InitSunbeams();
 }
 
+//  done in ReflectListener::passEarlyPreExecute too
 void AppGui::UpdateEffects(Camera *cam)
 {
-	if (pSet->g.ssao)  //- in ReflectListener::passEarlyPreExecute too
+	if (pSet->g.ssao)
 		UpdSSAO(cam);  // 🕳️
 	
+	if (pSet->g.lens_flare ||
+		pSet->g.sunbeams)
+		UpdSunPos(cam);  // 🔆🌄
+
 	if (pSet->g.lens_flare)
-		UpdLens(cam);  // 🔆
+		UpdLens();  // 🔆
 	
 	if (pSet->g.sunbeams)
-		UpdSunbeams(cam);  // 🌄
+		UpdSunbeams();  // 🌄
 	
 	if (pSet->gi)
 		UpdateGI();  // 🌇

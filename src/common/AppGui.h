@@ -214,12 +214,15 @@ public:
 	void InitSSAO(), UpdSSAO(Ogre::Camera *camera);
 
 	//  🔆 Lens flare
+	Ogre::Vector2 sunPos2d;  // on screen
+	void UpdSunPos(Ogre::Camera *camera);
+
 	Ogre::Pass *mLensPass =0;
-	void InitLens(), UpdLens(Ogre::Camera *camera);
+	void InitLens(), UpdLens();
 
 	//  🌄 Sunbeams
-	// Ogre::Pass *mSunbeamsPass =0;
-	void InitSunbeams(), UpdSunbeams(Ogre::Camera *camera);
+	Ogre::Pass *mSunbeamsPass =0;
+	void InitSunbeams(), UpdSunbeams();
 
 
 	//  🌇 GI  ----------------

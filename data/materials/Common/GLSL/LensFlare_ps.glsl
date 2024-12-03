@@ -102,14 +102,10 @@ void main()
 	//..
 
 	vec2 uv = inPs.uv0 - vec2(0.5, 0.5);
-	float asp = 1920.0 / 1200.0;  //iResolution.x/iResolution.y;  // todo: fix aspect ratio..
-	uv.x *= asp;
+	vec2 sun = uvSunPos;
 
-	vec2 sun = uvSunPos;  // todo: par sun pos in screen space
-	sun.x *= asp;
-
-	// fragColour.xyz +=
-	vec3 color = vec3(1.0,1.05,1.1) * lensflare(uv, sun);
+	vec3 color = vec3(1.2, 1.1, 1.0) * lensflare(uv, sun);
+	// vec3 color = vec3(1.0, 1.05, 1.1) * lensflare(uv, sun);
 	// color -= noise(inPs.uv0.xy)*.015;
 	color = mod_clr(color, 0.5, 0.1);
 	fragColour.xyz += color;

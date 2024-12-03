@@ -52,37 +52,35 @@ out vec4 fragColour;
 
 void main()
 {
+    vec2 lightpos = uvSunPos;
 	vec2 uv = inPs.uv0;
-    
-    vec2 coord = uv;
-    // vec2 lightpos = uvSunPos;  // todo: sun pos in screen 2d ..
-    vec2 lightpos = vec2(0.0,0.0);
    	
 	//  light, objects
 	float occ = 0.0;  //texture( vkSampler2D( sceneTexture, texSampler ), inPs.uv0 ).r;
-	float obj = texture( vkSampler2D( depthTexture, texSampler ), inPs.uv0 ).r * 1090.0 < 0.01f ? 1.0 : 0.0;
+	float obj = texture( vkSampler2D( depthTexture, texSampler ), uv ).r * 1090.0 < 0.01f ? 1.0 : 0.0;
     // #ifdef DITHER
     	// float dither = texture(iChannel1, fragCoord/iChannelResolution[1].xy).r;  //?-
     // #endif
 
-    vec2 dtc = (coord - lightpos) * (1.0 / float(SAMPLES) * DENSITY);
+    vec2 dtc = (uv - lightpos) * (1.0 / float(SAMPLES) * DENSITY);
     float illumDecay = 1.;
     
 	for (int i=0; i < SAMPLES; i++)
     {
-        coord -= dtc;
+        uv -= dtc;
         // #ifdef DITHER
-        	// float s = texture(iChannel0, coord+(dtc*dither)).x;
+        	// float s = texture(iChannel0, uv+(dtc*dither)).x;
         // #else
-        	// float s = texture(iChannel0, coord).x;
-			float s = texture( vkSampler2D( depthTexture, texSampler ), coord ).r * 1090.0 < 0.01f ? 0.2 : 0.0;  // obj
+        	// float s = texture(iChannel0, uv).x;
+			float s = texture( vkSampler2D( depthTexture, texSampler ), uv ).r * 1090.0 < 0.01f ? 0.2 : 0.0;  // obj
         // #endif
         s *= illumDecay * WEIGHT;
         occ += s;
         illumDecay *= DECAY;
     }
         
+	fragColour = texture( vkSampler2D( sceneTexture, texSampler ), uv ).xyz;
+
 	vec3 rays = vec3(0.0, 0.0, obj * 0.333) + occ*EXPOSURE;
-	fragColour = 
 	fragColour += rays;
 }
