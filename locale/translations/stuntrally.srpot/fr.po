@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-03 15:27+0100\n"
-"PO-Revision-Date: 2024-11-25 21:00+0000\n"
+"PO-Revision-Date: 2024-12-03 21:00+0000\n"
 "Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/fr/>\n"
@@ -2587,21 +2587,21 @@ msgstr "Modifier"
 #: :328..Options.Screen.GUI.Text
 msgctxt "GUI"
 msgid "GUI"
-msgstr ""
+msgstr "GUI"
 
 #. Screen  advanced 
 #: data/gui/Editor_Options.layout:325 ..Options.Screen.GUI.Text
 #: data/gui/Game_Options.layout:323
 msgctxt "FontSizes"
 msgid "Font sizes"
-msgstr ""
+msgstr "Taille des polices"
 
 #. Screen  advanced 
 #: data/gui/Editor_Options.layout:313 ..Options.Screen.GUI.Text
 #: data/gui/Game_Options.layout:311
 msgctxt "WindowMargin"
 msgid "Window margin"
-msgstr ""
+msgstr "Marge de fenêtre"
 
 #. Screen  not used 
 msgctxt "Gamma"
@@ -2733,7 +2733,7 @@ msgstr "pas encore fait, ToDo"
 #: data/gui/Game_Options.layout:214 :220
 msgctxt "WIP"
 msgid "WIP, work in progress"
-msgstr ""
+msgstr "WIP, travaux en cours"
 
 #. Graphics  info 
 #: data/gui/Editor_Options.layout:385 ..Options.Graphics.Edit
@@ -3346,7 +3346,7 @@ msgstr "Feux de véhicules"
 #: data/gui/Game_Options.layout:1182 ..Options.Graphics.Lights.Check
 msgctxt "UnderGlow"
 msgid "Under glow"
-msgstr ""
+msgstr "Sous la lumière"
 
 #. Graphics  particles 
 #: data/gui/Editor.layout:148 ..Editor.Sun.Sun.Check
@@ -3492,7 +3492,7 @@ msgstr "Pacenotes"
 #: data/gui/Game_Options.layout:713 ..Options.View.Pacenotes.Text
 msgctxt "PaceNextVisible"
 msgid "Next shown"
-msgstr ""
+msgstr "Suivant présenté"
 
 #. View  Racing Line trail 
 #: data/gui/Editor_Options.layout:1169 ..Options.View.Pacenotes.Check
@@ -3562,21 +3562,21 @@ msgstr "SSAO (occlusion ambiante)"
 #: data/gui/Game_Options.layout:214
 msgctxt "LensFlare"
 msgid "Lens flare"
-msgstr ""
+msgstr "Éclat de l'objectif"
 
 #. Effects  Main 
 #: data/gui/Editor_Options.layout:221 ..Options.Screen.Effects.Check
 #: data/gui/Game_Options.layout:220
 msgctxt "SunBeams"
 msgid "Sunbeams"
-msgstr ""
+msgstr "Rayons de soleil"
 
 #. Effects  Main 
 #: data/gui/Editor_Options.layout:261 ..Options.Screen.Advanced.Check
 #: data/gui/Game_Options.layout:260
 msgctxt "GI"
 msgid "Global Illumination"
-msgstr ""
+msgstr "Éclairage global"
 
 #. Effects  not used 
 #: data/gui/Editor_Options.layout:165 ..Options.Screen.Effects.Check
@@ -3609,7 +3609,7 @@ msgstr "Assombrir"
 #: data/gui/Game_Options.layout:232
 msgctxt "SoftParticles"
 msgid "Soft Particles"
-msgstr ""
+msgstr "Particules molles"
 
 #. Effects  not used 
 msgctxt "MotionBlur"
@@ -3659,7 +3659,7 @@ msgstr "HDR"
 #: data/gui/Game_Options.layout:227
 msgctxt "HDR"
 msgid "HDR and Bloom (High Dynamic Range)"
-msgstr ""
+msgstr "HDR et Bloom (gamme dynamique élevée)"
 
 #. Effects  HDR  not used 
 #: data/gui/Editor_Options.layout:238 ..Options.Screen.Effects.Text
@@ -4693,12 +4693,9 @@ msgstr "fin"
 #. Editor  Weather 
 #: data/gui/Editor.layout:150 ..Editor.Sun.Sun.Check
 #: :155:221..Editor.Sun.Fog.Check
-#, fuzzy
-#| msgctxt "DisableEdit"
-#| msgid "Disable for edit"
 msgctxt "DisableEdit"
 msgid "Disable/enable for editing."
-msgstr "Desactiver pour éditer"
+msgstr "Desactiver pour éditer."
 
 #. Editor  Weather 
 #: data/gui/Editor.layout:143 ..Editor.Sun.Sun.Text :153..Editor.Sun.Sun.Check
@@ -5733,7 +5730,7 @@ msgstr "Fusionné"
 #: src/editor/Update_EditKeyTxt.cpp:118
 msgctxt "Road_NotLooped"
 msgid "Not looped"
-msgstr ""
+msgstr "Non bouclé"
 
 #. Road Point  short: checkpoint radius 
 #: src/editor/Update_EditKeyTxt.cpp:60
@@ -5876,7 +5873,7 @@ msgstr "Groupe"
 #: data/gui/Editor_Tools.layout:657 ..Window
 msgctxt "Fields"
 msgid "Fields"
-msgstr ""
+msgstr "Domaines"
 
 #. Editor Objects  verious 
 #: data/gui/Editor_Help.layout:958 ..Help.Input/help.Fields.Text
@@ -5888,13 +5885,13 @@ msgstr ""
 #: data/gui/Editor_Objects.layout:113 ..Objects.Tab
 msgctxt "Sounds"
 msgid "Sounds"
-msgstr ""
+msgstr "Sons"
 
 #. Editor Objects  verious 
 #: data/gui/Editor_Objects.layout:125 ..Objects.Tab
 msgctxt "Entities"
 msgid "Entities"
-msgstr ""
+msgstr "Entités"
 
 #. Tools 
 #: data/gui/Editor.layout:1272 ..Editor.Terrain.Tab
@@ -6561,7 +6558,7 @@ msgstr "W - éditer les liquides"
 #: data/gui/Editor_Help.layout:650 ..Help.Input/help.Fluids.Text
 msgctxt "TipFluidExamples"
 msgid "water, mud, acid, ice, lava, oil, etc."
-msgstr ""
+msgstr "eau, boue, acide, glace, lave, pétrole, etc."
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:698 ..Help.Input/help.Objects.Text
@@ -6573,7 +6570,7 @@ msgstr "X - éditer les objets"
 #: data/gui/Editor_Help.layout:698 ..Help.Input/help.Objects.Text
 msgctxt "TipObjectExamples"
 msgid "crates, buildings, obstacles, caves, etc."
-msgstr ""
+msgstr "caisses, bâtiments, obstacles, grottes, etc."
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:785 ..Help.Input/help.Particles.Text
@@ -6585,19 +6582,19 @@ msgstr "A - modifier les particules"
 #: data/gui/Editor_Help.layout:785 ..Help.Input/help.Particles.Text
 msgctxt "TipParticleExamples"
 msgid "cloud, fire, smoke, etc."
-msgstr ""
+msgstr "nuage, feu, fumée, etc."
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:856 ..Help.Input/help.Collection.Text
 msgctxt "InputCollectMode"
 msgid "edit Collectibles"
-msgstr ""
+msgstr "éditer des objets de collection"
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:856 ..Help.Input/help.Collection.Text
 msgctxt "TipCollectExamples"
 msgid "crystals, gems, resources, etc."
-msgstr ""
+msgstr "cristaux, pierres précieuses, ressources, etc."
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:891 ..Help.Input/help.Collection.Text
@@ -6609,13 +6606,13 @@ msgstr ""
 #: data/gui/Editor_Help.layout:919 ..Help.Input/help.Fields.Text
 msgctxt "InputFieldsMode"
 msgid "edit Fields"
-msgstr ""
+msgstr "éditer les champs"
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:919 ..Help.Input/help.Fields.Text
 msgctxt "TipFieldExamples"
 msgid "acceleration, gravity lift, etc."
-msgstr ""
+msgstr "l'accélération, l'ascenseur gravitationnel, etc."
 
 #. Terrain  Edit modes  not used 
 msgctxt "InputTerPaint"
@@ -6992,13 +6989,13 @@ msgstr ""
 #: data/gui/Editor_Help.layout:387 ..Help.Input/help.Road1.Text
 msgctxt "InputRoadsNext"
 msgid "Enter - next road (if many), shift - previous"
-msgstr ""
+msgstr "Enter - route suivante (s'il y en a plusieurs), shift - précédente"
 
 #. Road  Input  more roads
 #: data/gui/Editor_Help.layout:395 ..Help.Input/help.Road1.Text
 msgctxt "InputRoadsDel"
 msgid "ctrl-shift-Enter - delete road"
-msgstr ""
+msgstr "ctrl-maj-Entrée - supprimer la route"
 
 #. Road  Input  more roads
 #: data/gui/Editor_Help.layout:399 ..Help.Input/help.Road1.Text
@@ -7249,7 +7246,7 @@ msgstr ""
 #: :824..Help.Input/help.Particles.Text
 msgctxt "InputParticlesStatic"
 msgid "Enter - toggle static"
-msgstr ""
+msgstr "Entrer - basculer statique"
 
 #. Particles  Input 
 #: data/gui/Editor_Help.layout:828 ..Help.Input/help.Particles.Text
@@ -7261,7 +7258,7 @@ msgstr ""
 #: data/gui/Editor_Help.layout:816 ..Help.Input/help.Particles.Text
 msgctxt "InputParticlesType"
 msgid "change particles type"
-msgstr ""
+msgstr "changer le type de particules"
 
 #. TIP  Vehicle stats 
 #: data/gui/Game.layout:760 ..SingleRace.Vehicle.Text :768
@@ -7475,7 +7472,7 @@ msgstr ""
 #: ..NewGame-GameTypes.Button
 msgctxt "GameStatistics"
 msgid "Game Statistics"
-msgstr ""
+msgstr "Statistiques du jeu"
 
 #. TIP  Track  messages 
 #: src/game/Game_SceneInit.cpp:239
@@ -7537,7 +7534,7 @@ msgstr "Texte de description du circuit."
 #: :2242..SingleRace.Track.Edit :2249..SingleRace.Track.Image
 msgctxt "TipTrackAdvice"
 msgid "Track driving advices and warnings."
-msgstr ""
+msgstr "Suivre les conseils de conduite et les avertissements."
 
 #. TIP  Track 
 #: data/gui/Editor_Track.layout:39 ..Track.Track.Image data/gui/Game.layout:43
@@ -7713,7 +7710,7 @@ msgstr "obstacles (sur la route ou dans un tube)"
 #: :1285..SingleRace.Setup.Paint.Text :1290..SingleRace.Setup.Paint.Slider
 msgctxt "user"
 msgid "user"
-msgstr ""
+msgstr "utilisateur"
 
 #. TIP  Track difficulties, on icons 
 #: data/gui/Common.layout:204 ..Track-Filter.Check
@@ -8348,7 +8345,7 @@ msgstr ""
 #: data/gui/Game_Help.layout:493 ..HowToPlay.Button
 msgctxt "Hint-17"
 msgid "Trail"
-msgstr ""
+msgstr "Sentier"
 
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-17text"
@@ -8418,7 +8415,7 @@ msgstr "Clavier"
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-22text"
 msgid "By default, keyboard arrows are used to drive."
-msgstr ""
+msgstr "Par défaut, les flèches du clavier sont utilisées pour conduire."
 
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-23"
@@ -8465,7 +8462,7 @@ msgstr ""
 #: data/gui/Game_Help.layout:528 ..HowToPlay.Button
 msgctxt "Hint-26"
 msgid "Test tracks"
-msgstr ""
+msgstr "Pistes d'essai"
 
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-26text"
