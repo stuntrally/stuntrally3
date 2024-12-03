@@ -607,10 +607,11 @@
 	<Tag name="GraphicsAll_Ultra">Ultra</Tag>
 
 	<!--  Graphics  info  -->
-	<Tag name="NotDone">not done yet, ToDo</Tag>
 	<Tag name="NeedApply">need Apply</Tag>
-	<Tag name="Ignored">ignored</Tag>
 	<Tag name="RestartApply">Restart game, to apply *changes.</Tag>
+	<Tag name="Ignored">ignored</Tag>
+	<Tag name="NotDone">not done yet, ToDo</Tag>
+	<Tag name="WIP">WIP, work in progress</Tag>
 	<Tag name="GraphicsRightHQ">By default better quality (less Fps) is on right. Marked with + if on left.</Tag>
 	
 
@@ -776,16 +777,15 @@
 	<Tag name="FOV">View angle</Tag>
 
 
-	<!--  Effects  Main  not used  -->
+	<!--  Effects  Main  -->
 	<Tag name="Effects">Effects</Tag>
-	<Tag name="AllEffects">Effects Enabled</Tag>
-
 	<Tag name="SSAO">SSAO (Ambient Occlusion)</Tag>
-	<Tag name="GI">Global Illumination</Tag>
-
 	<Tag name="LensFlare">Lens flare</Tag>
 	<Tag name="SunBeams">Sunbeams</Tag>
+	<Tag name="GI">Global Illumination</Tag>
 
+	<!--  Effects  not used  -->
+	<Tag name="AllEffects">Effects Enabled</Tag>
 	<Tag name="Bloom">Bloom</Tag>
 	<Tag name="Intensity">Intensity</Tag>
 	<Tag name="OrigImage">Darken</Tag>

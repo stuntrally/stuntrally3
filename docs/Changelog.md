@@ -4,17 +4,21 @@ This section lists changes not yet released, but committed to repositories stunt
 WIP means work in progress, unfinished, still being developed.
 
 - 3 [New tracks](https://groups.f-hub.org/d/ZXVHk6du/new-tracks-in-sr-3-3)
-- Compositor rewrite, created in code
+- Effects
   - **SSAO** (ambient occlusion, on Effects tab), needs Refractions
+  - WIP lens flare
+  - WIP sunbeams
+- Compositor rewrite, created in code
   - SplitScreen uses RTTs, smaller Hud fonts
     - Refractions work, SSAO too
   - Apply buttons work for Shadows and Reflections
   - WIP try, *not useful*, no effect on terrain [issue](https://github.com/OGRECave/ogre-next/issues/475)  
     Global Illumination ([GI methods](https://ogrecave.github.io/ogre-next/api/latest/_gi_methods.html): IFD+VCT),
     on new Gui tab Advanced after Effects, has also debug visuals.
-- Game
+- Sounds
   - WIP ambient track sound (rain, etc)
   - WIP dynamic object hit sounds
+- Game
   - Setup - Paints tab new *filter* slider, to show paints only from filter rating and above.  
     But editing paints list must be done w/o filter, on highest value.
     Pressing Random (or Space) sets random from visible list.

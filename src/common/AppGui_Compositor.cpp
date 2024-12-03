@@ -624,7 +624,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 	}
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------
-	else  //  node  🖥️ Old  no refract, no depth  - - -
+	else  //  node  🖥️ Old  no refract, no depth, no effects  - - -
 	{						// meh todo ssao w/o refract
 		if (split)
 			rtt = AddSplitRTT(si, width, height);

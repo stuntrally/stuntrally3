@@ -11,20 +11,23 @@ Marked: `crucial`, **Next or Big**, _Important_.
 📽️ new game *video*  
 *editor videos*? all new  
 
+finish effects, and add sounds, WIP from [Changelog.md](Changelog.md)
+
 ----
 ### 🪄 Effects
 
-- lens *flare*, [shaders](https://www.shadertoy.com/results?query=lens+flare), [code](https://nehe.gamedev.net/tutorial/3d_lens_flare_with_occlusion_testing/16007/)  
-- sunrays, [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)  
-- HDR, bloom, [fix fireflies](https://catlikecoding.com/unity/tutorials/custom-srp/hdr/), adjust all tracks  
-- *Soft* Particles  
-- old motion blur  
+lens *flare*, [shaders](https://www.shadertoy.com/results?query=lens+flare), [code](https://nehe.gamedev.net/tutorial/3d_lens_flare_with_occlusion_testing/16007/)  
+sunrays, [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)  
+
+HDR, bloom, [fix fireflies](https://catlikecoding.com/unity/tutorials/custom-srp/hdr/), adjust all tracks  
+*Soft* Particles  
+old motion blur  
 
 
 ### 🔉 Sound
 
-sound engine from [RoR PR](https://github.com/RigsOfRods/rigs-of-rods/pull/3182), branch sound fix..  
-or replace with [ogre-audiovideo](https://github.com/OGRECave/ogre-audiovideo))  
+meh, sound engine from [RoR PR](https://github.com/RigsOfRods/rigs-of-rods/pull/3182), fix branch *sound*..  
+merge **replace** with [ogre-audiovideo](https://github.com/OGRECave/ogre-audiovideo)  
 or add **new** code for:
 - dynamic hit [sounds pool](https://github.com/kcat/openal-soft/issues/972#issuecomment-1934265230) (e.g. 10), auto removed after play
 - more tire sounds, load only used (few, pool e.g. 2), or:
