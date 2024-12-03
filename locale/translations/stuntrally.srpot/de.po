@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-03 15:27+0100\n"
-"PO-Revision-Date: 2024-11-25 21:00+0000\n"
+"PO-Revision-Date: 2024-12-03 21:00+0000\n"
 "Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/de/>\n"
@@ -2735,7 +2735,7 @@ msgstr "noch nicht getan, ToDo"
 #: data/gui/Game_Options.layout:214 :220
 msgctxt "WIP"
 msgid "WIP, work in progress"
-msgstr ""
+msgstr "WIP, unfertige Arbeit"
 
 #. Graphics  info 
 #: data/gui/Editor_Options.layout:385 ..Options.Graphics.Edit
@@ -3568,14 +3568,14 @@ msgstr "SSAO (Umgebungsokklusion)"
 #: data/gui/Game_Options.layout:214
 msgctxt "LensFlare"
 msgid "Lens flare"
-msgstr ""
+msgstr "Objektivreflexion"
 
 #. Effects  Main 
 #: data/gui/Editor_Options.layout:221 ..Options.Screen.Effects.Check
 #: data/gui/Game_Options.layout:220
 msgctxt "SunBeams"
 msgid "Sunbeams"
-msgstr ""
+msgstr "Sonnenstrahlen"
 
 #. Effects  Main 
 #: data/gui/Editor_Options.layout:261 ..Options.Screen.Advanced.Check
@@ -5892,13 +5892,13 @@ msgstr "Enter - Teleport Ende bearbeiten umschalten"
 #: data/gui/Editor_Objects.layout:113 ..Objects.Tab
 msgctxt "Sounds"
 msgid "Sounds"
-msgstr ""
+msgstr "Klänge"
 
 #. Editor Objects  verious 
 #: data/gui/Editor_Objects.layout:125 ..Objects.Tab
 msgctxt "Entities"
 msgid "Entities"
-msgstr ""
+msgstr "Entitäten"
 
 #. Tools 
 #: data/gui/Editor.layout:1272 ..Editor.Terrain.Tab
