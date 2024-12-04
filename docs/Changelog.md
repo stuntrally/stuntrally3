@@ -4,7 +4,7 @@ This section lists changes not yet released, but committed to repositories stunt
 WIP means work in progress, unfinished, still being developed.
 
 - 3 [New tracks](https://groups.f-hub.org/d/ZXVHk6du/new-tracks-in-sr-3-3)
-- **Effects**, all need (water) Refractions on, to work
+- **Effects**, all require (Water) Refractions on, to work
   - **SSAO** (ambient occlusion, on Effects tab)
   - lens flare (sun glow in camera)
   - sunbeams (rays)
@@ -25,7 +25,7 @@ WIP means work in progress, unfinished, still being developed.
   - *Statistics* window with list of completed game tutorials, championships, challenges, collections
   - restored tire trails, but still 1 color, meh
 - Editor
-  - Split Edit window to own with: Objects, Fluids, Particles, etc
+  - Split Edit window to Objects (in main menu) own with: Objects, Fluids, Particles, etc
   - 3D model preview on top of Gui
 - Gui comboboxes open on click (whole, not just on down arrow)
 

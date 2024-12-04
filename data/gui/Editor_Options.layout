@@ -213,13 +213,13 @@
 
 						<!-- 🔆 LensFlare -->
 						<Widget type="Button" skin="CheckBox" position="28 130 556 24" name="LensFlare">
-							<Property key="Caption" value="#{LensFlare} * #605030 = #{WIP}"/>
+							<Property key="Caption" value="#{LensFlare}"/>
 							<Property key="TextColour" value="0.84 0.87 0.9"/>
 						</Widget>
 						
 						<!-- 🌄 SunBeams -->
 						<Widget type="Button" skin="CheckBox" position="28 160 556 24" name="SunBeams">
-							<Property key="Caption" value="#{SunBeams} * #605030 = #{WIP}"/>
+							<Property key="Caption" value="#{SunBeams}"/>
 							<Property key="TextColour" value="0.8 0.8 0.6"/>
 						</Widget>
 
