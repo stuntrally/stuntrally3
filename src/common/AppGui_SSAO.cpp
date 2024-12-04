@@ -186,16 +186,17 @@ void AppGui::UpdSSAO(Camera* camera)
 void AppGui::UpdSunPos(Camera *camera)
 {
 	//  project sun pos to screen
-	Vector3 p = scn->sunDir * -10000.f;  // very far
-	Vector3 p2 = camera->getProjectionMatrix() * (camera->getViewMatrix() * p);
+	Vector3 pos = scn->fx.sunDir * -10000.f;  // very far
+	Vector3 p2 = camera->getProjectionMatrix() * (camera->getViewMatrix() * pos);
 	
 	auto& v = uvSunPos_Fade;
 	v.x =  p2.x * 0.5f;
 	v.y = -p2.y * 0.5f;
-	v.z = max(0.f, min(1.f, -scn->sunDir.dotProduct(camera->getDirection()) ));
-	v.w = 0.f;
+	v.z = max(0.f, min(1.f, -scn->fx.sunDir.dotProduct(camera->getDirection()) ));  // sun dot cam
+	v.w = float(mWindow->getWidth()) / float(mWindow->getHeight());  // wnd x/y aspect
 	
-	// sunClr = scn->sc->lDiff + scn->sc->lSpec;  // or own par..
+	efxClrSun = scn->fx.sunClr;
+	efxClrRays = scn->fx.raysClr;  // or own par-
 }
 
 
@@ -213,6 +214,7 @@ void AppGui::UpdLens()
 	if (!mLensPass)  return;
 	GpuProgramParametersSharedPtr psParams = mLensPass->getFragmentProgramParameters();
 	psParams->setNamedConstant( "uvSunPos_Fade", uvSunPos_Fade );
+	psParams->setNamedConstant( "efxClrSun", efxClrSun );
 }
 
 
@@ -230,6 +232,7 @@ void AppGui::UpdSunbeams()
 	if (!mSunbeamsPass)  return;
 	GpuProgramParametersSharedPtr psParams = mSunbeamsPass->getFragmentProgramParameters();
 	psParams->setNamedConstant( "uvSunPos_Fade", uvSunPos_Fade );
+	psParams->setNamedConstant( "efxClrRays", efxClrRays );
 }
 
 

@@ -165,6 +165,7 @@ void CScene::UpdFog(bool on, bool off)
 	//sc->fogHStart, 1.f/(sc->fogHEnd - sc->fogHStart);
 	atmo->fogColourSun = sc->fogClr.GetRGBA();
 	atmo->fogColourAway = sc->fogClr2.GetRGBA();
+	fx.raysClr = atmo->fogColourSun.xyz();  // for effect
 
  	// par  not on gui..
 	atmo->fogBreakMinBrightness = 0.25f;
@@ -310,9 +311,7 @@ void CScene::UpdSun(float dt)
 {
 	if (!sun)  return;
 	Vector3 dir = SplineRoad::GetRot(sc->ldYaw - sc->skyYaw, -sc->ldPitch);
-	sunDir = dir.normalisedCopy();
-	// sun->setDiffuseColour( 0.0, 1.0, 0.0);
-	// sun->setSpecularColour(0.0, 0.0, 1.0);
+	fx.sunDir = dir.normalisedCopy();
 
 	sun->setDirection(dir);
 	ndSun->_getFullTransformUpdated();
@@ -324,8 +323,11 @@ void CScene::UpdSun(float dt)
 	
 	//  💡 brightness simple
 	float bright = 0.9f*1.3f * app->pSet->bright, contrast = app->pSet->contrast;
-	sun->setDiffuseColour( sc->lDiff.GetClr() * 2.2f  * bright * contrast);
-	sun->setSpecularColour(sc->lSpec.GetClr() * 0.75f * bright * contrast);
+	auto cDiff = sc->lDiff.GetClr(), cSpec = sc->lSpec.GetClr();
+	sun->setDiffuseColour( cDiff * 2.2f  * bright * contrast);
+	sun->setSpecularColour(cSpec * 0.75f * bright * contrast);
+
+	fx.sunClr = cDiff.toVector3() + cSpec.toVector3();  // for effect
 
 	//  🌒 ambient
 	app->mSceneMgr->setAmbientLight(

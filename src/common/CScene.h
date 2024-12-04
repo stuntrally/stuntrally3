@@ -55,7 +55,9 @@ public:
 	//  🌞 Sun *
 	Ogre::Light* sun = 0;
 	Ogre::SceneNode *ndSun = 0;
-	Ogre::Vector3 sunDir;
+	struct Effect
+	{	Ogre::Vector3 sunDir, sunClr, raysClr;  // prams for post effects
+	} fx;
 	void CreateSun(), DestroySun(), UpdSun(float dt=0.f);
 
 	//  🌫️ Fog / Atmo

@@ -12,12 +12,13 @@ in block
 
 vulkan( layout( ogre_P0 ) uniform Params { )
 	uniform vec4 uvSunPos_Fade;
-	// uniform vec4 efxClrRays;
+	uniform vec4 efxClrRays;
 	//.. par
 vulkan( }; )
 
 vulkan_layout( location = 0 )
 out vec4 fragColour;
+// . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 
 
 //  inspired by:
@@ -53,7 +54,7 @@ out vec4 fragColour;
 	#define WEIGHT   0.36
 #endif
 
-
+// . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 
 void main()
 {
 	vec2 uv = inPs.uv0;
@@ -86,9 +87,8 @@ void main()
 		illumDecay *= DECAY;
 	}
 		
-	fragColour = texture( vkSampler2D( sceneTexture, texSampler ), inPs.uv0 );
+	fragColour = texture( vkSampler2D( sceneTexture, texSampler ), inPs.uv0 );  // org scene
 
-	//  par clr sun,fog
-	vec3 rays = vec3(1.0, 0.8, 0.6) * sum * SCALE * fade;
-	fragColour.xyz += rays;
+	vec3 rays = efxClrRays.xyz * sum * SCALE * fade;
+	fragColour.xyz += rays;  // add
 }

@@ -8,7 +8,7 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 ### 3.3
 
-📽️ new game *video*  
+📽️ new game **video**  
 *editor videos*? all new  
 
 finish effects, and add sounds, WIP from [Changelog.md](Changelog.md)
@@ -16,7 +16,11 @@ finish effects, and add sounds, WIP from [Changelog.md](Changelog.md)
 ----
 ### 🪄 Effects
 
-lens *flare*, [shaders](https://www.shadertoy.com/results?query=lens+flare), [code](https://nehe.gamedev.net/tutorial/3d_lens_flare_with_occlusion_testing/16007/)  
+lens flare, [shaders](https://www.shadertoy.com/results?query=lens+flare), [code](https://nehe.gamedev.net/tutorial/3d_lens_flare_with_occlusion_testing/16007/)  
+fix *occlude* depth read,  
+fix sun pos on few tracks,  
+ed add real pos on sky, other for sun dir  
+
 sunrays, [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)  
 
 HDR, bloom, [fix fireflies](https://catlikecoding.com/unity/tutorials/custom-srp/hdr/), adjust all tracks  
