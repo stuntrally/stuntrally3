@@ -1068,6 +1068,48 @@
 		},
 
 
+		"shroom_tall" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"tree_wind" : true,
+			"diffuse" :
+			{
+				"value" : [0.6, 0.8, 1.0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "shroom_tall_blue.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.4, 0.4, 0.4]
+			},
+			"fresnel" :
+			{
+				"value" : 0.2,
+				"mode" : "coeff"
+			},
+			"normal" :
+			{
+				"value" : 1,
+				"texture" : "shroom_tall_n.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"roughness" :
+			{
+				"value" : 0.6,
+				"texture" : "shroom_tall_r.jpg",
+				"sampler" : "Sampler_10"
+			},
+			"emissive" :
+			{
+				"value" : [0.2, 0.2, 0.3],
+				"texture" : "shroom_tall_e.jpg"
+			}
+		},
+
 		"shroom_tall_blue" :
 		{
 			"macroblock" : "Macroblock_0",

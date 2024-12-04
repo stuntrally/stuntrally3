@@ -2,7 +2,8 @@
 
 vulkan_layout( ogre_t0 ) uniform texture2D depthTexture;
 vulkan_layout( ogre_t1 ) uniform texture2D sceneTexture;
-vulkan( layout( ogre_s0 ) uniform sampler texSampler );
+vulkan( layout( ogre_s0 ) uniform sampler depthSampler );
+vulkan( layout( ogre_s1 ) uniform sampler texSampler );
 
 vulkan_layout( location = 0 )
 in block
@@ -11,7 +12,7 @@ in block
 } inPs;
 
 vulkan( layout( ogre_P0 ) uniform Params { )
-	uniform vec4 uvSunPos_Fade;
+	uniform vec4 uvSunPos_Fade;  // .w aspect
 	uniform vec4 efxClrRays;
 	//.. par
 vulkan( }; )
@@ -62,7 +63,7 @@ void main()
 	float fade = pow(uvSunPos_Fade.z, 3.0);  //par
 
 	// if (fade > 0.01f)  // skip?
-	#define getDepth(uv, val)  ( (texture( vkSampler2D( depthTexture, texSampler ), uv).x * 1000.0) < 0.01 ? val : 0.0 )
+	#define getDepth(uv, val)  ( (texture( vkSampler2D( depthTexture, depthSampler ), uv).x * 1000.0) < 0.01 ? val : 0.0 )
 
 	//  light, objects
 	// float occ = 0.0;

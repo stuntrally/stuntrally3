@@ -4,10 +4,10 @@ This section lists changes not yet released, but committed to repositories stunt
 WIP means work in progress, unfinished, still being developed.
 
 - 3 [New tracks](https://groups.f-hub.org/d/ZXVHk6du/new-tracks-in-sr-3-3)
-- Effects
-  - **SSAO** (ambient occlusion, on Effects tab), needs Refractions
-  - WIP lens flare
-  - WIP sunbeams
+- **Effects**, all need (water) Refractions on, to work
+  - **SSAO** (ambient occlusion, on Effects tab)
+  - lens flare (sun glow in camera)
+  - sunbeams (rays)
 - Compositor rewrite, created in code
   - SplitScreen uses RTTs, smaller Hud fonts
     - Refractions work, SSAO too
