@@ -115,7 +115,8 @@ public:
 		Ck ckLiBrake, ckLiRevese, ckLiUnder;
 		Ck ckLiBoost, ckLiThrust;
 	#endif
-		Ck ckLiCollect, ckLiColRndClr, ckLiTrack;  // 💎 gems
+		Ck ckLiCollect, ckLiColRndClr;  // 💎 gems
+		// Ck ckLiTrack;
 
 		//  🌊 water
 		SlV(WaterSize);  //SlV(WaterSkip);

@@ -1199,10 +1199,10 @@
 							<Property key="TextColour" value="0.8 0.6 1.0"/>
 						</Widget>
 
-						<Widget type="Button" skin="CheckBox" position="32 278 260 24" name="TrackLights">
+						<!-- <Widget type="Button" skin="CheckBox" position="32 278 260 24" name="TrackLights">
 							<Property key="Caption" value="#{Track} *="/>
 							<Property key="TextColour" value="0.6 1 0.6"/>
-						</Widget>
+						</Widget> -->
 
 						<Widget type="TextBox" skin="TextBox" position="32 340 176 24">
 							<Property key="Caption" value="#{GridQual} *"/>

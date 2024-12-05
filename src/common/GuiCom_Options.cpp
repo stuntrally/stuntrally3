@@ -123,7 +123,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 #endif
 	ck= &ckLiCollect;	ck->Init("CollectLights", &pSet->li.collect);
 	ck= &ckLiColRndClr;	ck->Init("CollectLiRandom", &pSet->collectRandomClr);
-	ck= &ckLiTrack;		ck->Init("TrackLights", &pSet->li.track);
+	// ck= &ckLiTrack;		ck->Init("TrackLights", &pSet->li.track);
 
 	sv= &svLightsGrid;	sv->Init("LightsGrid",   &pSet->li.grid_quality, 0,3);  sv->DefaultI(0);
 

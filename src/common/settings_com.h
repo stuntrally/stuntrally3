@@ -73,7 +73,7 @@ public:
 		bool boost =0, thrust =0;
 	// #endif
 		bool collect =0;
-		bool track =0;  // int..
+		// bool track =0;  // todo, int..
 		int grid_quality = 0;
 	} li;
 

@@ -610,6 +610,7 @@
 							<Property key="TextColour" value="0.7 0.7 0.7"/>
 						</Widget> -->
 						
+						<!-- Collect -->
 						<Widget type="Button" skin="CheckBox" position="32 178 260 24" name="CollectLights">
 							<Property key="Caption" value="#{Collection} *"/>
 							<Property key="TextColour" value="0.8 0.6 1.0"/>
@@ -619,11 +620,10 @@
 							<Property key="TextColour" value="0.8 0.6 1.0"/>
 						</Widget>
 
-						<!-- Collect -->
-						<Widget type="Button" skin="CheckBox" position="32 208 260 24" name="TrackLights">
+						<!-- <Widget type="Button" skin="CheckBox" position="32 208 260 24" name="TrackLights">
 							<Property key="Caption" value="#{Track} *="/>
 							<Property key="TextColour" value="0.6 1 0.6"/>
-						</Widget>
+						</Widget> -->
 
 						<Widget type="TextBox" skin="TextBox" position="32 340 176 24">
 							<Property key="Caption" value="#{GridQual} *"/>
