@@ -83,11 +83,13 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	Param(c,w, "graph_shadow.dist", g.shadow_dist);			Param(c,w, "graph_shadow.filter", g.shadow_filter);
 	
 	//  💡 lights
+#ifndef SR_EDITOR  // game only
 	Param(c,w, "graph_lights.car", li.front);				Param(c,w, "graph_lights.car_shadows", li.front_shdw);
 	Param(c,w, "graph_lights.brake", li.brake);				Param(c,w, "graph_lights.reverse", li.reverse);
 	Param(c,w, "graph_lights.underglow", li.under);
 	Param(c,w, "graph_lights.boost", li.boost);				Param(c,w, "graph_lights.thrust", li.thrust);
-	Param(c,w, "graph_lights.collection", li.collect);		Param(c,w, "graph_lights.track", li.track);
+#endif
+	Param(c,w, "graph_lights.collection", li.collect);Param(c,w, "graph_lights.track", li.track);
 	Param(c,w, "graph_lights.collect_random", collectRandomClr);
 	Param(c,w, "graph_lights.grid_quality", li.grid_quality);
 

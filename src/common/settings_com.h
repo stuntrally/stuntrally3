@@ -67,9 +67,11 @@ public:
 	//!  💡 lights  needs Update in presets:  Lights lights
 	struct Lights
 	{
+	// #ifndef SR_EDITOR  // game only
 		bool front =0, front_shdw =0;  // shadows
 		bool brake =0, reverse =0, under =0;
 		bool boost =0, thrust =0;
+	// #endif
 		bool collect =0;
 		bool track =0;  // int..
 		int grid_quality = 0;

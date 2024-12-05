@@ -457,7 +457,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 					pq->mStoreActionColour[0] = StoreAction::StoreOrResolve;
 
 					pq->mMaterialName = "Ogre/Resolve/1xFP32_Subsample0";  pq->mProfilingId = "Depth Resolve";
-					pq->addQuadTextureSource( 0, "gBufferDB" );  // input quad
+					pq->addQuadTextureSource( 0, "gBufferDB" );  // input
 				}
 				else  // need to copy, no fsaa, since we write and read from this copy
 				{
@@ -469,13 +469,6 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 					pq->mMaterialName = "Ogre/Copy/1xFP32";  pq->mProfilingId = "Depth copy";
 					pq->addQuadTextureSource( 0, "gBufferDB" );  // input
 				}
-				/*else
-				{	// bad_
-					auto* cp = static_cast<CompositorPassDepthCopyDef*>(
-						td->addPass(Ogre::PASS_DEPTHCOPY));  // + copy
-					cp->setDepthTextureCopy("gBufferDB", "resolvedDB");
-					cp->mProfilingId = "depth copy";  // for Refractions
-				}/**/
 			}
 			nd->setNumOutputChannels(1);  //  out>
 			nd->mapOutputChannel(0, "resolvedDB");
@@ -557,6 +550,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				ps->mShadowNodeRecalculation = SHADOW_NODE_REUSE;  //`
 			}
 			String final = "rtt_final";  // last rtt
+
 
 			//  🌅 Hdr  ----------------
 			if (hdr)
