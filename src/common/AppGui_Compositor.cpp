@@ -112,6 +112,7 @@ const String
 	s2_depth = "SR3_2_depth-",   // 2 for refract  resolve / copy depth
 	s3_Final = "SR3_3_Final-",   // 3 last
 	sCombine = "SR3_Combine", sCombineWS = "SR3_Combine_WS";  // new in SplitScreen, last
+const int nCombine = 50;
 
 
 //  Add Hud, Gui  ----------------
@@ -150,22 +151,28 @@ void AppGui::AddHudGui(CompositorTargetDef* td)  // + 3 ed, + 2 game  pass
 
 //  🪄 Create Compositor  main render setup
 //-----------------------------------------------------------------------------------------
-TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float height)
+TextureGpu* AppGui::CreateCompositor(bool ed, int view, int splits, float width, float height)
 {
 	const auto inp = TextureDefinitionBase::TEXTURE_INPUT;
 	//  cfg
-	const bool refract = pSet->g.water_refract,
-		ssao = pSet->g.ssao, hdr = pSet->g.hdr,
-		lens = pSet->g.lens_flare, sunbeams = pSet->g.sunbeams,
-		split = splits > 1,
+	bool refract = ed ? 1 : pSet->g.water_refract,
+			ssao = ed ? 1 : pSet->g.ssao, hdr = pSet->g.hdr,
+			lens = ed ? 1 : pSet->g.lens_flare,
+		sunbeams = ed ? 1 : pSet->g.sunbeams,
+		combine = view >= nCombine,  // split, last
+		createRTT = ed ? 0 : splits > 1,  // for split
+		addHudGui = ed ? 0 : splits <= 1,
 		msaa = mWindow->getSampleDescription().isMultisample();
 
 	//  log
 	LogO("CC+# Create Compositor   "+getWsInfo());
-	if (view >= 50)
+	if (combine)
 		LogO("CC=# Combine screen "+toStr(view));
 	else
-	if (split)
+	if (ed)
+		LogO("CC+# Editor RTT "+toStr(view));
+	else
+	if (splits > 1)
 		LogO("CC+# Split screen "+toStr(view));
 	else
 		LogO("CC-# Single screen "+toStr(view));
@@ -182,7 +189,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 
 	//  const
 	const String si = toStr(view+1);
-	const int plr = view < 0 ? 0 : view;
+	const int plr = ed || view < 0 ? 0 : view;
 	const uint32 RV_view = // vis mask, split screen
 		RV_Hud3D[plr] + (refract ? RV_MaskAll - RV_Fluid : RV_MaskAll);
 	// const Real wx = 1.f, wy = 1.f;
@@ -193,7 +200,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 	//  🪟 5 Combine last, final wnd
 	//  sum all splits (player views) + add one Hud, Gui
 	//------------------------------------------------------------------------------------------------------------------------------------------
-	if (view >= 50)
+	if (combine)
 	{
 		{	nd = AddNode(sCombine);  //++ node
 			
@@ -201,7 +208,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 			for (int i=0; i < splits; ++i)
 				nd->addTextureSourceName("rtt_FullIn"+toStr(i), i+1, inp);
 
-			nd->mCustomIdentifier = "50-Combine";
+			nd->mCustomIdentifier = "CombineSplits";
 
 			nd->setNumTargetPass(1);  //* targets
 			td = nd->addTargetPass( "rt_renderwindow" );
@@ -237,7 +244,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 	//------------------------------------------------------------------------------------------------------------------------------------------
 	if (refract)
 	{
-		if (split)
+		if (createRTT)
 			rtt = AddSplitRTT(si, width, height);
 		
 	// 0  s0_ssao  Pre render  ------------------------------------------------------------
@@ -592,7 +599,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 
 			//  render / Window  ----
 			td = nd->addTargetPass( "rtt_FullOut" );
-			td->setNumPasses( 1 + (!split ? nHudGui : 0) );  //* passes
+			td->setNumPasses( 1 + (addHudGui ? nHudGui : 0) );  //* passes
 			{
 				auto* pq = AddQuad(td);  // + quad
 				pq->setAllLoadActions( LoadAction::DontCare );
@@ -602,7 +609,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				pq->addQuadTextureSource( 0, final );  // input
 
 				//  ⏲️ Hud, 🎛️ Gui  --------
-				if (!split)
+				if (addHudGui)
 					AddHudGui(td);  // +
 			}
 		}
@@ -628,7 +635,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 	//------------------------------------------------------------------------------------------------------------------------------------------
 	else  //  node  🖥️ Old  no refract, no depth, no effects  - - -
 	{						// meh todo ssao w/o refract
-		if (split)
+		if (createRTT)
 			rtt = AddSplitRTT(si, width, height);
 
 		{	nd = AddNode(sNode+si);  //++ node
@@ -638,7 +645,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 
 			nd->mCustomIdentifier = "old-1";
 
-			nd->setNumTargetPass( 1 + (!split ? nHudGui : 0) );  //* targets
+			nd->setNumTargetPass( 1 + (addHudGui ? nHudGui : 0) );  //* targets
 
 			td = nd->addTargetPass( "rt_wnd" );
 			{
@@ -652,7 +659,7 @@ TextureGpu* AppGui::CreateCompositor(int view, int splits, float width, float he
 				AddShadows(ps);  // shadows
 			}
 			//  ⏲️ Hud, 🎛️ Gui  --------
-			if (!split)
+			if (addHudGui)
 				AddHudGui(td);  // +
 
 			//  workspace
@@ -728,7 +735,7 @@ void AppGui::SetupCompositors()
 			d.SetDim(views, !pSet->split_vertically, i);
 
 			//  🪄 Create 1  ----
-			auto* rtt = CreateCompositor(i, views, d.width0, d.height0);
+			auto* rtt = CreateCompositor(0, i, views, d.width0, d.height0);
 
 			//  external output to rtt
 			CompositorChannelVec chOne(1);  // mCubeReflTex ? 2 : 1 );
@@ -740,7 +747,7 @@ void AppGui::SetupCompositors()
 		}
 
 		//  🪄 Combine []  ----
-		CreateCompositor(50, views, 1.f, 1.f);
+		CreateCompositor(0, nCombine, views, 1.f, 1.f);
 
 			auto c = CreateCamera( "PlayerW", 0, Vector3(0,150,0), Vector3(0,0,0) );
 			mCamera = c->cam;	// fake cam
@@ -768,7 +775,7 @@ void AppGui::SetupCompositors()
 		IdString wsName;
 		if (!hdr)
 		{
-			CreateCompositor(-1, 1,  1.f, 1.f);
+			CreateCompositor(0, -1, 1,  1.f, 1.f);
 			wsName = sWork + "0";
 		}
 		else  // test hdr
@@ -792,6 +799,7 @@ void AppGui::SetupCompositors()
 		// ws->addListener(listener);
 		vWorkspaces.push_back(ws);
 	}
+	
 #if 0	//  OLD meh
 	else
 	{	//  👀 VR mode  ---- ----  todo use OpenVR

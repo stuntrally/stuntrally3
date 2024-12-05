@@ -156,7 +156,7 @@ Qlty   | Tex        |        | LOD,hor   | Cnt Dist |  | Reflect         | Skip 
 	ckLiBrake.Upd();  ckLiRevese.Upd();
 	ckLiBoost.Upd();  ckLiThrust.Upd();
 #endif
-	ckLiCollect.Upd();  ckLiTrack.Upd();
+	ckLiCollect.Upd();  //ckLiTrack.Upd();
 
 	//  🌊 water
 	svWaterSize.Upd();  //svWaterSkip.Upd();

@@ -13,7 +13,8 @@ Marked: `crucial`, **Next or Big**, _Important_.
 
 **ed** rtt from cpp, fix no water  
 redo all track views, with ssao, effects  
-ed underwater  
+
+ed fix *brushes* png load
 
 add **sounds**, WIP from [Changelog.md](Changelog.md)  
 AnomalyFun invisible boxes?  
@@ -59,6 +60,9 @@ test, move to bullet3 ?
 
 ### New
 
+translucency - lighter tree leaves, outside, facing sun  
+water waves  
+
 underwater: darken fog from car depth, *fix* issues [at end](https://catlikecoding.com/unity/tutorials/flow/looking-through-water/)  
 less poly, own collision *_p.mesh for veget/obj/bld, e.g. shrooms on Cloud etc
 
@@ -68,7 +72,8 @@ new **road** textures, detail mix, vert clr blend
 hud new best time show, win particles-  
 
 **ed key** for obj random rot, yaw, set up/dn y +-90  
-add arrow for emit dir  
+ed add underwater  
+ed add arrow for emit dir  
 
 
 ----
