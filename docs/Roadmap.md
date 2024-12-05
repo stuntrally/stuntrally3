@@ -11,19 +11,22 @@ Marked: `crucial`, **Next or Big**, _Important_.
 📽️ new game **video**  
 *editor videos*? all new  
 
-finish effects, and add sounds, WIP from [Changelog.md](Changelog.md)
+**ed** rtt from cpp, fix no water  
+redo all track views, with ssao, effects  
+
+add **sounds**, WIP from [Changelog.md](Changelog.md)  
+AnomalyFun invisible boxes?  
 
 ----
 ### 🪄 Effects
 
 lens flare, [shaders](https://www.shadertoy.com/results?query=lens+flare), [code](https://nehe.gamedev.net/tutorial/3d_lens_flare_with_occlusion_testing/16007/)  
-fix *occlude* depth read,  
 fix sun pos on few tracks,  
-ed add real pos on sky, other for sun dir  
+ed add real pos on sky, other for sun dir?  
 
-sunrays, [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)  
+sunbeams dither, par hq, [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)  
 
-HDR, bloom, [fix fireflies](https://catlikecoding.com/unity/tutorials/custom-srp/hdr/), adjust all tracks  
+HDR, bloom, [fix fireflies](https://catlikecoding.com/unity/tutorials/custom-srp/hdr/), adjust bright,sky *all* tracks  
 *Soft* Particles  
 old motion blur  
 
@@ -35,8 +38,7 @@ merge **replace** with [ogre-audiovideo](https://github.com/OGRECave/ogre-audiov
 or add **new** code for:
 - dynamic hit [sounds pool](https://github.com/kcat/openal-soft/issues/972#issuecomment-1934265230) (e.g. 10), auto removed after play
 - more tire sounds, load only used (few, pool e.g. 2), or:
-- init more sources, gui opt, [ref 1](https://github.com/kcat/openal-soft/issues/736), [ref 2](https://github.com/kcat/openal-soft/issues/972)
-- ed mode, track sounds: waterfall, volcano, river..
+- ed mode, **track sounds**: waterfall, volcano, river..
 
 🌧️ **Ambient** [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
 🚗🔊 More `car Sounds`, todo [task](https://stuntrally.tuxfamily.org/mantis/view.php?id=1), use [engine-sim](https://github.com/stuntrally/stuntrally3/issues/7), exhaust [muffler spectrum](https://duckduckgo.com/?t=ftsa&q=muffler+spectrum&atb=v395-1&ia=web)?  
@@ -141,8 +143,8 @@ redo or replace lowest quality meshes: , skyscraper* 🏢
 ----
 ### Ogre new
 
-Terrain new **ssao map** added to shadowmap: normals, ssao pass, from top view  
 🌊 Ocean from Terra, **waves**, vehicle deform, fluid *particles*  
+Terrain new **ssao map** added to shadowmap: normals, ssao pass, from top view  
 GI for terrain [issue](https://github.com/OGRECave/ogre-next/issues/475)?  
 
 ⏲️ Gauges with shader? [demo](https://www.shadertoy.com/view/7t3fzs)  

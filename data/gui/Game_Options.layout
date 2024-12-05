@@ -182,9 +182,14 @@
 						<Widget type="Slider" skin="Slider" position="392 90 320 18" name="BloomInt"/> -->
 
 
+						<Widget type="TextBox" skin="TextBox" position="362 10 248 24">
+							<Property key="Caption" value="#{Needed}: #{Water} #{WaterRefraction}"/>
+							<Property key="TextColour" value="0.1 0.4 0.7"/>
+						</Widget>
+
 						<!-- 🕳️ SSAO -->
 						<Widget type="Button" skin="CheckBox" position="28 30 556 24" name="SSAO">
-							<Property key="Caption" value="#{SSAO} **  #7090B0 #{WaterRefraction} - #{Needed}"/>
+							<Property key="Caption" value="#{SSAO} *"/>
 							<Property key="TextColour" value="0.3 0.7 1"/>
 						</Widget>
 
@@ -212,19 +217,19 @@
 
 						<!-- 🔆 LensFlare -->
 						<Widget type="Button" skin="CheckBox" position="28 130 556 24" name="LensFlare">
-							<Property key="Caption" value="#{LensFlare}"/>
+							<Property key="Caption" value="#{LensFlare} *"/>
 							<Property key="TextColour" value="0.84 0.87 0.9"/>
 						</Widget>
 						
 						<!-- 🌄 SunBeams -->
 						<Widget type="Button" skin="CheckBox" position="28 160 556 24" name="SunBeams">
-							<Property key="Caption" value="#{SunBeams}"/>
+							<Property key="Caption" value="#{SunBeams} *"/>
 							<Property key="TextColour" value="0.8 0.8 0.6"/>
 						</Widget>
 
 
 						<!-- 🌅 HDR -->
-						<Widget type="Button" skin="CheckBox" position="28 200 556 24" name="HDR">
+						<Widget type="Button" skin="CheckBox" position="28 210 556 24" name="HDR">
 							<Property key="Caption" value="#{HDR} ** #603030 = #{NotDone}"/>
 							<Property key="TextColour" value="0.8 0.6 0.3"/>
 						</Widget>
