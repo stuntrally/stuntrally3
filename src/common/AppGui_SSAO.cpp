@@ -176,10 +176,18 @@ void AppGui::UpdSSAO(Camera* camera)
 	camera->setOrientationMode( OR_DEGREE_0 );
 #endif
 	psParams->setNamedConstant( "projection", camera->getProjectionMatrix() );
-	psParams->setNamedConstant( "kernelRadius", pSet->ssao_radius );
+	psParams->setNamedConstant( "kernelRadius",
+#ifdef SR_EDITOR
+		edPrvCam ? 0.3f :  // const for 1024 view rtt
+#endif
+		pSet->ssao_radius );
 
 	GpuProgramParametersSharedPtr psParamsApply = mApplyPass->getFragmentProgramParameters();
-	psParamsApply->setNamedConstant( "powerScale", pSet->ssao_scale );
+	psParamsApply->setNamedConstant( "powerScale",
+#ifdef SR_EDITOR
+		edPrvCam ? 1.8f :
+#endif
+		pSet->ssao_scale );
 }
 
 //  💫 common util  🔆🌄

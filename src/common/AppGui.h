@@ -212,6 +212,7 @@ public:
 	Ogre::Pass *mApplyPass =0;
 	Ogre::TextureGpu *noiseTexture =0;
 	void InitSSAO(), UpdSSAO(Ogre::Camera *camera);
+	bool edPrvCam =0;
 
 	//  🔆 Lens flare
 	Ogre::Vector4 uvSunPos_Fade;  // on screen

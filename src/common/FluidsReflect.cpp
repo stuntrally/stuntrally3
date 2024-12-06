@@ -87,6 +87,7 @@ void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 
 	CompositorPassScene *passScene = static_cast<CompositorPassScene *>( pass );
 	Camera *camera = passScene->getCamera();
+	// LogO("cam: "+camera->getName());
 
 	
 	app->UpdateEffects(camera);  // 💫
