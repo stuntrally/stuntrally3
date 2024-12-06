@@ -114,12 +114,12 @@ void App::CreateRnd2Tex()
 
 			//  🪄 Workspace def  ----
 			String wsName( "EdRttWrk" + si );  // created from code
-			if (view3D) // || ter)  // todo: ..
+			if (view3D || ter)
 			{	int ii = i + 2;
-				auto si = toStr(ii+1);
-				wsName = "SR3_New_WS"+si;
+				auto si = toStr(ii + 1) + "ed";
+				wsName = "SR3_New_WS" + si;
 				if( !wsMgr->hasWorkspaceDefinition( wsName ) )  // todo? destroy..
-					CreateCompositor(1, ii, 0, 1.f, 1.f);  // ignored
+					CreateCompositor(ter ? 2 : 1, ii, 0, 1.f, 1.f);  // ignored
 			}else
 			if( !wsMgr->hasWorkspaceDefinition( wsName ) )
 			{

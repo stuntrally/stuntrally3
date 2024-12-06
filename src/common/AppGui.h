@@ -183,7 +183,7 @@ public:
 
 	//  Compositor Create
 	//  One  returns rtt if made, when not final wnd  // cur view num / all
-	Ogre::TextureGpu* CreateCompositor(bool ed, int view, int splits, float width, float height);
+	Ogre::TextureGpu* CreateCompositor(int edRtt, int view, int splits, float width, float height);
 	//  All  Full
 	void SetupCompositors(), DestroyCompositors();
 

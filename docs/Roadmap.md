@@ -11,13 +11,14 @@ Marked: `crucial`, **Next or Big**, _Important_.
 📽️ new game **video**  
 *editor videos*? all new  
 
-**ed** rtt from cpp, fix no water  
 redo all track views, with ssao, effects  
 
+`ed` apply shadows crash  
 ed fix *brushes* png load
 
 add **sounds**, WIP from [Changelog.md](Changelog.md)  
 AnomalyFun invisible boxes?  
+fix MogFoss waterfals  
 
 ----
 ### 🪄 Effects

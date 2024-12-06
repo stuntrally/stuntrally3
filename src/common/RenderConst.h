@@ -64,6 +64,15 @@ const Ogre::uint8
 	RQG_Hud4         = RQ_OVERLAY +4;  // ed only, after gui
 
 
+//  Pass mIdentifier  for ReflectListener  reflect cam, editor fog on/off in RTTs
+//-----------------------------------------------------------------------------------
+const Ogre::uint32
+	PassId_First     = 10001,
+	PassId_Reflect   = 10002,  // 🌊 fluids only,  RQG_Fluid..RQG_Refract & RV_Fluid
+	PassId_EdFogOn   = 22001,  // ed rtt fog on, restore
+	PassId_EdFogOff  = 22003;  // ed rtt fog off, disable
+
+
 //  Visibility Flags  used in setVisibility  few same in SR3.compositor
 //-----------------------------------------------------------------------------------
 const Ogre::uint32

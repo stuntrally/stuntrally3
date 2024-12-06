@@ -65,17 +65,17 @@ void ReflectListener::workspacePreUpdate( CompositorWorkspace *workspace )
 //-----------------------------------------------------------------------------------
 void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 {
-	// return;  //!-
+	// return;  //! test-
 	// assert( dynamic_cast<const CompositorPassSceneDef *>( pass->getDefinition() ) );  //!?-
 	const CompositorPassSceneDef *passDef =
 		static_cast<const CompositorPassSceneDef *>( pass->getDefinition() );
 
 	auto id = passDef->mIdentifier;
-	#if 0
+#if 0
 	auto s = passDef->mProfilingId;
 	LogO("ws pass: "+toStr(id)+" "+s);  //toStr(pass->getParentNode()->getId() ));
 	// LogO(pass->getParentNode()->getDefinition()->mCustomIdentifier));
-	#endif
+#endif
 
 	//  Ignore clear etc  ---
 	if (pass->getType() != PASS_SCENE)
@@ -104,33 +104,30 @@ void ReflectListener::passEarlyPreExecute( CompositorPass *pass )
 	}
 #endif
 
-#define OFF_FOG  //-
+#define OFF_FOG  //+ disable fog for ed minimap RTTs
 
 #if defined(SR_EDITOR) && defined(OFF_FOG)
-	bool rtt = //id == 10101 11101 
-		id == 22201;  //?..
-		// id >= 22201 && id <= 22299;
-		//id >= 11100 && id < 11110;  // road, ter
+	bool rtt = id == PassId_EdFogOff;
 	if (rtt)
-	{	app->scn->UpdFog(0, 1);  //- off fog in RTTs
+	{	//- off Fog for ter rtt, road ok clr, no fog
+		app->scn->UpdFog(0, 1);
 		app->scn->UpdSun();
 	}
 #endif
 
 #if defined(SR_EDITOR) && defined(OFF_FOG)
-	rtt = id == 22299 || id == 10001 || id == 33301;  //?..
+		// RTT 2 Final,  RTT 3 view Main too
+	rtt = id == PassId_EdFogOn || id == PassId_First;
 	if (rtt)
-	{
-		app->scn->UpdFog(
-			id != 10001
-			, 0);  //- on fog back  main or prv cam
+	{	//+ on Fog back  rtt_first  Main Render or prv cam
+		app->scn->UpdFog(id != PassId_First, 0);
 		app->scn->UpdSun();
 	}
 #endif
 
 	//  Ignore passes not tagged to receive reflections/refract
-	bool reflect = id == 22202 || id == 33302   // rtt
-				|| id == 10002 || id == 21002;  // main
+	//  Main Refract,  Old Main view,  RTT 2 ter Refract,  RTT 3 view Refract
+	bool reflect = id == PassId_Reflect;  // 🌊 fluids
 	if (!reflect)
 		return;
 
@@ -238,7 +235,7 @@ void FluidsReflect::CreateFluids()
 			sMesh, rgDef,
 			p, v2size.x, v2size.y,
 			// 1,1, true, 1,  // fix-
-			32,32, true, 1,  //par- steps /fake  buggy-
+			128,128, true, 1,  //par- steps /fake  buggy-
 			uvTile.x, uvTile.y,
 			Vector3::UNIT_Y,  // up vec for uv
 			v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
