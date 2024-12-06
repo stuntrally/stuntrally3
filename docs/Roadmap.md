@@ -9,7 +9,7 @@ Marked: `crucial`, **Next or Big**, _Important_.
 ### 3.3
 
 📽️ new game **video**  
-*editor videos*? all new  
+*editor videos* all new  
 
 redo all track views, with ssao, effects  
 
@@ -17,8 +17,13 @@ redo all track views, with ssao, effects
 ed fix *brushes* png load
 
 add **sounds**, WIP from [Changelog.md](Changelog.md)  
-AnomalyFun invisible boxes?  
-fix MogFoss waterfals  
+
+fix tracks:  
+AnomalyFun invisible boxes  
+MogFoss waterfals  
+FrozenGarden invisible icicles  
+Mudflats gravel alpha bridge  
+CrystalIslands no flowers  
 
 ----
 ### 🪄 Effects
@@ -30,7 +35,7 @@ ed add real pos on sky, other for sun dir?
 sunbeams dither, par hq, [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)  
 
 HDR, bloom, [fix fireflies](https://catlikecoding.com/unity/tutorials/custom-srp/hdr/), adjust bright,sky *all* tracks  
-*Soft* Particles  
+*Soft* Particles, Pbs, fog fade, lit by diffuse  
 old motion blur  
 
 
@@ -89,18 +94,16 @@ win place twice 1st on Oc, 3plr?
 car glass reflect cube sky pos bad on Test1-Flat?  
 -each car own reflect cube  
 
-own rqg for veget on horiz? to skip in wtr refl etc
+own *rqg* for veget on horiz? to skip in wtr refl etc
 
-specular on terrain  
-trails after particles/clouds  
+**specular** on terrain  
+move *trails* before particles/clouds  
 car glass, pipes, beam etc not visible in fluid if seen from above  
 
 rqg rivers after water  
 river alpha fade last segs  
 *rivers* wrong way  
 waterfalls refract *cuts* off above cam y  
-
-Pbs particles, fade from fog, soft  
 
 🌊refract, depth: pass projmatrix `not` **inverse**  
 underwater top has no surface, refract  
@@ -114,10 +117,6 @@ wind anim shadow **caster** too, ed prv obj no wind-
 ### Fix
 
 **ed** fields rot, focus, telep `offset`, no cam ray cut  
-
-`rays casts?` **H2,H1** going through big waters e.g. Islands,  
-wheels jumping on big ice e.g. FreshBreeze,  
-*cam tilt* jumps on Shore, Treausure, etc?  
 
 fix .car thrusters lights pos  
 **hide** flares with in car camera  

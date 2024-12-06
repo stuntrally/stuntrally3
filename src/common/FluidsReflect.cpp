@@ -235,7 +235,7 @@ void FluidsReflect::CreateFluids()
 			sMesh, rgDef,
 			p, v2size.x, v2size.y,
 			// 1,1, true, 1,  // fix-
-			128,128, true, 1,  //par- steps /fake  buggy-
+			32,32, true, 1,  //par- steps, max 128 65k /fake  buggy-
 			uvTile.x, uvTile.y,
 			Vector3::UNIT_Y,  // up vec for uv
 			v1::HardwareBuffer::HBU_STATIC, v1::HardwareBuffer::HBU_STATIC );
@@ -353,90 +353,62 @@ void FluidsReflect::CreateBltFluids()
 		FluidBox& fb = sc->fluids[i];
 		const FluidParams& fp = sc->pFluidsXml->fls[fb.id];
 
-		///  add bullet trigger box   . . . . . . . . .
-		btVector3 pc(fb.pos.x, -fb.pos.z, fb.pos.y -fb.size.y/2);  // center
-		btTransform tr;  tr.setIdentity();  tr.setOrigin(pc);
-		//tr.setRotation(btQuaternion(0, 0, fb.rot.x*PI_d/180.f));
+		const btScalar sxA = fb.size.x, syA = fb.size.z, sz = fb.size.y*0.5f;
+		//  divide to blocks of this size
+		const btScalar xyMaxSize = 100.f;  // par ok,  xy blt plane, z h
+		const int
+			xDivs = 1 + sxA / xyMaxSize,
+			yDivs = 1 + syA / xyMaxSize;
+		const btScalar
+			sx = sxA / xDivs, ofx = sxA * -0.5f + sx * 0.5f,
+			sy = syA / yDivs, ofy = syA * -0.5f + sy * 0.5f;
 
-		btCollisionObject* bco = 0;
-		// float t = sc->tds[0].fTerWorldSize*1.f;  // not bigger than terrain- // goes bad on IcyRiver, SlopeCity, etc
-		// btScalar sx = std::min(t, fb.size.x*0.5f), sy = std::min(t, fb.size.z*0.5f), sz = fb.size.y*0.5f;
-		btScalar sx = fb.size.x*0.5f, sy = fb.size.z*0.5f, sz = fb.size.y*0.5f;
+		for (int y = 0; y < yDivs; ++y)  // divs
+		for (int x = 0; x < xDivs; ++x)
+		{
+			///  add bullet trigger box   . . . . . . . . .
+			btScalar ox = x * sx + ofx,
+					 oy = y * sy + ofy;
+			btVector3 pc(
+				fb.pos.x + ox,
+				-fb.pos.z - oy,
+				fb.pos.y - fb.size.y/2);  // center
+			btTransform tr;  tr.setIdentity();  tr.setOrigin(pc);
 
-	//_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-	if (0 && fp.solid)  /// test random ray jumps meh-
-	{
-		const int size = 16;
-		float* hfHeight = new float[size*size];
-		int a = 0;
-		for (int y=0; y<size; ++y)
-		for (int x=0; x<size; ++x)
-			hfHeight[a++] = 0.f;
-		btHeightfieldTerrainShape* hfShape = new btHeightfieldTerrainShape(
-			size, size, hfHeight, 1.f,
-			-13.f,13.f, 2, PHY_FLOAT,false);  //par- max height
+			btCollisionShape* bshp = 0;
+			bshp = new btBoxShape(btVector3(
+				sx*0.5f,sy*0.5f, sz));
+
+			//  solid surf
+			size_t id = SU_Fluid;  if (fp.solid)  id += fp.surf;
+			bshp->setUserPointer((void*)id);
+			bshp->setMargin(0.1f); //
+
+			btCollisionObject* bco = new btCollisionObject();
+			bco->setActivationState(DISABLE_SIMULATION);
+			bco->setCollisionShape(bshp);	bco->setWorldTransform(tr);
+
+			if (!fp.solid)  // fluid
+				bco->setCollisionFlags(bco->getCollisionFlags() |
+					btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_NO_CONTACT_RESPONSE/**/);
+			else  // solid
+			{	bco->setCollisionFlags(bco->getCollisionFlags() |
+					btCollisionObject::CF_STATIC_OBJECT);
+				bco->setFriction(0.6f);  bco->setRestitution(0.5f);  //par?..
+			}
+
+			bco->setUserPointer(new ShapeData(ST_Fluid, 0, &fb));  ///~~
+		#ifndef SR_EDITOR
+			app->pGame->collision.world->addCollisionObject(bco);
+			app->pGame->collision.shapes.push_back(bshp);
+			fb.cobj = bco;
+		#else  // ed
+			app->world->addCollisionObject(bco);
+		#endif
+		}	// shapes
 		
-		hfShape->setUseDiamondSubdivision(true);
+	}	// fluids
 
-		btVector3 scl(sx, sy, sz);
-		hfShape->setLocalScaling(scl);
-		
-		size_t id = SU_Fluid;  if (fp.solid)  id += fp.surf;
-		hfShape->setUserPointer((void*)id);
-
-		bco = new btCollisionObject();
-		bco->setActivationState(DISABLE_SIMULATION);
-		bco->setCollisionShape(hfShape);  bco->setWorldTransform(tr);
-		bco->setFriction(0.9);   //+
-		bco->setRestitution(0.0);  //bco->setHitFraction(0.1f);
-		bco->setCollisionFlags(bco->getCollisionFlags() |
-			btCollisionObject::CF_STATIC_OBJECT /*| btCollisionObject::CF_DISABLE_VISUALIZE_OBJECT/**/);
-	
-		bco->setUserPointer(new ShapeData(ST_Fluid, 0, &fb));  ///~~
-	#ifndef SR_EDITOR
-		app->pGame->collision.world->addCollisionObject(bco);
-		app->pGame->collision.shapes.push_back(hfShape);
-		fb.cobj = bco;
-	#else
-		app->world->addCollisionObject(bco);
-	#endif
-	}else{
-	//_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-
-		btCollisionShape* bshp = 0;
-		bshp = new btBoxShape(btVector3(sx,sy,sz));
-		// bshp = new btBoxShape(btVector3(1.,1.,1.));  //?-
-		// bshp->setLocalScaling(btVector3(sx,sy,sz));
-
-		//  solid surf
-		size_t id = SU_Fluid;  if (fp.solid)  id += fp.surf;
-		bshp->setUserPointer((void*)id);
-		bshp->setMargin(0.1f); //
-
-		bco = new btCollisionObject();
-		bco->setActivationState(DISABLE_SIMULATION);
-		bco->setCollisionShape(bshp);	bco->setWorldTransform(tr);
-
-		if (!fp.solid)  // fluid
-			bco->setCollisionFlags(bco->getCollisionFlags() |
-				btCollisionObject::CF_STATIC_OBJECT | btCollisionObject::CF_NO_CONTACT_RESPONSE/**/);
-		else  // solid
-		{	bco->setCollisionFlags(bco->getCollisionFlags() |
-				btCollisionObject::CF_STATIC_OBJECT);
-			bco->setFriction(0.6f);  bco->setRestitution(0.5f);  //par?..
-		}
-
-		bco->setUserPointer(new ShapeData(ST_Fluid, 0, &fb));  ///~~
-	#ifndef SR_EDITOR
-		app->pGame->collision.world->addCollisionObject(bco);
-		app->pGame->collision.shapes.push_back(bshp);
-		fb.cobj = bco;
-	#else
-		app->world->addCollisionObject(bco);
-	#endif
-	}
-		
-	}
 #ifdef SR_EDITOR
 	app->UpdObjPick();
 #endif
