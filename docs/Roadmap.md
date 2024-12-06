@@ -12,6 +12,7 @@ Marked: `crucial`, **Next or Big**, _Important_.
 *editor videos* all new  
 
 redo all track views, with ssao, effects  
+ed rtt less ssao size?  
 
 `ed` apply shadows crash  
 ed fix *brushes* png load
@@ -19,11 +20,11 @@ ed fix *brushes* png load
 add **sounds**, WIP from [Changelog.md](Changelog.md)  
 
 fix tracks:  
-AnomalyFun invisible boxes  
+|AnomalyFun invisible boxes  rqg  
+|FrozenGarden invisible icicles  
+|CrystalIslands no flowers  
 MogFoss waterfals  
-FrozenGarden invisible icicles  
 Mudflats gravel alpha bridge  
-CrystalIslands no flowers  
 
 ----
 ### 🪄 Effects

@@ -193,7 +193,7 @@ void AppGui::UpdSunPos(Camera *camera)
 	v.x =  p2.x * 0.5f;
 	v.y = -p2.y * 0.5f;
 	v.z = max(0.f, min(1.f, -scn->fx.sunDir.dotProduct(camera->getDirection()) ));  // sun dot cam
-	v.w = float(mWindow->getWidth()) / float(mWindow->getHeight());  // wnd x/y aspect
+	v.w = camera->getAspectRatio();
 	
 	efxClrSun = scn->fx.sunClr;
 	efxClrRays = scn->fx.raysClr;  // or own par-

@@ -4,7 +4,6 @@
         //**  fog fade for ssao
         @property( hlms_fog && !sky )
             outPs_fog = fogWeight * heightMul;
-            // outPs_fog *= fluidHeight;  //bad
             outPs_fog = lerp(
                             lerp ( 0.0, outPs_fog,  fluidDist ),
                             outPs_fog,  fluidHeight );  // in fluid

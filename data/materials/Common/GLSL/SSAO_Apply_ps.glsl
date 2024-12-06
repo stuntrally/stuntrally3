@@ -31,5 +31,5 @@ void main()
 	// fragColour = vec4( ssao, ssao, ssao, 1.0 );  // test ssao only
 	// fragColour = vec4( ssao, ssao, fog, 1.0 );  // test fog, ssao  yellow-blue
 
-	fragColour = vec4( mix(col.xyz, col.xyz * ssao, fog), col.a );
+	fragColour = vec4( mix(col.xyz, col.xyz * ssao, fog * fog), col.a );
 }
