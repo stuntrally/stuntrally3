@@ -40,6 +40,7 @@ using namespace Ogre;
 	M   MSAA (FSAA)  antialiasing
 	H   HDR ..
 
+----------------------------------------------------------------------------------------------------
 
 0 S  s0_ssao  [prepare] for ssao 🕳️
 	tex rtt_ssao  \   clr0 unused
@@ -55,7 +56,7 @@ using namespace Ogre;
 	out2> gFog
 
 
-1 s1_first  [first]
+1 s1_first  [first] ⛰️
  S	in0> gNormals
  S	in1> depthHalf
  S	in2> gFog
@@ -76,25 +77,36 @@ using namespace Ogre;
 	M-	pass copy  gBufferDB  / or
 	out0> resolvedDB
 
+
 3 s3_Final  [Final] 🪩
 	>in0 rtt_first    
 	>in1 depthBuffer \
 	>in2 depthBufferNoMsaa  <- resolvedDB
-	>in3 rtt_FullOut     or  [] rt_renderwindow
+	>in3 rtt_FullOut    or  [] rt_renderwindow
 	tex rtt_final    /rtv depthBuffer
 
 	target rtt_final
-		pass copy    rtt_first to rtt_final
-		pass Scene   🌊 Refractive Fluids
+		pass copy  rtt_first  to  rtt_final
+		pass Scene  🌊 Refractive Fluids
 			refractions: depthBufferNoMsaa rtt_first
 
+		pass Scene  ⭕ glass pipes, car glass, 💭 particles, pacenotes
+
+	target rtt_lens  🔆 Lens flare
+		pass quad  LensFlare
+			in: depthBufferNoMsaa, rtt_final
+
+	target rtt_beams  🌄 Sunbeams
+		pass quad  SunBeams
+			in: depthBufferNoMsaa, rtt_lens
+
 	target rtt_FullOut   or  [] rt_renderwindow
-		pass quad  copy rtt_final to rtt_FullOut or wnd
+		pass quad  copy  last: rtt_beams/rtt_lens/rtt_final  to  rtt_FullOut  or rt_renderwindow
 	[]	pass scene  Hud
 	[]	pass scene  Gui
 
 
-5 ++  sCombine  [Combine]
+5 ++  sCombine  [Combine]  🪟
 	>in0 rt_renderwindow
 	>in1 rtt_FullIn1  <- rtt_FullOut 1
 	>in2 rtt_FullIn2  <- rtt_FullOut 2  etc more plrs
@@ -103,7 +115,8 @@ using namespace Ogre;
 		pass quad copy  rtt_FullIn to wnd
 	++	pass Hud
 	++	pass Gui
-*/
+
+----------------------------------------------------------------------------------------------------*/
 
 const String
 	sNode = "SR3_New", sWork = "SR3_New_WS",  // Old, no refract
@@ -115,7 +128,8 @@ const String
 const int nCombine = 50;
 
 
-//  Add Hud, Gui  ----------------
+//  Add Hud, Gui
+//----------------------------------------------------------------------------------------------------
 #ifdef SR_EDITOR
 	#define nHudGui 3  // ed 1 more
 #else
@@ -149,16 +163,20 @@ void AppGui::AddHudGui(CompositorTargetDef* td)  // + 3 ed, + 2 game  pass
 }
 
 
+//------------------------------------------------------------------------------------------------------------------------------------------
 //  🪄 Create Compositor  main render setup
-//-----------------------------------------------------------------------------------------
-TextureGpu* AppGui::CreateCompositor(bool ed, int view, int splits, float width, float height)
+//------------------------------------------------------------------------------------------------------------------------------------------
+TextureGpu* AppGui::CreateCompositor(int edRtt, int view, int splits, float width, float height)
 {
 	const auto inp = TextureDefinitionBase::TEXTURE_INPUT;
 	//  cfg
-	bool refract = ed ? 1 : pSet->g.water_refract,
-			ssao = ed ? 1 : pSet->g.ssao, hdr = pSet->g.hdr,
-			lens = ed ? 1 : pSet->g.lens_flare,
-		sunbeams = ed ? 1 : pSet->g.sunbeams,
+	const bool ed = edRtt > 0, edView = edRtt == 1, edTer = edRtt == 2,
+		//  force effects in ed preview cam
+		 refract = /*ed ? 1 :*/ pSet->g.water_refract,
+			ssao = edView ? 1 : pSet->g.ssao, hdr = pSet->g.hdr,
+			lens = edView ? 1 : pSet->g.lens_flare,
+		sunbeams = edView ? 1 : pSet->g.sunbeams,
+		
 		combine = view >= nCombine,  // split, last
 		createRTT = ed ? 0 : splits > 1,  // for split
 		addHudGui = ed ? 0 : splits <= 1,
@@ -188,12 +206,10 @@ TextureGpu* AppGui::CreateCompositor(bool ed, int view, int splits, float width,
 	TextureGpu* tex =0, *rtt =0;
 
 	//  const
-	const String si = toStr(view+1);
+	const String si = toStr(view+1) + (ed ? "ed":"");  // unique suffix
 	const int plr = ed || view < 0 ? 0 : view;
 	const uint32 RV_view = // vis mask, split screen
 		RV_Hud3D[plr] + (refract ? RV_MaskAll - RV_Fluid : RV_MaskAll);
-	// const Real wx = 1.f, wy = 1.f;
-	// const Real wx = 0.5f, wy = 1.f;
 
 
 #ifndef SR_EDITOR  // game
@@ -242,12 +258,13 @@ TextureGpu* AppGui::CreateCompositor(bool ed, int view, int splits, float width,
 
 	//  node  🪩 New Refract  * * *
 	//------------------------------------------------------------------------------------------------------------------------------------------
-	if (refract)
+	if (refract)  // needed for all effects
 	{
 		if (createRTT)
 			rtt = AddSplitRTT(si, width, height);
 		
-	// 0  s0_ssao  Pre render  ------------------------------------------------------------
+	// 0  s0_ssao  Pre render
+	//--------------------------------------------------------------------------------------------------------------------------
 		//  own node, for more control of render RQG, no pipe glass, etc
 		//  could be less Fps, renders more tris, but has no artifacts
 		//  splitting render of pipe glass messed up depth of fluids
@@ -293,7 +310,9 @@ TextureGpu* AppGui::CreateCompositor(bool ed, int view, int splits, float width,
 				// ps->lod_update_list off
 
 				ps->mProfilingId = "Pre Ssao-"+si;  // Opaque only, no pipe glass
-				ps->mIdentifier = 10001;  //?
+				ps->mIdentifier = edTer ? PassId_EdFogOff :
+					edView ? PassId_EdFogOn : PassId_First;  // 🌫️ fog on
+
 				ps->mFirstRQ = RQG_Sky+1;  // no sky
 				ps->mLastRQ = RQG_Grass+1;  // RQG_Hud3+1;  trail?-
 				ps->setVisibilityMask(
@@ -313,7 +332,8 @@ TextureGpu* AppGui::CreateCompositor(bool ed, int view, int splits, float width,
 			nd->mapOutputChannel(2, "gFog" );
 		}
 
-	// 1  s1_First  Render  ------------------------------------------------------------
+	// 1  s1_First  Render
+	//--------------------------------------------------------------------------------------------------------------------------
 		{	nd = AddNode(s1_first+si);  //++ node
 
 			if (ssao)
@@ -369,10 +389,16 @@ TextureGpu* AppGui::CreateCompositor(bool ed, int view, int splits, float width,
 				// ps->lod_update_list off  //?
 
 				ps->mProfilingId = "Render First-"+si;  // ⛰️ Opaque only
-				ps->mIdentifier = 10001;
-				ps->mLastRQ = RQG_PipeGlass;  // before
-				ps->setVisibilityMask(RV_view);
-				
+				ps->mIdentifier = edTer ? PassId_EdFogOff :
+					ed ? PassId_EdFogOn : PassId_First;  // 🌫️ fog on
+
+				if (edTer)
+				{	ps->mLastRQ = RQG_Horizon2+1;  // 20;
+					ps->setVisibilityMask(RV_Terrain | RV_Objects);
+				}else{
+					ps->mLastRQ = RQG_PipeGlass;  // before
+					ps->setVisibilityMask(RV_view);
+				}
 				// ps->mExposedTextures.push_back("") mCubeReflTex  // todo.. add
 
 				AddShadows(ps);  // shadows
@@ -437,7 +463,8 @@ TextureGpu* AppGui::CreateCompositor(bool ed, int view, int splits, float width,
 			nd->mapOutputChannel(1, "depthBuffer");
 		}
 
-	// 2  s2_depth  resolve / copy Depth  ------------------------------
+	// 2  s2_depth  resolve / copy Depth
+	//--------------------------------------------------------------------------------------------------------------------------
 		{	nd = AddNode(s2_depth+si);  //++ node
 			
 			nd->addTextureSourceName("gBufferDB", 0, inp);  //  >in
@@ -454,7 +481,7 @@ TextureGpu* AppGui::CreateCompositor(bool ed, int view, int splits, float width,
 			td = nd->addTargetPass( "resolvedDB" );
 			td->setNumPasses(1);  //* passes
 			{
-				//  We need to "downsample/resolve" DepthBuffer because the impact
+				//  downsample/resolve DepthBuffer because the impact
 				//  performance on Refractions is gigantic
 				if (msaa)
 				{
@@ -466,7 +493,7 @@ TextureGpu* AppGui::CreateCompositor(bool ed, int view, int splits, float width,
 					pq->mMaterialName = "Ogre/Resolve/1xFP32_Subsample0";  pq->mProfilingId = "Depth Resolve";
 					pq->addQuadTextureSource( 0, "gBufferDB" );  // input
 				}
-				else  // need to copy, no fsaa, since we write and read from this copy
+				else  // need to copy, no fsaa, since we write depth, and read from this copy
 				{
 					auto* pq = AddQuad(td);  // + quad
 					pq->setAllLoadActions( LoadAction::DontCare );
@@ -481,7 +508,8 @@ TextureGpu* AppGui::CreateCompositor(bool ed, int view, int splits, float width,
 			nd->mapOutputChannel(0, "resolvedDB");
 		}
 
-	// 3  s3_Final  🪩 Final Refractive  ------------------------------------------------------------
+	// 3  s3_Final  🪩 Final Refractive
+	//--------------------------------------------------------------------------------------------------------------------------
 		{	nd = AddNode(s3_Final+si);  //++ node
 			
 			nd->addTextureSourceName("rtt_FullOut", 0, inp);  // or rt_renderwindow
@@ -513,7 +541,7 @@ TextureGpu* AppGui::CreateCompositor(bool ed, int view, int splits, float width,
 
 			//  🌊 Final  ----
 			td = nd->addTargetPass( "rtt_final" );
-			td->setNumPasses(3);  //* passes
+			td->setNumPasses( edTer ? 2 : 3 );  //* passes
 			{
 				//  Perform exact copy (MSAA-preserving) so we can continue rendering
 				//  into rtt_final. Meanwhile rtt_first will be used for sampling refractions
@@ -522,14 +550,17 @@ TextureGpu* AppGui::CreateCompositor(bool ed, int view, int splits, float width,
 				cp->setDepthTextureCopy("rrt_firstIn", "rtt_final");
 				cp->mProfilingId = "copy first to final";
 
-				//  🌊 Refracted  Fluids
+
+			//  🌊 Refracted  Fluids
 				ps = AddScene(td);  // + scene
 				ps->setAllLoadActions( LoadAction::Load );
 				ps->mStoreActionColour[0] = StoreAction::StoreOrResolve;
 				ps->mStoreActionDepth = StoreAction::Store; //DontCare;
 				ps->mStoreActionStencil = StoreAction::DontCare;
 
-				ps->mProfilingId = "Refractive Fluids";  ps->mIdentifier = 10002;
+				ps->mProfilingId = "Refractive Fluids";
+				ps->mIdentifier = PassId_Reflect;
+
 				ps->mFirstRQ = RQG_Fluid;  ps->mLastRQ = RQG_Refract+1;
 				ps->setVisibilityMask(RV_Fluid);  // 🌊
 				
@@ -537,15 +568,19 @@ TextureGpu* AppGui::CreateCompositor(bool ed, int view, int splits, float width,
 				AddShadows(ps);  // shadows
 				ps->mShadowNodeRecalculation = SHADOW_NODE_REUSE;  //`
 				ps->setUseRefractions("depthBufferNoMsaa", "rrt_firstIn");  // ~
-
-				//  ⭕ glass pipes, car glass, 💭 particles, pacenotes
+			}
+			if (!edTer)
+			{
+			//  ⭕ glass pipes, car glass, 💭 particles, pacenotes
 				ps = AddScene(td);  // + scene
 				ps->setAllLoadActions( LoadAction::Load );
 				ps->mStoreActionColour[0] = StoreAction::StoreOrResolve;
 				ps->mStoreActionDepth = StoreAction::Store; //DontCare;
 				ps->mStoreActionStencil = StoreAction::DontCare;
 
-				ps->mProfilingId = "Particles";  ps->mIdentifier = 10001;
+				ps->mProfilingId = "Glass,Particles";
+				ps->mIdentifier = ed ? PassId_EdFogOff : PassId_First;  // 🌫️ fog off
+
 				ps->mFirstRQ = RQG_PipeGlass;  ps->mLastRQ = RQG_Hud3+1;
 				ps->setVisibilityMask(
 					RV_CarGlass |
@@ -631,7 +666,7 @@ TextureGpu* AppGui::CreateCompositor(bool ed, int view, int splits, float width,
 			wd->connect( s2_depth+si, 0, s3_Final+si, 3 );  // resolvedDB -> depthBufferNoMsaa
 		}
 	}
-	
+	//------------------------------------------------------------------------------------------------------------------------------------------
 	//------------------------------------------------------------------------------------------------------------------------------------------
 	else  //  node  🖥️ Old  no refract, no depth, no effects  - - -
 	{						// meh todo ssao w/o refract
@@ -673,9 +708,9 @@ TextureGpu* AppGui::CreateCompositor(bool ed, int view, int splits, float width,
 }
 
 
-//-----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------
 //  🪄 Setup Compositors All  🪟 splits etc
-//-----------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------
 void AppGui::SetupCompositors()
 {
 	LogO("CC## Setup Compositor    "+getWsInfo());
@@ -780,7 +815,6 @@ void AppGui::SetupCompositors()
 		}
 		else  // test hdr
 		{
-			CompositorManager2 *compositorManager = mRoot->getCompositorManager2();
 			RenderSystem *renderSystem = mRoot->getRenderSystem();
 			const RenderSystemCapabilities *caps = renderSystem->getCapabilities();
 
