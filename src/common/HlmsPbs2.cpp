@@ -368,6 +368,14 @@ public:
 		it = json.FindMember( "particle" );
 		if (it != json.MemberEnd())
 			db2->eType = DB_Particle;
+
+		it = json.FindMember( "diff_mul" );
+		if( it != json.MemberEnd() && it->value.IsFloat() )
+		{
+			Real v = it->value.GetFloat();
+			// LogO("diff_mul: "+fToStr(v));
+			db2->setDiffuse( db2->getDiffuse() * v );
+		}
 	}
 
 	//  Save .json  ---------------------------------
