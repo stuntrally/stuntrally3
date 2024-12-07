@@ -6,7 +6,7 @@ This page describes how to compile Stunt Rally 3:
 - using **VS** 2019  
   Could be older but seems that newer versions aren't yet tested for Ogre-Next at least.  
   There is a free Visual Studio Community edition [here](https://visualstudio.microsoft.com/downloads/), it should work okay (didn't check)  
-  (_Visual Studio is a big commercial solution though_)  
+  (_Visual Studio is a big commercial solution though, way too big and bloated_)  
 
 Surely this is a **long** and somewhat **tedious** process, it can take **2 hours** or more to complete ⚠️.  
 

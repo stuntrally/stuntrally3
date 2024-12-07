@@ -1,28 +1,43 @@
 
 # Developing Guide
 
-Guide for Ogre-Next (links), tools used and general info for SR3 sources (code).  
-Can be useful if you want to:
-- develop SR3, test or fix a bug
-- learn more about SR3 code or find something in it
-- learn about Ogre-Next used in SR3 or other libraries etc
-- fork SR3 code and start your own project (license required: GPLv3 or newer) based on it
+Guide for developing Stunt Rally 3, or other [Ogre-Next](https://github.com/OGRECave/ogre-next) applications.  
+Listing useful tools, many links, and general info for SR3 [sources](https://github.com/stuntrally/stuntrally3/tree/main/src) (C++ code).  
+
+This guide can be useful if you want to:
+- **develop** SR3, **test** or **fix** a bug
+- **learn** more about SR3 code or find something in it
+- learn about **Ogre-Next** used in SR3 or other libraries etc
+- fork SR3 code and start your own project (license required: [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html) or newer) based on it
 
 ## ToDo
 
-Many _ToDo:_ tasks are added BTW of topics in this file.  
-Shorter, fast updated list with more is on [Roadmap](Roadmap.md), also for planning.  
-More in [Task list](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php) with good general info (sorted by P (priority), 1 is most important).  
-Lastly there are plenty of `todo:` or `fixme` places marked in sources.
+- Many _ToDo:_ tasks are added BTW of topics in this guide file. It may not reflect very latest changes.  
+- **Fast** updated list with more items, but *shorter* info, is on [Roadmap](Roadmap.md), also used for planning what to do next.  
+- More in **slow** [Task list](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php) with general info (sorted by P (priority), 1 is most important).  
+- Lastly there are plenty of `todo:` or `fixme` places marked in sources.
+
+### Rendering support
+
+Main supported *Render System* is Open**GL**3+.  
+Vulkan seems working, but is not tested often.  
+DirectX11 doesn't work, is not tested. It is (at least) missing .hlsl files, for those shaders only in .glsl. Otherwise it could work.
+
+----
+# Developing Tools
 
 ## IDE
 
-Recommended all in one tool, having e.g.: go to definition, find references, debugging etc.
+The recommended all-in-one tool (editor for developing sources),  
+having (essential) features like: Go to definition, Find references, Debugging, Git integration, etc.
+
 ### [Qt Creator](https://www.qt.io/download)
-Easier to set up first, CMake is integrated. Works fast, but has less options.
+Easier to set up first, CMake is integrated.  
+Works fast, but has less options.
 
 ### [VSCodium](https://github.com/VSCodium/vscodium/releases)
-Used by CryHam, needs a moment to set up frist. More info on [my C++ guide](https://cryham.tuxfamily.org/cpp-guide/#VSCodium).  
+Used by CryHam, needs a moment to set up first, quick info below.  
+And in [my C++ guide](https://cryham.tuxfamily.org/cpp-guide/#VSCodium), especially if you're new to C++.  
 Search in all files works super fast. Has lots of extensions available.  
 
 Extensions needed at least: 
@@ -32,43 +47,58 @@ Extensions needed at least:
 - CMake Tools by ms-vscode
 - Native Debug by webfreak
 
-SR3 has VSCodium config files in subdir `.vscode/` in repo.  
+#### Settings
+
+SR3 has VSCodium config files in subdir `.vscode/` in git repo.  
 Some extensions and IDE preferences in `settings.json` and  
 in `launch.json` configurations (for binaries) are set up, to run or debug.
 
+### Windows
+
+On Windows developing is **much more** difficult, longer to set up dependencies.  
+Thus not recommended. IDE used is Visual Studio.
+
+### Next
+
+Once set up, when starting, follow more from [Building](Building.md).
+
+
+----
 ## 🛠️ Debugging Tools
 
-**Advanced**, extra, external tools, should be used when testing or developing new (bigger) things in game or editor:
-- [Renderdoc](https://renderdoc.org/) - For debugging **GPU render**, tracking rendered frame, its draw calls, shaders, textures etc.  
-[documentation](https://renderdoc.org/docs/index.html), [forum post](https://forums.ogre3d.org/viewtopic.php?p=554959#p554959) with quick help on using it, [video tutorials](https://www.youtube.com/results?search_query=tutorial+%22renderdoc%22).
+These tools are used last, and are meant for **advanced** developers, surely not needed for beginners.
+
+Advanced, extra, external tools, should be used when testing or developing new (bigger) things in game or editor:
+- [**Renderdoc**](https://renderdoc.org/) - For debugging **GPU render**, tracking rendered frame, its draw calls, shaders, textures, effects, workspaces etc.  
+[documentation](https://renderdoc.org/docs/index.html), [forum post](https://forums.ogre3d.org/viewtopic.php?p=554959#p554959) with quick help on using it, and [video tutorials](https://www.youtube.com/results?search_query=tutorial+%22renderdoc%22).
 - [Valgrind](https://valgrind.org/) - For debugging CPU, memory **leaks** etc.  
 To use run e.g. `valgrind --leak-check=full ./sr-editor3`, at end it will list details about leaks.
 - leaks, thread **sanitizer** for gcc or clang [video](https://www.youtube.com/watch?v=ZJKBwQ71LN4&list=PLvv0ScY6vfd_ocTP2ZLicgqKnvq50OCXM&index=14), or [ASAN](https://clang.llvm.org/docs/AddressSanitizer.html).
 - **Profiler**. E.g.: Intel VTune, AMD uProf, Google Orbit, KDAB/hotspot. Any of them will do.  
 For measuring performance, CPU time spent in methods from classes in code.  
 Used [KDAB/hotspot](https://github.com/KDAB/hotspot) on Linux, quick tutorial [video](https://www.youtube.com/watch?v=6ogEkQ-vKt4), one [longer](https://www.youtube.com/watch?v=HOR4LiS4uMI). Overview of profiling [tools](https://www.youtube.com/watch?v=GL0GIdj6k2Q), Heaptrack [video](https://www.youtube.com/watch?v=OXqqVSdrSAw).
-
-WIP Using **Vulkan**, it has better support for debugging tools, has more debug asserts etc, which <del>is</del> / *would be* good for finding errors.  
+- WIP Using **Vulkan**.  
+It has better support for debugging tools, Ogre-Next has more debug asserts etc, which <del>is</del> / *would be* good for finding errors.  
+MyGui **doesn't** work with Vulkan (on Linux). On Windows seems working.  
 Mentioned in [Post1](https://forums.ogre3d.org/viewtopic.php?p=553813#p553813), [Post2](https://forums.ogre3d.org/viewtopic.php?p=554446#p554446).  
-It starts longer though, shader compilation is much slower.  
-MyGui **doesn't** work with Vulkan (on Linux). On Windows seems working.
+*It started longer though, shader compilation was much slower*, should be now fast on Ogre-Next (4.0) master.  
 
 --------
 
 # Ogre-Next docs
 
-Ogre-Next is the engine used for rendering, managing 3D scene, also loading resources, logging to `.log` files etc.
+[Ogre-Next](https://github.com/OGRECave/ogre-next) is the engine used for: rendering, managing 3D scene, also loading resources, logging to `.log` files etc.
 
 - [Manual](https://ogrecave.github.io/ogre-next/api/latest/manual.html) - recommended reading when beginning.
 - [Compositor](https://ogrecave.github.io/ogre-next/api/latest/compositor.html) - for effects, RTTs, reflections, etc.
-- [Terrain](https://ogrecave.github.io/ogre-next/api/latest/_terra_system.html) - details of new Terra system.
-- [version comparison](https://www.ogre3d.org/about/what-version-to-choose) of Ogre and Ogre-Next - just for info.
+- [Terra](https://ogrecave.github.io/ogre-next/api/latest/_terra_system.html) - details of its new system for Terrain.
+- [version comparison](https://www.ogre3d.org/about/what-version-to-choose) of Ogre and Ogre-Next - just for info.  
 
 ----
 ## HLMS, materials, shaders
 
 **HLMS** (High Level Material System) is the part in Ogre-Next responsible for generating shaders used in materials.  
-There is no shader graph editor, everything is in big text files.  
+There is no shader graph editor, everything is in big json or text files.  
 
 - [HLMS doc](https://ogrecave.github.io/ogre-next/api/latest/hlms.html) - **long** read, explains all.
 - [HLMS shaders](https://ogrecave.github.io/ogre-next/api/latest/hlms.html#HlmsCreationOfShaders).
@@ -79,13 +109,17 @@ We have own shaders for:
 - **Terra** for terrain, with layers, triplanar, based on PBS.  
 Main files in `data/Hlms/Terra/Any`.
 - **PBS**, regular shaders for all materials (objects, road,  cars, vegetation etc).  
-Main files in `data/Hlms/Pbs/Any/Main`.  
+Main files in [data/Hlms/Pbs/Any/Main](../data/Hlms/Pbs/Any/Main).  
 I'm writing **water**/fluids also inside PBS, don't want to split.
 - Unlit (no lighting). We should only use this for **Gui**.  
 _ToDo:_ **Particles** must be at least: colored by sun diffuse, darker by shadows, also by terrain.  
 Small files in `data/Hlms/Unlit/Any`.
 
-Shader code in `.any` files are preferred, universal and these get translated to `.glsl` or `.hlsl` at end.
+Shader code in `.any` files are preferred, universal and these get translated to `.glsl` (or `.hlsl`) at run time.
+
+SR3 own files are prefixed `SR3_`, so all:  
+ `data/Hlms/Pbs/Any/[Main/]SR3_*piece*.any`  
+ files have our shader code for: fluids, fog, tree wind, vehicle paint.
 
 Continued in own page for [Materials](Materials.md).
 
@@ -135,7 +169,7 @@ Below * means: nothing or 2,3,4.. etc if more.
 ## emojis
 
 You can also get familiar with [emojis](../src/emojis.txt) file.  
-It lists many emojis used for indentifying code sections, variable blocks etc in sources.  
+It lists many emojis used for indentifying code sections, variable blocks in sources, xml configs, etc.  
 Done for better orientation, grouping and cooler code in files, especially for big ones with many at once.  
 It is possible to search for all related to some component or aspect in sources,  
 by searching for an emoji, e.g. 💨 for game boost, ⛰️ for all terrain stuff, 🎯 for all ray casts made, etc.
@@ -145,18 +179,20 @@ by searching for an emoji, e.g. 💨 for game boost, ⛰️ for all terrain stuf
 SR3 code is in `src/` its subdirs are:
 - [lib] [btOgre2](https://github.com/Ybalrid/BtOgre2) - for visualisation of bullet debug lines in Ogre-Next (called Ogre 2.1 before)
 - **common** - files for both editor and game. Mainly for common Gui, scene (map / track) elements.  
-Has also some MyGui classes a bit extended: `MultiList2.*, Slider*.*, Gui_Popup.*` and `GraphView.*` for game Graphs (Tweak F9).
-- common/data - has all data structures (mostly `.xml` config files, list above).
+Has also some MyGui classes a bit extended: `MultiList2.*`,  
+and new `Slider*.*, Gui_Popup.*` and `GraphView.*` for game Graphs (Tweak F9).
+- common/data - has all data structures (mostly `.xml` config files, listed above).
 - **editor** - purely editor sources
 - **game** - purely game sources
-- network - game multiplayer code, info in [DesignDoc.txt](../src/network/DesignDoc.txt). Also `master-server/`, small program for server game list (not used).
+- network - game multiplayer code, info in [DesignDoc.txt](../src/network/DesignDoc.txt).  
+Also `game-server/`, small program for server game list (not used).
 - OgreCommon - [Ogre-Next](https://github.com/OGRECave/ogre-next/) base application classes - slightly changed.
 - [lib] [oics](https://sourceforge.net/projects/oics/) - for input configurations, bindings and analog key inputs emulation.
 - road - code for unique SR roads, rivers, walls, pipes and transitions, with LODs.
 - Terra - terrain and other components, from Ogre-Next - quite modified (more info below).
 - sound - sound engine, based on [RoR](https://github.com/RigsOfRods/rigs-of-rods/tree/master/source/main/audio)'s, using openal-soft
 - vdrift - SR simulation (based on old [VDrift](https://github.com/VDrift) from about 2010) with a lot of changes and custom code,  
-Also has simulation for spaceships, sphere etc, and for `Buoyancy.*`.
+Also has simulation for spaceships, sphere, hovers etc, and for `Buoyancy.*`.
 
 
 ----
@@ -179,7 +215,7 @@ Only used for **fog** and its params.
 It can render sky atmosphere with sun (and no clouds). We don't use this. We could someday have dynamic sky shaders this way.  
 Modified to not change light after its update. And added more params for shaders, fog etc.  
 
-Our fog shader code is in: [Fog_piece_ps.any](../data/Hlms/Pbs/Any/Fog_piece_ps.any)  
+Our fog shader code is in: [SR3_Fog_piece_ps.any](../data/Hlms/Pbs/Any/SR3_Fog_piece_ps.any)  
 and is used in Pbs and Terra `.any` there `@insertpiece( applyFog )`.
 
 
@@ -187,7 +223,8 @@ and is used in Pbs and Terra `.any` there `@insertpiece( applyFog )`.
 
 The terrain component. Very efficient. Has triplanar already.  
 
-_ToDo:_ But `setDetailTriplanarNormalEnabled(true);` is broken still, has black-white spots. Posts: [start](https://forums.ogre3d.org/viewtopic.php?p=554304#p554304) until [end](https://forums.ogre3d.org/viewtopic.php?p=554312#p554312).
+_ToDo:_ But `setDetailTriplanarNormalEnabled(true);` is broken still, has black-white spots.  
+Posts: [start](https://forums.ogre3d.org/viewtopic.php?p=554304#p554304) until [end](https://forums.ogre3d.org/viewtopic.php?p=554312#p554312).
 
 #### Comparison
 
@@ -203,10 +240,12 @@ We **don't** use that, changed it, since our Hmap and SR editor use any, real he
 **_ToDo:_**  
 This **broke** [TerraShadowMapper](../src/Terra/TerraShadowMapper.cpp) shadowmap generation (mostly for heights below 0).  
 and terrain **shadowmap** is disabled.  
-BTW it took way too long, 5 sec at start, possibly due to compute shader building.  
+
+Good info [in post](https://forums.ogre3d.org/viewtopic.php?p=555308#p555308), how it works and [where (2nd half)](https://forums.ogre3d.org/viewtopic.php?p=555280#p555280) to change.  
+
+Old: BTW it took way too long, 5 sec at start, possibly due to compute shader building.  
 It's this `if (!m_bGenerateShadowMap)` and `return;  //**  5 sec delay` below.  
 Set earlier `,bGenerateShadowMap( 0 )  //** ter par  //^^ todo: 1 in ed`.
-Good info [in post](https://forums.ogre3d.org/viewtopic.php?p=555308#p555308), how it works and [where (2nd half)](https://forums.ogre3d.org/viewtopic.php?p=555280#p555280) to change.  
 
 This also **broke** terrain page **visibility**. Likely decreasing Fps, no idea how much.  
 Made all visible in `Terra::isVisible` for `if (!bNormalized)`.  
@@ -214,15 +253,17 @@ In ctor `Terra::Terra(` setting `bNormalized` to 1 does try to normalize Hmap.
 
 **_ToDo:_** Call Terra::update when the camera changes for each of splitscreen views.
 
-We use `tdb->setBrdf(TerraBrdf::BlinnPhongLegacyMath);` because it looks best, other are bad.
+We use `tdb->setBrdf(TerraBrdf::BlinnPhongLegacyMath);`  
+because it looks best, other are bad. No roughness control.
 
 #### Extended
 
 Terra is extended with **blendmap** RTT (from old SR) and its noise.  
-Also with emissive, property: `emissive terrain`.  
+Also with emissive, property: `emissive terrain` in shaders.  
 
 Changed skirt to be relative size below, not that default big to lowest point.  
-_ToDo:_ Some holes can appear on horizon terrains. Should be higher for them.
+_ToDo:_ Some holes can appear on horizon terrains. Should be higher for them and on horizon.  
+Also good for fluid planar reflection when that skirt is visible.
 
 Added _own_ terrain raycast code (for cursor hit pos), since there wasn't one, [topic](https://forums.ogre3d.org/viewtopic.php?t=96602).  
 _ToDo:_ For far future. Not a problem, but since we have many, [how to do multiple terras](https://forums.ogre3d.org/viewtopic.php?t=96050).
@@ -230,7 +271,7 @@ _ToDo:_ For far future. Not a problem, but since we have many, [how to do multip
 
 ### PlanarReflection 🪞
 
-Used for water/fluids.  
+Used for water/fluids. Renders flat mirror reflection for them when visible.  
 Modified to have more control and detail options for its camera.  
 Shader code in [PlanarReflections_piece_ps.any](../data/Hlms/Pbs/Any/PlanarReflections_piece_ps.any), mainly:  
 `planarReflUVs`, normal is in `pixelData.normal`, and distortion is added to `pointInPlane` from normal.  
@@ -244,15 +285,13 @@ These are using Ogre-Next base components but extend them to our specific render
 
 Main **shaders** for all materials (except terrain and particles) here:  
 [800.PixelShader_piece_ps.any](../data/Hlms/Pbs/Any/Main/800.PixelShader_piece_ps.any)  (modified)  
-[800.VertexShader_piece_vs.any](../data/Hlms/Pbs/Any/Main/800.VertexShader_piece_vs.any)  (not yet)  
+[800.VertexShader_piece_vs.any](../data/Hlms/Pbs/Any/Main/800.VertexShader_piece_vs.any)  (modified)  
 structures with variables passed to them are in:  
 [500.Structs_piece_vs_piece_ps.any](../data/Hlms/Pbs/Any/Main/500.Structs_piece_vs_piece_ps.any)  
 
 Keep in mind ([post](https://forums.ogre3d.org/viewtopic.php?p=554100&sid=6798838bbed3be6881aa07bf10012412#p554100)),
 that in .any this does not comment: `// @property( hlms_fog )`  
 Either add `0 &&` inside, or any letters to make non existing name, or remove `@` too.
-
-### Compositor
 
 
 ## Changed from SR
@@ -261,14 +300,15 @@ These have changed when porting SR to SR3 to use Ogre-Next meshes etc.
 
 ### Road 🛣️
 
-Original code made by CryHam for: roads, pipes, their transitions and bridge walls, columns.  
+Original code made by CryHam for: roads, pipes, their transitions and bridge walls, columns, rivers.  
 Code inside:
 - Road_Prepass.cpp - needed computations before rebuild.
 - Road_Rebuild.cpp - main big code, creating geometry vertices and meshes.
 - Grid.* - WIP new for paging grid and adding meshes together in cells, for less batches (draw calls).  
 Now used for columns to gather more together.
 
-Creating **mesh** code was based on Ogre-Next: `/Samples/2.0/ApiUsage/DynamicGeometry/DynamicGeometryGameState.cpp`.  
+Creating **mesh** code was based on Ogre-Next:  
+`/Samples/2.0/ApiUsage/DynamicGeometry/DynamicGeometryGameState.cpp`.  
 [Few posts](https://forums.ogre3d.org/viewtopic.php?p=554774#p554774) with info and issues (fixed).  
 Road editing is **slower** now, [topic](https://forums.ogre3d.org/viewtopic.php?p=553712#p553712)  
 due to going from V2 mesh to v1 computing tangents and back to v2.  
@@ -277,21 +317,28 @@ _ToDo:_ For far future. We should compute tangents/binormals ourself.
 _ToDo:_ We don't handle _device lost_ (happens in DirectX when going out of fullscreen),  
 it will go bad for all created meshes (road, grass).  
 
-**Glass pipes** rendering changed. Old Ogre had 2 passes with opposite culling.  
-New does not support passes [[2.3] Dealing with multi pass rendering in ogre next](https://forums.ogre3d.org/viewtopic.php?t=96902), and instead has:  
-2 nodes with same mesh, but clones datablock and sets opposite cull in it. Code in `pipe glass 2nd item` section of `Road_Mesh.cpp`.  
+#### Glass pipes ⭕
 
-_ToDo:_ glass pipes are too bright (glow) in fog.
+Glass pipes rendering changed. Old Ogre had 2 passes with opposite culling.  
+New does not support passes [[2.3] Dealing with multi pass rendering in ogre next](https://forums.ogre3d.org/viewtopic.php?t=96902), and instead has:  
+2 nodes with same mesh, but clones datablock and sets opposite cull in it.  
+Code in `pipe glass 2nd item` section of `Road_Mesh.cpp`.  
 
 Transparent objects are sorted by Ogre-Next so they don't blink randomly like in old Ogre.  
 There is though a less noticable issue with order on borders showin elipses between pipe segments [screen here](https://forums.ogre3d.org/viewtopic.php?p=553945&sid=6798838bbed3be6881aa07bf10012412#p553945).  
 
+From [post](https://forums.ogre3d.org/viewtopic.php?p=556887#p556887), only:
+- Ogre has an Order Independent Transparency demo with WBOIT method.  
+- Ogre-Next has few Global Illumination methods (but not for terrain) and Alpha Hashing transparency.
+
 ### Vegetation 🌳🪨
 
 Means models for trees, rocks, plants etc.  
-It is not paged, does not have impostors (like it was in old SR with paged-geometry).  
-Simply uses Ogre-Next Items that will be automatically HW instanced, to reduce draw calls, also works with mesh LODs.  
+It is not paged, does not have impostors (like it was in old SR with paged-geometry, *aka the worst library used*).  
+
+Now simply uses Ogre-Next Items that will be automatically HW instanced, to reduce draw calls, also works with mesh LODs.  
 All models are placed during track load by code in `src/common/SceneTrees.cpp`.  
+**_ToDo:_** make it parallel on CPU, it is rather slow.
 
 ### Objects .mesh
 
@@ -307,6 +354,8 @@ Also no fading yet. Started, find: `grow fade away`.
 Currently done simplest way, has mesh pages, with vertices and indices.  
 Quite inefficient to render and slow to create mesh.  
 Code in `Grass.h` and `Grass_Mesh.cpp`.  
+
+**_ToDo:_** make it parallel on CPU, it is very slow.  
 **_ToDo:_** add RTT for density map, read terrain height map in shader, do vertices in shader not on CPU..  
 [old topic](https://forums.ogre3d.org/viewtopic.php?t=85626&start=25)  
 [some info](https://forums.ogre3d.org/viewtopic.php?p=553666#p553666) (under "How should I add grass?") on how to do it better.  
@@ -339,7 +388,7 @@ More detail in `CGame.h` sections with vars for this.
 
 Sound manager code in `src/sound/`. Is based on [RoR's](https://github.com/RigsOfRods/rigs-of-rods/tree/master/source/main/audio) code. Completely replaced VDrift's code.
 
-**_ToDo:_** [Task here](https://stuntrally.tuxfamily.org/mantis/view.php?id=1). Ambient sounds (rain, wind, forest etc). Hit sounds (barrels etc).
+**_ToDo:_** [Task here](https://stuntrally.tuxfamily.org/mantis/view.php?id=1).
 
 
 ----
@@ -356,7 +405,7 @@ Some links (few also in [post here](https://forums.ogre3d.org/viewtopic.php?p=55
 - [done] [Adding HLMS customisations per datablock](https://forums.ogre3d.org/viewtopic.php?t=84775)
 - [done] [Adding Wind to Grass](https://forums.ogre3d.org/viewtopic.php?t=95892)
 - [done, old] [custom hlms wind and fog](https://spotcpp.com/creating-a-custom-hlms-to-add-support-for-wind-and-fog/)
-- [?Compositors, HLMS and depth buffers](https://forums.ogre3d.org/viewtopic.php?p=543364#p543364)
+- [old] [Compositors, HLMS and depth buffers](https://forums.ogre3d.org/viewtopic.php?p=543364#p543364)
 - [[Solved][2.1] Trying to create a new HLMS](https://forums.ogre3d.org/viewtopic.php?f=25&t=83763)
 - [done] [basic using in app](https://ogrecave.github.io/ogre-next/api/2.3/_using_ogre_in_your_app.html)
 
@@ -369,7 +418,8 @@ It has its settings on Gui now (that go into `setDebugOutputPath`): Debug Shader
 With Debug Properties set, properties are at top of each shader file,  
 this makes all compiling errors have wrong line numbers,  
 but at least one can get some idea of what kind of shader it was.  
-Other way is putting extra comments in .any and seeing them in .glsl as result.
+Other way is putting extra comments in .any and seeing them in .glsl as result.  
+Added few, starting with `//** This is `.
 
 ## HLMS extending 🌠
 
@@ -377,18 +427,20 @@ Customizing [doc link](https://ogrecave.github.io/ogre-next/api/latest/hlms.html
 
 From docs: Hlms implementation can be customized:
 - Through HlmsListener.  
-Example [here](https://github.com/OGRECave/ogre-next/blob/5da506c6c0aede615dea809c10e9372d81afe51d/Samples/2.0/Tutorials/Tutorial_Hlms01_Customization/Tutorial_Hlms01_MyHlmsListener.h) of adding new float4 and setProperty.  
+Example [here](https://github.com/OGRECave/ogre-next/blob/master/Samples/2.0/Tutorials/Tutorial_Hlms01_Customization/Tutorial_Hlms01_MyHlmsListener.h) of adding new float4 and setProperty.  
 This allows you to have access to the buffer pass to fill extra information; or bind extra buffers to the shader.
 - Overload HlmsPbs. Intro [post](https://forums.ogre3d.org/viewtopic.php?p=554026&sid=6798838bbed3be6881aa07bf10012412#p554026)  
-Useful for overriding only specific parts, or adding new functionality that requires storing extra information in a datablock (e.g. overload HlmsPbsDatablock to add more variables, and then overload HlmsPbs::createDatablockImpl to create these custom datablocks)
+Useful for overriding only specific parts, or adding new functionality that requires storing extra information in a datablock  
+(e.g. overload HlmsPbsDatablock to add more variables, and then overload HlmsPbs::createDatablockImpl to create these custom datablocks)
 - Directly modify HlmsPbs, HlmsPbsDatablock and the template (.any).
 
 SR3 does all above, we have our `HlmsPbs2`.  
 Also a HLMS PBS listener, it's that default `hlmsPbs->setListener( mHlmsPbsTerraShadows );`  
-from Terra, this is only for Pbs objects, `hlmsTerra` has no listener (_ToDo:_ adding globalTime to both would need it).  
+from Terra, this is only for Pbs objects, `hlmsTerra` has no listener.  
+(<del>_ToDo:_ adding globalTime to both would need it</del> - no, atmo. seems working).  
 Done so objects also receive terrain shadows. Only one listener can be used.  
 
-And we have own datablock: `HlmsPbsDb2` with more stuff when needed for paint or fluids.
+And we have own datablock: `HlmsPbsDb2` with more stuff when needed for: vehicle paint or fluids.
 
 ### Adding more uniforms
 
@@ -404,10 +456,10 @@ This shader file [500.Structs_piece_vs_piece_ps.any](../data/Hlms/Pbs/Any/Main/5
 - `@piece( VStoPS_block )`
 - and lots more
 
-### setProperty
+### setProperty 📄
 
 Allows using different code blocks in `.any` shaders (i.e. different shading paths).  
-Calling `setProperty` in `HlmsPbs2::calculateHashForPreCreate(` and same? in `calculateHashForPreCaster`.  
+Calling `setProperty` in `HlmsPbs2::calculateHashForPreCreate(` and if needed same in `calculateHashForPreCaster`.  
 Our method checks in name start from `.material` and sets a few cases already (grass, sky, water etc and body for vehicles).
 
 See `selected_glow` for blue selection glow in SR editor for objects, road segments etc.  
@@ -418,42 +470,43 @@ and calls `setProperty` for shaders.
 
 _ToDo:_ It works but slow, when selecting it creates a new shader (delay 1st time). Better use some uniform for this.
 
-_ToDo:_ ? Add renderable->hasCustomParameter( 999.. ) for all to get info in debugger..
+_ToDo:_ not needed, add renderable->hasCustomParameter( 999.. ) for all to get info in debugger..
 
 
-### PBS vertex colors
+### PBS vertex colors 🌈
 
-[Topic](https://forums.ogre3d.org/viewtopic.php?p=554630#p554630), added for road blending, road minimap preview colors etc.
+[Topic](https://forums.ogre3d.org/viewtopic.php?p=554630#p554630), added for road blending, in editor minimap road preview colors etc.
 
 ### Adding textures
 
 [topic from 2015](https://forums.ogre3d.org/viewtopic.php?f=25&t=84539)
 
 
-### Own DataBlocks
+### Own DataBlocks 🎲
 
 Inside `HlmsPbs2::createDatablockImpl(` we create `HlmsPbsDb2` for vehicle paint params.  
 It has own `HlmsPbsDb2::uploadToConstBuffer`, which is where data is uploaded from C++ to GPU material shader buffers.  
 
 Currently can't change total size, must set `mUserValue[` in cpp and get in shader `material.userValue[`.  
 _ToDo:_ `body_paint` property not used yet.  
-**_ToDo:_** `HlmsPbsDb2` clone fails?
+_ToDo:_ `HlmsPbsDb2` clone fails. IIRC this made the 7 duplicates in .json for vehicle paint.
 
 When setting car material need to use `HlmsPbsDb2*`. Set by `CarModel::SetPaint()`.  
 Changes need `scheduleConstBufferUpdate()` to apply.
 
-
-### Own HLMS
-
 The modified `HlmsPbs2` replaces default `HlmsPbs` in Ogre-Next and reads all from same dirs as Pbs.  
 It gathers all above points.  
 
+
+### Own HLMS
+
+*Rather **not** needed in SR3*  
+
 Fully own HLMS should inherit from Pbs, and (probably?) needs its own dirs with shaders.  
 Also own name in `.material` for materials e.g. `hlms water_name pbs` that last `pbs`.  
+[Trying to create a new HLMS](https://forums.ogre3d.org/viewtopic.php?f=25&t=83763)
 
-_ToDo:_ [Trying to create a new HLMS](https://forums.ogre3d.org/viewtopic.php?f=25&t=83763)
-
-Some example is already in Terra. Has also more and difficult code,
+One example is already in Terra. Has also more and difficult code,
 e.g. `Fill command Buffers` in `HlmsTerra::fillBuffersFor(`.
 
 Own HLMS could control more, like `MaterialSizeInGpu` (it needs same size in `uploadToConstBuffer`).  
@@ -474,10 +527,15 @@ Also [post](https://forums.ogre3d.org/viewtopic.php?p=554822#p554822), leaking G
 Exception: `Mapping the buffer twice within the same frame detected!`.
 
 
+----
+## Compositor 🪄
+
 ### Workspaces 🪄
 
-Workspace basically is the setup for rendering one player's view target, only like reflection, shadow, etc and lastly screen.  
-Many compositor Workspaces are created from code (telling how to render stuff, also few extra for editor minimap RTT).  
+Workspace is basically the setup, for rendering one player's view target only, like: reflection, shadow, editor minimap, SSAO blur, etc and lastly screen.  
+Almost all compositor things (Workspaces, WorkspaceDef and NodeDef) are created from code now.  
+Code is in [AppGui_Compositor.cpp](../src/common/AppGui_Compositor.cpp).  
+ (telling how to render stuff, also few extra for editor minimap RTT).  
 Creating is in `.log` lines with: `--++ WS add:`, and in cpp code by any `addWorkspace`.  
 
 [SR3.compositor](../data/materials/SR3.compositor) has definitions for most workspaces used.  
@@ -491,7 +549,7 @@ Parts of [post](https://forums.ogre3d.org/viewtopic.php?p=553666#p553666) with i
 ### Workspace Listener
 
 We do `workspace->addListener(` so that `PlanarReflWorkspaceListener` is updated, for _every_ workspace that can see the reflection (e.g. the cubemap workspaces).  
-In code `AddListenerRnd2Tex()`, it's `ReflectListener`, `mWsListener` in `FluidsReflect.h`.
+In code `AddListenerRnd2Tex()`, it's `ReflectListener`, `mWsListener` in [FluidsReflect.h](../src/common/FluidsReflect.h).
 
 `ReflectListener::passEarlyPreExecute` does check which `render_pass` it is from `SR3.compositor` by `identifier` number.  
 
@@ -504,12 +562,16 @@ Possibly relevant [link](https://forums.ogre3d.org/viewtopic.php?p=556401#p55640
 
 ## Effects
 
-Based on Ogre-Next samples
+Compositor is created from cpp, mainyly in [AppGui_Compositor.cpp](../src/common/AppGui_Compositor.cpp).  
+This gives much more flexibility and access to consts from [RenderConst.h](../src/common/RenderConst.h).
 
 ### Done:
-- Refractions (water)
+- Refractions (water), for all fluids, based on 
 - SSAO, based on Ogre-Next Sample_Tutorial_SSAO
-- WIP GI: Test_Voxelizer (IFD, VCT) - _no Terrain_
+- Lens flare (sun shines in camera), [shaders](https://www.shadertoy.com/results?query=lens+flare), [more info](http://john-chapman-graphics.blogspot.com/2013/02/pseudo-lens-flare.html?m=1)
+- Sunbeams (rays around trees etc), 
+- WIP GI, using code from Test_Voxelizer (IFD, VCT)  
+  has _no Terrain_, [issue](https://github.com/OGRECave/ogre-next/issues/475), see comments, but really needed for terra, mostly for inside buildings
 
 ### _ToDo:_
 - Sample_**HDR** (with bloom), Sample_Tutorial_**SSAO**
@@ -519,3 +581,5 @@ Based on Ogre-Next samples
 - InterpolationLoop (meh, later)
 - meh: OpenVR, StereoRendering
 - to fix: ShadowMapDebugging, ShadowMapFromCode
+
+[Video Playlist](https://www.youtube.com/playlist?list=PLU7SCFz6w40OJsw3ci6Hbwz2mqL2mqC6c) with bugs, most fixed.

@@ -20,22 +20,22 @@ See comments inside presets.xml `inside <!-- -->` for (short) info on each param
 Later you can (and should) setup other values for parameters, e.g. layer scaling or model size etc,  
 that are set (by default) when picking in editor (less manual setup needed).  
 The `r - rating` param is subjective and high values are meant for best, most popular resources used.  
-If you add a unique thing, used on couple tracks, rate it low, unless it's meant to be more.
+If you add a unique thing, just used on a couple of tracks, rate it low, unless it's meant to be used more.
 
 
 ### 🔮 Materials
 
 **All materials** are now in [here](../data/materials/Pbs/) in `*.material.json` files.  
-Only unlit: particles and hud aren't yet.  
+Only ones not using lights, or Pbs, are called unlit. Those are particles and Hud.  
 More info on this `.json` format at bottom.
 
 ### 📝 Text
 
 There are files `_*.txt` in each key data subdir, with info for:  
-- original data name, author, license, date, url etc.  
+- original data name, author, **license**, date, url etc.  
 
 These are all gathered and listed on Help - **Credits** tab in game.  
-These files need to be filled any time we add something new.  
+These files need to be edited every time we add something new.  
 Whether it's your creation or others, we should note it in there, even for CC0.
 
 
@@ -45,6 +45,11 @@ Sky textures are in [data/textures/skies](../data/textures/skies). More info in 
 Those are 360x90 degree spherical textures. One texture for whole skydome, 8k x 2k (1k is 1024).  
 Material names start with `sky/` in `sky.material.json`. To add new, just copy last and replace "emissive" texture for yours.
 
+## ✨ Particles
+
+Need to convert to Pbs, make them lit, add soft particles, etc.  
+There are limits to rendering: [video particle](https://www.youtube.com/watch?v=RvftnHZbKJo&list=PLU7SCFz6w40OJsw3ci6Hbwz2mqL2mqC6c&index=17),  
+and [post](https://forums.ogre3d.org/viewtopic.php?p=556891#p556891) with possible fixes (mostly using Alpha Hashing + A2C) from latest ogre-next 4.0 master.
 
 ## ⛰️ Terrain
 
@@ -119,7 +124,9 @@ More info on materials for objects, in next chapter here.
 
 ----
 
-# 🔮 Materials
+# 🔮 Materials, history 
+
+*This is now just for comparison with old SR2.*
 
 Almost everything with materials is different now in SR3.  
 In **old** SR with Ogre, we used _shiny_ material generator with its own `.shader` syntax and `.mat` files.  
@@ -147,7 +154,7 @@ From old `.mat` files main parameters changed are:
 - `twoside_diffuse true` - now `"two_sided" : true` - for tree leaves, glass (not pipe) etc
 - `terrain_light_map true` - gone, now automatic
 
-## 🆕 Temporary .material
+## 🆕 Old, Temporary .material
   
 > Note: New Ogre-Next `.material` format is worse than `.json` (info below)  
 and is used just temporarily.
@@ -217,8 +224,22 @@ Material Editor GUI can **save** into `.json` files in:
 `/home/user/.cache/stuntrally3/materials`  
 either one material or all.  
 
+### Duplicated
+
 In `.material.json` you **can't inherit** materials (confirmed [here](https://forums.ogre3d.org/viewtopic.php?p=553712#p553712)).  
-Need to **duplicate** them whole e.g. for rivers, pipe glass (2 at end, other cull) and vehicles (painted) body (6 times + ghost 😩).  
+Need to **duplicate** them whole for:  
+- rivers in [fluid_river](../data/materials/Pbs/fluid_river.material.json) (in addition to [fluid](../data/materials/Pbs/fluid.material.json) - with Refraction)
+- low quality - (no Refraction) `_lq`, both: [fluid_lq](../data/materials/Pbs/fluid_lq.material.json) and [fluid_river_lq](../data/materials/Pbs/fluid_river_lq.material.json)
+- [pipe glass](../data/materials/Pbs/pipe.material.json), in same file, next material right after, its name has `2` at end  
+only difference is other cull in `"macroblock" : "Macroblock_15"` or `"Macroblock_17"`
+- [vehicles](../data/materials/Pbs/vehicle.material.json) painted body (has `"paint" : true,`), in same file, exact copies (**7** times, 6 players + 1 ghost):  
+e.g. for car SX: SX_0, SX_1,.., SX_5, SX_G. And only ES_T has extra 1 for Track's ghost.
+
+It **is** annoying, tedious😩, and almost all same copy.  
+But duplicating datablocks from cpp code caused [weird bug](https://www.youtube.com/watch?v=pT-X4CGyDX4&list=PLU7SCFz6w40OJsw3ci6Hbwz2mqL2mqC6c&index=13) and [another](https://www.youtube.com/watch?v=e9PMS1H0L0I&list=PLU7SCFz6w40OJsw3ci6Hbwz2mqL2mqC6c&index=11).
+
+
+#### Syntax
 
 Also important is to not break **.json syntax**. E.g. don't leave a comma `,` before `}`.  
 It also needs more symbols like `: " [ ] { }` to work.  

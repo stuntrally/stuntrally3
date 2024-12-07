@@ -54,7 +54,8 @@ The process of releasing and things that need to be checked before.
   * Update Tracks Browser
     * rename [tracks.ini](../config/tracks.ini) to .txt, use [make_roadstats_xml.py](../dist/make_roadstats_xml.py), copy into CMS
     * also cars.xml for Car Browser, remove unnecessary comments
-  * For significant look changes update home **screens**, *and pics on other websites*
+  * For significant look changes update:  
+    home **screens** gallery, *and pics on other websites*, [ogre-next eadme](https://github.com/OGRECave/ogre-next?tab=readme-ov-file)
   * _Notify known third-party packagers about new release_
   * Announce release - on [New Forum](https://groups.f-hub.org/stunt-rally/),  
    [Reddit](https://www.reddit.com/r/stuntrally/), [Ogre showcase](https://www.ogre3d.org/forums/viewtopic.php?f=11&t=58244), meh old: [VDrift dev](https://vdrift.net/Forum/showthread.php?tid=1629), [freegamer](https://freegamer.blogspot.com/), etc.

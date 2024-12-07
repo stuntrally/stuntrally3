@@ -168,11 +168,11 @@ lights on `grass` tbn?, grass shader get hmap?, grass far fade-
 
 - ⛰️ Terrain  
   **shadowmap** fix < 0  
-  fix restore **pages** visibility  
+  fix restore **pages** visibility, [bug video](https://www.youtube.com/watch?v=4PCupZ6aGqk&list=PLU7SCFz6w40OJsw3ci6Hbwz2mqL2mqC6c&index=2)  
   triplanar **only** for chosen layers  
   add emissive, reflect *par*  
   read blendmap, for ter wheel **surface** ids, many ters  
-  fix *triplanar* normalmaps-  
+  fix *triplanar* normalmaps-  [bug video](https://www.youtube.com/watch?v=SI7zPOfAxOI&list=PLU7SCFz6w40OJsw3ci6Hbwz2mqL2mqC6c&index=8)  
   blendmap also .hlsl or .any for DX  
 - 🛣️ Road  
   **Grid** for walls, road, pipes, ed update cell  
