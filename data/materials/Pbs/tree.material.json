@@ -1221,7 +1221,7 @@
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"tree_wind" : true,
-			"diff_mul" : 1.7,
+			"diff_mul" : 1.6,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -1463,7 +1463,7 @@
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"tree_wind" : true,
-			"diff_mul" : 1.7,
+			"diff_mul" : 1.5,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -1620,7 +1620,7 @@
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"tree_wind" : true,
-			"diff_mul" : 1.7,
+			"diff_mul" : 1.6,
 			"diffuse" :
 			{
 				"value" : [0.9, 0.9, 0.9],
@@ -1800,7 +1800,7 @@
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"tree_wind" : true,
-			"diff_mul" : 1.7,
+			"diff_mul" : 1.5,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -1920,7 +1920,7 @@
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"tree_wind" : true,
-			"diff_mul" : 1.7,
+			"diff_mul" : 1.6,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -2160,7 +2160,7 @@
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"tree_wind" : true,
-			"diff_mul" : 1.7,
+			"diff_mul" : 1.6,
 			"diffuse" :
 			{
 				"value" : [1.1, 1.1, 1.1],
@@ -5134,10 +5134,10 @@
 			"shadow_const_bias" : 0.01,
 			"workflow" : "specular_ogre",
 			"tree_wind" : true,
-			"diff_mul" : 1.9,
+			"diff_mul" : 1.6,
 			"diffuse" :
 			{
-				"value" : [0.7, 0.7, 0.7],
+				"value" : [0.7, 0.65, 0.7],
 				"background" : [1, 1, 1, 1],
 				"texture" : "acacia branch.png",
 				"sampler" : "Sampler_10"
@@ -5207,10 +5207,10 @@
 			"shadow_const_bias" : 1.1,
 			"workflow" : "specular_ogre",
 			"tree_wind" : true,
-			"diff_mul" : 1.6,
+			"diff_mul" : 1.8,
 			"diffuse" :
 			{
-				"value" : [2.7, 2.8, 2.8],
+				"value" : [2.6, 2.8, 2.8],
 				"background" : [1, 1, 1, 1],
 				"texture" : "tree_jng_leaf.png",
 				"sampler" : "Sampler_10"
@@ -5354,12 +5354,12 @@
 			"shadow_const_bias" : 1.1,
 			"workflow" : "specular_ogre",
 			"tree_wind" : true,
-			"diff_mul" : 1.7,
+			"diff_mul" : 1.0,
 			"diffuse" :
 			{
-				"value" : [0.2, 0.4, 0.8],
+				"value" : [0.65, 0.5, 0.7],
 				"background" : [1, 1, 1, 1],
-				"texture" : "twig26_1y.png",
+				"texture" : "twig26_1g.png",
 				"sampler" : "Sampler_10"
 			},
 			"specular" :
@@ -5368,7 +5368,7 @@
 			},
 			"fresnel" :
 			{
-				"value" : 0.1,
+				"value" : 0.15,
 				"mode" : "coeff"
 			},
 			"normal" :
