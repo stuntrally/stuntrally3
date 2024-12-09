@@ -14,7 +14,7 @@ Priorities marked: !, `crucial`, **Next or Big**, _Important_.
 `ed` apply shadows crash  
 ed fix *brushes* png load
 
-add **sounds**  
+add **sounds**🔊  
 🌧️ Ambient [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
 📦 object *hit* sounds  
 
@@ -64,6 +64,8 @@ test, big, move to bullet3?
 
 ### New
 
+auto road/ter **Surface**: Particles, trail, sounds, from `presets.xml` not per track  
+
 translucency - lighter tree leaves, outside, facing sun  
 Terra **water waves**  
 
@@ -75,31 +77,31 @@ new **road** textures, detail mix, vert clr blend
 
 hud new best time show, win particles-  
 
-**ed key** for obj random rot, yaw, set up/dn y +-90  
+### Editor
+
+! **ed key** for obj random rot, yaw, set up/dn y +-90  
 ed add underwater  
 ed add arrow for emit dir  
 
+! ed *manual* update RTTs or create on save?  
+
+ed fields rot, focus, telep `offset`, no cam ray cut  
 
 ----
 ## Fix Ogre
 
 move rest? from SR3.compositor to AppGui_Compositor.cpp  
-ed **manual** update RTTs or create on save?  
 
-`split screen`: no **fog** in fluids, no refract **depth** with fsaa  
-win place twice 1st on Oc, 3plr?  
-car glass reflect cube sky pos bad on Test1-Flat?  
--each car own reflect cube  
-
-own *rqg* for veget on horiz? to skip in wtr refl etc
+own *rqg*/vis for veget on horiz? to skip in wtr refl etc
 
 **specular** on terrain  
-move *trails* before particles/clouds  
-car glass, pipes, beam etc not visible in fluid if seen from above  
 
+move *trails* before particles/clouds  
+car *glass*, pipes, beam etc not visible in fluid if seen from above  
+
+**rivers** wrong way  
 rqg rivers after water  
 river alpha fade last segs  
-**rivers** wrong way  
 
 ! 🌊refract, depth: pass projmatrix `NOT` **inverse**  
 waterfalls refract `cuts` off above cam y  
@@ -107,13 +109,19 @@ underwater top has no surface, refract
 
 shader **params**: refract clr, *depth* clr, emissive fluids?  
 
-! wind anim `shadow caster` too, ed prv obj no wind-  
-🌪️**wind scale** params in json, for all trees, bushes, grass sway own-  
+! **wind** anim `shadow caster` too, ed prv obj no wind-  
+🌪️ wind *scale* params in json, for all trees, bushes, grass sway own-  
 
 
-### Fix
+### Split screen
 
-**ed** fields rot, focus, telep `offset`, no cam ray cut  
+! fix no **fog** in fluids, no refract **depth** with fsaa  
+win place twice 1st on Oc, 3plr?  
+
+car glass reflect cube **sky pos** bad on Test1-Flat?  
+-each car own reflect cube  
+
+fix **splitscreen** gauges etc  
 
 fix .car thrusters lights pos  
 **hide** flares with in car camera  
@@ -132,7 +140,7 @@ Score for: drift (sliding on road), air time (jumps etc), hitting dynamic object
 
 
 ----
-### data
+### Data
 
 Remove all non **CC** data, [new topic](https://groups.f-hub.org/d/pIoLYCaO/-removing-replacing-data-with-non-cc-lincenses-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800)  
 🌳new [trees](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), replace fir*  
@@ -142,11 +150,11 @@ redo or replace lowest quality meshes: , skyscraper* 🏢
 
 
 ----
-### Ogre new
+### Ogre🟢 new
 
-🌊 Terra `waves`, vehicle deform tex/compute-, fluid *particles*  
+🌊! Terra `waves`, vehicle deform tex/compute-, fluid *particles*  
 
-Vehicle, wheels dirt,mud and damage *shader*
+Vehicle, wheels **dirt**,mud and **damage** *shader*, by dynamic paint, detail texture  
 
 Terrain new **ssao map** added to shadowmap: normals, ssao pass, from top view  
 GI for terrain [issue](https://github.com/OGRECave/ogre-next/issues/475)?  
@@ -163,7 +171,7 @@ lights on `grass` tbn?, grass shader get hmap?, grass far fade-
 **parallelize** vegetation, add test grass, veget on more threads  
 
 - ⛰️ Terrain  
-  **shadowmap** fix < 0  
+  ! **shadowmap** fix < 0  
   fix restore **pages** visibility, [bug video](https://www.youtube.com/watch?v=4PCupZ6aGqk&list=PLU7SCFz6w40OJsw3ci6Hbwz2mqL2mqC6c&index=2)  
   triplanar **only** for chosen layers  
   add emissive, reflect *par*  
@@ -176,13 +184,12 @@ lights on `grass` tbn?, grass shader get hmap?, grass far fade-
 
 - 🏗️ Editor, fix  
   objects pick `errors`  
-  minimap **RTTs** upd skip (slow), or create on save  
+  ! minimap **RTTs** upd skip (slow), or create on save  
   new terrain issues [here](https://groups.f-hub.org/d/SW0mnXNV/track-rework-horizons-skies-and-updates/14)  
   edit `moved` terrains, error in ray pos-  
   _tools_: fix **scale ter h**, copy horizon, which ter, road  
 
-- ⏲️ `HUD`  
-  fix **splitscreen** gauges etc  
+- ⏲️ `Hud`  
   _Minimap_ circle, terrain add, fix pos tris  
   btnRplDelete for ghost should also remove its track record from .txt  
 
@@ -190,10 +197,9 @@ lights on `grass` tbn?, grass shader get hmap?, grass far fade-
 ----
 ### old restore cd
 
-auto road/ter **Surface**: Particles, trail, sounds, from `presets.xml` not per track  
 tire **trails clr**, no uv tex-  
 
-Road noise blend, color per vertex  
+*Road* noise blend, color per vertex  
 grass density as **RTT**, noise, color  
 
 *inside* height fog?  
@@ -232,13 +238,14 @@ Basically all [Tasks](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.
 
 #### Data
 
-🌟 Sceneries: Spring blooming trees, Fractal, Organic?, Candy?  
-🚗 New **Vehicles**: [new topic](https://groups.f-hub.org/d/adePgxzW/-cars-new-vehicles-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=80&t=18526), models **collection** [link](https://sketchfab.com/cryham/collections/vehicles-todo-for-stunt-rally-327a2dd7593f47c7b97af6b806a60bb8)  
+🚗! New **Vehicles**: [new topic](https://groups.f-hub.org/d/adePgxzW/-cars-new-vehicles-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=80&t=18526), models **collection** [link](https://sketchfab.com/cryham/collections/vehicles-todo-for-stunt-rally-327a2dd7593f47c7b97af6b806a60bb8)  
 
-🛣️ **Road** textures, from ground 4k?, redo, 2,3 variations, blending few at once?, traces alpha texture  
+🛣️! **Road** textures, from ground 4k?, redo, 2,3 variations, blending few at once?, traces alpha texture  
 
+📦 New static Objects, *tall* city buildings, dynamic hay  
 🏢 finish rest of 0AD han buildings, maur, others?  
-📦 New static Objects, tall city buildings?, dynamic hay  
+
+🌟 Sceneries: Spring blooming🌸 trees, Fractal, Organic?, Candy?  
 
 #### Meh
 ed roads: [split](https://stuntrally.tuxfamily.org/mantis/view.php?id=4), checkpoints, merge?  
