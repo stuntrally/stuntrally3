@@ -27,26 +27,27 @@ WIP means work in progress, unfinished, still being developed.
 - Editor
   - Split Edit window to Objects (in main menu) own with: Objects, Fluids, Particles, etc
   - 3D model preview on top of Gui
+  - Added Effects, same as in game, also in preview camera, renewed track views
 - Gui comboboxes open on click (whole, not just on down arrow)
 
 ### Version 3.2 - 23.09.2024
 
 - Game
   - fixed Multiplayer on Windows, bug was present since SR 3.0
-  - **Collection** - new game mode, in menu
+  - **Collection**💎 - new game mode, in menu
     - Collect all gems located on track, for completion or quicker time
     - Hud shows 3D arrows on vehicle, pointing to closest 3 gems
-  - More **Lights** - with toggable Options
+  - More **Lights**💡 - with toggable Options
     - for vehicle: brakes, boost, reverse, *under glow* and for collection gems
 - Both
-  - New **Vegetation** - over half of tracks renewed
+  - New **Vegetation**🌴🌳 - over half of tracks renewed
     - **New Bushes**, separate multiplier and distance options
     - **New** models: Palms, Jungle trees, mushrooms
     - Vegetation on Horizon, new tab in options
     - Limit (total count) option
     - Tree wind animation, WIP, not yet varied by model
     - grass and bushes deform under vehicle
-  - **Water Refraction***, depth color, soft border, WIP  
+  - **Water Refraction**🌊, depth color, soft border, WIP  
     *does not work in Split Screen - will disable, and won't restore  
     *antialiasing / FSAA does not work with refraction  
   - New **horizons** on more tracks, almost all have it
@@ -54,27 +55,27 @@ WIP means work in progress, unfinished, still being developed.
   - New tab on Setup - Paints - Adjust - Under glow for color H,S,V
     - under glow color is auto set by picking paint
   - Main menu 3rd level for Game Types. Separate for Splitscreen and Multiplayer
-  - 3D win **cups** shown on game end
+  - 3D win **cups**🏆 shown on game end
   - Gui shows small track previews for game track / series
   - Gui Tracks view, new mode: **gallery**
   - Added Changes tab in game Help with this Changelog
 - Editor
   - Road: wall type, for decoration walls, rectangular
     - pipe parameter changes it from wide at 0, to square at 0.5 to tall at 1.0
-  - New tab Sun - **Wind**
+  - New tab Sun - **Wind** 🌪️
     - unified params, affecting: trees, grass, water, weather particles
   - Vegetation materials, possible in presets
   - Edit mode for Collection, key Y
     - Insert/remove gems, move, scale
     - change type (for look, at end of presets.xml)
     - change group (for *more sets* on 1 track)
-  - Edit mode for **Fields**
+  - Edit mode for **Fields** 🎆
     - key H toggles, examples on TestC14-Fields
     - Field is a box area, which will act as force fields on vehicle  types:  
       acceleration, anti-gravity, damping - 
     - have factor value, acceleration has also direction
     - *teleporter* - instantly places vehicle in destination, Enter - toggle edit
-  - Particles have direction yaw, pitch angles
+  - Particles have *direction* yaw, pitch angles
 - Other
   - split all.material.json to many files
   - in data dir, added subdirs: models, textures etc
@@ -82,7 +83,7 @@ WIP means work in progress, unfinished, still being developed.
 ### Version 3.1 - 25.04.2024
 
 - Game
-  - 8 New vehicles (Sci-Fi)
+  - 8 New vehicles (Sci-Fi)🚗
     - 3 new types: **hover car, hovercraft, drone**
     - 3 hovering cars: [R1](../data/cars/_previews/R1.jpg), [R2](../data/cars/_previews/R2.jpg), [R3](../data/cars/_previews/R3.jpg). [R1 video](https://www.youtube.com/watch?v=9pE8JPV2M8w)
     - 2 antigravity drones: [Q1](../data/cars/_previews/Q1.jpg) slower, [Q3](../data/cars/_previews/Q3.jpg) incredibly fast and agile
@@ -92,18 +93,18 @@ WIP means work in progress, unfinished, still being developed.
     - Steering range multiplier(s) for Surface affect graph and whole group
 - Tracks
   - 1 New: Wnt19-Downhill
-  - **New skies**. Replaced all old 4k with new 8k ones on all tracks
+  - **New skies**⛅. Replaced all old 4k with new 8k ones on all tracks
   - Many updated with new **horizons**, few with objects etc
 - Editor
-  - WIP New video tutorials, on [Editor page](Editor.md), in [playlist](https://www.youtube.com/playlist?list=PLU7SCFz6w40PY3L8qFNTe4DRq_W6ofs1d)
-  - Changing object material, sets defined in `presets.xml`
+  - WIP 4 New video tutorials, on [Editor page](Editor.md), in [playlist](https://www.youtube.com/playlist?list=PLU7SCFz6w40PY3L8qFNTe4DRq_W6ofs1d)
+  - Changing object material, sets defined in [presets.xml](../config/presets.xml)
   - Toggle static for dynamic object, no `*_static.mesh`
   - Fix alt-J crash, shortcuts
   - Fix **New/duplicate** track. Was having garbage for horizons, no other roads. Delete track too
   - **Export** track to Rigs of Rods added, using SR 2.x meshes
     - New tabs, settings, converters, [info here](EditorExportRoR.md)
 - Both
-  - New tab Options - Screen - GUI with scales for font size and windows margin size, all need restart
+  - New tab Options - Screen - GUI with scales for *font size* and windows margin size, all need restart
   - Screen and Video tabs with render system options, WIP few not done  
     - Vsync works immediately, but Resolution, Fullscreen, Antialiasing need restart  
   - Added Japanese font and quick, basic translation (could be wrong)  
@@ -113,22 +114,22 @@ WIP means work in progress, unfinished, still being developed.
 
 - Stunt Rally 3 is continuing last SR 2.x.  
 - Graphics - moved to Ogre-Next 3.0
-  - A **lot smoother and higher Fps**, also in split screen
+  - A **lot smoother and higher Fps**📈, also in split screen
     - No vegetation lags. Auto HW instancing. Good Fps with many objects/buildings, and road points in editor
   - Vegetation models - no impostors, now using meshes with LODs
     - Graphics Detail tab has new setting - for far Vegetation/Objects geometry reduction, aka LOD bias
-  - **Horizons** - far terrains on many tracks, great landscape views
+  - **Horizons**🏞️ - far terrains on many tracks, great landscape views
   - PBS materials - with roughness and fresnel/metalness. WIP, can be improved
     - New vehicle materials - with more parameters and new look
-    - Color changing **paints**, 3 colors (on Gui) at once depending on view angle
+    - Color changing **paints**🎨, 3 colors (on Gui) at once depending on view angle
     - New paints - Big set, over **450** total
     - [Materials](Materials.md) in new .json format with more posibilities e.g. detail maps
-    - New syntax and new (more complicated) **HLMS** shaders, comparison and details in [Developing](Developing.md)
+    - New syntax and new (more complicated) **HLMS** shaders, comparison and details in [Developing](Developing.md)🛠️
   - Better glass pipes - sorted, no random blinking
-  - Vehicle front **lights** - new tab Lights in Graphics options, toggle key, WIP grass is not lit
+  - Vehicle front **lights**💡 - new tab Lights in Graphics options, toggle key, WIP grass is not lit
 - Game
   - Up to 6 players in Splitscreen or Multiplayer
-  - Splitscreen 3D Hud available for each player: checkpoint arrow, beam, pacenotes, racing line
+  - *Splitscreen* 3D Hud available for each player: checkpoint arrow, beam, pacenotes, racing line
 - Gui
   - Game Setup - Paints tab with more sliders and
     - Dynamic list with groups - Add,Delete,Load,Save buttons - saved in paints.ini
