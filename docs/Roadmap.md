@@ -11,22 +11,17 @@ Marked: `crucial`, **Next or Big**, _Important_.
 📽️ new game **video**  
 *editor videos* all new  
 
-redo all track views, with ssao, effects  
-ed rtt less ssao size?  
-
 `ed` apply shadows crash  
 ed fix *brushes* png load
 
-add **sounds**, WIP from [Changelog.md](Changelog.md)  
+add **sounds**, WIP from [Changelog.md](Changelog.md):  
+🌧️ **Ambient** [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
+📦 object *hit* sounds  
 
 fix tracks:  
-|AnomalyFun invisible boxes  rqg  
-|FrozenGarden invisible icicles  
-|CrystalIslands no flowers  
-MogFoss waterfals up  Preyth bld up-
+MogFoss waterfals up  Preyth bld up-  
 Tiny, Mudflats, Knotted ssao bad alpha bridge  
 !MiningCity, KapabaRiv, Overgrowth, Glitchy road segs white blend transp/invisible  
-!MtSulphur collis trees on road?  
 
 ----
 ### 🪄 Effects
@@ -51,9 +46,7 @@ or add **new** code for:
 - more tire sounds, load only used (few, pool e.g. 2), or:
 - ed mode, **track sounds**: waterfall, volcano, river..
 
-🌧️ **Ambient** [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
 🚗🔊 More `car Sounds`, todo [task](https://stuntrally.tuxfamily.org/mantis/view.php?id=1), use [engine-sim](https://github.com/stuntrally/stuntrally3/issues/7), exhaust [muffler spectrum](https://duckduckgo.com/?t=ftsa&q=muffler+spectrum&atb=v395-1&ia=web)?  
-📦 object *hit* sounds  
 underwater low pass filter, in-car or back exhaust filters-  
 reverb change in water, caves, pipes-  
 

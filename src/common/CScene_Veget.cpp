@@ -37,7 +37,7 @@ using namespace Ogre;
 void CScene::CreateVegets()
 {
 	if (ters.empty())  return;  // just gui
-	LogO("C--V Create Veget Trees");
+	LogO("C--V Create Vegetation");
 	Ogre::Timer ti;
 	iVegetAll = 0;
 	// updGrsTer();
@@ -65,7 +65,7 @@ void CScene::CreateVegets()
 		bool horiz = td.iHorizon == 1;
 		if (horiz)  // less dist
 		{	tws *= pSet->veg.hor_trees_dist;
-			LogO("C--V Create Veget on Horizon");
+			LogO("C--V Create Vegetation on Horizon");
 		}
 
 		//  density
@@ -280,7 +280,8 @@ void CScene::CreateVegets()
 					++all;  ++vg.cnt;  ++iVegetAll;  ++vegAllLay;
 
 				}	//  i cnt  layer Models
-				LogO("Tree:  "+file+"\t cnt: "+toStr(all)+" / "+toStr(cnt));
+				if (!(veg->bush && cnt == 0 && horiz))  // horiz no bushes
+					LogO("Tree:  "+file+"\t cnt: "+toStr(all)+" / "+toStr(cnt));
 			}	// l  veget Layers
 
 			//  ter 0 stats

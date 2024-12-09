@@ -584,7 +584,7 @@ TextureGpu* AppGui::CreateCompositor(int edRtt, int view, int splits, float widt
 				ps->mFirstRQ = RQG_PipeGlass;  ps->mLastRQ = RQG_Hud3+1;
 				ps->setVisibilityMask(
 					RV_CarGlass |
-					RV_Road | RV_Vegetation |  // transparent only
+					RV_Objects | RV_Road | RV_Vegetation |  // transparent only
 					RV_Hud3D[plr] | RV_Particles );
 				
 				// ps->mEnableForwardPlus = 0;  //?

@@ -102,8 +102,8 @@ const Ogre::uint32
 	RV_Particles    = RV_Car,
 
 	//  vis masks
-	RV_MaskGameAll  = RV_SkyMain + RV_Road + RV_Terrain + RV_Vegetation + RV_VegetGrass + RV_Objects + RV_Fluid
-					+ RV_Car + RV_CarGlass, // + RV_Hud3D[player],
+	// RV_MaskGameAll  = RV_SkyMain + RV_Road + RV_Terrain + RV_Vegetation + RV_VegetGrass + RV_Objects + RV_Fluid
+	// 				+ RV_Car + RV_CarGlass, // + RV_Hud3D[player],
 	RV_MaskReflect  = RV_SkyCubeRefl + RV_Road + RV_Terrain + RV_Vegetation + RV_Objects,  // no hud, grass, car,glass,tires
 	//  most as  visibility_mask  in SR3.compositor
 	// RV_WaterReflect = RV_Terrain + RV_Vegetation + RV_Road /*+ RV_Objects /*+ RV_Car*/,

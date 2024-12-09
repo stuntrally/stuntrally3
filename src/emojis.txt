@@ -1,7 +1,6 @@
 Various markers in sources for: key sections, methods, components, or just for: info, comment, mark, etc.
 Other text(s) near can be alternative(s) or hint(s) or  a short-cut (2-3 letters).  - at end means unfinished
 You can search in code by emoji for all that is related to it.
-
  _______            _________           ____________      ___________        _______         ______          _________
  Scene              Scene-2             Atmosphere        HUD, Game          HUD-2           Road            Vehicle  
                                                                                                              
@@ -15,7 +14,6 @@ You can search in code by emoji for all that is related to it.
  🪴 Bush 🍄shroom  🎆 Fields   fld                       ⏪ Rewind          🎨 paint                                           
  🌿 Grass  grs       accelerate lift                                                                                            
                    🎇 Entities-  ent                                                                           
-                                                                                                              
  ____________      ______              _____          _______           ______           ________      _______              ________
  Components        Game                GUI            GUI-2             Code             Code-2        Tools                Render
                                                                                                                           
@@ -34,7 +32,6 @@ You can search in code by emoji for all that is related to it.
  👥 Split-screen                       🖼️ image  prv   🔤 text         ⭐ user           🖌️ brush      🌐 Wireframe        
  📡 Multi-player                       📰 View  gui    🔠 font                                                              
     mplr network                       🔻 Filter       🧊 3d view                                                           
-
  _______           _________
  Effects           Scenery
 
@@ -43,6 +40,10 @@ You can search in code by emoji for all that is related to it.
  🌅 HDR            🫧 Anomaly
  🔆 lens flare     🏜️ Desert  🌴 Islands  🌳 Jungle  🌲 Forest
  🌄 sunbeams       
+
+
+
+
 
 
 
