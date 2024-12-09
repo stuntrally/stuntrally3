@@ -538,8 +538,9 @@ Code is in [AppGui_Compositor.cpp](../src/common/AppGui_Compositor.cpp).
  (telling how to render stuff, also few extra for editor minimap RTT).  
 Creating is in `.log` lines with: `--++ WS add:`, and in cpp code by any `addWorkspace`.  
 
-[SR3.compositor](../data/materials/SR3.compositor) has definitions for most workspaces used.  
-Only shadows are made completely by code in `src/common/AppGui_Shadows.cpp`,  
+[SR3.compositor](../data/materials/SR3.compositor) has definitions for few other workspaces used.  
+
+Shadows are made completely by code in `src/common/AppGui_Shadows.cpp`,  
 based on `Samples/2.0/ApiUsage/ShadowMapFromCode/ShadowMapFromCode.cpp`.  
 _Todo:_ only 3 PSSM splits work, no other count. ESM (Sh_Soft) is also broken.
 
@@ -556,7 +557,7 @@ In code `AddListenerRnd2Tex()`, it's `ReflectListener`, `mWsListener` in [Fluids
 In editor it also turns off fog for minimap RTTs, and back on for main views.
 
 _Todo:_ use `#define MANUAL_RTT_UPD` so editor won't drop Fps so much (rendering all its RTTs every frame).  
-Needs fix: in minimap and preview camera all gets dark (shadowed).  
+Needs **fix**: in minimap and preview camera all gets dark (shadowed).  
 Possibly relevant [link](https://forums.ogre3d.org/viewtopic.php?p=556401#p556401).
 
 

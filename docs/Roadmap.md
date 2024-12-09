@@ -23,8 +23,10 @@ fix tracks:
 |AnomalyFun invisible boxes  rqg  
 |FrozenGarden invisible icicles  
 |CrystalIslands no flowers  
-MogFoss waterfals  
-Mudflats gravel alpha bridge  
+MogFoss waterfals up  Preyth bld up-
+Tiny, Mudflats, Knotted ssao bad alpha bridge  
+!MiningCity, KapabaRiv, Overgrowth, Glitchy road segs white blend transp/invisible  
+!MtSulphur collis trees on road?  
 
 ----
 ### 🪄 Effects
