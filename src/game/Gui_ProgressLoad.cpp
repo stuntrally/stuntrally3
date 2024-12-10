@@ -21,6 +21,7 @@ void CGui::FillGameStats()
 {
 	String s, t = "   ";
 	int won = 0, all = 0;
+	s += TR("#F0F020#{Finished}:\n\n");
 
 	int pr[3] = {0,0,0};  // prizes counts, 0 bronze, 1 silver, 2 gold
 	auto strPr = [&]()

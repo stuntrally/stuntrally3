@@ -83,7 +83,7 @@ hud new best time show, win particles-
 ed add underwater  
 ed add arrow for emit dir  
 
-! ed *manual* update RTTs or create on save?  
+! ed *manual* update minimap **RTTs**, upd skip slower, or create on save?  
 
 ed fields rot, focus, telep `offset`, no cam ray cut  
 
@@ -184,7 +184,6 @@ lights on `grass` tbn?, grass shader get hmap?, grass far fade-
 
 - 🏗️ Editor, fix  
   objects pick `errors`  
-  ! minimap **RTTs** upd skip (slow), or create on save  
   new terrain issues [here](https://groups.f-hub.org/d/SW0mnXNV/track-rework-horizons-skies-and-updates/14)  
   edit `moved` terrains, error in ray pos-  
   _tools_: fix **scale ter h**, copy horizon, which ter, road  
