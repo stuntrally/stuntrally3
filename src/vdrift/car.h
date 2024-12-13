@@ -173,14 +173,18 @@ public:
 	{
 		//  📈 engine
 		Sound* engine =0, *turbo =0;
+		Sound* gearChg =0;
 		
 		//  ⚫ tires  todo: more surfaces..
-		std::vector<Sound*> asphalt, grass, gravel, bump;
+		std::vector<Sound*> asphalt, grass, gravel;
+		
 		//  bump for tires hit, suspension
+		std::vector<Sound*> bump;
+		std::vector<float> bumptime, bumpvol;
 		
 		//  🔨 crash, hit
 		std::vector<Sound*> crash;
-		std::vector<float> crashtime, bumptime, bumpvol;
+		std::vector<float> crashtime;
 		Sound* scrap =0, *screech =0;  // continuous
 		
 		// 🌪️ environment

@@ -49,6 +49,8 @@ bool CAR::LoadSounds(const std::string & carpath)
 	{	s.turbo = snd->createInstance(turbo);  s.turbo->set2D(ss);
 		s.turbo->setEngine(true);  s.turbo->start();  // 🔉
 	}
+	//  gear shift
+	s.gearChg = snd->createInstance(dynamics.gear_sound);  s.gearChg->set2D(ss);
 
 	//  ⚫ wheels, tires
 	int i;  float fw = numWheels;
@@ -60,6 +62,7 @@ bool CAR::LoadSounds(const std::string & carpath)
 		s.gravel[i]  = snd->createInstance("gravel");
 		s.gravel[i]->seek(float(i)/fw);  s.gravel[i]->set2D(ss);
 	}
+	//  susp bump
 	for (i = 0; i < numWheels; ++i)
 	{
 		s.bump[i] = snd->createInstance("bump"+toStr(i%4));  s.bump[i]->set2D(ss);
@@ -317,6 +320,16 @@ if (bSound)
 		gain = min(1.f, max(0.001f, gain));
 		float thr = throttle * tb.vol_max + tb.vol_idle;
 		s.turbo->setGain(thr * gain * pSet->s.vol_turbo * pSet->s.vol_engine);
+	}
+
+	//  gear shift
+	if (dynamics.gear_shift_snd)
+	{	dynamics.gear_shift_snd = 0;
+
+		s.gearChg->setGain(pSet->s.vol_engine * 0.7f);  // par..
+		s.gearChg->setPitch(Math::RangeRandom(0.6f, 1.1f));
+		s.gearChg->setPosition(ep, ev);
+		s.gearChg->start();  // 🔉
 	}
 
 

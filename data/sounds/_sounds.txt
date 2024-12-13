@@ -93,6 +93,11 @@ Author: CryHam
 made entirely in Audacity
 License: CC-BY-4.0
 
+---- gear_shift
+gear_shift1.wav   from crash/01.wav
+gear_shift4a.wav  from crash/04.wav
+gear_shift4b.wav  from crash/04.wav
+
 
 ---- hud*
 

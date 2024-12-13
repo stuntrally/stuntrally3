@@ -255,6 +255,8 @@ public:
 	} turbo;
 
 // gearbox vars
+	bool gear_shift_snd =0;
+	std::string gear_sound;
 	bool autoclutch =1, autoshift =1, autorear =1, shifted = 1;
 	int shift_gear = 0;
 	Dbl last_auto_clutch = 1.0, rem_shift_time = 0.0, shift_time = 0.2;  //remaining

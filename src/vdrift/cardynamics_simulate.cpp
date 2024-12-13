@@ -558,6 +558,7 @@ void CARDYNAMICS::ShiftGear(int value)  // Gift Share
 			rem_shift_time = shift_time;
 			shift_gear = value;
 			shifted = false;
+			gear_shift_snd = 1;
 		}
 	}
 }
