@@ -96,7 +96,7 @@ hov_rise = 120
 #  engine
 #---------------------------
 [ engine ]
-sound = wind
+sound = propeller2
 position = 0.0, 0.4, 0.25
 mass = 200.0
 rpm-limit = 8000

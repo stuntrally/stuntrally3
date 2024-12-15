@@ -298,14 +298,26 @@ if (bSound)
 	///  📈 engine  ====
 	float gain = 1.f;
 
-	if (dynamics.vtype >= V_Spaceship)
+	switch (int(dynamics.vtype))
 	{
-		s.engine->setPitch(1.f);
-		gain = throttle;
-	}else
-	{	//  car
+	case V_Car:  //  🚗 car
 		gain = throttle * 0.5 + 0.5;  // par
 		s.engine->setPitch(rpm);
+		break;
+	case V_Hovercraft:	//  hovercraft propeller
+		gain = throttle * 0.7 + 0.3;  // par..
+		rpm = min(0.7f, dynVel * 0.01f);
+		s.engine->setPitch(0.6f + throttle * 0.3f + rpm);
+		rpm *= 1000.f;  // for turbo
+		break;
+	
+	case V_Sphere:     //  sph 🔘
+	case V_Spaceship:  //  spc 🚀
+	case V_Drone:      // todo: hover 🚤 own..
+	case V_Hovercar:
+		s.engine->setPitch(1.f);
+		gain = throttle;
+		break;
 	}
 	s.engine->setPosition(ep, ev);
 	s.engine->setGain(gain * dynamics.engine_vol_mul * pSet->s.vol_engine);
