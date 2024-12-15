@@ -112,7 +112,7 @@ hov_rise = 120
 #  engine
 #---------------------------
 [ engine ]
-sound = engine
+sound = drone_q3
 position = 0.0, 0.52, 0.25
 mass = 230.0
 rpm-limit = 8000

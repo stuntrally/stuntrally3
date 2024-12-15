@@ -3,26 +3,16 @@
 #include "par.h"
 #include "car.h"
 #include "cardefs.h"
-#include "configfile.h"
 #include "collision_world.h"
 #include "tracksurface.h"
-#include "configfile.h"
 #include "settings.h"
 #include "CGame.h"  // replay
-// #include "CarModel.h"  // camera pos
-// #include "FollowCamera.h"  // camera pos
 #include "Def_Str.h"
 #include "SceneXml.h"
 #include "CScene.h"
-// #include "GraphView.h"
  #include "Axes.h"
-// #include "protocol.hpp"
-#include "tobullet.h"
 #include "game.h"
-// #include "SplitScreen.h"  // num plr
 #include "SoundMgr.h"
-#include "SoundBase.h"
-#include "SoundBaseMgr.h"
 #include <OgreCamera.h>
 using namespace std;
 using namespace Ogre;
@@ -161,7 +151,8 @@ void CAR::UpdateSounds(float dt)
 	bool bSound = !pGame->snd->isDisabled();
 	CARsounds& s = sounds;
 	
-	float rpm, throttle, speed, dynVel;  bool hitp = false;
+	//  prepare vars  ------------------------------------------
+	float rpm, throttle, brake, speed, dynVel;  bool hitp = false;
 	MATHVECTOR<float,3> pos, engPos, whPos[MAX_WHEELS], hitPos;  // car, engine, wheels pos
 	QUATERNION<float> rot;
 	TRACKSURFACE::TYPE surfType[MAX_WHEELS];
@@ -182,8 +173,10 @@ void CAR::UpdateSounds(float dt)
 		#endif
 		const ReplayFrame2& fr = pApp->frm[id];
 		pos = fr.pos;  rot = fr.rot;   rpm = fr.rpm;
+
 		throttle = fr.throttle /255.f;  boostVal = fr.fboost /255.f;
 		dynamics.fDamage = fr.damage /255.f*100.f;  //dmg read
+		brake = fr.get(b_braking) ? 1.f : 0.f;
 
 		MATHVECTOR<float,3> offset = dynamics.engine.GetPosition();
 		rot.RotateVector(offset);
@@ -225,9 +218,12 @@ void CAR::UpdateSounds(float dt)
 		pos = dynamics.GetPosition();  rot = dynamics.GetOrientation();
 		rpm = GetEngineRPM();
 		throttle = dynamics.GetThrottle();
+		brake = dynamics.IsBraking() ? 1.f : 0.f;
+
 		engPos = dynamics.GetEnginePosition();
 		speed = GetSpeed();
 		dynVel = dynamics.GetVelocity().Magnitude();
+
 		fHitForce = dynamics.fHitForce;  hitp = true;
 		hitPos[0] = dynamics.vHitPos.x;  hitPos[1] = -dynamics.vHitPos.z;  hitPos[2] = dynamics.vHitPos.y;
 		boostVal = dynamics.boostVal;
@@ -304,17 +300,26 @@ if (bSound)
 		gain = throttle * 0.5 + 0.5;  // par
 		s.engine->setPitch(rpm);
 		break;
+	
 	case V_Hovercraft:	//  hovercraft propeller
-		gain = throttle * 0.7 + 0.3;  // par..
+		gain = max(brake, throttle) * 0.6 + 0.4;  // par..
 		rpm = min(0.7f, dynVel * 0.01f);
-		s.engine->setPitch(0.6f + throttle * 0.3f + rpm);
-		rpm *= 1000.f;  // for turbo
+		s.engine->setPitch(0.5f + throttle * 0.2f + rpm);
 		break;
 	
+	case V_Hovercar:   //  sf hover 🚤
+		gain = max(brake, throttle) * 0.4 + 0.6;  // par..
+		rpm = min(0.7f, dynVel * 0.002f);
+		s.engine->setPitch(0.4f + throttle * 0.1f + rpm);
+		break;
+	case V_Drone:      //  sf drone
+		gain = max(brake, throttle) * 0.7 + 0.3;  // par..
+		rpm = min(0.7f, dynVel * 0.003f);
+		s.engine->setPitch(0.4f + throttle * 0.2f + rpm);
+		break;
+
 	case V_Sphere:     //  sph 🔘
 	case V_Spaceship:  //  spc 🚀
-	case V_Drone:      // todo: hover 🚤 own..
-	case V_Hovercar:
 		s.engine->setPitch(1.f);
 		gain = throttle;
 		break;

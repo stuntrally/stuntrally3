@@ -97,7 +97,7 @@ hov_rise = 120
 #  engine
 #---------------------------
 [ engine ]
-sound = engine
+sound = hover_r2
 position = 0.0, 0.2, 0.0
 mass = 50.0
 rpm-limit = 8000

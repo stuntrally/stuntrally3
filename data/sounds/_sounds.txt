@@ -1,13 +1,13 @@
 ---- sounds from
 https://www.freesound.org/
-edited by CryHam, in Audacity
+most edited by CryHam, in Audacity
 
 http://creativecommons.org/licenses/by/4.0/
 http://creativecommons.org/licenses/by/3.0/
 http://creativecommons.org/publicdomain/zero/1.0/
 
 
----- SR 3.3 ----
+------------
 
 // todo: not done yet  vv
 Name: Time warp effect
@@ -43,7 +43,7 @@ https://freesound.org/people/The_Matt_Freeman/sounds/222756/
 // todo: end ^^
 
 
----- SR 2 old ----
+-------- SR 2 old  fluids/*  hit/*  --------
 
 ---- fluids/water*.wav  fluids/mud1.wav
 Name: large splashes
@@ -81,19 +81,28 @@ Author: Halleck    License: CC-BY-4.0    Date: June 1st, 2011
 https://freesound.org/people/Halleck/sounds/121645/
 
 
----- vehicle/boost.wav
+------------  vehicle/*  ------------
+
+---- boost.wav
 Name: Thruster_Level_II.aif
 Author: nathanshadow   License: CC Sampling Plus 1.0   Date: Sep 1st, 2006
 https://creativecommons.org/licenses/sampling+/1.0/
 https://freesound.org/people/nathanshadow/sounds/22455/
 
 
----- turbo*
+---- turbo2bs.wav  turbo2s.wav
 Author: CryHam
 made entirely in Audacity, from noise
 License: CC-0
 
----- gear_shift
+---- turbo3.wav  turbo4.wav
+made from:    by CryHam, using Curve EQ in Audacity
+Name: fuchslienshroud.wav
+Author: shimsewn    License: CC-BY-4.0    Date: Jan 13th, 2010
+https://freesound.org/people/shimsewn/sounds/87606/
+
+
+---- gear_shift1
 gear_shift1.wav   from crash/01.wav
 gear_shift4a.wav  from crash/04.wav
 gear_shift4b.wav  from crash/04.wav
@@ -103,6 +112,33 @@ gear_shift4b.wav  from crash/04.wav
 Name: Prop Plane
 Author: Mozfoo    License: CC-0    Date: Sep 13th, 2018
 https://freesound.org/people/Mozfoo/sounds/440163/
+
+
+---- drone_q1.wav
+Name: spaceswamp.WAV
+Author: NoiseCollector    License: CC-BY-3.0    Date: Oct 12th, 2007
+https://freesound.org/people/NoiseCollector/sounds/42233/
+
+---- drone_q3.wav
+Name: specks.WAV
+Author: NoiseCollector    License: CC-BY-3.0    Date: Oct 12th, 2007
+https://freesound.org/people/NoiseCollector/sounds/42236/
+
+
+---- hover_r1.wav
+Name: VCR-internal2.wav
+Author: vacuumfan7072    License: CC-0    Date: Feb 12th, 2020
+https://freesound.org/people/vacuumfan7072/sounds/505702/
+
+---- hover_r2.wav
+Name: Electric Train Motor Idle
+Author: JotrainG    License: CC-0    Date: Aug 22nd, 2023
+https://freesound.org/people/JotrainG/sounds/700034/
+
+---- hover_r3.wav
+Name: fuchslienshroud.wav
+Author: shimsewn    License: CC-BY-4.0    Date: Jan 13th, 2010
+https://freesound.org/people/shimsewn/sounds/87606/
 
 
 ---- hud*
