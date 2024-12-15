@@ -6,18 +6,18 @@ Help is welcomed.
 Thank you for all your contributions.
 
 Even smaller things count like:
-- Increasing popularity, spreading info about Stunt Rally 3 on internet (with link to our [website](https://stuntrally.tuxfamily.org/)).
-- Testing and reporting bugs ([Issues on github](https://github.com/stuntrally/stuntrally/issues)).
-- Improving a **translation** to a language (on [Weblate](https://hosted.weblate.org/projects/stunt-rally-3/stunt-rally-3/), [Localization](Localization.md)).
-- Constructive discussions and honest opinions about features, etc.
-- Lastly new ideas (since already plenty in [Tasks](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php) and [Roadmap](Roadmap.md)).
+- 👥Increasing popularity, spreading info about Stunt Rally 3 on internet (with link to our [website](https://stuntrally.tuxfamily.org/)).
+- 🪲Testing and reporting bugs ([Issues on github](https://github.com/stuntrally/stuntrally3/issues)).
+- 🌏Improving a translation to a language (on [Weblate](https://hosted.weblate.org/projects/stunt-rally-3/stunt-rally-3/), [Localization](Localization.md)).
+- 💭Constructive discussions and honest opinions about features, etc.
+- 💡Lastly new ideas or features (since there are already *plenty* in [Tasks](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php) and [Roadmap](Roadmap.md)).
 
 
 Below is a list of **bigger** focused contributions:  
 (in no order, just my favorite 2 first)
 
 ------------------------
-## Programmers
+## 🖥️Programmers
 
 If you know C++, [Ogre-Next](https://forums.ogre3d.org/viewforum.php?f=25) (3.0 and up) or shaders,  
 and preferably could handle some of the [Roadmap](Roadmap.md) tasks.  
@@ -32,7 +32,7 @@ There is no style guide (yet), I simply recommend following my own.
 A quick info: it is not random, it's quite specifically formatted to how I want it to be (in my files).
 
 ------------------------
-## Track creators
+## 🏞️Track creators
 
 If you manage to create an interesting track, it can be included in future versions.  
 More info in [this topic](https://groups.f-hub.org/d/lpntzPrD/-creating-tracks-and-their-content).  
@@ -40,35 +40,35 @@ If needed, I can finish them, may change something.
 Tracks are licensed GPLv3 by default.
 
 ------------------------
-## Testers
+## 🎮Testers
 
 If you found an unknown bug please report it, info [here](Troubleshooting.md).  
 Even better if you're able to build from sources.  
 If so, then also honest, constructive opinions or suggestions (e.g. about my latest  change or planned) are welcome, on Forum.
 
-## Packagers
+## 📦Packagers
 
 If you have experience in packaging software or games, for some OS distributions,  
 or know how to improve building from sources (or make it easier).
 
 ------------------------
-## Translators
+## 🌏Translators
 
 If you want to help translating a language, check Wiki page [Localization](Localization.md).
 
 ------------------------
-## Sound Artists
+## 🔉Sound Artists
 
 If you can record or edit sounds for games. Especially looped engine sounds.
 
-## 3D Artists
+## 🚗3D Artists
 
 If you know Blender and can help with importing existing models into game [Objects wiki](Objects.md).  
 Or can edit vehicles ([new topic](https://groups.f-hub.org/d/adePgxzW/-cars-new-vehicles-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=80&t=18526) and [docs page](VehicleModeling.md)) or objects for game, UV unwrap, texturing, etc.
 
 
 ------------------------
-# Donations
+# 💜Donations
 
 Financial support is possible through [CryHam's page](https://cryham.tuxfamily.org/donate/) or directly on [Ko-Fi](https://ko-fi.com/cryham).
 

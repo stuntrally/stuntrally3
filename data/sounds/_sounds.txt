@@ -90,13 +90,19 @@ https://freesound.org/people/nathanshadow/sounds/22455/
 
 ---- turbo*
 Author: CryHam
-made entirely in Audacity
-License: CC-BY-4.0
+made entirely in Audacity, from noise
+License: CC-0
 
 ---- gear_shift
 gear_shift1.wav   from crash/01.wav
 gear_shift4a.wav  from crash/04.wav
 gear_shift4b.wav  from crash/04.wav
+
+
+---- propeller1.wav  propeller2.wav 
+Name: Prop Plane
+Author: Mozfoo    License: CC-0    Date: Sep 13th, 2018
+https://freesound.org/people/Mozfoo/sounds/440163/
 
 
 ---- hud*
