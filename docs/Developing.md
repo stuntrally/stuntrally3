@@ -302,8 +302,8 @@ These have changed when porting SR to SR3 to use Ogre-Next meshes etc.
 
 Original code made by CryHam for: roads, pipes, their transitions and bridge walls, columns, rivers.  
 Code inside:
-- Road_Prepass.cpp - needed computations before rebuild.
-- Road_Rebuild.cpp - main big code, creating geometry vertices and meshes.
+- [Road_Prepass.cpp](../src/road/Road_Prepass.cpp) - needed computations before rebuild.
+- [Road_Rebuild.cpp](../src/road/Road_Rebuild.cpp) - main big code, creating geometry vertices and meshes.
 - Grid.* - WIP new for paging grid and adding meshes together in cells, for less batches (draw calls).  
 Now used for columns to gather more together.
 
@@ -322,7 +322,7 @@ it will go bad for all created meshes (road, grass).
 Glass pipes rendering changed. Old Ogre had 2 passes with opposite culling.  
 New does not support passes [[2.3] Dealing with multi pass rendering in ogre next](https://forums.ogre3d.org/viewtopic.php?t=96902), and instead has:  
 2 nodes with same mesh, but clones datablock and sets opposite cull in it.  
-Code in `pipe glass 2nd item` section of `Road_Mesh.cpp`.  
+Code in `pipe glass 2nd item` section of [Road_Mesh.cpp](../src/road/Road_Mesh.cpp).  
 
 Transparent objects are sorted by Ogre-Next so they don't blink randomly like in old Ogre.  
 There is though a less noticable issue with order on borders showin elipses between pipe segments [screen here](https://forums.ogre3d.org/viewtopic.php?p=553945&sid=6798838bbed3be6881aa07bf10012412#p553945).  
@@ -333,19 +333,21 @@ From [post](https://forums.ogre3d.org/viewtopic.php?p=556887#p556887), only:
 
 ### Vegetation 🌳🪨
 
-Means models for trees, rocks, plants etc.  
+Means models for trees, palms, rocks, bushes, plants etc.  
 It is not paged, does not have impostors (like it was in old SR with paged-geometry, *aka the worst library used*).  
 
 Now simply uses Ogre-Next Items that will be automatically HW instanced, to reduce draw calls, also works with mesh LODs.  
-All models are placed during track load by code in `src/common/SceneTrees.cpp`.  
+All models are placed during track load by code in [CScene_Veget.cpp](../src/common/CScene_Veget.cpp).  
 **_ToDo:_** make it parallel on CPU, it is rather slow.
 
 ### Objects .mesh
 
 For Vegetation, Objects, etc.  
 All models in **`.mesh`** files from old SR, need to be converted to newer version for SR3 using `OgreMeshTool`.  
-Provided Python script `config/ogre-mesh.py` is helpful for this. Comments inside have more detail.  
+Provided Python script [ogre-mesh.py](../config/ogre-mesh.py) is helpful for this. Comments inside have more detail.  
 It can process whole dir (e.g. new `objects3/` with files to convert) and has command presets, with LODs set up.  
+
+Code for creating in `App::CreateObjects()` in [App_SceneObjects.cpp](../src/common/App_SceneObjects.cpp).
 
 ### Grass 🌿
 
@@ -353,7 +355,7 @@ It has pages (auto size from terrain size) and no LoDs.
 Also no fading yet. Started, find: `grow fade away`.  
 Currently done simplest way, has mesh pages, with vertices and indices.  
 Quite inefficient to render and slow to create mesh.  
-Code in `Grass.h` and `Grass_Mesh.cpp`.  
+Code in [Grass.h](../src/common/Grass.h) and [Grass_Mesh.cpp](../src/common/Grass_Mesh.cpp). Written quickly by CryHam, partly based on [Road_Mesh.cpp](../src/road/Road_Mesh.cpp) code.  
 
 **_ToDo:_** make it parallel on CPU, it is very slow.  
 **_ToDo:_** add RTT for density map, read terrain height map in shader, do vertices in shader not on CPU..  
@@ -363,14 +365,16 @@ Code in `Grass.h` and `Grass_Mesh.cpp`.
 
 ## SR
 
-Rest of code that was same in SR 2.x. Only small changes when porting to SR3. And new hovers since 3.1.
+Rest of code that was same in SR 2.x. Only small changes when porting to SR3. And new hovering vehicles since 3.1.
 
 ### Simulation 🚗
 
-Game code in `Update_Poses.cpp` gets data from VDrift simulation (on 2nd thread) calling `newPoses(`.  
+Pose means here position and rotation.  
+Game code in [Update_Poses.cpp](../src/game/Update_Poses.cpp) gets data from VDrift simulation (on 2nd thread) calling `newPoses(`.  
 Rendering update calls `updatePoses(` to set vehicles (from carModels) to new poses.  
+[CarModel](../src/game/CarModel.h) is just the class gathering vehicle's 3d model meshes, particles and other Ogre graphics.  
 
-VDrift simulation, main update code in `src/vdrift/cardynamics_update.cpp` in `void CARDYNAMICS::UpdateBody(`.  
+VDrift simulation, main update code in [cardynamics_update.cpp](../src/vdrift/cardynamics_update.cpp) in `void CARDYNAMICS::UpdateBody(`.  
 
 SR's own code for non-car vehicles are in: `SimulateSpaceship(` 🚀, `SimulateSphere(` 🔘, and all hovering in `SimulateHover(`.  
 Key places in code (that change simulation) for such special vehicles are marked with `//V*`.
@@ -380,13 +384,14 @@ Few possible tasks _ToDo:_ [here](https://stuntrally.tuxfamily.org/mantis/view.p
 
 ### Replay 📽️
 
-All files in `src/game/` with `replay` in name, mainly `Replay.h and .cpp` and `Gui_Replay.cpp` for Gui events.  
-Partly code in `Update_Poses.cpp` for filling replay/ghost data etc.  
-More detail in `CGame.h` sections with vars for this.  
+All files in `src/game/` with `replay` in name, mainly [Replay.h](../src/game/Replay.h) and [Replay.cpp](../src/game/Replay.cpp) and [Gui_Replay.cpp](../src/game/Gui_Replay.cpp) for Gui events.  
+Partly code in [Update_Poses.cpp](../src/game/Update_Poses.cpp) for filling replay/ghost data etc.  
+More detail in [CGame.h](../src/game/CGame.h) sections with vars for this.  
 
 ### Sound 🔉
 
-Sound manager code in `src/sound/`. Is based on [RoR's](https://github.com/RigsOfRods/rigs-of-rods/tree/master/source/main/audio) code. Completely replaced VDrift's code.
+Sound manager code in `src/sound/`. Uses [OpenALSoft](https://github.com/kcat/openal-soft).  
+It is based on [RoR's](https://github.com/RigsOfRods/rigs-of-rods/tree/master/source/main/audio) code, but very reduced. It completely replaced old VDrift's code.
 
 **_ToDo:_** [Task here](https://stuntrally.tuxfamily.org/mantis/view.php?id=1).
 
@@ -437,7 +442,7 @@ Useful for overriding only specific parts, or adding new functionality that requ
 SR3 does all above, we have our `HlmsPbs2`.  
 Also a HLMS PBS listener, it's that default `hlmsPbs->setListener( mHlmsPbsTerraShadows );`  
 from Terra, this is only for Pbs objects, `hlmsTerra` has no listener.  
-(<del>_ToDo:_ adding globalTime to both would need it</del> - no, atmo. seems working).  
+(<del>_ToDo:_ adding globalTime to both would need it</del> - no, `atmo.` seems working).  
 Done so objects also receive terrain shadows. Only one listener can be used.  
 
 And we have own datablock: `HlmsPbsDb2` with more stuff when needed for: vehicle paint or fluids.
@@ -516,12 +521,13 @@ This assert triggering, means those were different:
 
 ### Other 🧪
 
-Other common assert: [mCachedTransformOutOfDate](https://ogrecave.github.io/ogre-next/api/latest/_ogre20_changes.html#AssersionCachedOutOfDate).  
-At end of [post](https://forums.ogre3d.org/viewtopic.php?p=554822#p554822) and also debug todo [here](https://forums.ogre3d.org/viewtopic.php?p=555087#p555087).
+A common assert: [mCachedTransformOutOfDate](https://ogrecave.github.io/ogre-next/api/latest/_ogre20_changes.html#AssersionCachedOutOfDate).  
+At end of [post](https://forums.ogre3d.org/viewtopic.php?p=554822#p554822) and also debug todo [here](https://forums.ogre3d.org/viewtopic.php?p=555087#p555087).  
 
 Don't change node pos or rot from inside listeners.  
 Or after, need to call `_getFullTransformUpdated(` e.g. for `ndSky`, `light->getParentNode()->_`, camera etc.  
-Seems fixed for each frame, but IIRC does assert on new track load. Thus for Debug build it is commented out in Ogre-Next sources.
+Seems fixed for each frame, but IIRC does assert on new track load or so.  
+So this happens many times in Debug build in SR3. I simply commented it out in Ogre-Next sources. _ToDo:_ fix it?
 
 Also [post](https://forums.ogre3d.org/viewtopic.php?p=554822#p554822), leaking GPU RAM inactive and  
 Exception: `Mapping the buffer twice within the same frame detected!`.
@@ -534,13 +540,14 @@ Exception: `Mapping the buffer twice within the same frame detected!`.
 
 Workspace is basically the setup, for rendering one player's view target only, like: reflection, shadow, editor minimap, SSAO blur, etc and lastly screen.  
 Almost all compositor things (Workspaces, WorkspaceDef and NodeDef) are created from code now.  
-Code is in [AppGui_Compositor.cpp](../src/common/AppGui_Compositor.cpp).  
+Code is in [AppGui_Compositor.cpp](../src/common/AppGui_Compositor.cpp) and utils in [AppGui_CompositorUtil.cpp](../src/common/AppGui_CompositorUtil.cpp.cpp).  
  (telling how to render stuff, also few extra for editor minimap RTT).  
-Creating is in `.log` lines with: `--++ WS add:`, and in cpp code by any `addWorkspace`.  
+Creating is in `.log`, lines with: `--++ WS add:`, and in cpp code by any `addWorkspace`.  
+Also new code in `.log` has lines starting `CC` with `Compositor` etc.
 
 [SR3.compositor](../data/materials/SR3.compositor) has definitions for few other workspaces used.  
 
-Shadows are made completely by code in `src/common/AppGui_Shadows.cpp`,  
+Shadows are made completely by code in [AppGui_Shadows.cpp](../src/common/AppGui_Shadows.cpp),  
 based on `Samples/2.0/ApiUsage/ShadowMapFromCode/ShadowMapFromCode.cpp`.  
 _Todo:_ only 3 PSSM splits work, no other count. ESM (Sh_Soft) is also broken.
 
@@ -563,24 +570,24 @@ Possibly relevant [link](https://forums.ogre3d.org/viewtopic.php?p=556401#p55640
 
 ## Effects
 
-Compositor is created from cpp, mainyly in [AppGui_Compositor.cpp](../src/common/AppGui_Compositor.cpp).  
+Compositor is created from cpp, mainly in [AppGui_Compositor.cpp](../src/common/AppGui_Compositor.cpp).  
 This gives much more flexibility and access to consts from [RenderConst.h](../src/common/RenderConst.h).
 
 ### Done:
-- Refractions (water), for all fluids, based on 
+- Refractions (water), for all fluids, based on Ogre-Next Sample_Refractions
 - SSAO, based on Ogre-Next Sample_Tutorial_SSAO
 - Lens flare (sun shines in camera), [shaders](https://www.shadertoy.com/results?query=lens+flare), [more info](http://john-chapman-graphics.blogspot.com/2013/02/pseudo-lens-flare.html?m=1)
-- Sunbeams (rays around trees etc), 
-- WIP GI, using code from Test_Voxelizer (IFD, VCT)  
+- Sunbeams (rays around trees etc), aka godrays [shaders](https://www.shadertoy.com/results?query=tag=godrays&sort=popular)
+- WIP GI, using code from Ogre-Next Test_Voxelizer (IFD, VCT)  
   has _no Terrain_, [issue](https://github.com/OGRECave/ogre-next/issues/475), see comments, but really needed for terra, mostly for inside buildings
 
 ### _ToDo:_
-- Sample_**HDR** (with bloom), Sample_Tutorial_**SSAO**
-- GI todo?: InstantRadiosity (main), LocalCubemaps refl, ImageVoxelizer CIVCT
+- Sample_**HDR** (with bloom)
+- other GI todo?: InstantRadiosity (main), LocalCubemaps refl, ImageVoxelizer CIVCT
 - ReconstructPosFromDepth ? (soft particles) also [topic](https://forums.ogre3d.org/viewtopic.php?t=97096&sid=5b5762532f55a6b74f28e1404b1d54bb), [maybe](https://forums.ogre3d.org/viewtopic.php?t=97059&sid=5b5762532f55a6b74f28e1404b1d54bb)
-- Sky_Postprocess (no?)
+- Sky_Postprocess to drop sky nodes
 - InterpolationLoop (meh, later)
 - meh: OpenVR, StereoRendering
-- to fix: ShadowMapDebugging, ShadowMapFromCode
+- fix setupESM: ShadowMapFromCode, ShadowMapDebugging
 
-[Video Playlist](https://www.youtube.com/playlist?list=PLU7SCFz6w40OJsw3ci6Hbwz2mqL2mqC6c) with bugs, most fixed.
+[Video Playlist](https://www.youtube.com/playlist?list=PLU7SCFz6w40OJsw3ci6Hbwz2mqL2mqC6c) with related bugs, most fixed.

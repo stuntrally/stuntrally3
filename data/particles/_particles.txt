@@ -32,6 +32,7 @@ spark.png
 ----
 Author: CryHam
 License: CC0
+drawn in GIMP
 
 boost.png  boost_red.png
 
