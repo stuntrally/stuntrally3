@@ -327,7 +327,7 @@ if (bSound)
 	s.engine->setPosition(ep, ev);
 	s.engine->setGain(gain * dynamics.engine_vol_mul * pSet->s.vol_engine);
 	
-	//  turbo
+	//  turbo  ----
 	if (s.turbo)
 	{	s.turbo->setPosition(ep, ev);
 		auto& tb = dynamics.turbo;
@@ -339,12 +339,12 @@ if (bSound)
 		s.turbo->setGain(thr * gain * pSet->s.vol_turbo * pSet->s.vol_engine);
 	}
 
-	//  gear shift
+	//  gear shift  ----
 	if (dynamics.gear_shift_snd)
 	{	dynamics.gear_shift_snd = 0;
 
-		s.gearChg->setGain(pSet->s.vol_engine * 0.7f);  // par..
-		s.gearChg->setPitch(Math::RangeRandom(0.6f, 1.1f));
+		s.gearChg->setGain(pSet->s.vol_gear);
+		s.gearChg->setPitch(Math::RangeRandom(0.6f, 1.5f));  //?-
 		s.gearChg->setPosition(ep, ev);
 		s.gearChg->start();  // 🔉
 	}
@@ -428,7 +428,7 @@ if (bSound)
 	s.wind->setGain(gain * pSet->s.vol_env);
 	s.wind->setPosition(ep, ev);
 
-	//  💨 boost
+	//  💨 boost  ----
 	s.boost->setGain(boostVal * 0.55f * pSet->s.vol_engine);
 	s.boost->setPosition(ep, ev);  //back?-
 

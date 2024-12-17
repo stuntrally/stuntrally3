@@ -109,6 +109,7 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	Param(c,w, "sound.volume", s.vol_master);				Param(c,w, "sound.ambient", s.vol_ambient);
 #ifndef SR_EDITOR  // game only
 	Param(c,w, "sound.vol_engine", s.vol_engine);			Param(c,w, "sound.vol_turbo", s.vol_turbo);
+	Param(c,w, "sound.vol_gear", s.vol_gear);
 	Param(c,w, "sound.vol_tires", s.vol_tires);				Param(c,w, "sound.vol_env", s.vol_env);
 	Param(c,w, "sound.vol_susp", s.vol_susp);
 	Param(c,w, "sound.vol_fl_splash", s.vol_fl_splash);		Param(c,w, "sound.vol_fl_cont", s.vol_fl_cont);

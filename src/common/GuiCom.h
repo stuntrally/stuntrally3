@@ -268,7 +268,7 @@ public:
 	SlV(VolMaster);  SlV(VolHud);
 	SV svVolAmbient;  Ck ckReverb;
 #ifndef SR_EDITOR  // game
-	SV svVolEngine, svVolTurbo;
+	SV svVolEngine, svVolTurbo, svVolGear;
 	SV svVolTires, svVolSusp, svVolEnv;
 	SV svVolFlSplash, svVolFlCont, svVolCarCrash, svVolCarScrap;
 	Ck ckSndChk, ckSndChkWr;
