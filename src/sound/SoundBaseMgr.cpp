@@ -3,11 +3,13 @@
 #include "SoundBase.h"
 #include "SoundBaseMgr.h"
 #include "SoundDynamic.h"
+#include "SoundReverbSets.h"
+#include "SceneClasses.h"
+#include "settings.h"
+
 #include <AL/alc.h>
 #include <AL/alext.h>
 #include <AL/efx.h>
-#include "SoundReverbSets.h"
-#include "settings.h"
 #include <vector>
 using namespace Ogre;
 using namespace std;
@@ -475,6 +477,9 @@ void SoundBaseMgr::Update(float dt)
 	{
 		if (!(*it)->isPlaying())
 		{
+			if ((*it)->pObj)
+				(*it)->pObj->playing = 0;  // mark object as quiet
+
 			// (*it)->stop();
 			(*it)->Destroy();
 			it = dynamics.erase(it);

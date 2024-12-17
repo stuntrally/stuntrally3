@@ -4,7 +4,7 @@
 #include <OgreString.h>
 #include <string>
 
-class SoundBaseMgr;
+class SoundBaseMgr;  class Object;
 namespace Ogre
 {	class SceneNode;  }
 
@@ -19,7 +19,7 @@ class SoundDynamic
 
 public:
 	SoundDynamic(SoundBaseMgr* sound_mgr1);
-	bool Create(std::string file, bool loop1=1, bool is2d=1, Ogre::SceneNode* nd=0);
+	bool Create(std::string file, bool loop1=1, bool is2d=1, Ogre::SceneNode* nd=0, Object* obj=0);
 	void Destroy();
 	
 	void Update(float dt);
@@ -60,5 +60,6 @@ public:
 	Ogre::Vector3 posOld{0,0,0};
 	// Ogre::Vector3 vel{0,0,0};
 
+	Object* pObj =0;
 	SoundBaseMgr* sound_mgr =0;
 };

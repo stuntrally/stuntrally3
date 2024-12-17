@@ -1477,7 +1477,7 @@ common:  sc - "short scenery name" (name color)
 <o o="crate_anomaly"     s="hud/chkwrong" />
 <o o="crate"             s="hud/chk" />
 
-<o o="fuel_can"          s="mud1" />
+<o o="fuel_can"          s="water1" />
 <o o="garbage_bag_01"    s="hud/chk" />
 <o o="garbage_bag_02"    s="hud/chk" />
 <o o="garbage_bin"       s="water3" />

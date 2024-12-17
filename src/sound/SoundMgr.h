@@ -6,7 +6,8 @@
 #include <map>
 
 namespace Ogre  {  class FileStreamDataStream;  class SceneNode;  }
-class SoundBase;  class SoundBaseMgr;  class SETTINGS;
+class SoundBase;  class SoundBaseMgr;  class SoundDynamic;
+class SETTINGS;  class Object;
 
 const int MAX_SOUNDS_PER_SCRIPT = 12;  // per 1 template, todo? vector<
 
@@ -96,7 +97,7 @@ public:
 	void CreateAmbient(Ogre::String templ);
 	void DestroyAmbient();
 
-	void CreateDynamic(Ogre::String templ, Ogre::SceneNode* node);
+	SoundDynamic* CreateDynamic(Ogre::String templ, Ogre::SceneNode* node, Object* obj, float gain);
 
 
 	void setPaused(bool mute);

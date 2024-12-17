@@ -172,7 +172,10 @@ public:
 	bool stat = false;  // force static, if has .bullet
 	bool shadow = true;
 	
-	bool playSound =0;  // play
+	bool playSound =0;     // to play ▶️ info
+	float playGain = 0.f;  // to play
+	bool playing =0;  // when playing
+	float playingGain = 0.f;
 	std::string sound;  // hit 🔉 from presets.xml
 
 	Ogre::SceneNode* nd = 0;  // 🟢 ogre

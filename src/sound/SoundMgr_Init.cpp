@@ -5,6 +5,7 @@
 #include "SoundDynamic.h"
 #include "SoundBaseMgr.h"
 #include "settings.h"
+#include "SceneClasses.h"
 #include <OgreDataStream.h>
 #include <OgreException.h>
 using namespace Ogre;
@@ -276,27 +277,31 @@ void SoundMgr::DestroyAmbient()
 }
 
 
-//  🆕 New Dynamic 🛢️📦
-void SoundMgr::CreateDynamic(String name, Ogre::SceneNode* node)
+//  🆕 New Dynamic 🛢️📦 🔉
+SoundDynamic* SoundMgr::CreateDynamic(String name, Ogre::SceneNode* node, Object* obj, float gain)
 {
 	//  search template
 	if (templates.find(name) == templates.end())
 	{
 		LogO("@ sound dynamic, template not found in .cfg: "+name);
-		return;
+		return 0;
 	}
 	// LogO("@ sound dynamic create: "+name);
 
 	SoundTemplate* templ = templates[name];
 
 	auto* dyn = new SoundDynamic(sound_mgr);
-	bool ok = dyn->Create(templ->start_name, false, false, node);
+	bool ok = dyn->Create(templ->start_name, false, false, node, obj);
 	if (!ok)
-		delete dyn;
+	{	delete dyn;  dyn = 0;  }
 	else
 	{
-		dyn->setGain(pSet->s.vol_dynamic);
+		obj->playing = 1;  // mark object
+		obj->playingGain = gain;
+
+		dyn->setGain(pSet->s.vol_dynamic * gain);
 		dyn->play();
 		sound_mgr->dynamics.push_back(dyn);
 	}
+	return dyn;
 }

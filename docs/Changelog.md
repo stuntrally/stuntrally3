@@ -7,7 +7,7 @@ WIP means work in progress, unfinished, still being developed.
 - **Effects**, all require (Water) Refractions on, to work
   - **SSAO** (ambient occlusion, on Effects tab)
   - lens flare (sun glow in camera)
-  - sunbeams (rays)
+  - sunbeams (rays), most visible on sunset tracks
 - Compositor rewrite, created in code
   - SplitScreen uses RTTs, smaller Hud fonts
     - Refractions work, SSAO too
@@ -16,8 +16,10 @@ WIP means work in progress, unfinished, still being developed.
     Global Illumination ([GI methods](https://ogrecave.github.io/ogre-next/api/latest/_gi_methods.html): IFD+VCT),
     on new Gui tab Advanced after Effects, has also debug visuals.
 - Sounds
+  - New vehicle sounds for: cars WIP, hovercrafts, drones, hovercars
+  - New turbo sound and gear shift
   - WIP ambient track sound (rain, etc)
-  - WIP dynamic object hit sounds
+  - WIP dynamic objects hit sounds
 - Game
   - Setup - Paints tab new *filter* slider, to show paints only from filter rating and above.  
     But editing paints list must be done w/o filter, on highest value.

@@ -80,11 +80,13 @@ void IntTickCallback(btDynamicsWorld* world, btScalar timeStep)
 				for (int j=0; j < num; ++j)
 				{
 					btManifoldPoint& pt = contactManifold->getContactPoint(j);
-					btScalar f = pt.getAppliedImpulse() * timeStep;
-					if (f > 3.f)  // par.. 6`  2-
+					btScalar frc = pt.getAppliedImpulse() * timeStep;
+					float gain = std::min(1.f, frc / 4.f);  // todo: div by obj mass?..
+					if (gain > 0.1f)  // par <,^
 					{
-						sdObj->pObj->playSound =1;  // play
-						LogO("obj hit: "+toStr(i)+" "+toStr(j)+" "+fToStr(f,2,4));
+						sdObj->pObj->playSound =1;  // play if louder
+						sdObj->pObj->playGain = gain;
+						// LogO("obj hit: "+toStr(i)+" "+toStr(j)+" "+fToStr(frc,2,4));
 				}	}
 			}
 

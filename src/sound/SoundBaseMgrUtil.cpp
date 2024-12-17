@@ -83,7 +83,7 @@ SoundBase* SoundBaseMgr::createSound(String file, String name)
 bool SoundBaseMgr::loadWAVFile(String file, ALuint buffer, int& outSamples)
 {
 	outSamples = 0;
-	LogO("@  Loading WAV: "+file);
+	// LogO("@  Loading WAV: "+file);
 
 	// create the Stream
 	std::string path = PATHS::Sounds()+"/"+file;
