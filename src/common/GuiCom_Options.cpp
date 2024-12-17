@@ -256,11 +256,13 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 	//------------------------------------------------------------
 	sv= &svVolMaster;	sv->Init("VolMaster",	&pSet->s.vol_master, 0.f, 2.0f);  sv->DefaultF(1.55f);  SevC(VolMaster);
 	sv= &svVolAmbient;	sv->Init("VolAmbient",	&pSet->s.vol_ambient, 0.f, 2.0f);  sv->DefaultF(1.f);
+	sv= &svVolDynamic;	sv->Init("VolDynamic",  &pSet->s.vol_dynamic, 0.f, 2.0f);  sv->DefaultF(1.f);
+	ck= &ckSndDynamic;	ck->Init("SndDynamic",  &pSet->s.snd_dynamic);
 
 #ifndef SR_EDITOR  // game
 	sv= &svVolEngine;	sv->Init("VolEngine",	&pSet->s.vol_engine, 0.f, 1.4f);  sv->DefaultF(0.58f);
-	sv= &svVolTurbo;	sv->Init("VolTurbo",	&pSet->s.vol_turbo, 0.f, 2.0f);  sv->DefaultF(1.f);
-	sv= &svVolGear;		sv->Init("VolGear",		&pSet->s.vol_gear, 0.f, 1.6f);  sv->DefaultF(0.7f);
+	sv= &svVolTurbo;	sv->Init("VolTurbo",	&pSet->s.vol_turbo, 0.f, 3.0f);  sv->DefaultF(1.f);
+	sv= &svVolGear;		sv->Init("VolGear",		&pSet->s.vol_gear, 0.f, 1.6f);  sv->DefaultF(0.4f);
 
 	sv= &svVolTires;	sv->Init("VolTires",	&pSet->s.vol_tires,  0.f, 1.4f);  sv->DefaultF(0.856f);
 	sv= &svVolSusp;		sv->Init("VolSusp",		&pSet->s.vol_susp,   0.f, 1.4f);  sv->DefaultF(0.474f);

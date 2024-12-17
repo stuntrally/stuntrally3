@@ -173,7 +173,7 @@ public:
 	bool shadow = true;
 	
 	bool playSound =0;  // play
-	std::string sound;  // hit 🔉  // todo: from presets
+	std::string sound;  // hit 🔉 from presets.xml
 
 	Ogre::SceneNode* nd = 0;  // 🟢 ogre
 	Ogre::Item* it = 0;

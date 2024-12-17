@@ -140,7 +140,8 @@ public:
 	{
 		//  volume
 		float vol_master = 1.f, vol_hud = 1.f,
-			vol_ambient = 1.f;
+			vol_dynamic = 1.f, vol_ambient = 1.f;
+		bool snd_dynamic = 1;
 	#ifndef SR_EDITOR  // game only
 		float vol_engine = 0.6f, vol_turbo =1.f, vol_gear =1.f,
 			vol_tires =1.f, vol_susp =1.f, vol_env =1.f,

@@ -567,12 +567,10 @@ void App::updatePoses(float time)
 			o.rot[0] = q.x();  o.rot[1] = q.y();  o.rot[2] = q.z();  o.rot[3] = q.w();
 			o.SetFromBlt();
 			
-			if (o.playSound)
+			if (o.playSound)  // obj hit snd 🔉
 			{	o.playSound =0;
-				//  test +
-				// pGame->snd->CreateDynamic("water3", o.nd); //o.sound);
-				// pGame->snd->CreateDynamic("hud/chk", o.nd); //o.sound);
-				// pGame->snd->CreateDynamic("hud/chkwrong", o.nd); //o.sound);
+				if (pSet->s.snd_dynamic && !o.sound.empty())
+					pGame->snd->CreateDynamic(o.sound, o.nd);
 			}
 		}
 	}

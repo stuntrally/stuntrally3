@@ -4,6 +4,7 @@
 #include "SoundBase.h"
 #include "SoundDynamic.h"
 #include "SoundBaseMgr.h"
+#include "settings.h"
 #include <OgreDataStream.h>
 #include <OgreException.h>
 using namespace Ogre;
@@ -293,7 +294,8 @@ void SoundMgr::CreateDynamic(String name, Ogre::SceneNode* node)
 	if (!ok)
 		delete dyn;
 	else
-	{	
+	{
+		dyn->setGain(pSet->s.vol_dynamic);
 		dyn->play();
 		sound_mgr->dynamics.push_back(dyn);
 	}

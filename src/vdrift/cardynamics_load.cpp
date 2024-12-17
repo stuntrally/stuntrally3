@@ -129,7 +129,7 @@ bool CARDYNAMICS::Load(GAME* game, CONFIGFILE& c)
 			turbo.sound_name.clear();
 
 		if (!c.GetParam("transmission.sound", gear_sound))
-			gear_sound = "gear_shift3";  //.clear();
+			gear_sound = "gear_shift1";  //.clear();
 
 		if (!c.GetParamE("engine.rpm-limit", rpm_limit))  return false;
 		engine.SetRpmMax(rpm_limit);

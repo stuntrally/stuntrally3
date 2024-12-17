@@ -95,6 +95,7 @@ struct PMatSet
 struct PObject
 {
 	std::string name;  // .mesh
+	std::string sound;  // name from sounds.cfg
 	PMatSet* pMatSet =0;
 };
 

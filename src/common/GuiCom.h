@@ -266,7 +266,8 @@ public:
 
 	//  🔉 Sound  --------------------------
 	SlV(VolMaster);  SlV(VolHud);
-	SV svVolAmbient;  Ck ckReverb;
+	SV svVolDynamic, svVolAmbient;  Ck ckReverb;
+	Ck ckSndDynamic;
 #ifndef SR_EDITOR  // game
 	SV svVolEngine, svVolTurbo, svVolGear;
 	SV svVolTires, svVolSusp, svVolEnv;

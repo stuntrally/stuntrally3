@@ -1446,4 +1446,54 @@ common:  sc - "short scenery name" (name color)
 <c n="gem1p" o="gem01" s="2.0" c="1.0 0.2 0.7" b="collect_beam_p" m="gem01p" />
 
 
+<!--  🛢️📦  Dynamic Objects sounds  🔉
+      =======================================================================================================================================
+      o - .mesh filename (no ext)
+      s - sound name from sounds.cfg
+      mats - material set name  (if needed)
+-->
+<o o="atomic_barrel"     s="hud/chk" />
+<o o="balloon1_anomaly"  s="hud/chkwrong" />
+<o o="balloon2_anomaly"  s="hud/chkwrong" />
+<o o="barrel_oil"        s="hud/chk" />
+<o o="barrel_oil_heavy"  s="hud/chk" />
+<o o="big_tire"          s="hud/chkwrong" />
+<o o="big_tire_anomaly2" s="hud/chkwrong" />
+<o o="big_tire_anomaly"  s="hud/chkwrong" />
+
+<o o="branch_01"         s="hud/chk" />
+<o o="branch_02"         s="hud/chk" />
+<o o="branch_03"         s="hud/chk" />
+<o o="can_rusted"        s="hud/chk" />
+<o o="cone_anomaly"      s="hud/chk" />
+<o o="cone"              s="hud/chk" />
+
+<o o="crate_1"           s="hud/chk" />
+<o o="crate_2_anomaly"   s="hud/chkwrong" />
+<o o="crate_2"           s="hud/chk" />
+<o o="crate2s"           s="hud/chk" />
+<o o="crate2m"           s="hud/chk" />
+<o o="crate2m_anomaly"   s="hud/chkwrong" />
+<o o="crate_anomaly"     s="hud/chkwrong" />
+<o o="crate"             s="hud/chk" />
+
+<o o="fuel_can"          s="mud1" />
+<o o="garbage_bag_01"    s="hud/chk" />
+<o o="garbage_bag_02"    s="hud/chk" />
+<o o="garbage_bin"       s="water3" />
+<o o="pallet"            s="hud/chk" />
+
+<o o="plastic_barrel"          s="hud/chk" />
+<o o="plastic_barrel_anomaly"  s="hud/chkwrong" />
+<o o="plastic_big_anomaly"     s="hud/chkwrong" />
+<o o="plastic_big_hvy_anomaly" s="hud/chkwrong" />
+<o o="plastic_big"             s="hud/chk" />
+<o o="plastic_big_hvy"         s="hud/chk" />
+<o o="plastic_canister"        s="hud/chk" />
+
+<o o="wood_block"              s="hud/chk" />
+<o o="wooden_barrel_big"       s="hud/chk" />
+<o o="wooden_barrel"           s="hud/chk" />
+
+
 </presets>

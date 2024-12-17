@@ -1223,6 +1223,27 @@
 							<Property key="TextColour" value="0.75 0.8 1.0"/>
 						</Widget>
 
+						<Widget type="Button" skin="CheckBox" position="32 160 408 24" name="ChkReverb">
+							<Property key="Caption" value="#{Environment} - #{Reverb} **"/>
+							<Property key="TextColour" value="0.6 1.0 0.6"/>
+						</Widget>
+
+
+						<Widget type="TextBox" skin="TextBox" position="248 432 484 24">
+							<Property key="Caption" value="#{TipSliderReset}"/>
+							<Property key="TextColour" value="0.45 0.55 0.65"/>
+						</Widget>
+
+						<Widget type="ImageBox" skin="ImageBox" position="640 20 100 100">
+							<Property key="ImageCoord" value="128 128 128 128"/>
+							<Property key="Alpha" value="0.6"/>
+							<Property key="ImageTexture" value="gui_icons.png"/>
+						</Widget>
+					<!-- </Widget>
+
+					<Widget type="TabItem" skin="" position="2 24 738 472">
+						<Property key="Caption" value="#60B0F0#{Environment}"/> -->
+
 						<Widget type="TextBox" skin="TextBox" position="32 290 144 24">
 							<Property key="Caption" value="#{Ambience}"/>
 							<Property key="TextColour" value="0.7 0.9 0.6"/>
@@ -1234,20 +1255,25 @@
 							<Property key="TextColour" value="0.7 1.0 0.6"/>
 						</Widget>
 
-						<Widget type="Button" skin="CheckBox" position="32 256 408 24" name="ChkReverb">
-							<Property key="Caption" value="#{Reverb} **"/>
-							<Property key="TextColour" value="0.6 0.8 1.0"/>
+						<Widget type="Button" skin="CheckBox" position="32 330 408 24" name="SndDynamic">
+							<Property key="Caption" value="#{ObjDynamic} #{Objects}"/>
+							<Property key="TextColour" value="1 1 0.7"/>
 						</Widget>
-
-						<Widget type="TextBox" skin="TextBox" position="248 432 484 24">
-							<Property key="Caption" value="#{TipSliderReset}"/>
-							<Property key="TextColour" value="0.45 0.55 0.65"/>
+						<Widget type="TextBox" skin="TextBox" position="32 360 144 24">
+							<Property key="Caption" value="#{ObjDynamic}"/>
+							<Property key="TextColour" value="0.9 0.9 0.8"/>
+						</Widget>
+						<Widget type="Slider" skin="Slider" position="248 360 320 18" name="VolDynamic">
+							<Property key="Colour" value="0.9 0.9 0.8"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="180 360 60 24" name="VolDynamicVal">
+							<Property key="TextColour" value="0.95 0.95 0.9"/>
 						</Widget>
 
 						<Widget type="ImageBox" skin="ImageBox" position="640 20 100 100">
 							<Property key="ImageCoord" value="128 128 128 128"/>
-							<Property key="Alpha" value="0.6"/>
 							<Property key="ImageTexture" value="gui_icons.png"/>
+							<Property key="Alpha" value="0.6"/>
 						</Widget>
 					</Widget>
 
@@ -1323,11 +1349,6 @@
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="180 250 60 24" name="SndRolloffVal">
 							<Property key="TextColour" value="0.6 0.7 0.8"/>
-						</Widget>
-
-						<Widget type="Button" skin="CheckBox" position="32 388 408 24" name="SndDynamic">
-							<Property key="Caption" value="#{ObjDynamic} #{Objects}"/>
-							<Property key="TextColour" value="1 1 0.7"/>
 						</Widget>
 
 						<Widget type="ImageBox" skin="ImageBox" position="640 20 100 100">

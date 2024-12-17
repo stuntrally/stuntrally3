@@ -1708,10 +1708,10 @@
 							<Property key="Caption" value="#{ObjDynamic}"/>
 							<Property key="TextColour" value="0.9 0.9 0.8"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="248 360 320 18" name="VolDyn">
+						<Widget type="Slider" skin="Slider" position="248 360 320 18" name="VolDynamic">
 							<Property key="Colour" value="0.9 0.9 0.8"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="180 360 60 24" name="VolDynVal">
+						<Widget type="TextBox" skin="TextBox" position="180 360 60 24" name="VolDynamicVal">
 							<Property key="TextColour" value="0.95 0.95 0.9"/>
 						</Widget>
 

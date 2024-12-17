@@ -222,17 +222,23 @@ void App::CreateObjects()
 					pGame->collision.shapes.push_back(
 						fileLoader->getCollisionShapeByIndex(i));/**/
 
-				#ifndef SR_EDITOR
+			#ifndef SR_EDITOR
 				btTransform t1;  // save 1st pos for reset
 				o.ms->getWorldTransform(t1);
 				o.tr1 = new btTransform(t1);
-				#endif
-				#if 0
+			#endif
+			#if 0
 				LogO(".bullet: "+o.name+
 					"  shapes:"+toStr(fileLoader->getNumCollisionShapes())+
 					"  bodies:"+toStr(fileLoader->getNumRigidBodies())+
 					"  constr:"+toStr(fileLoader->getNumConstraints())); /**/
-				#endif
+			#endif
+				//  sound from presets
+				auto* obj = scn->data->pre->GetObject(o.name);
+				if (obj)
+					o.sound = obj->sound;
+				else
+					LogO("Object: "+o.name+" has no sound in presets!");
 			}else
 				LogO(".bullet: Load Error: "+o.name);
 		}
@@ -498,6 +504,12 @@ void App::AddNewObj(bool getName)  //App..
 		o.nd->attachObject(o.it);  o.it->setVisibilityFlags(RV_Vegetation);
 
 		o.dyn = PATHS::FileExists(PATHS::Objects() + o.name + ".bullet");
+
+		auto* obj = scn->data->pre->GetObject(o.name);
+		LogO("OBJ+ "+o.name+" "+(!obj?" !!":obj->sound));
+		if (obj)
+			o.sound = obj->sound;
+
 		scn->sc->objects.push_back(o);
 	}
 	catch (Exception ex)

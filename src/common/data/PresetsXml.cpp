@@ -238,6 +238,7 @@ bool Presets::LoadXml(string file)
 	{
 		PObject o;
 		a = e->Attribute("o");	if (a)  o.name = string(a);
+		a = e->Attribute("s");	if (a)  o.sound = string(a);
 		a = e->Attribute("mats");	if (a)  o.pMatSet = GetMatSet(string(a));
 		
 		obj.push_back(o);  iobj[o.name] = obj.size();

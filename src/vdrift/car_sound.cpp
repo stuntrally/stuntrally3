@@ -344,7 +344,7 @@ if (bSound)
 	{	dynamics.gear_shift_snd = 0;
 
 		s.gearChg->setGain(pSet->s.vol_gear);
-		s.gearChg->setPitch(Math::RangeRandom(0.6f, 1.5f));  //?-
+		// s.gearChg->setPitch(Math::RangeRandom(0.6f, 1.5f));  //?-
 		s.gearChg->setPosition(ep, ev);
 		s.gearChg->start();  // 🔉
 	}
