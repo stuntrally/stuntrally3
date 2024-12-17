@@ -43,10 +43,19 @@ fluidTrigH = 0.0
 friction = 0.4
 
 
+#  turbo sound
+#---------------------------
+[ turbo ]
+sound = turbo4
+vol-max = 0.5
+vol-idle = 0.05
+rpm-max = 7000
+rpm-min = 3500
+
 #  engine
 #---------------------------
 [ engine ]
-sound = engine
+sound = su-mid
 position = 0.0, 0.7, 0.45
 mass = 170.0
 rpm-limit = 7800
@@ -80,6 +89,7 @@ max-torque-mul = 1.3
 #  gearbox
 #---------------------------
 [ transmission ]
+sound = gear_shift3
 gears = 6
 gear-ratio-r = -3.41
 gear-ratio-1 = 4.38

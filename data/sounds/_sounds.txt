@@ -81,7 +81,25 @@ Author: Halleck    License: CC-BY-4.0    Date: June 1st, 2011
 https://freesound.org/people/Halleck/sounds/121645/
 
 
+------------  vehicle/*  engines  ------------
+New car engines recorded in engine-sim 0.1.14,
+https://github.com/Engine-Simulator/engine-sim-community-edition
+https://github.com/ange-yaghi/engine-sim
+
+at steady rpm values: 1000,2000,..,8000 or max.
+Then cut in Audacity and applied Curve EQ.
+More info in: https://github.com/stuntrally/stuntrally3/issues/7
+Curve EQ peaks at about:
+50, 100, highest here: 183, 200 Hz, less: 400, 600, then: 2k-4k Hz
+// todo: put wav and presets into blendfiles repo..
+
+Author: CryHam   License: CC-BY-4.0    Date: Dec 16, 2024
+files:
+su-*.wav
+
+
 ------------  vehicle/*  ------------
+
 
 ---- boost.wav
 Name: Thruster_Level_II.aif
