@@ -15,7 +15,7 @@ WIP means work in progress, unfinished, still being developed.
   - WIP try, *not useful*, no effect on terrain [issue](https://github.com/OGRECave/ogre-next/issues/475)  
     Global Illumination ([GI methods](https://ogrecave.github.io/ogre-next/api/latest/_gi_methods.html): IFD+VCT),
     on new Gui tab Advanced after Effects, has also debug visuals.
-- Sounds
+- **Sounds**🔊
   - New vehicle sounds for: cars WIP, hovercrafts, drones, hovercars
   - New turbo sound and gear shift
   - WIP ambient track sound (rain, etc)
