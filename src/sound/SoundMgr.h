@@ -29,6 +29,7 @@ private:
 
 	bool  has_start =0, has_stop =0;
 	bool  unpitchable =0;
+	float gain = 1.f;
 
 	Ogre::String sound_names[MAX_SOUNDS_PER_SCRIPT];
 	float        sound_pitches[MAX_SOUNDS_PER_SCRIPT];
@@ -55,7 +56,8 @@ public:
 
 	bool isAudible();
 	void start(), stop(), kill();
-	bool is2D;  // hud sounds, no distance attenuation
+
+	bool is2D =0;  // hud sounds, no distance attenuation
 	void set2D(bool b), setEngine(bool b);
 
 	void seek(float pos);
@@ -70,9 +72,9 @@ private:
 	SoundBase* sounds[MAX_SOUNDS_PER_SCRIPT];
 
 	float pitch_gain[MAX_SOUNDS_PER_SCRIPT];
-	float lastgain;
+	float lastgain = 1.f, gain = 1.f;
 
-	bool engine;
+	bool engine =0;
 };
 
 

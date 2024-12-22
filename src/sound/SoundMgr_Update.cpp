@@ -65,18 +65,19 @@ void Sound::setGain(float value)
 {
 	//if (fabs(lastgain - value) < 0.001f)
 	//	return;
+	float g = value * gain;
 	
 	if (start_sound)
-		start_sound->setGain(value);
+		start_sound->setGain(g);
 
 	for (int i=0; i < templ->free_sound; ++i)
 		if (sounds[i])
-			sounds[i]->setGain(value * pitch_gain[i]);
+			sounds[i]->setGain(g * pitch_gain[i]);
 
 	if (stop_sound)
-		stop_sound->setGain(value);
+		stop_sound->setGain(g);
 
-	lastgain = value;
+	lastgain = g;
 }
 
 void Sound::setEngine(bool b)

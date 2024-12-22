@@ -190,7 +190,7 @@ bool SoundTemplate::setParameter(StringVector vec)
 			LogO("@  Reached MAX_SOUNDS_PER_SCRIPT limit (" + toStr(MAX_SOUNDS_PER_SCRIPT) + ")");
 			return false;
 		}
-		sound_pitches[free_sound] = StringConverter::parseReal(vec[1]);  // unpitched = 0.0
+		sound_pitches[free_sound] = s2r(vec[1]);  // unpitched = 0.0
 		if (sound_pitches[free_sound] == 0)
 			unpitchable = true;
 
@@ -201,6 +201,11 @@ bool SoundTemplate::setParameter(StringVector vec)
 		++free_sound;
 		return true;
 	}
+	else if (vec[0] == "gain")
+	{
+		if (vec.size() < 2)  return false;
+		gain = s2r(vec[1]);
+	}	
 	return false;
 }
 
@@ -211,8 +216,6 @@ int Sound::instances = 0;
 
 Sound::Sound(SoundTemplate* tpl, SoundBaseMgr* mgr1)
 	:templ(tpl), sound_mgr(mgr1)
-	,start_sound(0), stop_sound(0)
-	,lastgain(1.0f), is2D(false), engine(false)
 {
 	++instances;
 	//  create sounds
@@ -228,6 +231,7 @@ Sound::Sound(SoundTemplate* tpl, SoundBaseMgr* mgr1)
 	//if (tpl->free_sound > 0)
 		setPitch(1.f);
 	setGain(0.f);
+	lastgain = gain = tpl->gain;  //`?
 
 	//LogO("@  Sound created: "+name+" "+toStr(tpl->free_sound));
 }
