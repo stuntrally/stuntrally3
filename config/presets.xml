@@ -1494,6 +1494,6 @@ common:  sc - "short scenery name" (name color)
 <o o="wood_block"              s="hud/chk" />
 <o o="wooden_barrel_big"       s="hud/chk" />
 <o o="wooden_barrel"           s="hud/chk" />
-
+      
 
 </presets>

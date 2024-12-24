@@ -56,33 +56,36 @@ friction = 0.3
 #  engine
 #---------------------------
 [ engine ]
-sound = engine
+sound = v12d
 position = 0.0, -0.52, 0.25
 mass = 230.0
-rpm-limit = 8500
+rpm-limit = 10500
 inertia = 0.30
 start-rpm = 1000
 stall-rpm = 650
 fuel-consumption = 1e-9
 friction = 230
 torque-val-mul = 0.81
-torque-curve-00 = 1000, 321
-torque-curve-01 = 1500, 475
-torque-curve-02 = 2000, 558
-torque-curve-03 = 2500, 606
-torque-curve-04 = 3000, 637
-torque-curve-05 = 3500, 662
-torque-curve-06 = 4000, 680
-torque-curve-07 = 4500, 694
-torque-curve-08 = 5000, 704
-torque-curve-09 = 5500, 712
-torque-curve-10 = 6000, 720
-torque-curve-11 = 6500, 716
-torque-curve-12 = 7000, 702
-torque-curve-13 = 7500, 684
-torque-curve-14 = 8000, 656
-torque-curve-15 = 8500, 618
-torque-curve-16 = 9000, 525
+torque-curve-00 = 1000, 291
+torque-curve-01 = 1500, 375
+torque-curve-02 = 2000, 428
+torque-curve-03 = 2500, 476
+torque-curve-04 = 3000, 517
+torque-curve-05 = 3500, 556
+torque-curve-06 = 4000, 590
+torque-curve-07 = 4500, 624
+torque-curve-08 = 5000, 654
+torque-curve-09 = 5500, 676
+torque-curve-10 = 6000, 690
+torque-curve-11 = 6500, 704
+torque-curve-12 = 7000, 710
+torque-curve-13 = 7500, 706
+torque-curve-14 = 8000, 698
+torque-curve-15 = 8500, 686
+torque-curve-16 = 9000, 660
+torque-curve-17 = 9500, 630
+torque-curve-18 = 10000, 600
+torque-curve-19 = 10500, 565
 real-pow-tq-mul = 1.25
 
 [ clutch ]
@@ -100,10 +103,10 @@ gear-ratio-4 = 1.46
 gear-ratio-5 = 1.18
 gear-ratio-6 = 0.97
 gear-ratio-7 = 0.84
-shift-delay = 0.08
+shift-delay = 0.03
 
 [ differential ]
-final-drive = 3.9
+final-drive = 4.9
 anti-slip = 500.0
 
 [ fuel-tank ]
