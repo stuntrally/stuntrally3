@@ -47,7 +47,7 @@ friction = 0.4
 #  engine
 #---------------------------
 [ engine ]
-sound = engine
+sound = su-ss
 position = 0.0, 0.9, 0.4
 mass = 190.0
 rpm-limit = 6700

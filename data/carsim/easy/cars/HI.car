@@ -46,7 +46,7 @@ friction = 0.4
 #  engine
 #---------------------------
 [ engine ]
-sound = engine
+sound = su-oe
 position = 0.0, 0.7, 0.45
 mass = 170.0
 rpm-limit = 6600

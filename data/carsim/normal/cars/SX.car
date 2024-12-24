@@ -59,8 +59,8 @@ friction = 0.4
 #---------------------------
 [ turbo ]
 sound = turbo4
-vol-max = 0.5
-vol-idle = 0.05
+vol-max = 0.2
+vol-idle = 0.01
 rpm-max = 7000
 rpm-min = 3500
 

@@ -7,42 +7,6 @@ http://creativecommons.org/licenses/by/3.0/
 http://creativecommons.org/publicdomain/zero/1.0/
 
 
-------------
-
-// todo: not done yet  vv
-Name: Time warp effect
-Author: chinomaker    License: CC-0    Date: October 12th, 2015
-https://freesound.org/people/chinomaker/sounds/324644/
-
-
-Name: Hollow_metal_bang_sound_03.mp3  Hollow_metal_bang_sound_04.mp3  Hollow_metal_bang_sound_02.mp3  Hollow_metal_bang_sound_01.mp3
-Author: Artninja    License: CC-BY-4.0    Date: August 21st, 2023
-https://freesound.org/people/Artninja/sounds/699996/	https://freesound.org/people/Artninja/sounds/699997/
-https://freesound.org/people/Artninja/sounds/699995/	https://freesound.org/people/Artninja/sounds/699994/
-
-Name: Metal_impact_banging_sounds_06222024
-Author: Artninja    License: CC-BY-4.0    Date: June 23rd, 2024
-https://freesound.org/people/Artninja/sounds/742827/
-
-Name: vine stretch with hit.wav
-Author: Halleck    License: CC-BY-4.0    Date: June 1st, 2011
-https://freesound.org/people/Halleck/sounds/121734/
-
-Name: Slide Thump.wav
-Author: barrigan    License: CC-BY-3.0    Date: Sep 22nd, 2008
-https://freesound.org/people/barrigan/sounds/60644/
-
-Name: Concrete block hitting the ground.flac
-Author: CGEffex    License: CC-BY-4.0    Date: April 3rd, 2010
-https://freesound.org/people/CGEffex/sounds/93959/
-
-Bassy Tire Hit
-Author: The_Matt_Freeman    License: CC-BY-3.0    Date: March 12th, 2014
-https://freesound.org/people/The_Matt_Freeman/sounds/222756/
-
-// todo: end ^^
-
-
 -------- SR 2 old  fluids/*  hit/*  --------
 
 ---- fluids/water*.wav  fluids/mud1.wav
@@ -86,16 +50,18 @@ New car engines recorded in engine-sim 0.1.14,
 https://github.com/Engine-Simulator/engine-sim-community-edition
 https://github.com/ange-yaghi/engine-sim
 
-at steady rpm values: 1000,2000,..,8000 or max.
+at steady rpm values: 1000,2000,.. until last possible
 Then cut in Audacity and applied Curve EQ.
 More info in: https://github.com/stuntrally/stuntrally3/issues/7
-Curve EQ peaks at about:
+
+Curve EQ peaks at about for su-mid:
 50, 100, highest here: 183, 200 Hz, less: 400, 600, then: 2k-4k Hz
 // todo: put wav and presets into blendfiles repo..
 
-Author: CryHam   License: CC-BY-4.0    Date: Dec 16, 2024
-files:
-su-*.wav
+Author: CryHam   License: CC-BY-4.0    Date: 24-12-2024
+Files e.g.:  su-*.wav  and
+All series:  *-n.wav
+n = number: 1,2,3, etc (usually 8)  n *= 1000rpm
 
 
 ------------  vehicle/*  ------------
@@ -108,19 +74,19 @@ https://creativecommons.org/licenses/sampling+/1.0/
 https://freesound.org/people/nathanshadow/sounds/22455/
 
 
----- turbo2bs.wav  turbo2s.wav
+---- turbo2.wav
 Author: CryHam
 made entirely in Audacity, from noise
 License: CC-0
 
----- turbo3.wav  turbo4.wav
-made from:    by CryHam, using Curve EQ in Audacity
+---- turbo3.wav  turbo3c.wav  turbo4,4c,5,6,7,8
+made by CryHam, using Curve EQ in Audacity, from:  
 Name: fuchslienshroud.wav
 Author: shimsewn    License: CC-BY-4.0    Date: Jan 13th, 2010
 https://freesound.org/people/shimsewn/sounds/87606/
 
 
----- gear_shift1
+---- gear_shift
 gear_shift1.wav   from crash/01.wav
 gear_shift4a.wav  from crash/04.wav
 gear_shift4b.wav  from crash/04.wav

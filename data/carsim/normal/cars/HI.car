@@ -56,10 +56,19 @@ fluidTrigH = 0.0
 friction = 0.4
 
 
+#  turbo sound  wip
+#---------------------------
+[ turbo ]
+sound = turbo7
+vol-max = 0.8
+vol-idle = 0.05
+rpm-max = 7000
+rpm-min = 3500
+
 #  engine
 #---------------------------
 [ engine ]
-sound = engine
+sound = su-oe
 position = 0.0, 0.7, 0.45
 mass = 170.0
 rpm-limit = 6600

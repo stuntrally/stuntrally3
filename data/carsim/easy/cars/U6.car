@@ -58,7 +58,7 @@ buoy_Mul = 1.0
 #  engine
 #---------------------------
 [ engine ]
-sound = engine
+sound = electric
 position = 0.0, 0.1, 0.2
 mass = 180.0
 rpm-limit = 7300

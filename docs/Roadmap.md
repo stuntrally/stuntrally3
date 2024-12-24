@@ -16,12 +16,8 @@ Priorities marked: !, `crucial`, **Next or Big**, _Important_.
 `ed` apply shadows crash  
 ed fix *brushes* png load
 
-! add **sounds**🔊  
 🌧️ Ambient [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
-📦 object *hit* sounds  
-
-replace all `engine` sounds *wip:
-- YG*,Y7*, FN,S8,ES, HI,SZ, XZ*, TW*,TU, BE, FR4*,HR,LK4, MO*, OT*
+📦 object *hit* sounds🔊  
 
 fix *tracks*:  
 MogFoss waterfals up, Preyth bld up-  

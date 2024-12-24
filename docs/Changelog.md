@@ -4,10 +4,15 @@ This section lists changes not yet released, but committed to repositories stunt
 WIP means work in progress, unfinished, still being developed.
 
 - 3 [New tracks](https://groups.f-hub.org/d/ZXVHk6du/new-tracks-in-sr-3-3)
+- **Sounds**🔊
+  - New **vehicle sounds** for: cars (combustion engines), hovercrafts, drones, hovercars
+  - New turbo sound and gear shift
+  - WIP ambient track sound (rain, etc)
+  - WIP dynamic objects hit sounds
 - **Effects**, all require (Water) Refractions on, to work
   - **SSAO** (ambient occlusion, on Effects tab)
   - lens flare (sun glow in camera)
-  - sunbeams (rays), most visible on sunset tracks
+  - sunbeams🌄 (rays), most visible on sunset tracks
 - Compositor rewrite, created in code
   - SplitScreen uses RTTs, smaller Hud fonts
     - Refractions work, SSAO too
@@ -15,11 +20,6 @@ WIP means work in progress, unfinished, still being developed.
   - WIP try, *not useful*, no effect on terrain [issue](https://github.com/OGRECave/ogre-next/issues/475)  
     Global Illumination ([GI methods](https://ogrecave.github.io/ogre-next/api/latest/_gi_methods.html): IFD+VCT),
     on new Gui tab Advanced after Effects, has also debug visuals.
-- **Sounds**🔊
-  - New vehicle sounds for: cars WIP, hovercrafts, drones, hovercars
-  - New turbo sound and gear shift
-  - WIP ambient track sound (rain, etc)
-  - WIP dynamic objects hit sounds
 - Game
   - Setup - Paints tab new *filter* slider, to show paints only from filter rating and above.  
     But editing paints list must be done w/o filter, on highest value.

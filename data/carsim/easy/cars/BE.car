@@ -62,6 +62,7 @@ buoy_Mul = 0.7
 #  engine
 #---------------------------
 [ engine ]
+sound = ct-v8-be
 position = 0.0, 0.02, 0.05
 mass = 50.0
 rpm-limit = 6000

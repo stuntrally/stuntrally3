@@ -61,10 +61,19 @@ fluidTrigH = 0.0
 friction = 0.3
 
 
+#  turbo sound
+#---------------------------
+[ turbo ]
+sound = turbo2
+vol-max = 0.2
+vol-idle = 0.01
+rpm-max = 8000
+rpm-min = 3000
+
 #  engine
 #---------------------------
 [ engine ]
-sound = engine
+sound = v8f
 position = 0.0, -0.52, 0.25
 mass = 230.0
 rpm-limit = 8500

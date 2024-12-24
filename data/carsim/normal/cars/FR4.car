@@ -60,7 +60,8 @@ friction = 0.4
 #  engine
 #---------------------------
 [ engine ]
-sound = engine
+#sound = ct-v8
+sound = gv8
 position = 0.0, 1.33, 0.8
 mass = 180.0
 rpm-limit = 6300

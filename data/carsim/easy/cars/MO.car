@@ -58,6 +58,7 @@ buoy_Mul = 1.0
 #  engine
 #---------------------------
 [ engine ]
+sound = exh
 position = 0.0, 0.0, 0.34
 mass = 180.0
 rpm-limit = 6300

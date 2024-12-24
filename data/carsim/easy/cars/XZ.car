@@ -52,7 +52,7 @@ friction = 0.4
 #  engine
 #---------------------------
 [ engine ]
-sound = su-low
+sound = b-i6r
 position = 0.0, 0.52, 0.45
 mass = 230.0
 rpm-limit = 8000
