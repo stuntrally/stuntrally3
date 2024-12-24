@@ -46,6 +46,11 @@ https://freesound.org/people/Halleck/sounds/121645/
 
 
 ------------  vehicle/*  engines  ------------
+
+Author: CryHam   License: CC-BY-4.0    Date: 24-12-2024
+All series:  *-n.wav   (e.g.:  su-*.wav)
+n = number: 1,2,3, etc (usually 8)  n *= 1000rpm
+
 New car engines recorded in engine-sim 0.1.14,
 https://github.com/Engine-Simulator/engine-sim-community-edition
 https://github.com/ange-yaghi/engine-sim
@@ -58,14 +63,8 @@ Curve EQ peaks at about for su-mid:
 50, 100, highest here: 183, 200 Hz, less: 400, 600, then: 2k-4k Hz
 // todo: put wav and presets into blendfiles repo..
 
-Author: CryHam   License: CC-BY-4.0    Date: 24-12-2024
-Files e.g.:  su-*.wav  and
-All series:  *-n.wav
-n = number: 1,2,3, etc (usually 8)  n *= 1000rpm
 
-
-------------  vehicle/*  ------------
-
+------------  vehicle/*  other  ------------
 
 ---- boost.wav
 Name: Thruster_Level_II.aif
