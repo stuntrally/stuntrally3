@@ -194,17 +194,6 @@ foreach( EXE ${EXE_LIST} )
 
     if (WIN32)
         install(TARGETS ${EXE} DESTINATION .)
-
-        # add a post-build command to copy DLLs beside the executable
-        add_custom_command(
-            TARGET ${EXE}
-            POST_BUILD
-            COMMAND ${CMAKE_COMMAND}
-                -DEXECUTABLE="$<TARGET_FILE:${EXE}>"
-                -DBIN_DIR="${CMAKE_BINARY_DIR}"
-                -DLIB_DIR="$<TARGET_FILE_DIR:${EXE}>"
-                -P "${CMAKE_SOURCE_DIR}/CMake/FixupBundle.cmake"
-        )
     endif ()
 endforeach ()
 

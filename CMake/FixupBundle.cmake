@@ -1,5 +1,4 @@
 include(BundleUtilities)
-include(${BIN_DIR}/cmake/ConanBinDirs.cmake)
 
 if (APPLE)
   set(PLUGIN_EXTENSION "dylib")
