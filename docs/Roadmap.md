@@ -11,7 +11,7 @@ Priorities marked: !, `crucial`, **Next or Big**, _Important_.
 📽️ new game **video**  
 *editor videos* all new  
 
-*new* tracks ghosts, add to champs, challs 🏆  
+*new* tracks add to champs, challs 🏆  
 
 `ed` apply shadows crash  
 ed fix *brushes* png load
