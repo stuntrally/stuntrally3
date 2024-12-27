@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-27 22:08+0100\n"
-"PO-Revision-Date: 2024-12-03 21:00+0000\n"
+"PO-Revision-Date: 2024-12-27 23:00+0000\n"
 "Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/pl/>\n"
@@ -18,10 +18,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
-"(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && ("
+"n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
 "n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-"X-Generator: Weblate 5.9-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #. General 
 #: data/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -7383,6 +7383,9 @@ msgid ""
 "long as you want. By default both your best ghost drive and track's guide "
 "car will be present."
 msgstr ""
+"W trybie Pojedynczego Wyścigu, możesz jeździć i ćwiczyć dowolną pojedynczą "
+"trasę, tak długo jak chcesz. Domyślnie będą obecne zarówno twój duch "
+"najlepszego przejazdu i auto przewodnika trasy."
 
 #. GAME types  info text,  MAIN Menu top 
 #: data/gui/Game_Main.layout:326 ..NewGame-GameTypes.Button
@@ -7392,6 +7395,8 @@ msgid ""
 "In Split Screen mode, more players (up to six) on one computer can play on "
 "any single track."
 msgstr ""
+"W trybie Ekranu Dzielonego, więcej graczy (góra sześć) na jednym komputerze "
+"może grać na dowolnej pojedynczej trasie."
 
 #. GAME types  info text,  MAIN Menu top 
 #: data/gui/Game_Main.layout:346 ..NewGame-GameTypes.Button
@@ -7402,6 +7407,10 @@ msgid ""
 "over internet. See info on Settings tab. Direct connect is needed (need to "
 "know IPs). And for internet, game ports need forwarding on routers."
 msgstr ""
+"W trybie Wieloosobowym gracze mogą grać w sieci lokalnej lub łączyć się "
+"przez Internet. Zobacz informacje na karcie Ustawienia. Wymagane jest "
+"połączenie bezpośrednie (trzeba znać adresy IP). W przypadku Internetu porty "
+"gry wymagają przekierowania na routerach."
 
 #. GAME types  info text,  MAIN Menu top 
 #: data/gui/Game_Main.layout:366 ..NewGame-GameTypes.Button :385
