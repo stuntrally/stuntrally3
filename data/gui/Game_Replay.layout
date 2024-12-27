@@ -203,11 +203,11 @@
 			<Property key="Colour" value="0.6 0.8 1"/>
 			<Property key="Alpha" value="0.6"/>
 		</Widget>
-		<Widget type="Widget" skin="PanelSkin" position="280 3 80 28">
+		<Widget type="Widget" skin="PanelSkin" position="270 3 100 28">
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="Colour" value="0.9 0.92 1"/>
 			<Property key="Alpha" value="0.6"/>
-			<Widget type="TextBox" skin="TextBox" position="0 2 75 24" name="RplPercent">
+			<Widget type="TextBox" skin="TextBox" position="0 2 95 24" name="RplPercent">
 				<Property key="InheritsAlpha" value="false"/>
 				<Property key="Alpha" value="1"/>
 				<Property key="TextColour" value="0.9 0.92 1.0"/>
@@ -215,7 +215,7 @@
 				<Property key="FontName" value="hud.replay"/>
 			</Widget>
 		</Widget>
-		<Widget type="Widget" skin="PanelSkin" position="380 3 100 28">
+		<Widget type="Widget" skin="PanelSkin" position="380 3 105 28">
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="Colour" value="0.9 0.96 1.0"/>
 			<Property key="Alpha" value="0.6"/>
@@ -227,7 +227,7 @@
 				<Property key="FontName" value="hud.replay"/>
 			</Widget>
 		</Widget>
-		<Widget type="Widget" skin="PanelSkin" position="500 3 100 28">
+		<Widget type="Widget" skin="PanelSkin" position="500 3 105 28">
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="Colour" value="0.8 0.9 1"/>
 			<Property key="Alpha" value="0.5"/>
