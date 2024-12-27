@@ -105,7 +105,9 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 						sv->Init("ShadowSize",	&pSet->g.shadow_size, 0,NumTexSizes-1);   sv->DefaultI(3);
 	sv= &svShadowDist;	sv->Init("ShadowDist",	&pSet->g.shadow_dist, 20.f,5000.f, 3.f, 0,3, 1.f," m");  sv->DefaultF(600.f);  // todo: splits?
 	sv= &svShadowFilter;sv->Init("ShadowFilter",&pSet->g.shadow_filter, 0,4, 1);  sv->DefaultI(2);  // PCF_2x2..6x6
+#ifndef SR_EDITOR  // game  // todo: fix ed
 	BtnC("ApplyShadows", btnShadowsApply);
+#endif
 
 	//  💡 Lights
 	//------------------------------------------------------------
@@ -140,10 +142,12 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 																	SevC(ReflDist);  sv->DefaultF(1000.f);
 	sv= &svReflIbl;		sv->Init("ReflIbl",		&pSet->g.refl_ibl,	0,8, 2.f);  SevC(ReflIbl);  sv->DefaultI(5);
 	sv= &svReflLod;		sv->Init("ReflLod",		&pSet->g.refl_lod,	0.01f,4.f, 1.5f);  SevC(ReflLod);  sv->DefaultF(0.4f);
+#ifndef SR_EDITOR  // game  // todo: fix ed
 	BtnC("ApplyRefl", btnReflApply);
+#endif
 	/*sv= &svReflMode;  // todo: 1 cube refl for each car..
 	sv->strMap[0] = TR("#{ReflMode_static}");  sv->strMap[1] = TR("#{ReflMode_single}");
-	sv->strMap[2] = TR("#{ReflMode_full}");
+	sv->strMap[2] = TR("#{ReflMode_full}");	
 	sv->Init("ReflMode",	&pSet->refl_mode,   0,2);  SevC(ReflMode);  sv->DefaultI(1);*/
 
 	//  🌊 Water  // todo:
@@ -462,9 +466,15 @@ void CGuiCom::btnVegetApply(WP)
 //  🌒 shadows
 void CGuiCom::btnShadowsApply(WP)
 {
+#ifdef SR_EDITOR
+	app->DestroyRnd2Tex();  // todo: fix minimap after
+#endif
 	app->SetupCompositors();  //
 	// app->setupShadowCompositor();  // fixme crash ws def..
 	app->updShadowFilter();  // works
+#ifdef SR_EDITOR
+	app->CreateRnd2Tex();
+#endif
 }
 
 void CGuiCom::slWaterDist(SV*)
@@ -493,8 +503,14 @@ void CGuiCom::slReflLod(SV* sv)
 
 void CGuiCom::btnReflApply(WP)
 {
+#ifdef SR_EDITOR
+	app->DestroyRnd2Tex();  // todo: fix minimap after
+#endif
 	// app->CreateCubeReflect();
 	app->SetupCompositors();  //
+#ifdef SR_EDITOR
+	app->CreateRnd2Tex();
+#endif
 }
 
 

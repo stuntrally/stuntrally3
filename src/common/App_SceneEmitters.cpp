@@ -89,7 +89,7 @@ void SField::UpdEmitter()
 	Vector3 v = SplineRoad::GetRot(yaw, pitch);
 	ps->getEmitter(0)->setDirection(v);
 	dir.setX(v[0]);  dir.setY(-v[2]);  dir.setZ(v[1]);
-	LogO("Field dir "+toStr(v));
+	// LogO("Field dir "+toStr(v));
 }
 
 void CScene::DestroyEmitters(bool clear)
