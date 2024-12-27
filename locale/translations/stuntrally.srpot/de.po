@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-27 22:08+0100\n"
-"PO-Revision-Date: 2024-12-03 21:00+0000\n"
+"PO-Revision-Date: 2024-12-27 23:00+0000\n"
 "Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/de/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.9-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #. General 
 #: data/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -7379,6 +7379,9 @@ msgid ""
 "long as you want. By default both your best ghost drive and track's guide "
 "car will be present."
 msgstr ""
+"Im Einzelrennen-Modus können Sie jede beliebige Strecke so lange fahren und "
+"üben, wie Sie wollen. Standardmäßig werden sowohl Ihr bester Ghost Drive als "
+"auch das Führungsfahrzeug der Strecke angezeigt."
 
 #. GAME types  info text,  MAIN Menu top 
 #: data/gui/Game_Main.layout:326 ..NewGame-GameTypes.Button
@@ -7388,6 +7391,8 @@ msgid ""
 "In Split Screen mode, more players (up to six) on one computer can play on "
 "any single track."
 msgstr ""
+"Im Split-Screen-Modus können mehrere Spieler (bis zu sechs) an einem "
+"Computer auf einer einzigen Strecke spielen."
 
 #. GAME types  info text,  MAIN Menu top 
 #: data/gui/Game_Main.layout:346 ..NewGame-GameTypes.Button
@@ -7398,6 +7403,11 @@ msgid ""
 "over internet. See info on Settings tab. Direct connect is needed (need to "
 "know IPs). And for internet, game ports need forwarding on routers."
 msgstr ""
+"Im Mehrspielermodus können die Spieler entweder im lokalen Netzwerk spielen "
+"oder eine Verbindung über das Internet herstellen. Siehe Informationen auf "
+"der Registerkarte Einstellungen. Eine direkte Verbindung ist erforderlich ("
+"Sie müssen die IPs kennen). Und für das Internet müssen die Spielports auf "
+"den Routern weitergeleitet werden."
 
 #. GAME types  info text,  MAIN Menu top 
 #: data/gui/Game_Main.layout:366 ..NewGame-GameTypes.Button :385
