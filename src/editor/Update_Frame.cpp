@@ -8,6 +8,7 @@
 #include "Road.h"
 #include "PaceNotes.h"
 #include "Grass.h"
+#include "paths.h"
 
 #include "MultiList2.h"
 // #include "RenderBoxScene.h"
@@ -103,6 +104,17 @@ void App::UpdateEnd(float dt)
 			gui->vSubTabsEdit[TAB_Terrain]->getIndexSelected() == 5;  // tab
 		ndTerGen->setVisible(vis);
 	}
+
+	//  🖌️ load terrain brushes prv, once visible
+	static int brushes = 0;
+	if (bGuiFocus && mWndEdit && brushes < 2 &&
+			mWndEdit->getVisible() && mTabsEdit->getIndexSelected() == TAB_Terrain &&
+			gui->vSubTabsEdit.size() > TAB_Terrain &&
+			gui->vSubTabsEdit[TAB_Terrain]->getIndexSelected() == 3)  // tab
+	{	++brushes;
+		prvBrushes.Load(PATHS::UserConfigDir()+"/brushes.png",1);
+	}
+
 
 	//  track events
 	if (eTrkEvent != TE_None)

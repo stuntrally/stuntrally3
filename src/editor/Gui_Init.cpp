@@ -224,7 +224,6 @@ void CGui::InitGui()
 	// app->prvBrushes.Load(usrPrv,1);  // doesnt show
 
 	btnBrushesLoad(0);
-	// GuiShortcut(WND_Edit, TAB_Terrain,2);  // test, shows
 
 	//  🖌️ brush params
 	sv= &svBrSize;	sv->Init("BrSize",	&f, 2.f,BrushMaxSize, 2.f, 1,4);  sv->DefaultF(20.f);  //Sev(UpdBr);

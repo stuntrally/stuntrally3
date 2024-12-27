@@ -279,11 +279,6 @@ void App::NewCommon(bool onlyTerVeget)
 
 	if (!onlyTerVeget)
 		MinimizeMemory();  // !
-
-
-	//  meh, works
-	for (int i=0; i<2; ++i)
-		prvBrushes.Load(PATHS::UserConfigDir()+"/brushes.png",1);
 }
 
 ///  Load
