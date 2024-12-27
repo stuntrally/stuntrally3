@@ -1,9 +1,7 @@
 #include "pch.h"
 #include "Def_Str.h"
-#include "CData.h"
-#include "TracksXml.h"
-#include "GuiCom.h"
 #include "App.h"
+#include "BaseApp.h"
 #include "CGui.h"
 #include "MultiList2.h"
 #include <MyGUI.h>
@@ -136,16 +134,20 @@ void CGui::updGameInfo()
 			pSet->ySetup == Setup_Simulation ? TR("#{SimulationHelp}") : "");
 		return;
 	}
-	int g = pSet->yGames;
-	bool game = g == Games_Single,  champ = g == Games_Champ,
-		tutor = g == Games_Tutorial, chall = g == Games_Challenge,
-		collect = g == Games_Collection;//, career = g == Games_Career;
-	edGameInfo->setCaption(
-		// career ? "" :
-		collect ? TR("#{CollectInfo}") :
-		chall ? TR("#{ChallInfo2}")+"\n"+TR("#{ChallInfo}") :
-		tutor ? TR("#{TutorInfo}")+"\n"+TR("#{ChampInfo}") :
-		champ ? TR("#{ChampInfo2}")+"\n"+TR("#{ChampInfo}") : "");
+	UString s;
+	switch (pSet->yGames)
+	{
+	case Games_Single:       s = TR("#{SingleRaceInfo}");  break;
+	case Games_SplitScreen:  s = TR("#{SplitScreenInfo}");  break;
+	case Games_Multiplayer:  s = TR("#{MultiplayerInfo}");  break;
+
+	case Games_Tutorial:     s = TR("#{TutorInfo}")+"\n"+TR("#{ChampInfo}");  break;
+	case Games_Champ:        s = TR("#{ChampInfo2}")+"\n"+TR("#{ChampInfo}");  break;
+	case Games_Challenge:    s = TR("#{ChallInfo2}")+"\n"+TR("#{ChallInfo}");  break;
+	case Games_Collection:   s = TR("#{CollectInfo}");  break;
+	// case Games_Career:       s = TR("#{CareerInfo}");  break;
+	}
+	edGameInfo->setCaption(s);
 
 	// if (liChamps->getVisible() && liChamps->getIndexSelected() == -1)
 	// 	return;

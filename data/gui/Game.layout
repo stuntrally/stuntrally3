@@ -2096,11 +2096,18 @@
 					</Widget>
 				</Widget>
 
-				<Widget type="Button" skin="CheckBox" position="32 511 160 24" name="Ch_All">
-					<Property key="Caption" value="#{RplAll}"/>
-					<Property key="TextColour" value="0.75 0.7 0.85"/>
+				<Widget type="ImageBox" skin="ImageBox" position="750 176 24 24">
+					<Property key="ImageCoord" value="640 896 128 128"/>
+					<Property key="Alpha" value="0.6"/>
+					<Property key="ImageTexture" value="gui_icons.png"/>
+					<Property key="NeedMouse" value="false"/>
 				</Widget>
-				<Widget type="Button" skin="CheckBox" position="630 511 160 24" name="ChampRev">
+				<Widget type="Button" skin="CheckBox" position="652 180 160 24" name="Ch_All">
+					<Property key="Caption" value="#{RplAll}"/>
+					<Property key="TextColour" value="0.7 0.85 1.0"/>
+					<Property key="FontName" value="font.big"/>
+				</Widget>
+				<Widget type="Button" skin="CheckBox" position="652 220 160 24" name="ChampRev">
 					<Property key="Caption" value="#{Reverse}"/>
 					<Property key="Colour" value="0.8 1 0.6"/>
 					<Property key="TextColour" value="0.8 1 0.5"/>

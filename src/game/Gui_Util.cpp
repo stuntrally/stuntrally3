@@ -275,7 +275,7 @@ int CGui::LNext(Mli2 lp, int rel, int ofs)
 	int cnt = (int)lp->getItemCount();
 	if (cnt==0)  return 0;
 	if (cnt==1 || abs(rel) >= cnt)
-	{	lp->setIndexSelected(0);  return 1;  }
+	{	lp->setIndexSelected(0);  return 0;  }
 
 	int i = (int)lp->getIndexSelected();
 	//int i = std::max(0, std::min((int)cnt-1, i+rel ));

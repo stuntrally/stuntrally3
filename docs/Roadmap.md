@@ -9,12 +9,9 @@ Priorities marked: !, `crucial`, **Next or Big**, _Important_.
 ### 3.3 !
 
 📽️ new game **video**  
-*editor videos* all new  
 
-*new* tracks add to champs, challs 🏆  
-
-`ed` apply shadows crash  
-ed fix *brushes* png load
+grh opt chk  
+*new* tracks add to challs 🏆  
 
 🌧️ Ambient [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
 📦 object *hit* sounds🔊  
@@ -25,6 +22,8 @@ Tiny, Mudflats, Knotted - ssao bad alpha bridge
 MiningCity, KapabaRiv, Overgrowth, Glitchy - road segs white blend transp/invisible  
 
 ### 3.4
+
+*editor videos* all new  
 
 ! auto road/ter **Surface**: Particles, trail, fix clr, sounds, from `presets.xml` not per track  
 new road particles  
@@ -41,6 +40,8 @@ finish remove all non **CC** data, [new topic](https://groups.f-hub.org/d/pIoLYC
 
 
 ### 🏗️ Editor
+
+fix ed btn: ApplyRefl, ApplyShadows
 
 ! **ed key** for obj random rot, yaw, set up/dn y +-90  
 ed add underwater  

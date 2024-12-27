@@ -306,6 +306,7 @@
 			<Property key="TextColour" value="1.0 0.9 0.6"/>
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="FontName" value="font.big"/>
+			<UserString key="tip" value="#{SingleRaceInfo}"/>
 		</Widget>
 
 		<Widget type="ImageBox" skin="ImageBox" position="32 92 56 56">
@@ -323,6 +324,7 @@
 			<Property key="Colour" value="0.3 0.9 0.9"/>
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="FontName" value="font.big"/>
+			<UserString key="tip" value="#{SplitScreenInfo}"/>
 		</Widget>
 
 		<Widget type="ImageBox" skin="ImageBox" position="32 164 56 56">
@@ -342,6 +344,7 @@
 			<Property key="Colour" value="0.3 0.6 1"/>
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="FontName" value="font.big"/>
+			<UserString key="tip" value="#{MultiplayerInfo}"/>
 		</Widget>
 
 		<!-- 2nd column -->
@@ -361,7 +364,7 @@
 			<Property key="TextColour" value="1.0 0.7 0.4"/>
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="FontName" value="font.big"/>
-			<UserString key="tip" value="#{TutorInfo}\n#{ChampInfo}"/>
+			<UserString key="tip" value="#{TutorInfo} #{ChampInfo}"/>
 		</Widget>
 
 		<Widget type="ImageBox" skin="ImageBox" position="532 164 56 56">
@@ -380,7 +383,7 @@
 			<Property key="TextColour" value="0.6 1 0.6"/>
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="FontName" value="font.big"/>
-			<UserString key="tip" value="#{ChampInfo2}\n#{ChampInfo}"/>
+			<UserString key="tip" value="#{ChampInfo2} #{ChampInfo}"/>
 		</Widget>
 
 		<Widget type="ImageBox" skin="ImageBox" position="532 236 56 56">
@@ -399,7 +402,7 @@
 			<Property key="TextColour" value="0.8 0.8 1"/>
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="FontName" value="font.big"/>
-			<UserString key="tip" value="#{ChallInfo2}\n#{ChallInfo}"/>
+			<UserString key="tip" value="#{ChallInfo2} #{ChallInfo}"/>
 		</Widget>
 
 		<!--  +8 img  0 pan  +12 btn   +72  rows  0 y = 12 84 156 228 300 372 444 516 -580 -->
@@ -442,6 +445,7 @@
 			<Property key="TextColour" value="1 0.6 0.6"/>
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="FontName" value="font.big"/>
+			<UserString key="tip" value="#{CareerInfo}"/>
 		</Widget> -->
 		
 		<!-- stats -->
