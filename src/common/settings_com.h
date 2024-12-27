@@ -1,6 +1,10 @@
 #pragma once
 #include "configfile.h"
 
+
+#define SET_VER  3303  // 3.3.0
+
+
 enum EShadowType
 {	Sh_None=0, Sh_Depth, Sh_Soft  };
 

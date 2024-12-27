@@ -5,9 +5,6 @@
 #include "protocol.hpp"
 
 
-#define SET_VER  3302  // 3.3.0
-
-
 enum eGraphType  {
 	Gh_Fps=0,   // 📊
 	Gh_CarAccelG,  // 🚗
