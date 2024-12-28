@@ -112,10 +112,13 @@ void SETcom::SerializeCommon(bool w, CONFIGFILE & c)
 	Param(c,w, "sound.vol_gear", s.vol_gear);
 	Param(c,w, "sound.vol_tires", s.vol_tires);				Param(c,w, "sound.vol_env", s.vol_env);
 	Param(c,w, "sound.vol_susp", s.vol_susp);
+	
 	Param(c,w, "sound.vol_fl_splash", s.vol_fl_splash);		Param(c,w, "sound.vol_fl_cont", s.vol_fl_cont);
 	Param(c,w, "sound.vol_car_crash", s.vol_car_crash);		Param(c,w, "sound.vol_car_scrap", s.vol_car_scrap);
 	Param(c,w, "sound.hud_vol", s.vol_hud);
 	Param(c,w, "sound.hud_chk", s.snd_chk);					Param(c,w, "sound.hud_chk_wrong", s.snd_chkwr);
+	
+	Param(c,w, "sound.dynamic", s.snd_dynamic);
 #endif  // snd setup
 	Param(c,w, "sound_config.device", s.snd_device);		Param(c,w, "sound_config.reverb", s.snd_reverb);
 	Param(c,w, "sound_config.cnt_sources", s.cnt_sources);	Param(c,w, "sound_config.cnt_dynamics", s.cnt_dynamics);

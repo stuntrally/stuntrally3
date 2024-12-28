@@ -49,7 +49,9 @@ void CGui::FillGameStats()
 				++won;
 			++all;
 		}
-		s += TR("#FFC020#{Tutorial}\n") + "#FFD0B0" + strWon() + " %\n\n";
+		s += TR("#FFC020#{Tutorial}\n") + "#FFD0B0" + strWon() + " %";
+		// if (won == all)  s += TR("  #FFE0D0#{Finished}");
+		s += "\n\n";
 
 		//  championships  ---
 		won = 0;  all = 0;
