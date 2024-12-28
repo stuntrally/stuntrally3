@@ -1116,6 +1116,9 @@
 	<Tag name="ChampEndFinished">Ukończyłeś to mistrzostwo.</Tag>
 	<Tag name="ChallEndFinished">Wygrałeś to wyzwanie.</Tag>
 	<Tag name="ClickInList">Wybierz z listy by przeczytać opis i zacząć.</Tag>
+	<Tag name="SingleRaceInfo">W trybie Pojedynczego Wyścigu, możesz jeździć i ćwiczyć dowolną pojedynczą trasę, tak długo jak chcesz. Domyślnie będą obecne zarówno twój duch najlepszego przejazdu i auto przewodnika trasy.</Tag>
+	<Tag name="SplitScreenInfo">W trybie Ekranu Dzielonego, więcej graczy (góra sześć) na jednym komputerze może grać na dowolnej pojedynczej trasie.</Tag>
+	<Tag name="MultiplayerInfo">W trybie Wieloosobowym gracze mogą grać w sieci lokalnej lub łączyć się przez Internet. Zobacz informacje na karcie Ustawienia. Wymagane jest połączenie bezpośrednie (trzeba znać adresy IP). W przypadku Internetu porty gry wymagają przekierowania na routerach.</Tag>
 	<Tag name="ChampInfo">W samouczkach / mistrzostwach jedzie się serię tras. Minimalne punkty (zależne od czasu) są potrzebne by przejść do następnego odcinka. Zmiana auta jest możliwa.</Tag>
 	<Tag name="ChallInfo">W trybie wyzwań gra ma ustawienia, większość nie może być zmieniona. Czas lub pozycja jest wymagana. Jeśli wygrasz otrzymujesz nagrodę: brąz, srebro lub złoto.</Tag>
 	<Tag name="ChampInfo2">Mistrzostwa są zazwyczaj długie, mają wiele tras, ale są łatwe do przejścia.</Tag>

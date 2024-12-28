@@ -1116,6 +1116,9 @@
 	<Tag name="ChampEndFinished">Je hebt het kampioenschap afgerond.</Tag>
 	<Tag name="ChallEndFinished">Je hebt de uitdaging volbracht.</Tag>
 	<Tag name="ClickInList">Pick in list to read description and start.</Tag>
+	<Tag name="SingleRaceInfo">In Single Race mode, you can drive and practice any single track, for as long as you want. By default both your best ghost drive and track's guide car will be present.</Tag>
+	<Tag name="SplitScreenInfo">In Split Screen mode, more players (up to six) on one computer can play on any single track.</Tag>
+	<Tag name="MultiplayerInfo">In Multiplayer mode, players can play either in local network or connect over internet. See info on Settings tab. Direct connect is needed (need to know IPs). And for internet, game ports need forwarding on routers.</Tag>
 	<Tag name="ChampInfo">In de uitleg- en kampioenschapsmodi moet je een aantal parcours afleggen. Behaal de minimumscore (afhankelijk van je tijd) om de volgende etappe te kunnen afleggen. Je kunt tussentijds van auto wisselen.</Tag>
 	<Tag name="ChallInfo">In de uitdagingsmodus kunnen de meeste instellingen niet worden aangepast. Je moet een bepaalde tijd of positie behalen. Als dat lukt, dan behaal je een bronzen, zilveren of gouden prijs.</Tag>
 	<Tag name="ChampInfo2">Kampioenschappen zijn doorgaans lang en bevatten veel parcours, maar zijn relatief makkelijk te winnen.</Tag>

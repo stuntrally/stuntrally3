@@ -1116,6 +1116,9 @@
 	<Tag name="ChampEndFinished">Вы закончили этот чемпионат.</Tag>
 	<Tag name="ChallEndFinished">Вы прошли этот вызов.</Tag>
 	<Tag name="ClickInList">Pick in list to read description and start.</Tag>
+	<Tag name="SingleRaceInfo">In Single Race mode, you can drive and practice any single track, for as long as you want. By default both your best ghost drive and track's guide car will be present.</Tag>
+	<Tag name="SplitScreenInfo">In Split Screen mode, more players (up to six) on one computer can play on any single track.</Tag>
+	<Tag name="MultiplayerInfo">In Multiplayer mode, players can play either in local network or connect over internet. See info on Settings tab. Direct connect is needed (need to know IPs). And for internet, game ports need forwarding on routers.</Tag>
 	<Tag name="ChampInfo">В обучение/чемпионат режиме вы участвуете в серии из трасс. Минимальный счёт (зависит от времени) необходим чтобы получить доступ к следующему этапу. Возможна замена автомобиля.</Tag>
 	<Tag name="ChallInfo">В режиме вызов игра имеет большинство неизменяемых настроек. Нужно время или позиция. Попробуй получить бронзу, серебро или золото.</Tag>
 	<Tag name="ChampInfo2">Обычно чемпионаты долгие, много трасс, но легко пройти.</Tag>

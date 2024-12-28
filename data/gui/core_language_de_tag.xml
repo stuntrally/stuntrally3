@@ -1116,6 +1116,9 @@
 	<Tag name="ChampEndFinished">Die Meisterschaft wurde erfolgreich beendet!</Tag>
 	<Tag name="ChallEndFinished">Sie haben die Herausforderung gewonnen.</Tag>
 	<Tag name="ClickInList">Wählen Sie in der Liste, um die Beschreibung zu lesen und zu starten.</Tag>
+	<Tag name="SingleRaceInfo">Im Einzelrennen-Modus können Sie jede beliebige Strecke so lange fahren und üben, wie Sie wollen. Standardmäßig werden sowohl Ihr bester Ghost Drive als auch das Führungsfahrzeug der Strecke angezeigt.</Tag>
+	<Tag name="SplitScreenInfo">Im Split-Screen-Modus können mehrere Spieler (bis zu sechs) an einem Computer auf einer einzigen Strecke spielen.</Tag>
+	<Tag name="MultiplayerInfo">Im Mehrspielermodus können die Spieler entweder im lokalen Netzwerk spielen oder eine Verbindung über das Internet herstellen. Siehe Informationen auf der Registerkarte Einstellungen. Eine direkte Verbindung ist erforderlich (Sie müssen die IPs kennen). Und für das Internet müssen die Spielports auf den Routern weitergeleitet werden.</Tag>
 	<Tag name="ChampInfo">Im Tutorial-/Meisterschaftsmodus wird eine Streckenserie gefahren. Eine Mindestpunktzahl, die von der gefahrenen Zeit abhängig ist, ist erforderlich, um die nächste Etappe zu erreichen. Es ist möglich, das Auto zu wechseln.</Tag>
 	<Tag name="ChallInfo">Im Herausforderungsmodus wurde das Spiel fertig aufgesetzt, die meisten Einstellungen sind unveränderlich. Zeit oder Position ist benötigt. Wenn Sie bestehen, gewinnen sie einen Bronze-, Silber- oder Gold-Preis.</Tag>
 	<Tag name="ChampInfo2">Meisterschaften sind meistens lang, haben viele Strecken, aber sind einfach zu bestehen.</Tag>

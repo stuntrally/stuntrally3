@@ -1116,6 +1116,9 @@
 	<Tag name="ChampEndFinished">Vous avez fini ce championnat.</Tag>
 	<Tag name="ChallEndFinished">Vous avez réussi ce défi.</Tag>
 	<Tag name="ClickInList">Pick in list to read description and start.</Tag>
+	<Tag name="SingleRaceInfo">In Single Race mode, you can drive and practice any single track, for as long as you want. By default both your best ghost drive and track's guide car will be present.</Tag>
+	<Tag name="SplitScreenInfo">In Split Screen mode, more players (up to six) on one computer can play on any single track.</Tag>
+	<Tag name="MultiplayerInfo">In Multiplayer mode, players can play either in local network or connect over internet. See info on Settings tab. Direct connect is needed (need to know IPs). And for internet, game ports need forwarding on routers.</Tag>
 	<Tag name="ChampInfo">En mode tutoriel/championnat, vous conduisez sur une série de circuits. Un score minimum (en fonction de votre temps) est nécessaire pour passer au stage suivant. Il est possible d'utiliser n'importe quelle voiture.</Tag>
 	<Tag name="ChallInfo">En mode défi, le jeu est déjà réglé, les paramètres ne peuvent être changés. Un temps ou une position sont nécessaires pour être admis. Si vous êtes admis, vous recevez une médaille de bronze, d'argent ou d'or.</Tag>
 	<Tag name="ChampInfo2">Les championnats sont généralement longs, ont plusieurs circuits, mais sont faciles à réussir.</Tag>

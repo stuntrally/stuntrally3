@@ -1116,6 +1116,9 @@
 	<Tag name="ChampEndFinished">Befejezte ezt a bajnokságot.</Tag>
 	<Tag name="ChallEndFinished">Teljesítetted ezt a kihívást.</Tag>
 	<Tag name="ClickInList">Pick in list to read description and start.</Tag>
+	<Tag name="SingleRaceInfo">In Single Race mode, you can drive and practice any single track, for as long as you want. By default both your best ghost drive and track's guide car will be present.</Tag>
+	<Tag name="SplitScreenInfo">In Split Screen mode, more players (up to six) on one computer can play on any single track.</Tag>
+	<Tag name="MultiplayerInfo">In Multiplayer mode, players can play either in local network or connect over internet. See info on Settings tab. Direct connect is needed (need to know IPs). And for internet, game ports need forwarding on routers.</Tag>
 	<Tag name="ChampInfo">Gyakorlás/bajnokság módban egy pályasorozatot kell végigvezetni. Egy (időn alapuló) minimális pontszám szükséges a következő pályához lépéshez. Az autóváltás lehetséges.</Tag>
 	<Tag name="ChallInfo">Bajnokság módban a játék kezdeti beállítása után a legtöbb beállítás nem változtatható meg. Idő vagy pozíció szükséges. Ha továbbjutsz, akkor bronz, ezüst vagy arany díjat kapsz.</Tag>
 	<Tag name="ChampInfo2">A bajnokságok általában hosszúk, számos pályából állnak, de a továbbjutás könnyű.</Tag>
