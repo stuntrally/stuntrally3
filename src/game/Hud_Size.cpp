@@ -55,12 +55,13 @@ void CHud::Size()
 		{
 			Real sc = pSet->size_gauges * dim.avgsize1;
 			Real spx = sc * 1.1f, spy = spx*asp;
-			//xcRpm = dim.left + spx;   ycRpm =-dim.bottom + spy;
-			xcRpm = dim.right1 - spx*0.5f;  ycRpm =-dim.bottom1 + spy*2.f;
+			xcRpm = dim.right1 - spx*0.5f;  ycRpm = -dim.bottom1 + spy*2.f;
 			xcRpmL= dim.right1 - spx;
-			xcVel = dim.right1 - spx;       ycVel =-dim.bottom1 + spy*0.9f;
+			xcVel = dim.right1 - spx;       ycVel = -dim.bottom1 + spy*0.9f;
 			ygMax = ycVel - sc;  xBFuel = xcVel - sc;
 
+			// LogO(toStr(c)+" =>  x "+fToStr(dim.left1)+"  "+fToStr(dim.right1)+"  y "+fToStr(dim.top1)+"  "+fToStr(dim.bottom1));
+			// LogO(toStr(c)+" =>  vel x "+fToStr(xcVel)+" y "+fToStr(ycVel)+"  rpm x "+fToStr(xcRpm)+" y "+fToStr(ycRpm));
 			h.vcRpm = Vector2(xcRpm,ycRpm);  // store for hr updates
 			h.vcVel = Vector2(xcVel,ycVel);
 			h.fScale = sc;
@@ -89,14 +90,14 @@ void CHud::Size()
 		int vv = pSet->gauges_type > 0 ? -45 : 40;
 		int gx = (xcRpm+1.f)*0.5f*wx - 10, gy = (-ycRpm+1.f)*0.5f*wy +22;
 		int gxL=(xcRpmL+1.f)*0.5f*wx - 10;
-		int vx = (xcVel+1.f)*0.5f*wx + vv, vy = std::min(yMax -91, my - 15);
+		int vx = (xcVel+1.f)*0.5f*wx + vv, vy = std::min(yMax -21, my - 15);
 		int bx =(xBFuel+1.f)*0.5f*wx - 10, by = std::min(yMax -36, my + 5);
 			vx = std::min(vx, xMax -100);
 			bx = std::min(bx, xMax -180);  // not too near to vel
 
 		//  ⏲️ gear, vel
-		const float f = 1.f; //pSet->font_hud * getHudScale();  //?
-		if (h.txGear)  h.txGear->setPosition(gx*f, (gy +10)*f);
+		const float f = 1.f; //pSet->font_hud * getHudScale();  //?-
+		if (h.txGear)  h.txGear->setPosition(      gx*f, (gy +10)*f);
 		if (h.bckGear) h.bckGear->setPosition((gx-12)*f, (gy +10)*f);
 
 		if (h.bckVel)  h.bckVel->setPosition((vx-32)*f, (vy-6)*f);

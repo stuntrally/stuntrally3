@@ -138,8 +138,6 @@ win place twice 1st on Oc, 3plr?
 car glass reflect cube **sky pos** bad on Test1-Flat?  
 -each car own reflect cube  
 
-fix **gauges** etc  
-
 fix .car thrusters lights pos  
 **hide** flares for in car camera  
 
