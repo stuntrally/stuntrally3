@@ -748,6 +748,19 @@ descr="The ultra fast 6x6 vehicle on big fast tracks, some highly banked (tilted
 <!--  ⛈️🌋 Extreme 4  conditions and weather  -->
 <!--========================================================================================================================-->
 
+	<!-- 3.3 -->
+	<challenge name="#60A0FFWet #E0E0E8winter #80C080shorts" ver="1" difficulty="2" type="4"
+descr="Normally driving underwater wouldn't be possible, but here we are. A few tracks with significant parts underwater. Still very slow to do, so you can #2080F0boost always. #80C0F0Or you could pick the fastest U6 Bug vehicle.">
+		<cartype names="Terrain|Extreme" />
+		<sim boost="0" />
+		<pass avgPoints="10" />
+		<tracks>
+			<t name="Wnt2-Wet"         passPoints="9" />
+			<t name="Wnt20-FirstSnow"  passPoints="8" />
+			<t name="Wnt8-PipeCross"   passPoints="7" />
+		</tracks>
+	</challenge>
+
 	<!-- 2.7  1\ -->
 	<challenge name="#F0F0F0Icy #A0A0A0bad weather" ver="1" difficulty="3" type="4"
 descr="Tracks on ice and fog with 4x4 terrain cars.">
@@ -917,18 +930,6 @@ descr="Odd, out of place, bizzare looking tracks in anomaly space with rendering
 			<t name="Ano1-Glitchy"     passPoints="8" />
 			<t name="Ano2-Bug"         passPoints="8" />
 			<t name="Ano3-Oversize"    passPoints="8" />
-		</tracks>
-	</challenge>
-
-	<challenge name="#B0B0B0Urban #407010Decay" ver="1" difficulty="7" type="4"
-descr="The most extremely twisted tracks in decaying urban, apocaliptic locations. Very long tracks with some difficult stunts. But mostly with slow, exhausting twists on road. #2080F0Boost available always and rewind time.">
-		<sim boost="3" flip="2" rewind="2" />
-		<cartype names="Gravel|Asphalt" />
-		<car names="U6|TU|BV" />
-		<pass avgPoints="9" />
-		<tracks>
-			<t name="Stn2-UltraFrenzy"  passPoints="8" />
-			<t name="Apo1-TarFields"    passPoints="8" />
 		</tracks>
 	</challenge>
 
@@ -1137,6 +1138,18 @@ descr="Two new tracks with stunts in normal sceneries. Not very difficult but wi
 		<tracks>
 			<t name="Sav16-StuykoStunting" passPoints="8" />
 			<t name="Des20-DesertCoaster"  passPoints="8" />
+		</tracks>
+	</challenge>
+
+	<challenge name="#B0B0B0Urban #407010Decay" ver="1" difficulty="7" type="5"
+descr="The most extremely twisted tracks in decaying urban, apocaliptic locations. Very long tracks with some difficult stunts. But mostly with slow, exhausting twists on road. #2080F0Boost available always and rewind time.">
+		<sim boost="3" flip="2" rewind="2" />
+		<cartype names="Gravel|Asphalt" />
+		<car names="U6|TU|BV" />
+		<pass avgPoints="9" />
+		<tracks>
+			<t name="Stn2-UltraFrenzy"  passPoints="8" />
+			<t name="Apo1-TarFields"    passPoints="8" />
 		</tracks>
 	</challenge>
 
@@ -1420,7 +1433,7 @@ descr="Control the sphere through half pipes. Not easy. Weird.">
 
 	<!-- 2.7 -->
 	<challenge name="Let's roll" ver="1" difficulty="2" type="7"
-descr="Collection of fast and fun tracks to roll through with the Sphere.">
+descr="One fun track to roll through with the Sphere.">
 		<car names="O" />
 		<hud chkArrow="1" chkBeam="1" />
 		<pass avgPoints="5" />
@@ -1727,7 +1740,7 @@ descr="Hover cars on easy tracks. Latest antigravity technology used for easier 
 		</tracks>
 	</challenge>
 
-	<challenge name="#F08020Hover fast run" ver="1" difficulty="2" type="9"
+	<challenge name="#F08020Hover fast run" ver="2" difficulty="2" type="9"
 descr="Hover cars on medium long tracks. Use boost and go very fast. Our anitgravity stabilizers can handle any acceleration.">
 		<sim boost="3" flip="2" rewind="2" />
 		<cartype names="Hover" />
@@ -1736,7 +1749,6 @@ descr="Hover cars on medium long tracks. Use boost and go very fast. Our anitgra
 			<t name="Wnt6-SnowyEights" passPoints="27" />
 			<t name="Can2-CanyonRun"   passPoints="27" />
 			<t name="Grc2-Coast"       passPoints="28" />
-			<t name="Aus6-Cannon"      passPoints="25" />
 		</tracks>
 	</challenge>
 
@@ -1748,6 +1760,19 @@ descr="For those who like underwater at normal speed. Our hover cars ignore flui
 		<tracks>
 			<t name="Isl20-Atlantis"   passPoints="22" />
 			<t name="Jng26-MilkyWay"   passPoints="20" />
+		</tracks>
+	</challenge>
+
+	<!-- 3.3 -->
+	<challenge name="#60C020Toxicity" ver="1" difficulty="4" type="9"
+descr="Short, mostly easy tracks in toxic and post apocalyptic environments. Completely harmless in hover cars">
+		<sim boost="3" flip="2" rewind="2" />
+		<cartype names="Hover" />
+		<pass avgPoints="21" />
+		<tracks>
+			<t name="Apo2-Toxicity"    passPoints="20" />
+			<t name="Tox2-AcidLakes"   passPoints="20" />
+			<t name="Spc4-Crossing"    passPoints="20" />
 		</tracks>
 	</challenge>
 

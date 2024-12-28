@@ -11,7 +11,6 @@ Priorities marked: !, `crucial`, **Next or Big**, _Important_.
 📽️ new game **video**  
 
 grh opt chk  
-*new* tracks add to challs 🏆  
 
 🌧️ Ambient [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
 📦 object *hit* sounds🔊  
