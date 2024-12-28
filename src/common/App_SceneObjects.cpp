@@ -58,7 +58,7 @@ public:
 	
 	//todo: shape->setUserPointer((void*)SU_ObjectDynamic);  // mark shapes..
 	
-	btCollisionObject* createCollisionObject(const btTransform& startTransform,btCollisionShape* shape, const char* bodyName)
+	btCollisionObject* createCollisionObject(const btTransform& startTransform, btCollisionShape* shape, const char* bodyName)
 	{
 		return createRigidBody(false,0,startTransform,shape,bodyName);
 	}
@@ -74,9 +74,9 @@ public:
 		
 		ms = new btDefaultMotionState();
 		ms->setWorldTransform(mTrOfs);
-		btRigidBody* body = new btRigidBody(mass,ms,shape,localInertia);	
-		body->setDamping(0.1f, 0.3f);
-		//body->setFriction(0.5f);
+		btRigidBody* body = new btRigidBody(mass,ms,shape,localInertia);
+		body->setDamping(0.1, 0.3);
+		//body->setFriction(0.5);
 		rb = body;
 
 		#ifdef SR_EDITOR

@@ -308,17 +308,17 @@ btCapsuleShape* VertexIndexToShape::createCapsule()
 	if (height == sz.y)
 	{
 		radius = std::max(sz.x, sz.z);
-		shape = new btCapsuleShape(radius * 0.5f, height * 0.5f);
+		shape = new btCapsuleShape(radius * 0.5, height * 0.5);
 	}
 	else if (height == sz.x)
 	{
 		radius = std::max(sz.y, sz.z);
-		shape = new btCapsuleShapeX(radius * 0.5f, height * 0.5f);
+		shape = new btCapsuleShapeX(radius * 0.5, height * 0.5);
 	}
 	else
 	{
 		radius = std::max(sz.x, sz.y);
-		shape = new btCapsuleShapeZ(radius * 0.5f, height * 0.5f);
+		shape = new btCapsuleShapeZ(radius * 0.5, height * 0.5);
 	}
 
 	shape->setLocalScaling(Convert::toBullet(mScale));

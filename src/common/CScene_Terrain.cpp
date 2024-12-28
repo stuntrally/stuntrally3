@@ -188,7 +188,7 @@ void CScene::CreateBltTerrains()
 		btHeightfieldTerrainShape* hfShape = new btHeightfieldTerrainShape(
 			td.iVertsXold, td.iVertsXold,
 			&td.hfHeightDbl[0], td.fTriangleSize,
-			-1300.f,1300.f, 2, PHY_DOUBLE,false);  //par- max height
+			-1300.0,1300.0, 2, PHY_DOUBLE,false);  //par- max height
 	#else  //  float
 		btHeightfieldTerrainShape* hfShape = new btHeightfieldTerrainShape(
 			td.iVertsXold, td.iVertsXold,
