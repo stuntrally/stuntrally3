@@ -398,15 +398,15 @@ void CGui::ToolSceneOld()
 			if (!m.empty())
 			{
 				// if (l.on && !rg.resourceExistsInAnyGroup(s))
-				if (m == "tree.07.mesh" ||
-					m == "tree.09.mesh")
+				// if (m == "tree.07.mesh" || m == "tree.09.mesh")
+				if (StringUtil::startsWith(m, "fir"))
 					++ot;
 		}	}
 
 		if (ot)
-			s += "   old-trees: "+toStr(ot);
-		// if (old || ot)
-		LogO(s);
+		{	s += "   old-trees: "+toStr(ot);  ++t;  }
+		if (old || ot)
+			LogO(s);
 
 		if (modif)
 			sc.SaveXml(path +"scene.xml");  /// resave
