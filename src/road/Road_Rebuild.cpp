@@ -654,7 +654,7 @@ void SplineRoad::createSeg_Meshes(
 			DLM.tcs, idx);
 	#endif
 	}
-	if (DS.hasBlend)  // Blend >
+	if (DS.hasBlend && !invisible)  // Blend >
 	{
 		/*LogO("RD^ lod "+toStr(lod)+ "  mtr "+rs.sMtrB+
 			"  pos "+toStr(DLM.posB.size())+ "  norm "+toStr(DLM.normB.size())+

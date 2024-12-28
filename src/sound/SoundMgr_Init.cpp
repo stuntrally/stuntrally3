@@ -124,7 +124,7 @@ void SoundMgr::parseScript(FileStreamDataStream* stream)
 					StringVector veclineparams = StringUtil::split(line, "\t ", 0);
 
 					if (!sst->setParameter(veclineparams))
-						LogO("@  Bad SoundScript attribute line: '"+line);
+						LogO("@  Bad SoundScript attribute line: "+line);
 				}
 			}
 	}	}
@@ -205,6 +205,7 @@ bool SoundTemplate::setParameter(StringVector vec)
 	{
 		if (vec.size() < 2)  return false;
 		gain = s2r(vec[1]);
+		return true;
 	}	
 	return false;
 }
