@@ -370,9 +370,9 @@ public:
 			db2->eType = DB_Particle;
 
 		it = json.FindMember( "diff_mul" );
-		if( it != json.MemberEnd() && it->value.IsFloat() )
+		if (it != json.MemberEnd() && it->value.IsDouble())
 		{
-			Real v = it->value.GetFloat();
+			Real v = it->value.GetDouble();
 			// LogO("diff_mul: "+fToStr(v));
 			db2->setDiffuse( db2->getDiffuse() * v );
 		}
