@@ -48,10 +48,10 @@ SR 3.x continues old [SR](https://github.com/stuntrally/stuntrally) 2.x, now usi
 
 ## 📊Features
 
-Stunt Rally 3.2 features 229 tracks in 40 sceneries and 33 vehicles.  
+Stunt Rally 3.3 features 232 tracks in 40 sceneries and 33 vehicles.  
 Game modes include:
 * ⏱️Single Race (with your Ghost drive, track car guide), Replays,
-* 🏆Challenges, Championships, Tutorials, (series of tracks), Collections
+* 🏆Challenges, Championships, Tutorials, (series of tracks), 💎Collections
 * 👥Multiplayer (info [here](docs/multiplayer.md), no official server) and Split Screen, up to 6 players.  
 
 The Track Editor allows creating and modifying tracks.  
@@ -129,7 +129,7 @@ If you'd like to contribute, please check [Contributing](docs/Contributing.md) f
 Details in [Roadmap](docs/Roadmap.md) with few missing features, known issues, and future **ToDo** plans.  
 
 General info with some details for SR3, its sources and using Ogre-Next is in [Developing](docs/Developing.md).  
-Sources have emojis, [this file](/src/emojis.txt) has all, with quick components guide etc.
+Sources have emojis, [this file](/src/emojis.txt) has all, with quick components guide, shortcuts used, etc.
 
 ------------------------------------------------------------------------------
 

@@ -3,34 +3,42 @@
 This section lists changes not yet released, but committed to repositories stuntrally3 and tracks3.  
 WIP means work in progress, unfinished, still being developed.
 
+### Version 3.3 - 29.12.2024
+
 - 3 [New tracks](https://groups.f-hub.org/d/ZXVHk6du/new-tracks-in-sr-3-3)
 - **Sounds**🔊
   - New **vehicle sounds** for: cars (combustion engines), hovercrafts, drones, hovercars
   - New turbo sound and gear shift
-  - WIP ambient track sound (rain, etc)
-  - WIP dynamic objects hit sounds
 - **Effects**, all require (Water) Refractions on, to work
   - **SSAO** (ambient occlusion, on Effects tab)
   - lens flare (sun glow in camera)
   - sunbeams🌄 (rays), most visible on sunset tracks
 - Compositor rewrite, created in code
-  - SplitScreen uses RTTs, smaller Hud fonts
-    - Refractions work, SSAO too
-  - Apply buttons work for Shadows and Reflections
-  - WIP try, *not useful*, no effect on terrain [issue](https://github.com/OGRECave/ogre-next/issues/475)  
-    Global Illumination ([GI methods](https://ogrecave.github.io/ogre-next/api/latest/_gi_methods.html): IFD+VCT),
-    on new Gui tab Advanced after Effects, has also debug visuals.
-- Game
-  - Setup - Paints tab new *filter* slider, to show paints only from filter rating and above.  
+  - SplitScreen
+    - uses RTTs, Refractions work, SSAO too
+    - fixed Hud gauges, using smaller Hud fonts
+  - Apply buttons work for Shadows and Reflections (in game only)
+- Game, Gui
+  - Setup - Paints tab, new *filter* slider, to show paints only from filter rating and above.  
     But editing paints list must be done w/o filter, on highest value.
     Pressing Random (or Space) sets random from visible list.
   - *Statistics* window with list of completed game tutorials, championships, challenges, collections
   - restored tire trails, but still 1 color, meh
+  - updated championships with recent tracks, added couple new challenges and collection with new tracks
 - Editor
   - Split Edit window to Objects (in main menu) own with: Objects, Fluids, Particles, etc
-  - 3D model preview on top of Gui
   - Added Effects, same as in game, also in preview camera, renewed track views
-- Gui comboboxes open on click (whole, not just on down arrow)
+  - 3D model preview on top of Gui
+  - fixed loading Brushes previews
+- Gui
+  - all comboboxes open on click (whole area, not just on down arrow)
+- WIP code, *NOT used*:
+  - WIP ambient track sound (for rain, etc)
+  - WIP dynamic objects hit sounds
+  - WIP try, *not useful*, no effect on terrain [issue](https://github.com/OGRECave/ogre-next/issues/475)  
+    Global Illumination ([GI methods](https://ogrecave.github.io/ogre-next/api/latest/_gi_methods.html): IFD+VCT),
+    on new Gui tab Advanced after Effects, has also debug visuals.
+- Changed to Inno Setup for Windows installer
 
 ### Version 3.2 - 23.09.2024
 
