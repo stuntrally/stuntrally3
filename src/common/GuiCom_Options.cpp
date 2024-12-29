@@ -241,7 +241,7 @@ void CGuiCom::GuiInitGraphics()  // ? not yet: called on preset change with bGI 
 
 	ck= &ckLensFlare;		ck->Init("LensFlare",	&pSet->g.lens_flare);  // 🔆
 	ck= &ckSunbemas;		ck->Init("SunBeams",	&pSet->g.sunbeams);  // 🌄
-	ck= &ckHDR;				ck->Init("HDR",			&pSet->g.hdr);  // 🌅 HDR
+	// ck= &ckHDR;			ck->Init("HDR",			&pSet->g.hdr);  // 🌅 HDR
 
 	ck= &ckGI;				ck->Init("GI",			&pSet->gi);  // 🌇 GI
 	txGIinfo = fTxt("GItext");

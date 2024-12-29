@@ -230,10 +230,10 @@
 
 
 						<!-- 🌅 HDR -->
-						<Widget type="Button" skin="CheckBox" position="28 210 556 24" name="HDR">
+						<!-- <Widget type="Button" skin="CheckBox" position="28 210 556 24" name="HDR">
 							<Property key="Caption" value="#{HDR} ** #603030 = #{NotDone}"/>
 							<Property key="TextColour" value="0.8 0.6 0.3"/>
-						</Widget>
+						</Widget> -->
 
 						<!-- <Widget type="Button" skin="CheckBox" position="28 150 256 24" name="SoftParticles">
 							<Property key="Caption" value="#{SoftParticles}"/>
