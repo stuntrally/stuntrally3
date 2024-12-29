@@ -1,3 +1,4 @@
+; OLD, unused, 2GB max
 
 ; the path where to whole game binaries with data
 ; CHANGE to yours when starting script
