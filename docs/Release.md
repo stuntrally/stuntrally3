@@ -24,7 +24,7 @@ The process of releasing and things that need to be checked before.
   * [Readme.md](../Readme.md) - links, track count, etc
   * Version numbers
     * in Gui, file [*_en.tag.xml](../data/gui/core_language_en_tag.xml), tag `name="GameVersion"`
-    * in [dist/installer.nsi](../dist/installer.nsi) script, at top
+    * in [dist/installer.iss](../dist/installer.iss) script, SR_Version at top
   * [Sync translations](Localization.md#translation-sync)  
     check some other language so there are no `#{MyGUI Tags}` in GUI
 
@@ -41,11 +41,13 @@ The process of releasing and things that need to be checked before.
 
 ### 4. Packages
   * Create packages for supported systems and test them
-    * Windows installer - use [dist/installer.nsi](../dist/installer.nsi) with [NSIS](https://nsis.sourceforge.net/Main_Page), _easy if from CI build from github Actions_
+    * Windows installer - use [dist/installer.iss](../dist/installer.iss) (more info on top of file) with [Inno Setup](https://jrsoftware.org/isdl.php),  
+     _could be easy if from CI builds from github Actions?_
     * Linux binaries - need VM (was 20.04), _old_ info how to [here](https://github.com/stuntrally/stuntrally/tree/master/dist/linux-archive)
   * _Make sure all packages use the same version of the sources (meh)_
-  * Once the packages work, tag the version number to all repositories (stuntrally3 and tracks3)
-  * Upload packages, download back and test _(or check checksums)_
+  * Once the packages work _(or before)_, **git tag** the version number to all repositories (stuntrally3 and tracks3)
+  * Upload packages (used rsync to sourceforge)
+  * download back and test _(or check checksums)_
 
 ### 5. Websites
   * Update websites

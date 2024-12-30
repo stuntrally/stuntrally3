@@ -19,13 +19,13 @@ _This page lists available features in Stunt Rally 3 game and editor._
     Against time, collecting all quicker for better prize.
 - 👥 More Players
   - 🪟 Split Screen - 2 to 6 players on 1 screen.  
-  Requires a good GPU or reduced graphics options.
+  Requires better GPU or reduced graphics options.
   - 🌎 Multiplayer - over internet or in local network, with in-game chat.  
   Info [here](Multiplayer.md), no game server, needs direct connect.
 
 ## Content 🏞️
 
-- 🏞️ 229 **Tracks**
+- 🏞️ 232 **Tracks**
   - over 11 hours needed to drive all just once
   - in 40 **sceneries**, great variety:
     - Nature based:

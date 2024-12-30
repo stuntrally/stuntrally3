@@ -993,7 +993,7 @@
 	<Tag name="ProjectPage">project&apos;s page:</Tag>
 	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
 	
-	<!-- SR ver  settings.h SET_VER -->
+	<!-- SR ver  settings_com.h  SET_VER -->
 	<Tag name="GameVersion">3.3</Tag>
 
 	
