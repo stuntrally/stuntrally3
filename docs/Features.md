@@ -82,7 +82,7 @@ or partly 🇮🇹 🇨🇿 🇪🇸 [translated](https://hosted.weblate.org/pro
   - shows best way to drive, red colors for braking
 - 🌍 Minimap, can be zoomed and rotated, _Todo:_ terrain and border toggle
 - Driving aids
-  - 🔝 arrow to next check point (HUD top)
+  - 🔝 arrow to next check point (HUD top), or arrows to close gems in collection
   - next check point beam (on track)
   - track completion percentage %
   - time difference and current points shown on each checkpoint
@@ -91,15 +91,17 @@ or partly 🇮🇹 🇨🇿 🇪🇸 [translated](https://hosted.weblate.org/pro
   - 📊 stats like: rating, difficulty, length, width, jumps, loops, pipes, obstacles and much more
   - Driveability % estimate for vehicle on track (low means unfit)
 - ⏲️ Several gauge types (for engine rpm and vehicle speed)
+- Fps bar (F11) with many modes and info for GPU performance
 
 ## Graphics
 
 - 8 Graphics presets for quick change to match hardware performance
 - Many graphics options to tweak each feature individually
-- PBS materials with normalmaps, roughness and fresnel
-- Terrain triplanar mapping
+- Effects: SSAO (ambient occlusion), lens flare, 🌄sunbeams
 - Reflections and fresnel (for Vehicles, water etc)
-- Refraction for water
+- Refraction for 🌊water
+- PBS materials with normalmaps, roughness and fresnel
+- ⛰️Terrain triplanar mapping
 
 ------------------------------------------------------------------------------
 
@@ -119,7 +121,12 @@ or partly 🇮🇹 🇨🇿 🇪🇸 [translated](https://hosted.weblate.org/pro
 
 ## Tools
 
-Game and editor both have few different tools for in command line.  
+For those who want to tweak or tinker the game.
+
+Both game and editor feature own Tweak tabs, more info in [Tweak](Tweak.md).  
+Material editor is also present in both, more info in [Materials](Materials.md).
+
+Game and editor both have few different tools for in *command line*.  
 These tools can check tracks, warnings, challenges, convert track ghost etc.  
 For details, start game or editor in console,  
 with command line argument `?` or `help` to get their text info.  

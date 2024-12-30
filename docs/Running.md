@@ -83,25 +83,53 @@ Those without marks are updated instantly. Some, like Vegetation can be updated 
 There are few `Graphics` options that are more important and have more impact on performance than the rest.  
 Generally first tabs have higher impact on Fps: Reflection, Water, Shadows.
 
-_Fps - Frames per second. The first value shown in upper left corner of the screen.  
+_Fps - Frames per second. The first value shown in upper left corner of the screen (F11 toggles/cycles modes).  
 Higher values mean smoother play. It is recommended to play with at least 30 Fps or to aim at monitor's refresh rate._
 
-  * Reflections and Water - very demanding, lowering Fps.  
-    Size (of textures for them) is important. Also _frame skip_ and _faces at once_ for dynamic cube reflections can help.
+  * Reflections - very demanding, lowering Fps.  
+    Size (of textures for them) is important. Also _frame skip_ and _faces at once_ for dynamic cube reflections can help.  
+    Higher size is needed for better quality of reflection on vehicle (or other metal),  
+    and less frame skip or more faces at once for quicker update of that reflection.  
     
+  * Water - very demanding, lowering Fps.  
+    Refraction is needed now for *all* Effects: SSAO, flare, sunbeams, since all use depth buffer.  
+    Meaning it has to be enabled, for any effect to work.  
+    Refraction has also water depth coloring and smooth border for all fluids.  
+    Reflection is very demanding as each fluid *(if set, in track editor)* will render own reflection when visible.
+
   * Shadows - quite demanding too. If you have very low Fps turn them off (None).  
     Could do same for split screen, since Fps drops with each new player viewport.  
     Increasing Size and Filter will make them better quality.  
-    Shadows _do_ need restart to change (Todo fix).
 
-  * Vegetation - Reduce Trees and Grass multipliers for more Fps.  
-    For newer GPUs you can set them higher to have denser vegetation.
+  * Lights  
+    Here you can enable/disable vehicle lights (front) and many other like: brake lights, boost, under glow etc.  
+    Lower or use only vehicle lights (front) - for more Fps. Especially in Split screen.  
+    With more lights _(some rectangles may appear, with not all lights working always)_  
+    when many are in one place, this needs increasing Grid quality.
 
-  * Materials - If you have an old GPU, you should lower Anisotropy (0-16, 4 is enough).  
+  * Vegetation - Reduce Trees, Bushes and Grass multipliers for more Fps.  
+    For better/newer GPUs you can set them higher to have denser vegetation.  
+    There is a new Limit value, for maximum count of all vegetation models added on track.
+
+  * Horizon  
+    This tab has similar vegetation multipliers, but for horizon terrains.  
+    And more importantly: Horizon max - i.e.  
+    how many terrain levels will be shown (each adding further detail) . *Almost all tracks have at least one*.
+
+  * Textures  
+    If you have an old GPU, you should lower Anisotropy (0-16, 4 is enough).  
     Turning off Triplanar can reduce Fps much, especially on demanding tracks (big and with high mountains).
 
   * Detail - has options for geometry Level Of Detail.  
     Reducing it will decrease drawn triangles count and make geometry less smooth.
+
+  * Particles  
+    Can adjust here how many are emitted and also how long tire trails go.  
+    This shouldn't affect Fps much.
+
+  * Simulation  
+    Here is the option for quality of vehicle movements etc.  
+    It is affecting CPU only, and is meant for laptops or very low end PCs, where CPU becomes bottleneck.
 
 For minimum settings just pick Lowest from preset combobox and restart.  
 For values suggested, check other Graphics options on Gui, or in [sources](../src/common/GuiCom_Presets.cpp) for that.

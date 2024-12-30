@@ -6,11 +6,11 @@ More in [Tasks tracker](https://stuntrally.tuxfamily.org/mantis/view_all_bug_pag
 Priorities marked: !, `crucial`, **Next or Big**, _Important_.
 
 
-### 3.3 !
+### 3.3
 
-📽️ new game **video**  
+📽️ new game **video**, galleries  
 
-grh opt chk  
+### 3.4
 
 🌧️ Ambient [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
 📦 object *hit* sounds🔊  
@@ -20,12 +20,14 @@ MogFoss waterfals up, Preyth bld up-
 Tiny, Mudflats, Knotted - ssao bad alpha bridge  
 MiningCity, KapabaRiv, Overgrowth, Glitchy - road segs white blend transp/invisible  
 
-### 3.4
+win *installer* needs admin for vcredist, drop ask, or elevate on run
 
 *editor videos* all new  
 
 ! auto road/ter **Surface**: Particles, trail, fix clr, sounds, from `presets.xml` not per track  
 new road particles  
+
+### Data
 
 🛣️! new **Road** textures, from ground 4k CC0, rem old road**  
 detail mix in .json, 2,3 variations  
@@ -34,9 +36,8 @@ traces alpha texture, *blending* with color per vertex: in turns, *noise*
 finish remove all non **CC** data, [new topic](https://groups.f-hub.org/d/pIoLYCaO/-removing-replacing-data-with-non-cc-lincenses-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800)  
 - replace fir*
 - grass1, grassA* texture
-- full chk, wave tex?
 - redo sounds/vdrift:  bump, gravel,grass,squeal
-
+- full chk, wave* tex?
 
 ### 🏗️ Editor
 
@@ -62,11 +63,14 @@ copy horizon which ter, copy roads which combo,all
 ### 🪄 Effects
 
 lens flare, ed add real pos on sky, other for sun dir?  
+*optimize*, read depth once, not for each pixel  
+
 sunbeams dither, par hq, [shaders](https://www.shadertoy.com/results?query=tag%3Dgodrays)  
 
 **HDR**, bloom, [fix fireflies](https://catlikecoding.com/unity/tutorials/custom-srp/hdr/), adjust bright,sky *all* tracks  
 **Soft** Particles, Pbs: fog fade, lit by diffuse  
 old motion blur-  
+implement FXAA 1-pass post-process, or SMAA multipass
 
 
 ### 🔉 Sound

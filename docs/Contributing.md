@@ -44,7 +44,7 @@ Tracks are licensed GPLv3 by default.
 
 If you found an unknown bug please report it, info [here](Troubleshooting.md).  
 Even better if you're able to build from sources.  
-If so, then also honest, constructive opinions or suggestions (e.g. about my latest  change or planned) are welcome, on Forum.
+If so, then also honest, constructive opinions or suggestions (e.g. about my latest  change or planned) are welcome.
 
 ## 📦Packagers
 

@@ -3,6 +3,8 @@
 This section lists changes not yet released, but committed to repositories stuntrally3 and tracks3.  
 WIP means work in progress, unfinished, still being developed.
 
+- Updated docs
+
 ### Version 3.3 - 29.12.2024
 
 - 3 [New tracks](https://groups.f-hub.org/d/ZXVHk6du/new-tracks-in-sr-3-3)

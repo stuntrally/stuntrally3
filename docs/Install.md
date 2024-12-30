@@ -22,10 +22,12 @@ Tested on Windows 10, 64-bit.
 ----
 ## GNU/Linux
 
-Since SR 3.1 it has Linux **archive** `.tgz` or `.txz`. It includes binaries and libs.  
-It is portable, just needs to be extracted (e.g. `tar xf StuntRally-3.2-Linux.txz`).  
+For Linux there is an **archive** `.txz` (or `.tgz`, since SR 3.1). It includes binaries, libs and data.  
+
+It is portable, just needs to be extracted (e.g. `tar xf StuntRally-3.3-Linux.txz`).  
 Then by using included `.sh` scripts (in extracted game folder) you can start  
 game with: `./stuntrally3.sh` or editor: `./sr-editor3.sh`.  
+
 Tested on Debian 12 and on few other distros as VM. It was built on (and has libs from) VM Kubuntu 20.04.6.
 
 ### Sources
