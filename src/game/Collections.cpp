@@ -95,8 +95,15 @@ void CGui::FillCollectList(std::vector<int> vIds)
 		liCollect->setSubItemNameAt(3,l, gcom->clrsDiff[col.diff]+ TR("#{Diff"+toStr(col.diff)+"}"));
 		// liCollect->setSubItemNameAt(4,l, col.cars.GetStr(data->cars));
 
-		//  collected  cnt / all
-		liCollect->setSubItemNameAt(4,l, toStr(pc.gems.size()) +" #50A0F0/ #60A0D0"+ toStr(col.collects.size()) );
+		//  collected  cur / all
+		int cur = pc.gems.size(), all = col.collects.size();
+		if (cur > all)
+			liCollect->setSubItemNameAt(4,l, "#C0A0FF" + toStr(cur) +" / "+ toStr(all));
+		else if (cur >= all)
+			liCollect->setSubItemNameAt(4,l, "#80C0FF" + toStr(cur) );//? +" / "+ toStr(all));
+		else
+			liCollect->setSubItemNameAt(4,l, "#FFFF60" + toStr(cur) +" #50A0F0/ #40F0FF"+ toStr(all) );
+		
 		liCollect->setSubItemNameAt(5,l, pc.bestTime > 10000.f ? "-" :
 			gcom->clrsDiff[std::min(8,int(pc.bestTime/3.f/60.f))]+ StrTime2(pc.bestTime));
 

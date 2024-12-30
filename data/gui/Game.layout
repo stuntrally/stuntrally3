@@ -2074,7 +2074,7 @@
 				<Widget type="ImageBox" skin="ImageBox" position="654 318 80 80" name="imgTrk7">
 				</Widget>
 
-				<Widget type="ImageBox" skin="ImageBox" position="604 228 168 168" name="imgTrkBig">
+				<Widget type="ImageBox" skin="ImageBox" position="604 238 168 168" name="imgTrkBig">
 				</Widget>
 				<Widget type="TextBox" skin="TextBox" position="24 308 140 92" name="txColDetail0">
 				</Widget>
@@ -2107,7 +2107,7 @@
 					<Property key="TextColour" value="0.7 0.85 1.0"/>
 					<Property key="FontName" value="font.big"/>
 				</Widget>
-				<Widget type="Button" skin="CheckBox" position="652 220 160 24" name="ChampRev">
+				<Widget type="Button" skin="CheckBox" position="652 210 160 24" name="ChampRev">
 					<Property key="Caption" value="#{Reverse}"/>
 					<Property key="Colour" value="0.8 1 0.6"/>
 					<Property key="TextColour" value="0.8 1 0.5"/>
