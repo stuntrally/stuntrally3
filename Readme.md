@@ -16,7 +16,7 @@
 ⚙️[Sources](https://github.com/stuntrally/stuntrally3/) - also for bugs & Issues, pull requests, etc.  
 
 ### Media
-🖼️[Screenshots](https://stuntrally.tuxfamily.org/gallery) - all Galleries from all versions and development, [latest Big](https://photos.app.goo.gl/8j9f7HLDvx9QS9XN7) from SR 3.2  
+🖼️[Screenshots](https://stuntrally.tuxfamily.org/gallery) - all Galleries from all versions and development, [latest Big](https://photos.app.goo.gl/P4ZoiGwjPxJUN6oe6) from SR 3.3  
 ▶️[Videos](https://www.youtube.com/user/TheCrystalHammer) - from gameplay and editor  
 💜[Donations](https://cryham.tuxfamily.org/donate/) - financial support, on [Ko-Fi](https://ko-fi.com/cryham)
 
@@ -137,7 +137,7 @@ Sources have emojis, [this file](/src/emojis.txt) has all, with quick components
 
     Stunt Rally 3 - 3D racing game, with Sci-Fi elements and own Track Editor
                     based on Ogre-Next rendering and VDrift simulation
-    Copyright (C) 2010-2024  Crystal Hammer and contributors
+    Copyright (C) 2010-2025  Crystal Hammer and contributors
 
 
     This program is free software: you can redistribute it and/or modify

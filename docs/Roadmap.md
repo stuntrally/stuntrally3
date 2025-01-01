@@ -22,7 +22,7 @@ MiningCity, KapabaRiv, Overgrowth, Glitchy - road segs white blend transp/invisi
 
 win *installer* needs admin for vcredist, drop ask, or elevate on run
 
-*editor videos* all new  
+*tire trails* clr, no uv tex-  
 
 ! auto road/ter **Surface**: Particles, trail, fix clr, sounds, from `presets.xml` not per track  
 new road particles  
@@ -40,6 +40,8 @@ finish remove all non **CC** data, [new topic](https://groups.f-hub.org/d/pIoLYC
 - full chk, wave* tex?
 
 ### 🏗️ Editor
+
+*editor videos* all new  
 
 fix ed btn: ApplyRefl, ApplyShadows
 
@@ -209,9 +211,8 @@ _volumetric_ clouds,dust, noise 3d, for depth, add cur fog, particles-
 ### old restore cd
 
 _Minimap_ circle, terrain add, fix pos tris  
-tire trails clr, no uv tex-  
 
-🖥️ finish render system rest options  
+🖥️ rest render system options  
 🖱️ Input *mouse* bind  
 👀 VR mode meh-  
 DX- .hlsl or .any, from only .glsl: blendmap? effects

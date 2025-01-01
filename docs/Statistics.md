@@ -2,7 +2,7 @@
 
 This table shows all releases with their dates and key counts, mentiones only major changes and is meant for statistics purpose.
 
-Link to calculate [date difference](https://www.timeanddate.com/date/durationresult.html?d1=23&m1=9&y1=2024&d2=23&m2=1&y2=2025).
+Link to calculate [date difference](https://www.timeanddate.com/date/durationresult.html?d1=29&m1=12&y1=2024&d2=23&m2=1&y2=2025).
 
 | Legend                   |     |     | |
 |--------------------------|-----|-----|-|
