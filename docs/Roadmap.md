@@ -8,7 +8,7 @@ Priorities marked: !, `crucial`, **Next or Big**, _Important_.
 
 ### 3.3
 
-📽️ new game **video**, galleries  
+📽️ new game **video**, web gallery-  
 
 ### 3.4
 

@@ -519,15 +519,42 @@ This assert triggering, means those were different:
 `assert( (size_t)( passBufferPtr - startupPtr ) * 4u == mapSize );`
 
 
-### Other 🧪
+### Assert, other 🧪
 
 A common assert: [mCachedTransformOutOfDate](https://ogrecave.github.io/ogre-next/api/latest/_ogre20_changes.html#AssersionCachedOutOfDate).  
 At end of [post](https://forums.ogre3d.org/viewtopic.php?p=554822#p554822) and also debug todo [here](https://forums.ogre3d.org/viewtopic.php?p=555087#p555087).  
 
+This happens many times in Debug build in SR3.  
+
+Probably best way is to set OgreNext CMake option `OGRE_DEBUG_LEVEL_DEBUG` to 1 or 0.  
+So that those `OGRE_ASSERT_MEDIUM( !mCachedTransformOutOfDate );` won't happen (break).  
+This is already done by `build-sr3-Linux.py`.
+
+Other way is commenting out (with `//`) in Ogre-Next sources. _ToDo:_ fix it?  
+For reference these 3 places needed:
+```
+/Ogre/ogre-next/OgreMain/include/OgreNode.h : 680
+
+    virtual_l2 FORCEINLINE const Matrix4 &_getFullTransform() const
+    {
+        // OGRE_ASSERT_MEDIUM( !mCachedTransformOutOfDate );
+..
+OgreNode.cpp : 753
+
+    Quaternion Node::_getDerivedOrientation() const
+    {
+        // OGRE_ASSERT_MEDIUM( !mCachedTransformOutOfDate );
+..
+OgreNode.cpp : 765
+
+    Vector3 Node::_getDerivedPosition() const
+    {
+        // OGRE_ASSERT_MEDIUM( !mCachedTransformOutOfDate );
+```
+
 Don't change node pos or rot from inside listeners.  
 Or after, need to call `_getFullTransformUpdated(` e.g. for `ndSky`, `light->getParentNode()->_`, camera etc.  
 Seems fixed for each frame, but IIRC does assert on new track load or so.  
-So this happens many times in Debug build in SR3. I simply commented it out in Ogre-Next sources. _ToDo:_ fix it?
 
 Also [post](https://forums.ogre3d.org/viewtopic.php?p=554822#p554822), leaking GPU RAM inactive and  
 Exception: `Mapping the buffer twice within the same frame detected!`.
