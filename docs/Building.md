@@ -1,49 +1,56 @@
 ## About
 
-How to build on Windows is on other [page](BuildingVS.md) _(way longer and more difficult)_.
-
-This page describes how to *quickly* build Stunt Rally 3 on **Linux** (Debian-based), using provided `.py` script.  
-_There is a detailed page [Building-old](Building-old.md) with all steps done manually without .py script._  
+How to build on Windows is on other [page](BuildingVS.md).
 
 It should work on Debian-based (like Ubuntu etc).  
 Tested on GNU/Linux: Debian 12 and Kubuntu 20.04.  
-
-_By default CMakeLists.txt is using Conan for our [CI builds](https://github.com/stuntrally/stuntrally3/actions) (and its CMake setup from this [PR here](https://github.com/stuntrally/stuntrally3/pull/1))._  
 
 ## 1. Basic setup
 
 Basic setup for building C++ etc. Start in terminal:  
 `sudo apt-get -y install g++ binutils gdb git make cmake ninja-build`
 
-## 2. Ogre dependencies
+Also install [Conan](https://conan.io/downloads)
 
-Setup for Ogre dependencies (as in [here](https://github.com/OGRECave/ogre-next#dependencies-linux)):  
-`sudo apt-get -y install libfreetype6-dev libfreeimage-dev libzzip-dev libxrandr-dev libxcb-randr0-dev libxaw7-dev freeglut3-dev libgl1-mesa-dev libglu1-mesa-dev libx11-xcb-dev libxcb-keysyms1-dev doxygen graphviz python-clang libsdl2-dev rapidjson-dev`
+## 2. Clone SR3
 
-## 3. SR3 dependencies
+First create a new folder `stuntrally3` e.g. in your home dir (`mkdir stuntrally3`), and go into it (`cd stuntrally3`).
 
-Needed to build SR3 itself:  
-`sudo apt-get -y install libbullet-dev libbullet-extras-dev libtinyxml2-dev libenet-dev libogg-dev libvorbis-dev libopenal-dev libboost-system-dev libboost-thread-dev`
+Clone SR3 (this repo) and [SR3 tracks](https://github.com/stuntrally/tracks3) inside `data/tracks`:  
+```
+git clone https://github.com/stuntrally/stuntrally3.git .
+git clone https://github.com/stuntrally/tracks3.git data/tracks
+```
 
-## 4. Build all
+## 3. Add the conan remote
 
-First create a new folder `dev/` e.g. in your home dir (`mkdir dev`), and go into it (`cd dev/`).
+Open up a terminal and run the following command:
+`conan remote add rigs-of-rods-deps https://conan.cloudsmith.io/rigs-of-rods/deps/`
 
-See remarks on top of [build-sr3-Linux.py](../build-sr3-Linux.py) file (about 6.5 GB needed etc).
+## 4. Running CMake
 
-Download just the [build-sr3-Linux.py](../build-sr3-Linux.py) file, and put it inside `dev/`.
+Run the following command in the `stuntrally3` folder to generate the ninja build files:
 
-Start this Python script, e.g. in terminal by:  
-`python3 ./build-sr3-Linux.py`
+```bash
+cmake . -Bbuild \
+  -GNinja \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES=CMake/conan_provider.cmake
+```
 
-## 5. Start StuntRally3
+## 5. Compiling
 
-If build succeeded, go into `sr3/bin/Release`  
+cd into the build directory and run the following command:
+`ninja`
+
+## 6. Start StuntRally3
+
+If build succeeded, go into `stuntrally3/bin/Release`  
 and start the executable:  
 `./sr-editor3` - for SR3 Track Editor  
 `./stuntrally3` - for SR3 game  
 
-## 6. Running
+## 7. Running
 
 For any crashes or issues, check logs inside:  
 `/home/user/.config/stuntrally3`  
