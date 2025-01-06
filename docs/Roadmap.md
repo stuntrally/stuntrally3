@@ -3,12 +3,8 @@ _List of things **to do**, plann`ed` for next releases._
 This is the latest, fast updated list.  
 More in [Tasks tracker](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php?page_number=1) with older tasks too and some more detail.
 
-Priorities marked: !, `crucial`, **Next or Big**, _Important_.
+Priorities marked: 1 ! , 2 `crucial`, 3 **Next or Big**, 4 _Important_, 5 normal
 
-
-### 3.3
-
-📽️ new game **video**, web gallery-  
 
 ### 3.4
 
@@ -19,8 +15,10 @@ fix *tracks*:
 MogFoss waterfals up, Preyth bld up-  
 Tiny, Mudflats, Knotted - ssao bad alpha bridge  
 MiningCity, KapabaRiv, Overgrowth, Glitchy - road segs white blend transp/invisible  
+MadMntnDark then loadd Temple - jng tex bad grn-blue
 
-win *installer* needs admin for vcredist, drop ask, or elevate on run
+win *installer* needs admin for vcredist, drop ask, or elevate on run  
+upd website gallery  
 
 *tire trails* clr, no uv tex-  
 
@@ -33,7 +31,7 @@ new road particles
 detail mix in .json, 2,3 variations  
 traces alpha texture, *blending* with color per vertex: in turns, *noise*  
 
-finish remove all non **CC** data, [new topic](https://groups.f-hub.org/d/pIoLYCaO/-removing-replacing-data-with-non-cc-lincenses-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800)  
+! finish remove all non **CC** `data`, [new topic](https://groups.f-hub.org/d/pIoLYCaO/-removing-replacing-data-with-non-cc-lincenses-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800)  
 - replace fir*
 - grass1, grassA* texture
 - redo sounds/vdrift:  bump, gravel,grass,squeal
@@ -115,7 +113,7 @@ move rest? from SR3.compositor to AppGui_Compositor.cpp
 
 own *rqg*/vis for veget on horiz? to skip in wtr refl etc
 
-**specular** on terrain  
+**specular** on terrain, more on trees  
 
 move *trails* before particles/clouds  
 car *glass*, pipes, beam etc not visible in fluid if seen from above  
