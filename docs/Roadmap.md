@@ -1,4 +1,4 @@
-_List of things **to do**, plann`ed` for next releases._  
+_List of things **to do**, planned for next releases._  
 
 This is the latest, fast updated list.  
 More in [Tasks tracker](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php?page_number=1) with older tasks too and some more detail.

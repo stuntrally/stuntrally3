@@ -44,7 +44,7 @@ using namespace Ogre;
 
 0 S  s0_ssao  [prepare] for ssao 🕳️
 	tex rtt_ssao  \   clr0 unused
-	tex depthHalf |   clr1  (all half size, no fsaa
+	tex depthHalf |   clr1  (all half size, no fsaa)
 	tex gNormals  } rtv
 	tex gFog     /    clr2
 
