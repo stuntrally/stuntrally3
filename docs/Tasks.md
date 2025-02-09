@@ -1,43 +1,52 @@
 # Tasks Table
 
 Legend:  
-- Id - unique task number (from Mantis)  
-- Pri - Priority: 1 (most) .. 20 (least important)  
-- Size - Big Large Huge Gigantic  
-- Component - Game Logic Graphics Editor GUI Simulation Input Sound  
-- Task name - short  
-- Updated - date last changed  
+- Id - unique task number (from Mantis), new increments last  
+- Pri - Priority: 1 (most) .. 30 (least important)  
+- Size:  - how much work to do:  
+  0 Tiny  1 Little  2 Small  3 Medium  4 Big  5 Large  6 Huge  7 Enormous  8 Gigantic  9 Insane  
+- Component:  Game  Logic  Graphics  Shader  Editor  GUI  Simulation  Input  Sound  Data  
+- Task name - short, same as section below  
+- Updated - date last changed: yyyy-mm-dd  
 - % Done - how much completed  
 - Details - link to below, own section with more info, and possibly subtasks  
 
 ----
-| Id  |Pri |  Size    | Component|       Task name(s)          | Updated   |%Done|    Details            |
-|-----|----|----------|----------|-----------------------------|------------|----|-------------------------|
-| 001 | 1  | Big      | Game     | Sounds                      | 2024-12-28 | 55 | [link](#sounds) |
-| 002 | 4  | Big      | Graphics | **Particles**               | 2023-08-20 | 0  | [link](#particles) |
-| 021 | 5  | Big      | Game     | Gameplay Modes              | 2022-07-07 | 0  | [link](#gameplay-modes) |
-| 007 | 5  | Huge     | Graphics | Rivers, waterfalls          | 2022-07-07 | 30 | [link](#rivers-waterfalls) |
-| 020 | 6  | Huge     | Graphics | **Water waves**             | 2024-12-28 | 0  | [link](#water-waves) |
-| 006 | 6  | Huge     | Graphics | Road sides, walls           | 2024-08-23 | 60 | [link](#road-sides-walls) |
-|     |    |          |          | .........................   |            |    |                   |
-| 015 | 7  | Huge     | Graphics | Visual **damage and dirt**  | 2015-08-21 | 0  | [link](#visual-damage-and-dirt) |
-| 026 | 9  | Medium   | Graphics | Splitscreen, per-viewport   | 2023-10-01 | 0  | [link](#splitscreen-per-viewport) |
-| 013 | 9  | Large    | Logic    | Multiplayer things          | 2015-08-21 | 0  | [link](#multiplayer-things) |
-| 012 | 10 | Big      | Game     | Objects, dynamic            | 2015-08-21 | 0  | [link](#objects-dynamic) |
-|     |    |          |          | .........................   |            |    |                   |
-| 016 | 12 | Large    | Graphics | Garage, 3D car previews     | 2022-07-07 | 0  | [link](#garage-3d-car-previews) |
-| 025 | 12 | Large    | Graphics | Car skins and vinyls        | 2015-08-21 | 0  | [link](#car-skins-and-vinyls) |
-| 010 | 13 | Medium   | Graphics | Colormap for terrain, grass | 2023-08-20 | 0  | [link](#colormap-for-terrain-grass) |
-| 003 | 13 | Huge     | Editor   | Painting in editor          | 2022-07-07 | 0  | [link](#painting-in-editor) |
-| 019 | 13 | Large    | Game     | Force feedback              | 2015-08-21 | 0  | [link](#force-feedback) |
-| 018 | 14 | Large    | GUI      | Hud layouts, tracks Gui     | 2024-08-23 | 30 | [link](#hud-layouts-tracks-gui) |
-|     |    |          |          | .........................   |            |    |                   |
-| 029 | 17 | Gigantic | Logic    | **Content manager**         | 2024-12-28 | 0  | [link](#content-manager) |
-| 028 | 18 | Gigantic | Game     | **AI opponents**            | 2024-12-28 | 0  | [link](#ai-opponents) |
-| 024 | 18 | Medium   | Logic    | Lap stats, achievements     | 2015-08-21 | 0  | [link](#lap-stats-achievements) |
-| 011 | 19 | Huge     | Graphics | Horizons                    | 2024-12-28 | 85 | [link](#horizons) |
-| 004 | 19 | Medium   | Logic    | Road splitting              | 2023-08-20 | 70 | [link](#road-splitting) |
-| 014 | 19 | Big      | Logic    | Pacenotes                   | 2023-08-20 | 60 | [link](#pacenotes) |
+| Id |Pri |  Size      | Component|       Task name(s)          | Updated   |%Done|    Details               |
+|----|----|------------|----------|-----------------------------|------------|----|--------------------------|
+| 01 | 1  | 4 Big      | Sound    | 🔊Sounds: ambient, object   | 2024-12-28 | 55 | [link](#sounds)          |
+| 02 | 2  | 4 Big      | Graphics | ✨**Particles**             | 2023-08-20 | 0  | [link](#particles)       |
+|    |    |            |          |                             |            |    |                          |
+| 20 | 3  | 5 Large    | Shader   | 🌊**Water waves**           | 2024-12-28 | 0  | [link](#water-waves)     |
+| 15 | 4  | 5 Large    | Shader   | 🚗**Damage and dirt**       | 2015-08-21 | 0  | [link](#damage-and-dirt) |
+| 33 | 3  | 6 Huge     | Data     | Data, vehicles, trees       | 2025-02-09 | 1  | [link](#data)            |
+|    |    |            |          |                             |            |    |                          |
+| 21 | 5  | 4 Big      | Game     | Gameplay Modes, Career      | 2022-07-07 | 0  | [link](#gameplay-modes)  |
+| 07 | 6  | 4 Big      | Graphics | Rivers, waterfalls          | 2022-07-07 | 30 | [link](#rivers-waterfalls)|
+| 06 | 7  | 4 Big      | Graphics | 🛣️Road sides, walls         | 2024-08-23 | 60 | [link](#road-sides-walls)|
+|    |    |            |          |                             |            |    |                          |
+| 26 | 8  | 3 Medium   | Graphics | 👥Splitscreen, per-viewport | 2023-10-01 | 0  | [link](#splitscreen-per-viewport)|
+| 13 | 9  | 5 Large    | Logic    | 📡Multiplayer things        | 2015-08-21 | 0  | [link](#multiplayer-things)|
+| 12 | 10 | 4 Big      | Game     | 🛢️Objects, dynamic          | 2015-08-21 | 0  | [link](#objects-dynamic) |
+|    |    |            |          |                             |            |    |                          |
+| 16 | 11 | 3 Medium   | GUI      | 🚗Garage, 3D previews       | 2022-07-07 | 0  | [link](#garage-3d-previews)|
+| 25 | 12 | 4 Big      | Shader   | 🚗Car skins and vinyls      | 2015-08-21 | 0  | [link](#car-skins-and-vinyls)|
+|    |    |            |          |                             |            |    |                          |
+| 10 | 13 | 4 Big      | Graphics | 🎨Colormap terrain, grass🌿 | 2023-08-20 | 0  | [link](#colormap-for-terrain-grass)|
+| 03 | 13 | 5 Large    | Editor   | 🎨Painting editor density   | 2022-07-07 | 0  | [link](#painting-in-editor)|
+|    |    |            |          |                             |            |    |                          |
+| 19 | 14 | 3 Medium   | Input    | Force feedback              | 2025-02-09 | 0  | [link](#force-feedback)  |
+| 18 | 14 | 4 Big      | GUI      | Hud layouts, tracks Gui     | 2024-08-23 | 30 | [link](#hud-layouts-tracks-gui)|
+|    |    |            |          |                             |            |    |                          |
+| 29 | 15 | 7 Enormous | Logic    | 📦**Content manager**       | 2024-12-28 | 1  | [link](#content-manager) |
+| 28 | 16 | 8 Gigantic | Game     | **AI opponents**            | 2024-12-28 | 0  | [link](#ai-opponents)    |
+| 31 | 17 | 6 Huge     | Logic    | **Server** Lap stats        | 2025-02-09 | 0  | [link](#server-lap-stats)|
+|    |    |            |          |                             |            |    |                          |
+| 11 | 18 | 2 Small    | Graphics | Horizons                    | 2024-12-28 | 85 | [link](#horizons)        |
+| 14 | 18 | 2 Small    | Logic    | Pacenotes, info             | 2023-08-20 | 60 | [link](#pacenotes)       |
+| 04 | 19 | 3 Medium   | Logic    | 🛣️Road splitting, checks    | 2023-08-20 | 70 | [link](#road-splitting)  |
+| 24 | 19 | 3 Medium   | Logic    | Lap stats, achievements     | 2015-08-21 | 0  | [link](#lap-stats-achievements)|
+| 32 | 20 | 9 Insane   | Sim      | Simulation, RoR             | 2025-02-09 | 0  | [link](#simulation)      |
 
 
 ----
@@ -58,39 +67,26 @@ Legend:
 
   like: rain, wind, shore waves, forest with birds etc.  
   For all that have rain, strong wind for D12,T5,W10, all forest,jungle,moss with some nature sounds.  
-  Will be in ogg since are big.  
   All sounds are loaded at game start (somewhat wasted time, especially when developing).  
-  Needs a checkbox on sound tab to disable.  
-
-3. [Done] Car turbo sound, better engine sounds.
-
-  Turbo has to be similar to real ones and enjoyable not annoying.  
-  I quite like this one:  
-  http://www.youtube.com/watch?v=-g7XUQyxKrI&feature=player_detailpage#t=106s  
-  and the one in RBR.  
 
 4. Sound in replay from multiplayer is broken
 
   Something is wrong when saving (car rpm, tires) from car sim or in frame,  
   causing random slide sounds, also tire trails have random alpha.  
 
-5. Effects: [Done] Reverb. Doppler. Underwater lowpass filter.
-
-  Will use OpenAL soft, it's great. http://kcat.strangesoft.net/openal.html  
-  Has easy to use reverb with lots of presets and doppler.  
-  Then also change reverb parameters according to terrain,  
-  eg. in cave, near terrain, open terrain, underwater.  
+5. Effects: [Done] Reverb.  
+  Doppler fix. add Underwater lowpass filter.
+  Dynamic change reverb parameters according to terrain,  
+  eg. in cave, pipe, near terrain, open terrain, underwater.  
 
 
 Ad 5. Moved already. Reverb works.  
 Changing preset by scenery (param in scene.xml, set in ed).  
 
-This seems more feature rich:  https://github.com/OGRECave/ogre-audiovideo  
-try moving to it.  
-Probably needs engine sounds (few for rpm) and audio configs rewrite.  
+Try this seems more feature rich: https://github.com/OGRECave/ogre-audiovideo  
 
-[Done] Make all (except electric) new engine sounds:  
-https://github.com/stuntrally/stuntrally3/issues/7  
+[Done] Make all (except electric) new engine sounds: https://github.com/stuntrally/stuntrally3/issues/7  
+
 
 ----
 
@@ -141,6 +137,7 @@ I think similar about trails, I don't like the 8 batches for each car
 Idk but imo 2 would be ok, wouldnt have triangle strips though.  
 Probably leave this, for Ogre 2.1.  
 
+
 7. Particles on fluid surface, water/mud, some ripples  
 (transparent diffuse and normal). Bigger and fading with time.  
 Not sure how to fit colors, for all presets.  
@@ -182,7 +179,7 @@ Also a car damage mode with optional health packs in some places and maybe also 
 This may also include damage not from collision by from acidic terrain, mines (visible but difficult to avoid), etc.  
 
 
-@CryHam Jul 2011  
+@CryHam, Jul 2011  
   
 Okay 1 and 2 are done. Input devices only keyboards, joysticks are implemented but have some range issues.  
 
@@ -198,7 +195,7 @@ what i would like is an infrastructure to allow plug-able game types that can co
 the scoring and receives events (when cars hit or checkpoint is reached).  
 
 
-@MirceaKitsune May 2013  
+@MirceaKitsune, May 2013  
   
 I'd like to see various game types!  
 Currently it feels like there's no objective in StuntRally than simply driving around.  
@@ -278,7 +275,7 @@ So river has spline points sticked to original terrain, but result will be defor
   
 And vertical setup of river points should create waterfals.  
   
-@scrawl123:  
+@scrawl:  
 Refraction is possible, but no screen reflection, only sky.  
   
 Added in 2.7, done as Roads, with water materials.  
@@ -295,34 +292,26 @@ Add physics - for particles and buoyancy with drag.
 1. Better underwater (distortion, rays, etc).  
 Also while camera is underwater reduce sound volume (or even some low pass filter effect).  
   
-2. Lighting fix, reflection or some other component isn't mul by  
-light's diffuse and water/mud is too bright on dark scenes, see Vlc5.  
+3. Foam waves, near shore - just some animation *in material*.  
+  Could use the spline road (no), (auto) placed by editor.  
   
--- Not very needed --  
-  
-3. Foam waves, near shore. Use the spline road, and some animation in material.  
-  Need to be placed auto by editor, probably fancy and difficult code.  
-  Or maybe extend water shader and generate a map for shore waves and normals ?  
-  I think mesh would be easier but many more batches.  
-  
-Very Difficult, shader stuff. Need to have params in Gui.  
-  
-4. Water waves.  
+  Or extend water shader and generate a map for shore waves and normals ?  
+  Mesh could be easier but many more batches.  
+
+4. Water **waves**.  
   Close (to camera) area made with a grid of vertices, using 2nd material which  
   reads heigh textures in vertex shader for waves animation.  
   Also normal computation to get proper vertex normals (or maybe just sum of normal textures).  
-  
+
+  **Waves** should be possible to do now in SR3 from Terra.  
+  Ocean was made from Terrain component once.  
+  Difficult, shader stuff. Need to have params in Gui.  
+
 5. Foam texture, used randomly on water, or on higher parts.  
   
-6. ?Depth Fog (if we have the depth rendered).  
-  
 7. ?Caustics on terrain, just near/clear water.  
-  Problematic, needs to be in all materials.  
-  
-3. Waves should be possible to do now in SR3.  
-Ocean was made from Terrain component once. Still needs good knowledge to implement.  
-  
-  
+
+
 ----  
   
 ## Road sides, walls  
@@ -342,7 +331,7 @@ Many roads and Rivers possible now in 2.7
 New todo:  
 - Allow only walls to be made, also for fences, platforms etc.  
 - Add new wall Geometry types.  
-  
+- 
 - Grid segmentation with size param, not road merge length.  
 - Group all roads by materials, to reduce drawn batches.  
   
@@ -354,9 +343,9 @@ Could use an even own type for fences (less tris).
   
 ----  
   
-## Visual damage and dirt  
+## Damage and dirt  
   
-@scrawl123, Oct 14, 2011  
+@scrawl, Oct 14, 2011  
 
 Visual damage, when hitting walls etc.  
 Easy to change glass diff,normal map (to make it look broken).  
@@ -387,7 +376,7 @@ Or do we need to edit the manual object's verices on cpu for that, would be more
   
 ## Splitscreen, per-viewport  
   
-- ? Ok it looks like the funny sky position moving  
+- ?old- Ok it looks like the funny sky position moving  
 was caused by something else (HUD viewport broke it, fixed now)  
 But still, everything in preViewportUpdate (except HUD)  
 seems to be 1 frame delayed, and is not correct for  
@@ -412,7 +401,7 @@ also racing line (trail).
   
 In SR3 there are no Impostors and it is fixed. Also Water reflections work fine.  
 But there is more stuff missing and seriously broken from HUD: minimap, gauges.  
-Terrains and roads need updating per split view too.   
+Terrains and roads need updating per split view too.  
   
   
 ----  
@@ -443,32 +432,33 @@ disable backspace and enter in this mode.
   
 -9. Multiplayer lobby, IRC or sth else with global chat for all inside game.  
 https://github.com/MegaGlest/megaglest-source/blob/develop/source/glest_game/menu/menu_state_masterserver.cpp
+
+new  
+10. Restore **master (game) server** for multiplayer games lists,  
+[forum topic](https://groups.f-hub.org/d/2Hu9znrb/new-masterserver-for-multiplayer-)  
+*Possible* on a-lec.org if/once we get there (only CC data required 1st).  
   
   
 ----  
   
 ## Objects, dynamic  
   
-Would be good if they had buoyancy.  
+Would be good if they had *buoyancy*.  
 Need a simple box shape for it and use that code which cardynamics uses.  
   
-Also objects need own hit sounds.  
-And triggered when they hit not only car but each other or terrain etc.  
-Should be possible with new sound system.  
+Maybe even own *sparks*, e.g. barrel hitting wall or other barrel.  
   
-Maybe even own sparks, e.g. barrel hitting wall or other barrel.  
-  
-Could have some more color variations (materials).  
+Could have some more color variations (*materials*).  
 Best if would reuse mesh and textures.  
   
   
 ----  
   
-## Garage, 3D car previews  
+## Garage, 3D previews  
   
-3D preview of cars in Gui (not image).  
-Allow rotate it mouse.  
-And also preview the chosen car color.  
+3D preview of vehicles in Gui (not image).  
+Allow rotate with mouse.  
+Preview chosen car color.  
   
 And/or a garage model (like in VDrift) when the menu is open.  
 Car in center and mouse controlls own camera (rotate, zoom).  
@@ -479,21 +469,20 @@ But Gui might require adapting.
   
 ## Car skins and vinyls  
   
-MirceaKitsune, May 2013  
+@MirceaKitsune, May 2013  
   
 Adding a system for skins/vinyls. All graphics located in a common folder.  
-The player has a car customization screen in which he can pick an image,  
-drag it to any spot on their car, rotate it and scale it.  
-Here's a video showing this method: http://www.youtube.com/watch?v=rKNxAoBRjk0  
-  
+The player has a car customization screen to **edit**:  
+pick an image, drag it to any spot on their car, rotate it and scale it.  
 I also suggest allowing skins to be colorized. Some images might contain their own colors though.   
+Here's a video showing this method: https://www.youtube.com/watch?v=rKNxAoBRjk0  
   
   
 ----  
   
 ## Colormap for terrain, grass  
   
-So 2 new RTTs that will generate:  
+2 new RTTs that will generate:  
   
 1. colormap for Terrain  
 Should make it look more interesting. Not sure how many noise layers or how many colors.  
@@ -514,7 +503,7 @@ for any scene, and images for that wouldn't be needed.
 ## Painting in editor  
   
 A mode in editor where you can paint textures (on terrain).  
-Those textures could then be used for  
+Those textures could then be used for:  
 - vegetation density (global, eg. make oasis with trees on desert)  
 - vegetation layers density (for invidual models, custom placing)  
 - terrain layers density (custom blendmap painting)  
@@ -531,12 +520,19 @@ any painted texture to any of the density slots.
   
 ## Force feedback  
   
-Force feedback on master is gone. It did sometimes work, but only on Linux, and  
-it was never adjusted to make some sense (from tires - the 3rd graph - aligning torque).  
-Needs code for SDL haptic support and update from sim.  
-I don't have ff in my wheel, so unable to test.  
-Mentioned here: forum.freegamedev.net/viewtopic.php?f=81&t=6447   
-  
+Force feedback on master is gone. It did sometimes work, but only on Linux,  
+and it was never adjusted to make some sense:  
+(from tires - the 3rd graph - Mz, aligning torque).  
+
+Needs code for SDL2 haptic support and update from sim.  
+I don't have a wheel, so unable to test.  
+Mentioned here: forum.freegamedev.net/viewtopic.php?f=81&t=6447  
+
+Someone with FF steering wheel - needed for testing.  
+Add GUI option for strength, minimum/deadzone,  
+autocenter?, low speed align?, etc.  
+Like in Speed Dreams, during game menu.  
+
   
 ----  
   
@@ -582,26 +578,28 @@ New Gallery Tracks view, with smaller images and track name.
 @CryHam, Jun 2013  
   
 A lot of code to have resources downloadable.  
-Just like in VDrift (using svn), or RoR, and last Speed Dreams.  
+Just like in: VDrift (using svn), RoR, and last Speed Dreams.  
   
 Benefits:  
-- Since we have users contributing tracks, it would be cooler if all users  
-could download new tracks in game (not search forum and extract to user dir).  
+- Since we have users contributing tracks (rarely), it would be cooler if all users  
+could download new tracks in game (not search forum and extract to user dir)  
+or wait for next release.  
   
-Note: some (many?) championships would become unavailable because of missing tracks.  
-Also needs checking if track/car exists before starting multiplayer.  
+Note: some (many?) championships/challenges will become  
+unavailable because of *missing tracks*.  
+Also needs checking if track/vehicle exists before starting multiplayer.  
   
-- We could make a smaller package eg. with only best tracks  
+- We could make a **smaller package** eg. a demo, or with only best tracks, or no IRL vehicles  
   
-- Could also do it for cars. Needs implementing of cars reading from user data.  
+- Could also do it for vehicles.  
+Needs implementing of vehicles reading from user data.  
   
 But since this is a gigantic issue (lots of coding, testing)  
-I'm not seeing this done. Also needs versioning, hash checking, blah blah, and what not.  
+I'm not seeing this done. Also needs versioning, hash checking, etc.  
   
 Probably we could use git+github for it, tracks are aready there, would be best to use that.  
 Maybe raw:// could work with http here ?  
-At least for downloading.  
-Uploading is just too difficult (authentication, installing git, way worse on windows etc).  
+OFC only for downloading.  
   
 RoR has it already implemented, check if we could adapt and use it too  
 https://github.com/RigsOfRods/rigs-of-rods/pull/2850
@@ -670,7 +668,7 @@ An easy method for starters would be teleporting to the last checkpoint (IIRC F1
 They lose more time but better than nothing till they get smarter.  
   
 
-@CryHam Jul, 2013  
+@CryHam, Jul 2013  
   
 Since the track's ghosts are now present, AI is even less needed.  
   
@@ -678,6 +676,18 @@ But if somebody wanted to implement it, then the track's ghost info could be
 used to guide the AI's car (position,rotation,steer,braking is there, more could added if needed).  
   
   
+----  
+  
+## Server Lap stats
+
+Just like in [Speed Dreams](https://speed-dreams.net/masterserver/user/cryham)  
+or in old [RoR]()
+
+Needs server side code (php?) and DB to hold user track records.
+
+*Possible only* on a-lec.org, if/once we get there (only CC data required 1st).
+
+
 ----  
   
 ## Lap stats, achievements  
@@ -730,60 +740,41 @@ and endnig in achievements for me (or very commited players) like drove all cham
   
 ## Horizons  
   
-Not sure how to make them, but I have 2 ideas.  
-1. Create 8 square terrains surrounding the main one (with the same size).  
-They need very decreased Hmap size, pages, layers (maybe just some texture).  
-They need to fit on borders with main terrain, and editor must allow their terrain editing,  
-which will span across 9 terrains and that isn't implemented.  
+Maybe some tracks don't need it (eg. dense jungle), but to make tracks not to "end so suddenly" with terrain.  
 
-2. If 1 is too demanding (fps,batches), then make 1 but render it to cube textures  
-(6 faces) and use those in game as horizons.  
-I don't think that drawing those textures is an option, won't fit and who has time for it.  
-  
-Maybe some tracks don't need it (eg. dense jungle) but this is to make some tracks not to "end so suddenly" with terrain end.  
-  
-Not 1,2 but:  
-3. Simply 1 more terrain, also in center, much bigger, with hole pixels (discard) where the current terrain is.  
-Should use as few batches as possible (4,9,  16 ?).  
-One texture would be bad, so probably just diffuse with blendmap.  
-Edititng it needs a new mode in editor (deform, smooth, noise etc).  
-Probably needs a geometry patch to connect vertices on edge with the normal terrain.  
-Could do it so that the edge is below but then would be a visible hole from far, so better to patch it somehow.  
-  
 Done 3.  
 No discard (yet). Patching is manually edited so both terrains cross.  
-Todo: tool in editor to fit both on border.  
+Todo: tool in editor to **auto fit** both on border.  
 Editing uses same tools, just changing which terrain to edit.  
 Brush size is same but bigger as it depends on terrain triangle size.  
   
-Also more terrains possible in SR3, now need fixing:  
-move terrain and editing cursor position.   
+4. Also more terrains possible in SR3, now need *fixing*:  
+move terrain and editing *cursor position*.  
   
   
 ----  
   
 ## Road splitting  
   
-@MirceaKitsune, May 12, 2013  
+@MirceaKitsune, May 2013  
   
 It would be possible to make some interesting tracks if roads could be separated and combined.  
-Players could be allowed to choose different paths each lap, or given less obvious shortcuts to discover.  
+Players could be allowed to choose different paths each lap, or given less obvious **shortcuts** to discover.  
 Tracks could also contain complex road hubs through which a player must find their own way.  
 From my understanding, there would be three different parts to such a change:  
   
-- Allowing roads themselves to be split and merged in the editor.  
+- **[Done]** Allowing roads themselves to be split and merged in the editor.  
 I didn't test it recently, but last I heard roads couldn't be divided or combined.  
   
-- Allowing multiple checkpoints to represent one location (act as one).  
-So when splitting a road you can add checkpoints to each fork, and reaching either will let you advance further.  
+- Allowing multiple **checkpoints** to represent one location (act as one).  
+So when splitting a road you can add checkpoints to each **fork**, and reaching either will let you advance further.  
   
-- An optional addition: If (point to point tracks) gets done,  
-derivative roads could allow for multiple start and end locations.  
+- optional: *derivative* roads could allow for *multiple start and end locations*.  
 If a track has multiple starting points, a player will randomly spawn at one of them.  
 If it has multiple ending points, any player can get to either in order to finish (aiming to find the closest one).  
 But this would only be possible for sprint tracks since loops require a single finish line.  
 
-@cryham 2015-08-20
+@cryham, 2015-08-20
   
 1. Could be done with making many roads possible, so the split would be just a 2nd road.  
 This way you would create a small road part just for the 2nd way of split, main road stayed on 1st.  
@@ -798,41 +789,88 @@ Your idea I think won't work, i.e. allowing any checks from both ways
   
 @tapiovierros  
   
-I find hidden shortcuts fun, so +1.  
+I find **hidden shortcuts** fun, so +1.  
 However, I don't think we necessarily need split checkpoints -  
 shortcuts tend to be short by definition and the roads   
 need to go into the same general direction anyway, so just place the checkpoints at the split points  
 (or maybe in some cases add a big checkpoint that covers both roads).  
 
-@cryham 2022-07-07
+@cryham, 2022-07-07
 
 Done  
 Just by adding more roads, not looped.  
   
-- Make alpha transition, not hard edge.   
+4. Make *alpha* transition, not hard edge.  
   
   
 ----  
   
 ## Pacenotes  
   
-3D signs/notes for driving above road.  
-Square billboards fading close and only few next visible.  
-See 006 for look example.  
+1a. Maybe a stack with next 1 (or 2) shown (instead of arrow).  
+1b. meh- voice announcer talk, when added (like IRL WRC copilot).  
   
-Maybe a stack with next 1 (or 2) shown (instead of arrow).  
-  
-Need some smart code for generation in editor from road also using track ghost data.  
-signs:  
-[Done] Turn 1,2,3,4, 5 square, 6 hairpin, 7 u-turn // short/long  
-[Done] Jump, with req vel info (auto),  
-[Done] OnPipe,  
-[Done] Loop, // type manual (side, barrel, double, etc)  
-[Done] Bump, Terrain Jump,  
-// manual  
-Obstacle,  
+2. ?meh, manual added:  
+Obstacle,  Narrow,  Road Split,  
 Slow, Stop, Danger,  
-Narrow, Road Split,  
 Ice, Mud, Water, etc.  
-  
-  
+
+3. **GUI** info window with all signs, add some text info  
+
+
+----
+## Simulation
+
+Simulation tasks.  
+
+1. In VDrift wheels cast just 1 ray down.  
+Should be possible to cast more at angle interval (e.g. 10 deg).  
+For big outside wheels, probably all around?  
+Also more times at tire width interval (e.g. left, center, right side).  
+
+Tried in code, fails, maybe normals?  
+Added in CARDYNAMICS::UpdateWheelContacts()  
+// todo .. more wheel rays  
+
+Example, debug shows rays in https://github.com/WimbleSoft/VehiclePhysics
+
+Probably still bad as it is 1 contact only.
+
+2. *(bad idea)* Try add RoR sim to SR,  
+at least for big wheeled vehicles and suspension.  
+(imgui, scripts, later too?)  
+RoR problems: tire inflation, bad params: pressure for wheels,  
+multiplayer, no tire sim (Pacejka's Magic Formula),  
+new collisions for all: veget, road, obj mesh etc.  
+deformations, no normals? update mesh,  
+vehicle editor?  
+
+
+----
+
+## Data
+
+- Top priority:  ♻️ Removing, replacing data with non-CC licenses  
+https://groups.f-hub.org/d/pIoLYCaO/-removing-replacing-data-with-non-cc-licenses-to-do
+
+- Medium priority:  
+🚗Cars, new vehicles  
+collection of models to do:  https://skfb.ly/oDrzD  
+https://groups.f-hub.org/d/adePgxzW/-cars-new-vehicles-done-and-to-do
+
+- High priority:  
+🏞️Creating tracks and their content  
+https://groups.f-hub.org/d/lpntzPrD/-creating-tracks-and-their-content
+
+- Low priority:  
+🌳Trees to do  
+https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do
+
+- Lowest priority:  
+🎵Music  
+I don't see this happening. Still, was already few times brought up.  
+There is not much quality, fitting music that I'd like in SR.  
+Has to be 5 min or more, CC-BY-SA (like all data).  
+Style could be: rock, metal, trance, chiptune.  
+Something that I wouldn't mind hearing, and would not get bored or annoyed by it.  
+For reference, my favorite music in playlists: https://cryham.org/entertainment/playlists/
