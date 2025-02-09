@@ -40,7 +40,7 @@ Works on GNU/Linux and Windows.
 For cars the game has a **rally** style of driving and sliding, mostly on gravel and loose surfaces.  
 It has possible **stunt** elements (like: jumps, loops, pipes). Roads are made from 3D spline.  
 It includes many Sci-Fi vehicles and different planets🌌, even surreal locations.  
-All [Tracks](https://stuntrally.tuxfamily.org/tracks3) and [Vehicles](https://stuntrally.tuxfamily.org/cars) can be browsed on website.
+All [Tracks](https://cryham.org/stuntrally/tracks/) and [Vehicles](https://cryham.org/stuntrally/vehicles/) can be browsed on website.
 
 SR 3.x continues old [SR](https://github.com/stuntrally/stuntrally) 2.x, now using [Ogre-Next](https://github.com/OGRECave/ogre-next) 3.0 for rendering and [VDrift](https://github.com/VDrift/vdrift) for simulation.
 

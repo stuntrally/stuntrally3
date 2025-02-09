@@ -29,33 +29,33 @@ _This page lists available features in Stunt Rally 3 game and editor._
   - over 11 hours needed to drive all just once
   - in 40 **sceneries**, great variety:
     - Nature based:
-    🌳[Jungle](https://stuntrally.tuxfamily.org/tracks3?id=Jng13-Tropic), [JungleDark](https://stuntrally.tuxfamily.org/tracks3?id=Jng20-JungleMaze), [Moss](https://stuntrally.tuxfamily.org/tracks3?id=Mos6-TaraMosses),  
-    🌲[Forest](https://stuntrally.tuxfamily.org/tracks3?id=For3-Snail), [ForestYellow](https://stuntrally.tuxfamily.org/tracks3?id=For7-Blur), 🏔️[ForestMntn](https://stuntrally.tuxfamily.org/tracks3?id=For12-HighPeaks), [Finland](https://stuntrally.tuxfamily.org/tracks3?id=Fin3-TreeTops), [Mud](https://stuntrally.tuxfamily.org/tracks3?id=Mud3-Mudlake),  
-    🏜️[Desert](https://stuntrally.tuxfamily.org/tracks3?id=Des1-Dunes), [Australia](https://stuntrally.tuxfamily.org/tracks3?id=Aus5-TopTwist), [Canyon](https://stuntrally.tuxfamily.org/tracks3?id=Can2-CanyonRun), [Savanna](https://stuntrally.tuxfamily.org/tracks3?id=Sav4-Hills), [SavannaDry](https://stuntrally.tuxfamily.org/tracks3?id=Sav15-Scorpio),  
-    🌴[Greece](https://stuntrally.tuxfamily.org/tracks3?id=Grc2-Coast), [GreeceWhite](https://stuntrally.tuxfamily.org/tracks3?id=Grc8-SlopeCity), 🪨[GreeceRocky](https://stuntrally.tuxfamily.org/tracks3?id=Grc13-YeleyStunts), 🏝️[Islands](https://stuntrally.tuxfamily.org/tracks3?id=Isl19-Shocacosh), [IslandDark](https://stuntrally.tuxfamily.org/tracks3?id=Isl5-Shore),  
-    🌨️[Winter](https://stuntrally.tuxfamily.org/tracks3?id=Wnt15-SkiJump), [WinterWet](https://stuntrally.tuxfamily.org/tracks3?id=Wnt2-Wet), 🍁[Autumn](https://stuntrally.tuxfamily.org/tracks3?id=Atm1-Autumn), [AutumnDark](https://stuntrally.tuxfamily.org/tracks3?id=Atm4-Scary), [Spring](https://stuntrally.tuxfamily.org/tracks3?id=Spr1-Rise),
-    - Extreme: 🌋[Volcanic](https://stuntrally.tuxfamily.org/tracks3?id=Vlc2-Volcanic), [VolcanicDark](https://stuntrally.tuxfamily.org/tracks3?id=Vlc9-Craters), 🪨[Stone](https://stuntrally.tuxfamily.org/tracks3?id=Stn2-UltraFrenzy), ☢️[Toxic](https://stuntrally.tuxfamily.org/tracks3?id=Tox1-Radioactive), [PostApo](https://stuntrally.tuxfamily.org/tracks3?id=Apo1-TarFields), 
-    - other Planets: 🪐[Unidentified](https://stuntrally.tuxfamily.org/tracks3?id=Uni4-Pipeline), 🔴[Mars](https://stuntrally.tuxfamily.org/tracks3?id=Mrs1-Mars), 🛸[Alien](https://stuntrally.tuxfamily.org/tracks3?id=Aln2-Freefall), 💎[CrystalMoon](https://stuntrally.tuxfamily.org/tracks3?id=Cry5-CrystalIslands), 🌌[Space](https://stuntrally.tuxfamily.org/tracks3?id=Spc2-SpaceMine), ⚫[BlackDesert](https://stuntrally.tuxfamily.org/tracks3?id=Blk1-Darkness)
-    - and Surreal places: 🕰️[Surreal](https://stuntrally.tuxfamily.org/tracks3?id=Sur1-Surreal), 🔮[SurrealSpace](https://stuntrally.tuxfamily.org/tracks3?id=Sur5-FreshBreeze), [Marble](https://stuntrally.tuxfamily.org/tracks3?id=Mar3-Plateaus), 🫧[Anomaly](https://stuntrally.tuxfamily.org/tracks3?id=Ano3-Oversize)
+    🌳[Jungle](https://cryham.org/stuntrally/tracks/?id=Jng13-Tropic), [JungleDark](https://cryham.org/stuntrally/tracks/?id=Jng20-JungleMaze), [Moss](https://cryham.org/stuntrally/tracks/?id=Mos6-TaraMosses),  
+    🌲[Forest](https://cryham.org/stuntrally/tracks/?id=For3-Snail), [ForestYellow](https://cryham.org/stuntrally/tracks/?id=For7-Blur), 🏔️[ForestMntn](https://cryham.org/stuntrally/tracks/?id=For12-HighPeaks), [Finland](https://cryham.org/stuntrally/tracks/?id=Fin3-TreeTops), [Mud](https://cryham.org/stuntrally/tracks/?id=Mud3-Mudlake),  
+    🏜️[Desert](https://cryham.org/stuntrally/tracks/?id=Des1-Dunes), [Australia](https://cryham.org/stuntrally/tracks/?id=Aus5-TopTwist), [Canyon](https://cryham.org/stuntrally/tracks/?id=Can2-CanyonRun), [Savanna](https://cryham.org/stuntrally/tracks/?id=Sav4-Hills), [SavannaDry](https://cryham.org/stuntrally/tracks/?id=Sav15-Scorpio),  
+    🌴[Greece](https://cryham.org/stuntrally/tracks/?id=Grc2-Coast), [GreeceWhite](https://cryham.org/stuntrally/tracks/?id=Grc8-SlopeCity), 🪨[GreeceRocky](https://cryham.org/stuntrally/tracks/?id=Grc13-YeleyStunts), 🏝️[Islands](https://cryham.org/stuntrally/tracks/?id=Isl19-Shocacosh), [IslandDark](https://cryham.org/stuntrally/tracks/?id=Isl5-Shore),  
+    🌨️[Winter](https://cryham.org/stuntrally/tracks/?id=Wnt15-SkiJump), [WinterWet](https://cryham.org/stuntrally/tracks/?id=Wnt2-Wet), 🍁[Autumn](https://cryham.org/stuntrally/tracks/?id=Atm1-Autumn), [AutumnDark](https://cryham.org/stuntrally/tracks/?id=Atm4-Scary), [Spring](https://cryham.org/stuntrally/tracks/?id=Spr1-Rise),
+    - Extreme: 🌋[Volcanic](https://cryham.org/stuntrally/tracks/?id=Vlc2-Volcanic), [VolcanicDark](https://cryham.org/stuntrally/tracks/?id=Vlc9-Craters), 🪨[Stone](https://cryham.org/stuntrally/tracks/?id=Stn2-UltraFrenzy), ☢️[Toxic](https://cryham.org/stuntrally/tracks/?id=Tox1-Radioactive), [PostApo](https://cryham.org/stuntrally/tracks/?id=Apo1-TarFields), 
+    - other Planets: 🪐[Unidentified](https://cryham.org/stuntrally/tracks/?id=Uni4-Pipeline), 🔴[Mars](https://cryham.org/stuntrally/tracks/?id=Mrs1-Mars), 🛸[Alien](https://cryham.org/stuntrally/tracks/?id=Aln2-Freefall), 💎[CrystalMoon](https://cryham.org/stuntrally/tracks/?id=Cry5-CrystalIslands), 🌌[Space](https://cryham.org/stuntrally/tracks/?id=Spc2-SpaceMine), ⚫[BlackDesert](https://cryham.org/stuntrally/tracks/?id=Blk1-Darkness)
+    - and Surreal places: 🕰️[Surreal](https://cryham.org/stuntrally/tracks/?id=Sur1-Surreal), 🔮[SurrealSpace](https://cryham.org/stuntrally/tracks/?id=Sur5-FreshBreeze), [Marble](https://cryham.org/stuntrally/tracks/?id=Mar3-Plateaus), 🫧[Anomaly](https://cryham.org/stuntrally/tracks/?id=Ano3-Oversize)
 - 🚗 33 **Vehicles**
-  - 17 cars ([Hyena](https://stuntrally.tuxfamily.org/cars?id=HI), [Fox](https://stuntrally.tuxfamily.org/cars?id=ES) or [Jaguar](https://stuntrally.tuxfamily.org/cars?id=SX) are best for rally)
-  - few extreme with bigger wheels e.g. [Lizard](https://stuntrally.tuxfamily.org/cars?id=TU), [Bear](https://stuntrally.tuxfamily.org/cars?id=UV)  
-  - 2 [motorbikes](https://stuntrally.tuxfamily.org/cars?id=BE) 🏍️, [3 metal](https://stuntrally.tuxfamily.org/cars?id=3B) balls vehicle, fast [6 wheeled](https://stuntrally.tuxfamily.org/cars?id=U6)
-  - slow old [truck](https://stuntrally.tuxfamily.org/cars?id=OT), fast [8 wheeled](https://stuntrally.tuxfamily.org/cars?id=U8) bus 🚌
-  - 2 racing [hovercrafts](https://stuntrally.tuxfamily.org/cars?id=H2), with propeller, (go on fluids)
-  - 3 hovering [spaceships](https://stuntrally.tuxfamily.org/cars?id=V2) 🚀 (*only* for flat tracks), (go on fluids)
-  - bouncy [sphere](https://stuntrally.tuxfamily.org/cars?id=O) 🔘 (*only* for flat tracks)
-  - 3 antigravity fast [hovering cars](https://stuntrally.tuxfamily.org/cars?id=R3), 2 fast antigravity [drones](https://stuntrally.tuxfamily.org/cars?id=Q3)🔹 (go *inside* all fluids)
+  - 17 cars ([Hyena](https://cryham.org/stuntrally/vehicles/?id=HI), [Fox](https://cryham.org/stuntrally/vehicles/?id=ES) or [Jaguar](https://cryham.org/stuntrally/vehicles/?id=SX) are best for rally)
+  - few extreme with bigger wheels e.g. [Lizard](https://cryham.org/stuntrally/vehicles/?id=TU), [Bear](https://cryham.org/stuntrally/vehicles/?id=UV)  
+  - 2 [motorbikes](https://cryham.org/stuntrally/vehicles/?id=BE) 🏍️, [3 metal](https://cryham.org/stuntrally/vehicles/?id=3B) balls vehicle, fast [6 wheeled](https://cryham.org/stuntrally/vehicles/?id=U6)
+  - slow old [truck](https://cryham.org/stuntrally/vehicles/?id=OT), fast [8 wheeled](https://cryham.org/stuntrally/vehicles/?id=U8) bus 🚌
+  - 2 racing [hovercrafts](https://cryham.org/stuntrally/vehicles/?id=H2), with propeller, (go on fluids)
+  - 3 hovering [spaceships](https://cryham.org/stuntrally/vehicles/?id=V2) 🚀 (*only* for flat tracks), (go on fluids)
+  - bouncy [sphere](https://cryham.org/stuntrally/vehicles/?id=O) 🔘 (*only* for flat tracks)
+  - 3 antigravity fast [hovering cars](https://cryham.org/stuntrally/vehicles/?id=R3), 2 fast antigravity [drones](https://cryham.org/stuntrally/vehicles/?id=Q3)🔹 (go *inside* all fluids)
 
 ## Gameplay 🏁
 
 - **Stunt** and other elements:
-  - ⛒ [obstacles](https://stuntrally.tuxfamily.org/tracks3?id=Can5-Obstacles) - to avoid on road or in pipes
-  - / \ [jumps](https://stuntrally.tuxfamily.org/tracks3?id=Des7-CrossJumps) - with shown required speed
-  - ➰ [loops](https://stuntrally.tuxfamily.org/tracks3?id=Sav3-Loops): straight, skewed, [side](https://stuntrally.tuxfamily.org/tracks3?id=Grc13-YeleyStunts), [barrel](https://stuntrally.tuxfamily.org/tracks3?id=Mos5-Factory), double, [unique](https://stuntrally.tuxfamily.org/tracks3?id=Spc3-HyperLoops), etc
-  - ⭕ [pipes](https://stuntrally.tuxfamily.org/tracks3?id=Sav6-PipeCrazy) (closed), [half](https://stuntrally.tuxfamily.org/tracks3?id=Grc6-Halfpipes) pipes (open), on pipe drives
-  - 🔀 very [twisted](https://stuntrally.tuxfamily.org/tracks3?id=Apo1-TarFields) bridges and highly [banked](https://stuntrally.tuxfamily.org/tracks3?id=Can2-CanyonRun) (up to 90°)
-  - 🌊 Drives through [water](https://stuntrally.tuxfamily.org/tracks3?id=Isl3-Islands) or [mud areas](https://stuntrally.tuxfamily.org/tracks3?id=Jng16-MudBath) (all are safe, won't get stuck)
+  - ⛒ [obstacles](https://cryham.org/stuntrally/tracks/?id=Can5-Obstacles) - to avoid on road or in pipes
+  - / \ [jumps](https://cryham.org/stuntrally/tracks/?id=Des7-CrossJumps) - with shown required speed
+  - ➰ [loops](https://cryham.org/stuntrally/tracks/?id=Sav3-Loops): straight, skewed, [side](https://cryham.org/stuntrally/tracks/?id=Grc13-YeleyStunts), [barrel](https://cryham.org/stuntrally/tracks/?id=Mos5-Factory), double, [unique](https://cryham.org/stuntrally/tracks/?id=Spc3-HyperLoops), etc
+  - ⭕ [pipes](https://cryham.org/stuntrally/tracks/?id=Sav6-PipeCrazy) (closed), [half](https://cryham.org/stuntrally/tracks/?id=Grc6-Halfpipes) pipes (open), on pipe drives
+  - 🔀 very [twisted](https://cryham.org/stuntrally/tracks/?id=Apo1-TarFields) bridges and highly [banked](https://cryham.org/stuntrally/tracks/?id=Can2-CanyonRun) (up to 90°)
+  - 🌊 Drives through [water](https://cryham.org/stuntrally/tracks/?id=Isl3-Islands) or [mud areas](https://cryham.org/stuntrally/tracks/?id=Jng16-MudBath) (all are safe, won't get stuck)
   - Dynamic objects on tracks (🛢️barrels, 📦boxes, etc), can be hit  
   &nbsp;
 - 💨 Boost - key to apply rocket boosters to speed up vehicle, works in air and underwater too
