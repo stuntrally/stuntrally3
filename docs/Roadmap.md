@@ -1,28 +1,27 @@
 _List of things **to do**, planned for next releases._  
 
 This is the latest, fast updated list.  
-More in [Tasks tracker](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php?page_number=1) with older tasks too and some more detail.
+More in [Tasks](Tasks.md) with older tasks too and more detail text.
 
 Priorities marked: 1 ! , 2 `crucial`, 3 **Next or Big**, 4 _Important_, 5 normal
 
-
 ### 3.4
 
-🌧️ Ambient [Sounds](https://stuntrally.tuxfamily.org/mantis/view.php?id=1): rain, wind, forest etc  
+🌧️ Ambient [Sounds](Tasks.md#sounds): rain, wind, forest etc  
 📦 object *hit* sounds🔊  
 
 fix *tracks*:  
 MogFoss waterfals up, Preyth bld up-  
 Tiny, Mudflats, Knotted - ssao bad alpha bridge  
 MiningCity, KapabaRiv, Overgrowth, Glitchy - road segs white blend transp/invisible  
-MadMntnDark then loadd Temple - jng tex bad grn-blue
+MadMntnDark then load Temple - jng tex bad grn-blue
 
 win *installer* needs admin for vcredist, drop ask, or elevate on run  
 upd website gallery  
 
 *tire trails* clr, no uv tex-  
 
-! auto road/ter **Surface**: Particles, trail, fix clr, sounds, from `presets.xml` not per track  
+! `auto` road/ter Surface: **Particles**, trail, fix clr, **sounds**, from `presets.xml` not per track  
 new road particles  
 
 ### Data
@@ -92,7 +91,7 @@ or add *new* code for:
 ### Tracks
 
 New **tracks**, also with **fields**  
-walls repeat mul uv, more mtr, wall *types*, [link](https://stuntrally.tuxfamily.org/mantis/view.php?id=6)  
+walls repeat mul uv, more mtr, wall *types*, [task](Tasks.md#road-sides-walls)  
 
 💎Add gems to tracks, more types 3d  
 xml par continuous?, logic btn continue, hid collected gems on start?  
@@ -123,7 +122,7 @@ glass pipes not fogged?
 rqg rivers after water  
 river alpha fade last segs  
 
-! 🌊refract, depth: pass projmatrix `NOT` **inverse**  
+! 🌊refract, depth: pass projmatrix not **inverse**  
 waterfalls refract `cuts` off above cam y  
 underwater top has no surface, refract  
 
@@ -144,13 +143,13 @@ car glass reflect cube **sky pos** bad on Test1-Flat?
 fix .car thrusters lights pos  
 **hide** flares for in car camera  
 
-old [Splitscreen](https://stuntrally.tuxfamily.org/mantis/view.php?id=26) issues  
+old [Splitscreen](Tasks.md#splitscreen-per-viewport) tasks  
 
 
 ----
 ### New game stuff✨
 
-🏆 new [game Modes](https://stuntrally.tuxfamily.org/mantis/view.php?id=21): [**Career**](https://forum.freegamedev.net/viewtopic.php?f=79&t=5211)  
+🏆 new [game Modes](Tasks.md#gameplay-modes): [**Career**](https://forum.freegamedev.net/viewtopic.php?f=79&t=5211)  
 Score for: drift (sliding on road), air time (jumps etc), hitting dynamic objects  
 
 🕹️ New **Game** elements:  
@@ -168,9 +167,9 @@ test, big, move to bullet3?
 ----
 ### 🟢 Ogre new
 
-🌊! Terra `waves`, vehicle deform tex/compute-, fluid *particles*  
+🌊! Terra `waves` [task](Tasks.md#water-waves), vehicle deform tex/compute-, fluid *particles*  
 
-💦 Vehicle, wheels **dirt**,mud and **damage** *shader*, by dynamic paint, detail texture  
+💦 Vehicle, wheels **dirt**,mud and **damage** *shader* [task](Tasks.md#damage-and-dirt), by dynamic paint, detail texture  
 
 🕳️ Terrain new **ssao map** added to shadowmap: normals, ssao pass, from top view  
 GI for terrain [issue](https://github.com/OGRECave/ogre-next/issues/475)?  
@@ -241,21 +240,22 @@ redo or replace lowest quality meshes: , skyscraper* 🏢
 
 🌟 Sceneries: Spring blooming🌸 trees, Fractal, Organic?, Candy?  
 
-[Horizons](https://stuntrally.tuxfamily.org/mantis/view.php?id=11), add to rest of tracks  
+[Horizons](Tasks.md#horizons), add to rest of tracks  
 
 
 ----
 ### old Tasks
 
-Basically all [Tasks](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php) with priority 1 to 12.
+Basically all [Tasks](Tasks.md) with priority 1 to 12.
 
 #### Graphics
 
-🏞️ [Rivers/waterfalls](https://stuntrally.tuxfamily.org/mantis/view.php?id=7)  
-✨ [Particles](https://stuntrally.tuxfamily.org/mantis/view.php?id=2)  
+🏞️ [Rivers/waterfalls](Tasks.md#rivers-waterfalls)  
+✨ [Particles](Tasks.md#particles)  
 ⚡ lightning weather: mesh line, thunder sound, light, hdr glow-  
 
 #### Meh
-ed roads: [split](https://stuntrally.tuxfamily.org/mantis/view.php?id=4), checkpoints, merge?  
+ed roads: [split](Tasks.md#road-splitting), checkpoints, merge?  
 sim new poses _interpolation_?  
-[Pace notes](https://stuntrally.tuxfamily.org/mantis/view.php?id=14) - game Info window for all signs  
+[Pace notes](Tasks.md#pacenotes)
+

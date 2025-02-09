@@ -16,8 +16,8 @@ For future plans see [Roadmap](Roadmap.md) and developer [Tasks](Tasks.md) - The
 ### Media
 
 **[Videos](https://www.youtube.com/user/TheCrystalHammer)** from gameplay and track editor tutorials.  
-[Screenshots **gallery**](https://cryham.org/stuntrally/gallery/) (from all versions).  
-Old development galleries linked below (lots of funny screenshots).  
+[Screenshots **gallery**](https://cryham.org/stuntrally/gallery/)  
+and from [all versions](https://cryham.org/stuntrally/galleries/), including old development galleries (lots of funny screenshots).  
 
 Creator and main developer [CryHam's website](https://cryham.org/).  
 
@@ -26,7 +26,7 @@ _Old_ presentation document of the project's past (aka SR 2.6 book, 196 pages), 
 
 ### Feedback
 
-Is in [Readme.md](../Readme.md)
+Is in [Readme.md](../Readme.md#feedback) (chat, forum etc).
 
 ----
 ### Technologies and Libraries used
@@ -44,5 +44,4 @@ Both road and SR Track Editor are fully implemented our own code by CryHam.
 
 #### Website
 
-Website is made with [CMS Made Simple](https://www.cmsmadesimple.org/), [DokuWiki](https://www.dokuwiki.org/dokuwiki) and [Mantis Bug Tracker](https://www.mantisbt.org/).  
-Hosted on [TuxFamily](https://www.tuxfamily.org/en/about).
+SR website is made using [WordPress](https://wordpress.org) just like [cryham's](https://cryham.org) website.

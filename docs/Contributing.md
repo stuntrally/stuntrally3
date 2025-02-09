@@ -6,11 +6,11 @@ Help is welcomed.
 Thank you for all your contributions.
 
 Even smaller things count like:
-- 👥Increasing popularity, spreading info about Stunt Rally 3 on internet (with link to our [website](https://stuntrally.tuxfamily.org/)).
+- 👥Increasing popularity, spreading info about Stunt Rally 3 on internet (with link to SR [website](https://cryham.org/stuntrally/)).
 - 🪲Testing and reporting bugs ([Issues on github](https://github.com/stuntrally/stuntrally3/issues)).
 - 🌏Improving a translation to a language (on [Weblate](https://hosted.weblate.org/projects/stunt-rally-3/stunt-rally-3/), [Localization](Localization.md)).
 - 💭Constructive discussions and honest opinions about features, etc.
-- 💡Lastly new ideas or features (since there are already *plenty* in [Tasks](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php) and [Roadmap](Roadmap.md)).
+- 💡Lastly new ideas or features (since there are already *plenty* in [Tasks](Tasks.md) and [Roadmap](Roadmap.md)).
 
 
 Below is a list of **bigger** focused contributions:  
@@ -23,7 +23,7 @@ If you know C++, [Ogre-Next](https://forums.ogre3d.org/viewforum.php?f=25) (3.0 
 and preferably could handle some of the [Roadmap](Roadmap.md) tasks.  
 Details for tools and sources are in [Developing](Developing.md).  
 Own ideas could also go into SR3, just need some discussion first.  
-Most ideas are already in [Tasks](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php). Sorted by P (priority): 1 is most important, higher are less so.
+Most ideas are already in [Tasks](Tasks.md). Sorted by P (priority): 1 is most important, higher are less so.
 
 Medium changes can go through [pull requests](https://github.com/stuntrally/stuntrally/pulls).  
 For those with more time and effort, commits to main branch will be possible.
@@ -86,8 +86,7 @@ This section describes the procedure to get your code (fixes, patches, new featu
   This assumes you have already cloned our code and done something with it and now are ready to share your stuff.  
 
 If you don't know what to do, but want to help, check out the repo page [Contributing](Contributing.md),  
-[ToDo](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php) with programming tasks with descriptions (sort by priority P, 1 is critical, higher are less important),  
-and also [Roadmap](Roadmap.md) for next version(s).
+[Tasks](Tasks.md) with programming tasks with descriptions, and also [Roadmap](Roadmap.md) for next version(s).
 
   
 ## Prerequisites ##

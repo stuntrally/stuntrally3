@@ -33,7 +33,7 @@
 #### Developers
 
 ✨[Roadmap](Roadmap.md)  
-📚[Tasks](http://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php)  
+📚[Tasks](Tasks.md)  
 🤗[Release Process](Release.md)  
 
 🏛️[old SR 2.x docs](https://github.com/stuntrally/stuntrally/blob/master/docs/_menu.md)

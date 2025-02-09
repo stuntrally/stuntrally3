@@ -14,7 +14,7 @@ This guide can be useful if you want to:
 
 - Many _ToDo:_ tasks are added BTW of topics in this guide file. It may not reflect very latest changes.  
 - **Fast** updated list with more items, but *shorter* info, is on [Roadmap](Roadmap.md), also used for planning what to do next.  
-- More in **slow** [Task list](https://stuntrally.tuxfamily.org/mantis/view_all_bug_page.php) with general info (sorted by P (priority), 1 is most important).  
+- More in **slow** [Tasks list](Tasks.md) with general info (sorted priority).  
 - Lastly there are plenty of `todo:` or `fixme` places marked in sources.
 
 ### Rendering support
@@ -379,8 +379,6 @@ VDrift simulation, main update code in [cardynamics_update.cpp](../src/vdrift/ca
 SR's own code for non-car vehicles are in: `SimulateSpaceship(` 🚀, `SimulateSphere(` 🔘, and all hovering in `SimulateHover(`.  
 Key places in code (that change simulation) for such special vehicles are marked with `//V*`.
 
-Few possible tasks _ToDo:_ [here](https://stuntrally.tuxfamily.org/mantis/view.php?id=17).
-
 
 ### Replay 📽️
 
@@ -393,7 +391,7 @@ More detail in [CGame.h](../src/game/CGame.h) sections with vars for this.
 Sound manager code in `src/sound/`. Uses [OpenALSoft](https://github.com/kcat/openal-soft).  
 It is based on [RoR's](https://github.com/RigsOfRods/rigs-of-rods/tree/master/source/main/audio) code, but very reduced. It completely replaced old VDrift's code.
 
-**_ToDo:_** [Task here](https://stuntrally.tuxfamily.org/mantis/view.php?id=1).
+**_ToDo:_** [Task here](Tasks.md#sounds).
 
 
 ----
