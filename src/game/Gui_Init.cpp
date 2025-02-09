@@ -561,7 +561,7 @@ void CGui::InitGui()
 	edUserDir->setCaption(PATHS::UserConfigDir());
 
 	edOpenUrl = fEd("OpenUrl");
-	edOpenUrl->setCaption("https://stuntrally.tuxfamily.org/");
+	edOpenUrl->setCaption("https://cryham.org/stuntrally/");
 
 	//  🔗 open url btns  -------------
 	Btn("BtnTrackEditor", btnTrackEditor);

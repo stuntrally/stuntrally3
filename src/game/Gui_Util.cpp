@@ -404,7 +404,7 @@ void CGui::Url(const string& url)
 }
 void CGui::btnWebsite(WP)
 {
-	Url("https://stuntrally.tuxfamily.org/");
+	Url("https://cryham.org/stuntrally/");
 }
 void CGui::btnWiki(WP)
 {
@@ -437,7 +437,7 @@ void CGui::btnTransl(WP)
 }
 void CGui::btnDonations(WP)
 {
-	Url("https://cryham.tuxfamily.org/donate/");
+	Url("https://cryham.org/donate/");
 }
 
 

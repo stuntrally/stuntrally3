@@ -19,8 +19,8 @@
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "Stunt Rally"
 !define PRODUCT_PUBLISHER "Crystal Hammer"
-!define PRODUCT_WEB_SITE "https://stuntrally.tuxfamily.org/"
-!define PRODUCT_DONATIONS "https://cryham.tuxfamily.org/donate/"
+!define PRODUCT_WEB_SITE "https://cryham.org/stuntrally/"
+!define PRODUCT_DONATIONS "https://cryham.org/donate/"
 !define PRODUCT_DOCS "https://github.com/stuntrally/stuntrally3/blob/main/docs/_menu.md"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\StuntRally.exe"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"

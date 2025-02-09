@@ -51,7 +51,7 @@ The process of releasing and things that need to be checked before.
 
 ### 5. Websites
   * Update websites
-    * [Homepage](https://stuntrally.tuxfamily.org/), tracks count, [Downloads](https://stuntrally.tuxfamily.org/downloads) release date, links
+    * [Homepage](https://cryham.org/stuntrally/), tracks count, [Downloads](https://cryham.org/stuntrally/downloads/) release date, links
     * docs/ [Changelog](Changelog.md), [Features](Features.md), [Statistics](Statistics.md)
   * Update Tracks Browser
     * rename [tracks.ini](../config/tracks.ini) to .txt, use [make_roadstats_xml.py](../dist/make_roadstats_xml.py), copy into CMS

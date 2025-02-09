@@ -27,11 +27,11 @@
 
 #define SR_Version   "3.3"
 #define SR_Publisher "Crystal Hammer"
-#define SR_Url       "https://stuntrally.tuxfamily.org/"
+#define SR_Url       "https://cryham.org/stuntrally/"
 
 #define SR_Donate    "Donations"
 #define SR_Docs      "Documentation"
-#define SR_UrlDonate "https://cryham.tuxfamily.org/donate/"
+#define SR_UrlDonate "https://cryham.org/donate/"
 #define SR_UrlDocs   "https://github.com/stuntrally/stuntrally3/blob/main/docs/_menu.md"
 
 

@@ -991,7 +991,7 @@
 	<Tag name="BasedOn">based on</Tag>
 	<Tag name="AndUsing">and using</Tag>
 	<Tag name="ProjectPage">project&apos;s page:</Tag>
-	<Tag name="PageURL">https://stuntrally.tuxfamily.org/</Tag>
+	<Tag name="PageURL">https://cryham.org/stuntrally/</Tag>
 	
 	<!-- SR ver  settings_com.h  SET_VER -->
 	<Tag name="GameVersion">3.3</Tag>
