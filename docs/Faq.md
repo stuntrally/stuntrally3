@@ -137,7 +137,7 @@ This needs some time to learn the included SR3 Track Editor but is explained in 
 
 **Can I donate or support this project financially?**  
 
-Yes. Since few years CryHam started accepting donations. To donate use [Donate page](https://cryham.tuxfamily.org/donate/).  
+Yes. Since few years CryHam started accepting donations. To donate use [Donate page](https://cryham.org/donate/).  
 Or directly [paypal link](https://paypal.me/cryham) or [ko-fi link](https://ko-fi.com/cryham) that also allows monthly donations.  
 Thank you for donating. For now, I didn't set up patreon yet.
 
@@ -145,4 +145,4 @@ Thank you for donating. For now, I didn't set up patreon yet.
 
 Firstly by reading the Documentation. It describes most things already.  
 Quick questions can be on github [Issues](https://github.com/stuntrally/stuntrally3/issues) page, for longer discussions we have new Forum.  
-For info about CryHam (main creator of SR), his other projects, and more, you can read on [CryHam's website](https://cryham.tuxfamily.org/).
+For info about CryHam (main creator of SR), his other projects, and more, you can read on [CryHam's website](https://cryham.org/).

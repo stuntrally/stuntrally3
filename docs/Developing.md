@@ -37,7 +37,7 @@ Works fast, but has less options.
 
 ### [VSCodium](https://github.com/VSCodium/vscodium/releases)
 Used by CryHam, needs a moment to set up first, quick info below.  
-And in [my C++ guide](https://cryham.tuxfamily.org/cpp-guide/#VSCodium), especially if you're new to C++.  
+And in [my C++ guide](https://cryham.org/cpp-guide/#VSCodium), especially if you're new to C++.  
 Search in all files works super fast. Has lots of extensions available.  
 
 Extensions needed at least: 

@@ -308,7 +308,7 @@
 				</Widget>
 				<Widget type="ImageBox" skin="ImageBox" position="244 288 276 276">
 					<Property key="ImageTexture" value="_ch-logo.png"/>
-					<UserString key="tip" value="cryham.tuxfamily.org"/>
+					<UserString key="tip" value="cryham.org"/>
 				</Widget>
 
 				<Widget type="TextBox" skin="TextBox" position="102 476 150 24">

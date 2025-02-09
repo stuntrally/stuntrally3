@@ -25,7 +25,7 @@ and 4 addidtional chapters (from version 2.1)
 [Chapter 14: Terrain, advanced](https://www.youtube.com/watch?v=v8Evcw7nLok)  
 
 These videos (64 minutes total) cover creating a new track in detail. Even if being quite old now.  
-There is a **more recent** page describing editor features [here](https://cryham.tuxfamily.org/portfolio/2015-sr-track-editor).
+There is a **more recent** page describing editor features [here](https://cryham.tuxfamily.org/portfolio/2015-sr-track-editor) (also new [here](https://cryham.org/portfolio/2010-sr-track-editor) but no images).
 
 _Note:_ Creating a very simple track (or just editing an existing one) doesn't require watching all parts (at least 1,2,3,7).  
 Creating a good, long or difficult track reaches 2 or more hours of editing. But a simple track can be done in 5 minutes if you know editor.
