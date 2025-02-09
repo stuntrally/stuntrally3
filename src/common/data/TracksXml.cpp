@@ -109,7 +109,7 @@ bool TracksIni::LoadIni(string file, bool check)
 	trks.clear();  trkmap.clear();  times.clear();  cntAll = 0;
 
 	int i=1;  // 0 = not found
-	char s[256], name[32],scenery[24],author[32];
+	char s[256], name[32],scenery[24], author[42],cmt[32];
 	float time=0.f;
 	TrackInfo t;
 
@@ -126,9 +126,9 @@ bool TracksIni::LoadIni(string file, bool check)
 		//  starting with digit
 		if (strlen(s) > 0 && s[0] >= '0' && s[0] <= '9')
 		{
-		//114,Fin1-Lakes  v=2.0 06/04/13 07/04/13 :Finland  |o0 w1 ~1 J2 L0 P0 /1 s1 l2 !2 *4  T=107.8  a:CH
+		//114,Fin1-Lakes  v=2.0 06/04/13 07/04/13 :Finland  |o0 w1 ~1 J2 L0 P0 /1 s1 l2 !2 *4  T=107.8  a:CH  r:org
 			sscanf(s,
-			"%d,%s v%f %d/%d/%d %d/%d/%d :%s |o%d c%d w%d ~%d J%d L%d P%d /%d s%d u%d n%d l%d !%d *%d  T=%f a:%s"
+			"%d,%s v%f %d/%d/%d %d/%d/%d :%s |o%d c%d w%d ~%d J%d L%d P%d /%d s%d u%d n%d l%d !%d *%d  T=%f a:%s r:%s"
 				,&t.n, name, &t.crtver
 					,&t.created.day, &t.created.month, &t.created.year
 					,&t.modified.day, &t.modified.month, &t.modified.year
@@ -136,7 +136,7 @@ bool TracksIni::LoadIni(string file, bool check)
 				,&t.objects, &t.obstacles,  &t.fluids, &t.bumps,  &t.jumps, &t.loops, &t.pipes
 				,&t.banked, &t.frenzy, &t.underwater
 				,&t.narrow, &t.longn,  &t.diff, &t.rating
-				,&time, author);
+				,&time, author, cmt);
 
 			t.name = name;
 			t.scenery = scenery;
