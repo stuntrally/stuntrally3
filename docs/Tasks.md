@@ -6,7 +6,7 @@ Legend:
 - Size:  - how much work to do:  
   0 Tiny  1 Little  2 Small  3 Medium  4 Big  5 Large  6 Huge  7 Enormous  8 Gigantic  9 Insane  
 - Component:  Game  Logic  Graphics  Shader  Editor  GUI  Simulation  Input  Sound  Data  
-- Task name - short, same as section below  
+- Task name - short, section below  
 - Updated - date last changed: yyyy-mm-dd  
 - % Done - how much completed  
 - Details - link to below, own section with more info, and possibly subtasks  
@@ -57,7 +57,7 @@ Legend:
 
 ## Sounds
 
-1. More tire-surface Sounds.
+1. More tire-surface Sounds
 
   The more the better (more realistic, and detailed), one should hear what wheels are doing.  
   Already gathered some from http://www.freesound.org/browse/ need to edit somewhat.  
@@ -66,8 +66,7 @@ Legend:
 2. Ambient background sounds on track
 
   like: rain, wind, shore waves, forest with birds etc.  
-  For all that have rain, strong wind for D12,T5,W10, all forest,jungle,moss with some nature sounds.  
-  All sounds are loaded at game start (somewhat wasted time, especially when developing).  
+  For all that have rain, strong wind for Des12,Atm5,Wnt10, all forest,jungle,moss with some nature sounds.  
 
 4. Sound in replay from multiplayer is broken
 
@@ -75,7 +74,7 @@ Legend:
   causing random slide sounds, also tire trails have random alpha.  
 
 5. Effects: [Done] Reverb.  
-  Doppler fix. add Underwater lowpass filter.
+  Fix Doppler. Add Underwater lowpass filter.  
   Dynamic change reverb parameters according to terrain,  
   eg. in cave, pipe, near terrain, open terrain, underwater.  
 
@@ -83,7 +82,7 @@ Legend:
 Ad 5. Moved already. Reverb works.  
 Changing preset by scenery (param in scene.xml, set in ed).  
 
-Try this seems more feature rich: https://github.com/OGRECave/ogre-audiovideo  
+6. Try this seems more feature rich: https://github.com/OGRECave/ogre-audiovideo  
 
 [Done] Make all (except electric) new engine sounds: https://github.com/stuntrally/stuntrally3/issues/7  
 
@@ -123,8 +122,7 @@ But this will get complicated. Need to gather particles in 1 texture for each sc
 6. Particles material add light (by diffuse and ambient).  
 So they don't look the same on all tracks, and get darker when it's dark.  
 
-I think that something simple, written by us (or me), meant just for car would be much better.  
-5a. So 1 particle system with uv atlas (all particles in 1 texture)  
+[Won't do] 5a. Own 1 particle system with uv atlas (all particles in 1 texture)  
 5b. and custom emitter in area near of car but not inside of it  
 If the emitter will check size of particle (when emitting)  
 and the distance from car (some planes) and also velocity/angle of car,  
@@ -132,20 +130,19 @@ we can get rid of particles inside of car.
 If it also checks terrain distance with particle size  
 (or maybe even road from bullet) we wouldn't need soft particles (nearly no hard edges).
 
-I think similar about trails, I don't like the 8 batches for each car  
+Same for trails, I don't like the 8 batches for each car  
 (what if we someday wanted more than 4, batches would make it impossible).  
 Idk but imo 2 would be ok, wouldnt have triangle strips though.  
-Probably leave this, for Ogre 2.1.  
 
 
-7. Particles on fluid surface, water/mud, some ripples  
+7. Particles **on fluid** surface, water/mud, some ripples  
 (transparent diffuse and normal). Bigger and fading with time.  
 Not sure how to fit colors, for all presets.  
 
-8. Use upcoming ParticleFX2 from Ogre-Next 3.0 in SR3.  
+8. Use ParticleFX2 from Ogre-Next 4.0 in SR3.  
 https://github.com/OGRECave/ogre-next/issues/402  
 
-Won't be sorted, so not for dust.  
+Won't be sorted, so rather not for dust.  
 But additive, alpha_tested (road-wheel stuff)? and weather should be better.  
 
 
@@ -153,101 +150,62 @@ But additive, alpha_tested (road-wheel stuff)? and weather should be better.
 
 ## Gameplay Modes
 
-@CryHam, Apr 2011  
-  
-1. We have *Race Against Time* currently (fastest lap counts), it will have ghost run at some point in future.  
-  
-2. We have somewhat discussed that we want also 2 player *Split Race* (with car collision and without).  
-Could be even 3 or 4 way split if there were other input devices implemented (gamepad, wheel).  
-  
-3. *Collection mode*, no particular track road, just stars located in places that are not easy to get to.  
-Could be against time to collect all for speed or when difficult just to collect all.  
-There could be some points for making some stunts in air (loop, jump, rotation etc).  
-  
-4. If we had damage there could be a *Derby Arena*  
-(with AI ? but there isn't and I can't imagine it in the near future).  
-  
-
 @neptunia Apr 2011  
-  
-I suggest to have a game mode with sharing track records on the server so you can see how do you perform among others.  
+
+- I suggest to have a game mode with sharing track records on the **server** so you can see how do you perform among others.  
 I think it is no so difficult to implement.  
-  
-Tracks with fixed time - either you win or you loose.  
-  
-Also a car damage mode with optional health packs in some places and maybe also a fixed number of "lives".  
+
+- Also a car damage mode with optional health packs in some places and maybe also a fixed number of "lives".  
 This may also include damage not from collision by from acidic terrain, mines (visible but difficult to avoid), etc.  
 
-
-@CryHam, Jul 2011  
-  
-Okay 1 and 2 are done. Input devices only keyboards, joysticks are implemented but have some range issues.  
-
-
 @a.ismaiel Jan 2012  
-  
-there are different types of game modes that can be  
-very useful in multiplayer like tag(virus) .forza have like 20 of those  
-here is one you can check out:  
-http://www.youtube.com/watch?v=oWYaGmmjUaw
-  
-what i would like is an infrastructure to allow plug-able game types that can control  
+
+- There are different types of game modes that can be very useful in multiplayer  
+like *Tag* Virus, Forza has like 20 of those  
+https://www.youtube.com/results?search_query=tag+virus+forza
+
+- What I would like is an infrastructure to allow plug-able game types that can control  
 the scoring and receives events (when cars hit or checkpoint is reached).  
 
+2025: *scripts*, also server side, like in [RoRserver](https://github.com/RigsOfRods/ror-server)
 
 @MirceaKitsune, May 2013  
   
-I'd like to see various game types!  
-Currently it feels like there's no objective in StuntRally than simply driving around.  
-There are many ideas that can be added to the list,  
-and I think most would be easy to implement too.  
 This is a list of the types I imagine can and should be done:  
-  
-- Classic race mode; Whoever crosses first during the last lap wins.  
+
+- Classic race mode. Whoever crosses first during the last lap wins.  
 If there are no opponents, this mode should reflect the current behavior  
 (you roam around by yourself without any rules).  
   
-- Elimination mode. The number of laps matches the number of players.  
-Each lap, the last player is removed from the race, until two players are left during the last lap.  
-Only possible on looping circuits (no sprint).  
-  
-- Checkpoint mode. Each checkpoint has a time limit, and you must get there before it runs out.  
+- *Checkpoint mode*. Each checkpoint has a time limit, and you must get there before it runs out.  
 The time left from previous checkpoints is added to the next checkpoint.  
 Road length can probably be used to calculate a fair time automatically, so no map changes are needed.  
-If there are multiple players, the   one who crosses the finish with the greatest remaining time wins.  
+If there are multiple players, the one who crosses the finish with the greatest remaining time wins.  
   
-- Radar mode... or what recent Need For Speed games call Speedtrap.  
+- Radar mode. or what recent NFS games call Speedtrap.  
 Each checkpoint registers your velocity at the moment when you reach it.  
 The player with the highest registered speeds wins.  
   
-- Drift mode. You get score the more you slide  
+- *Drift mode*. You get score the more you slide  
 without leaving the road or hitting anything, highest score wins.  
   
-- Since we have so many bumps and hills, we could also afford an air time mode.  
+- *Air time mode*.  Since we have so many bumps and hills.  
 Players get score the longer their cars spend time in the air.  
 After everyone crosses the finish line, the player with the longest total air time wins.  
   
-- Considering performance damage and car destruction gets done ( issue 234 ),  
-we could have a destruction mode.  
+- Destruction mode.  
 The objective would be to ram your opponent's cars until destroying them.  
 The amount of damage you avoid taking represents your score,  
 and after all functional cars cross the line the least damaged player wins.  
   
-Then there's police chase mode... oh wait, that's for another chapter ;)  
-But really, I think this set would be quite fun and appropriate for SR.  
-Hope my suggestions are of help and something in this sense might get done.  
-
-
 @tapiovierros May 2013  
   
-Personally I don't much like e.g. pure drifting, but a general score based game mode sounds good,  
+- Personally I don't much like e.g. pure drifting, but a **general score** based game mode sounds good,  
 i.e. combining drift and air mode and spicing it up with  
 e.g. additional score for hitting dynamic objects.  
 Other car games also usually award score for breaching car's top speed and slipstreaming/chasing a car just ahead.  
-  
-Elimination doesn't sound much fun, it forces players early out into spectator mode which no one likes.  
-  
-Apr 2014  
+
+- Apr 2014  
 Jamboree: editor setting for tracks. When enabled, checkpoints can be passed in any order,  
 as long as all of them are passed, then pass the last checkpoint (car start).  
 If reverse, the car start is rotated 180 degrees.  
@@ -255,35 +213,39 @@ Good for off-road tracks and tracks where orientation is the key to success.
 The checkpoint beam would probably show the closest checkpoint that is in the   field of view.  
   
 @dimproject  
-  
-Carrer mode. (planed, on roadmap)  
+
+- **Career** mode. (planed, on roadmap)  
 http://forum.freegamedev.net/viewtopic.php?f=79&t=5211
+
+@cryham 2025-02
+
+- *Space base* drive through. With turrets (water, laser, missile, mines) aimed at player.  
+- Meh. *Alien invasion*? Needs creatures to hit (or some dropped objects?).  
   
   
 ----  
-  
+
 ## Rivers, waterfalls  
-  
-Use road spline and its points, to place them in editor.  
-Need a nice material, like our water, but with repeated flow on one direction.  
+
+Needs a nice material, like our water, but with repeated flow on one direction.  
 Rivers will change height (we need those even if there are some bugs in look).  
-  
-The hardest thing here is probably, that rivers need to deform terrain below  
-(can't do it manually every time you move river point).  
-And this should be other Hmap, that is added to the original.  
+
+Vertical setup of river points should auto create **waterfals** (white, faster).  
+
+[Won't do] Rivers could auto *deform* terrain below.  
+Should be new dynamic Hmap, added to the original terrain.  
 So river has spline points sticked to original terrain, but result will be deformed below it.  
-  
-And vertical setup of river points should create waterfals.  
-  
+
 @scrawl:  
 Refraction is possible, but no screen reflection, only sky.  
-  
-Added in 2.7, done as Roads, with water materials.  
-Actually we can just deform terrain manually for them.  
-  
+
 Now they don't do anything, so:  
-Add physics - for particles and buoyancy with drag.  
-  
+Add **physics** - for particles and buoyancy with drag.  
+
+@cryham 2025  
+Flow texture, rocks obstruct flow add foam OFC [Won't do]
+https://github.com/Arnklit/Waterways  
+
   
 ----  
   
@@ -298,7 +260,7 @@ Also while camera is underwater reduce sound volume (or even some low pass filte
   Or extend water shader and generate a map for shore waves and normals ?  
   Mesh could be easier but many more batches.  
 
-4. Water **waves**.  
+4. 🌊 Water **waves**.  
   Close (to camera) area made with a grid of vertices, using 2nd material which  
   reads heigh textures in vertex shader for waves animation.  
   Also normal computation to get proper vertex normals (or maybe just sum of normal textures).  
@@ -309,22 +271,28 @@ Also while camera is underwater reduce sound volume (or even some low pass filte
 
 5. Foam texture, used randomly on water, or on higher parts.  
   
-7. ?Caustics on terrain, just near/clear water.  
+7. *Caustics* on terrain, just near/clear water.  
+
+Links:  
+https://github.com/godot-extended-libraries/godot-realistic-water/blob/4/realistic_water_shader/art/water/Water.gdshader
+
+I Tried Simulating The Entire Ocean  https://www.youtube.com/watch?v=yPfagLeUa7k  
+How Games Fake Water  https://www.youtube.com/watch?v=PH9q0HNBjT4  
 
 
 ----  
-  
+
 ## Road sides, walls  
-  
+
 New mode in editor where you could put another splines that would be:  
 wall, fence, rail etc. maybe also cliffs or terrain slope if look good?  
 Would be good for gravel too, some variation at least.  
 Or very difficult: added cliffs in road geometry (like on rbr screen).  
-  
+
 If this works well, should be also used for simple objects, splines, metal parts on other tracks,  
 which you could partly drive on, or just for decoration instead of objects.  
-  
-  
+
+
 Same mode as Road.  
 Many roads and Rivers possible now in 2.7  
   
@@ -334,26 +302,26 @@ New todo:
 - 
 - Grid segmentation with size param, not road merge length.  
 - Group all roads by materials, to reduce drawn batches.  
-  
-  
+
+
 Walls now possible.  
 Examples on TestC13-Rivers.  
 Could use an even own type for fences (less tris).  
-  
-  
+
+
 ----  
-  
+
 ## Damage and dirt  
-  
+
 @scrawl, Oct 14, 2011  
 
-Visual damage, when hitting walls etc.  
+**Visual damage**, when hitting walls etc.  
 Easy to change glass diff,normal map (to make it look broken).  
   
-Other aspects, like loose parts of chassis, are more difficult,  
+[No] Other aspects, like loose parts of chassis, are more difficult,  
 each car needs to be rigged and animated, so they are unrealistic for the future.  
   
-Dirt on car would be possible too.  
+**Dirt** on car would be possible too.  
 Blending the diffuse texture with a dirt texture, based on a dynamic blend map.  
 A bit dirty already at start.  
   
@@ -368,9 +336,12 @@ The 2nd cubemap would have blend factor for the dirt texture that would be added
 Later could be more factors like blend to dirt/dust/mud/snow, but only those which can be on current track.  
   
 Finally if we have the 1st cubemap and painting it working,  
-maybe its possible to use it in vertex shader to have mesh deformations.  
+maybe its possible to use it in vertex shader to have **mesh deformations**.  
 Or do we need to edit the manual object's verices on cpu for that, would be more difficult.  
+Should also affect vertex normals.
 
+2025-02  
+Check HLMSEditor painting.
 
 ----  
   
