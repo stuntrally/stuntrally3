@@ -13,20 +13,21 @@
 ### Main
 🌎[Stunt Rally Homepage](https://cryham.org/stuntrally/) - Download links, track & vehicle browsers etc.  
 📚[Documentation](https://github.com/stuntrally/stuntrally3/blob/main/docs/_menu.md) - inside docs/, Information on many pages  
-⚙️[Sources](https://github.com/stuntrally/stuntrally3/) - also for bugs & Issues, pull requests, etc.  
+⚙️[Sources](https://github.com/stuntrally/stuntrally3/) - also for bugs, Issues, pull requests, etc.  
 
 ### Media
 🖼️[Screenshots](https://cryham.org/stuntrally/gallery/) - Galleries from all versions and development, [latest Big](https://photos.app.goo.gl/P4ZoiGwjPxJUN6oe6) from SR 3.3  
 ▶️[Videos](https://www.youtube.com/user/TheCrystalHammer) - from gameplay and editor  
-💜[Donations](https://cryham.org/donate/) - financial support, on [Ko-Fi](https://ko-fi.com/cryham)
+💜[Donations](https://cryham.org/donate/) - financial support, on [Ko-Fi](https://ko-fi.com/cryham), or [paypal](https://paypal.me/cryham)
 
-### Feedback
-💬[Discord](https://discord.gg/TywnXxAtR6) - chat, community, quick help, etc - follow #rules - (could be removed in future)  
-🗨️[Matrix](https://matrix.org/) - chat room: #stuntrally:matrix.org -  (e.g. with [element app](https://element.io/download), or other [clients](https://matrix.org/ecosystem/clients/)) - (*preferred*)
+## 🗨️Feedback
+💬[Discord](https://discord.gg/TywnXxAtR6) - **chat**, community, quick help, etc - follow #rules - *(could be removed in future)*  
+🗨️[Matrix](https://matrix.org/) - **chat** room: #stuntrally:matrix.org -  (e.g. with [element app](https://element.io/download), or other [clients](https://matrix.org/ecosystem/clients/)) - *(preferred)*
 
-🪲New Issue, on [github](https://github.com/stuntrally/stuntrally3/issues) - for bugs etc - needs account  
+🪲[New Issue](https://github.com/stuntrally/stuntrally3/issues/new/choose), on [github](https://github.com/stuntrally/stuntrally3/issues) - for bugs, issues, PRs, etc - needs github account  
+Before reporting bugs or issues, be sure to [Read before posting](https://groups.f-hub.org/d/2ftpShKs/-how-to-post-sr3-info-help-links-about-etc-) (or [the old one](https://forum.freegamedev.net/viewtopic.php?f=78&t=3814)) topic first.
 
-🏛️[Forum](https://groups.f-hub.org/stunt-rally/) - discussions, tracks, content - [how to join](https://groups.f-hub.org/d/2ftpShKs/) info on top  
+🏛️[**Forum**](https://groups.f-hub.org/stunt-rally/) - longer discussions, for tracks, content, etc - [how to join](https://groups.f-hub.org/d/2ftpShKs/) info on top  
 📜[Old Forum](https://forum.freegamedev.net/viewforum.php?f=77) - old archive, SR 2.x  
 🪧[Reddit](https://www.reddit.com/r/stuntrally/) - (not used)  
 
@@ -108,16 +109,6 @@ How to compile project from sources:
 - On **Windows** in [BuildingVS](docs/BuildingVS.md) (difficult), manually building all dependecies from sources first.
 
 ------------------------------------------------------------------------------
-
-## 🗨️Feedback
-
-Before reporting bugs or issues, be sure to [Read before posting](https://groups.f-hub.org/d/2ftpShKs/-how-to-post-sr3-info-help-links-about-etc-) (or 
-[the old one](https://forum.freegamedev.net/viewtopic.php?f=78&t=3814)) topic first.
-
-Then create a [new issue on github](https://github.com/stuntrally/stuntrally3/issues/new/choose) (if not present already)  
-or a topic on [New Forum](https://groups.f-hub.org/stunt-rally/) (if already joined, [how to](https://groups.f-hub.org/d/2ftpShKs/)).
-
-For chat we use: [Discord](https://discord.gg/TywnXxAtR6) and Matrix #stuntrally:matrix.org (preferred)
 
 ## 🤝Contributing
 
