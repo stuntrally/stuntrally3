@@ -124,93 +124,50 @@ More info on materials for objects, in next chapter here.
 
 ----
 
-# 🔮 Materials, history 
+# 🔮 Materials
 
-*This is now just for comparison with old SR2.*
+## 📜 Old
 
-Almost everything with materials is different now in SR3.  
-In **old** SR with Ogre, we used _shiny_ material generator with its own `.shader` syntax and `.mat` files.  
+Oldest SR 2.x `.mat` format and temporary SR 3.x `.material` are history.  
+Not to be used.  
+For clarity, info about them got split into other page: [MaterialsOld](MaterialsOld.md), mainly for comparison.  
 
-Now in SR3 with Ogre-Next we use _HLMS_ and **new** PBS materials.  
-Main `.material` and `.material.json` **files** are in [data/materials/Pbs](../data/materials/Pbs).  
-
-## ⏳ Old SR .mat
-
-Old SR `.mat` example for a material `ES_glass` inheriting from `car_glass`:  
-```
-material ES_glass
-{
-	parent car_glass
-```
-
-From old `.mat` files main parameters changed are:
-- `ambient` color - **gone**, nothing in new
-- `specular` - now only 3 values, have to remove **4th**  
-   instead of power exponent (4th number), use new `roughness`
-- `envMap ReflectionCube` - not needed, automatic
-- `env_map true` - **reflection** for objects/all materials
-   now as `"reflect" : true` in .json, and for terrain layers as `re="1"` in `presets.xml`
-- `refl_amount` - now `fresnel_coeff` as color
-- `twoside_diffuse true` - now `"two_sided" : true` - for tree leaves, glass (not pipe) etc
-- `terrain_light_map true` - gone, now automatic
-
-## 🆕 Old, Temporary .material
-  
-> Note: New Ogre-Next `.material` format is worse than `.json` (info below)  
-and is used just temporarily.
-
-> A couple of issues to keep in mind:  
-> In `.material` scripts you can't set textures to **wrap**  
-> (and they _don't_ by default) or other sampler configs,  
-> but inheriting works and format is much shorter.  
-
-> The `.material` is just meant as a faster way of porting old SR `.mat`,  
-> then best to save as .json from Material Editor (still a lot manual work to do).  
-> And for few exceptions, like the unlit particles and Hud stuff.
-
-New `.material` example of a material `ES_glass` **inheriting** from `car_glass`:  
-```
-hlms ES_glass pbs : car_glass
-{
-```
-
-New HLMS `.material` parameters, using [PBS](https://duckduckgo.com/?q=physically+based+shading&t=newext&atb=v321-1&ia=web) - Physically Based Shading:
-- `roughness` - 0.001 to 1.0 replaces old specular power exponent.  
-  lowest values 0.01 are for glass, mirror (highest exponents e.g. 96),  
-  about 0.2 is best for most specular shine (high exponents e.g. 32),  
-  over 0.4 will get blurred and gray (low exponents e.g. 12)
-- `fresnel_coeff` is **reflection** (mirror) color.  
-_do **not** use:_
-- *`metalness` - not for `specular_*` workflows.*
-- *`fresnel` - IOR factors, fresnel_coeff used instead*
-
-We use default `specular_ogre` workflow, metallic workflow is simpler, not to be used.  
-
-Also texture keywords changed, all are optional:  
-`diffuse_map`, `normal_map`, `specular_map` (same as `metalness_map`), `roughness_map`, `emissive_map`.  
-There is no reflMap or `reflect_map`, we can use either:
-- `specular_map` (1.0 is shinest) or
-- new `roughness_map` (0 to 0.2 is shinest)
-- or both for big/complex models.
-
-Need to add `reflect yes` to .material to get that `env_refl` (environment reflection cubemap) as before.
-
-**Quick examples**, top of [_Example.material-](../data/materials/Pbs/_Example.material-).
-
-For terrain layer textures these parames are in `presets.xml` as:  
-`ro - roughness, me - metalness, re - reflection`.
-
-Details are as comments in code [OgreHlmsPbsDatablock.h](https://github.com/OGRECave/ogre-next/blob/master/Components/Hlms/Pbs/include/OgreHlmsPbsDatablock.h).  
-Datablock is basically a structure with all material parameters.  
+It has some info about parameters like 🪨roughness, 🪞fresnel, xml for 🏔️terrain layers, etc.
 
 
-## 🛠️ Material Editor
+## 🎨 Material Editor
 
-Editing files by hand is one way, the better is using our **Material Editor** (Alt-F) GUI (both in game and editor),  
-saving and then applying / merging changes back to original files.  
+Editing any `.material.json` files by hand is a slow way, as it needs restart to check results,
+but you already have needed changes in those files.  
+The better way is using our **Material Editor**,  
+saving and then applying / merging changes back to original files  
+(can be done with a [diff tool](https://en.wikipedia.org/wiki/Comparison_of_file_comparison_tools)).  
 
-Materials can be adjusted real-time in Material Editor (Alt-F): or in Options, button on tab **Tweak**.  
-Find material (search by name above) and then use sliders to tweak. There are few tabs, water has own set.  
+Materials can be adjusted real-time in Material Editor.  
+To show it press Alt-F. Or from Options, button on tab Tweak.  
+Use **<Back** tab to return to regular Gui windows, or a shortcut like Alt-Q etc.
+
+This is a separate, quite transparent window with many sliders to tweak parameters, like:
+- Diffuse, Specular (✨shine) colors,
+- Fresnel (🪞reflection) colors,
+- another Reflection (clear coat, mostly for vehicle paint),
+- 🪨Roughness, Normals scale, etc.
+
+You can **search** materials by name, typing text in right top 🔍editbox.  
+There are few tabs, water has own set.  
+
+![](images/material-editor.jpg)
+
+The Advanced tab is for **fluid** parameters, meant to tweak and edit here, not in file.
+
+![](images/material-editor-fluid.jpg)
+
+
+Last tab has more Details as text. _Maybe some could be changable in future._  
+E.g. for textures, samplers (wrap etc.), depth check, cull mode,  
+and for some transparency (glass), refraction (fluids), etc.
+
+![](images/material-editor-pipe.jpg)
 
 
 ----
@@ -218,9 +175,10 @@ Find material (search by name above) and then use sliders to tweak. There are fe
 ## 🌠 New .material.json
 
 We now use `.material.json` format (for almost all materials). It is more advanced, but longer.  
-A bit worse to edit by hand. There are no comments in json, sadly.
+A bit worse to edit by hand. There are no comments in this .json, sadly.  
+Its syntax is explaned with examples below.
 
-Material Editor GUI can **save** into `.json` files in:  
+Material Editor GUI can **save** into `.json` files in (Windows [Paths](Paths.md)):  
 `/home/user/.cache/stuntrally3/materials`  
 either one material or all.  
 
@@ -235,11 +193,11 @@ only difference is other cull in `"macroblock" : "Macroblock_15"` or `"Macrobloc
 - [vehicles](../data/materials/Pbs/vehicle.material.json) painted body (has `"paint" : true,`), in same file, exact copies (**7** times, 6 players + 1 ghost):  
 e.g. for car SX: SX_0, SX_1,.., SX_5, SX_G. And only ES_T has extra 1 for Track's ghost.
 
-It **is** annoying, tedious😩, and almost all same copy.  
+It **is** annoying, tedious😩, longer, and almost all are same copy.  
 But duplicating datablocks from cpp code caused [weird bug](https://www.youtube.com/watch?v=pT-X4CGyDX4&list=PLU7SCFz6w40OJsw3ci6Hbwz2mqL2mqC6c&index=13) and [another](https://www.youtube.com/watch?v=e9PMS1H0L0I&list=PLU7SCFz6w40OJsw3ci6Hbwz2mqL2mqC6c&index=11).
 
 
-#### Syntax
+### Syntax
 
 Also important is to not break **.json syntax**. E.g. don't leave a comma `,` before `}`.  
 It also needs more symbols like `: " [ ] { }` to work.  
@@ -559,7 +517,7 @@ diffuse, specular, normal, roughness.
   and colors shouldn't be too dark or too bright, more in sRGB scale.
 - normal - normalized perpendicular vector, scaled to 0..1 from -1..1.
 - specular - tells where surface will shine from light reflection.
-- roughness - tells how much it will shine. 0 is mirror, 0.2 most shine, 0.4 gets blurry, 0.9 is just dull.
+- 🪨roughness - tells how much it will shine: 0 is mirror, 0.2 most shine, 0.4 gets blurry, 0.9 is just dull.
 
 There is no *metalness* texture, it's meant for a simpler *metallic* workflow,  
 we use *specular_ogre* workflow which has own colors (on texture) for specular shine.

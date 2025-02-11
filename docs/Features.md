@@ -130,7 +130,7 @@ Game and editor both have few different tools for in *command line*.
 These tools can check tracks, warnings, challenges, convert track ghost etc.  
 For details, start game or editor in console,  
 with command line argument `?` or `help` to get their text info.  
-Or see under Args::Help() in sources for [game](../src/game/SceneInit.cpp) and [editor](../src/editor/SceneInit.cpp).
+Or see under Args::Help() in sources for [game](../src/game/Game_SceneInit.cpp) and [editor](../src/editor/App_SceneInitEd.cpp).
 
 ## Vehicle editing 🚗
 
