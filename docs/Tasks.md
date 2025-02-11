@@ -1,3 +1,5 @@
+_Development tasks to do, bigger and with more info text._
+
 # Tasks Table
 
 Legend:  
@@ -652,7 +654,7 @@ used to guide the AI's car (position,rotation,steer,braking is there, more could
 ## Server Lap stats
 
 Just like in [Speed Dreams](https://speed-dreams.net/masterserver/user/cryham)  
-or in old [RoR]()
+or in old [RoR](https://web.archive.org/web/20151101103044/http://www.rigsofrods.com/races/)
 
 Needs server side code (php?) and DB to hold user track records.
 
@@ -821,21 +823,18 @@ vehicle editor?
 
 ## Data
 
-- Top priority:  ♻️ Removing, replacing data with non-CC licenses  
-https://groups.f-hub.org/d/pIoLYCaO/-removing-replacing-data-with-non-cc-licenses-to-do
+- Top priority:  
+♻️ [Removing, replacing data with non-CC licenses](https://groups.f-hub.org/d/pIoLYCaO/-removing-replacing-data-with-non-cc-licenses-to-do)  
 
 - Medium priority:  
-🚗Cars, new vehicles  
-collection of models to do:  https://skfb.ly/oDrzD  
-https://groups.f-hub.org/d/adePgxzW/-cars-new-vehicles-done-and-to-do
+🚗[Cars, new vehicles](https://groups.f-hub.org/d/adePgxzW/-cars-new-vehicles-done-and-to-do)  
+Collection of models to do:  https://skfb.ly/oDrzD  
 
 - High priority:  
-🏞️Creating tracks and their content  
-https://groups.f-hub.org/d/lpntzPrD/-creating-tracks-and-their-content
+🏞️[Creating tracks and their content](https://groups.f-hub.org/d/lpntzPrD/-creating-tracks-and-their-content)  
 
 - Low priority:  
-🌳Trees to do  
-https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do
+🌳[Trees to do](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do)  
 
 - Lowest priority:  
 🎵Music  

@@ -12,13 +12,13 @@ They are listed here for quick guide:
 |----------|--------------------|-------------|
 | Common:  |                    |             |
 | F11      | 📈Fps bar          | Cycle Fps bar modes (left top). More info for values on Gui. First is always _Frames per second_. |
-| F10      | 🌐Wireframe        | Changes rendering to wireframe lines. To see geometry detail and LOD swtiching. |
+| F10      | 🌐Wireframe        | Changes rendering to wireframe lines. To see geometry detail and LOD switching. |
 | Alt-F    | 🎨Material Editor  | Allows editing PBS material properties directly with sliders. Can save as json. |
 |          |                    |             |
 | Game:    |                    |             |
 | Ctrl-F10 | 🎳Bullet Debug Lines | Show physics collision shapes🌐 as lines. |
-| F9       | 📉Graphs           | Many types. Show detailed change of some values, life over time period. |
-| Shift-F11| Profiler times text| Times [ms] it took each frame for components to update (render, physics). |
+| F9       | 📉Graphs           | Many types. Show detailed change of values over time period. |
+| Shift-F11| Profiler times text| Time [ms] it took each frame for components to update (render, physics). |
 |          |                    |             |
 | Shift-F9 | 🗒️Car debug Text   | Shows text values from simulation. |
 | Alt-Z    | 🔩Vehicle Editor   | For editing .car file in game, Alt-Shift-Z will save changes and restart. |

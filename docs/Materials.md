@@ -137,7 +137,7 @@ It has some info about parameters like 🪨roughness, 🪞fresnel, xml for 🏔�
 
 ## 🎨 Material Editor
 
-Editing any `.material.json` files by hand is a slow way, as it needs restart to check results,
+Editing any `.material.json` files by hand is a slow way, as it needs restart to check results,  
 but you already have needed changes in those files.  
 The better way is using our **Material Editor**,  
 saving and then applying / merging changes back to original files  
@@ -165,7 +165,7 @@ The Advanced tab is for **fluid** parameters, meant to tweak and edit here, not 
 
 Last tab has more Details as text. _Maybe some could be changable in future._  
 E.g. for textures, samplers (wrap etc.), depth check, cull mode,  
-and for some transparency (glass), refraction (fluids), etc.
+and for some: transparency (glass), refraction (fluids), etc.
 
 ![](images/material-editor-pipe.jpg)
 
