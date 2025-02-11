@@ -79,13 +79,14 @@ Things to keep in mind when modeling (required by game).
 
 ### Triangles count
 
-Keep resonable triangles count (faces, polygons).  
+Keep resonable triangles count (faces, polygons). _Shortcut: tris._  
 You can see it in top bar in Blender (turn on Statistics in viewport Overlays).  
 
 For a very good looking vehicle for game, total of 50k to 150k triangles would be required (not counting wheels, k is 1000).  
 Generally the less triangles a model has, the more detail has to be on textures.
 
-One wheel (including brake disc and caliper) should be about 4k to 10k triangles.  
+One wheel (including brake disc and caliper) should be about 8k to 25k triangles.  
+Bigger wheels with detail in mesh will have high tris counts.
 [Comments](VehicleModeling.md#comments) section has more info.
 
 More detail can (and should) be put in textures. More triangles will unnecessary reduce game Fps.
@@ -257,12 +258,13 @@ main translations file: [*_en_tag.xml file](../data/gui/core_language_en_tag.xml
 	<Tag name="CarDesc_OT">This is the slowest car. Very old and a bit creepy truck. Can drive only on flat tracks and with turtle speed.</Tag>
 ```
 
-### in textures/ subdir
+### textures subdir
 
 3S_body00_red.png - Main body texture. It has to be colored in saturated red, because it will change depending on car paint chosen in game. Can just be whole red texture at start of car creation.
 
+Old, *not used*:  
 3S_body00_add.png - Old version cars used this to add detail to red texture. Can be full transparent at start.  
-Old, not: 3S_body00_brake.png - Same as add but with rear brakes lit. The texture add is replaced to brake when car brake is on.
+3S_body00_brake.png - Same as add but with rear brakes lit. The texture add was replaced to brake when car brake is on.
 
 3S_interior.png - interior texture (with various car parts mapped too) possibly with 3S_interior_normal.jpg.  
 3S_glass.png - the transparent glass texture (usually small)
@@ -299,23 +301,36 @@ Usually models meant for PBS have even big 4k textures and more than we need.
 
 ES was made with interior and dashboard, so good it could actually be used for in-car camera view.
 
+Lines in wireframe should be dense for body. Usually round details like lamps get much denser.  
+Also interior would require much detail both in geometry and textures.  
+But we're lucky if we even get an interior. Many models were made just for rendering from outside.
+
 
 ### HI
 
 Recent HI model was well made and almost ready for game.  
+Only one with even engine mesh under hood, also had a driver.  
+Many cool details in interior. Some got low res. even on 2k texture.
 
-Lines in wireframe should be dense for body. Usually details like lamps get very dense.  
-Also interior would require much detail both in geometry and textures.  
-But we're lucky if we even get an interior. Many models were made just for rendering from outside.
-
+```
+HI_body.mesh	 sub: 1  tri: 73.6k
+HI_interior.mesh	 sub: 1  tri: 52.6k
+HI_glass.mesh	 sub: 1  tri:  5.3k
+HI_wheel.mesh	 sub: 1  tri: 25.7k
+HI	 ALL sub: 7  tri: 234.3k
+```
 ![](images/wireHI.jpg)
 
 
 ### SX
 
-New recent model, quite a lot of tris in total, but I think it is great.  
+New recent model. Quite *a lot* of tris in total, but I think it is great.  
 Body parts could be decimated more, but I didn't want to degrade smoothness.  
 Likely with many cars (>10) we'd need LODs to not affect/drop Fps.
+
+It was unfinished, untextured, no wheels, etc.  
+Thus texturing and materials were done simply and are meh,  
+not great for interior and exterior parts, as usual.
 
 ```
 SX_body.mesh	 sub: 1  tri: 81.9k
@@ -325,15 +340,15 @@ SX_wheel.mesh	 sub: 1  tri: 26.3k
 SX_wheel.mesh	 sub: 1  tri: 26.3k
 SX	 ALL sub: 8  tri: 309.2k
 ```
-
 ![](images/wireSX1.jpg)
 
 ![](images/wireSX2.jpg)
 
 
+
 ### S8
 
-S8 has high tri counts, but not much detail in textures.  
+S8 has good, high tris counts, but not much detail in textures.  
 Hard to improve, has to be made by an experienced artist.
 
 ```
@@ -342,15 +357,50 @@ S8_interior.mesh sub: 2  tri: 81.1k
 S8_glass.mesh	 sub: 1  tri: 16.6k
 S8_wheel.mesh	 sub: 1  tri:  3.9k
 S8_brake.mesh	 sub: 1  tri:  3.1k
-S8_wheel.mesh	 sub: 1  tri:  3.9k
 S8	 ALL sub: 12  tri: 168.9k
 ```
 ![](images/wireS8.jpg)
 
 
+### YG
+
+Good, well made model. Not too big tris count.  
+*Submeshes* count is rather high (ALL sub: 15).  
+It's because a wheel uses 2 *materials* (sub: 2).  
+Oddly rim texture was put inside body texture, and wheel tire has own.  
+Also there is brake mesh present.  
+Thus (2+1)*4 = 12 draws needed for 4 wheels.  
+Not an issue since auto HW instancing is used. _And Fps with OgreNext doesn't suffer from this like with Ogre._
+
+```
+YG_body.mesh	 sub: 1  tri: 75.3k
+YG_interior.mesh	 sub: 1  tri: 50.3k
+YG_glass.mesh	 sub: 1  tri:  2.5k
+YG_wheel_front.mesh	 sub: 2  tri: 14.9k
+YG_wheel_rear.mesh	 sub: 2  tri: 14.9k
+YG_brake.mesh	 sub: 1  tri:  1.4k
+YG	 ALL sub: 15  tri: 193.3k
+```
+
+### Y7
+
+Complex car model, not too decimated, thus *big* tris count.  
+Not a big problem (not far from YG), even it if could be made with less tris.
+
+```
+Y7_body.mesh	 sub: 1  tri: 77.6k
+Y7_interior.mesh	 sub: 1  tri: 124.8k
+Y7_glass.mesh	 sub: 1  tri:  5.2k
+Y7_wheel_front.mesh	 sub: 1  tri: 11.2k
+Y7_brake.mesh	 sub: 1  tri:  0.3k
+Y7	 ALL sub: 11  tri: 253.6k
+```
+![](images/wireY7.jpg)
+
+
 ### XZ
 
-This car has very smooth body, but nowadays with too low tri count.
+This car has very smooth body, but nowadays with too low tris count.
 
 *Interior* was made by me and thus is rather poor.  
 I copied seats from S8, and made the rest of interior by extruding 1 line and adjusting it. It has also poor texturing there.  
@@ -370,7 +420,6 @@ XZ_interior.mesh sub: 1  tri: 20.1k
 XZ_glass.mesh	 sub: 1  tri:  1.0k
 XZ_wheel.mesh	 sub: 1  tri: 11.8k
 XZ_brake.mesh	 sub: 1  tri:  0.3k
-XZ_wheel.mesh	 sub: 1  tri: 11.8k
 XZ	 ALL sub: 11  tri: 91.8k
 ```
 ![](images/wireXZ.jpg)
