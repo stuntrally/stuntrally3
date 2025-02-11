@@ -3,22 +3,32 @@ _Adding static or dynamic objects into SR3, using Blender and exporting._
 
 ## Adding
 
-To add a model / object you can either **Create** it in [**Blender**](https://www.blender.org/), or:
+To add a model / object you can either **Create** it in [**Blender**](https://www.blender.org/), or use *proper* CC models.
 
-### Use CC objects
+### Use CC models
 
-Download from one of the model web portals like: [sketchfab](https://sketchfab.com/search?category=nature-plants&features=downloadable&licenses=7c23a1ba438d4306920229c12afcb5f9&licenses=b9ddc40b93e34cdca1fc152f39b9f375&licenses=322a749bcfa841b29dff1e8a1bb74b0b&sort_by=-viewCount&type=models), [blendswap](https://www.blendswap.com/categories), [polyhaven](https://polyhaven.com/models/nature) or [opengameart](https://opengameart.org/).
+These notes are `critical`:
 
 <u>**NOTE 1:**</u> License **must** be: CC0, CC-BY, CC-BY-SA, only (info e.g. [here](https://en.wikipedia.org/wiki/Creative_Commons_license)).  
-If not specified, don't bother. _E.g. there is a lot of stuff only for use in Unity, UE or such nonsense, or "free download" crap)._  
+If not specified, don't bother.  
+E.g. there is a lot of stuff only for use in Unity, UE or such nonsense  
+and tons of "free download" crap, possibly even illegal.  
 
 **Note 2:** Also needs a "sanity test", to check for proper human **Artist(s)**.  
-_There are now many trolls, kids, bots, idiots copying other's or illegally got stuff and putting on Sketchfab, and they don't check it._  
-Usually if you see a name, registered few years ago, with some link to Artist's other website too, then it's good.  
+There are now many trolls, kids, bots, AI, idiots copying other's or illegally got stuff and putting on Sketchfab, and they don't even check it.  
+Don't get tempted by accounts with no detail about person and hundreds of quality models available.  
+Those are extracted from copyrighted games, and should not even be there.  
+Usually if you see a name, registered few years ago, with a link to Artist's other website (e.g. [Artstation](https://www.artstation.com/) is popular) too, then it's good.  
 
-**Note 3:** Also, check description, because sometimes e.g. used textures aren't licensed properly and need to be replaced, etc.
+**Note 3:** Also, check **description**, because sometimes e.g. used textures aren't licensed properly  
+(could be from a commercial set) and need to be replaced, etc. This can also happen without any info in description..
 
-Many models there are too high poly (high faces/triangles count) and meant for movies or rendering, not for games.
+Now keeping all above in mind,  
+we can download from one of the model web portals like:  
+- [sketchfab](https://sketchfab.com/search?category=nature-plants&features=downloadable&licenses=7c23a1ba438d4306920229c12afcb5f9&licenses=b9ddc40b93e34cdca1fc152f39b9f375&licenses=322a749bcfa841b29dff1e8a1bb74b0b&sort_by=-viewCount&type=models) (most notorious for above notes happening),  
+- [blendswap](https://www.blendswap.com/categories), [polyhaven](https://polyhaven.com/models/nature) or [opengameart](https://opengameart.org/).
+
+Last note: many models there are too high poly (high faces/triangles count) and meant for movies or rendering, not for games.
 
 ## Steps
 
@@ -47,19 +57,19 @@ This here is a short list before contributing.
     * don't forget to set the Margin to e.g. 0.1 under collision bounds
     * for static models: if too high poly - create 1 simpler mesh for collision (we never did it yet)  
       if low poly - (like 0AD building) do nothing, will have trimesh made in code
-  - Done (be happy, suggest adding it to some tracks, or make a new with it, use other too)
+  - Done (be happy, suggest adding it to some tracks, or make a new with it, use other too).
 
 ----
 
-## Creating
+# Creating
 
 This section walks you through the steps to create new static object and add it to Stunt Rally.
 
 _Warning_: The learning curve for Blender is quite steep, you need to invest a serious amount of time to learn and use it efficiently.  
-Fortunately there are plenty of tutorials, videos, websites and books to pick up the skills. 
+Fortunately there are plenty of tutorials, videos, websites and books to pick up the skills.  
 
-Currently static and dynamic objects are stored in the `/data/objects` and similar folders.  
-It contains Ogre mesh files (binary), surface images (textures) and .bullet files for dynamic objects.
+Currently static and dynamic objects are stored in the `/data/models/objects` and similar folders.  
+It contains Ogre mesh files (binary), surface images (textures) and .bullet files for dynamic objects (all in same folder).
 
    
 ## Tutorial 1
@@ -108,7 +118,8 @@ They need some time to test. For high poly surely:
 3 LOD levels, distance 200 or so and LOD % reduce 10 (or more if ok).
 
 It needs to be tweaked, so that there are no holes (missing tris)  
-as viewed in SR3, when you lower to 0 - in Graphics - Detail - first slider (Objects, Vegetation) - aka *the LOD bias*.
+as viewed in SR3, when you lower to 0 - in Graphics - **Detail** - first slider (Objects, Vegetation) - aka *the LOD bias*.
+
 
 ----
 
@@ -134,9 +145,11 @@ File name here isn't needed, `.mesh` file will be named like mesh(es) in Blender
 
 It can take few seconds. If succesfull, you will find .mesh file(s) in the selected folder  
 
-**Copy the binary** `.mesh` into the `objects/` or similar folder in SR3 `data/`.
+**Copy the binary** `.mesh` into the `objects/` or similar folder in SR3 `data/models`.
 
 Start **SR Editor** and place the object.
+
+_Todo: replace old screens below_
 
 ![](images/img20121230_5.png)
 
@@ -190,21 +203,26 @@ Copy the file to the same object folder as our meshfile, it must have the same f
 
 Start the SR editor, place the object. Press "C" to simulate physics, if OK check out your track.
 
+
 ### Remarks on objects
-Keep it low poly and use only 1 material if possible.  
-I depends on how many times an object will be on track.
+
+Keep it low poly and if possible use only 1 material.  
+I depends on how many times an object will be on track.  
+And with LODs, especially with [manually made](https://github.com/OGRECave/blender2ogre/issues/189), more triangles can be used.
 
 Example, triangle counts for various objects:
-| triangles | object type |
-|-----|------|
-| 300 | small rock |
-| 600 | fern, plant |
-| 1k | small tree, rock, barrel etc |
-| 3k | big tree (less on track) |
-| 10k | static object, eg. temple, that won't be many times |
-| 50k | a detailed object, meant to be once on a track   (eg. inside of pyramid, or spaceship, etc.) |
 
-Using generated LODs (by `OgreMeshTool`) one can then put more (higher quality) objects or vegetation, without final triangles count being too high for game.
+| triangles | object type   |
+|-----------|---------------|
+|  300      | small rock    |
+|  1500     | fern, plant   |
+|  3k       | small tree, palm, rock, barrel, etc. |
+|  10k-30k  | big tree (less on track) |
+|  30k      | static object, eg. temple, that won't be many times |
+|  150k     | detailed object, meant to be once on a track (eg. inside of pyramid, or a spaceship, etc.) |
+
+Using generated LODs one can then put more (higher quality) objects or vegetation,  
+without final triangles count being too high for game.
 
 
 ## Tutorial 2
@@ -213,20 +231,21 @@ Using generated LODs (by `OgreMeshTool`) one can then put more (higher quality) 
 
 Creating a new object from the scratch with Blender requires at least basic Blender skills.
 
-Stick to **low poly** meshes and don't get tempted to create or download objects with over 50000 triangles, as it can pull down the framerate (Fps).  
+Stick to **low poly** meshes and don't get tempted to create or download objects with over 150k triangles, as it can pull down the framerate (Fps).  
 Only use hight poly (over 50k tris) meshes if:
 - it will be once or twice on track
 - it is for main drivable vehicle
 - you will reduce (Decimate) it in Blender and it works well
-- or you apply good % reducing LODs with OgreMeshTool
+- or you apply good % reducing LODs with either OgreMeshTool or in export parameters  
+  but watch out for holes, broken mesh, missing triangles, etc at lowest Detail (in Options).
 
 ### Materials
 
 It is needed to name materials in blender with some prefix (e.g. from your object) so that all material names are unique in game.  
-Then knowing your material name(s), it's needed to add them in `.material.json` file (one that has similar materials group).
+Then knowing your material name(s), it's needed to add them in `.material.json` file (one that has similar materials group).  
 More about syntax with examples in [Materials](Materials.md#🌠-new-materialjson) page, 2nd half.
 
-Texture files should also be copied to `data/objects*` (same place where .mesh and .bullet).  
+Texture files should also be copied to `data/models/objects*` (same place where .mesh and .bullet).  
 
 Use diffuse, specular, fresnel for colors of different PBS lighting, all have Red,Green,Blue values.  
 Diffuse depends on light direction. And specular for shininess.  
