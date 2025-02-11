@@ -1,42 +1,50 @@
-_Car modeling tips and remarks._
+_Vehicle modeling tips and remarks._
 
-_Todo:_ Renew screenshots `![](``..
+## Modeling
 
-### Modeling
-To model a car from start requires weeks of work and good knowledge of modeling techniques and how to do it.  
-Modifying an existing car (e.g. extending its quality) is much easier.
+To model a vehicle from start requires weeks of work and good knowledge of modeling techniques and how to do it.  
+Modifying an existing vehicle (e.g. extending its quality) is much easier.  
 
 ### Model websites
-There are already pretty good car models, available on [sketchfab](https://sketchfab.com/search?category=cars-vehicles&features=downloadable&licenses=7c23a1ba438d4306920229c12afcb5f9&licenses=b9ddc40b93e34cdca1fc152f39b9f375&licenses=322a749bcfa841b29dff1e8a1bb74b0b&sort_by=-likeCount&type=models) or [blendswap](https://www.blendswap.com/blends/category/19).  
-See our forum topic, [new post](https://groups.f-hub.org/d/adePgxzW/-cars-new-vehicles-to-do), [old post](https://forum.freegamedev.net/viewtopic.php?f=80&t=18526) shows the list of cars.  
+
+There are already pretty good vehicle models, available on [sketchfab](https://sketchfab.com/search?category=cars-vehicles&features=downloadable&licenses=7c23a1ba438d4306920229c12afcb5f9&licenses=b9ddc40b93e34cdca1fc152f39b9f375&licenses=322a749bcfa841b29dff1e8a1bb74b0b&sort_by=-likeCount&type=models) or [blendswap](https://www.blendswap.com/blends/category/19).  
+
+For info, see latest [forum topic](https://groups.f-hub.org/d/adePgxzW/-cars-new-vehicles-to-do) with remarks.  
+The list of wanted/accepted vehicles is [here](https://skfb.ly/oDrzD). It's already too many to handle.  
+
 Some are too high poly or too low. And some just don't fit the game.  
-The license for the art must be GPL, CC-BY-SA, CC-BY, CC0, etc so we could use it.
+The **license** for the art *must* be: CC0, CC-BY, CC-BY-SA or GPL, so we could use it.  
+More info in [Objects](Objects.md) page.
 
 Models sometimes still require some work (to have in game):
   * Lowering polygon count. No subdivisions. Decimate if necessary.
-  * UV unwrap and mapping various car parts to texture parts.
+  * UV unwrap and mapping various vehicle 3d parts to 2d texture parts.
   * Making interior (if not present). Texturing.
-  * Baking AO maps
-Models meant for rendering (not games) need these steps.  
+  * Similarly, adding mesh triangles to cover any holes. We need all polygons single sided.
+  * Baking AO maps (how to below). Models meant for rendering (not games) need these steps.
+
 The more of these are needed to be done, the less likely a vehicle will be in SR.
 
-### Blender
-We are using and recommend [Blender](https://www.blender.org/) to do all of the modeling tasks.  
+## Blender
+
+We are using and recommend [Blender](https://www.blender.org/) for all of the modeling tasks.  
 At least basic knowledge of Blender is required.  
 There are several good resources on internet to learn it:
-  * [Blender Manual](https://docs.blender.org/manual/en/latest/).    Only few chapters are useful, Introduction, Modeling, and Texturing/Unwrapping.
+  * [Blender Manual](https://docs.blender.org/manual/en/latest/).  
+    Only few chapters are useful for us: Introduction, Modeling and Texturing/Unwrapping.
   * [Blender Tutorials](https://www.youtube.com/watch?v=ILqOWe3zAbk&list=PLa1F2ddGya_-UvuAqHAksYnB0qL9yWDO6&index=3) video playlist
   * other video [tutorial series](https://www.youtube.com/watch?v=RqfSkU-Hp1A&list=PL3GeP3YLZn5ixsnIOIx9tB4v6s-rsw48X&index=2)
-  * Basically any common task in Blender is shown on some video (e.g. search youtube).    Keep in mind the version used should be close to yours and recent.
-  * There are also video tutorials specifically on car modeling.
+  * Basically any common task in Blender is shown on some video (e.g. search youtube).  
+    Keep in mind the version used should be close to yours and recent.
+  * There are also video tutorials specifically on car/vehicle modeling.
 
 ### Blender keys
 
-Various websites with Blender key shorcuts: [katsbits](https://www.katsbits.com/tutorials/blender/useful-keyboard-shortcuts.php), [keyxl](https://www.keyxl.com/aaac91e/403/Blender-keyboard-shortcuts.htm).
+Various websites with Blender key shorcuts: [katsbits](https://www.katsbits.com/tutorials/blender/useful-keyboard-shortcuts.php), [keyxl](https://www.keyxl.com/aaac91e/403/Blender-keyboard-shortcuts.htm). Probably more or newer too.
 
 ### Shortcuts
 
-Some main, quite useful key shortcuts:
+Some main, quite useful **key shortcuts**:
 - 1
   * Tab - toggle edit mesh mode,  Ctrl Space - zoom toggle
   * ` - quick change view,  T - toolbox,  N - transform, view details
@@ -58,22 +66,23 @@ Some main, quite useful key shortcuts:
   * Subdivide (faces), Bevel (edges)
 
 Useful modifiers:
-  * Decimate - reduce if too high poly
-  * Subdivision surface - if too low poly
-  * Edge split - for hard edges
+  * Decimate - reduce if too high polygons (mesh triangles)
+  * Subdivision surface - use if too low poly to smoothly add more poly
+  * Edge split - use for hard edges, to separate normals
   * Mirror, Boolean, Array, Curve
 
    
 ----
 ## Model requirements
 
-Things to keep in mind when modeling (required by game):
+Things to keep in mind when modeling (required by game).
 
 ### Triangles count
+
 Keep resonable triangles count (faces, polygons).  
 You can see it in top bar in Blender (turn on Statistics in viewport Overlays).  
 
-For a very good looking car for game, total of 50k to 150k triangles would be required (not counting wheels, k is 1000).  
+For a very good looking vehicle for game, total of 50k to 150k triangles would be required (not counting wheels, k is 1000).  
 Generally the less triangles a model has, the more detail has to be on textures.
 
 One wheel (including brake disc and caliper) should be about 4k to 10k triangles.  
@@ -81,19 +90,23 @@ One wheel (including brake disc and caliper) should be about 4k to 10k triangles
 
 More detail can (and should) be put in textures. More triangles will unnecessary reduce game Fps.
 
-## Baking Maps
+### Baking Maps
+
 Ambient Occlusion (AO) is easy to bake and gives good feeling.  
-Very recommended (even required) for all parts: body, interior, wheel.
+*Very recommended* for all parts: body, interior, wheel.  
+It may not be needed with SSAO effect, but almost a must without it.  
 
-Baking Normal map is usually difficult and time consuming, when generated from high poly model.  
-It is not required, but great if already present with model.  
+When generated from high poly model to low poly, baking Normal map is usually difficult and time consuming.  
+It's not done, but great if already present with model.  
+Thus next section describes how to do it on *same mesh*, much easier.  
+Baking Normal map is not done, is usually difficult and can have errors, making it worse.  
 
-## How to bake AO in Blender
+### How to bake AO in Blender
 
-Split View to add new of type Shader Editor.  
-Switch it to: World and  
+Split View to add new of type: Shader Editor.  
+_(not needed?) Switch it to: World and_  
 from its menu: Add - Texture node - Image texture  
-In new appeared block click button + New,  
+In new appeared block click button [+ New],  
 name it e.g. AO, and set to 1024 size.  
 
 On right in Render properties (camera icon) change engine to Cycles.  
@@ -109,8 +122,14 @@ Then rendering AO should start and appear on texture.
 After many seconds pass when it's done,  
 click menu Image and Save as, to save AO texture for game.  
 
+Screen after doing all above and baking body AO texture, for vehicle U8:
+
+![](images/blenderU8-AO.jpg)
+
+----
 ### Detail
-Make as much detail as possible, but check out other cars.  
+
+Make as much detail as possible. For reference check out other vehicles from [our repo](https://github.com/stuntrally/blendfiles/tree/master/cars).  
 HI and BE models are newest and best here, have lot of detail in textures. BE has even more, baked in normal map.  
 
 To check geometry (triangles) just start game and press F10 to toggle wireframe.
@@ -118,26 +137,33 @@ Also game logs car meshes info in ogre.log (how to find it in [Paths wiki](Paths
 Look for "MESH info: " it says how many submeshes (subs, materials) and how many triangles (tris) each part has and the total amounts.  
 Most optimal and preferred is when there is 1 submesh and 1 material in each .mesh file.
 
-## Normals
-Keep in mind that faces in blender can be two sided, but in game are one sided.  
-Thus the face normals (in blender) must be flipped to proper side. They won't be visible in game if on the other side.
+#### Normals
 
-## Data Size
-Cars (just like tracks) aren't big in size.  
+Keep in mind that faces/polygons in Blender can be two sided, but in game are one sided.  
+Thus the face normals (in blender) must be flipped to proper side. They won't be visible in game if on the other side.  
+This sometimes requires to add more faces to cover holes now visible from other side.
+
+#### Data Size
+
+Vehicles (just like tracks) aren't big in size.  
 ES is biggest and after export the Ogre, all .mesh files are about 1MB, and all textures 5MB.  
-It's best to keep the size not too far from that (current highest are: 6MB meshes and 19MB textures).
+It's best to keep the size not too far from that (last highest are: 7 MB meshes and 19 MB textures).  
+Usually bigger size for mesh will drop Fps in game anyway.  
+And big textures could load longer and not really add detail from default camera, only closer.
 
-## Repositories
-We have git repository with .blend files for most SR vehicles  
+#### Repositories
+
+We have git repository with `.blend` files for most SR3 vehicles:  
 https://github.com/stuntrally/blendfiles/tree/master/cars
 
 Good example is the new HI model, was almost ready for game.  
-ES had high poly model and baking normalmap (bad, not used) and ambient occlusion was done for it.  
-S8 and XZ are okay, but they had a simple unwrap and interior made.
+SX is very good (right detail) outside, S8 too.  
+But they had a simple UV unwrap. S8 interior was made and is very basic (like for many cars).  
 
    
 ----
-#### Parts (in Blender)
+### Parts (in Blender)
+
 Note: replace ES with the in-game car name you work with.
 
 Name the body parts (and the geometries): ES_body, ES_interior, ES_glass.
@@ -166,19 +192,20 @@ This Blender screenshot shows (for XZ car):
 
 A finished interior with good UV map would look similar to this (for ES car):
 
-![](images/ble-evo-int.png)
+![](images/blenderES-interior.png)
 
 Exporting models from Blender to Ogre (see [Objects](Objects.md#preparations) Wiki on how to install exporter) is done from menu File|Export|Ogre3D.
 
 From the exporter options pick axes as "xz-y", use tangents (mark checked), uncheck edges-list (we don't need them).
 
-![](images/ogre-exp.png)
+![](images/blender-ogre-exp.png)
 
 If succesfull, you will find files in the selected folder (1 mesh file in xml format and 1 binary mesh fie) for each selected geometry in blender.
 
 Copy the binary .mesh files (parts) into the data/cars/ES dir in Stunt Rally (replacing the older/original ones).
 
 Start Stunt Rally and check how it looks.
+
 
 ### Materials
 
@@ -205,11 +232,12 @@ In game we can use:
 
    
 ----
-#### Data (in game)
+## Data (in game)
 
-Desired file structure in data/cars/3S (for already exported car 3S).
+Desired file structure in data/cars/3S (for (already exported) old car 3S).
 
-## main dir, meshes
+### main dir, meshes
+
 3S_body.mesh  
 3S_interior.mesh  
 3S_glass.mesh  
@@ -218,12 +246,18 @@ Desired file structure in data/cars/3S (for already exported car 3S).
 
 Those files were already described.
 
-## main dir, other files
-about.txt - Contains info of the model, credits, changes.  
-description.txt - This text file contains the info text which is displayed in game. It has general info about the car and how it handles in game.  
-engine.wav - The engine sound file (at 7000 rpm). Must be wav and 44100 Hz, mono or stereo 16-bit.
+### main dir, other files
 
-## in textures/ subdir
+about.txt - Contains info of the model, license, credits, changes, etc.  
+
+Info text displayed in game about the vehicle and how it handles in game is in  
+main translations file: [*_en_tag.xml file](../data/gui/core_language_en_tag.xml) under:  
+```
+	<!--  Game Vehicle descriptions  -->
+	<Tag name="CarDesc_OT">This is the slowest car. Very old and a bit creepy truck. Can drive only on flat tracks and with turtle speed.</Tag>
+```
+
+### in textures/ subdir
 
 3S_body00_red.png - Main body texture. It has to be colored in saturated red, because it will change depending on car paint chosen in game. Can just be whole red texture at start of car creation.
 
@@ -240,89 +274,67 @@ optional: 3S_spec.png, 3S_refl.png - to map specular parts and reflection, or de
 
 ### Materials file
 
-More details in [Materials](Materials.md) page.
+More details in [Materials](Materials.md) page.  
+Materials for *all* vehicles are defined in [vehicle.material.json](../data/materials/Pbs/vehicle.material.json).
 
-<del>Materials for all cars are defined in data/materials/cars.mat</del>
+As an example for HI, you can see its materials:  
+- `HI_0` - for body (1st car, `HI_0`..`HI_5` for all 6 player cars and `HI_G` for ghost), colored by paint  
+- `HI_glass` - glass mesh
+- `HI_interior` - interior and/or exterior mesh(es), not colored
+- `HI_wheel` - wheel mesh
 
-A very basic example for 3S (replace with your new), you can comment out lines with %%//%%.
-```
-hlms car_body_3S pbs : car_body
-{
-    specular_map 3S_spec.png
-}
 
-hlms 3S_glass pbs : car_glass2
-{
-}
-hlms 3S_interior pbs : car_interior
-{
-    diffuse_map 3S_interior.png
-}
-hlms 3S_wheel pbs : car_wheel
-{
-    diffuse_map 3S_wheel.png
-}
-```
-
-More complicated example for 3S wheel
-```
-hlms 3S_wheel pbs : car_wheel
-{
-    diffuse_map 3S_wheel.png
-    normal_map 3S_wheel_norm.jpg
-    specular_map 3S_wheel_spec.png
-    roughness_map 3S_wheel_rough.png
-}
-```
-
-Another for XZ wheel
-```
-hlms XZ_wheel_chrome pbs : car_base
-{
-    diffuse_map  XZ_Tire.png
-    diffuse  0.1 0.1 0.1
-    specular 1.0 1.0 1.0
-    fresnel_coeff  0.6 0.6 0.15
-    roughness 0.1
-    reflect yes
-}
-```
-
-   
 ----
+## Comments
 
-#### Comments
-No car is perfect, and every one has some smaller or bigger issues.  
+This sections shows some good examples of vehicles with some comments on their model.  
+No model is perfect, and every one has some smaller or bigger issues.  
 I describe some here, with what could be done to improve.
 
-We are open for artists who could improve cars (use Forum to contact us if you want to help).  
+Surely artist(s) who could improve vehicles would be welcome.  
 
 The ALL (total) counts are computed as sum of body, interior, glass and 4 times wheel and brake.
 
-## ES
-ES was great long ago, but recent HI or BE models have surpassed it.  
-They have baked detail from high poly models into textures (and normal maps).  
-Usually models meant for PBS have even big 4k textures and more than we need (or can have in Ogre 1.x).  
+Usually models meant for PBS have even big 4k textures and more than we need.  
 
-ES had okay dashboard too, so good it could actually be used for in car camera view.
+ES was made with interior and dashboard, so good it could actually be used for in-car camera view.
 
-Brake.mesh tri count is too high (could use Decimate).
 
-You can see that lines in wireframe aren't dense for body.
+### HI
+
+Recent HI model was well made and almost ready for game.  
+
+Lines in wireframe should be dense for body. Usually details like lamps get very dense.  
+Also interior would require much detail both in geometry and textures.  
+But we're lucky if we even get an interior. Many models were made just for rendering from outside.
+
+![](images/wireHI.jpg)
+
+
+### SX
+
+New recent model, quite a lot of tris in total, but I think it is great.  
+Body parts could be decimated more, but I didn't want to degrade smoothness.  
+Likely with many cars (>10) we'd need LODs to not affect/drop Fps.
 
 ```
-ES_body.mesh	 sub: 1  tri: 19.0k
-ES_interior.mesh sub: 1  tri: 38.0k
-ES_glass.mesh	 sub: 1  tri:  1.0k
-ES_wheel.mesh	 sub: 1  tri:  4.1k
-ES_brake.mesh	 sub: 1  tri:  3.1k
-ES	 ALL sub: 11  tri: 86.9k
+SX_body.mesh	 sub: 1  tri: 81.9k
+SX_interior.mesh	 sub: 2  tri: 113.8k
+SX_glass.mesh	 sub: 1  tri:  8.3k
+SX_wheel.mesh	 sub: 1  tri: 26.3k
+SX_wheel.mesh	 sub: 1  tri: 26.3k
+SX	 ALL sub: 8  tri: 309.2k
 ```
-![](images/wireES.jpg)
+
+![](images/wireSX1.jpg)
+
+![](images/wireSX2.jpg)
 
 
-## S8
-S8 has higher tri counts, but not much detail in textures. Hard to improve, has to be made by an experienced artist.
+### S8
+
+S8 has high tri counts, but not much detail in textures.  
+Hard to improve, has to be made by an experienced artist.
 
 ```
 S8_body.mesh	 sub: 1  tri: 43.0k
@@ -335,16 +347,22 @@ S8	 ALL sub: 12  tri: 168.9k
 ```
 ![](images/wireS8.jpg)
 
-## XZ
+
+### XZ
+
 This car has very smooth body, but nowadays with too low tri count.
 
-Interior was made by me and thus is rather poor. I copied seats from S8, and made the rest of interior by extruding 1 line and adjusting it. It has also poor texturing there.  
+*Interior* was made by me and thus is rather poor.  
+I copied seats from S8, and made the rest of interior by extruding 1 line and adjusting it. It has also poor texturing there.  
 But still it's an interior and better than none (the original model didn't have it).
 
-Next thing is that the body has holes. They are visible from close. It is needed to add triangles to interior which would be dark and would cover those holes. Interior also has holes, near mirrors, when seen from inside car. Need to add more interior faces there.  
-This happens because faces are 1 sided in game. When adding the second, interior faces, keep some distance, because if it's too low, shadows are blinking on those parts.
+Next thing is that the body has *holes*. They are visible from close.  
+It is needed to add triangles to interior which would be dark and would cover those holes.  
+Interior also has holes, near mirrors, when seen from inside car. Need to add more interior faces there.  
+This happens because faces are 1 sided in game. When adding the second, interior faces, keep some distance,  
+because if it's too low, shadows are blinking on those parts.
 
-Wheel rim has too many tris (about 2x more). But I left it since too much decimation can produce unwanted distortion in mesh.
+Wheel rim has many tris, but I left it since too much decimation can produce unwanted distortion in mesh.
 
 ```
 XZ_body.mesh	 sub: 1  tri: 22.0k

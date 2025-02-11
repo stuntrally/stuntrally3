@@ -1,26 +1,27 @@
 _Vehicle edititng and .car parameters explained._
 
-_Todo:_ Renew screenshots {{..
+   
+## Introduction
+
+This Wiki describes the `.car` file format (vehicle settings),  
+parameters inside of it and what editing them does.
+
+You can either use this when tweaking existing vehicles or  
+if you modeled/imported a new vehicle,  
+use it to put vehicle in game properly with physics  
+_(or you can also leave this part for CryHam, he knows it best 😉)._
 
    
-#### Introduction ####
+## Editing .car file
 
-This Wiki describes the .car file format (car settings), car parameters inside of it and what editing them does.
+This part explains `.car` file sections, adjusting those vehicle parameters and fitting to mesh/model.
 
-You can either use this when tweaking existing cars or if you modeled a car,  
-use it to put car in game properly with physics _(or you can also leave this part for CryHam, he knows it best 😉 )._
-
-   
-#### Editing .car file ####
-
-This part explains .car file sections, adjusting those car parameters and fitting model.
-
-Stunt Rally .car file is based on VDrift .car file from older version (April 2010).   
-But the structure somewhat changed and there are few new parameters.   
+Stunt Rally .car file is based on VDrift .car file from older version (April 2010).  
+The structure changed and there are many new parameters (even more for new vehicle types).  
 _For reference base, you can read [VDrift wiki](http://wiki.vdrift.net/index.php?title=Car_parameters_for_vdrift-2009-06-15_and_older). But this Wiki should be sufficient._
 
    
-### Location ###
+### Location
 
 Since we have simulation modes (currently 2: easy and normal) there are 2 .car files (1 for each mode).
 
@@ -30,7 +31,7 @@ data/carsim/normal/cars/3S/3S.car
 Those are the original files locations. If you modified it with editor, then it is saved in user data dir, rest of path is the same.
 
    
-### Sections ###
+### Sections
 
 Since SR ver 2.1 there are now sections (tabs) in car editor (use F2,F3 to change current).
 
@@ -53,9 +54,9 @@ They appear in same order as written in .car files. But will be explained in imp
 
 
    
-### Wheels postion ###
+## Wheels postion
 
-## Sections .f and .r - wheels ##
+### Sections .f and .r - wheels
 
 First thing you'll probably want to do with a new car model, is to put wheels in good position.
 
@@ -73,7 +74,7 @@ Those aren't yet visualised so need to know (or check with too high values) if y
 
 For example if you wanted to move front wheels further, you'd need to change all 1.28 occurences here to something bigger eg. 1.35.
 
-_TODO: show spheres in game for those points .._
+_TODO: show 3d spheres with axes in game for those points .._
 
 _restitution - no idea if it works.._
 
@@ -124,8 +125,7 @@ hinge = 0.25, -1.94, 0.0
 ```
 
 
-   
-## Section ti - tires ##
+### Section ti - tires
 Here you can change wheel _radius_ (if you have new model for wheels).
 
   * _rotational-inertia_ is how fast the wheel will react to braking (stop or start spinning with throttle). Small values are used in normal sim mode (about 1), and high in easy sim mode (about 10).
@@ -159,9 +159,9 @@ width-trail = 0.6
 
 
    
-### Mass and inertia ###
+## Mass and inertia
 
-## Section m - mass ##
+### Section m - mass
 
 Those are the values that determine the car _mass_ and inertia (how quick/slow will it react to rotation).
 
@@ -204,9 +204,9 @@ Making any or both (x, y) values higher will make the car feel heavier.
 
 
    
-### Steering and damping ###
+## Steering and damping
 
-## Section st - steering ##
+### Section st - steering
 
   * _max-angle_ is the front wheels steering angle in degrees, wheels can steer this angle in both directions.
 
@@ -237,9 +237,9 @@ All cars have AWD (all wheel drive with 3 differentials). But for reference, oth
 
 
    
-### Flares, Model offsets ###
+## Flares, Model offsets
 
-## Section st / flares ##
+### Section st / flares
 
 Car brake flares (rear red lights turned on when braking) are defined here.
 
@@ -257,7 +257,7 @@ brake-size = 0.46
 brake-color = 1, 0, 0
 ```
 
-## Section st / model ##
+### Section st / model
 
   * _exhaust_ params are not used.
 
@@ -289,13 +289,13 @@ exhaust-mirror-second = 1
 
 
    
-### Collision ###
+## Collision
 
-## Section c - collision ##
+### Section c - collision
 
-There is a visualisation for body collision in game (bullet debug, use it when editing).
+There is a visualisation for body collision in game (*Bullet debug* in [Tweak](Tweak.md#bullet-debug-lines), needed when editing).
 
-![](images/5.jpg)
+![](images/05-collis-shapes.jpg)
 
 Editing collison H params is quite tricky since most of them are relative to some other values (and may depend on something else).
 
@@ -338,9 +338,9 @@ friction = 0.4
 
 
    
-### Engine, torque ###
+## Engine, torque
 
-## Section e, - engine ##
+### Section e, - engine
 
   * _position_ and _mass_ - used for weight distribution
 
@@ -369,11 +369,11 @@ friction = 230
 ```
 
 
-## Section t, - torque curve ##
+### Section t, - torque curve
 
 Graph used to visualize the curves (engine torque and power from rpm):
 
-![](images/6.jpg)
+![](images/06-torque-curve.jpg)
 
   * _torque-val-mul_ - is the global multiplier (scales all points torque values) and can quickly change car's engine power
 
@@ -409,12 +409,11 @@ max-torque-mul = 1.1
 ```
 
 
-   
-### Gear ratios ###
+### Gear ratios
 
 Useful graph for visualising all gear ratios with torque curve from car speed.
 
-![](images/7.jpg)
+![](images/07-gears.jpg)
 
 It also shows at which rpm will gears auto shift (rpmLow) and until which speed will gear work (velMax).
 
@@ -485,11 +484,11 @@ torque-dec - anti-slip-torque-deceleration-factor
 
 
    
-### Suspension ###
+## Suspension
 
 There is a graph visualising current suspension positions for all wheels and next for suspension move velocities.
 
-![](images/8.jpg)
+![](images/08-suspension.jpg)
 
   * _spring-constant_ - is the wheel rate (in N/m).
 
@@ -528,9 +527,8 @@ anti-roll = 20000.0
 factors-file = first
 ```
 
-
    
-### Brakes ###
+## Brakes
 
   * _friction_ - near to 1.0, defines brakes efficency
 
@@ -560,12 +558,11 @@ handbrake = 4.8
 ```
 
 
-   
-### Aerodynamics ###
+## Aerodynamics
 
-![](images/9.jpg)
+![](images/09-aerodynamics.jpg)
 
-Aerodynamics is quite important and determines car path when flying after jump and car handling at higher speeds (downforce), since tire forces depend on down force it should make car "stick" more to ground when driving faster.
+Aerodynamics is quite important and determines vehicle path when flying after jump and car handling at higher speeds (downforce), since tire forces depend on down force it should make car "stick" more to ground when driving faster.
 
 Helpful values are shown in car debug text, at car speed 160kmh (100mph): down force, and torque (this determines if car will rotate when in air and should be minimal).
 
@@ -607,8 +604,10 @@ efficiency = 0.92
 ```
 
 
+----
+## Other
    
-### Hood camera ###
+### Hood camera
 
 Probably last thing to adjust is the position of driver and hood cameras (which are specific to each car):
 
@@ -629,8 +628,8 @@ hood-position = -0.8, 0, 0.5
   * _position_ and _mass_ - are again used for weight distribution.
 
 
-   
-### Differences between simulation modes ###
+
+### Differences between simulation modes
 
 The main differences are that in easy:
   * engine power is lower (eg 300 bhp not 400, torque-val-mul)
@@ -657,3 +656,8 @@ Different values in .car files (for easy and normal), example for ES:
 | handbrake | 4.8 | 3.3 |
 | [ wing-rear ] | |
 | lift-coefficient | -3.7 | -4.0 |
+
+
+### TODO
+
+Hovercrasft, hover cars, drones params, turbo ...
