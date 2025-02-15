@@ -57,6 +57,12 @@ _Some videos may not be that useful as title._
 
 #### Tires, docs
 
+https://en.wikipedia.org/wiki/Tire_model
+https://en.wikipedia.org/wiki/Hans_B._Pacejka#Magic_Formula_tire_models
+https://en.wikipedia.org/wiki/Vehicle_dynamics
+https://en.wikipedia.org/wiki/Slip_(vehicle_dynamics)
+https://en.wikipedia.org/wiki/Self_aligning_torque
+
 Racer info for **Pacejka**  
 http://www.racer.nl/reference/pacejka.htm  
 http://www.racer.nl/tutorial/combined_slip.htm  
@@ -96,13 +102,21 @@ https://www.youtube.com/watch?v=1k-sCL0SeRQ&list=PLEzzQIuBvBkoqJOP2IL3Elt6Ra8j4z
 L 26 **Understeer and Oversteer** Effects on A Moving Vehicle  
 https://www.youtube.com/watch?v=UmOHQycCH1E&list=PLQmc-I2-FO2GZaECA7S9VQXqEr_tDbg0s&index=27
 
+Traction Circle - Explained
+https://www.youtube.com/watch?v=JjCcFsGLpaM&list=PL2ir4svMoaYhu36bYSFHLstK7EFcSrO-k
+
+Use Slip Angles to Corner Faster, Tires Explained
+https://www.youtube.com/watch?v=3WaO4wPgZiA
+
 
 #### Vehicle Dynamics
 
-Vehicle Dynamics - *playlist*  
+*Playlists:*  
+
+https://www.youtube.com/playlist?list=PL2ir4svMoaYhu36bYSFHLstK7EFcSrO-k
+
 https://www.youtube.com/playlist?list=PLQmc-I2-FO2GZaECA7S9VQXqEr_tDbg0s
 
-Vehicle dynamics - *playlist*  
 https://www.youtube.com/playlist?list=PLEzzQIuBvBkoqJOP2IL3Elt6Ra8j4zFL3
 
 
@@ -123,6 +137,9 @@ https://www.youtube.com/watch?v=BTcaIkbbrZY&list=PLEzzQIuBvBkoqJOP2IL3Elt6Ra8j4z
 
 
 #### Suspension
+
+Vehicle Weight Transfer and Load Transfer  
+https://www.youtube.com/watch?v=PHbw6dOev2I&list=PL2ir4svMoaYhu36bYSFHLstK7EFcSrO-k&index=19
 
 Suspension Geometry - Part 1 (**Camber, Toe, Caster**, KPI, Scrub Radius)  
 https://www.youtube.com/watch?v=VbReLNi2JP4
