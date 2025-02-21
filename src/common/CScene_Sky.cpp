@@ -188,7 +188,7 @@ void CScene::UpdSkyScale()
 		ndSky[i]->setScale(scale);
 		ndSky[i]->_getFullTransformUpdated();
 	}
-	// ndSky[0]->setVisible(0);
+	// ndSky[0]->setVisible(0);  // uncomment # for SR logo
 	// ndSky[1]->setVisible(1);
 	// ndSky[2]->setVisible(0);
 }

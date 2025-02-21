@@ -240,7 +240,7 @@ void CScene::CreateTerrain1(int n)
 
 	SceneNode *rootNode = mgr->getRootSceneNode( dyn );
 	mTerra->node = rootNode->createChildSceneNode( dyn );
-	mTerra->node->attachObject( mTerra );
+	mTerra->node->attachObject( mTerra );  // comment # for SR logo
 	// mTerra->node->_getFullTransformUpdated();
 
 
