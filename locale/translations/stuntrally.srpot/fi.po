@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-27 22:08+0100\n"
-"PO-Revision-Date: 2025-02-26 13:10+0000\n"
+"PO-Revision-Date: 2025-02-26 15:10+0000\n"
 "Last-Translator: Ricky Tigg <ricky.tigg@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/fi/>\n"
@@ -1352,7 +1352,7 @@ msgstr "Leiju"
 #. MAIN  Vehicle types 
 msgctxt "CarType_Hovercraft"
 msgid "Hovercraft"
-msgstr ""
+msgstr "Ilmatyynyalus"
 
 #. MAIN  Vehicle types 
 #: data/gui/Game_Options.layout:1182 ..Options.Graphics.Lights.Check
@@ -1760,7 +1760,7 @@ msgstr "Nm"
 #: src/game/Gui_UtilCar.cpp:439:442:458
 msgctxt "at"
 msgid "at"
-msgstr ""
+msgstr "at"
 
 #. Units 
 #: src/game/Gui_UtilCar.cpp:439:442
@@ -1909,7 +1909,7 @@ msgstr "Tunnistamaton"
 #. Scenery names 
 msgctxt "SC_Mars"
 msgid "Mars"
-msgstr ""
+msgstr "Mars"
 
 #. Scenery names 
 msgctxt "SC_Crystals"
@@ -2009,7 +2009,7 @@ msgstr "Keltainen"
 #. Vehicle Paint names 
 msgctxt "P_Lime"
 msgid "Lime"
-msgstr ""
+msgstr "Kalkki"
 
 #. Vehicle Paint names 
 #: data/gui/Editor.layout:602 ..Editor.Terrain.Light.Text
@@ -2079,22 +2079,22 @@ msgstr "Sekoitus"
 #. Vehicle Paint names 
 msgctxt "P_Neon"
 msgid "Neon"
-msgstr ""
+msgstr "Neon"
 
 #. Vehicle Paint names 
 msgctxt "P_Ice"
 msgid "Ice"
-msgstr ""
+msgstr "Jää"
 
 #. Vehicle Paint names 
 msgctxt "P_Fire"
 msgid "Fire"
-msgstr ""
+msgstr "Tuli"
 
 #. Vehicle Paint names 
 msgctxt "P_Rainbow"
 msgid "Rainbow"
-msgstr ""
+msgstr "Sateenkaari"
 
 #. Vehicle Paint names 
 msgctxt "P_Silver"
@@ -2130,7 +2130,7 @@ msgstr "Dynaamiset objektit"
 #: data/gui/Game.layout:1416 ..SingleRace.Setup.Collision.Check
 msgctxt "DriveOnHorizons"
 msgid "Allow driving outside map, on horizons"
-msgstr ""
+msgstr "Salli ajaminen kartan ulkopuolella horisonteissa"
 
 #. Setup  Gearbox 
 #: data/gui/Game.layout:1487 ..SingleRace.Setup.Tab
@@ -2599,7 +2599,7 @@ msgstr "Muuta"
 #: :333..Options.Screen.GUI.Text
 msgctxt "GUI"
 msgid "GUI"
-msgstr ""
+msgstr "Graafinen käyttöliittymä"
 
 #. Screen  advanced 
 #: data/gui/Editor_Options.layout:330 ..Options.Screen.GUI.Text
@@ -2986,6 +2986,8 @@ msgid ""
 "Incompatible protocol version - update Stunt Rally or contact server "
 "administrator."
 msgstr ""
+"Yhteensopimaton protokollaversio - päivitä Stunt Rally tai ota yhteyttä "
+"palvelimen järjestelmänvalvojaan."
 
 #. Network messages 
 #: src/network/masterclient.cpp:113
@@ -3000,6 +3002,8 @@ msgid ""
 "Failed to initialize networking. Try different local port and make sure your "
 "firewall is properly configured."
 msgstr ""
+"Verkkoyhteyden alustaminen epäonnistui. Kokeile toista paikallista porttia "
+"ja varmista, että palomuurisi on määritetty oikein."
 
 #. Network Settings 
 #: data/gui/Game.layout:1843 ..SingleRace.Multiplayer.Tab
@@ -3049,6 +3053,8 @@ msgid ""
 "Hosting a multiplayer game requires port forwarding. Connecting to existing "
 "game doesn't need it, provided other players have it."
 msgstr ""
+"Moninpelin isännöinti vaatii porttiohjauksen. Yhteyden muodostaminen "
+"olemassa olevaan peliin ei vaadi sitä, mikäli muilla pelaajilla on se."
 
 #. Graphics  Detail 
 #: data/gui/Editor_Track.layout:986 ..Track.Export.Settings.Button
@@ -3072,7 +3078,7 @@ msgstr "Yksityiskohdat"
 #. Graphics  Detail 
 msgctxt "TerrainError"
 msgid "Terrain error"
-msgstr ""
+msgstr "Maastovirhe"
 
 #. Graphics  Detail 
 msgctxt "TerHQDist"
@@ -3100,13 +3106,13 @@ msgstr "Tien laatu kaukana"
 #: data/gui/Game_Options.layout:1207
 msgctxt "GridQual"
 msgid "Grid quality"
-msgstr ""
+msgstr "Ruudukon laatu"
 
 #. Graphics  Detail 
 #: data/gui/Game_Options.layout:1505 ..Options.Graphics.Simulation.Text
 msgctxt "Quality"
 msgid "Quality"
-msgstr ""
+msgstr "Laatu"
 
 #. Graphics  Textures 
 #: data/gui/Editor_Options.layout:792 ..Options.Graphics.Tab
@@ -3153,7 +3159,7 @@ msgstr ""
 #: data/gui/Editor.layout:1465 ..Editor.Layers.Check
 msgctxt "HighestSlopes"
 msgid "Highest slopes"
-msgstr ""
+msgstr "Korkeimmat rinteet"
 
 #. Graphics  Vegetation 
 #: data/gui/Editor.layout:567 ..Editor.Terrain.Size.Text :2327..Editor.Tab
@@ -3174,7 +3180,7 @@ msgstr "Kasvillisuus"
 #: :1341..Options.Graphics.Horizon.Text
 msgctxt "Bush"
 msgid "Bush"
-msgstr ""
+msgstr "Pensas"
 
 #. Graphics  Vegetation 
 msgctxt "DistMult"
@@ -3186,7 +3192,7 @@ msgstr ""
 #: data/gui/Game_Options.layout:1293
 msgctxt "Limit"
 msgid "Limit"
-msgstr ""
+msgstr "Rajoitus"
 
 #. Graphics  Vegetation 
 #: data/gui/Editor.layout:897 ..Editor.Terrain.Brushes.Button
@@ -3513,7 +3519,7 @@ msgstr ""
 #: data/gui/Game_Options.layout:818 src/editor/Update_Frame.cpp:79
 msgctxt "Camera"
 msgid "Camera"
-msgstr ""
+msgstr "Kamera"
 
 #. View  Camera 
 #: data/gui/Game_Options.layout:820 ..Options.View.Camera.Check
@@ -3548,7 +3554,7 @@ msgstr "Mukautuva näkökenttä"
 #: data/gui/Game_Options.layout:849 ..Options.View.Camera.Text :860:871
 msgctxt "FOV"
 msgid "View angle"
-msgstr ""
+msgstr "Näkökulma"
 
 #. Effects  Main 
 #: data/gui/Editor_Options.layout:131 ..Options.Screen.Tab
@@ -3583,7 +3589,7 @@ msgstr ""
 #: data/gui/Game_Options.layout:265
 msgctxt "GI"
 msgid "Global Illumination"
-msgstr ""
+msgstr "Yleispätevä valaistus"
 
 #. Effects  not used 
 #: data/gui/Editor_Options.layout:165 ..Options.Screen.Effects.Check
@@ -3638,59 +3644,59 @@ msgstr "Syväterävyysalue"
 #: data/gui/Game_Options.layout:707
 msgctxt "Near"
 msgid "Near"
-msgstr ""
+msgstr "Lähellä"
 
 #. Effects  not used 
 msgctxt "Far"
 msgid "Far"
-msgstr ""
+msgstr "Kaukana"
 
 #. Effects  not used 
 msgctxt "Small"
 msgid "Small"
-msgstr ""
+msgstr "Pieni"
 
 #. Effects  not used 
 #: data/gui/Common.layout:74 ..Track-Filter.Check
 msgctxt "Big"
 msgid "Big"
-msgstr ""
+msgstr "Iso"
 
 #. Effects  HDR  not used 
 msgctxt "HDRTab"
 msgid "HDR"
-msgstr ""
+msgstr "Korkea dynaaminen alue"
 
 #. Effects  HDR  not used 
 #: data/gui/Editor_Options.layout:233 ..Options.Screen.Effects.Check
 #: data/gui/Game_Options.layout:232
 msgctxt "HDR"
 msgid "HDR and Bloom (High Dynamic Range)"
-msgstr ""
+msgstr "Korkea dynaaminen alue ja Bloom (High Dynamic Range (HDR))"
 
 #. Effects  HDR  not used 
 #: data/gui/Editor_Options.layout:243 ..Options.Screen.Effects.Text
 #: data/gui/Game_Options.layout:242
 msgctxt "HDRAdaptationScale"
 msgid "Adapt Scale"
-msgstr ""
+msgstr "Mukauta mittakaavaa"
 
 #. Effects  HDR  not used 
 #: data/gui/Editor_Options.layout:251 ..Options.Screen.Effects.Text
 #: data/gui/Game_Options.layout:250
 msgctxt "HDRIntensity"
 msgid "Bloom Intensity"
-msgstr ""
+msgstr "Bloomin intensiteetti"
 
 #. Effects  HDR  not used 
 msgctxt "HDROrigImage"
 msgid "Bloom Darken"
-msgstr ""
+msgstr "Kukinta Tummentava"
 
 #. Effects  HDR  not used 
 msgctxt "HDRParam1"
 msgid "Exposure"
-msgstr ""
+msgstr "Valotus"
 
 #. Effects  HDR  not used 
 msgctxt "HDRParam2"
@@ -3700,7 +3706,7 @@ msgstr "Kirkkaus"
 #. Effects  HDR  not used 
 msgctxt "HDRParam3"
 msgid "Grain"
-msgstr ""
+msgstr "Jyvä"
 
 #. Settings  debug 
 #: data/gui/Game.layout:1633 ..SingleRace.Setup.Tab
@@ -3727,25 +3733,28 @@ msgid ""
 "not cached already. Optionally also properties on top, messing error line "
 "numbers."
 msgstr ""
+"Tallentaa luodut varjostimet käyttäjän cache/shaders/ -kansioon. Vain "
+"niille, joita ei ole jo tallennettu välimuistiin. Vaihtoehtoisesti myös "
+"ominaisuuksia päällä, sekoittaen virherivien numerot."
 
 #. Settings  debug 
 #: data/gui/Editor_Options.layout:1442 ..Options.Settings.Tweak.Text
 #: data/gui/Game_Options.layout:1916 ..Options.Tweak.Other.Text
 msgctxt "FPS"
 msgid "Fps bar, render statistics"
-msgstr ""
+msgstr "Ruudut sekunnissa -palkki, renderöintitilastot"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:338:339:340:341
 msgctxt "FPS_Fps"
 msgid "Frames per second"
-msgstr ""
+msgstr "Ruudut sekunnissa"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:339:341
 msgctxt "FPS_Triangles"
 msgid "Millions of triangles"
-msgstr ""
+msgstr "Miljoonia kolmioita"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:339:340:341
