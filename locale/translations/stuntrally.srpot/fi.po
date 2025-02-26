@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-27 22:08+0100\n"
-"PO-Revision-Date: 2025-02-26 11:59+0000\n"
+"PO-Revision-Date: 2025-02-26 13:10+0000\n"
 "Last-Translator: Ricky Tigg <ricky.tigg@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/fi/>\n"
@@ -1508,12 +1508,12 @@ msgstr "Kobra"
 #. Vehicle  Names  from animals 
 msgctxt "Eagle"
 msgid "Eagle"
-msgstr ""
+msgstr "Kotka"
 
 #. Vehicle  Names  from animals 
 msgctxt "Crow"
 msgid "Crow"
-msgstr ""
+msgstr "Varis"
 
 #. Vehicle  Names  from animals 
 msgctxt "Falcon"
@@ -1523,12 +1523,12 @@ msgstr ""
 #. Vehicle  Names  from animals 
 msgctxt "Owl"
 msgid "Owl"
-msgstr ""
+msgstr "Pöllö"
 
 #. Vehicle  Names  from animals 
 msgctxt "Sparrow"
 msgid "Sparrow"
-msgstr ""
+msgstr "Varpunen"
 
 #. Editor  status 
 #: src/editor/App_SceneInitEd.cpp:288
@@ -1714,7 +1714,7 @@ msgstr "km/h"
 #: src/game/Gui_UtilCar.cpp:450 src/common/GuiCom_Track.cpp:536
 msgctxt "UnitMph"
 msgid "mph"
-msgstr ""
+msgstr "mpt"
 
 #. Units 
 #: data/gui/Editor.layout:527 ..Editor.Terrain.Size.Text
@@ -1729,7 +1729,7 @@ msgstr "km"
 #: src/common/GuiCom_Track.cpp:451
 msgctxt "UnitMi"
 msgid "mi"
-msgstr ""
+msgstr "mi"
 
 #. Units 
 #: data/gui/Editor.layout:513 ..Editor.Terrain.Size.Text
@@ -1748,13 +1748,13 @@ msgstr "Mt"
 #: src/game/Gui_UtilCar.cpp:432
 msgctxt "UnitKg"
 msgid "kg"
-msgstr ""
+msgstr "kg"
 
 #. Units 
 #: src/game/Gui_UtilCar.cpp:439
 msgctxt "UnitNm"
 msgid "Nm"
-msgstr ""
+msgstr "Nm"
 
 #. Units 
 #: src/game/Gui_UtilCar.cpp:439:442:458
@@ -1766,145 +1766,145 @@ msgstr ""
 #: src/game/Gui_UtilCar.cpp:439:442
 msgctxt "UnitRpm"
 msgid "rpm"
-msgstr ""
+msgstr "kpm"
 
 #. Units 
 #: src/game/Gui_UtilCar.cpp:442
 msgctxt "UnitBhp"
 msgid "bhp"
-msgstr ""
+msgstr "jhv"
 
 #. Units 
 #: data/gui/Game.layout:567 ..SingleRace.Vehicle.Text
 #: src/game/Gui_UtilCar.cpp:458:461:465:469:473
 msgctxt "UnitS"
 msgid "s"
-msgstr ""
+msgstr "s"
 
 #. Scenery names 
 msgctxt "SC_Asphalt"
 msgid "Asphalt"
-msgstr ""
+msgstr "Asfaltti"
 
 #. Scenery names 
 msgctxt "SC_Jungle"
 msgid "Jungle"
-msgstr ""
+msgstr "Viidakko"
 
 #. Scenery names 
 msgctxt "SC_JungleDark"
 msgid "JungleDark"
-msgstr ""
+msgstr "ViidakkoTumma"
 
 #. Scenery names 
 msgctxt "SC_Desert"
 msgid "Desert"
-msgstr ""
+msgstr "Aavikko"
 
 #. Scenery names 
 msgctxt "SC_DesertMud"
 msgid "DesertMud"
-msgstr ""
+msgstr "AavikkoMuta"
 
 #. Scenery names 
 msgctxt "SC_Savanna"
 msgid "Savanna"
-msgstr ""
+msgstr "Savanni"
 
 #. Scenery names 
 msgctxt "SC_SavannaDry"
 msgid "SavannaDry"
-msgstr ""
+msgstr "SavanniKuiva"
 
 #. Scenery names 
 msgctxt "SC_Winter"
 msgid "Winter"
-msgstr ""
+msgstr "Talvi"
 
 #. Scenery names 
 msgctxt "SC_WinterWet"
 msgid "WinterWet"
-msgstr ""
+msgstr "TalviMärkä"
 
 #. Scenery names 
 msgctxt "SC_Forest"
 msgid "Forest"
-msgstr ""
+msgstr "Metsä"
 
 #. Scenery names 
 msgctxt "SC_ForestMntn"
 msgid "ForestMntn"
-msgstr ""
+msgstr "MetsäVuori"
 
 #. Scenery names 
 msgctxt "SC_ForestYellow"
 msgid "ForestYellow"
-msgstr ""
+msgstr "MetsäKeltainen"
 
 #. Scenery names 
 msgctxt "SC_Finland"
 msgid "Finland"
-msgstr ""
+msgstr "Suomi"
 
 #. Scenery names 
 msgctxt "SC_Island"
 msgid "Island"
-msgstr ""
+msgstr "Saari"
 
 #. Scenery names 
 msgctxt "SC_IslandDark"
 msgid "IslandDark"
-msgstr ""
+msgstr "SaariTumma"
 
 #. Scenery names 
 msgctxt "SC_Mud"
 msgid "Mud"
-msgstr ""
+msgstr "Muta"
 
 #. Scenery names 
 msgctxt "SC_Australia"
 msgid "Australia"
-msgstr ""
+msgstr "Australia"
 
 #. Scenery names 
 msgctxt "SC_Greece"
 msgid "Greece"
-msgstr ""
+msgstr "Kreikka"
 
 #. Scenery names 
 msgctxt "SC_Canyon"
 msgid "Canyon"
-msgstr ""
+msgstr "Kanjoni"
 
 #. Scenery names 
 msgctxt "SC_Autumn"
 msgid "Autumn"
-msgstr ""
+msgstr "Syksy"
 
 #. Scenery names 
 msgctxt "SC_AutumnDark"
 msgid "AutumnDark"
-msgstr ""
+msgstr "SyksyTumma"
 
 #. Scenery names 
 msgctxt "SC_Moss"
 msgid "Moss"
-msgstr ""
+msgstr "Sammal"
 
 #. Scenery names 
 msgctxt "SC_Volcanic"
 msgid "Volcanic"
-msgstr ""
+msgstr "Tulivuori"
 
 #. Scenery names 
 msgctxt "SC_VolcanicDark"
 msgid "VolcanicDark"
-msgstr ""
+msgstr "TulivuoriTumma"
 
 #. Scenery names 
 msgctxt "SC_Unidentified"
 msgid "Unidentified"
-msgstr ""
+msgstr "Tunnistamaton"
 
 #. Scenery names 
 msgctxt "SC_Mars"
@@ -1914,63 +1914,63 @@ msgstr ""
 #. Scenery names 
 msgctxt "SC_Crystals"
 msgid "Crystals"
-msgstr ""
+msgstr "Kiteet"
 
 #. Scenery names 
 msgctxt "SC_GreeceWhite"
 msgid "GreeceWhite"
-msgstr ""
+msgstr "KreikkaValkoinen"
 
 #. Scenery names 
 msgctxt "SC_Toxic"
 msgid "Toxic"
-msgstr ""
+msgstr "Myrkyllinen"
 
 #. Scenery names 
 msgctxt "SC_Surreal"
 msgid "Surreal"
-msgstr ""
+msgstr "Surrealistinen"
 
 #. Scenery names 
 msgctxt "SC_Alien"
 msgid "Alien"
-msgstr ""
+msgstr "Ulkomaalainen"
 
 #. Scenery names 
 msgctxt "SC_Other"
 msgid "Other"
-msgstr ""
+msgstr "Muu"
 
 #. Scenery names 
 msgctxt "SC_Stone"
 msgid "Stone"
-msgstr ""
+msgstr "Kivi"
 
 #. Scenery names 
 #: data/gui/Game.layout:1971 ..SingleRace.Championship.Tab :1998
 msgctxt "SC_Space"
 msgid "Space"
-msgstr ""
+msgstr "Avaruus"
 
 #. Scenery names 
 msgctxt "SC_BlackDesert"
 msgid "BlackDesert"
-msgstr ""
+msgstr "MustaAavikko"
 
 #. Scenery names 
 msgctxt "SC_SurrealSpace"
 msgid "SurrealSpace"
-msgstr ""
+msgstr "SurrealistinenAvaruus"
 
 #. Scenery names 
 msgctxt "SC_GreeceRocky"
 msgid "GreeceRocky"
-msgstr ""
+msgstr "KreikkaKivinen"
 
 #. Scenery names 
 msgctxt "SC_Marble"
 msgid "Marble"
-msgstr ""
+msgstr "Marmori"
 
 #. Scenery names 
 msgctxt "SC_Spring"
@@ -1980,12 +1980,12 @@ msgstr "Kevät"
 #. Scenery names 
 msgctxt "SC_Anomaly"
 msgid "Anomaly"
-msgstr ""
+msgstr "Poikkeavuus"
 
 #. Scenery names 
 msgctxt "SC_PostApo"
 msgid "PostApo"
-msgstr ""
+msgstr "JälkiApokalypsi"
 
 #. Vehicle Paint names 
 #: data/gui/Editor.layout:590 ..Editor.Terrain.Light.Text
@@ -2021,60 +2021,60 @@ msgstr "Vihreä"
 #. Vehicle Paint names 
 msgctxt "P_Olive"
 msgid "Olive"
-msgstr ""
+msgstr "Oliivi"
 
 #. Vehicle Paint names 
 msgctxt "P_SkyBlue"
 msgid "SkyBlue"
-msgstr ""
+msgstr "TaivasSininen"
 
 #. Vehicle Paint names 
 #: data/gui/Editor.layout:614 ..Editor.Terrain.Light.Text
 #: data/gui/MaterialEditor.layout:89 ..MaterialEditor.Main.Text :123:163
 msgctxt "P_Blue"
 msgid "Blue"
-msgstr ""
+msgstr "Sininen"
 
 #. Vehicle Paint names 
 msgctxt "P_Cyan"
 msgid "Cyan"
-msgstr ""
+msgstr "Syaani"
 
 #. Vehicle Paint names 
 msgctxt "P_Teal"
 msgid "Teal"
-msgstr ""
+msgstr "Sinivihreä"
 
 #. Vehicle Paint names 
 msgctxt "P_Violet"
 msgid "Violet"
-msgstr ""
+msgstr "Violetti"
 
 #. Vehicle Paint names 
 msgctxt "P_Magenta"
 msgid "Magenta"
-msgstr ""
+msgstr "Magenta"
 
 #. Vehicle Paint names 
 msgctxt "P_Brown"
 msgid "Brown"
-msgstr ""
+msgstr "Ruskea"
 
 #. Vehicle Paint names 
 msgctxt "P_Black"
 msgid "Black"
-msgstr ""
+msgstr "Musta"
 
 #. Vehicle Paint names 
 msgctxt "P_White"
 msgid "White"
-msgstr ""
+msgstr "Valkoinen"
 
 #. Vehicle Paint names 
 #: data/gui/Game.layout:1059 ..SingleRace.Setup.Paint.Tab
 msgctxt "P_Mix"
 msgid "Mix"
-msgstr ""
+msgstr "Sekoitus"
 
 #. Vehicle Paint names 
 msgctxt "P_Neon"
@@ -2137,13 +2137,13 @@ msgstr ""
 #: data/gui/Game_Options.layout:1615 ..Options.Sound.Vehicle.Text
 msgctxt "Gearbox"
 msgid "Gearbox"
-msgstr ""
+msgstr "Vaihteisto"
 
 #. Setup  Gearbox 
 #: data/gui/Game.layout:1494 ..SingleRace.Setup.Gearbox.Check
 msgctxt "AutoGearbox"
 msgid "Auto gearbox"
-msgstr ""
+msgstr "Automaattinen vaihteisto"
 
 #. Setup  Gearbox 
 #: data/gui/Game.layout:1499 ..SingleRace.Setup.Gearbox.Check
@@ -2155,7 +2155,7 @@ msgstr "Automaattinen peruutusvaihde"
 #: data/gui/Game.layout:1504 ..SingleRace.Setup.Gearbox.Check
 msgctxt "RearThrottleInverse"
 msgid "Rear throttle inverse"
-msgstr ""
+msgstr "Takakaasu käänteinen"
 
 #. Setup  steering 
 #: data/gui/Game.layout:1521 ..SingleRace.Setup.Steering.Tab
@@ -2174,7 +2174,7 @@ msgstr "Asfaltti"
 #: data/gui/Game.layout:1531 ..SingleRace.Setup.Steering.Text
 msgctxt "SpeedSensitiveSteering"
 msgid "Speed Sensitive Steering"
-msgstr ""
+msgstr "Nopeusherkkä ohjaus"
 
 #. Setup  steering 
 #: data/gui/Game.layout:1536 ..SingleRace.Setup.Steering.Text :1574
@@ -2186,19 +2186,19 @@ msgstr "Tehoste"
 #: data/gui/Game.layout:1544 ..SingleRace.Setup.Steering.Text
 msgctxt "SSS_SpeedFactor"
 msgid "Speed Factor"
-msgstr ""
+msgstr "Nopeuskerroin"
 
 #. Setup  steering 
 #: data/gui/Game.layout:1596 ..SingleRace.Setup.Steering.Text
 msgctxt "SteerRange"
 msgid "Steering range multipliers"
-msgstr ""
+msgstr "Ohjausalueen kertoimet"
 
 #. Setup  ABS,TCS 
 #: data/gui/Game.layout:1645 ..SingleRace.Setup.Other.Text
 msgctxt "NotRecommended"
 msgid "Not recommended"
-msgstr ""
+msgstr "Ei suositella"
 
 #. Setup  ABS,TCS 
 #: data/gui/Game.layout:1635 ..SingleRace.Setup.Other.Check
@@ -2222,27 +2222,27 @@ msgstr "Estää pyörien lukkiutumisen jarrutettaessa (oletus: pois päältä)."
 #: data/gui/Game.layout:1642 ..SingleRace.Setup.Other.Check
 msgctxt "TipTCS"
 msgid "Prevents wheel spinning when accelerating (default: off)."
-msgstr ""
+msgstr "Estää pyörien luistamisen kiihdytettäessä (oletus: pois päältä)."
 
 #. Setup  tips 
 #: data/gui/Game.layout:1533 ..SingleRace.Setup.Steering.Text
 msgctxt "TipSpeedSensitiveSteering"
 msgid "Decreases steering range with higher velocity."
-msgstr ""
+msgstr "Vähentää ohjausaluetta suuremmalla nopeudella."
 
 #. Setup  tips 
 #: data/gui/Game.layout:1602 ..SingleRace.Setup.Steering.Text
 #: :1607:1610..SingleRace.Setup.Steering.Slider
 msgctxt "TipSteerSim"
 msgid "Steering range multiplier, for simulation mode (Easy,Normal)."
-msgstr ""
+msgstr "Ohjausalueen kerroin, simulaatiotilaan (Helppo, Normaali)."
 
 #. Setup  tips 
 #: data/gui/Game.layout:1615 ..SingleRace.Setup.Steering.Text
 #: :1620:1623..SingleRace.Setup.Steering.Slider
 msgctxt "TipSteerSurf"
 msgid "Steering range multiplier, for surface (Gravel,Asphalt)."
-msgstr ""
+msgstr "Ohjausalueen kerroin, pintaan (sora, asfaltti)."
 
 #. Setup  tips 
 #: data/gui/Game.layout:1496 ..SingleRace.Setup.Gearbox.Check
@@ -2254,13 +2254,13 @@ msgstr "Poista valinta saadaksesi manuaali vaihteet."
 #: data/gui/Game.layout:1501 ..SingleRace.Setup.Gearbox.Check
 msgctxt "TipAutoRear"
 msgid "Uncheck for manual Rear gear changing."
-msgstr ""
+msgstr "Poista valinta manuaaliseen takavaihteen vaihdon vuoksi."
 
 #. Setup  tips 
 #: data/gui/Game.layout:1506 ..SingleRace.Setup.Gearbox.Check
 msgctxt "TipRearThrottleInverse"
 msgid "Inverse throttle and brake function in rear gear."
-msgstr ""
+msgstr "Käänteinen kaasu- ja jarrutoiminto takavaihteessa."
 
 #. MAIN  options 
 #: data/gui/Editor_Options.layout:1388 ..Options.Settings.Settings.Text
@@ -2293,7 +2293,7 @@ msgstr "Äänet"
 #: data/gui/Game_Options.layout:1533
 msgctxt "Volume"
 msgid "Volume"
-msgstr ""
+msgstr "Äänenvoimakkuus"
 
 #. Graphics 
 #: data/gui/Editor_Help.layout:251 ..Help.Input/help.Shortcuts.Text
@@ -2336,7 +2336,7 @@ msgstr "* vaatii uudelleen latauksen"
 #: :1420..Options.Graphics.Textures.Button
 msgctxt "Apply"
 msgid "Apply"
-msgstr ""
+msgstr "Sovella"
 
 #. Replay 
 #: data/gui/Game_Options.layout:424 ..Options.Input.General.Text
@@ -2375,20 +2375,20 @@ msgstr "Tallenna"
 #. Replay 
 msgctxt "ToolsTime"
 msgid "Warning: May take several minutes!"
-msgstr ""
+msgstr "Varoitus: saattaa kestää useita minuutteja!"
 
 #. Replay 
 #: src/game/Gui_Replay.cpp:121:312:321 src/game/Gui_TweakSim.cpp:513
 #: src/editor/Gui_Tools.cpp:263:308
 msgctxt "AlreadyExists"
 msgid "Already exists"
-msgstr ""
+msgstr "On jo olemassa"
 
 #. Replay 
 #: src/game/Gui_Replay.cpp:75:77:81
 msgctxt "DoesntExist"
 msgid "Doesn't exist"
-msgstr ""
+msgstr "Ei ole olemassa"
 
 #. Replay  list 
 #: data/gui/Common.layout:220 ..Track-Filter.Text data/gui/Editor.layout:431
@@ -2464,25 +2464,25 @@ msgstr "Kirjattu aika"
 #: data/gui/Game_Replay.layout:100 ..Replays.View.Check
 msgctxt "RplGhost"
 msgid "Show ghost drive - best lap"
-msgstr ""
+msgstr "Näytä haamuajo - paras kierros"
 
 #. Replay  View  Main 
 #: data/gui/Game_Replay.layout:104 ..Replays.View.Check
 msgctxt "TracksGhost"
 msgid "Track's ghost (ES car best drive for track)"
-msgstr ""
+msgstr "Radan haamu (ES-auton paras ajo radalle)"
 
 #. Replay  View  other 
 #: data/gui/Game_Replay.layout:108 ..Replays.View.Check
 msgctxt "RplRewindGhost"
 msgid "Rewind Ghost"
-msgstr ""
+msgstr "Kelaa haamu taaksepäin"
 
 #. Replay  View  other 
 #: data/gui/Game_Replay.layout:126 ..Replays.View.Check
 msgctxt "RplGhostOther"
 msgid "Other car ghost (when current unavailable)"
-msgstr ""
+msgstr "Muu auton haamu (kun nykyinen ei ole saatavilla)"
 
 #. Replay  View  setup 
 #: data/gui/Game_Replay.layout:112 ..Replays.View.Check
@@ -2494,7 +2494,7 @@ msgstr "Nauhoita uusinta automaattisesti"
 #: data/gui/Game_Replay.layout:117 ..Replays.View.Check
 msgctxt "RplBestOnly"
 msgid "Save ghost only for best time"
-msgstr ""
+msgstr "Säästä haamu vain parasta aikaa varten"
 
 #. Replay  View  setup 
 msgctxt "RplAlpha"
@@ -2506,18 +2506,20 @@ msgstr "Läpinäkyvä haamu"
 msgctxt "RplMaxNumViewports"
 msgid "Max. number of viewports (see less, for more player replays)"
 msgstr ""
+"Näkymäporttien enimmäismäärä (katso vähemmän, saadaksesi lisää "
+"pelaajatoistoja)"
 
 #. Replay  View  setup 
 #: data/gui/Game_Replay.layout:144 ..Replays.View.Text
 msgctxt "GhostHideDist"
 msgid "Hide ghosts if distance is below"
-msgstr ""
+msgstr "Piilota haamut, jos etäisyys on alle"
 
 #. Replay  View  setup 
 #: data/gui/Game_Replay.layout:130 ..Replays.View.Check
 msgctxt "RplHideHudAids"
 msgid "Hide HUD aids when playing replay (pacenotes, trail)"
-msgstr ""
+msgstr "Piilota HUD-avut toistettaessa (vauhtihuomautukset, polku)"
 
 #. Screen 
 #: data/gui/Editor_Help.layout:248 ..Help.Input/help.Shortcuts.Text
@@ -2604,19 +2606,19 @@ msgstr ""
 #: data/gui/Game_Options.layout:328
 msgctxt "FontSizes"
 msgid "Font sizes"
-msgstr ""
+msgstr "Fonttikoot"
 
 #. Screen  advanced 
 #: data/gui/Editor_Options.layout:318 ..Options.Screen.GUI.Text
 #: data/gui/Game_Options.layout:316
 msgctxt "WindowMargin"
 msgid "Window margin"
-msgstr ""
+msgstr "Ikkunan marginaali"
 
 #. Screen  not used 
 msgctxt "Gamma"
 msgid "Gamma"
-msgstr ""
+msgstr "Gamma"
 
 #. Screen  not used 
 #: data/gui/Editor_Options.layout:119 ..Options.Screen.Video.Check
@@ -2628,28 +2630,28 @@ msgstr "Virtuaalitodellisuustila"
 #. Screen  not used 
 msgctxt "Complex"
 msgid "Complex"
-msgstr ""
+msgstr "Monimutkainen"
 
 #. Screen  not used 
 #: data/gui/Editor.layout:1312 ..Editor.Terrain.Tools.Button
 msgctxt "Simple"
 msgid "Simple"
-msgstr ""
+msgstr "Yksinkertainen"
 
 #. Screen  not used 
 msgctxt "LimitFPS"
 msgid "Limit frames per second"
-msgstr ""
+msgstr "Rajoita ruutua sekunnissa"
 
 #. Screen  not used 
 msgctxt "FramesPerSec"
 msgid "Frames per second"
-msgstr ""
+msgstr "Ruudut sekunnissa"
 
 #. Screen  not used 
 msgctxt "SleepMS"
 msgid "Sleep interval [milisec]"
-msgstr ""
+msgstr "Univäli [milisec]"
 
 #. Graphics Presets 
 #: data/gui/Editor_Options.layout:73 ..Options.Screen.Main.Text
@@ -2711,13 +2713,13 @@ msgstr "Huippu"
 #: data/gui/Game_Options.layout:910
 msgctxt "NeedApply"
 msgid "need Apply"
-msgstr ""
+msgstr "tarvitsee Sovella"
 
 #. Graphics  info 
 #: data/gui/Game_Options.layout:936 ..Options.Graphics.Button
 msgctxt "RestartApply"
 msgid "Restart game, to apply *changes."
-msgstr ""
+msgstr "Käynnistä peli uudelleen ottaaksesi *muutokset käyttöön."
 
 #. Graphics  info 
 #: data/gui/Editor_Options.layout:378 ..Options.Graphics.Text
@@ -2736,12 +2738,12 @@ msgstr "jätetty huomioimatta"
 #: :265..Options.Screen.Advanced.Check :916..Options.Graphics.Text
 msgctxt "NotDone"
 msgid "not done yet, ToDo"
-msgstr ""
+msgstr "ei ole vielä tehty, Tehtävä"
 
 #. Graphics  info 
 msgctxt "WIP"
 msgid "WIP, work in progress"
-msgstr ""
+msgstr "WIP, työ kesken"
 
 #. Graphics  info 
 #: data/gui/Editor_Options.layout:390 ..Options.Graphics.Edit
@@ -2750,6 +2752,8 @@ msgctxt "GraphicsRightHQ"
 msgid ""
 "By default better quality (less Fps) is on right. Marked with + if on left."
 msgstr ""
+"Oletuksena parempi laatu (vähemmän ruutua sekunnissa) on oikealla. Merkitty "
+"\"+\", jos vasemmalla."
 
 #. Network Multiplayer  headers 
 #: src/game/Gui_Init.cpp:447
@@ -2938,30 +2942,30 @@ msgstr "Odotetaan muita pelaajia"
 #: src/game/Gui_Network.cpp:463
 msgctxt "ListeningOnPort"
 msgid "Listening on port"
-msgstr ""
+msgstr "Kuunnellaan portissa"
 
 #. Network status 
 #: src/game/Gui_Network.cpp:371
 msgctxt "ConnectingTo"
 msgid "Connecting to"
-msgstr ""
+msgstr "Yhdistetään kohteeseen"
 
 #. Network status 
 #: src/game/Gui_Network.cpp:258
 msgctxt "Connected"
 msgid "Connected"
-msgstr ""
+msgstr "Yhdistetty"
 
 #. Network status 
 #: src/game/Gui_Network.cpp:269
 msgctxt "Disconnected"
 msgid "Disconnected"
-msgstr ""
+msgstr "Yhteys katkaistu"
 
 #. Network status 
 msgctxt "NetworkError"
 msgid "Network Error"
-msgstr ""
+msgstr "Verkkovirhe"
 
 #. Network messages 
 #: src/network/gameclient.cpp:344
