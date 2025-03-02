@@ -148,6 +148,7 @@ L 16 Fundamentals of Suspension System and Its Types
 https://www.youtube.com/watch?v=oKJfeFOsU08&list=PLQmc-I2-FO2GZaECA7S9VQXqEr_tDbg0s&index=17
 
 Suspension - *playlist*  
+https://www.youtube.com/playlist?list=PLE067A7397E1AF108
 https://www.youtube.com/playlist?list=PL6R7zR4ZbGkNW6llAWSlskHu0hl_Cs82g
 
 Solid Axle Suspension - How Truck Suspensions Work  

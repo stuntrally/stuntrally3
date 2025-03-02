@@ -236,9 +236,9 @@ slow track load, shaders cache big
 📦 New static Objects, *tall* city buildings, dynamic hay  
 redo or replace lowest quality meshes: , skyscraper* 🏢  
 
-🏢 finish rest of 0AD han buildings, maur, others?  
+🏢 finish rest of 0AD han buildings, new pers, maur, others?  
 
-🌟 Sceneries: Spring blooming🌸 trees, Fractal, Organic?, Candy?  
+🌟 Sceneries: Spring blooming🌸 trees, Fractal, Organic?, Fruit, Candy-  
 
 [Horizons](Tasks.md#horizons), add to rest of tracks  
 
