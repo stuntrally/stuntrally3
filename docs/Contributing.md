@@ -23,7 +23,7 @@ If you know C++, [Ogre-Next](https://forums.ogre3d.org/viewforum.php?f=25) (3.0 
 and preferably could handle some of the [Roadmap](Roadmap.md) tasks.  
 Details for tools and sources are in [Developing](Developing.md).  
 Own ideas could also go into SR3, just need some discussion first.  
-Most ideas are already in [Tasks](Tasks.md). Sorted by P (priority): 1 is most important, higher are less so.
+Most ideas are already in [Tasks](Tasks.md). Sorted by priority: 1 is most important, higher are less so.
 
 Medium changes can go through [pull requests](https://github.com/stuntrally/stuntrally/pulls).  
 For those with more time and effort, commits to main branch will be possible.

@@ -7,6 +7,9 @@ Priorities marked: 1 ! , 2 `crucial`, 3 **Next or Big**, 4 _Important_, 5 normal
 
 ### 3.4
 
+! `auto` road/ter Surface: **Particles**, trail, fix clr, **sounds**, from `presets.xml` not per track  
+new road particles  
+
 🌧️ Ambient [Sounds](Tasks.md#sounds): rain, wind, forest etc  
 📦 object *hit* sounds🔊  
 
@@ -17,12 +20,11 @@ MiningCity, KapabaRiv, Overgrowth, Glitchy - road segs white blend transp/invisi
 MadMntnDark then load Temple - jng tex bad grn-blue
 
 win *installer* needs admin for vcredist, drop ask, or elevate on run  
-upd website gallery  
 
 *tire trails* clr, no uv tex-  
 
-! `auto` road/ter Surface: **Particles**, trail, fix clr, **sounds**, from `presets.xml` not per track  
-new road particles  
+` trk filter tab adv sld, btns:  clr Y viol filtered, trk list bckg` hq5,6
+best quality5,6, no stunts, easiest, hardest, most looops, jumps, pipes, new latest ver, short fun, alien?, villages
 
 ### Data
 
@@ -39,6 +41,7 @@ traces alpha texture, *blending* with color per vertex: in turns, *noise*
 ### 🏗️ Editor
 
 *editor videos* all new  
+upd website gallery  
 
 fix ed btn: ApplyRefl, ApplyShadows
 

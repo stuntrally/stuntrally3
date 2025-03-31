@@ -195,6 +195,13 @@ Also `game-server/`, small program for server game list (not used).
 - vdrift - SR simulation (based on old [VDrift](https://github.com/VDrift) from about 2010) with a lot of changes and custom code,  
 Also has simulation for spaceships, sphere, hovers etc, and for `Buoyancy.*`.
 
+## Doxygen
+
+Documentation for SR3 sources, class list, members, hierarchy, diagrams etc.  
+can be generated using [Doxygen](https://www.doxygen.nl/).  
+Setup for it is in [Doxyfile](../Doxyfile).  
+After installing Doxygen (and its needed deps for diagrams), start by `doxygen`.  
+Then access it by opening created [doxygen/html/index.html](doxygen/html/index.html).
 
 ----
 

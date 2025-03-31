@@ -5,25 +5,30 @@ CMake*
 bin/*
 build*/*
 Dependencies/*
+doxygen
 
 #  data
 sr.log
 #*_tag.xml
-#!data/gui/core_language_en_tag.xml
+data/gui/core_language_*_tag.xml
+!data/gui/core_language_en_tag.xml
 #config
 #hud
 #gui
 #tracks*
+
+#sounds
+#src/sound
 #cars
 data/ghosts/original/
 objects2convert
+#data/Hlms/
 #data/models/objects*/
-#data/models/trees*/
+#data/models/*
 #data/textures/road/
 #terrain
 #data
 #data/materials/*
-sounds
 
 #  VS crap
 *.dll
@@ -43,4 +48,3 @@ Build/
 cmake-build-*/
 .idea/
 _build
-CMakeUserPresets.json
