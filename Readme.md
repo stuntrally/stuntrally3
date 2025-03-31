@@ -155,7 +155,8 @@ Sources have emojis, [this file](/src/emojis.txt) has all, with quick components
     Libraries used have their own licenses, included in:
 	- btOgre2, oics (modified to tinyxml2)
     - OgreCommon (modified slightly)
-    - in src/vdrift/: half.hpp, quickprof.h, Buoyancy.h, unittest.h
+    - in libs/: half.hpp, quickprof.h, unittest.h
+    - in src/vdrift/: Buoyancy.h
     - src/common/MersenneTwister.h  MultiList2.h  /MessageBox/*
     
 	For Media (art, data) licenses, see various _*.txt files in data/ subdirs.

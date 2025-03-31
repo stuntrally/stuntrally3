@@ -184,13 +184,14 @@ and new `Slider*.*, Gui_Popup.*` and `GraphView.*` for game Graphs (Tweak F9).
 - common/data - has all data structures (mostly `.xml` config files, listed above).
 - **editor** - purely editor sources
 - **game** - purely game sources
+- libs - few single file libraries
 - network - game multiplayer code, info in [DesignDoc.txt](../src/network/DesignDoc.txt).  
 Also `game-server/`, small program for server game list (not used).
 - OgreCommon - [Ogre-Next](https://github.com/OGRECave/ogre-next/) base application classes - slightly changed.
 - [lib] [oics](https://sourceforge.net/projects/oics/) - for input configurations, bindings and analog key inputs emulation.
 - road - code for unique SR roads, rivers, walls, pipes and transitions, with LODs.
-- Terra - terrain and other components, from Ogre-Next - quite modified (more info below).
 - sound - sound engine, based on [RoR](https://github.com/RigsOfRods/rigs-of-rods/tree/master/source/main/audio)'s, using openal-soft
+- Terra - terrain and other components, from Ogre-Next - quite modified (more info below).
 - vdrift - SR simulation (based on old [VDrift](https://github.com/VDrift) from about 2010) with a lot of changes and custom code,  
 Also has simulation for spaceships, sphere, hovers etc, and for `Buoyancy.*`.
 
