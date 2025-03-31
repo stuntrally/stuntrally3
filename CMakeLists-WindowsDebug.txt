@@ -5,7 +5,7 @@
 # Also assuming all dependencies were built from sources.
 
 # This is only for Windows, Debug version.
-# Have to set manual paths below to yours. All start with  D:/_/sr/
+# Have to set manual paths below to yours. All start with  D:/_/sr/ and also C:/b/ for boost
 
 # To use: rename this file to CMakeLists.txt and folder CMakeManual\ to CMake\
 # Details in docs\BuildingVS.md
@@ -45,7 +45,7 @@ project( StuntRally3 )
 #  User Options  to disable building components  --------
 option(BUILD_GAME             "Build the game binary."    ON)
 option(BUILD_EDITOR           "Build the track editor."   ON)
-option(BUILD_MASTER_SERVER    "Build the game list master server."  OFF)
+option(BUILD_MASTER_SERVER    "Build the game list server app."  OFF)
 option(BUILD_TRANSL_TOOL      "Build the tool for translation updating, it creates .pot"  ON)
 #^ ?
 
@@ -53,12 +53,12 @@ option(BUILD_TRANSL_TOOL      "Build the tool for translation updating, it creat
 if (WIN32 OR APPLE)
     set(GAME_EXE StuntRally3)
     set(EDITOR_EXE SR-Editor3)
-    set(SERVER_EXE SR-MasterServer)
+    set(SERVER_EXE SR-GameServer)
     set(TRANSL_EXE SR-Translator)
 else()
     set(GAME_EXE stuntrally3)
     set(EDITOR_EXE sr-editor3)
-    set(SERVER_EXE sr-masterserver)
+    set(SERVER_EXE sr-gameserver)
     set(TRANSL_EXE sr-translator)
 endif()
 
@@ -100,13 +100,13 @@ if (CMAKE_COMPILER_IS_GNUCXX)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
 endif()
 
-if( MSVC )
+if (MSVC)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP")
 	if( NOT PLATFORM_X64 )
 		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /arch:SSE2")
 	endif()
 	add_definitions( -DUNICODE -D_UNICODE )
-endif()
+endif ()
 
 
 #  deps  ----
@@ -115,7 +115,7 @@ endif()
 # include(DependenciesConfig)
 
 #- message( STATUS "---------- resolve_conan_dependencies" )
-#- resolve_conan_dependencies()
+#- resolve_conan_dependencies()  // no
 
 
 #  root dir
@@ -168,12 +168,15 @@ set( COMMON_SRC_DIRS
 
 	#  libs
 	./src/btOgre2
-	
+	./src/libs
+
 	#  sources
 	./src/common
 	./src/common/data
 	./src/common/MessageBox
 	./src/road
+
+	#  Ogre sources
 	./src/OgreCommon
 	./src/OgreCommon/System
 	./src/OgreCommon/System/Android
@@ -183,18 +186,17 @@ set( COMMON_SRC_DIRS
 	./src/Terra
 	./src/Terra/Hlms
 	./src/Terra/Hlms/PbsListener
+
 	#  both game and ed  meh-
-	#./src/vdriftCommon
 	./src/sound
 	./src/vdrift
 )
 
-#  game
+#  game only
 set( GAME_SRC_DIRS ${COMMON_SRC_DIRS} )
 list( APPEND GAME_SRC_DIRS ./src/game )
 list( APPEND GAME_SRC_DIRS ./src/game/data )
-#list( APPEND GAME_SRC_DIRS ./src/sound )
-#list( APPEND GAME_SRC_DIRS ./src/vdrift )
+
 list( APPEND GAME_SRC_DIRS ./src/oics )  # libs
 list( APPEND GAME_SRC_DIRS ./src/network )
 
@@ -245,14 +247,14 @@ foreach( EXE ${EXE_LIST} )
 
 	if ( ${EXE} STREQUAL ${EDITOR_EXE} )  # ed
 		set( SRC_DIRS ${EDITOR_SRC_DIRS} )
-	else()
+	else ()
 		set( SRC_DIRS ${GAME_SRC_DIRS} )
-	endif()
+	endif ()
 
 	foreach( subdir ${SRC_DIRS} )
 		#message( STATUS ${subdir} )
 		add_recursive( ${subdir} EXE_SOURCES )
-	endforeach()
+	endforeach ()
 
 	#  exe  ----
 	add_executable( ${EXE} WIN32 ${EXE_SOURCES} )
@@ -262,7 +264,7 @@ foreach( EXE ${EXE_LIST} )
 	foreach( subdir ${SRC_DIRS} )
 		#message( STATUS ${subdir} )
 		target_include_directories( ${EXE} PRIVATE ${subdir} )
-	endforeach()
+	endforeach ()
 
 	target_include_directories( ${EXE} PRIVATE ${BULLET_INCLUDE_DIRS} )
 
@@ -271,7 +273,7 @@ foreach( EXE ${EXE_LIST} )
 	if ( ${EXE} STREQUAL ${GAME_EXE} )  # game, once
 		target_include_directories( ${EXE} PRIVATE ${ENet_INCLUDE_DIRS} )
 		target_include_directories( ${EXE} PRIVATE ${Boost_INCLUDE_DIRS} )
-	endif()
+	endif ()
 
 
 	#  vs2019  paths  ------------------------
@@ -406,7 +408,7 @@ foreach( EXE ${EXE_LIST} )
 	#message( STATUS "Libs  " ${EXE} "  " ${LIBS} )
 	target_link_libraries( ${EXE} ${LIBS} )
 
-endforeach()
+endforeach ()
 
 
 ##  Translations tool
@@ -424,6 +426,23 @@ if (BUILD_TRANSL_TOOL)
 
 	set_target_properties( ${TRANSL_EXE} PROPERTIES LINKER_LANGUAGE CXX )
 	# target_link_libraries( ${TRANSL_EXE} ${LIBS} )
-endif()
+endif ()
+
+##  Game server app
+##------------------------------------------------------------------------------------------------------
+if (BUILD_GAME_SERVER)
+	message( STATUS "Configuring: " ${SERVER_EXE} )
+
+	add_executable( ${SERVER_EXE} WIN32 ./src/network/game-server/main.cpp )
+	target_include_directories( ${SERVER_EXE} PRIVATE ./src/network )
+	target_include_directories( ${SERVER_EXE} PRIVATE ./src/vdrift )
+	#  c++
+	target_compile_options(  ${SERVER_EXE} PRIVATE -Wswitch )
+	#target_compile_features( ${SERVER_EXE} PRIVATE cxx_std_17 )
+	set_target_properties( ${SERVER_EXE} PROPERTIES LINKER_LANGUAGE CXX )
+
+	target_link_libraries( ${SERVER_EXE} ${Boost_LIBRARIES} )
+	target_link_libraries( ${SERVER_EXE} ${ENet_LIBRARIES} )
+endif ()
 
 message( STATUS "---------- SR end" )

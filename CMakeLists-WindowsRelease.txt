@@ -5,7 +5,7 @@
 # Also assuming all dependencies were built from sources.
 
 # This is only for Windows, Release version.
-# Have to set manual paths below to yours. All start with  D:/_/sr/
+# Have to set manual paths below to yours. All start with  D:/_/sr/ and also C:/b/ for boost
 
 # To use: rename this file to CMakeLists.txt and folder CMakeManual\ to CMake\
 # Details in docs\BuildingVS.md
@@ -168,12 +168,15 @@ set( COMMON_SRC_DIRS
 
 	#  libs
 	./src/btOgre2
+	./src/libs
 	
 	#  sources
 	./src/common
 	./src/common/data
 	./src/common/MessageBox
 	./src/road
+
+	#  Ogre sources
 	./src/OgreCommon
 	./src/OgreCommon/System
 	./src/OgreCommon/System/Android
@@ -183,18 +186,17 @@ set( COMMON_SRC_DIRS
 	./src/Terra
 	./src/Terra/Hlms
 	./src/Terra/Hlms/PbsListener
+
 	#  both game and ed  meh-
-	#./src/vdriftCommon
 	./src/sound
 	./src/vdrift
 )
 
-#  game
+#  game only
 set( GAME_SRC_DIRS ${COMMON_SRC_DIRS} )
 list( APPEND GAME_SRC_DIRS ./src/game )
 list( APPEND GAME_SRC_DIRS ./src/game/data )
-#list( APPEND GAME_SRC_DIRS ./src/sound )
-#list( APPEND GAME_SRC_DIRS ./src/vdrift )
+
 list( APPEND GAME_SRC_DIRS ./src/oics )  # libs
 list( APPEND GAME_SRC_DIRS ./src/network )
 
