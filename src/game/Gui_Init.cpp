@@ -445,16 +445,16 @@ void CGui::InitGui()
 	//  server, games
 	listServers = fMli("MListServers");
 	Mli ml = listServers;
-		ml->addColumn("#C0FFC0"+TR("#{Game name}"), 160);  ++c;
-		ml->addColumn("#50FF50"+TR("#{Track}"), 120);  ++c;
-		ml->addColumn("#80FFC0"+TR("#{Laps}"), 60);  ++c;
-		ml->addColumn("#FFFF00"+TR("#{Players}"), 60);  ++c;
-		ml->addColumn("#80FFFF"+TR("#{Collis.}"), 70);  ++c;
-		ml->addColumn("#A0D0FF"+TR("#{Simulation}"), 80);  ++c;
-		ml->addColumn("#A0D0FF"+TR("#{Boost}"), 90);  ++c;
-		ml->addColumn("#FF6060"+TR("#{Locked}"), 60);  iColLock = c;  ++c;
-		ml->addColumn("#FF9000"+TR("#{NetHost}"), 140);  iColHost = c;  ++c;
-		ml->addColumn("#FFB000"+TR("#{NetPort}"), 80);  iColPort = c;  ++c;
+		ml->addColumn("#C0FFC0"+TR("#{Game name}"), 200);  ++c;
+		ml->addColumn("#50FF50"+TR("#{Track}"), 200);  ++c;
+		ml->addColumn("#80FFC0"+TR("#{Laps}"), 70);  ++c;
+		ml->addColumn("#FFFF00"+TR("#{Players}"), 70);  ++c;
+		ml->addColumn("#80FFFF"+TR("#{Collis.}"), 90);  ++c;
+		ml->addColumn("#A0D0FF"+TR("#{Simulation}"), 100);  ++c;
+		ml->addColumn("#A0D0FF"+TR("#{Boost}"), 110);  ++c;
+		ml->addColumn("#FF6060"+TR("#{Locked}"), 80);  iColLock = c;  ++c;
+		ml->addColumn("#FF9000"+TR("#{NetHost}"), 220);  iColHost = c;  ++c;
+		ml->addColumn("#FFB000"+TR("#{NetPort}"), 100);  iColPort = c;  ++c;
 
 	Btn("btnNetRefresh",evBtnNetRefresh); btnNetRefresh = btn;
 	Btn("btnNetJoin",   evBtnNetJoin);    btnNetJoin = btn;
