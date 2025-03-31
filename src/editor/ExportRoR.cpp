@@ -14,6 +14,7 @@
 #include "Axes.h"
 #include "GuiCom.h"
 
+#include <OgreMath.h>
 #include <OgreString.h>
 #include <OgreVector3.h>
 #include <OgreException.h>
@@ -271,9 +272,12 @@ void ExportRoR::ExportTrack()  // whole, full
 	trn << "\n";
 	trn << "AmbientColor = 1.0, 1.0, 1.0\n";  // unused-
 
-	Vector3 st = Axes::toOgre(sc->startPos[0]);
+	Vector3 st = Axes::toOgre(sc->startPos[0]);  // start
 	trn << "StartPosition = " << strPos(st) + "\n";
-	//StartRotation // ? todo yaw
+	const float* rot = &sc->startRot[0][0];
+	Quaternion q(rot[0],rot[1],rot[2],rot[3]);
+	Real a = q.getPitch().valueDegrees();
+	trn << "StartRotation = " << a << "\n";  // todo yaw:  0 right  90 down  180 left  270 up
 	trn << "\n";
 
 	trn << "CaelumConfigFile = " + name + ".os\n";
