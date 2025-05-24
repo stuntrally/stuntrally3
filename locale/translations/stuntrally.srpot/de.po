@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-27 22:08+0100\n"
-"PO-Revision-Date: 2024-12-27 23:00+0000\n"
-"Last-Translator: Crystal Hammer <cryham@gmail.com>\n"
+"PO-Revision-Date: 2025-05-24 21:05+0000\n"
+"Last-Translator: Bob Idle <102661087+bobidle@users.noreply.github.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/de/>\n"
 "Language: de\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10-dev\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #. General 
 #: data/gui/Editor_Help.layout:20 ..Help.Input/help.Text
@@ -1171,7 +1171,7 @@ msgstr ""
 #: :1131..SingleRace.Setup.Paint.Slider :1137..SingleRace.Setup.Paint.Text
 msgctxt "TipChangeHue"
 msgid "Change car color (hue)."
-msgstr "Autofarbe ändern (Farbton)"
+msgstr "Autofarbe ändern (Farbton)."
 
 #. TIP  Vehicle Color 
 #: data/gui/Game.layout:1031 ..SingleRace.Setup.Paint.Slider
@@ -2211,13 +2211,13 @@ msgstr "TCS (Traktionskontrolle)"
 #: data/gui/Game.layout:1637 ..SingleRace.Setup.Other.Check
 msgctxt "TipABS"
 msgid "Prevents wheel lock when braking (default: off)."
-msgstr "Verhindert das Blockieren der Reifen beim Bremsen (Standard: aus)"
+msgstr "Verhindert das Blockieren der Reifen beim Bremsen (Standard: aus)."
 
 #. Setup  tips 
 #: data/gui/Game.layout:1642 ..SingleRace.Setup.Other.Check
 msgctxt "TipTCS"
 msgid "Prevents wheel spinning when accelerating (default: off)."
-msgstr "Verhindert das Rutschen der Reifen beim Beschleunigen (Standard: aus)"
+msgstr "Verhindert das Rutschen der Reifen beim Beschleunigen (Standard: aus)."
 
 #. Setup  tips 
 #: data/gui/Game.layout:1533 ..SingleRace.Setup.Steering.Text
@@ -2237,7 +2237,7 @@ msgstr "Lenkungsreichweiten-Faktor, für Simulationsmodus (Leicht, Normal)."
 #: :1620:1623..SingleRace.Setup.Steering.Slider
 msgctxt "TipSteerSurf"
 msgid "Steering range multiplier, for surface (Gravel,Asphalt)."
-msgstr "Lenkungsreichweiten-Faktor, für Oberfläche (Schotter, Asphalt)"
+msgstr "Lenkungsreichweiten-Faktor, für Oberfläche (Schotter, Asphalt)."
 
 #. Setup  tips 
 #: data/gui/Game.layout:1496 ..SingleRace.Setup.Gearbox.Check
@@ -3494,7 +3494,7 @@ msgstr "Countdown-Zeit"
 #: :680..Options.View.Pacenotes.Check
 msgctxt "Pacenotes"
 msgid "Pacenotes"
-msgstr "Pacenotes"
+msgstr "Streckenbuch"
 
 #. View  Pacenotes 
 #: data/gui/Game_Options.layout:718 ..Options.View.Pacenotes.Text
@@ -4647,7 +4647,7 @@ msgstr "Umgebung"
 #: src/editor/Update_EditKeyTxt.cpp:325 src/common/GuiCom_Options.cpp:66
 msgctxt "Diffuse"
 msgid "Diffuse"
-msgstr "Diffuse"
+msgstr "Diffus"
 
 #. Editor  Sun 
 #: data/gui/Editor.layout:129 ..Editor.Sun.Sun.Text
@@ -7866,7 +7866,7 @@ msgid ""
 "But has bad aerodynamics and gets stuck in mud."
 msgstr ""
 "Dieses großradige Gebrauchsfahrzeug wird von 4 Elektromotoren angetrieben. "
-"Es für für nahezu alle Strecken, außer die engen, geeignet. Großartig zum "
+"Es ist für nahezu alle Strecken, außer die engen, geeignet. Großartig zum "
 "Erforschen anderer Planeten. Aber es hat eine schlechte Aerodynamik und "
 "bleibt im Schlamm stecken."
 
@@ -8612,13 +8612,13 @@ msgid ""
 "(change name first)."
 msgstr ""
 "Erstellen einer neuen Strecke durch Duplizieren der ausgewählten Strecke "
-"unter neuem Namen (erst Namen ändern)"
+"unter neuem Namen (erst Namen ändern)."
 
 #. TIP  Track  Editor 
 #: data/gui/Editor_Track.layout:436 ..Track.Track.Button
 msgctxt "TipRenameTrk"
 msgid "Rename selected track with new name (change name first)."
-msgstr "Ausgewählte Strecke umbenennen (zuerst Namen ändern)"
+msgstr "Ausgewählte Strecke umbenennen (zuerst Namen ändern)."
 
 #. TIP  Track  Editor 
 #: data/gui/Editor_Track.layout:27 ..Track.Track.Text :443..Track.Track.Edit
@@ -8661,8 +8661,8 @@ msgctxt "TipSunAmbient"
 msgid ""
 "Sun light ambient (constant) color. R G B components 0 to 1 (eg. 0.4 0.4 0.4)"
 msgstr ""
-"Sonnenlicht-Umgebungsfarbe (konstant). R-, G-, B-Komponenten von 0 bis 1 (z."
-"B. 0.4 0.4 0.4)."
+"Sonnenlicht-Umgebungsfarbe (konstant). R-, G-, B-Komponenten von 0 bis 1 ("
+"z.B. 0.4 0.4 0.4)"
 
 #. TIP  Sky 
 #: data/gui/Editor.layout:126 ..Editor.Sun.Sun.Text
@@ -8680,7 +8680,7 @@ msgid ""
 "Sun light specular (shiny) color. R G B components 0 to 1 (eg. 0.6 0.6 0.6)"
 msgstr ""
 "Specularfarbe (Glanzfarbe) des Sonnenlichts. R-, G- und B-Komponenten von 0 "
-"bis 1 (z.B. 0.6 0.6 0.6)."
+"bis 1 (z.B. 0.6 0.6 0.6)"
 
 #. TIP  Fog 
 #: data/gui/Editor.layout:226 ..Editor.Sun.Fog.Text
@@ -8716,7 +8716,7 @@ msgstr ""
 #: :316..Editor.Sun.Fog.Slider :320..Editor.Sun.Fog.Text
 msgctxt "TipFogStartDist"
 msgid "Fog start distance [meters]."
-msgstr "Nebelanfangsdistanz (Meter)"
+msgstr "Nebelanfangsdistanz (Meter)."
 
 #. TIP  Fog 
 #: data/gui/Editor.layout:258 ..Editor.Sun.Fog.Text :262..Editor.Sun.Fog.Slider
