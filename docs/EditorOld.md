@@ -17,7 +17,7 @@ There is a 10 chapters (very OLD) video tutorial (version 1.7) on YouTube:
 [Chapter 9: Objects](https://www.youtube.com/watch?v=9DzgmYmxu3w)  
 [Chapter 10: Tools](https://www.youtube.com/watch?v=6GQx0pW6HEk)  
 
-and 4 addidtional chapters (from version 2.1)
+and 4 additional chapters (from version 2.1)
 
 [Chapter 11: Fog](https://www.youtube.com/watch?v=yNPIR29iv0U)  
 [Chapter 12: Grasses](https://www.youtube.com/watch?v=xeazOxtcLCY)  

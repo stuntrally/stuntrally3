@@ -176,7 +176,7 @@ and for some: transparency (glass), refraction (fluids), etc.
 
 We now use `.material.json` format (for almost all materials). It is more advanced, but longer.  
 A bit worse to edit by hand. There are no comments in this .json, sadly.  
-Its syntax is explaned with examples below.
+Its syntax is explained with examples below.
 
 Material Editor GUI can **save** into `.json` files in (Windows [Paths](Paths.md)):  
 `/home/user/.cache/stuntrally3/materials`  

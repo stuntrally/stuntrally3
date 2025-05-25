@@ -143,7 +143,7 @@ Rest can be seen on screen (right side has options twice because it scrolls down
 
 File name here isn't needed, `.mesh` file will be named like mesh(es) in Blender.
 
-It can take few seconds. If succesfull, you will find .mesh file(s) in the selected folder  
+It can take few seconds. If successful, you will find .mesh file(s) in the selected folder  
 
 **Copy the binary** `.mesh` into the `objects/` or similar folder in SR3 `data/models`.
 

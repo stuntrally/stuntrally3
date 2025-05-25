@@ -36,7 +36,7 @@ Newly started video tutorial from version 3.0:
 4:23 Change triangle size  
 4:46 Approaches for making tracks  
 5:27 Terrain **Generator**  
-6:58 **Brushes** presests  
+6:58 **Brushes** presets  
 8:07 Terrain **edit** tools: Deform, Smooth, Filter, Height  
 10:50 longer editing terrain with various brushes  
 15:28 end, look around  

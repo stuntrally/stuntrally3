@@ -135,7 +135,7 @@ WIP means work in progress, unfinished, still being developed.
     - New vehicle materials - with more parameters and new look
     - Color changing **paints**🎨, 3 colors (on Gui) at once depending on view angle
     - New paints - Big set, over **450** total
-    - [Materials](Materials.md) in new .json format with more posibilities e.g. detail maps
+    - [Materials](Materials.md) in new .json format with more possibilities e.g. detail maps
     - New syntax and new (more complicated) **HLMS** shaders, comparison and details in [Developing](Developing.md)🛠️
   - Better glass pipes - sorted, no random blinking
   - Vehicle front **lights**💡 - new tab Lights in Graphics options, toggle key, WIP grass is not lit
