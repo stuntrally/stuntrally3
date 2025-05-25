@@ -84,34 +84,37 @@ endmacro()
 message(STATUS "---------- SR sources")
 
 #  Compiler  ----
-set(COMMON_SRC_DIRS
-        #  not really sources
-        data/gui
-        data/materials
-        data/particles
+set( COMMON_SRC_DIRS
+	#  not really sources
+	data/gui
+	data/materials
+	data/particles
 
-        #  libs
-        ./src/btOgre2
+	#  libs
+	./src/btOgre2
+	./src/libs
 
-        #  sources
-        ./src/common
-        ./src/common/data
-        ./src/common/MessageBox
-        ./src/road
-        ./src/OgreCommon
-        ./src/OgreCommon/System
-        ./src/OgreCommon/System/Android
-        ./src/OgreCommon/System/Desktop
-        ./src/OgreCommon/Threading
-        ./src/OgreCommon/Utils
-        ./src/Terra
-        ./src/Terra/Hlms
-        ./src/Terra/Hlms/PbsListener
-        #  both game and ed  meh-
-        #./src/vdriftCommon
-        ./src/sound
-        ./src/vdrift
-        )
+	#  sources
+	./src/common
+	./src/common/data
+	./src/common/MessageBox
+	./src/road
+
+	#  Ogre sources
+	./src/OgreCommon
+	./src/OgreCommon/System
+	./src/OgreCommon/System/Android
+	./src/OgreCommon/System/Desktop
+	./src/OgreCommon/Threading
+	./src/OgreCommon/Utils
+	./src/Terra
+	./src/Terra/Hlms
+	./src/Terra/Hlms/PbsListener
+
+	#  both game and ed  meh-
+	./src/sound
+	./src/vdrift
+)
 
 #  game
 set( GAME_SRC_DIRS ${COMMON_SRC_DIRS} )
