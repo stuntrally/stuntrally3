@@ -40,7 +40,7 @@ There are several good resources on internet to learn it:
 
 ### Blender keys
 
-Various websites with Blender key shorcuts: [katsbits](https://www.katsbits.com/tutorials/blender/useful-keyboard-shortcuts.php), [keyxl](https://www.keyxl.com/aaac91e/403/Blender-keyboard-shortcuts.htm). Probably more or newer too.
+Various websites with Blender key shortcuts: [katsbits](https://www.katsbits.com/tutorials/blender/useful-keyboard-shortcuts.php), [keyxl](https://www.keyxl.com/aaac91e/403/Blender-keyboard-shortcuts.htm). Probably more or newer too.
 
 ### Shortcuts
 
@@ -79,7 +79,7 @@ Things to keep in mind when modeling (required by game).
 
 ### Triangles count
 
-Keep resonable triangles count (faces, polygons). _Shortcut: tris._  
+Keep reasonable triangles count (faces, polygons). _Shortcut: tris._  
 You can see it in top bar in Blender (turn on Statistics in viewport Overlays).  
 
 For a very good looking vehicle for game, total of 50k to 150k triangles would be required (not counting wheels, k is 1000).  
@@ -187,7 +187,7 @@ This Blender screenshot shows (for XZ car):
   - joined geometry parts with good names
   - material names, still too many
   - UV editor with unwrapped faces to texture  
-  (note this is a work in progress, only interior and car bottom are mapped properly, rest is moslty garbage, not done yet)
+  (note this is a work in progress, only interior and car bottom are mapped properly, rest is mostly garbage, not done yet)
 
 ![](images/blenderXZ.png)
 
@@ -201,7 +201,7 @@ From the exporter options pick axes as "xz-y", use tangents (mark checked), unch
 
 ![](images/blender-ogre-exp.png)
 
-If succesfull, you will find files in the selected folder (1 mesh file in xml format and 1 binary mesh fie) for each selected geometry in blender.
+If successful, you will find files in the selected folder (1 mesh file in xml format and 1 binary mesh fie) for each selected geometry in blender.
 
 Copy the binary .mesh files (parts) into the data/cars/ES dir in Stunt Rally (replacing the older/original ones).
 

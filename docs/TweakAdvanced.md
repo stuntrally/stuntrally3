@@ -50,7 +50,7 @@ _Automatic testing for car handling would be better (like Perf test)._
 ----
 ### Links
 
-Useful links, videos, for futher study,  
+Useful links, videos, for further study,  
 with info on tire simulation, computations and general vehicle dynamics.  
 _Some videos may not be that useful as title._  
 

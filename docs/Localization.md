@@ -108,7 +108,7 @@ used by MyGUI's own translation system.
 
 > This file is edited and sorted manually. Each new string for Gui or Hud is added there.  
 It also has xml comments with group and subgroups names,  
-which then show up as Develeoper comment on web (as #. in `sr.pot` file).
+which then show up as Developer comment on web (as #. in `sr.pot` file).
 
 After changes in the .xml file, run **[1upd-all.sh](../locale/1upd-all.sh)** inside `locale/`.
 
