@@ -26,7 +26,7 @@ class StuntRally3(ConanFile):
 
         if not self.options.system_pkgs:
             self.requires("boost/1.83.0")
-            self.requires("bullet3/3.25@anotherfoxguy/patched") 
+            self.requires("bullet3/3.25@anotherfoxguy/patched")
             self.requires("sdl/2.30.7")
             self.requires("ogg/1.3.5")
             self.requires("vorbis/1.3.7")
@@ -49,26 +49,13 @@ class StuntRally3(ConanFile):
             deps.configuration = "RelWithDebInfo"
             deps.generate()
 
-        bindirs = []
         for dep in self.dependencies.values():
-            bindirs += dep.cpp_info.bindirs
+            for f in dep.cpp_info.bindirs:
+                self.cp_data(f)
+            for f in dep.cpp_info.libdirs:
+                self.cp_data(f)
 
-        bindirs_win = []
-        for dir in bindirs:
-            bindirs_win.append(os.path.join(dir, f"{self.settings.build_type}"))
-
-        conan_data = 'set(CONAN_BIN_DIRS "%s;%s")\n' % (
-            ";".join(bindirs).replace("\\", "/"),
-            ";".join(bindirs_win).replace("\\", "/"),
-        )
-
-        save(
-            self,
-            os.path.join(self.build_folder, "cmake", "ConanBinDirs.cmake"),
-            conan_data,
-        )
-
-        if self.settings.os == "Windows":
-            libdir = os.path.join(self.source_folder, "bin", f"{self.settings.build_type}")
-            for f in self.dependencies["ogre3d-next"].cpp_info.bindirs:
-                copy(self, "*.dll", f, libdir, False)
+    def cp_data(self, src):
+        bindir = os.path.join(self.source_folder, "bin", f"{self.settings.build_type}")
+        copy(self, "*.dll", src, bindir, False)
+        copy(self, "*.so*", src, bindir, False)
