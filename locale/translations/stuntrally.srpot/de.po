@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-27 22:08+0100\n"
-"PO-Revision-Date: 2025-05-24 21:05+0000\n"
+"PO-Revision-Date: 2025-05-25 18:03+0000\n"
 "Last-Translator: Bob Idle <102661087+bobidle@users.noreply.github.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/de/>\n"
@@ -515,7 +515,7 @@ msgstr "Normal"
 #: src/game/Gui_Network.cpp:140
 msgctxt "DamageDecLap"
 msgid "Repair each lap"
-msgstr "Reperatur pro Runde"
+msgstr "Reparatur pro Runde"
 
 #. Game  Boost 
 #: data/gui/Game.layout:1326 ..SingleRace.Setup.Game.Text
@@ -5296,7 +5296,7 @@ msgstr "Akt.H"
 #: src/editor/Update_EditKeyTxt.cpp:245
 msgctxt "Lock"
 msgid "Lock"
-msgstr "Schloß"
+msgstr "Schloss"
 
 #. Terrain  Brush  shapes 
 #: data/gui/Editor.layout:953 ..Editor.Terrain.Brushparameters.Text
@@ -6479,7 +6479,7 @@ msgstr "Jede Bewegung/Werteveränderung mit "
 #: data/gui/Editor_Help.layout:112 ..Help.Input/help.View.Text
 msgctxt "InputSlowFast"
 msgid "shift - slow   ctrl - fast"
-msgstr "Umschalt - langssam Strg - schnell"
+msgstr "Umschalt - langsam Strg - schnell"
 
 #. Editor Input  Camera next 
 #: data/gui/Editor_Help.layout:116 ..Help.Input/help.View.Text
@@ -7148,7 +7148,7 @@ msgstr "Bild/Mausrad auf/ab - Objekt vor/zurück"
 #: :967..Help.Input/help.Fields.Text
 msgctxt "InputObjectsIns"
 msgid "Ins - insert new, at cursor"
-msgstr "EInfg - bei Cursor platzieren"
+msgstr "Einfg - bei Cursor platzieren"
 
 #. Objects  Input 
 #: data/gui/Editor_Help.layout:754 ..Help.Input/help.Objects.Text
@@ -7877,7 +7877,7 @@ msgid ""
 "easier to steer."
 msgstr ""
 "Ein weiteres gutes Rallyefahrzeug, geeignet für alle Strecken. Es ist nicht "
-"so lang und somit leicher zu lenken."
+"so lang und somit leichter zu lenken."
 
 #. Game Vehicle descriptions 
 msgctxt "CarDesc_S8"
@@ -7938,7 +7938,7 @@ msgid ""
 "because of short and stiff suspension. So much torque also causes more "
 "wheels spin."
 msgstr ""
-"Ein mit einem sehr starken Motor ausgestattes Fahrzeug, fahrbar auf den "
+"Ein mit einem sehr starken Motor ausgestattetes Fahrzeug, fahrbar auf den "
 "meisten Strecken. Nicht die beste Wahl für Bodenwellen, wegen der kurzen und "
 "starren Aufhängung. Daher wird ein hoher Drehmoment auch mehr Räder zum "
 "Drehen bringen."
@@ -8180,7 +8180,7 @@ msgid ""
 "slowly."
 msgstr ""
 "Treten Sie nicht die ganze Zeit aufs Gaspedal. Vergessen Sie außerdem nicht, "
-"vor Kurven zu bremsen, besonders vor scharfen. Falls Sie nocht nicht die "
+"vor Kurven zu bremsen, besonders vor scharfen. Falls Sie noch nicht die "
 "Strecke kennen, ist es besser, langsam zu fahren."
 
 #. TIP  Hints title+text  (in game's How To Play) 
@@ -8212,7 +8212,7 @@ msgid ""
 "speeds and sliding. Wet gravel is even more slippery. Snow and ice are "
 "worst. Deserts are fastest."
 msgstr ""
-"Denken Sie daran, dass Sie meistens auf Kies fahren werden. Das bedeudet "
+"Denken Sie daran, dass Sie meistens auf Kies fahren werden. Das bedeutet "
 "niedrige Haftung, niedrigere Geschwindigkeiten und Rutschen. Nasser Kies ist "
 "noch rutschiger. Schnee und Eis sind am schlimmsten. Wüsten sind am "
 "schnellsten."
@@ -8707,7 +8707,7 @@ msgid ""
 "R G B A components 0 to 1 (eg. 0.7 0.8 0.9 1). Last can be used to lower "
 "maximum density (1 is full)."
 msgstr ""
-"R-, G-, B- und A-Komponenten 0 bis 1 (z.B. 0.7 0.8 0.9 1). Letzeres ist "
+"R-, G-, B- und A-Komponenten 0 bis 1 (z.B. 0.7 0.8 0.9 1). Letzteres ist "
 "Nebeldichte (1 ist voll)."
 
 #. TIP  Fog 
