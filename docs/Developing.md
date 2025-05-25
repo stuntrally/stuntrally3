@@ -406,7 +406,7 @@ It is based on [RoR's](https://github.com/RigsOfRods/rigs-of-rods/tree/master/so
 
 # 🟢 Ogre-Next - Advanced 🧰🔧
 
-Explaining how to do advaced things, that need extending HLMS, shaders and .cpp code for it too.  
+Explaining how to do advanced things, that need extending HLMS, shaders and .cpp code for it too.
 Some utility [code](../src/common/AppGui_Util.cpp) with few really basic things that needed methods now.
 
 Some links (few also in [post here](https://forums.ogre3d.org/viewtopic.php?p=554575#p554575)) with good info (may be somewhat random and really old):

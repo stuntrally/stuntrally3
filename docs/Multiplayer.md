@@ -10,7 +10,7 @@ Can be local network or internet.
 If internet, all players need to have ports forwarded.  
 
 There are no servers or game lists to get players, so to play  
-you probaly need to enlist your friends to play with you.  
+you probably need to enlist your friends to play with you.  
 
 
 ### Quick guide

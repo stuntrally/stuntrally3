@@ -107,7 +107,7 @@ The handbrake acts on rear wheels only and can also easily lock them to make a f
 
 **Why is the game not in my Linux distribution?**  
 
-More info in [Install](Install.md). Our privided binaries should cover all distributions.  
+More info in [Install](Install.md). Our provided binaries should cover all distributions.  
 You can also [build](Building.md) from sources, on Linux it's a rather easy task.
 
 **Why is there no Mac OS X package?**  

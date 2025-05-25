@@ -232,7 +232,7 @@ http://forum.freegamedev.net/viewtopic.php?f=79&t=5211
 Needs a nice material, like our water, but with repeated flow on one direction.  
 Rivers will change height (we need those even if there are some bugs in look).  
 
-Vertical setup of river points should auto create **waterfals** (white, faster).  
+Vertical setup of river points should auto create **waterfalls** (white, faster).  
 
 [Won't do] Rivers could auto *deform* terrain below.  
 Should be new dynamic Hmap, added to the original terrain.  
@@ -434,7 +434,7 @@ Allow rotate with mouse.
 Preview chosen car color.  
   
 And/or a garage model (like in VDrift) when the menu is open.  
-Car in center and mouse controlls own camera (rotate, zoom).  
+Car in center and mouse controls own camera (rotate, zoom).  
 But Gui might require adapting.   
   
   
@@ -570,7 +570,7 @@ Needs implementing of vehicles reading from user data.
 But since this is a gigantic issue (lots of coding, testing)  
 I'm not seeing this done. Also needs versioning, hash checking, etc.  
   
-Probably we could use git+github for it, tracks are aready there, would be best to use that.  
+Probably we could use git+github for it, tracks are already there, would be best to use that.  
 Maybe raw:// could work with http here ?  
 OFC only for downloading.  
   
@@ -607,7 +607,7 @@ But of course some tracks are easier and that perfect AI isn't needed.
 Still it is a gigantic issue.  
 We have 116 tracks, so drawing a line, or adjusting anything by hand is wasting time.  
   
-I would like an implemetation of a learning approach.  
+I would like an implementation of a learning approach.  
 So: I start a track in game and start an AI learning mode.  
 This simulates driving for AI (as fast as CPU can simulate) and  
 produces some data that AI will use later  
@@ -706,7 +706,7 @@ Some gui page with all of them and cool icon images too.
 I guess some are easy to implement but don't sound too fancy. Others would be cool but are difficult to implement.  
 Would be good to have a .cfg file where you could add/edit those.  
 And the range should be high, starting from simple stuff that will happen for new players,  
-and endnig in achievements for me (or very commited players) like drove all champs etc.  
+and endnig in achievements for me (or very committed players) like drove all champs etc.  
   
   
 ----  

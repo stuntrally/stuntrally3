@@ -1,4 +1,4 @@
-_Vehicle edititng and .car parameters explained._
+_Vehicle editing and .car parameters explained._
 
    
 ## Introduction
@@ -68,11 +68,11 @@ If set to 1.0, car will never flip over. If set too low, e.g. 0.5 car will notor
 
 _Setting wheel mass higher will make reaction of wheel (if it hit something) more perceptible in car body (provided the suspension is springy not too damped). Using real life values is recommended._
 
-Also suspension mount position and hinge is set here. If moving whell position, they need to be adjusted also.
+Also suspension mount position and hinge is set here. If moving wheel position, they need to be adjusted also.
 
 Those aren't yet visualised so need to know (or check with too high values) if you move them where you want.
 
-For example if you wanted to move front wheels further, you'd need to change all 1.28 occurences here to something bigger eg. 1.35.
+For example if you wanted to move front wheels further, you'd need to change all 1.28 occurrences here to something bigger eg. 1.35.
 
 _TODO: show 3d spheres with axes in game for those points .._
 
@@ -130,7 +130,7 @@ Here you can change wheel _radius_ (if you have new model for wheels).
 
   * _rotational-inertia_ is how fast the wheel will react to braking (stop or start spinning with throttle). Small values are used in normal sim mode (about 1), and high in easy sim mode (about 10).
 
-  * _tread_ is not used, and _rolling-resistance_ is the same for most cars (needs be diffrerent only for bigger wheels and affects top speed).
+  * _tread_ is not used, and _rolling-resistance_ is the same for most cars (needs be different only for bigger wheels and affects top speed).
 
 ```
 #  tires (more in .tire)
@@ -297,7 +297,7 @@ There is a visualisation for body collision in game (*Bullet debug* in [Tweak](T
 
 ![](images/05-collis-shapes.jpg)
 
-Editing collison H params is quite tricky since most of them are relative to some other values (and may depend on something else).
+Editing collision H params is quite tricky since most of them are relative to some other values (and may depend on something else).
 
 They are changed so, that the collision matches the car model.
 
@@ -311,7 +311,7 @@ They are changed so, that the collision matches the car model.
 
   * _posLrear_ and _posLfront_ are for length range (e.g. from front rear bumpers)
 
-  * _offsetL,W,H_ params are used to offset collsion from model (Lenght,Width,Height)
+  * _offsetL,W,H_ params are used to offset collision from model (Length,Width,Height)
 
   * _start-offsetY_ - used to offset car location at track start, height above ground. Test on Test10-FlatPerf (also use F4) car shouldn't jump or fall, just appear on ground.
 
@@ -496,7 +496,7 @@ There is a graph visualising current suspension positions for all wheels and nex
 
   * _factors-file_ - this is the file that contains points which define spring and damper curves (see inside of dara/carsim/[mode]/first.susp for info)
 
-  * _travel_ - is the range (lenght of suspension) and goes up from wheel center. _todo: check this_
+  * _travel_ - is the range (length of suspension) and goes up from wheel center. _todo: check this_
 _The hinge is the center of the wheel's path as the suspension moves. The location of the hinge is determined by suspension geometry, and may be outside of the car itself._
 
 Wheel alignment is set with the camber, caster, and toe parameters. All angles are in degrees. _todo: were never changed_
@@ -530,7 +530,7 @@ factors-file = first
    
 ## Brakes
 
-  * _friction_ - near to 1.0, defines brakes efficency
+  * _friction_ - near to 1.0, defines brakes efficiency
 
   * _max-pressure_ - pressure applied, more will make stronger brakes
 
@@ -633,7 +633,7 @@ hood-position = -0.8, 0, 0.5
 
 The main differences are that in easy:
   * engine power is lower (eg 300 bhp not 400, torque-val-mul)
-  * center of mass is artificially low so the car doesnt flip much (0.4 below normal)
+  * center of mass is artificially low so the car doesn't flip much (0.4 below normal)
   * wheel inertia is much higher 10x than normal
   * engine has a bit more friction and inertia (less responsive)
 
@@ -660,4 +660,4 @@ Different values in .car files (for easy and normal), example for ES:
 
 ### TODO
 
-Hovercrasft, hover cars, drones params, turbo ...
+Hovercraft, hover cars, drones params, turbo ...
