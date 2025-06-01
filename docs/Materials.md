@@ -163,7 +163,7 @@ The Advanced tab is for **fluid** parameters, meant to tweak and edit here, not 
 ![](images/material-editor-fluid.jpg)
 
 
-Last tab has more Details as text. _Maybe some could be changable in future._  
+Last tab has more Details as text. _Maybe some could be changeable in future._  
 E.g. for textures, samplers (wrap etc.), depth check, cull mode,  
 and for some: transparency (glass), refraction (fluids), etc.
 
@@ -230,7 +230,7 @@ With also links on top.
 
 # 📃 Examples
 
-These sections below can also be used as starting themplate for your material(s).  
+These sections below can also be used as starting template for your material(s).  
 Few frist chapters below have special cases.  
 These materials can be applied to objects, roads, vehicles, etc.  
 Not particles yet. Terrain layers won't be there.  

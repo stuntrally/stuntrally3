@@ -40,7 +40,7 @@ This here is a short list before contributing.
     * convert .tga to **.png**, .obj (or other) to .blend
     * use **.jpg** textures to save size (e.g. 90-95% quality), unless transparent / alpha needed
     * check textures, possibly **resize**: for small objects 1k is ok, 2k for bigger,  
-      _and 4k is only okay for very big objects, or detailed road, terrrain (future high quality)._
+      _and 4k is only okay for very big objects, or detailed road, terrain (future high quality)._
     * add **readme.txt** - a must, with original: model name, Author, License, url
     * (old) possibly attach preview.jpg - so people may be interested in working with the model further
     * make a fork, then PR, to upload to [blendfiles](https://github.com/stuntrally/blendfiles) repo
@@ -255,5 +255,5 @@ Normal map could be either already provided, or you can generate it using GIMP n
 The last parameter bump_scale can be used to scale normal map's effect. Default value is 1.0. More will make it bumpier.
 
 You can use own texture for specular in specMap.   
-It's either RGBA and alpha is the exponent. But that is tedious to edit everytime.   
+It's either RGBA and alpha is the exponent. But that is tedious to edit every time.   
 To use only RGB add line specMap_rgb true, then specMap can also be jpg and exponent is in alpha of specular color like usual.

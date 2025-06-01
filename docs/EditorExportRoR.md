@@ -9,7 +9,7 @@ This has few benefits:
 - More Tracks for RoR, with road, in good quality, from SR 2.x
   - also possible to edit them and export again
 - Good Assets (CC licensed) from SR 2.x, for reuse on future RoR tracks
-- **New** possiblity to create and edit new tracks for RoR using SR3 Track Editor
+- **New** possibility to create and edit new tracks for RoR using SR3 Track Editor
   - If you also share SR3 track data with it (recommended), others could edit or modify it later too, and even drive in SR3 and RoR.
   - Path to SR3 user tracks is `/home/username/.local/share/stuntrally3/tracks`
 
