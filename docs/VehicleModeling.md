@@ -174,8 +174,8 @@ If you have a wheel then use: ES_wheel. ES_brake for brake disc and caliper (not
 Car gets exported to such meshes:
   * ES_body - this is car body, only 1 material, covering the metal parts that will be colored in game using car color. Don't include any geometry here that doesn't have car paint on it in Blender.
   * ES_glass - this is car glass (windows) and also can have front or rear lights glass (makes lights look better).
-  * ES_interior - has not only interior (seats and all inside car stuff) but also front/rear lights, exhaust pipe, car bottom, rubber (dark) parts between car metail and so on. Simply all model parts that don't get colored by car paint.
-  * ES_wheel - car wheel rim (metal) and car tire, may also have brake disc. It is best to use 1 material, and put parts in in different places (UV) of texture.
+  * ES_interior - has not only interior (seats and all inside car stuff) but also front/rear lights, exhaust pipe, car bottom, rubber (dark) parts between car metal and so on. Simply all model parts that don't get colored by car paint.
+  * ES_wheel - car wheel rim (metal) and car tire, may also have brake disc. It is best to use 1 material, and put parts in different places (UV) of texture.
   * ES_brake - (optional)
 
 This makes the exported files already named properly for game, so just copying there works.

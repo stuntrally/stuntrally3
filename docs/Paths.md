@@ -7,7 +7,7 @@ This page describes where the game searches for its data and configuration files
 
 The information is useful if you are e.g.:
   * submitting a bug/crash - you should include your `Ogre.log`, `game.cfg` and `ogre.cfg`
-  * need to reset or backup settigs
+  * need to reset or backup settings
   * doing manual configuration (editing .cfg without the GUI)
   * packaging Stunt Rally 3
 

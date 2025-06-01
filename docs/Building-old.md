@@ -202,4 +202,4 @@ dev - root folder
    build_ogre_linux_c++latest.sh - script used to get and build Ogre
 
 ```
-Note: I use `../Ogre/ogre-next` dir with Ogre. But CMake default is `Dependencies/Ogre`, it can be as link.
+Note: I use `../Ogre/ogre-next` dir with Ogre. But CMake default is `Dependencies/Ogre`, it can be a link.

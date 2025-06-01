@@ -14,9 +14,9 @@ new road particles
 📦 object *hit* sounds🔊  
 
 fix *tracks*:  
-MogFoss waterfals up, Preyth bld up-  
+MogFoss waterfalls up, Preyth bld up-  
 Tiny, Mudflats, Knotted - ssao bad alpha bridge  
-MiningCity, KapabaRiv, Overgrowth, Glitchy - road segs white blend transp/invisible  
+MiningCity, KapabaRivers, Overgrowth, Glitchy - road segs white blend transp/invisible  
 MadMntnDark then load Temple - jng tex bad grn-blue
 
 win *installer* needs admin for vcredist, drop ask, or elevate on run  
@@ -24,7 +24,7 @@ win *installer* needs admin for vcredist, drop ask, or elevate on run
 *tire trails* clr, no uv tex-  
 
 ` trk filter tab adv sld, btns:  clr Y viol filtered, trk list bckg` hq5,6
-best quality5,6, no stunts, easiest, hardest, most looops, jumps, pipes, new latest ver, short fun, alien?, villages
+best quality5,6, no stunts, easiest, hardest, most loops, jumps, pipes, new latest ver, short fun, alien?, villages
 
 ### Data
 

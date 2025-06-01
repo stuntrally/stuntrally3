@@ -81,7 +81,7 @@ If you mark the checkbox 'Developer keys..', also shown on previous screen (Twea
 1. Use Alt-Shift-digit/letter to quickly start a (test) track, without using menu.  
 So e.g. Alt-Shift-A will load Test1-Flat, Alt-Shift-F loads Test3-Bumps, etc.  
 Any tracks can now be picked for any digit/letter key from Gui combos on Tweak - Tracks tab.  
-Or set in in `game.cfg` under `tweak_tracks` for each digit/letter key.
+Or set in `game.cfg` under `tweak_tracks` for each digit/letter key.
 
 2. Press Ctrl-F at any time to show Gui and focus cursor in track search editbox.
 
@@ -110,7 +110,7 @@ In `collisions.xml` each mesh `<object mesh` has a:
 
 Details in `BltObjects::LoadXml()`.
 
-If a `.mesh` isn't in `collisions.xml`, it will have trimesh collison by default (rocks etc),  
+If a `.mesh` isn't in `collisions.xml`, it will have trimesh collision by default (rocks etc),  
 if needed to avoid this there is a section on top `<none>` where you can add.  
 But since all bush even have some damping shape, section is empty.
 
@@ -177,7 +177,7 @@ Perf test stats contain info like max engine torque and power, top speed,
 acceleration times to 60, 100, 160, 200 km/h (with downforce and drag at those speeds)  
 and brake time from 100, 60 to 0 km/h.
 
-Most of those stats are then shown in info panel on Gui when when picking car in game.
+Most of those stats are then shown in info panel on Gui when picking car in game.
 
 _Run it for each sim mode (provided you made it different as game requires). See bottom of page for differences list._
 

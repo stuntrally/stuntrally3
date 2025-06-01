@@ -261,11 +261,11 @@ brake-color = 1, 0, 0
 
   * _exhaust_ params are not used.
 
-  * _boost-y_ (also x or z) are used to fit position when somehow boost emiters are in wrong place (because of model axes or dims)
+  * _boost-y_ (also x or z) are used to fit position when somehow boost emitters are in wrong place (because of model axes or dims)
 
-  * _boost-size-z_ - can be used to scale width of both boost emiters
+  * _boost-size-z_ - can be used to scale width of both boost emitters
 
-  * _boost-name_ - can be used to have custom particle system name for emiters (from .particle file)
+  * _boost-name_ - can be used to have custom particle system name for emitters (from .particle file)
 
   * _interior-y_ (also x or z) - old, to offset interior model position (better to do it in blender if possible).
 

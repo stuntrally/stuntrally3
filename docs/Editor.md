@@ -20,7 +20,7 @@ Newly started video tutorial from version 3.0:
 1:15 **Main modes** F1, Tab  
 2:06 **Camera** mode, move, rotate  
 2:50 Camera Top view  
-3:20 Camera options: speed, intertia, view buttons  
+3:20 Camera options: speed, inertia, view buttons  
 4:03 **Edit modes** overview  
 4:59 Input Shortcuts Alt-Q, tabs, subtabs etc  
 8:48 **Toggle**: V Vegetation, G fog, I weather, P particles  

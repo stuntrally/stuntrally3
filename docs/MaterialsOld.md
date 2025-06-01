@@ -67,15 +67,15 @@ We use default `specular_ogre` workflow, metallic workflow is simpler, not to be
 Also texture keywords changed, all are optional:  
 `diffuse_map`, `normal_map`, `specular_map` (same as `metalness_map`), `roughness_map`, `emissive_map`.  
 There is no reflMap or `reflect_map`, we can use either:
-- `specular_map` (1.0 is shinest) or
-- new `roughness_map` (0 to 0.2 is shinest)
+- `specular_map` (1.0 is shiniest) or
+- new `roughness_map` (0 to 0.2 is shiniest)
 - or both for big/complex models.
 
 Need to add `reflect yes` to .material to get that `env_refl` (environment reflection cubemap) as before.
 
 **Quick examples**, top of [_Example.material-](../data/materials/Pbs/_Example.material-).
 
-For 🏔️**terrain layer** textures these parames are in `presets.xml` as:  
+For 🏔️**terrain layer** textures these params are in `presets.xml` as:  
 `ro - roughness, me - metalness, re - reflection`.
 
 Details are as comments in code [OgreHlmsPbsDatablock.h](https://github.com/OGRECave/ogre-next/blob/master/Components/Hlms/Pbs/include/OgreHlmsPbsDatablock.h).  

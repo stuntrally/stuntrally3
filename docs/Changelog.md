@@ -49,7 +49,7 @@ WIP means work in progress, unfinished, still being developed.
   - **Collection**💎 - new game mode, in menu
     - Collect all gems located on track, for completion or quicker time
     - Hud shows 3D arrows on vehicle, pointing to closest 3 gems
-  - More **Lights**💡 - with toggable Options
+  - More **Lights**💡 - with togglable Options
     - for vehicle: brakes, boost, reverse, *under glow* and for collection gems
 - Both
   - New **Vegetation**🌴🌳 - over half of tracks renewed

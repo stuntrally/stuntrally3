@@ -2,7 +2,7 @@
 
 This page describes how to compile Stunt Rally 3:
 - on **Windows** (10 only tested)
-- buiding first **all dependencies from sources**
+- building first **all dependencies from sources**
 - using **VS** 2019  
   Could be older but seems that newer versions aren't yet tested for Ogre-Next at least.  
   There is a free Visual Studio Community edition [here](https://visualstudio.microsoft.com/downloads/), it should work okay (didn't check)  
@@ -41,7 +41,7 @@ Only Ogre-Next and MyGui-next are special cases, info in own, later sections.
 
 ### 2.1
 
-**Ogre-Next** soruces are downloaded (using Git) by a script, which will also get its dependencies like SDL2 and build them and itself.  
+**Ogre-Next** sources are downloaded (using Git) by a script, which will also get its dependencies like SDL2 and build them and itself.  
 **MyGui-next** is my fork, it needs downloaded .zip with sources or cloned by Git.  
 Both are explained later, for now no need to do anything.
 
@@ -59,7 +59,7 @@ Important line in this `.bat` is starting with: `premake4  --dynamic-runtime --d
 Meaning bullet will use _double_ types and dynamic DLL for runtime.  
 I recommend removing `--double` from it, it's not needed and works slower on old PCs.
 
-Start this `.bat` file, it that will generate a folder bullet3\vs2010\ with `0_Bullet3Solution.sln` file,  
+Start this `.bat` file, it then will generate a folder bullet3\vs2010\ with `0_Bullet3Solution.sln` file,  
 open it and build with your VS (first convert dialog will show).  
 You can build whole solution, there is more stuff.  
 We definitely need to build: BulletCollision, BulletDynamics, BulletFileLoader, BulletWorldImporter, LinearMath.  
@@ -169,7 +169,7 @@ No need to set, it is so by default:
    - all MYGUI_BUILD*: no
    - MYGUI_STATIC: no, MYGUI_DONT_USE_OBSOLETE: no
 
-You could donwload .zip with sources, but `git clone` is better,  
+You could download .zip with sources, but `git clone` is better,  
 since you can later do `git pull` to get any updates.
 
 Inside `c:\dev\`

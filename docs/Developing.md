@@ -169,7 +169,7 @@ Below * means: nothing or 2,3,4.. etc if more.
 ## emojis
 
 You can also get familiar with [emojis](../src/emojis.txt) file.  
-It lists many emojis used for indentifying code sections, variable blocks in sources, xml configs, etc.  
+It lists many emojis used for identifying code sections, variable blocks in sources, xml configs, etc.  
 Done for better orientation, grouping and cooler code in files, especially for big ones with many at once.  
 It is possible to search for all related to some component or aspect in sources,  
 by searching for an emoji, e.g. 💨 for game boost, ⛰️ for all terrain stuff, 🎯 for all ray casts made, etc.
@@ -333,7 +333,7 @@ New does not support passes [[2.3] Dealing with multi pass rendering in ogre nex
 Code in `pipe glass 2nd item` section of [Road_Mesh.cpp](../src/road/Road_Mesh.cpp).  
 
 Transparent objects are sorted by Ogre-Next so they don't blink randomly like in old Ogre.  
-There is though a less noticable issue with order on borders showin elipses between pipe segments [screen here](https://forums.ogre3d.org/viewtopic.php?p=553945&sid=6798838bbed3be6881aa07bf10012412#p553945).  
+There is though a less noticeable issue with order on borders showing ellipses between pipe segments [screen here](https://forums.ogre3d.org/viewtopic.php?p=553945&sid=6798838bbed3be6881aa07bf10012412#p553945).  
 
 From [post](https://forums.ogre3d.org/viewtopic.php?p=556887#p556887), only:
 - Ogre has an Order Independent Transparency demo with WBOIT method.  

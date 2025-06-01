@@ -134,7 +134,7 @@ If it also checks terrain distance with particle size
 
 Same for trails, I don't like the 8 batches for each car  
 (what if we someday wanted more than 4, batches would make it impossible).  
-Idk but imo 2 would be ok, wouldnt have triangle strips though.  
+Idk but imo 2 would be ok, wouldn't have triangle strips though.  
 
 
 7. Particles **on fluid** surface, water/mud, some ripples  
@@ -478,7 +478,7 @@ for any scene, and images for that wouldn't be needed.
 A mode in editor where you can paint textures (on terrain).  
 Those textures could then be used for:  
 - vegetation density (global, eg. make oasis with trees on desert)  
-- vegetation layers density (for invidual models, custom placing)  
+- vegetation layers density (for individual models, custom placing)  
 - terrain layers density (custom blendmap painting)  
 - grass density (add or deny grass in places)  
 - grass layers density (variations)  
@@ -696,7 +696,7 @@ E.g.:
 - driven (1st, half, all) tutorials, championships
 - driven 10,50,100,(all from each scenery?),all? tracks
 - 
-- slided for 2,3,5 seconds
+- slid for 2,3,5 seconds
 - experienced accel of 1,2,3 G's
 - had 10,100 crashes/tree hits
   
@@ -706,7 +706,7 @@ Some gui page with all of them and cool icon images too.
 I guess some are easy to implement but don't sound too fancy. Others would be cool but are difficult to implement.  
 Would be good to have a .cfg file where you could add/edit those.  
 And the range should be high, starting from simple stuff that will happen for new players,  
-and endnig in achievements for me (or very committed players) like drove all champs etc.  
+and ending in achievements for me (or very committed players) like drove all champs etc.  
   
   
 ----  
