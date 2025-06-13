@@ -25,7 +25,7 @@
 💬[Discord](https://discord.gg/TywnXxAtR6) - **chat**, community, quick help, etc - follow #rules - *(could be removed in future)*  
 
 🪲[New Issue](https://github.com/stuntrally/stuntrally3/issues/new/choose), on [github](https://github.com/stuntrally/stuntrally3/issues) - for bugs, issues, PRs, etc - needs github account  
-Before reporting bugs or issues, be sure to [Read before posting](https://groups.f-hub.org/d/2ftpShKs/-how-to-post-sr3-info-help-links-about-etc-) (or [the old one](https://forum.freegamedev.net/viewtopic.php?f=78&t=3814)) topic first.
+Before reporting bugs or issues, be sure to read [Help page](docs/help.md) before posting (or [the old](https://forum.freegamedev.net/viewtopic.php?f=78&t=3814)) topic first.
 
 🏛️[Forum](https://groups.f-hub.org/stunt-rally/) - **to be shut down**, longer discussions, for tracks, content, etc  
 📜[Old Forum](https://forum.freegamedev.net/viewforum.php?f=77) - old archive, with over 1000 posts, from SR 2.x  
@@ -64,7 +64,7 @@ The Track Editor allows creating and modifying tracks.
 
 ## 🚀Quick Start
 
-[Hardware requirements](docs/Running.md#hardware-requirements).
+[Hardware requirements](docs/Running.md#hardware-requirements). Needs a medium or high end dedicated GPU.
 
 ### 🚗Game
 

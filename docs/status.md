@@ -36,6 +36,7 @@ Frankly said, and IMO, SR3 is a **project that is**:
 
 - quite big and complex
 - not easy to build (unless on Debian-based) or to package
+- demanding on GPU, has high hardware requirements
 - likely too "my style" of code,  
 surely not good for [O.O.](https://en.wikipedia.org/wiki/Object-oriented_programming) or modern C++ learning etc.  
 or even not very readable due to my [shortcuts](../src/emojis.txt) (my way of achieving more, with less key presses)

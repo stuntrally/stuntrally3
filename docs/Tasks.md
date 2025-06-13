@@ -403,12 +403,10 @@ disable backspace and enter in this mode.
   
 -8. Damage view of other players near their name tags, using a bar or percentage.  
   
--9. Multiplayer lobby, IRC or sth else with global chat for all inside game.  
-https://github.com/MegaGlest/megaglest-source/blob/develop/source/glest_game/menu/menu_state_masterserver.cpp
+-9. Multiplayer lobby, IRC or sth else with global chat for all inside game. [megaglest source](https://github.com/MegaGlest/megaglest-source/blob/develop/source/glest_game/menu/menu_state_masterserver.cpp)
 
 new  
-10. Restore **master (game) server** for multiplayer games lists,  
-[forum topic](https://groups.f-hub.org/d/2Hu9znrb/new-masterserver-for-multiplayer-)  
+10. Restore **master (game) server** for multiplayer games lists, [server topic](server)  
 *Possible* on a-lec.org if we get there (only CC data required 1st).  
   
   
