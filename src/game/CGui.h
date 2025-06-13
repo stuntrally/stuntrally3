@@ -581,5 +581,5 @@ public:
 
 	void btnTrackEditor(WP);  // start ed exe
 	void btnWelcome(WP), btnWebsite(WP), btnWiki(WP), btnWikiInput(WP);
-	void btnOpenChat(WP), btnForum(WP), btnSources(WP), btnEdTut(WP), btnTransl(WP), btnDonations(WP);
+	void btnOpenChat(WP), btnSources(WP), btnEdTut(WP), btnTransl(WP), btnDonations(WP);
 };

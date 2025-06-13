@@ -566,7 +566,7 @@ void CGui::InitGui()
 	//  🔗 open url btns  -------------
 	Btn("BtnTrackEditor", btnTrackEditor);
 	Btn("OpenWelcome", btnWelcome);   Btn("OpenWebsite", btnWebsite);  Btn("OpenSources", btnSources);
-	Btn("OpenChat",    btnOpenChat);  Btn("OpenForum",   btnForum);    Btn("OpenDonations", btnDonations);
+	Btn("OpenChat",    btnOpenChat);  Btn("OpenDonations", btnDonations);
 	//  wiki
 	Btn("OpenWiki",  btnWiki);   Btn("OpenWikiInput", btnWikiInput);
 	Btn("OpenEdTut", btnEdTut);  Btn("OpenTransl", btnTransl);  // mplr?

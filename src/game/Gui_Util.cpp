@@ -419,10 +419,6 @@ void CGui::btnOpenChat(WP)
 {
 	Url("https://discord.gg/TywnXxAtR6");
 }
-void CGui::btnForum(WP)
-{
-	Url("https://groups.f-hub.org/stunt-rally/");
-}
 void CGui::btnSources(WP)
 {
 	Url("https://github.com/stuntrally/stuntrally3");
