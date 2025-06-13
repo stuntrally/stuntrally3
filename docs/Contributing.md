@@ -25,7 +25,7 @@ Details for tools and sources are in [Developing](Developing.md).
 Own ideas could also go into SR3, just need some discussion first.  
 Most ideas are already in [Tasks](Tasks.md). Sorted by priority: 1 is most important, higher are less so.
 
-Medium changes can go through [pull requests](https://github.com/stuntrally/stuntrally/pulls).  
+Medium changes can go through [pull requests](https://github.com/stuntrally/stuntrally3/pulls).  
 For those with more time and effort, commits to main branch will be possible.
 
 There is no style guide (yet), I simply recommend following my own.  
@@ -35,7 +35,7 @@ A quick info: it is not random, it's quite specifically formatted to how I want 
 ## 🏞️Track creators
 
 If you manage to create an interesting track, it can be included in future versions.  
-More info in [this topic](https://groups.f-hub.org/d/lpntzPrD/-creating-tracks-and-their-content).  
+More info in [this topic](tracks.md).  
 If needed, I can finish them, may change something.  
 Tracks are licensed GPLv3 by default.
 
@@ -64,7 +64,7 @@ If you can record or edit sounds for games. Especially looped engine sounds.
 ## 🚗3D Artists
 
 If you know Blender and can help with importing existing models into game [Objects wiki](Objects.md).  
-Or can edit vehicles ([new topic](https://groups.f-hub.org/d/adePgxzW/-cars-new-vehicles-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=80&t=18526) and [docs page](VehicleModeling.md)) or objects for game, UV unwrap, texturing, etc.
+Or can edit vehicles ([new topic](vehicles.md), [old topic](https://forum.freegamedev.net/viewtopic.php?f=80&t=18526) and [docs page](VehicleModeling.md)) or objects for game, UV unwrap, texturing, etc.
 
 
 ------------------------

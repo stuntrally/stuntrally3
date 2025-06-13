@@ -9,7 +9,7 @@ Modifying an existing vehicle (e.g. extending its quality) is much easier.
 
 There are already pretty good vehicle models, available on [sketchfab](https://sketchfab.com/search?category=cars-vehicles&features=downloadable&licenses=7c23a1ba438d4306920229c12afcb5f9&licenses=b9ddc40b93e34cdca1fc152f39b9f375&licenses=322a749bcfa841b29dff1e8a1bb74b0b&sort_by=-likeCount&type=models) or [blendswap](https://www.blendswap.com/blends/category/19).  
 
-For info, see latest [forum topic](https://groups.f-hub.org/d/adePgxzW/-cars-new-vehicles-to-do) with remarks.  
+For info, see latest [vehicles](vehicles.md) with remarks.  
 The list of wanted/accepted vehicles is [here](https://skfb.ly/oDrzD). It's already too many to handle.  
 
 Some are too high poly or too low. And some just don't fit the game.  

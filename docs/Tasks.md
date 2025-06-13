@@ -409,7 +409,7 @@ https://github.com/MegaGlest/megaglest-source/blob/develop/source/glest_game/men
 new  
 10. Restore **master (game) server** for multiplayer games lists,  
 [forum topic](https://groups.f-hub.org/d/2Hu9znrb/new-masterserver-for-multiplayer-)  
-*Possible* on a-lec.org if/once we get there (only CC data required 1st).  
+*Possible* on a-lec.org if we get there (only CC data required 1st).  
   
   
 ----  
@@ -824,17 +824,17 @@ vehicle editor?
 ## Data
 
 - Top priority:  
-♻️ [Removing, replacing data with non-CC licenses](https://groups.f-hub.org/d/pIoLYCaO/-removing-replacing-data-with-non-cc-licenses-to-do)  
+♻️ [Removing, replacing data with non-CC licenses](data.md)  
 
 - Medium priority:  
-🚗[Cars, new vehicles](https://groups.f-hub.org/d/adePgxzW/-cars-new-vehicles-done-and-to-do)  
-Collection of models to do:  https://skfb.ly/oDrzD  
+🚗[Cars, new vehicles](vehicles.md)  
+Collection of models to do [on sketchfab](https://skfb.ly/oDrzD)  
 
 - High priority:  
-🏞️[Creating tracks and their content](https://groups.f-hub.org/d/lpntzPrD/-creating-tracks-and-their-content)  
+🏞️[Creating tracks and their content](tracks.md)  
 
 - Low priority:  
-🌳[Trees to do](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do)  
+🌳[Trees to do](trees.md)  
 
 - Lowest priority:  
 🎵Music  

@@ -17,7 +17,6 @@ Link to calculate [date difference](https://www.timeanddate.com/date/durationres
 
 |Version  | Date   |Days| MB  |g|e |Tracks |new  | ren |del| Scn  |New Sceneries  |Vehicles|new |New Vehicles| major Changes         |
 |---------|--------|----|-----|-|--|-------|-----|-----|---|------|---------------|--------|----|------------|-----------------------|
-|**3.4?**  | ?. ?'24|?>90|2670?| |  |  232  |   ? |     |   |  40  |               |   33?  |    |            |   |
 |**3.3**  |29.12'24| 97 |2668 |2|  |**232**|  +3 |     |   |  40  |               |   33   |    |            | Effects, SSAO, Sounds🔊 |
 |**3.2**  |23.09'24| 151|2552 | |  |  229  |     |`129`|   |**40**|rem DesertMud  |   33   |    |            | `Vegetation`🌳🪴🍄, Collection💎   |
 |**3.1**  |25.04'24| 127|2391 | |3 |**229**|  +1 | >50 |   |  41  |               | **33** |`+8`| R1,R2,R3, Q1,Q3, H1,H2, YG | `Skies`⛅🌌, `Hovers`🚤, RoR export |

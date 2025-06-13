@@ -8,7 +8,8 @@ This page describes how to properly report bugs etc. as well as self help tips.
 
   * [Github Issues](https://github.com/stuntrally/stuntrally3/issues) (preferred, but needs github account)
   * or [Discord](https://discord.gg/TywnXxAtR6), #general channel
-  * or [Forum](https://groups.f-hub.org/stunt-rally/) if already invited.
+  * or Matrix, info in [Readme](../Readme.md#️Feedback)
+  * lastly by contacting cryham directly, info [on website](https://cryham.org/about-me/#Contact)
   
 ### What we will ask from you
 

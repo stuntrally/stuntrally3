@@ -21,13 +21,13 @@
 💜[Donations](https://cryham.org/donate/) - financial support, on [Ko-Fi](https://ko-fi.com/cryham), or [paypal](https://paypal.me/cryham)
 
 ## 🗨️Feedback
+🗨️[Matrix](https://matrix.org/) - **chat** room: #stuntrally:matrix.org -  (e.g. with [element app](https://element.io/download), or other [clients](https://matrix.org/ecosystem/clients/)) - *(preferred)*  
 💬[Discord](https://discord.gg/TywnXxAtR6) - **chat**, community, quick help, etc - follow #rules - *(could be removed in future)*  
-🗨️[Matrix](https://matrix.org/) - **chat** room: #stuntrally:matrix.org -  (e.g. with [element app](https://element.io/download), or other [clients](https://matrix.org/ecosystem/clients/)) - *(preferred)*
 
 🪲[New Issue](https://github.com/stuntrally/stuntrally3/issues/new/choose), on [github](https://github.com/stuntrally/stuntrally3/issues) - for bugs, issues, PRs, etc - needs github account  
 Before reporting bugs or issues, be sure to [Read before posting](https://groups.f-hub.org/d/2ftpShKs/-how-to-post-sr3-info-help-links-about-etc-) (or [the old one](https://forum.freegamedev.net/viewtopic.php?f=78&t=3814)) topic first.
 
-🏛️[**Forum**](https://groups.f-hub.org/stunt-rally/) - longer discussions, for tracks, content, etc - [how to join](https://groups.f-hub.org/d/2ftpShKs/) info on top  
+🏛️[Forum](https://groups.f-hub.org/stunt-rally/) - **to be shut down**, longer discussions, for tracks, content, etc
 📜[Old Forum](https://forum.freegamedev.net/viewforum.php?f=77) - old archive, SR 2.x  
 🪧[Reddit](https://www.reddit.com/r/stuntrally/) - (not used)  
 
@@ -112,15 +112,15 @@ How to compile project from sources:
 
 ## 🤝Contributing
 
-Help and contributing is welcome.  
-If you'd like to contribute, please check [Contributing](docs/Contributing.md) for details.  
+If you'd like to contribute, please check [Contributing](docs/Contributing.md) for areas.  
+Details in [Tasks](docs/Tasks.md) and [Roadmap](docs/Roadmap.md) with missing features, known issues, and future *ToDo* plans.  
 
 ## 🛠️Developing
 
-Details in [Roadmap](docs/Roadmap.md) with few missing features, known issues, and future **ToDo** plans.  
+Development has stopped, project status and info is in [status](docs/status.md).  
 
-General info with some details for SR3, its sources and using Ogre-Next is in [Developing](docs/Developing.md).  
-Sources have emojis, [this file](/src/emojis.txt) has all, with quick components guide, shortcuts used, etc.
+Developing details for SR3, its sources and using Ogre-Next is in [Developing](docs/Developing.md).  
+Sources have emojis, [this file](/src/emojis.txt) lists all, for quick components guide, shortcuts used, etc.
 
 ------------------------------------------------------------------------------
 
@@ -159,6 +159,7 @@ Sources have emojis, [this file](/src/emojis.txt) has all, with quick components
     - in src/vdrift/: Buoyancy.h
     - src/common/MersenneTwister.h  MultiList2.h  /MessageBox/*
     
-	For Media (art, data) licenses, see various _*.txt files in data/ subdirs.
+For Media (art, **data**) licenses, see various `_*.txt` files in `data/` subdirs.  
+More about this topic in [docs/data](docs/data.md) page.
 
 ------------------------------------------------------------------------------

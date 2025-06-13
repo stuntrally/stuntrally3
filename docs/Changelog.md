@@ -3,7 +3,9 @@
 This section lists changes not yet released, but committed to repositories stuntrally3 and tracks3.  
 WIP means work in progress, unfinished, still being developed.
 
-- Updated docs
+- Updated docs (a lot) and screenshots
+  - also added (sticky) forum topics with posts into docs/
+- added new master/game server to [game config](../config/game-default.cfg) under [ network ]
 
 ### Version 3.3 - 29.12.2024
 
