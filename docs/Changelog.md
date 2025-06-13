@@ -5,7 +5,8 @@ WIP means work in progress, unfinished, still being developed.
 
 - Updated docs (a lot) and screenshots
   - also added (sticky) forum topics with posts into docs/
-- added new master/game server to [game config](../config/game-default.cfg) under [ network ]
+- [multiplayer](Multiplayer.md) added new master/game server to [game config](../config/game-default.cfg) under [ network ]
+  - updated Gui tab Server, with games lists
 
 ### Version 3.3 - 29.12.2024
 

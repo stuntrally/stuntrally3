@@ -5,12 +5,12 @@ This page contains information about the network multiplayer feature.
 
 ### Direct connect
 
-Networked multiplayer only works with Direct connect (all players need to specify IP).  
+Networked multiplayer works with Direct connect (all players need to specify IP).  
 Can be local network or internet.  
 If internet, all players need to have ports forwarded.  
 
-There are no servers or game lists to get players, so to play  
-you probably need to enlist your friends to play with you.  
+_(old, see below) There are no servers or game lists to get players, so to play  
+you probably need to enlist your friends to play with you._  
 
 
 ### Quick guide
@@ -21,13 +21,20 @@ you probably need to enlist your friends to play with you.
   - Press **Ready** button in the game lobby tab and wait for others to become Ready too
   - Now the game will start when host presses Start button
   - Messages from chat, disconnect or winning will be shown during game at top
-
   - It is possible for host to continue game on other track (or restart on current):
     - When host presses **New game** (same button as Start) current game will end, peers will have shown menu
     - Host can now change track (and game settings) and after all peers have pressed **Ready**, game can start again
 
+
+### New Master / games server
+
+New [server](server.md) is running, for the games list.  
+If using latest built version from git repo, it should be set up, as in [game-default.cfg](../config/game-default.cfg#L244).  
+If not using that, info how to set this up is in last post, bottom of page: [server](server.md).  
+It is technically not needed to play, just for convenience. You can always use direct connect and specify IP:port to connect to.
+
  
-### Master (games) server (unavailable)
+### [Old] Master (games) server (unavailable)
 
 It's not working since years and likely won't be.  
 Unless someone can host it on an IP that is not changing or better has a named domain. If so, please contact us.  
