@@ -32,7 +32,7 @@ best quality5,6, no stunts, easiest, hardest, most loops, jumps, pipes, new late
 detail mix in .json, 2,3 variations  
 traces alpha texture, *blending* with color per vertex: in turns, *noise*  
 
-! finish remove all non **CC** `data`, [new topic](https://groups.f-hub.org/d/pIoLYCaO/-removing-replacing-data-with-non-cc-lincenses-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800)  
+! finish remove all non **CC** `data`, [new topic](data.md), [old topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800)  
 - replace fir*
 - grass1, grassA* texture
 - redo sounds/vdrift:  bump, gravel,grass,squeal
@@ -232,9 +232,9 @@ slow track load, shaders cache big
 ----
 ### Data
 
-🚗! New **Vehicles**: [new topic](https://groups.f-hub.org/d/adePgxzW/-cars-new-vehicles-to-do), [old topic](https://forum.freegamedev.net/viewtopic.php?f=80&t=18526), models **collection** [link](https://sketchfab.com/cryham/collections/vehicles-todo-for-stunt-rally-327a2dd7593f47c7b97af6b806a60bb8)  
+🚗! New **Vehicles**: [new page](vehicles.md), [old topic](https://forum.freegamedev.net/viewtopic.php?f=80&t=18526), models **collection** [link](https://sketchfab.com/cryham/collections/vehicles-todo-for-stunt-rally-327a2dd7593f47c7b97af6b806a60bb8)  
 
-🌳new [trees](https://groups.f-hub.org/d/4n0bTwmC/-trees-to-do), plants  
+🌳new [trees](trees.md), plants  
 
 📦 New static Objects, *tall* city buildings, dynamic hay  
 redo or replace lowest quality meshes: , skyscraper* 🏢  

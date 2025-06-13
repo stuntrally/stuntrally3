@@ -59,5 +59,5 @@ The process of releasing and things that need to be checked before.
   * For significant look changes update:  
     home **screens** gallery, *and pics on other websites*, [ogre-next Readme](https://github.com/OGRECave/ogre-next?tab=readme-ov-file)
   * _Notify known third-party packagers about new release_
-  * Announce release - on [New Forum](https://groups.f-hub.org/stunt-rally/),  
+  * Announce release - on:  
    [Reddit](https://www.reddit.com/r/stuntrally/), [Ogre showcase](https://www.ogre3d.org/forums/viewtopic.php?f=11&t=58244), meh old: [VDrift dev](https://vdrift.net/Forum/showthread.php?tid=1629), [freegamer](https://freegamer.blogspot.com/), etc.

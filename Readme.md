@@ -27,7 +27,7 @@
 🪲[New Issue](https://github.com/stuntrally/stuntrally3/issues/new/choose), on [github](https://github.com/stuntrally/stuntrally3/issues) - for bugs, issues, PRs, etc - needs github account  
 Before reporting bugs or issues, be sure to [Read before posting](https://groups.f-hub.org/d/2ftpShKs/-how-to-post-sr3-info-help-links-about-etc-) (or [the old one](https://forum.freegamedev.net/viewtopic.php?f=78&t=3814)) topic first.
 
-🏛️[Forum](https://groups.f-hub.org/stunt-rally/) - **to be shut down**, longer discussions, for tracks, content, etc
+🏛️[Forum](https://groups.f-hub.org/stunt-rally/) - **to be shut down**, longer discussions, for tracks, content, etc  
 📜[Old Forum](https://forum.freegamedev.net/viewforum.php?f=77) - old archive, SR 2.x  
 🪧[Reddit](https://www.reddit.com/r/stuntrally/) - (not used)  
 

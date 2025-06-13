@@ -9,7 +9,7 @@ WIP means work in progress, unfinished, still being developed.
 
 ### Version 3.3 - 29.12.2024
 
-- 3 [New tracks](https://groups.f-hub.org/d/ZXVHk6du/new-tracks-in-sr-3-3)
+- 3 New tracks
 - **Sounds**🔊
   - New **vehicle sounds** for: cars (combustion engines), hovercrafts, drones, hovercars
   - New turbo sound and gear shift

@@ -124,7 +124,7 @@ I won't support it myself, instead will promote [Freedom](https://www.fsf.org/) 
 
 If it is a crash than it's obvious but if not make sure it is a bug. Observe if there is a pattern to have it happen, this will be useful in fixing it.  
 Read this wiki about [Troubleshooting](Troubleshooting.md). It tells how to report a bug and what is needed for it.  
-Basically by creating a new [Issue](https://github.com/stuntrally/stuntrally3/issues) on github (preferred), on [Forum](https://groups.f-hub.org/stunt-rally/) or on [Discord](https://discord.gg/TywnXxAtR6).
+See in [Readme](../Readme.md#️feedback) under ️feedback on how to report.
 
 **How can I contribute to this project?**  
 
