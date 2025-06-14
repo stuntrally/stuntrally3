@@ -12,7 +12,7 @@
 
 ### Main
 🌎[Stunt Rally Homepage](https://cryham.org/stuntrally/) - Download links, track & vehicle browsers etc.  
-📚[Documentation](https://github.com/stuntrally/stuntrally3/blob/main/docs/_menu.md) - inside docs/, Information on many pages  
+📚[Documentation](https://github.com/stuntrally/stuntrally3/blob/main/docs/_menu.md) - inside `docs/` dir, Information on many pages  
 ⚙️[Sources](https://github.com/stuntrally/stuntrally3/) - also for bugs, Issues, pull requests, etc.  
 
 ### Media
@@ -25,11 +25,12 @@
 💬[Discord](https://discord.gg/TywnXxAtR6) - **chat**, community, quick help, etc - follow #rules - *(could be removed in future)*  
 
 🪲[New Issue](https://github.com/stuntrally/stuntrally3/issues/new/choose), on [github](https://github.com/stuntrally/stuntrally3/issues) - for bugs, issues, PRs, etc - needs github account  
-Before reporting bugs or issues, be sure to read [Help page](docs/help.md) before posting (or [the old](https://forum.freegamedev.net/viewtopic.php?f=78&t=3814)) topic first.
+Before reporting bugs or issues, be sure to read [Help page](docs/help.md) (or [the old](https://forum.freegamedev.net/viewtopic.php?f=78&t=3814)) topic first.
 
-🏛️[Forum](https://groups.f-hub.org/stunt-rally/) - **to be shut down**, longer discussions, for tracks, content, etc  
-📜[Old Forum](https://forum.freegamedev.net/viewforum.php?f=77) - old archive, with over 1000 posts, from SR 2.x  
-🪧[Reddit](https://www.reddit.com/r/stuntrally/) - (not used)  
+Not used:  
+🏛️[Forum](https://groups.f-hub.org/stunt-rally/) - Closed (shut down), was for SR 3.x tracks, content, etc. Topics are saved in [`docs/`](docs) dir  
+📜[Old Forum](https://forum.freegamedev.net/viewforum.php?f=77) - Old Archive, with over 1000 posts, from SR 2.x  
+🪧[Reddit](https://www.reddit.com/r/stuntrally/) - not used  
 
 ------------------------------------------------------------------------------
 

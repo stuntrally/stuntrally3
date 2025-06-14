@@ -1,7 +1,7 @@
 #### About
 
 📊[Features](Features.md)  
-❔[General](General.md)  
+ℹ️[General](General.md)  
 ⚖️[FAQ](Faq.md)  
 📜[Changelog](Changelog.md)  
 📝[Statistics](Statistics.md)  
@@ -10,6 +10,7 @@
 
 🖥️[Install](Install.md)  
 🎮[Running](Running.md)  
+❔[Help](help.md)  
 👥[Multiplayer](Multiplayer.md)  
 📄[Paths & User Data](Paths.md)  
 ⚠️[Troubleshooting](Troubleshooting.md)  
@@ -26,7 +27,7 @@
 
 #### Compiling
 
-😯[Building](Building.md)  
+⚙️[Building](Building.md)  
 🤝[Contributing](Contributing.md)  
 😸[Developing](Developing.md)  
 
