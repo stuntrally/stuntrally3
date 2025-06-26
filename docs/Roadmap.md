@@ -1,10 +1,12 @@
-_List of things **to do**, planned for next releases._  
+_List of things **to do**, for next releases (if any)._  
 
 This is the latest, fast updated list.  
 More in [Tasks](Tasks.md) with older tasks too and more detail text.
 
-Priorities marked: 1 ! , 2 `crucial`, 3 **Next or Big**, 4 _Important_, 5 normal
+Priorities (from highest) marked as:  
+1 ! , 2 `crucial`, 3 **Next or Big**, 4 _Important_, 5 normal, - means no or lowest
 
+----
 ### 3.4
 
 ! `auto` road/ter Surface: **Particles**, trail, fix clr, **sounds**, from `presets.xml` not per track  
@@ -23,24 +25,26 @@ win *installer* needs admin for vcredist, drop ask, or elevate on run
 
 *tire trails* clr, no uv tex-  
 
-` trk filter tab adv sld, btns:  clr Y viol filtered, trk list bckg` hq5,6
-best quality5,6, no stunts, easiest, hardest, most loops, jumps, pipes, new latest ver, short fun, alien?, villages
+gui trk filter, new tab adv with sld:  clr Y viol when filtered, trk list bckgr hq 5,6  
+btns: best quality 5,6, no stunts, easiest, hardest, most loops, jumps, pipes, new in last ver, short fun, alien, villages, etc
 
+----
 ### Data
 
 🛣️! new **Road** textures, from ground 4k CC0, rem old road**  
 detail mix in .json, 2,3 variations  
 traces alpha texture, *blending* with color per vertex: in turns, *noise*  
 
-! finish remove all non **CC** `data`, [new topic](data.md), [old topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800)  
+`!` remove all non **CC** `data`, [new topic](data.md), [old topic](https://forum.freegamedev.net/viewtopic.php?f=81&t=18532&sid=b1e7ee6c60f01d5f2fd7ec5d0b4ad800)  
 - replace fir*
 - grass1, grassA* texture
 - redo sounds/vdrift:  bump, gravel,grass,squeal
 - full chk, wave* tex?
 
+----
 ### 🏗️ Editor
 
-*editor videos* all new  
+*editor videos* all new, meh-  
 upd website gallery  
 
 fix ed btn: ApplyRefl, ApplyShadows
@@ -74,7 +78,7 @@ sunbeams dither, par hq, [shaders](https://www.shadertoy.com/results?query=tag%3
 old motion blur-  
 implement FXAA 1-pass post-process, or SMAA multipass
 
-
+----
 ### 🔉 Sound
 
 **Track sounds**: waterfall, volcano, river, shore waves..  ed mode, pos, radius  
