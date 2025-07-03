@@ -305,25 +305,25 @@ msgstr "Источники"
 #: data/gui/Game_Help.layout:135 ..Help.Support.Button
 msgctxt "TrackEditorTutorial"
 msgid "Track Editor Tutorials"
-msgstr "Учебники по редактированию треков"
+msgstr "Туториал по редактированию треков"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:141 ..Help.Support.Button
 msgctxt "Translations"
 msgid "Translations"
-msgstr ""
+msgstr "Переводы"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:115 ..Help.Support.Button
 msgctxt "GameControllers"
 msgid "Game Controllers"
-msgstr ""
+msgstr "Игровые контроллеры"
 
 #. MAIN  Help links 
 #: data/gui/Game_Help.layout:153 ..Help.Support.Button
 msgctxt "Donations"
 msgid "Donations"
-msgstr ""
+msgstr "Пожертвования"
 
 #. MAIN  Championship  buttons 
 #: data/gui/Game.layout:2118 ..SingleRace.Championship.Button :2129:2140:2151
@@ -386,7 +386,7 @@ msgstr "Золото"
 #: ..NewGame-GameTypes.Button src/game/Gui_Util.cpp:176:192
 msgctxt "SplitScreen"
 msgid "Split Screen"
-msgstr ""
+msgstr "Раздельный экран"
 
 #. MAIN  Game  Modes 
 #: data/gui/Game.layout:1753 ..SingleRace.Tab data/gui/Game_Main.layout:342
@@ -406,13 +406,13 @@ msgstr "По сети"
 #: src/game/Gui_Games.cpp:92 src/game/Gui_Util.cpp:175:176
 msgctxt "Collection"
 msgid "Collection"
-msgstr ""
+msgstr "Коллекция"
 
 #. MAIN  Game  Modes 
 #: src/game/Gui_InitGames.cpp:95
 msgctxt "Collected"
 msgid "Collected"
-msgstr ""
+msgstr "Коллекция"
 
 #. MAIN  Game  Modes 
 #: data/gui/Game_Main.layout:442 ..NewGame-GameTypes.Button
