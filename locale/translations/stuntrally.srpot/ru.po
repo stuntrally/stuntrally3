@@ -7087,7 +7087,7 @@ msgstr "alt-Home - выб. точки зеркально"
 #: data/gui/Editor_Help.layout:391 ..Help.Input/help.Road1.Text
 msgctxt "InputRoadsAdd"
 msgid "ctrl-Enter - Add road, also for decoration or river etc."
-msgstr "ctrl-Enter - добавить дорогу, также для украшения или реки и т.д."
+msgstr "ctrl+Enter - добавить дорогу, также для украшения или реки и т.д."
 
 #. Road  Input  more roads
 #: data/gui/Editor_Help.layout:387 ..Help.Input/help.Road1.Text
@@ -7105,7 +7105,7 @@ msgstr "ctrl+shift+Enter - удалить дорогу"
 #: data/gui/Editor_Help.layout:399 ..Help.Input/help.Road1.Text
 msgctxt "InputRoadsRiver"
 msgid "alt-Enter - toggle River (no wall, columns etc.)"
-msgstr ""
+msgstr "alt+Enter - переключить реку (без стены, колонн и т.д.)."
 
 #. Road  Input  rarely used
 #: data/gui/Editor_Help.layout:378 ..Help.Input/help.Road1.Text
