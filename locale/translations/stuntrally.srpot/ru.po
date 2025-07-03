@@ -6710,13 +6710,13 @@ msgstr "Коллекционная группа (для большего кол-
 #: data/gui/Editor_Help.layout:919 ..Help.Input/help.Fields.Text
 msgctxt "InputFieldsMode"
 msgid "edit Fields"
-msgstr "Редактировать Поля"
+msgstr "Редакт. Поля"
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:919 ..Help.Input/help.Fields.Text
 msgctxt "TipFieldExamples"
 msgid "acceleration, gravity lift, etc."
-msgstr ""
+msgstr "ускорение, гравитационный подъем и т.д."
 
 #. Terrain  Edit modes  not used 
 msgctxt "InputTerPaint"
@@ -6730,12 +6730,9 @@ msgstr "C - цвет краски"
 
 #. Terrain  Toggle 
 #: data/gui/Editor_Help.layout:298 ..Help.Input/help.Terrain.Text
-#, fuzzy
-#| msgctxt "InputLockBrush"
-#| msgid "Enter - lock brush position"
 msgctxt "InputLockBrush"
 msgid "Insert - lock brush position"
-msgstr "Enter - забл. поз. кисти"
+msgstr "Insert - фиксация положения щетки"
 
 #. Terrain  Toggle 
 #: data/gui/Editor_Help.layout:302 ..Help.Input/help.Terrain.Text
@@ -7090,19 +7087,19 @@ msgstr "alt-Home - выб. точки зеркально"
 #: data/gui/Editor_Help.layout:391 ..Help.Input/help.Road1.Text
 msgctxt "InputRoadsAdd"
 msgid "ctrl-Enter - Add road, also for decoration or river etc."
-msgstr ""
+msgstr "ctrl-Enter - добавить дорогу, также для украшения или реки и т.д."
 
 #. Road  Input  more roads
 #: data/gui/Editor_Help.layout:387 ..Help.Input/help.Road1.Text
 msgctxt "InputRoadsNext"
 msgid "Enter - next road (if many), shift - previous"
-msgstr ""
+msgstr "Enter - следующая дорога (если их много), shift - предыдущая"
 
 #. Road  Input  more roads
 #: data/gui/Editor_Help.layout:395 ..Help.Input/help.Road1.Text
 msgctxt "InputRoadsDel"
 msgid "ctrl-shift-Enter - delete road"
-msgstr ""
+msgstr "ctrl+shift+Enter - удалить дорогу"
 
 #. Road  Input  more roads
 #: data/gui/Editor_Help.layout:399 ..Help.Input/help.Road1.Text
