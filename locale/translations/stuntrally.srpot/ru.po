@@ -7105,7 +7105,7 @@ msgstr "ctrl+shift+Enter - удалить дорогу"
 #: data/gui/Editor_Help.layout:399 ..Help.Input/help.Road1.Text
 msgctxt "InputRoadsRiver"
 msgid "alt-Enter - toggle River (no wall, columns etc.)"
-msgstr "alt+Enter - переключить реку (без стены, колонн и т.д.)."
+msgstr "alt+Enter - переключить реку (без стены, колонн и т.д.)"
 
 #. Road  Input  rarely used
 #: data/gui/Editor_Help.layout:378 ..Help.Input/help.Road1.Text
@@ -7207,7 +7207,7 @@ msgstr "-,=  - тип жидкости (вода,грязь,и т.п.)"
 #: data/gui/Editor_Help.layout:675 ..Help.Input/help.Fluids.Text
 msgctxt "InputFluidsQuality"
 msgid "1,2  - change fluid rendering quality"
-msgstr ""
+msgstr "1,2 - изменение качества визуализации жидкости"
 
 #. Fluids  Input advanced 
 #: data/gui/Editor_Help.layout:667 ..Help.Input/help.Fluids.Text
@@ -7309,7 +7309,7 @@ msgstr "-,=  - тип объекта"
 #: data/gui/Editor_Help.layout:741 ..Help.Input/help.Objects.Text
 msgctxt "InputObjectsMaterial"
 msgid "O,P - change material"
-msgstr ""
+msgstr "O,P - изменить материал"
 
 #. Objects  Input 
 #: data/gui/Editor_Help.layout:733 ..Help.Input/help.Objects.Text
@@ -7333,26 +7333,26 @@ msgstr "shift-Ins - вставить выб."
 #: data/gui/Editor_Help.layout:820 ..Help.Input/help.Particles.Text
 msgctxt "InputParticlesDensity"
 msgid "[,] - change density (emission rate)"
-msgstr ""
+msgstr "[,] - плотность изменения (скорость выброса)"
 
 #. Particles  Input 
 #: data/gui/Editor_Help.layout:737 ..Help.Input/help.Objects.Text
 #: :824..Help.Input/help.Particles.Text
 msgctxt "InputParticlesStatic"
 msgid "Enter - toggle static"
-msgstr ""
+msgstr "Enter - переключение статического режима"
 
 #. Particles  Input 
 #: data/gui/Editor_Help.layout:828 ..Help.Input/help.Particles.Text
 msgctxt "InputParticlesSize"
 msgid "K,L - change size scale"
-msgstr ""
+msgstr "K,L - изменение масштаба"
 
 #. Particles  Input 
 #: data/gui/Editor_Help.layout:816 ..Help.Input/help.Particles.Text
 msgctxt "InputParticlesType"
 msgid "change particles type"
-msgstr ""
+msgstr "изменить тип частиц"
 
 #. TIP  Vehicle stats 
 #: data/gui/Game.layout:760 ..SingleRace.Vehicle.Text :768
@@ -7361,6 +7361,9 @@ msgid ""
 "Vehicle speed rating, more means faster car. Warning, on gravel too fast "
 "cars won't be faster because they don't have enough grip."
 msgstr ""
+"Рейтинг скорости автомобиля, больше - значит быстрее. Внимание, на гравии "
+"слишком быстрые машины не будут быстрее, потому что у них недостаточно "
+"сцепления с дорогой."
 
 #. TIP  Vehicle stats 
 #: data/gui/Game.layout:774 ..SingleRace.Vehicle.Text :778
@@ -7369,12 +7372,14 @@ msgid ""
 "Vehicle type, primary destination. Some can still be used on gravel even if "
 "not meant for it."
 msgstr ""
+"Тип ТС, основное место назначения. Некоторые из них можно использовать на "
+"гравии, даже если они для этого не предназначены."
 
 #. TIP  Vehicle stats 
 #: data/gui/Game.layout:786 ..SingleRace.Vehicle.Text :791
 msgctxt "TipCarYear"
 msgid "Year when this vehicle's production started."
-msgstr ""
+msgstr "Год начала производства этого автомобиля."
 
 #. TIP  Vehicle stats 
 #: data/gui/Game.layout:805 ..SingleRace.Vehicle.Text :811
@@ -7383,6 +7388,8 @@ msgid ""
 "Vehicle handling difficulty. Higher values require more skill driving this "
 "vehicle well on tracks, and bring more trouble."
 msgstr ""
+"Сложность управления автомобилем. Более высокие значения требуют большего "
+"мастерства в управлении автомобилем на трассах и приносят больше проблем."
 
 #. TIP  Vehicle stats 
 #: data/gui/Game.layout:843 ..SingleRace.Vehicle.Text :849
@@ -7390,6 +7397,8 @@ msgctxt "TipCarWidth"
 msgid ""
 "Rating of vehicle's width. Higher values mean more trouble in narrow tracks."
 msgstr ""
+"Оценка ширины автомобиля. Более высокие значения означают больше проблем на "
+"узких дорожках."
 
 #. TIP  Vehicle stats 
 #: data/gui/Game.layout:475 ..SingleRace.Track.Image
@@ -7402,6 +7411,10 @@ msgid ""
 "to change vehicle. Many vehicles can't handle certain track properties. "
 "Gravel type cars handle all tracks well."
 msgstr ""
+"Управляемость говорит о том, насколько хорошо автомобиль будет вести себя на "
+"трассе. Если он не пригоден для езды, лучше сменить автомобиль. Многие "
+"автомобили не могут справиться с определенными свойствами трассы. Автомобили "
+"для гравия хорошо справляются со всеми трассами."
 
 #. TIP  Vehicle stats 
 #: data/gui/Editor_Track.layout:234 ..Track.Track.Image :336..Track.Track.Text
@@ -7413,6 +7426,8 @@ msgid ""
 "Quality rating. Higher values mean: well made, playable, good looking and "
 "interesting design."
 msgstr ""
+"Оценка качества. Более высокие значения означают: хорошо сделана, "
+"играбельна, хорошо выглядит и имеет интересный дизайн."
 
 #. Championship  end 
 #: data/gui/Game_Utils.layout:63 ..Championship.Text :160..Challenge.Text
@@ -7444,7 +7459,7 @@ msgstr "Вы прошли этот вызов."
 #: data/gui/Game.layout:2090 ..SingleRace.Championship.Edit
 msgctxt "ClickInList"
 msgid "Pick in list to read description and start."
-msgstr ""
+msgstr "Выберите в списке, чтобы прочитать описание и начать."
 
 #. GAME types  info text,  MAIN Menu top 
 #: data/gui/Game_Main.layout:308 ..NewGame-GameTypes.Button
@@ -7455,6 +7470,9 @@ msgid ""
 "long as you want. By default both your best ghost drive and track's guide "
 "car will be present."
 msgstr ""
+"В режиме одиночной гонки вы можете ездить и тренироваться на любой трассе "
+"столько, сколько захотите. По умолчанию будут присутствовать как ваш лучший "
+"призрак, так и автомобиль-проводник трассы."
 
 #. GAME types  info text,  MAIN Menu top 
 #: data/gui/Game_Main.layout:326 ..NewGame-GameTypes.Button
@@ -7464,6 +7482,8 @@ msgid ""
 "In Split Screen mode, more players (up to six) on one computer can play on "
 "any single track."
 msgstr ""
+"В режиме Раздельного экрана несколько игроков (до 6-ти) на одном компьютере "
+"могут играть на одной дорожке."
 
 #. GAME types  info text,  MAIN Menu top 
 #: data/gui/Game_Main.layout:346 ..NewGame-GameTypes.Button
@@ -7474,6 +7494,10 @@ msgid ""
 "over internet. See info on Settings tab. Direct connect is needed (need to "
 "know IPs). And for internet, game ports need forwarding on routers."
 msgstr ""
+"В многопользовательском режиме игроки могут играть либо по локальной сети, "
+"либо подключаться через интернет. Смотрите информацию на вкладке "
+"\"Настройки\". Необходимо прямое подключение (нужно знать IP). А для "
+"интернета игровые порты нужно пробросить на роутерах."
 
 #. GAME types  info text,  MAIN Menu top 
 #: data/gui/Game_Main.layout:366 ..NewGame-GameTypes.Button :385
@@ -7533,6 +7557,10 @@ msgid ""
 "to collect all gems located in various places. Time can be limited or not. "
 "Faster time gives better prize."
 msgstr ""
+"В коллекционной игре вы свободно перемещаетесь по трассе (не только по "
+"дорогам). Цель - собрать все драгоценные камни, расположенные в разных "
+"местах. Время может быть ограничено или нет. Более быстрое время дает лучший "
+"приз."
 
 #. Hint  welcome screen 
 #: data/gui/Game_Replay.layout:246 ..Window src/game/Gui_Events.cpp:480
@@ -7572,7 +7600,7 @@ msgstr ""
 #: data/gui/Game_Help.layout:376 ..Welcometo.Edit
 msgctxt "HintGraphics"
 msgid "To adjust graphics to your card press Screen button."
-msgstr ""
+msgstr "Чтобы настроить графику под вашу карту, нажмите кнопку «Экран»."
 
 #. Hint  welcome screen 
 #: data/gui/Game_Help.layout:401 ..Welcometo.Edit
@@ -7589,7 +7617,7 @@ msgstr ""
 #: ..NewGame-GameTypes.Button
 msgctxt "GameStatistics"
 msgid "Game Statistics"
-msgstr ""
+msgstr "Статистика игры"
 
 #. TIP  Track  messages 
 #: src/game/Game_SceneInit.cpp:239
@@ -7633,7 +7661,7 @@ msgstr "Разные сложности трасс"
 #: data/gui/Game.layout:43 ..SingleRace.Track.Image :46:49:2227:2230:2233
 msgctxt "TipClickMax"
 msgid "Click to maximize. Then click to close."
-msgstr ""
+msgstr "Нажмите, чтобы увеличить. Затем нажмите, чтобы закрыть."
 
 #. TIP  Track 
 #: data/gui/Game.layout:121 ..SingleRace.Track.Edit
@@ -7649,7 +7677,7 @@ msgstr "Описание трассы."
 #: :2249..SingleRace.Track.Edit :2256..SingleRace.Track.Image
 msgctxt "TipTrackAdvice"
 msgid "Track driving advices and warnings."
-msgstr ""
+msgstr "Рекомендации и предупреждения по вождению."
 
 #. TIP  Track 
 #: data/gui/Editor_Track.layout:39 ..Track.Track.Image data/gui/Game.layout:43
@@ -7765,7 +7793,7 @@ msgstr "длинный"
 #: :2508..SingleRace.Track.Text
 msgctxt "sum"
 msgid "sum (of difficulties)"
-msgstr ""
+msgstr "кол-во (трудностей)"
 
 #. TIP  Track difficulties, on icons 
 #: data/gui/Common.layout:93 ..Track-Filter.Check
@@ -7825,7 +7853,7 @@ msgstr "препятствия (на дор., в трубе)"
 #: :1285..SingleRace.Setup.Paint.Text :1290..SingleRace.Setup.Paint.Slider
 msgctxt "user"
 msgid "user"
-msgstr ""
+msgstr "пользователь"
 
 #. TIP  Track difficulties, on icons 
 #: data/gui/Common.layout:204 ..Track-Filter.Check
@@ -7833,7 +7861,7 @@ msgstr ""
 #: data/gui/Game.layout:60 ..SingleRace.Track.Image :65..SingleRace.Track.Check
 msgctxt "bookmark"
 msgid "bookmark"
-msgstr ""
+msgstr "закладка"
 
 #. TIP  Track stats 
 #: data/gui/Editor_Track.layout:166 ..Track.Track.Text
@@ -7897,6 +7925,9 @@ msgid ""
 "on all planets for whole team. It is fast but very long and can't do loops, "
 "pipes or jumps."
 msgstr ""
+"Большой и тяжелый исследовательский автомобиль с приводом на 8 колес, "
+"близкий к автобусу. Отлично подходит для всей команды на всех планетах. Она "
+"быстрая, но очень длинная и не может делать петли, трубы или прыжки."
 
 #. Game Vehicle descriptions 
 msgctxt "CarDesc_MO"
@@ -7904,6 +7935,9 @@ msgid ""
 "Huge and heavy monster truck. Does terrain and jumps very well. But due to "
 "size, it has problems in everything narrow, even bridges."
 msgstr ""
+"Огромный и тяжелый монстр-трак. Отлично справляется с рельефом и прыжками. "
+"Но из-за размеров у него возникают проблемы на всех узких участках, даже на "
+"мостах."
 
 #. Game Vehicle descriptions 
 msgctxt "CarDesc_UV"
@@ -7929,6 +7963,8 @@ msgstr ""
 msgctxt "CarDesc_S8"
 msgid "Good rally car, drivable on all tracks, but shorter and more steerable."
 msgstr ""
+"Хороший раллийный автомобиль, пригодный для езды по всем трассам, но более "
+"короткий и управляемый."
 
 #. Game Vehicle descriptions 
 msgctxt "CarDesc_ES"
@@ -7945,6 +7981,8 @@ msgid ""
 "Best rally car in game, drivable on all tracks with the best experience, "
 "similar to ES."
 msgstr ""
+"Лучший раллийный автомобиль в игре, управляемый на всех трассах с наилучшими "
+"впечатлениями, подобно ES."
 
 #. Game Vehicle descriptions 
 msgctxt "CarDesc_TW"
@@ -7991,6 +8029,9 @@ msgid ""
 "Very fast, futuristic racing vehicle. Uses 3 stabilized spheres to drive. "
 "Not the best for bridges, mud or pipes."
 msgstr ""
+"Очень быстрый, футуристический гоночный автомобиль. Для управления "
+"используются 3 стабилизированные сферы. Не лучший вариант для мостов, грязи "
+"или труб."
 
 #. Game Vehicle descriptions 
 msgctxt "CarDesc_BE"
@@ -7998,6 +8039,8 @@ msgid ""
 "Normal size bike. Light, fast and very agile. Being small it does not like "
 "terrain bumps."
 msgstr ""
+"Велосипед нормального размера. Легкий, быстрый и очень маневренный. Будучи "
+"маленьким, он не любит неровности рельефа."
 
 #. Game Vehicle descriptions 
 msgctxt "CarDesc_BV"
@@ -8016,6 +8059,8 @@ msgid ""
 "Very tuned and powerful car. Drivable on all tracks. Not best on bumps. Can "
 "spin wheels easily."
 msgstr ""
+"Очень тюнингованный и мощный автомобиль. Пригоден для езды по всем трассам. "
+"Не лучший вариант на кочках. Может легко прокрутить колеса."
 
 #. Game Vehicle descriptions 
 msgctxt "CarDesc_PH"
@@ -8023,6 +8068,8 @@ msgid ""
 "Another extremely powerful and fast car. Only for fast smooth tracks, due to "
 "length and low suspension."
 msgstr ""
+"Еще один чрезвычайно мощный и быстрый автомобиль. Только для быстрых гладких "
+"трасс, из-за длины и низкой подвески."
 
 #. Game Vehicle descriptions 
 msgctxt "CarDesc_Y7"
@@ -8039,6 +8086,8 @@ msgid ""
 "Extremely fast car. Not long and quite agile. Bad on bumpy terrain. Can spin "
 "wheels easily, even on gravel."
 msgstr ""
+"Чрезвычайно быстрый автомобиль. Не длинный и довольно проворный. Плох на "
+"ухабистой местности. Легко прокручивает колеса, даже на гравии."
 
 #. Game Vehicle descriptions 
 msgctxt "CarDesc_U6"
@@ -8048,6 +8097,11 @@ msgid ""
 "only. It also has high center of mass, meaning it will end with wheels up, "
 "after bad landings."
 msgstr ""
+"Невероятно быстрая, 6 колес с усовершенствованным электрическим двигателем. "
+"Отлично подходит для гонок на всех планетах. Внимание: он может легко "
+"прокрутить колеса, у него только 1 передача. Кроме того, у него высокий "
+"центр масс, а это значит, что после неудачной посадки он закончит движение "
+"колесами вверх."
 
 #. Game Vehicle descriptions 
 msgctxt "CarDesc_V1"
@@ -8101,6 +8155,10 @@ msgid ""
 "Slower speed. Goes sideways much after turning. Needs boost to jump over. "
 "Fun to drive but very loud and inefficient. Brakes added."
 msgstr ""
+"Медленное судно на воздушной подушке, оснащенное только одним пропеллером, "
+"обеспечивающим зависание и тягу. Низкая скорость. После поворота сильно "
+"заваливается набок. Требуется ускорение, чтобы перепрыгнуть. Весело ездить, "
+"но очень шумно и неэффективно. Добавлены тормоза."
 
 #. Game Vehicle descriptions 
 msgctxt "CarDesc_H2"
@@ -8109,12 +8167,16 @@ msgid ""
 "hovering and separate for thrust. Normal speed and still goes sideways but "
 "less. May need boost to jump over. Fun to drive and do stunts. Brakes added."
 msgstr ""
+"Быстрое гоночное судно на воздушной подушке, оснащенное двумя пропеллерами и "
+"двигателями. Один для парящего движения, другой для тяги. Обычная скорость и "
+"все еще ходит из стороны в сторону, но меньше. Может нуждаться в ускорении, "
+"чтобы перепрыгнуть. Весело управлять и выполнять трюки. Добавлены тормоза."
 
 #. Game Vehicle descriptions 
 #: src/game/Gui_UtilCar.cpp:258
 msgctxt "CarDesc_Hovercraft"
 msgid "Does hover over water, but can be forced under if on side."
-msgstr ""
+msgstr "Парит над водой, но его можно загнать под воду, если он лежит на боку."
 
 #. Game Vehicle descriptions 
 msgctxt "CarDesc_R1"
@@ -8122,6 +8184,8 @@ msgid ""
 "First antigravity hovering car. Fast and rather easy to drive. But somewhat "
 "big and bulky, goes more sideways."
 msgstr ""
+"Первый антигравитационный парящий автомобиль. Быстрый и довольно простой в "
+"управлении. Но несколько великоват и громоздок, больше ходит боком."
 
 #. Game Vehicle descriptions 
 msgctxt "CarDesc_R2"
@@ -8129,6 +8193,8 @@ msgid ""
 "Antigravity hovering car. Small, fast, agile and easy to drive. For all "
 "tracks and stunts."
 msgstr ""
+"Антигравитационный парящий автомобиль. Маленький, быстрый, маневренный и "
+"простой в управлении. Для любых трасс и трюков."
 
 #. Game Vehicle descriptions 
 msgctxt "CarDesc_R3"
@@ -8136,17 +8202,20 @@ msgid ""
 "Antigravity hovering car. Long, fast, easy to drive. Suited for all tracks "
 "and stunts."
 msgstr ""
+"Антигравитационный парящий автомобиль. Длинный, быстрый, легкий в "
+"управлении. Подходит для любых трасс и трюков."
 
 #. Game Vehicle descriptions 
 #: src/game/Gui_UtilCar.cpp:260
 msgctxt "CarDesc_HoverHandbrake"
 msgid "Handbrake pushes down and lets steer more."
-msgstr ""
+msgstr "Ручной тормоз нажимается и дает возможность больше рулить."
 
 #. Game Vehicle descriptions 
 msgctxt "CarDesc_Q1"
 msgid "First working prototype of antigravity hovering drone. Not very fast."
 msgstr ""
+"Первый рабочий прототип антигравитационного парящего дрона. Не очень быстрый."
 
 #. Game Vehicle descriptions 
 msgctxt "CarDesc_Q3"
@@ -8154,12 +8223,15 @@ msgid ""
 "Incredibly fast antigravity drone. Very agile, needs quick reactions. Press "
 "throttle sparingly and briefly at first."
 msgstr ""
+"Невероятно быстрый антигравитационный дрон. Очень маневренный, требует "
+"быстрой реакции. Поначалу нажимайте на педаль газа осторожно и "
+"кратковременно."
 
 #. Game Vehicle descriptions 
 #: src/game/Gui_UtilCar.cpp:262
 msgctxt "CarDesc_HoverFluids"
 msgid "By antigravity it ignores all fluids completely."
-msgstr ""
+msgstr "Антигравитация полностью игнорирует все жидкости."
 
 #. TIP  Hints title+text  (in game's How To Play) 
 #: data/gui/Game_Help.layout:500 ..HowToPlay.Button
@@ -8168,14 +8240,11 @@ msgid "Rewind"
 msgstr "Перемотка"
 
 #. TIP  Hints title+text  (in game's How To Play) 
-#, fuzzy
-#| msgctxt "Hint-0text"
-#| msgid ""
-#| "If you crashed or you're stuck, hold [Backspace] to move back in time."
 msgctxt "Hint-0text"
 msgid "If you crashed or you're stuck, hold [Insert] to move back in time."
 msgstr ""
-"Если ты ударился или застрял, держи [Backspace], чтобы двинуть время назад."
+"Если вы разбились или застряли, удерживайте [Insert], чтобы переместиться "
+"назад во времени."
 
 #. TIP  Hints title+text  (in game's How To Play) 
 #: data/gui/Game_Help.layout:493 ..HowToPlay.Button
@@ -8394,12 +8463,14 @@ msgstr ""
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-15"
 msgid "Help"
-msgstr ""
+msgstr "Помощь"
 
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-15text"
 msgid "For more info, check [Help] in the menu. It also has links to websites."
 msgstr ""
+"Чтобы получить доп. информацию, выберите пункт [Справка] в меню. В нем также "
+"есть ссылки на веб-сайты."
 
 #. TIP  Hints title+text  (in game's How To Play) 
 #: data/gui/Game_Help.layout:521 ..HowToPlay.Button
@@ -8420,7 +8491,7 @@ msgstr ""
 #: data/gui/Game_Help.layout:493 ..HowToPlay.Button
 msgctxt "Hint-17"
 msgid "Trail"
-msgstr ""
+msgstr "Тропа"
 
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-17text"
@@ -8428,12 +8499,15 @@ msgid ""
 "Follow racing line trail, for best way to drive. Use its colors to your "
 "advantage. Brake early when you see it turning red."
 msgstr ""
+"Следите за гоночной трассой, чтобы лучше управлять машиной. Используйте ее "
+"цвета в своих интересах. Тормозите раньше, когда увидите, что она становится "
+"красной."
 
 #. TIP  Hints title+text  (in game's How To Play) 
 #: data/gui/Game_Help.layout:493 ..HowToPlay.Button
 msgctxt "Hint-18"
 msgid "Pacenotes"
-msgstr ""
+msgstr "Pacenotes"
 
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-18text"
