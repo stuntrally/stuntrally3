@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-27 22:08+0100\n"
-"PO-Revision-Date: 2025-07-03 10:01+0000\n"
+"PO-Revision-Date: 2025-07-03 21:03+0000\n"
 "Last-Translator: Maksim_220 Кабанов <law820314@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/ru/>\n"
@@ -6416,7 +6416,7 @@ msgstr ""
 #: data/gui/Editor_Track.layout:950 ..Track.Export.Settings.Text
 msgctxt "PathOldSR"
 msgid "Path to Stunt Rally 2.x data"
-msgstr ""
+msgstr "Путь к данным Stunt Rally 2.x"
 
 #. MAIN  Editor Input Gui 
 #: data/gui/Editor_Help.layout:18 ..Help.Tab
@@ -6584,7 +6584,7 @@ msgstr "Alt-Z - вид сверху"
 #: data/gui/Editor_Help.layout:120 ..Help.Input/help.View.Text
 msgctxt "InputCamFocus"
 msgid "focus camera on current (object, anything)"
-msgstr ""
+msgstr "фокусировка камеры на текущем (объекте, чем-либо)"
 
 #. MAIN  Editor View toggle 
 #: data/gui/Editor_Help.layout:124 ..Help.Input/help.View.Text
@@ -6596,13 +6596,13 @@ msgstr "V - откл./вкл. растительность"
 #: data/gui/Editor_Help.layout:128 ..Help.Input/help.View.Text
 msgctxt "InputToggleFog"
 msgid "G - toggle Fog"
-msgstr ""
+msgstr "G - тумблер Туман"
 
 #. MAIN  Editor View toggle 
 #: data/gui/Editor_Help.layout:132 ..Help.Input/help.View.Text
 msgctxt "InputToggleWeather"
 msgid "I - toggle Weather"
-msgstr ""
+msgstr "I - переключатель Погоды"
 
 #. MAIN  Editor View toggle 
 #: data/gui/Editor_Help.layout:136 ..Help.Input/help.View.Text
