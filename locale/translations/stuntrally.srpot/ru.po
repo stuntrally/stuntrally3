@@ -412,7 +412,7 @@ msgstr "Коллекция"
 #: src/game/Gui_InitGames.cpp:95
 msgctxt "Collected"
 msgid "Collected"
-msgstr "Коллекция"
+msgstr "Собранный"
 
 #. MAIN  Game  Modes 
 #: data/gui/Game_Main.layout:442 ..NewGame-GameTypes.Button
@@ -420,7 +420,7 @@ msgstr "Коллекция"
 #: src/game/Gui_Util.cpp:171
 msgctxt "Career"
 msgid "Career"
-msgstr ""
+msgstr "Карьера"
 
 #. Game  Split screen 
 #: data/gui/Game.layout:1664 ..SingleRace.SplitScreen.Text
@@ -470,7 +470,7 @@ msgstr "Настройка"
 #: data/gui/Game.layout:914 ..SingleRace.Setup.Tab
 msgctxt "Paint"
 msgid "Paint"
-msgstr ""
+msgstr "Краска"
 
 #. Setup  Vehicle,Game 
 #: data/gui/Editor_Help.layout:241 ..Help.Input/help.Shortcuts.Text
@@ -577,7 +577,7 @@ msgstr "За турбо"
 #: src/game/Gui_Init.cpp:346
 msgctxt "GoBackTime"
 msgid "Go back time"
-msgstr ""
+msgstr "Вернуть время назад"
 
 #. Challenge types 
 #: data/gui/Game.layout:1980 ..SingleRace.Championship.Tab
@@ -669,6 +669,9 @@ msgid ""
 "Vehicle and Track, visible HUD elements and driving aids. All can be changed "
 "manually later."
 msgstr ""
+"Изменение сложности позволяет настроить: Фильтр и сортировка списка трасс, "
+"выбранный автомобиль и трасса, видимые элементы HUD и вспомогательные "
+"средства вождения. Все это можно изменить вручную позже."
 
 #. MAIN  Track Difficulty 
 #: data/gui/Game_Main.layout:226 ..NewGame-Difficulty.Button
@@ -682,6 +685,12 @@ msgid ""
 "on gravel. In Hard - cars rotate easier, and wheels spin already on gravel, "
 "good control is required."
 msgstr ""
+"Режим симуляции изменяет реалистичность транспортных средств и сложность "
+"управления. Он также меняет режим повреждений и скорость поломки автомобилей "
+"после ударов. В легком режиме - машины медленные, тяжелые и мало скользят. В "
+"среднем режиме - они быстрые, скользят и прокручивают колеса на снегу и "
+"гравии. В Hard - машины легче поворачивают, а на гравии колеса уже крутятся, "
+"требуется хороший контроль."
 
 #. MAIN  Track 
 #: data/gui/Common.layout:36 ..Window data/gui/Editor_Help.layout:235
@@ -721,7 +730,7 @@ msgstr "Новая игра"
 #: data/gui/Game_Main.layout:149 ..NewGame-Difficulty.Button :286..Window
 msgctxt "GameTypes"
 msgid "Game Types"
-msgstr ""
+msgstr "Типы игр"
 
 #. MAIN  Track 
 #: data/gui/Editor.layout:3029 ..Editor.Vegetation.Road.Advanced.Text
@@ -745,31 +754,31 @@ msgstr "Найти"
 #: src/common/GuiCom_Track.cpp:246
 msgctxt "ViewList"
 msgid "List"
-msgstr ""
+msgstr "Список"
 
 #. MAIN  Track 
 #: src/common/GuiCom_Track.cpp:246
 msgctxt "ViewListUser"
 msgid "List user"
-msgstr ""
+msgstr "Список игроков"
 
 #. MAIN  Track 
 #: src/common/GuiCom_Track.cpp:247
 msgctxt "ViewListDetail"
 msgid "List wide"
-msgstr ""
+msgstr "Широкий список"
 
 #. MAIN  Track 
 #: src/common/GuiCom_Track.cpp:247
 msgctxt "ViewGalleryList"
 msgid "Gallery list"
-msgstr ""
+msgstr "Список галерей"
 
 #. MAIN  Track 
 #: src/common/GuiCom_Track.cpp:248
 msgctxt "ViewGallery"
 msgid "Gallery"
-msgstr ""
+msgstr "Галерея"
 
 #. MAIN  Track stats 
 #: data/gui/Game.layout:383 ..SingleRace.Track.Text :2520
@@ -1011,7 +1020,7 @@ msgstr ""
 #: :741..SingleRace.Vehicle.Image
 msgctxt "TipCarDesc"
 msgid "Vehicle description text. Can have driving advices."
-msgstr ""
+msgstr "Текст описания автомобиля. Могут быть даны советы по вождению."
 
 #. TIP  Vehicle 
 #: data/gui/Game.layout:519 ..SingleRace.Vehicle.Button
@@ -1024,22 +1033,19 @@ msgstr "Перезапустите игру."
 #: src/game/Gui_InitCar.cpp:48
 msgctxt "P_1color"
 msgid "1 color, simple"
-msgstr ""
+msgstr "1 цвет, один"
 
 #. Color  params 
 #: src/game/Gui_InitCar.cpp:49
-#, fuzzy
-#| msgctxt "TextColor"
-#| msgid "Text color"
 msgctxt "P_2colors"
 msgid "2 colors"
-msgstr "Цвет текста"
+msgstr "2 цвета"
 
 #. Color  params 
 #: src/game/Gui_InitCar.cpp:49
 msgctxt "P_3colors"
 msgid "3 colors, changing"
-msgstr ""
+msgstr "3 цвета, меняющиеся"
 
 #. Color  params 
 #: data/gui/Editor_Utils.layout:108 ..Color.Text data/gui/Game.layout:1124
@@ -1081,7 +1087,7 @@ msgstr "Отраж."
 #: data/gui/MaterialEditor.layout:149 ..MaterialEditor.Main.Text :194
 msgctxt "ColMetalness"
 msgid "Metalness"
-msgstr ""
+msgstr "Металличность"
 
 #. Color  params 
 #: data/gui/Game.layout:1194 ..SingleRace.Setup.Paint.Text
@@ -1091,12 +1097,9 @@ msgstr ""
 #: ..MaterialEditor.Main.Text :180:184..MaterialEditor.Main.Slider
 #: :188..MaterialEditor.Main.Edit :222..MaterialEditor.Main.Text
 #: :223:227..MaterialEditor.Main.Slider :231..MaterialEditor.Main.Edit
-#, fuzzy
-#| msgctxt "ColBright"
-#| msgid "Brightness"
 msgctxt "ColRoughness"
 msgid "Roughness"
-msgstr "Яркость"
+msgstr "Шероховатость"
 
 #. Color  params 
 #: data/gui/Game.layout:1240 ..SingleRace.Setup.Paint.Text
@@ -1108,7 +1111,7 @@ msgstr "Яркость"
 #: :164:168..MaterialEditor.Main.Slider :172..MaterialEditor.Main.Edit
 msgctxt "ColFresnel"
 msgid "Fresnel"
-msgstr ""
+msgstr "Френель"
 
 #. Color  params 
 #: data/gui/Game.layout:1210 ..SingleRace.Setup.Paint.Text
@@ -1120,7 +1123,7 @@ msgstr ""
 #: :231..MaterialEditor.Main.Edit
 msgctxt "ColClearCoat"
 msgid "Clear coat"
-msgstr ""
+msgstr "Прозрачный слой"
 
 #. Color  extras 
 #: data/gui/Editor_Options.layout:1163 ..Options.View.Pacenotes.Text
@@ -1159,7 +1162,7 @@ msgstr "Настроить"
 #: data/gui/Game.layout:968 ..SingleRace.Setup.Paint.Check
 msgctxt "NewLine"
 msgid "New line"
-msgstr ""
+msgstr "Новая  линия"
 
 #. TIP  Vehicle Color 
 #: src/game/Gui_Paints.cpp:511
@@ -1168,6 +1171,9 @@ msgid ""
 "Click to apply color to vehicle, and select. Shift-Click move selected here. "
 "Alt-Click swap color with selected."
 msgstr ""
+"Щелкните, чтобы применить цвет к автомобилю, и выберите его. Щелчком по "
+"клавише Shift переместите выбранное сюда. Alt-Click поменяйте цвет с "
+"выбранным."
 
 #. TIP  Vehicle Color 
 #: data/gui/Game.layout:1127 ..SingleRace.Setup.Paint.Text
@@ -1249,13 +1255,13 @@ msgstr "Тип"
 #: :861..SingleRace.Vehicle.Text :2544..SingleRace.Track.Text
 msgctxt "TrackDrivability"
 msgid "Track Drivability"
-msgstr ""
+msgstr "Управляемость на трассе"
 
 #. MAIN  Vehicle basic stats 
 #: src/game/Gui_UtilCar.cpp:286
 msgctxt "Undrivable"
 msgid "Undrivable"
-msgstr ""
+msgstr "Неуправляемый"
 
 #. MAIN  Vehicle Stats 
 #: src/game/Gui_UtilCar.cpp:431
@@ -1345,12 +1351,12 @@ msgstr "Иной"
 #: :2007..SingleRace.Championship.Tab
 msgctxt "CarType_Hover"
 msgid "Hover"
-msgstr ""
+msgstr "наведение"
 
 #. MAIN  Vehicle types 
 msgctxt "CarType_Hovercraft"
 msgid "Hovercraft"
-msgstr ""
+msgstr "Судно на воздушной подушке"
 
 #. MAIN  Vehicle types 
 #: data/gui/Game_Options.layout:1182 ..Options.Graphics.Lights.Check
@@ -1361,32 +1367,33 @@ msgstr "Косм. корабль"
 #. MAIN  Vehicle types 
 msgctxt "CarType_Drone"
 msgid "Drone"
-msgstr ""
+msgstr "Дрон"
 
 #. Vehicle  Names  from animals 
 msgctxt "Turtle"
 msgid "Turtle"
-msgstr ""
+msgstr "Черепаха"
 
 #. Vehicle  Names  from animals 
 msgctxt "Elephant"
 msgid "Elephant"
-msgstr ""
+msgstr "Слон"
 
 #. Vehicle  Names  from animals 
 msgctxt "Alligator"
 msgid "Alligator"
-msgstr ""
+msgstr "Аллигатор"
 
 #. Vehicle  Names  from animals 
 msgctxt "Bison"
 msgid "Bison"
-msgstr ""
+msgstr "Бизон"
 
 #. Vehicle  Names  from animals 
+#, fuzzy
 msgctxt "Caterpillar"
 msgid "Caterpillar"
-msgstr ""
+msgstr "Caterpillar"
 
 #. Vehicle  Names  from animals 
 msgctxt "Rhino"
