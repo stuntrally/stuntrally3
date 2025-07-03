@@ -1398,42 +1398,42 @@ msgstr "Caterpillar"
 #. Vehicle  Names  from animals 
 msgctxt "Rhino"
 msgid "Rhino"
-msgstr ""
+msgstr "Носорог"
 
 #. Vehicle  Names  from animals 
 msgctxt "Bear"
 msgid "Bear"
-msgstr ""
+msgstr "Медведь"
 
 #. Vehicle  Names  from animals 
 msgctxt "Coyote"
 msgid "Coyote"
-msgstr ""
+msgstr "Койот"
 
 #. Vehicle  Names  from animals 
 msgctxt "Squirrel"
 msgid "Squirrel"
-msgstr ""
+msgstr "Белка"
 
 #. Vehicle  Names  from animals 
 msgctxt "Fox"
 msgid "Fox"
-msgstr ""
+msgstr "Лиса"
 
 #. Vehicle  Names  from animals 
 msgctxt "Hyena"
 msgid "Hyena"
-msgstr ""
+msgstr "Гиена"
 
 #. Vehicle  Names  from animals 
 msgctxt "Gorilla"
 msgid "Gorilla"
-msgstr ""
+msgstr "Горилла"
 
 #. Vehicle  Names  from animals 
 msgctxt "Lizard"
 msgid "Lizard"
-msgstr ""
+msgstr "Ящерица"
 
 #. Vehicle  Names  from animals 
 msgctxt "Weasel"
@@ -2671,17 +2671,14 @@ msgstr ""
 #. Screen  not used 
 msgctxt "Gamma"
 msgid "Gamma"
-msgstr ""
+msgstr "Гамма"
 
 #. Screen  not used 
 #: data/gui/Editor_Options.layout:119 ..Options.Screen.Video.Check
 #: data/gui/Game_Options.layout:118
-#, fuzzy
-#| msgctxt "ReflMode"
-#| msgid "Mode"
 msgctxt "VRmode"
 msgid "VR Mode"
-msgstr "Режим"
+msgstr "Режим VR"
 
 #. Screen  not used 
 msgctxt "Complex"
@@ -2754,12 +2751,9 @@ msgstr "Очень высокая"
 
 #. Graphics Presets 
 #: src/common/GuiCom_Options.cpp:174
-#, fuzzy
-#| msgctxt "GraphicsAll_Higher"
-#| msgid "Higher"
 msgctxt "GraphicsAll_Highest"
 msgid "Highest"
-msgstr "Выше"
+msgstr "Самый высокий"
 
 #. Graphics Presets 
 #: src/game/Gui_Init.cpp:313 src/common/GuiCom_Options.cpp:174
@@ -2772,7 +2766,7 @@ msgstr "Ультра"
 #: data/gui/Game_Options.layout:910
 msgctxt "NeedApply"
 msgid "need Apply"
-msgstr ""
+msgstr "нужно Применить"
 
 #. Graphics  info 
 #: data/gui/Game_Options.layout:936 ..Options.Graphics.Button
@@ -2782,12 +2776,9 @@ msgstr "Для применения *изменений перезагрузит
 
 #. Graphics  info 
 #: data/gui/Editor_Options.layout:378 ..Options.Graphics.Text
-#, fuzzy
-#| msgctxt "MessageBox_Ignore"
-#| msgid "Ignore"
 msgctxt "Ignored"
 msgid "ignored"
-msgstr "Игнорировать"
+msgstr "игнорировать"
 
 #. Graphics  info 
 #: data/gui/Editor.layout:1922 ..Editor.Grasses.Properties.Text
@@ -2800,12 +2791,12 @@ msgstr "Игнорировать"
 #: :265..Options.Screen.Advanced.Check :916..Options.Graphics.Text
 msgctxt "NotDone"
 msgid "not done yet, ToDo"
-msgstr ""
+msgstr "еще не сделано, ToDo"
 
 #. Graphics  info 
 msgctxt "WIP"
 msgid "WIP, work in progress"
-msgstr ""
+msgstr "WIP, незавершённая работа"
 
 #. Graphics  info 
 #: data/gui/Editor_Options.layout:390 ..Options.Graphics.Edit
@@ -3113,6 +3104,9 @@ msgid ""
 "Hosting a multiplayer game requires port forwarding. Connecting to existing "
 "game doesn't need it, provided other players have it."
 msgstr ""
+"Для размещения многопользовательской игры требуется проброс портов. "
+"Подключение к существующей игре не требует его, если он есть у других "
+"игроков."
 
 #. Graphics  Detail 
 #: data/gui/Editor_Track.layout:986 ..Track.Export.Settings.Button
@@ -3164,13 +3158,13 @@ msgstr "Качество дороги"
 #: data/gui/Game_Options.layout:1207
 msgctxt "GridQual"
 msgid "Grid quality"
-msgstr ""
+msgstr "Качество сетки"
 
 #. Graphics  Detail 
 #: data/gui/Game_Options.layout:1505 ..Options.Graphics.Simulation.Text
 msgctxt "Quality"
 msgid "Quality"
-msgstr ""
+msgstr "Качество"
 
 #. Graphics  Textures 
 #: data/gui/Editor_Options.layout:792 ..Options.Graphics.Tab
@@ -3238,7 +3232,7 @@ msgstr "Растит."
 #: :1341..Options.Graphics.Horizon.Text
 msgctxt "Bush"
 msgid "Bush"
-msgstr ""
+msgstr "Размытие"
 
 #. Graphics  Vegetation 
 msgctxt "DistMult"
@@ -3250,7 +3244,7 @@ msgstr "Коэф. дистанции"
 #: data/gui/Game_Options.layout:1293
 msgctxt "Limit"
 msgid "Limit"
-msgstr ""
+msgstr "Ограничение"
 
 #. Graphics  Vegetation 
 #: data/gui/Editor.layout:897 ..Editor.Terrain.Brushes.Button
@@ -3301,7 +3295,7 @@ msgstr "Сталк. сразу"
 #: data/gui/Game_Options.layout:1015
 msgctxt "IblSamples"
 msgid "IBL samples"
-msgstr ""
+msgstr "Образцы IBL"
 
 #. Graphics  reflections 
 msgctxt "ReflMode"
@@ -3401,9 +3395,6 @@ msgstr "Размер карты осв."
 #: data/gui/Editor_Objects.layout:100 ..Objects.Tab
 #: data/gui/Editor_Options.layout:602 ..Options.Graphics.Tab
 #: data/gui/Game_Options.layout:1148
-#, fuzzy
-#| msgctxt "Light"
-#| msgid "Light"
 msgctxt "Lights"
 msgid "Lights"
 msgstr "Освещение"
@@ -3411,19 +3402,16 @@ msgstr "Освещение"
 #. Graphics  lights 
 #: data/gui/Editor_Options.layout:604 ..Options.Graphics.Lights.Check
 #: data/gui/Game_Options.layout:1160
-#, fuzzy
-#| msgctxt "Vehicles"
-#| msgid "Vehicles"
 msgctxt "VehicleLights"
 msgid "Vehicle Lights"
-msgstr "Машины"
+msgstr "Автомобильные фары"
 
 #. Graphics  lights 
 #: data/gui/Game.layout:1062 ..SingleRace.Setup.Paint.Tab
 #: data/gui/Game_Options.layout:1187 ..Options.Graphics.Lights.Check
 msgctxt "UnderGlow"
 msgid "Under glow"
-msgstr ""
+msgstr "Под свечением"
 
 #. Graphics  particles 
 #: data/gui/Editor.layout:148 ..Editor.Sun.Sun.Check
@@ -3576,7 +3564,7 @@ msgstr "Показать"
 #: data/gui/Game_Options.layout:741 src/editor/Update_EditKeyTxt.cpp:70
 msgctxt "RacingLine"
 msgid "Racing Line (trail)"
-msgstr ""
+msgstr "Гоночная линия (след)"
 
 #. View  Camera 
 #: data/gui/Editor_Options.layout:917 ..Options.View.Tab
@@ -3632,28 +3620,28 @@ msgstr "Эффекты"
 #: data/gui/Game_Options.layout:191
 msgctxt "SSAO"
 msgid "SSAO (Ambient Occlusion)"
-msgstr ""
+msgstr "SSAO (окружающая окклюзия)"
 
 #. Effects  Main 
 #: data/gui/Editor_Options.layout:220 ..Options.Screen.Effects.Check
 #: data/gui/Game_Options.layout:219
 msgctxt "LensFlare"
 msgid "Lens flare"
-msgstr ""
+msgstr "Блики на объективе"
 
 #. Effects  Main 
 #: data/gui/Editor_Options.layout:226 ..Options.Screen.Effects.Check
 #: data/gui/Game_Options.layout:225
 msgctxt "SunBeams"
 msgid "Sunbeams"
-msgstr ""
+msgstr "Солнечные лучи"
 
 #. Effects  Main 
 #: data/gui/Editor_Options.layout:266 ..Options.Screen.Advanced.Check
 #: data/gui/Game_Options.layout:265
 msgctxt "GI"
 msgid "Global Illumination"
-msgstr ""
+msgstr "Глобальное освещение"
 
 #. Effects  not used 
 #: data/gui/Editor_Options.layout:165 ..Options.Screen.Effects.Check
@@ -3686,7 +3674,7 @@ msgstr "Затемнение"
 #: data/gui/Game_Options.layout:237
 msgctxt "SoftParticles"
 msgid "Soft Particles"
-msgstr ""
+msgstr "Мягкие частицы"
 
 #. Effects  not used 
 msgctxt "MotionBlur"
@@ -3736,7 +3724,7 @@ msgstr "HDR"
 #: data/gui/Game_Options.layout:232
 msgctxt "HDR"
 msgid "HDR and Bloom (High Dynamic Range)"
-msgstr ""
+msgstr "HDR и Блум (высокий динамический диапазон)"
 
 #. Effects  HDR  not used 
 #: data/gui/Editor_Options.layout:243 ..Options.Screen.Effects.Text
@@ -3797,34 +3785,34 @@ msgid ""
 "not cached already. Optionally also properties on top, messing error line "
 "numbers."
 msgstr ""
+"Сохраняет сгенерированные шейдеры в папке cache/shaders/ пользователя. "
+"Только для тех, которые еще не кэшированы. Опционально также свойства "
+"сверху, путающие номера строк ошибок."
 
 #. Settings  debug 
 #: data/gui/Editor_Options.layout:1442 ..Options.Settings.Tweak.Text
 #: data/gui/Game_Options.layout:1916 ..Options.Tweak.Other.Text
 msgctxt "FPS"
 msgid "Fps bar, render statistics"
-msgstr ""
+msgstr "Полоса Fps, статистика рендеринга"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:338:339:340:341
-#, fuzzy
-#| msgctxt "FramesPerSec"
-#| msgid "Frames per second"
 msgctxt "FPS_Fps"
 msgid "Frames per second"
-msgstr "Кадров в секунду"
+msgstr "Кадры в секунду"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:339:341
 msgctxt "FPS_Triangles"
 msgid "Millions of triangles"
-msgstr ""
+msgstr "Миллионы треугольников"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:339:340:341
 msgctxt "FPS_Draws"
 msgid "Draw calls"
-msgstr ""
+msgstr "Вызовы на рисование"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:342
@@ -3833,28 +3821,25 @@ msgstr ""
 #| msgid "Distance"
 msgctxt "FPS_Instances"
 msgid "Instances"
-msgstr "Дистанция"
+msgstr "Экземпляры"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:342
-#, fuzzy
-#| msgctxt "VegetCol"
-#| msgid "Vegetation collision"
 msgctxt "FPS_Vegetation"
 msgid "Vegetation models"
-msgstr "Столк. с растит."
+msgstr "Модели растительности"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:343
 msgctxt "FPS_Workspaces"
 msgid "Workspaces"
-msgstr ""
+msgstr "Рабочие места"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:340:343
 msgctxt "FPS_Memory"
 msgid "GPU memory"
-msgstr ""
+msgstr "Память GPU"
 
 #. Settings  debug 
 #: data/gui/Editor_Options.layout:1476 ..Options.Settings.Tweak.Check
@@ -3892,21 +3877,21 @@ msgstr "Всё инфо о звуке в графиках"
 #: data/gui/Game_Options.layout:1883 ..Options.Settings.Check
 msgctxt "CacheMaterials"
 msgid "Cache Materials"
-msgstr ""
+msgstr "Материалы для кэша"
 
 #. Settings  cache, shaders 
 #: data/gui/Editor_Options.layout:1419 ..Options.Settings.Settings.Check
 #: data/gui/Game_Options.layout:1887 ..Options.Settings.Check
 msgctxt "CacheShaders"
 msgid "Cache Shaders"
-msgstr ""
+msgstr "Кэш шейдеров"
 
 #. Settings  cache, shaders 
 #: data/gui/Editor_Options.layout:1527 ..Options.Settings.Advanced.Check
 #: data/gui/Game_Options.layout:2080 ..Options.Tweak.Advanced.Check
 msgctxt "DebugShaders"
 msgid "Debug Shaders"
-msgstr ""
+msgstr "Отладка шейдеров"
 
 #. Settings  cache, shaders 
 #: data/gui/Editor_Options.layout:1532 ..Options.Settings.Advanced.Check
