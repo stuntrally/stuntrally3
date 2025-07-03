@@ -8507,7 +8507,7 @@ msgstr ""
 #: data/gui/Game_Help.layout:493 ..HowToPlay.Button
 msgctxt "Hint-18"
 msgid "Pacenotes"
-msgstr "Pacenotes"
+msgstr "Заметки"
 
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-18text"
@@ -8515,11 +8515,13 @@ msgid ""
 "Observe pace note signs above road. They show turns: easy as green, medium "
 "as orange, and sharpest being red."
 msgstr ""
+"Следите за указателями темпа над дорогой. На них указаны повороты: легкий - "
+"зеленый, средний - оранжевый, а самый крутой - красный."
 
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-19"
 msgid "Stunt Pacenotes"
-msgstr ""
+msgstr "Трюковые пакеноты"
 
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-19text"
@@ -8528,12 +8530,16 @@ msgid ""
 "jumps, also text with ideal speed is shown. Turning green on close match, "
 "orange when too slow and cyan or white when too fast."
 msgstr ""
+"В примечаниях к темпу также предупреждается о таких трюках, как прыжки, "
+"сальто и катание по трубе. Для прыжков также показан текст с идеальной "
+"скоростью. Он становится зеленым при близком совпадении, оранжевым - при "
+"слишком медленном, голубым или белым - при слишком быстром."
 
 #. TIP  Hints title+text  (in game's How To Play) 
 #: data/gui/Game_Help.layout:521 ..HowToPlay.Button
 msgctxt "Hint-20"
 msgid "Fluids"
-msgstr ""
+msgstr "Жидкости"
 
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-20text"
@@ -8541,12 +8547,15 @@ msgid ""
 "Fluids like water and mud are safe. You can drive cars under the water and "
 "through mud. Stay out of lava and acid, which will cause damage fast."
 msgstr ""
+"Такие жидкости, как вода и грязь, безопасны. Вы можете ездить на машинах под "
+"водой и по грязи. Держитесь подальше от лавы и кислоты, которые быстро "
+"нанесут урон."
 
 #. TIP  Hints title+text  (in game's How To Play) 
 #: data/gui/Game_Help.layout:528 ..HowToPlay.Button
 msgctxt "Hint-21"
 msgid "Wheels"
-msgstr ""
+msgstr "Колеса"
 
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-21text"
@@ -8555,21 +8564,25 @@ msgid ""
 "throttle to get back grip and wheels rolling normally. This will happen on "
 "surfaces like snow or with faster cars."
 msgstr ""
+"Остерегайтесь вращающихся колес, машина потеряет сцепление с дорогой и будет "
+"слишком сильно скользить. Отпустите педаль газа, чтобы вернуть сцепление с "
+"дорогой, и колеса покатятся нормально. Это может произойти на таких "
+"поверхностях, как снег, или на более быстрых машинах."
 
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-22"
 msgid "Keyboard"
-msgstr ""
+msgstr "Клавиатура"
 
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-22text"
 msgid "By default, keyboard arrows are used to drive."
-msgstr ""
+msgstr "По умолчанию для управления используются стрелки клавиатуры."
 
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-23"
 msgid "Editors"
-msgstr ""
+msgstr "Редакция"
 
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-23text"
@@ -8578,12 +8591,15 @@ msgid ""
 "or create your own. Game also has its vehicle editor and many other "
 "development tools."
 msgstr ""
+"Stunt Rally поставляется с собственным редактором трасс, в котором вы можете "
+"изменять их или создавать свои собственные. В игре также есть редактор "
+"автомобилей и множество других инструментов разработки."
 
 #. TIP  Hints title+text  (in game's How To Play) 
 #: data/gui/Game_Help.layout:535 ..HowToPlay.Button
 msgctxt "Hint-24"
 msgid "Details"
-msgstr ""
+msgstr "Подробности"
 
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-24text"
@@ -8592,11 +8608,14 @@ msgid ""
 "their lists. Some vehicles are difficult to drive, and will only drive well "
 "on few tracks."
 msgstr ""
+"На вкладках \"Трек\" и \"Автомобиль\" отображается много информации. Их "
+"списки можно сортировать или фильтровать. Некоторые автомобили сложны в "
+"управлении и хорошо едут только на некоторых трассах."
 
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-25"
 msgid "Support"
-msgstr ""
+msgstr "Поддержка"
 
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-25text"
@@ -8604,12 +8623,15 @@ msgid ""
 "Stunt Rally is Free Libre Open Source Software. You can contribute to this "
 "project or support it with donation(s)."
 msgstr ""
+"Stunt Rally - это бесплатное программное обеспечение с открытым исходным "
+"кодом. Вы можете внести свой вклад в этот проект или поддержать его "
+"пожертвованием (пожертвованиями)."
 
 #. TIP  Hints title+text  (in game's How To Play) 
 #: data/gui/Game_Help.layout:528 ..HowToPlay.Button
 msgctxt "Hint-26"
 msgid "Test tracks"
-msgstr ""
+msgstr "Испытательные треки"
 
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-26text"
@@ -8618,12 +8640,15 @@ msgid ""
 "tracks with no roads: Flat, TerrainBig, Fluids, Snow or Asphalt. Type name "
 "in find box for quick search."
 msgstr ""
+"В начале пути может быть безопаснее и интереснее тренироваться ездить на "
+"больших испытательных треках без дорог: Плоский, Большой Рельеф , Жидкости, "
+"Снег или Асфальт. Введите название в поле поиска для быстрого поиска."
 
 #. TIP  Hints title+text  (in game's How To Play) 
 #: data/gui/Game_Help.layout:528 ..HowToPlay.Button
 msgctxt "Hint-27"
 msgid "Handbrake"
-msgstr ""
+msgstr "Ручной тормоз"
 
 #. TIP  Hints title+text  (in game's How To Play) 
 msgctxt "Hint-27text"
@@ -8631,6 +8656,8 @@ msgid ""
 "Use handbrake very shortly in very sharp turns. It will lock rear wheels and "
 "make car turn faster."
 msgstr ""
+"На очень резких поворотах используйте ручной тормоз очень коротко. Это "
+"заблокирует задние колеса и заставит автомобиль поворачивать быстрее."
 
 #. TIP  Track 
 #: data/gui/Editor_Options.layout:396 ..Options.Graphics.Button
