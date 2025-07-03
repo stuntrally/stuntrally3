@@ -6596,7 +6596,7 @@ msgstr "V - откл./вкл. растительность"
 #: data/gui/Editor_Help.layout:128 ..Help.Input/help.View.Text
 msgctxt "InputToggleFog"
 msgid "G - toggle Fog"
-msgstr "G - тумблер Туман"
+msgstr "G - переключатель Тумана"
 
 #. MAIN  Editor View toggle 
 #: data/gui/Editor_Help.layout:132 ..Help.Input/help.View.Text
@@ -6608,7 +6608,7 @@ msgstr "I - переключатель Погоды"
 #: data/gui/Editor_Help.layout:136 ..Help.Input/help.View.Text
 msgctxt "InputToggleParticles"
 msgid "P - toggle Particles"
-msgstr ""
+msgstr "P - переключатель Частиц"
 
 #. Terrain  Edit modes 
 #: data/gui/Editor_Help.layout:279 ..Help.Input/help.Terrain.Text
@@ -6662,7 +6662,7 @@ msgstr "W - ред. жидкости"
 #: data/gui/Editor_Help.layout:650 ..Help.Input/help.Fluids.Text
 msgctxt "TipFluidExamples"
 msgid "water, mud, acid, ice, lava, oil, etc."
-msgstr ""
+msgstr "вода, грязь, кислота, лед, лава, нефть и т.д."
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:698 ..Help.Input/help.Objects.Text
@@ -6674,43 +6674,43 @@ msgstr "X - ред. объекты"
 #: data/gui/Editor_Help.layout:698 ..Help.Input/help.Objects.Text
 msgctxt "TipObjectExamples"
 msgid "crates, buildings, obstacles, caves, etc."
-msgstr ""
+msgstr "ящики, здания, препятствия, пещеры и т.д."
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:785 ..Help.Input/help.Particles.Text
 msgctxt "InputParticlesMode"
 msgid "A - edit Particles"
-msgstr ""
+msgstr "A - Редакт. Частицы"
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:785 ..Help.Input/help.Particles.Text
 msgctxt "TipParticleExamples"
 msgid "cloud, fire, smoke, etc."
-msgstr ""
+msgstr "облака, огонь, дым и т.д."
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:856 ..Help.Input/help.Collection.Text
 msgctxt "InputCollectMode"
 msgid "edit Collectibles"
-msgstr ""
+msgstr "редакт. Коллекционные предметы"
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:856 ..Help.Input/help.Collection.Text
 msgctxt "TipCollectExamples"
 msgid "crystals, gems, resources, etc."
-msgstr ""
+msgstr "кристаллы, драгоценные камни, ресурсы и т.д."
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:891 ..Help.Input/help.Collection.Text
 msgctxt "InputCollectGroup"
 msgid "Collectible group (for more sets)"
-msgstr ""
+msgstr "Коллекционная группа (для большего кол-ва наборов)"
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:919 ..Help.Input/help.Fields.Text
 msgctxt "InputFieldsMode"
 msgid "edit Fields"
-msgstr ""
+msgstr "Редактировать Поля"
 
 #. Other Edit modes 
 #: data/gui/Editor_Help.layout:919 ..Help.Input/help.Fields.Text
