@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-27 22:08+0100\n"
-"PO-Revision-Date: 2025-07-03 21:03+0000\n"
+"PO-Revision-Date: 2025-07-04 01:15+0000\n"
 "Last-Translator: Maksim_220 Кабанов <law820314@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/stunt-rally-3/"
 "stunt-rally-3/ru/>\n"
@@ -1390,10 +1390,9 @@ msgid "Bison"
 msgstr "Бизон"
 
 #. Vehicle  Names  from animals 
-#, fuzzy
 msgctxt "Caterpillar"
 msgid "Caterpillar"
-msgstr "Caterpillar"
+msgstr "Гусеница"
 
 #. Vehicle  Names  from animals 
 msgctxt "Rhino"
@@ -1438,102 +1437,102 @@ msgstr "Ящерица"
 #. Vehicle  Names  from animals 
 msgctxt "Weasel"
 msgid "Weasel"
-msgstr ""
+msgstr "Ласка"
 
 #. Vehicle  Names  from animals 
 msgctxt "Wolf"
 msgid "Wolf"
-msgstr ""
+msgstr "Волк"
 
 #. Vehicle  Names  from animals 
 msgctxt "Scorpion"
 msgid "Scorpion"
-msgstr ""
+msgstr "Скорпион"
 
 #. Vehicle  Names  from animals 
 msgctxt "Buffalo"
 msgid "Buffalo"
-msgstr ""
+msgstr "Буйвол"
 
 #. Vehicle  Names  from animals 
 msgctxt "Gazelle"
 msgid "Gazelle"
-msgstr ""
+msgstr "Газель"
 
 #. Vehicle  Names  from animals 
 msgctxt "Jaguar"
 msgid "Jaguar"
-msgstr ""
+msgstr "Ягуар"
 
 #. Vehicle  Names  from animals 
 msgctxt "Puma"
 msgid "Puma"
-msgstr ""
+msgstr "Пума"
 
 #. Vehicle  Names  from animals 
 msgctxt "Leopard"
 msgid "Leopard"
-msgstr ""
+msgstr "Леопард"
 
 #. Vehicle  Names  from animals 
 msgctxt "Beetle"
 msgid "Beetle"
-msgstr ""
+msgstr "Жук"
 
 #. Vehicle  Names  from animals 
 msgctxt "Swan"
 msgid "Swan"
-msgstr ""
+msgstr "Лебедь"
 
 #. Vehicle  Names  from animals 
 msgctxt "Duck"
 msgid "Duck"
-msgstr ""
+msgstr "Утка"
 
 #. Vehicle  Names  from animals 
 msgctxt "Hawk"
 msgid "Hawk"
-msgstr ""
+msgstr "Ястреб"
 
 #. Vehicle  Names  from animals 
 msgctxt "Rabbit"
 msgid "Rabbit"
-msgstr ""
+msgstr "Кролик"
 
 #. Vehicle  Names  from animals 
 msgctxt "Python"
 msgid "Python"
-msgstr ""
+msgstr "Питон"
 
 #. Vehicle  Names  from animals 
 msgctxt "Cobra"
 msgid "Cobra"
-msgstr ""
+msgstr "Кобра"
 
 #. Vehicle  Names  from animals 
 msgctxt "Eagle"
 msgid "Eagle"
-msgstr ""
+msgstr "Орел"
 
 #. Vehicle  Names  from animals 
 msgctxt "Crow"
 msgid "Crow"
-msgstr ""
+msgstr "Ворон"
 
 #. Vehicle  Names  from animals 
 msgctxt "Falcon"
 msgid "Falcon"
-msgstr ""
+msgstr "Сокол"
 
 #. Vehicle  Names  from animals 
 msgctxt "Owl"
 msgid "Owl"
-msgstr ""
+msgstr "Сова"
 
 #. Vehicle  Names  from animals 
 msgctxt "Sparrow"
 msgid "Sparrow"
-msgstr ""
+msgstr "Воробей"
 
 #. Editor  status 
 #: src/editor/App_SceneInitEd.cpp:288
@@ -1659,30 +1658,21 @@ msgstr "Упорядочить"
 
 #. Loading game tags 
 #: src/game/Game_SceneInit.cpp:860
-#, fuzzy
-#| msgctxt "LS_GAME"
-#| msgid "Loading game"
 msgctxt "LS_GAME"
 msgid "Loading Game"
 msgstr "Загрузка игры"
 
 #. Loading game tags 
 #: src/game/Game_SceneInit.cpp:860:943
-#, fuzzy
-#| msgctxt "LS_SCENE"
-#| msgid "Loading scene"
 msgctxt "LS_SCENE"
 msgid "Loading Scene"
-msgstr "Загрузка сцены"
+msgstr "Сцена загрузки"
 
 #. Loading game tags 
 #: src/game/Game_SceneInit.cpp:860
-#, fuzzy
-#| msgctxt "LS_TREES"
-#| msgid "Loading Trees"
 msgctxt "LS_CAR"
 msgid "Loading Vehicles"
-msgstr "Загрузка деревьев"
+msgstr "Загрузка машин"
 
 #. Loading game tags 
 #: src/game/Game_SceneInit.cpp:861
