@@ -5915,7 +5915,7 @@ msgstr "Звуки"
 #: data/gui/Editor_Objects.layout:122 ..Objects.Tab
 msgctxt "Entities"
 msgid "Entities"
-msgstr "Объекты"
+msgstr "Сущности"
 
 #. Tools 
 #: data/gui/Editor.layout:1272 ..Editor.Terrain.Tab
@@ -6014,27 +6014,21 @@ msgstr "Ровность"
 
 #. Tools  Align 
 #: data/gui/Editor.layout:1312 ..Editor.Terrain.Tools.Button :1314
-#, fuzzy
-#| msgctxt "AlignTerrainToRoad"
-#| msgid "Align terrain to road"
 msgctxt "AlignHorizonToTerrain"
 msgid "Align horizon to terrain"
-msgstr "Вырав. дороги с ландшафтом"
+msgstr "Выровнять горизонт по рельефу"
 
 #. Tools  Align 
 #: data/gui/Editor.layout:1317 ..Editor.Terrain.Tools.Text
-#, fuzzy
-#| msgctxt "CarType_Terrain"
-#| msgid "Terrain"
 msgctxt "AH_BaseTer"
 msgid "Base Terrain"
-msgstr "Земной"
+msgstr "Базовый рельеф"
 
 #. Tools  Align 
 #: data/gui/Editor.layout:1326 ..Editor.Terrain.Tools.Text
 msgctxt "AH_Below"
 msgid "Below"
-msgstr ""
+msgstr "Ниже"
 
 #. Editor Game setup 
 #: data/gui/Editor_Track.layout:597 ..Track.Game.Text
@@ -6063,12 +6057,9 @@ msgstr "Не показ. сообщение Пропущена КТ"
 
 #. Editor Game setup 
 #: data/gui/Editor_Track.layout:618 ..Track.Game.Check
-#, fuzzy
-#| msgctxt "Vehicles"
-#| msgid "Vehicles"
 msgctxt "NeedLights"
 msgid "Requires vehicle lights"
-msgstr "Машины"
+msgstr "Требуются автомобильные фары"
 
 #. Editor Warnings 
 #: data/gui/Editor_Help.layout:244 ..Help.Input/help.Shortcuts.Text
@@ -6150,12 +6141,9 @@ msgstr "Мини-карта, размер"
 
 #. Editor  Settings main 
 #: data/gui/Editor_Options.layout:1025 ..Options.View.Minimap.Text
-#, fuzzy
-#| msgctxt "Minimap"
-#| msgid "Minimap"
 msgctxt "MiniType"
 msgid "Minimap type"
-msgstr "Мини-карта"
+msgstr "Тип мини-карты"
 
 #. Editor  Settings update 
 #: data/gui/Editor_Options.layout:1069 ..Options.View.Minimap.Text
@@ -6165,12 +6153,9 @@ msgstr "Размер точек дороги"
 
 #. Editor  Settings update 
 #: data/gui/Editor_Options.layout:1058 ..Options.View.Minimap.Text
-#, fuzzy
-#| msgctxt "TerUpdSkip"
-#| msgid "Terrain update skip"
 msgctxt "RoadUpdSkip"
 msgid "Road update skip"
-msgstr "Пропустить обновление ландшафта"
+msgstr "Пропуск обновления дороги"
 
 #. Editor  Settings update 
 #: data/gui/Editor_Options.layout:1047 ..Options.View.Minimap.Text
@@ -6188,7 +6173,7 @@ msgstr "Пропуск обновления мини-карты"
 #: data/gui/Editor_Options.layout:1091 ..Options.View.Minimap.Text
 msgctxt "EditSpd"
 msgid "Edit speed"
-msgstr ""
+msgstr "Скорость редактирования"
 
 #. Editor  Settings auto 
 #: data/gui/Editor_Options.layout:1396 ..Options.Settings.Settings.Check
@@ -6203,12 +6188,9 @@ msgstr "Авто обновление смешивания отображени�
 
 #. Editor  Settings extras 
 #: data/gui/Editor_Options.layout:1486 ..Options.Settings.Tweak.Check
-#, fuzzy
-#| msgctxt "EdCamPos"
-#| msgid "Camera position"
 msgctxt "EdCamPos"
 msgid "Camera position bar  Ctrl-C"
-msgstr "Позиция камеры"
+msgstr "Позиция камеры Ctrl + C"
 
 #. Editor  Settings extras 
 #: data/gui/Editor_Options.layout:1496 ..Options.Settings.Tweak.Check
@@ -6307,12 +6289,9 @@ msgstr "Настройка"
 #: data/gui/Game_Options.layout:511 ..Options.Input.Shortcuts.Text
 #: :2053..Options.Tweak.Advanced.Button data/gui/MaterialEditor.layout:5
 #: ..Window
-#, fuzzy
-#| msgctxt "GrMaterial"
-#| msgid "Material"
 msgctxt "MaterialEditor"
 msgid "Material Editor"
-msgstr "Материал"
+msgstr "Редактор материалов"
 
 #. Tweak 
 #: src/game/Gui_Replay.cpp:77:148 src/game/Game_SceneInit.cpp:240
@@ -6332,25 +6311,25 @@ msgstr "Оригинал"
 #: data/gui/Editor_Track.layout:686 ..Track.Tab :690..Track.Export.Button
 msgctxt "Export"
 msgid "Export"
-msgstr ""
+msgstr "Экспорт"
 
 #. Export, RoR 
 #: data/gui/Editor_Track.layout:960 ..Track.Export.Settings.Check
 msgctxt "ExportOnLoad"
 msgid "Export after load"
-msgstr ""
+msgstr "Экспорт после загрузки"
 
 #. Export, RoR 
 #: data/gui/Editor_Track.layout:965 ..Track.Export.Settings.Check
 msgctxt "ExportCopyData"
 msgid "Copy data to track on export"
-msgstr ""
+msgstr "Копирование данных в трек при экспорте"
 
 #. Export, RoR 
 #: data/gui/Editor_Track.layout:940 ..Track.Export.Settings.Text
 msgctxt "PathRoRExport"
 msgid "Rigs of Rods content path"
-msgstr ""
+msgstr "Путь к содержимому Rigs of Rods"
 
 #. Export, RoR 
 #: data/gui/Editor_Track.layout:950 ..Track.Export.Settings.Text
