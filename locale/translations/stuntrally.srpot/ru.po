@@ -526,7 +526,7 @@ msgstr "Ремонт за круг"
 #: src/game/Gui_Network.cpp:136 src/game/Collections.cpp:241
 msgctxt "Boost"
 msgid "Boost"
-msgstr "Турбо"
+msgstr "Буст"
 
 #. Game  Boost 
 #: data/gui/Game.layout:1341 ..SingleRace.Setup.Game.Text
@@ -2525,7 +2525,7 @@ msgctxt "RplHideHudAids"
 msgid "Hide HUD aids when playing replay (pacenotes, trail)"
 msgstr ""
 "Скрывайте вспомогательные элементы HUD при воспроизведении (примечания, "
-"трассы)."
+"трассы)"
 
 #. Screen 
 #: data/gui/Editor_Help.layout:248 ..Help.Input/help.Shortcuts.Text
@@ -2567,9 +2567,6 @@ msgstr "Верт. синхр."
 #. Screen  vertical synchronisation 
 #: data/gui/Editor_Options.layout:141 ..Options.Screen.Effects.Text
 #: data/gui/Game_Options.layout:140 :1151..Options.Graphics.Lights.Text
-#, fuzzy
-#| msgctxt "ColBright"
-#| msgid "Brightness"
 msgctxt "Brightness"
 msgid "Brightness"
 msgstr "Яркость"
@@ -2577,12 +2574,9 @@ msgstr "Яркость"
 #. Screen  vertical synchronisation 
 #: data/gui/Editor_Options.layout:153 ..Options.Screen.Effects.Text
 #: data/gui/Game_Options.layout:152
-#, fuzzy
-#| msgctxt "InputControllers"
-#| msgid "Controllers"
 msgctxt "Contrast"
 msgid "Contrast"
-msgstr "Контролеры"
+msgstr "Контраст"
 
 #. Screen  advanced 
 #: data/gui/Editor_Options.layout:108 ..Options.Screen.Video.Text
@@ -2611,21 +2605,21 @@ msgstr "Изменить"
 #: :333..Options.Screen.GUI.Text
 msgctxt "GUI"
 msgid "GUI"
-msgstr ""
+msgstr "ГРАФИЧЕСКИЙ ИНТЕРФЕЙС"
 
 #. Screen  advanced 
 #: data/gui/Editor_Options.layout:330 ..Options.Screen.GUI.Text
 #: data/gui/Game_Options.layout:328
 msgctxt "FontSizes"
 msgid "Font sizes"
-msgstr ""
+msgstr "Размеры шрифтов"
 
 #. Screen  advanced 
 #: data/gui/Editor_Options.layout:318 ..Options.Screen.GUI.Text
 #: data/gui/Game_Options.layout:316
 msgctxt "WindowMargin"
 msgid "Window margin"
-msgstr ""
+msgstr "Поле окна"
 
 #. Screen  not used 
 msgctxt "Gamma"
@@ -3775,12 +3769,9 @@ msgstr "Вызовы на рисование"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:342
-#, fuzzy
-#| msgctxt "Distance"
-#| msgid "Distance"
 msgctxt "FPS_Instances"
 msgid "Instances"
-msgstr "Экземпляры"
+msgstr "Примеры"
 
 #. Settings  debug 
 #: src/common/GuiCom_Options.cpp:342
@@ -3857,7 +3848,7 @@ msgstr "Отладка шейдеров"
 #: data/gui/Game_Options.layout:2085 ..Options.Tweak.Advanced.Check
 msgctxt "DebugProperties"
 msgid "Debug Properties"
-msgstr ""
+msgstr "Свойства отладки"
 
 #. Settings  car tweak visualizeations 
 #: data/gui/Game_Options.layout:1973 ..Options.Tweak.Graphs.Check
@@ -3901,12 +3892,14 @@ msgstr "Цвет текста"
 msgctxt "DevKeys"
 msgid "Developer keys. Ctrl-F global, Alt-shift-.. load test tracks."
 msgstr ""
+"Ключи разработчика. Ctrl + F глобальный, Alt + shift-... загрузочные "
+"тестовые дорожки."
 
 #. Settings  car tweak visualizeations 
 #: data/gui/Game_Options.layout:2065 ..Options.Tweak.Advanced.Text
 msgctxt "CarPreview"
 msgid "Force car preview"
-msgstr ""
+msgstr "Пред. обзор болидов"
 
 #. Settings  startup 
 #: data/gui/Editor_Options.layout:1409 ..Options.Settings.Settings.Check
@@ -4166,7 +4159,7 @@ msgstr "Ручник"
 #. MAIN  Game Input  Player 
 msgctxt "InputMapBoost"
 msgid "Boost"
-msgstr "Турбо"
+msgstr "Буст"
 
 #. MAIN  Game Input  Player 
 msgctxt "InputMapFlip"
@@ -4211,7 +4204,7 @@ msgstr "Спасти авто"
 #. Game Input  Player 
 msgctxt "InputMapLights"
 msgid "Toggle lights"
-msgstr ""
+msgstr "Переключатель освещения"
 
 #. MAIN  Game Input 
 msgctxt "InputMapShowOptions"
@@ -4299,7 +4292,7 @@ msgstr "P - пауза/играть повтор"
 #: data/gui/Game_Options.layout:433 ..Options.Input.General.Text
 msgctxt "InputRplCtrl3"
 msgid "Down, Up - wind backwards/forwards (shift - slow, ctrl,alt - fast)"
-msgstr ""
+msgstr "Вниз, вверх - ветер назад/вперед (shift - медленно; ctrl, alt - быстро)"
 
 #. Game Input  General replay 
 #: data/gui/Game_Options.layout:436 ..Options.Input.General.Text
@@ -4330,12 +4323,9 @@ msgstr "Ctrl-F5 - тест тех. характер. авто"
 #. Game Input  Tweak tire edit 
 #: data/gui/Game_Options.layout:2120 ..Options.Tweak.Tweak.Text
 #: :2153..Options.Tweak.Tires.Text
-#, fuzzy
-#| msgctxt "TiresEdit"
-#| msgid "Tire Edit - (Graphs in mode 4)"
 msgctxt "TiresEdit"
 msgid "Tire Edit - (Graphs mode)"
-msgstr "Ред. шины - (Схемы в режиме 4)"
+msgstr "Редакт. шин - (режим графиков)"
 
 #. Game Input  Tweak tire edit 
 #: data/gui/Game_Options.layout:2123 ..Options.Tweak.Tweak.Text
@@ -4390,7 +4380,7 @@ msgstr "Двигатель"
 #: data/gui/Game_Options.layout:1582 ..Options.Sound.Vehicle.Text
 msgctxt "Turbo"
 msgid "Turbo"
-msgstr ""
+msgstr "Турбо"
 
 #. Sound  main 
 #: data/gui/Editor.layout:3190 ..Editor.Vegetation.Surface.Surface.Text
@@ -4421,7 +4411,7 @@ msgstr "Окр. среда"
 #: data/gui/Game_Options.layout:1692
 msgctxt "Ambience"
 msgid "Ambience"
-msgstr ""
+msgstr "Окружение"
 
 #. Sound  main 
 #: data/gui/Editor_Options.layout:1226 ..Options.Sound.Main.Check
@@ -4726,12 +4716,9 @@ msgstr "конец"
 #. Editor  Weather 
 #: data/gui/Editor.layout:150 ..Editor.Sun.Sun.Check
 #: :155:221..Editor.Sun.Fog.Check
-#, fuzzy
-#| msgctxt "DisableEdit"
-#| msgid "Disable for edit"
 msgctxt "DisableEdit"
 msgid "Disable/enable for editing."
-msgstr "Откл. для ред."
+msgstr "Выкл./вкл. редактирование."
 
 #. Editor  Weather 
 #: data/gui/Editor.layout:143 ..Editor.Sun.Sun.Text :153..Editor.Sun.Sun.Check
@@ -4861,19 +4848,13 @@ msgstr "Множить"
 #: data/gui/Editor.layout:688 ..Editor.Terrain.Tab
 #: :692..Editor.Terrain.Collision.Check data/gui/Game.layout:1402
 #: ..SingleRace.Setup.Tab
-#, fuzzy
-#| msgctxt "CarCollis"
-#| msgid "Cars collision"
 msgctxt "Collision"
 msgid "Collision"
-msgstr "Столк. авто"
+msgstr "Столкновения"
 
 #. Terrain  properties 
 #: data/gui/Editor.layout:698 ..Editor.Terrain.Collision.Text
 #: :1335..Editor.Terrain.Tools.Text
-#, fuzzy
-#| msgctxt "MinimapBorder"
-#| msgid "Border"
 msgctxt "Border"
 msgid "Border"
 msgstr "Граница"
@@ -4887,7 +4868,7 @@ msgstr "Граница"
 #: :1470..Options.Graphics.Detail.Text
 msgctxt "Horizon"
 msgid "Horizon"
-msgstr ""
+msgstr "Горизонт"
 
 #. Terrain  advanced light 
 #: data/gui/Editor.layout:659 ..Editor.Terrain.Light.Text
@@ -5221,7 +5202,7 @@ msgstr "Ухаб: длина волны"
 #: data/gui/Editor.layout:394 ..Editor.Sun.Wind.Text
 msgctxt "Frequency"
 msgid "Frequency"
-msgstr ""
+msgstr "Частота"
 
 #. Terrain  surface  params 
 #: data/gui/Editor.layout:382 ..Editor.Sun.Wind.Text
@@ -5576,12 +5557,12 @@ msgstr "Стена"
 #: src/editor/Update_EditKeyTxt.cpp:70
 msgctxt "River"
 msgid "River"
-msgstr ""
+msgstr "Река"
 
 #. Road  Main 
 msgctxt "Hidden"
 msgid "Hidden"
-msgstr ""
+msgstr "Скрытый"
 
 #. Road  Main 
 #: data/gui/Editor.layout:2862 ..Editor.Vegetation.Road.Tab
@@ -5766,13 +5747,13 @@ msgstr "Нереальная"
 #: src/editor/Update_EditKeyTxt.cpp:117
 msgctxt "Road_Merged"
 msgid "Merged"
-msgstr ""
+msgstr "Объединенный"
 
 #. Road Point  toggle 
 #: src/editor/Update_EditKeyTxt.cpp:118
 msgctxt "Road_NotLooped"
 msgid "Not looped"
-msgstr ""
+msgstr "Не зациклен"
 
 #. Road Point  short: checkpoint radius 
 #: src/editor/Update_EditKeyTxt.cpp:60
@@ -5916,25 +5897,25 @@ msgstr "Группа"
 #: data/gui/Editor_Tools.layout:657 ..Window
 msgctxt "Fields"
 msgid "Fields"
-msgstr ""
+msgstr "Поля"
 
 #. Editor Objects  verious 
 #: data/gui/Editor_Help.layout:958 ..Help.Input/help.Fields.Text
 msgctxt "InputFieldsTelepEnd"
 msgid "Enter - toggle teleport end edit"
-msgstr ""
+msgstr "Enter - переключить редакт. конца телепорта"
 
 #. Editor Objects  verious 
 #: data/gui/Editor_Objects.layout:111 ..Objects.Tab
 msgctxt "Sounds"
 msgid "Sounds"
-msgstr ""
+msgstr "Звуки"
 
 #. Editor Objects  verious 
 #: data/gui/Editor_Objects.layout:122 ..Objects.Tab
 msgctxt "Entities"
 msgid "Entities"
-msgstr ""
+msgstr "Объекты"
 
 #. Tools 
 #: data/gui/Editor.layout:1272 ..Editor.Terrain.Tab
