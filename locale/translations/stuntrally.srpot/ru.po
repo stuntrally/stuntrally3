@@ -2088,7 +2088,7 @@ msgstr "Неоновый"
 #. Vehicle Paint names 
 msgctxt "P_Ice"
 msgid "Ice"
-msgstr "Лед"
+msgstr "Ледяной"
 
 #. Vehicle Paint names 
 msgctxt "P_Fire"
@@ -2098,15 +2098,12 @@ msgstr "Огненный"
 #. Vehicle Paint names 
 msgctxt "P_Rainbow"
 msgid "Rainbow"
-msgstr ""
+msgstr "Разноцветный"
 
 #. Vehicle Paint names 
-#, fuzzy
-#| msgctxt "Silver"
-#| msgid "Silver"
 msgctxt "P_Silver"
 msgid "Silver"
-msgstr "Серебро"
+msgstr "Серебрянный"
 
 #. Setup  collision 
 #: data/gui/Game.layout:1404 ..SingleRace.Setup.Collision.Check
@@ -2137,7 +2134,7 @@ msgstr "Дин. объекты"
 #: data/gui/Game.layout:1416 ..SingleRace.Setup.Collision.Check
 msgctxt "DriveOnHorizons"
 msgid "Allow driving outside map, on horizons"
-msgstr ""
+msgstr "Разрешить ездить за пределами карты, по горизонтам"
 
 #. Setup  Gearbox 
 #: data/gui/Game.layout:1487 ..SingleRace.Setup.Tab
@@ -2345,7 +2342,7 @@ msgstr "* нужна перезагрузка"
 #: :1420..Options.Graphics.Textures.Button
 msgctxt "Apply"
 msgid "Apply"
-msgstr ""
+msgstr "Применить"
 
 #. Replay 
 #: data/gui/Game_Options.layout:424 ..Options.Input.General.Text
@@ -2527,6 +2524,8 @@ msgstr "Убрать призраков если близко"
 msgctxt "RplHideHudAids"
 msgid "Hide HUD aids when playing replay (pacenotes, trail)"
 msgstr ""
+"Скрывайте вспомогательные элементы HUD при воспроизведении (примечания, "
+"трассы)."
 
 #. Screen 
 #: data/gui/Editor_Help.layout:248 ..Help.Input/help.Shortcuts.Text
