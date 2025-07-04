@@ -1666,7 +1666,7 @@ msgstr "Загрузка игры"
 #: src/game/Game_SceneInit.cpp:860:943
 msgctxt "LS_SCENE"
 msgid "Loading Scene"
-msgstr "Сцена загрузки"
+msgstr "Загрузка сцены"
 
 #. Loading game tags 
 #: src/game/Game_SceneInit.cpp:860
@@ -1676,21 +1676,15 @@ msgstr "Загрузка машин"
 
 #. Loading game tags 
 #: src/game/Game_SceneInit.cpp:861
-#, fuzzy
-#| msgctxt "LS_TER"
-#| msgid "Loading terrain"
 msgctxt "LS_TER"
 msgid "Loading Terrains"
-msgstr "Загрузка ландшафта"
+msgstr "Загрузка территории"
 
 #. Loading game tags 
 #: src/game/Game_SceneInit.cpp:861
-#, fuzzy
-#| msgctxt "LS_ROAD"
-#| msgid "Loading Road"
 msgctxt "LS_ROAD"
 msgid "Loading Roads"
-msgstr "Загрузка дороги"
+msgstr "Загрузка дорог"
 
 #. Loading game tags 
 #: src/game/Game_SceneInit.cpp:861
@@ -1700,12 +1694,9 @@ msgstr "Загрузка объектов"
 
 #. Loading game tags 
 #: src/game/Game_SceneInit.cpp:861
-#, fuzzy
-#| msgctxt "LS_TER"
-#| msgid "Loading terrain"
 msgctxt "LS_TREES"
 msgid "Loading Vegetation"
-msgstr "Загрузка ландшафта"
+msgstr "Загрузка Растительности"
 
 #. Loading game tags 
 #: src/game/Game_SceneInit.cpp:863
@@ -1973,100 +1964,85 @@ msgstr "ПустыняТ"
 #. Scenery names 
 msgctxt "SC_SurrealSpace"
 msgid "SurrealSpace"
-msgstr ""
+msgstr "Сюрреалистическое пространство"
 
 #. Scenery names 
 msgctxt "SC_GreeceRocky"
 msgid "GreeceRocky"
-msgstr ""
+msgstr "Греция Скалистая"
 
 #. Scenery names 
 msgctxt "SC_Marble"
 msgid "Marble"
-msgstr ""
+msgstr "Мрамор"
 
 #. Scenery names 
-#, fuzzy
-#| msgctxt "InputMapSteering"
-#| msgid "Steering"
 msgctxt "SC_Spring"
 msgid "Spring"
-msgstr "Управление"
+msgstr "Весна"
 
 #. Scenery names 
 msgctxt "SC_Anomaly"
 msgid "Anomaly"
-msgstr ""
+msgstr "Аномалия"
 
 #. Scenery names 
 msgctxt "SC_PostApo"
 msgid "PostApo"
-msgstr ""
+msgstr "PostApo"
 
 #. Vehicle Paint names 
 #: data/gui/Editor.layout:590 ..Editor.Terrain.Light.Text
 #: data/gui/Editor_Options.layout:1459 ..Options.Settings.Tweak.Text
 #: data/gui/Game_Options.layout:1933 ..Options.Tweak.Other.Text
 #: data/gui/MaterialEditor.layout:67 ..MaterialEditor.Main.Text :101:135
-#, fuzzy
-#| msgctxt "NetReady"
-#| msgid "Ready"
 msgctxt "P_Red"
 msgid "Red"
-msgstr "Готов"
+msgstr "Красный"
 
 #. Vehicle Paint names 
-#, fuzzy
-#| msgctxt "Change"
-#| msgid "Change"
 msgctxt "P_Orange"
 msgid "Orange"
-msgstr "Изменить"
+msgstr "Оранжевый"
 
 #. Vehicle Paint names 
-#, fuzzy
-#| msgctxt "SC_ForestYellow"
-#| msgid "ForestYellow"
 msgctxt "P_Yellow"
 msgid "Yellow"
-msgstr "Зол.Лес"
+msgstr "Желтый"
 
 #. Vehicle Paint names 
 msgctxt "P_Lime"
 msgid "Lime"
-msgstr ""
+msgstr "Лаймовый"
 
 #. Vehicle Paint names 
 #: data/gui/Editor.layout:602 ..Editor.Terrain.Light.Text
 #: data/gui/MaterialEditor.layout:78 ..MaterialEditor.Main.Text :112:149
-#, fuzzy
-#| msgctxt "SC_Greece"
-#| msgid "Greece"
 msgctxt "P_Green"
 msgid "Green"
-msgstr "Греция"
+msgstr "Зеленый"
 
 #. Vehicle Paint names 
 msgctxt "P_Olive"
 msgid "Olive"
-msgstr ""
+msgstr "Оливковый"
 
 #. Vehicle Paint names 
 msgctxt "P_SkyBlue"
 msgid "SkyBlue"
-msgstr ""
+msgstr "Небесно-голубой"
 
 #. Vehicle Paint names 
 #: data/gui/Editor.layout:614 ..Editor.Terrain.Light.Text
 #: data/gui/MaterialEditor.layout:89 ..MaterialEditor.Main.Text :123:163
 msgctxt "P_Blue"
 msgid "Blue"
-msgstr ""
+msgstr "Голубой"
 
 #. Vehicle Paint names 
 msgctxt "P_Cyan"
 msgid "Cyan"
-msgstr ""
+msgstr "Голубой"
 
 #. Vehicle Paint names 
 msgctxt "P_Teal"
