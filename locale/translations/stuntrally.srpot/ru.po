@@ -2037,7 +2037,7 @@ msgstr "Небесно-голубой"
 #: data/gui/MaterialEditor.layout:89 ..MaterialEditor.Main.Text :123:163
 msgctxt "P_Blue"
 msgid "Blue"
-msgstr "Голубой"
+msgstr "Синий"
 
 #. Vehicle Paint names 
 msgctxt "P_Cyan"
@@ -2047,59 +2047,53 @@ msgstr "Голубой"
 #. Vehicle Paint names 
 msgctxt "P_Teal"
 msgid "Teal"
-msgstr ""
+msgstr "Чирок"
 
 #. Vehicle Paint names 
 msgctxt "P_Violet"
 msgid "Violet"
-msgstr ""
+msgstr "Фиолетовый"
 
 #. Vehicle Paint names 
 msgctxt "P_Magenta"
 msgid "Magenta"
-msgstr ""
+msgstr "Пурпурный"
 
 #. Vehicle Paint names 
 msgctxt "P_Brown"
 msgid "Brown"
-msgstr ""
+msgstr "Коричневый"
 
 #. Vehicle Paint names 
-#, fuzzy
-#| msgctxt "SC_BlackDesert"
-#| msgid "BlackDesert"
 msgctxt "P_Black"
 msgid "Black"
-msgstr "ПустыняТ"
+msgstr "Черный"
 
 #. Vehicle Paint names 
-#, fuzzy
-#| msgctxt "SC_GreeceWhite"
-#| msgid "GreeceWhite"
 msgctxt "P_White"
 msgid "White"
-msgstr "ГрецияБ"
+msgstr "Белый"
 
 #. Vehicle Paint names 
 #: data/gui/Game.layout:1059 ..SingleRace.Setup.Paint.Tab
 msgctxt "P_Mix"
 msgid "Mix"
-msgstr ""
+msgstr "Микс"
 
 #. Vehicle Paint names 
 msgctxt "P_Neon"
 msgid "Neon"
-msgstr ""
+msgstr "Неоновый"
 
 #. Vehicle Paint names 
 msgctxt "P_Ice"
 msgid "Ice"
-msgstr ""
+msgstr "Лед"
 
 #. Vehicle Paint names 
 msgctxt "P_Fire"
 msgid "Fire"
-msgstr ""
+msgstr "Огненный"
 
 #. Vehicle Paint names 
 msgctxt "P_Rainbow"
