@@ -4083,6 +4083,396 @@
 			}
 		},
 
+		"LF_0" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"paint" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "LF_body_red.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.1, 0.25, 0.4],
+				"texture" : "LF_refl.png",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 1
+			},
+			"user_values" :
+			{
+				"0" : [0, 0.5, 1, 0.2],
+				"1" : [0, 1, 0, 0.5],
+				"2" : [1, 0.5, 0, 0.7]
+			}
+		},
+
+		"LF_1" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"paint" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "LF_body_red.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.1, 0.25, 0.4],
+				"texture" : "LF_refl.png",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 1
+			},
+			"user_values" :
+			{
+				"0" : [0, 0.5, 1, 0.2],
+				"1" : [0, 1, 0, 0.5],
+				"2" : [1, 0.5, 0, 0.7]
+			}
+		},
+
+		"LF_2" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"paint" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "LF_body_red.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.1, 0.25, 0.4],
+				"texture" : "LF_refl.png",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 1
+			},
+			"user_values" :
+			{
+				"0" : [0, 0.5, 1, 0.2],
+				"1" : [0, 1, 0, 0.5],
+				"2" : [1, 0.5, 0, 0.7]
+			}
+		},
+
+		"LF_3" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"paint" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "LF_body_red.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.1, 0.25, 0.4],
+				"texture" : "LF_refl.png",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 1
+			},
+			"user_values" :
+			{
+				"0" : [0, 0.5, 1, 0.2],
+				"1" : [0, 1, 0, 0.5],
+				"2" : [1, 0.5, 0, 0.7]
+			}
+		},
+
+		"LF_4" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"paint" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "LF_body_red.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.1, 0.25, 0.4],
+				"texture" : "LF_refl.png",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 1
+			},
+			"user_values" :
+			{
+				"0" : [0, 0.5, 1, 0.2],
+				"1" : [0, 1, 0, 0.5],
+				"2" : [1, 0.5, 0, 0.7]
+			}
+		},
+
+		"LF_5" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"paint" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "LF_body_red.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.1, 0.25, 0.4],
+				"texture" : "LF_refl.png",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 1
+			},
+			"user_values" :
+			{
+				"0" : [0, 0.5, 1, 0.2],
+				"1" : [0, 1, 0, 0.5],
+				"2" : [1, 0.5, 0, 0.7]
+			}
+		},
+
+		"LF_G" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"paint" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "LF_body_red.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.1, 0.25, 0.4],
+				"texture" : "LF_refl.png",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 1
+			},
+			"user_values" :
+			{
+				"0" : [0, 0.5, 1, 0.2],
+				"1" : [0, 1, 0, 0.5],
+				"2" : [1, 0.5, 0, 0.7]
+			}
+		},
+
+		"LF_body" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"paint" : true,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "LF_body_red.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.1, 0.25, 0.4],
+				"texture" : "LF_refl.png",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 1
+			},
+			"user_values" :
+			{
+				"0" : [0, 0.5, 1, 0.2],
+				"1" : [0, 1, 0, 0.5],
+				"2" : [1, 0.5, 0, 0.7]
+			}
+		},
+
+		"LF_glass" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_2",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"transparency" :
+			{
+				"value" : 0.5,
+				"mode" : "Transparent",
+				"use_alpha_from_textures" : true
+			},
+			"diffuse" :
+			{
+				"value" : [0, 0, 0],
+				"background" : [1, 1, 1, 1],
+				"texture" : "LF_glass.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.5, 0.5, 0.5]
+			},
+			"fresnel" :
+			{
+				"value" : [0.6, 0.6, 0.6],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.01
+			}
+		},
+
+		"LF_interior" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"background" : [1, 1, 1, 1],
+				"texture" : "LF_interior.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.3, 0.3, 0.3],
+				"texture" : "LF_interior_spec.png",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.2, 0.2, 0.2],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.15
+			}
+		},
+
+		"LF_wheel" :
+		{
+			"macroblock" : "Macroblock_0",
+			"blendblock" : "Blendblock_0",
+			"shadow_const_bias" : 0.01,
+			"workflow" : "specular_ogre",
+			"diffuse" :
+			{
+				"value" : [1, 1, 1],
+				"background" : [1, 1, 1, 1],
+				"texture" : "LF_wheel.png",
+				"sampler" : "Sampler_10"
+			},
+			"specular" :
+			{
+				"value" : [0.5, 0.5, 0.5],
+				"texture" : "LF_wheel_refl.png",
+				"sampler" : "Sampler_10"
+			},
+			"fresnel" :
+			{
+				"value" : [0.1, 0.1, 0.1],
+				"mode" : "coloured"
+			},
+			"roughness" :
+			{
+				"value" : 0.1
+			}
+		},
+
 		"LK4_0" :
 		{
 			"macroblock" : "Macroblock_0",

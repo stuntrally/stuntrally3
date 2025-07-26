@@ -3,6 +3,7 @@
 This section lists changes not yet released, but committed to repositories stuntrally3 and tracks3.  
 WIP means work in progress, unfinished, still being developed.
 
+- WIP: 1 new car: LF
 - Updated **docs** (a lot) and screenshots
   - also added (sticky) forum topics with posts into docs/
 - [multiplayer](Multiplayer.md) added new master/game server to [game config](../config/game-default.cfg) under [ network ]
