@@ -7,8 +7,8 @@ SParams::SParams()
 /// 🧰 _Tool_  force go back time rewind
 	backTime = 0;  //0 !in release
 
-/// 🧰 _Tool_  force camera preview
-	carPrv = 0;  //0 !in release  1 norm, 2 far, 3 close
+/// force camera preview, set by args
+	carPrv = 0;  //0 !in release  1 norm,  2 far U8,MO,TW  3 close BE
 
 //  GAME
 	rewindSpeed = 5.f;  // 5 secs in 1 sec

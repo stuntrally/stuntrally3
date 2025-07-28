@@ -56,8 +56,15 @@
 
 
 	<Camera on="-1" name="Preview Car"      type="2"  bounce="0.0" yaw="-132" pitch="-13.6"  offset="-49.3 4.3 -109.9" speed="20" default="1" />
-	<!--  car preview camera,  used screen res 1920x1080,  crop to 1024x1024 center (start 448, 28)
-		for more search all gPar.carPrv uses
+	<!--  car preview camera
+	  		Use screen res: 1920x1080
+
+		To make preview, start game exe with argument:  prv - default  or
+			prvfar - for big: U8,MO,TW  prvnear - for small: BE
+		
+		Make a screenshot and after use crop.py (to crop to 1024x1024 center, start 448,28)
+
+		More in code, search all gPar.carPrv uses
 	-->
 
 </Cameras>

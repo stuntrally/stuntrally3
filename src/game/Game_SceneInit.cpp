@@ -58,6 +58,10 @@ bool Args::Help()  // ❔
 		cout << "  \n";
 		cout << "  ghosts - Test all vehicles points on all tracks, from all user ghosts. Needs many.\n";
 		cout << "  trkghosts - Test all tracks ghosts, for sudden jumps, due to bad rewinds.\n";
+		cout << "  \n";
+		cout << "  prv - Starts game with forced track and camera for making vehicle previews\n";
+		cout << "  prvfar - same as prv but vehicle is far, used for big vehicles.\n";
+		cout << "  prvnear - same as prv but vehicle is near, used for small vehicles.\n";
 		return 1;
 	}
 	return 0;
@@ -93,6 +97,11 @@ void App::LoadData()
 	auto& args = MainEntryPoints::args;
 	// args.set("check");  // debug
 	bool check = args.has("check");
+	
+	//   🧰 _Tool_ set preview camera for (new) vehicle(s)
+	if (args.has("prv"))      gPar.carPrv = 1;
+	if (args.has("prvfar"))   gPar.carPrv = 2;
+	if (args.has("prvnear"))  gPar.carPrv = 3;
 
 
 	//  data xmls

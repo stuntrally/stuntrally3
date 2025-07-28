@@ -41,8 +41,7 @@ struct SParams
 //  take back time in rewind (for track's ghosts)
 	bool backTime;
 
-//  force car preview  camera & inputs
-//  for making vehicle preview screens, see info in cameras.xml
+//  force car preview  camera & inputs  info in cameras.xml
 	int carPrv;
 
 	//  🌟 ctor, init values
