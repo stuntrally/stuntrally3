@@ -319,6 +319,7 @@
 
 	<Tag name="Weasel">Weasel</Tag>
 	<Tag name="Wolf">Wolf</Tag>
+	<Tag name="Tiger">Tiger</Tag>
 
 	<Tag name="Scorpion">Scorpion</Tag>
 	<Tag name="Buffalo">Buffalo</Tag>
@@ -1754,6 +1755,7 @@
 
 	<Tag name="CarDesc_SZ">Fastest car meant for gravel. Light and with a powerful engine. Has great aerodynamics and steerability.</Tag>
 	<Tag name="CarDesc_XZ">Very powerful engine fitted car, drivable on most tracks. Not best on bumps because of short and stiff suspension. So much torque also causes more wheels spin.</Tag>
+	<Tag name="CarDesc_LF">Quite powerful car. But long and has extremely low suspension, so it's not for stunts.</Tag>
 
 	<Tag name="CarDesc_3B">Very fast, futuristic racing vehicle. Uses 3 stabilized spheres to drive. Not the best for bridges, mud or pipes.</Tag>
 	<Tag name="CarDesc_BE">Normal size bike. Light, fast and very agile. Being small it does not like terrain bumps.</Tag>

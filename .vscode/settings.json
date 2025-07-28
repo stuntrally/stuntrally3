@@ -31,7 +31,8 @@
     "editor.suggest.localityBonus": true,
     "editor.cursorWidth": 2,
     //  default works
-    "cmake.buildDirectory": "${workspaceFolder}/build"
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "idf.pythonInstallPath": "/usr/bin/python3"
     //  own dirs for Debug/RelDeb etc, but broken clangd parsing,definition navigation etc?
     // "cmake.buildDirectory": "${workspaceFolder}/build${buildType}"
 }
