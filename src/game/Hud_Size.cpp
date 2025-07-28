@@ -1,3 +1,4 @@
+#include "par.h"
 #include "pch.h"
 #include "Def_Str.h"
 #include "SceneXml.h"
@@ -214,18 +215,21 @@ void CHud::Show(bool hideAll)
 		bool bdmg = pSet->game.damage_type > 0;
 		txCamInfo->setVisible(cam);
 
-		bool show = pSet->show_gauges;
+		bool prv = gPar.carPrv == 0;
+		bool show = pSet->show_gauges && prv;
+		bool dig = pSet->show_digits && prv;
+
 		for (int c=0; c < hud.size(); ++c)
 		{	Hud& h = hud[c];
 
 			if (h.parent)
 			{	h.parent->setVisible(true);
 			
-				if (h.bckGear) h.bckGear->setVisible(pSet->show_digits);
-				if (h.txGear)  h.txGear->setVisible(pSet->show_digits);
+				if (h.bckGear) h.bckGear->setVisible(dig);
+				if (h.txGear)  h.txGear->setVisible(dig);
 
-				if (h.bckVel)  h.bckVel->setVisible(pSet->show_digits);
-				h.txVel->setVisible(pSet->show_digits);
+				if (h.bckVel)  h.bckVel->setVisible(dig);
+				h.txVel->setVisible(dig);
 				
 				if (h.txBFuel){  h.txBFuel->setVisible(show && btxt);
 					h.icoBFuel->setVisible(show && bfuel);  /*h.icoBInf->setVisible(show && binf);*/  }
@@ -236,7 +240,8 @@ void CHud::Show(bool hideAll)
 				//txRewind; icoRewind;
 
 				h.ndGauges->setVisible(show);
-				h.ndMap->setVisible(pSet->trackmap);
+				h.ndMap->setVisible(pSet->trackmap && prv);
+				
 				h.txTimes->setVisible(times);  h.txTimTxt->setVisible(times);  h.bckTimes->setVisible(times);
 				h.txCollect->setVisible(times);
 				h.txLap->setVisible(times);  h.txLapTxt->setVisible(times);  h.bckLap->setVisible(times);

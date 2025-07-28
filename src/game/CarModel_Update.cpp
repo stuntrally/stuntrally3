@@ -345,7 +345,7 @@ void CarModel::Update(PosInfo& posInfo, PosInfo& posInfoCam, float time)
 		}else
 		if (l.type == LI_Brake)
 		{	l.li->setPowerScale( br * l.power * bri);  //par
-			l.li->setVisible( br > 0.1f);
+			l.li->setVisible( br > 0.1f  && gPar.carPrv == 0);
 	}	}
 
 
@@ -777,9 +777,12 @@ void CarModel::SetPaint()
 	
 	for (auto& l : lights)
 	if (l.type == LI_Under)
-	{
-		float bright = 1.17f * pSet->bright, contrast = pSet->contrast;
-		l.li->setDiffuseColour(  cg * bright * contrast );
-		l.li->setSpecularColour( cg * bright * contrast );
-	}
+		if (gPar.carPrv == 0)
+		{
+			float bright = 1.17f * pSet->bright, contrast = pSet->contrast;
+			l.li->setDiffuseColour(  cg * bright * contrast );
+			l.li->setSpecularColour( cg * bright * contrast );
+		}
+	else
+		l.li->setVisible(0);
 }
