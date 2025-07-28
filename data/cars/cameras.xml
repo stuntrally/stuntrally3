@@ -18,6 +18,7 @@
 	<Camera on="1" name="Car right"         type="3"  bounce="0.3" offset=" 1.7 0.25 3.1" />
 
 
+	<Camera on="2" name="Ext low"           type="4"  bounce="1.0" pitch="9.6" dist="6.2" offset="0 0.3 0" speed="6" />
 	<Camera on="1" name="Ext close"         type="4"  bounce="1.0" pitch="11"  dist="7.0" offset="0 1.1 0" speed="6" default="0" />
 	<Camera on="1" name="Ext near"          type="4"  bounce="1.0" pitch="15"  dist="8.5" offset="0 1.1 0" speed="9" />
 
