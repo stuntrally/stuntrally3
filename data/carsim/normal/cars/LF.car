@@ -91,8 +91,8 @@ torque-curve-11 = 6500, 688
 torque-curve-12 = 7000, 691
 torque-curve-13 = 7500, 677
 torque-curve-14 = 8000, 646
-torque-curve-15 = 8500, 586
-torque-curve-16 = 9000, 496
+torque-curve-15 = 8500, 596
+torque-curve-16 = 9000, 546
 real-pow-tq-mul = 1.1
 
 [ clutch ]
@@ -109,10 +109,10 @@ gear-ratio-3 = 1.92
 gear-ratio-4 = 1.37
 gear-ratio-5 = 1.00
 gear-ratio-6 = 0.79
-shift-delay = 0.08
+shift-delay = 0.05
 
 [ differential ]
-final-drive = 4.9
+final-drive = 4.6
 anti-slip = 500.0
 
 [ fuel-tank ]
@@ -150,14 +150,14 @@ factors-file = first
 #  tires (more in .tire)
 #---------------------------
 [ tire-front ]
-radius = 0.36
+radius = 0.325
 rolling-resistance = 1.3e-2, 6.5e-6
 rotational-inertia = 1.5
 tread = 0.0
 width-trail = 0.28
 
 [ tire-rear ]
-radius = 0.36
+radius = 0.325
 rolling-resistance = 1.3e-2, 6.5e-6
 rotational-inertia = 1.5
 tread = 0.0
@@ -217,7 +217,7 @@ efficiency = 0.94
 # wheels front (position and suspension mount)
 #---------------------------
 [ wheel-FR ]
-position = 0.91, 1.33, -0.47
+position = 0.92, 1.33, -0.52
 roll-height = 0.9
 mass = 19
 restitution = 0.1
@@ -227,7 +227,7 @@ position = 0.82, 1.32, -0.27
 hinge = 0,0,0
 
 [ wheel-FL ]
-position = -0.91, 1.33, -0.47
+position = -0.92, 1.33, -0.52
 roll-height = 0.9
 mass = 19
 restitution = 0.1
@@ -240,23 +240,23 @@ hinge = 0,0,0
 # wheels rear (position and suspension mount)
 #---------------------------
 [ wheel-RR ]
-position = 0.92, -1.50, -0.47
+position = 0.94, -1.52, -0.52
 roll-height = 0.9
 mass = 19
 restitution = 0.1
 
 [ suspension-RR ]
-position = 0.82, -1.50, -0.27
+position = 0.82, -1.52, -0.27
 hinge = 0, 0,0
 
 [ wheel-RL ]
-position = -0.92, -1.50, -0.47
+position = -0.94, -1.52, -0.52
 roll-height = 0.9
 mass = 19
 restitution = 0.1
 
 [ suspension-RL ]
-position = -0.82, -1.50, -0.27
+position = -0.82, -1.52, -0.27
 hinge = 0, 0, 0
 
 `
