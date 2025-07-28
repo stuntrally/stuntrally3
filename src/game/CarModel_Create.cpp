@@ -202,9 +202,12 @@ void CarModel::CreateLight(SceneNode* ndCar, LiType type, Vector3 pos, ColourVal
 	l->setDiffuseColour(  c * bright * contrast );
 	l->setSpecularColour( c * bright * contrast );
 
-	CarLight li;  // par bright 💡
-	li.power = !front ? (sphere ? 1.f : 3.f) :  // back
-		/*under ||*/ sphere ? 2.f : 10.f / numLights; // front
+	CarLight li;  // bright 💡
+	if (sphere)  // O
+		li.power = !front ? 1.f : 2.f;
+	else
+		li.power = !front ? 2.f :  // back  // par 3-
+			/*under ||*/ 10.f / numLights; // front
 	li.power *= Math::PI * power;
 	l->setPowerScale( li.power * pSet->car_light_bright);
 
