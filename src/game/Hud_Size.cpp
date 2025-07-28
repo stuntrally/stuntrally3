@@ -137,16 +137,7 @@ void CHud::Size()
 		h.bckLap->setPosition(lx-14,ly-8);
 		h.txLapTxt->setPosition(lx,ly);
 		h.txLap->setPosition(lx+w,ly);
-	/*		
-		//  opp list
-		//int ox = itx + 5, oy = (ycRpm+1.f)*0.5f*wy - 10;
-		int ox = xMin + 40, oy = (-miniTopY+1.f)*0.5f*wy - 5;  //par
-		h.xOpp = ox;  h.yOpp = oy;
-		h.lastOppH = -1;
-		//h.bckOpp->setPosition(ox,oy -2);  //h.bckOpp->setSize(230, plr*25 +4);
-		//for (int n=0; n<3; ++n)
-		//	h.txOpp[n]->setPosition(n*65+5,0);
-	*/
+
 		//  ❌ warn  🥇 win
 		int ox = (xMax-xMin)/2 + xMin - 200;  int oy = yMin + 15;
 		h.bckWarn->setPosition(ox,oy);
@@ -247,8 +238,6 @@ void CHud::Show(bool hideAll)
 				h.txLap->setVisible(times);  h.txLapTxt->setVisible(times);  h.bckLap->setVisible(times);
 				if (!times)  h.bckWarn->setVisible(0);
 
-				/*h.bckOpp->setVisible(opp);
-				h.txOpp[0]->setVisible(opp);  h.txOpp[1]->setVisible(opp);  h.txOpp[2]->setVisible(opp);*/
 				if (h.txCam)  h.txCam->setVisible(cam);
 		}	}
 	}

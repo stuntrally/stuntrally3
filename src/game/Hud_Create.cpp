@@ -311,23 +311,6 @@ void CHud::Create()
 		h.txLap->setVisible(false);
 
 
-	#if 0
-		//  👥 opponents list  -----------
-		h.bckOpp = h.parent->createWidget<ImageBox>("ImageBox",
-			0,y, 224,200, Align::Left, "OppB"+toStr(c));
-		h.bckOpp->setAlpha(0.9f);  h.bckOpp->setVisible(false);
-		h.bckOpp->setImageTexture("opp_rect.png");
-
-		for (int n=0; n < 3; ++n)
-		{
-			h.txOpp[n] = h.parent->createWidget<TextBox>("TextBox",
-				n*80+10,0, 90,180, n == 2 ? Align::Left : Align::Right, "Opp"+toStr(n)+s);
-			h.txOpp[n]->setFontName(hudText);  h.txOpp[n]->setVisible(false);
-			if (n==0)  h.txOpp[n]->setTextShadow(true);
-		}
-		h.lastOppH = -1;  // upd size
-	#endif
-
 		//  ❌ wrong chk warning  -----------
 		h.bckWarn = h.parent->createWidget<ImageBox>("ImageBox",
 			0,y, 500,60, Align::Left, "WarnB"+s);  h.bckWarn->setVisible(false);
@@ -508,9 +491,6 @@ void CHud::Destroy()
 		//  💨 boost
 		Dest(h.txBFuel)  Dest(h.txDamage)  Dest(h.txRewind)  Dest(h.imgDamage)
 		Dest(h.icoBFuel)  Dest(h.icoBInf)  Dest(h.icoDamage)  Dest(h.icoRewind)
-
-		// for (i=0; i < 3; ++i)  Dest(h.txOpp[i])
-		// Dest(h.bckOpp)
 
 		//  🏁 times, lap
 		Dest(h.txTimTxt)  Dest(h.txTimes)  Dest(h.bckTimes)

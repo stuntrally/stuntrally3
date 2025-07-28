@@ -233,19 +233,6 @@ void CHud::UpdOpponents(Hud& h, int cnt, CarModel* pCarM)
 				}
 				s2 += "\n";  ++c;
 		}	}
-		//  upd pos, size
-		if (h.lastOppH != c)
-		{	h.lastOppH = c;
-			int y = c*25 +4, yo = h.yOpp - y-4;
-
-			for (int n=0; n < 3; ++n)
-			{	h.txOpp[n]->setPosition(h.xOpp + n*65+5, yo + 3);
-				h.txOpp[n]->setSize(90,y);
-			}
-			h.bckOpp->setPosition(h.xOpp, yo);
-			h.bckOpp->setSize(230,y);
-		}
-		h.txOpp[0]->setCaption(s0);  h.txOpp[1]->setCaption(s1);  h.txOpp[2]->setCaption(s2);
 	}
 }
 #endif

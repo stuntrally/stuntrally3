@@ -47,9 +47,6 @@ public:
 		Ogre::String sTimes, sLap;
 		//  🏁 lap results
 		Txt txLapTxt =0, txLap =0;  Img bckLap =0;
-		//  opponents list  columns: trk %, dist m, nick
-		// Txt txOpp[3]={0,0,0};  Img bckOpp =0;
-		int xOpp =0, yOpp =0, lastOppH = -1;
 
 		//  ❌ wrong check warning, 🥇 win place
 		Txt txWarn =0,  txPlace =0;
