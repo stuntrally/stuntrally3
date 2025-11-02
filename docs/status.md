@@ -6,8 +6,8 @@ Status of the project etc.
 
 ## ⚠️Development stopped, project status, tasks, links etc.
 
-Well just FYI, and in case it wasn't obvious. I'm not developing Stunt Rally (SR3) since last release 3.3 (over 3 months now).  
-I did improve docs only. There is a master/game server running, not sure.
+Well just FYI, and in case it wasn't obvious. I'm not developing Stunt Rally (SR3) since last release 3.3 (end of 2024).  
+I did improve docs, other things in [Changelog](Changelog.md). There is a master/game server running, not sure.
 
 ### Tasks
 
@@ -83,10 +83,10 @@ Also to put something more recent into my skills set.
 ### Lastly
 
 Lastly it is a black hole, meaning it consumes all my time. An awesome black hole to be in, but a life/time sucking one for sure.  
-Instead, now I can and did developed few other [projects](https://cryham.org/projects/), can have time for keyboards and electronics too.  
-Lastly there are also IRL things to take care.  
+Instead, now I can and did develop few other [projects](https://cryham.org/projects/), I have time for keyboards and electronics too.  
+Lastly there are also few IRL things I need to take care of. Those got neglected during all my 8 years of SR developing.  
 I'm not saying I don't like developing SR3, it's just that I'd like to do many other projects instead and learn more.  
-If I do all, and got time left, I could get back.
+If I do all, and got time left, I could get back. Still, quite unlikely.
 
 So I have been recently developing [CaveExpress](https://cryham.org/portfolio/2025-caveexpress-fork/), and also made my own fork of [Mars ridiculous shooter](https://cryham.org/portfolio/2025-mars-fork/),  
 having fun in 2D instead of 3D. Frankly I learned more doing this than I would in SR3 now.  

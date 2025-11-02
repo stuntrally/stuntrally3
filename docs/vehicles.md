@@ -14,7 +14,7 @@ Continues here for SR 3.x and beyond.
 Rather low priority, unless we get too bored with current vehicles again and go into this.
 
 I'll be short this time:
-- I have a list of vehicles I'd like in SR3, my [collection](https://sketchfab.com/cryham/collections) in now [on sketchfab](https://skfb.ly/oDrzD).
+- I have a list of vehicles I'd like in SR3, my [collection](https://sketchfab.com/cryham/collections) is [on sketchfab](https://skfb.ly/oDrzD).
 - I'd focus on Sci-Fi, and concept models, not based on real vehicles, nor cars.
 
 ## General info

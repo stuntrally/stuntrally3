@@ -4,7 +4,7 @@
 
 ## 🌳Trees to do
 
-A copy from old forum. To I could edit, mark here etc.
+A copy from old forum. So I could edit, mark here etc.
 
 Trees are in SR3 just like other objects. Just export and put mesh and textures in trees2/,  
 add in presets.xml, new material in all.material.json (copy similar) and test in editor.
