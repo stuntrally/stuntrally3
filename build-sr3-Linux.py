@@ -35,6 +35,7 @@ cloneTracks = True  # choose one
 #  use https  or git (if you have a fork)
 gitSR = 'https://github.com/stuntrally/'  # choose one
 #gitSR = 'git@github.com:stuntrally/'
+gitSR = 'git@github.com:kamatmihir2002/' # my repo link for development, comment this out when merging
 #-------------------------
 
 
