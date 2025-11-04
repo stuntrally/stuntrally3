@@ -105,6 +105,9 @@ bool Replay2::LoadFile(string file, bool onlyHdr)
 	//  header  ------
 	ReplayHeader2& h = header;
 	rd(h.ver);  rd(h.time);
+	
+	bool is_new = (h.ver == 31);
+
 	rs(h.track)  rd(h.track_user);
 	String ss = ">- Load replay2  ";
 	ss += h.track+"  ";
@@ -157,7 +160,7 @@ bool Replay2::LoadFile(string file, bool onlyHdr)
 			if (f.get(b_hov))  rd(f.hov_roll);
 			bool flu = f.get(b_fluid);
 			if (flu)  rd(f.whMudSpin);
-			
+			if (is_new) rd(f.is_shifting);
 			//  wheels
 			int ww = header.numWh[p];
 			for (w=0; w < ww; ++w)
@@ -173,6 +176,7 @@ bool Replay2::LoadFile(string file, bool onlyHdr)
 				//  fluids
 				if (flu)  rd(wh.whH);
 				rd(wh.whAngVel);  rd(wh.whSteerAng);
+				if (is_new) rd(wh.contact);
 				f.wheels.push_back(wh);
 			}
 
@@ -234,7 +238,8 @@ bool Replay2::SaveFile(string file)
 	const ReplayHeader2& h = header;
 	header.SetHead();
 	of.write((char*)&h.head, 5);
-	wr(h.ver);  wr(h.time);
+	short v = h.ver + 1;
+	wr(v);  wr(h.time);
 	ws(h.track)  wr(h.track_user);
 
 	wr(h.numPlayers);
@@ -272,7 +277,7 @@ bool Replay2::SaveFile(string file)
 			if (f.get(b_hov))  wr(f.hov_roll);
 			bool flu = f.get(b_fluid);
 			if (flu)  wr(f.whMudSpin);
-			
+			wr(f.is_shifting);			
 			//  wheels
 			int ww = f.wheels.size();
 			for (w=0; w < ww; ++w)
@@ -288,6 +293,7 @@ bool Replay2::SaveFile(string file)
 				//  fluids
 				if (flu)  wr(wh.whH);
 				wr(wh.whAngVel);  wr(wh.whSteerAng);
+				wr(wh.contact);
 			}
 
 			//  hit data
