@@ -353,7 +353,7 @@ if (bSound)
 	switch (int(dynamics.vtype))
 	{
 	case V_Car:  //  🚗 car
-		gain = throttle * 0.7 + 0.3;  // par
+		gain = throttle * 0.95 + 0.05;  // par
 
 		// last_c_pitch = c_pitch;
 		ssnd = is_shifting;
@@ -411,7 +411,7 @@ if (bSound)
 	}
 
 	// s.engine->setGain((n0(sndgainp) + gain) * dynamics.engine_vol_mul * pSet->s.vol_engine);
-	cargain = (n0(sndgainp) + gain) * dynamics.engine_vol_mul * pSet->s.vol_engine;
+	cargain = (n0(sndgainp) * gain) * dynamics.engine_vol_mul * pSet->s.vol_engine;
 	totalgain += cargain;
 	fullgain += (1.0 + peak);
 
