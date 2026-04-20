@@ -71,6 +71,7 @@ struct RWheel
 	uchar whH;  // /var - submerge
 	half whAngVel;
 	half whSteerAng;  // 38B
+	bool contact;
 };
 
 struct RScrap
@@ -107,6 +108,7 @@ struct ReplayFrame2
 
 	//  hud
 	char gear;
+	char is_shifting;
 	half rpm,vel;
 	uchar damage, clutch;
 	uchar percent;  // track % val

@@ -171,11 +171,19 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 		}	break;
 		
 		case CAM_ExtAng:    /* 4 Extended Angle - car in center, angle smooth */
-		{	Quaternion  orient = orientGoal * qOrRot;
-			Quaternion  ory;  ory.FromAngleAxis(orient.getYaw(), Vector3::UNIT_Y);
+		{
+			Quaternion orient = (orientGoal * qOrRot * (Quaternion(Degree(180), Vector3::UNIT_Z)) * (Quaternion(Degree(-5), Vector3::UNIT_X)));
+			
+			
+			if (first)  {  mPosNodeOld = posGoal;  }
+			Real vel = (posGoal - mPosNodeOld).length() / std::max(0.002f, std::min(0.1f, time));
+			mPosNodeOld = posGoal;
+			mVel = vel;
 
-			if (first)  {  qq = ory;  }
-			else  qq = orient.Slerp(ca.mSpeed * time, qq, ory, true);
+			// float fac = std::max(0.2, (1.0 - (float)mVel / 30.0));
+
+			if (first)  {  qq =  orient;  }
+			else  qq = orient.Slerp(ca.mSpeed * time, qq, orient, true);
 
 			//  smooth dist from vel
 			#if 0
@@ -190,11 +198,16 @@ void FollowCamera::update(Real time, const PosInfo& posIn, PosInfo* posOut, COLL
 			}
 			#endif
 
-			Quaternion  qy = Quaternion(ca.mYaw, Vector3(0,1,0));
-			goalPos += qq * (xyz + ca.mOffset);
+			Vector3 v(0.0, 0.0, 2.0);
+			Vector3 v2(xyz);
+
+			// goalPos -= qq * (v);
+			Vector3 gp = goalPos + qq * v2;
 			
-			camPosFinal = goalPos;
-			camRotFinal = qq * qy * Quaternion(Degree(-ca.mPitch - mATilt), Vector3(1,0,0));
+			Vector3 p = camPosFinal + (gp - camPosFinal)  * 0.23;
+			// Quaternion q = camRotFinal + (qq - camRotFinal) * 0.2;
+			camPosFinal = p;
+			camRotFinal = qq;// * qy * qx;
 			manualOrient = true;
 		}	break;
 		default:  break;

@@ -66,13 +66,15 @@ Sound* SoundMgr::createInstance(String name)
 		return NULL;
 	}
 
+	// LogO("a");
 	SoundTemplate* templ = templates[name];
-
+	// LogO("a");
 	Sound* inst = new Sound(templ, sound_mgr);
-	
+	// LogO("a");
 	String ss = name.substr(0,4);
+	// LogO("a");
 	inst->set2D(ss=="hud/");  // set 2d
-
+	// LogO("a");
 	//  start looped
 	if (!inst->start_sound)
 	{	inst->setGain(0.f);
@@ -101,8 +103,8 @@ void SoundMgr::parseScript(FileStreamDataStream* stream)
 			{
 				//  no current SoundScript
 				//  so first valid data should be a SoundScript name
-				//LogO("@  SoundScriptManager: creating template "+line);
-				//LogO("@  "+line);
+				LogO("@  SoundScriptManager: creating template "+line);
+				LogO("@  "+line);
 				sst = createTemplate(line, stream->getName());
 				if (!sst)
 				{
