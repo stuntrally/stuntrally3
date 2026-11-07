@@ -266,9 +266,7 @@ void CGui::btnTrackNew(WP)
 		return;  }
 
 	//  paths
-	sc->baseTrk = gcom->sListTrack;
 	String from = gcom->PathListTrk(),  to = gcom->pathTrk[1] + name;
-	sc->secEdited = 0;
 
 	//  dirs
 	const String subdirs[3] = {"", "/objects", "/preview"};
@@ -288,6 +286,8 @@ void CGui::btnTrackNew(WP)
 			Copy(from + d+"/"+f, to + d+"/"+f);
 		}
 	}
+	sc->baseTrk = gcom->sListTrack;
+	sc->secEdited = 0;
 
 	gcom->sListTrack = name;  pSet->gui.track = name;  pSet->gui.track_user = 1;
 	app->UpdWndTitle();
