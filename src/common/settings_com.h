@@ -2,7 +2,7 @@
 #include "configfile.h"
 
 
-#define SET_VER  3303  // 3.3.0
+#define SET_VER  3401  // 3.4.0
 
 
 enum EShadowType
