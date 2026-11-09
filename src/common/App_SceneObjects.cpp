@@ -113,9 +113,10 @@ void App::CreateObjects()
 		const string& s = scn->sc->objects[i].name;
 		objExists[s] = false;  objHasBlt[s] = false;
 	}
-	const static int dirCnt = 7;
+	const static int dirCnt = 9;
 	const static char* dirs[dirCnt] = {  // add also in all resources3.cfg
-		"objects", "rocks", "objects2", "obstacles", "objects0", "objectsC", "rockshex"};
+		"objects", "rocks", "objects2", "obstacles", "objects0", "objectsC", "rockshex",
+		"bushes", "trees"};  // trees as objects
 	
 	for (auto& o : objExists)
 	{
