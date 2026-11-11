@@ -73,7 +73,7 @@ void App::keyPressRoad(SDL_Scancode skey)
 			}	break;					  
 
 		case key(0):
-			if (ctrl)  {   road->Set1stChk();  break;  }
+			if (alt)  {   road->Set1stChk();  break;  }
 		case key(EQUALS):
 			if (ctrl)  road->ChgWallId(1);
 			else       road->ChgMtrId(1);  break;
