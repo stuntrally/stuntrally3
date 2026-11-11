@@ -390,7 +390,7 @@ public:
 	SV svScaleAllMul, svScaleTerHMul;
 	void btnScaleAll(WP), btnScaleTerH(WP);
 	//  align
-	SV svAlignWidthAdd, /*svAlignWidthMul,*/ svAlignSmooth;
+	SV svAlignWidthAdd, svAlignWidthMul, svAlignSmooth;
 
 
 	//  🧰 _Tools_  cmd arg

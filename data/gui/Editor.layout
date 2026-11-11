@@ -1284,7 +1284,7 @@
 							<Property key="Caption" value="#{AlignWidthAdd}"/>
 							<Property key="TextColour" value="0.8 0.5 0.5"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="248 60 320 18" name="AlignWidthAdd"/>
+						<Widget type="Slider" skin="Slider" position="248 60 420 18" name="AlignWidthAdd"/>
 						<Widget type="TextBox" skin="TextBox" position="180 60 60 24" name="AlignWidthAddVal">
 							<Property key="TextColour" value="0.8 0.5 0.5"/>
 						</Widget>
@@ -1293,19 +1293,19 @@
 							<Property key="Caption" value="#{AlignSmooth}"/>
 							<Property key="TextColour" value="0.8 0.6 0.2"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="248 90 320 18" name="AlignSmooth"/>
+						<Widget type="Slider" skin="Slider" position="248 90 420 18" name="AlignSmooth"/>
 						<Widget type="TextBox" skin="TextBox" position="180 90 60 24" name="AlignSmoothVal">
 							<Property key="TextColour" value="0.8 0.6 0.2"/>
 						</Widget>
 
-						<!-- <Widget type="TextBox" skin="TextBox" position="32 120 144 24">
+						<Widget type="TextBox" skin="TextBox" position="32 120 144 24">
 							<Property key="Caption" value="#{AlignWidthMul}"/>
 							<Property key="TextColour" value="0.6 0.5 0.4"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="248 120 320 18" name="AlignWidthMul"/>
+						<Widget type="Slider" skin="Slider" position="248 120 420 18" name="AlignWidthMul"/>
 						<Widget type="TextBox" skin="TextBox" position="180 120 60 24" name="AlignWidthMulVal">
 							<Property key="TextColour" value="0.6 0.5 0.4"/>
-						</Widget> -->
+						</Widget>
 
 						<!-- Align Horiz -->
 						<Widget type="Button" skin="Button" position="32 170 400 28" name="AlignHorizon">
@@ -1318,7 +1318,7 @@
 							<Property key="Caption" value="#{AH_BaseTer}"/>
 							<Property key="TextColour" value="0.6 0.8 1.0"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="248 210 320 18" name="AH_BaseTer"/>
+						<Widget type="Slider" skin="Slider" position="248 210 420 18" name="AH_BaseTer"/>
 						<Widget type="TextBox" skin="TextBox" position="180 210 60 24" name="AH_BaseTerVal">
 							<Property key="TextColour" value="0.2 0.9 1.0"/>
 						</Widget>
@@ -1327,7 +1327,7 @@
 							<Property key="Caption" value="#{AH_Below}"/>
 							<Property key="TextColour" value="0.2 0.5 0.7"/>
 						</Widget>
-						<Widget type="Slider" skin="Slider" position="248 240 320 18" name="AH_Below"/>
+						<Widget type="Slider" skin="Slider" position="248 240 420 18" name="AH_Below"/>
 						<Widget type="TextBox" skin="TextBox" position="180 240 60 24" name="AH_BelowVal">
 							<Property key="TextColour" value="0.2 0.5 0.7"/>
 						</Widget>

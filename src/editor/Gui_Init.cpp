@@ -622,8 +622,8 @@ void CGui::InitGui()
 	sv= &svScaleTerHMul;	sv->Init("ScaleTerHMul",	&fScaleTer, 0.5f,2.f, 1.5f);  sv->DefaultF(1.f);
 	Btn("ScaleAll",  btnScaleAll);  Btn("ScaleTerH", btnScaleTerH);
 
-	sv= &svAlignWidthAdd;	sv->Init("AlignWidthAdd",	&pSet->al_w_add,  0.f,20.f,1.f, 1,3);  sv->DefaultF(10.f);
-	// sv= &svAlignWidthMul;	sv->Init("AlignWidthMul",	&pSet->al_w_mul,  1.f,4.f, 1.f, 2,4);  sv->DefaultF(1.f);
+	sv= &svAlignWidthAdd;	sv->Init("AlignWidthAdd",	&pSet->al_w_add,  0.f,20.f,1.f, 1,3);  sv->DefaultF(6.f);
+	sv= &svAlignWidthMul;	sv->Init("AlignWidthMul",	&pSet->al_w_mul,  1.f,4.f, 1.f, 2,4);  sv->DefaultF(1.1f);
 	sv= &svAlignSmooth;		sv->Init("AlignSmooth",		&pSet->al_smooth, 0.f,6.f, 1.f, 1,3);  sv->DefaultF(3.f);
 
 	

@@ -534,7 +534,7 @@
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="396 196 362 20">
 							<Property key="TextColour" value="0.7 0.7 1.0"/>
-							<Property key="Caption" value="ctrl-#{InputRoadChkFirst}"/>
+							<Property key="Caption" value="alt-#{InputRoadChkFirst}"/>
 						</Widget>
 
 						<Widget type="TextBox" skin="TextBox" position="12 310 388 20">
