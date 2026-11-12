@@ -1,0 +1,3 @@
+Empty directory.
+For original ghosts, to convert into Track's Ghosts.
+How to convert in docs/Editor.md, last chapter.
