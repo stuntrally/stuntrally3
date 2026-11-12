@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Stunt Rally\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-27 22:08+0100\n"
+"POT-Creation-Date: 2026-11-12 10:37+0100\n"
 "PO-Revision-Date: 2024-03-25 16:01+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@mailbox.org>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/stunt-rally-3/"
@@ -21,7 +21,7 @@ msgstr ""
 
 #. General 
 #: data/gui/Editor_Help.layout:20 ..Help.Input/help.Text
-#: data/gui/Game_Help.layout:186 ..Help.Support.Text
+#: data/gui/Game_Help.layout:180 ..Help.Support.Text
 msgctxt "Language"
 msgid "Language"
 msgstr "Nyelv"
@@ -52,7 +52,7 @@ msgid "Lap"
 msgstr "Kör"
 
 #. HUD  Times bar 
-#: src/game/Hud_UpdatesAll.cpp:372 src/game/Gui_Init.cpp:538
+#: src/game/Hud_UpdatesAll.cpp:359 src/game/Gui_Init.cpp:538
 msgctxt "TBPlace"
 msgid "Place"
 msgstr "Hely"
@@ -73,7 +73,7 @@ msgid "Points"
 msgstr "Pontok"
 
 #. HUD  Times bar 
-#: src/game/Hud_UpdatesAll.cpp:423
+#: src/game/Hud_UpdatesAll.cpp:410
 msgctxt "TBLapResults"
 msgid "Lap Results"
 msgstr "Köreredmények"
@@ -86,7 +86,7 @@ msgstr "Ellenőrzőpont"
 
 #. HUD 
 #: data/gui/Game_Options.layout:1739 ..Options.Sound.HUD.Check
-#: src/game/Hud_Create.cpp:339
+#: src/game/Hud_Create.cpp:322
 msgctxt "WrongChk"
 msgid "Wrong Checkpoint"
 msgstr "Hibás ellenőrzőpont"
@@ -102,7 +102,7 @@ msgstr "Verseny"
 #: data/gui/Game.layout:1952 ..SingleRace.Tab data/gui/Game_Main.layout:380
 #: ..NewGame-GameTypes.Button data/gui/Game_Options.layout:466
 #: ..Options.Input.Shortcuts.Text data/gui/Game_Utils.layout:20 ..Window :54
-#: src/game/Championships.cpp:232:380:402 src/game/Gui_ProgressLoad.cpp:62
+#: src/game/Championships.cpp:232:380:402 src/game/Gui_ProgressLoad.cpp:64
 #: src/game/Gui_Games.cpp:94 src/game/Gui_Util.cpp:184
 msgctxt "Championship"
 msgid "Championship"
@@ -121,14 +121,14 @@ msgstr "Gyakorlás"
 #: data/gui/Game_Main.layout:399 ..NewGame-GameTypes.Button
 #: data/gui/Game_Options.layout:469 ..Options.Input.Shortcuts.Text
 #: data/gui/Game_Utils.layout:107 ..Window :141
-#: src/game/Challenges.cpp:383:487:608 src/game/Gui_ProgressLoad.cpp:77
+#: src/game/Challenges.cpp:383:487:608 src/game/Gui_ProgressLoad.cpp:79
 #: src/game/Gui_Games.cpp:93 src/game/Gui_Util.cpp:180
 msgctxt "Challenge"
 msgid "Challenge"
 msgstr "Kihívás"
 
 #. MAIN  Menu 
-#: data/gui/Game_Help.layout:475 ..Window data/gui/Game_Main.layout:168
+#: data/gui/Game_Help.layout:469 ..Window data/gui/Game_Main.layout:168
 #: ..NewGame-Difficulty.Button :256
 msgctxt "HowToPlay"
 msgid "How To Play"
@@ -161,7 +161,7 @@ msgstr "Kilépés"
 #: ..Help.Tab data/gui/Editor_Objects.layout:14 ..Objects.Tab
 #: data/gui/Editor_Options.layout:13 ..Options.Tab
 #: data/gui/Editor_Track.layout:14 ..Track.Tab data/gui/Game.layout:13
-#: ..SingleRace.Tab data/gui/Game_Help.layout:67 :593..HowToPlay.Button
+#: ..SingleRace.Tab data/gui/Game_Help.layout:67 :587..HowToPlay.Button
 #: data/gui/Game_Main.layout:274 ..NewGame-Difficulty.Button
 #: :482..NewGame-GameTypes.Button data/gui/Game_Options.layout:13
 #: data/gui/Game_Replay.layout:13 ..Replays.Tab data/gui/Game_Utils.layout:42
@@ -195,13 +195,13 @@ msgid "Help"
 msgstr "Súgó"
 
 #. MAIN  Menu 
-#: data/gui/Game_Help.layout:203 ..Help.Tab
+#: data/gui/Game_Help.layout:197 ..Help.Tab
 msgctxt "Readme"
 msgid "Readme"
 msgstr "Olvassel"
 
 #. MAIN  Menu 
-#: data/gui/Game_Help.layout:222 ..Help.Tab
+#: data/gui/Game_Help.layout:216 ..Help.Tab
 msgctxt "Changes"
 msgid "Changes"
 msgstr ""
@@ -213,38 +213,38 @@ msgid "Support"
 msgstr "Támogatás"
 
 #. MAIN  Menu 
-#: data/gui/Game_Help.layout:241 ..Help.Tab
+#: data/gui/Game_Help.layout:235 ..Help.Tab
 msgctxt "Contributing"
 msgid "Contributing"
 msgstr "Közreműködés"
 
 #. MAIN  Menu 
-#: data/gui/Game_Help.layout:266 ..Help.Tab
+#: data/gui/Game_Help.layout:260 ..Help.Tab
 msgctxt "Credits"
 msgid "Credits"
 msgstr "Köszönetnyilvánítás"
 
 #. How To Play 
-#: data/gui/Game_Help.layout:493 ..HowToPlay.Button :500:507:514:521:528:535
+#: data/gui/Game_Help.layout:487 ..HowToPlay.Button :494:501:508:515:522:529
 #: data/gui/Game_Replay.layout:246 ..Window
 msgctxt "Lesson"
 msgid "Lesson"
 msgstr ""
 
 #. How To Play 
-#: data/gui/Game_Help.layout:481 ..HowToPlay.Text
+#: data/gui/Game_Help.layout:475 ..HowToPlay.Text
 msgctxt "DrivingSchool"
 msgid "Stunt Rally driving school"
 msgstr ""
 
 #. How To Play 
-#: data/gui/Game_Help.layout:481 ..HowToPlay.Text
+#: data/gui/Game_Help.layout:475 ..HowToPlay.Text
 msgctxt "LessonClick"
 msgid "click button to play a lesson"
 msgstr ""
 
 #. Game  User Path 
-#: data/gui/Game_Help.layout:171 ..Help.Support.Text
+#: data/gui/Game_Help.layout:165 ..Help.Support.Text
 msgctxt "UserDir"
 msgid "User Path (logs, configs, user data, etc)"
 msgstr ""
@@ -277,7 +277,6 @@ msgid "Documentation (Wiki)"
 msgstr "Dokumentáció (Wiki)"
 
 #. MAIN  Help links 
-#: data/gui/Game_Help.layout:128 ..Help.Support.Button
 msgctxt "Forum"
 msgid "Forum"
 msgstr "Fórum"
@@ -289,20 +288,20 @@ msgid "Chat"
 msgstr ""
 
 #. MAIN  Help links 
-#: data/gui/Game_Help.layout:147 ..Help.Support.Button
+#: data/gui/Game_Help.layout:141 ..Help.Support.Button
 msgctxt "Sources"
 msgid "Sources"
 msgstr "Források"
 
 #. MAIN  Help links 
 #: data/gui/Editor_Help.layout:24 ..Help.Input/help.Button
-#: data/gui/Game_Help.layout:135 ..Help.Support.Button
+#: data/gui/Game_Help.layout:129 ..Help.Support.Button
 msgctxt "TrackEditorTutorial"
 msgid "Track Editor Tutorials"
 msgstr "Pályaszerkesztő oktatóanyagai"
 
 #. MAIN  Help links 
-#: data/gui/Game_Help.layout:141 ..Help.Support.Button
+#: data/gui/Game_Help.layout:135 ..Help.Support.Button
 msgctxt "Translations"
 msgid "Translations"
 msgstr "Fordítások"
@@ -314,7 +313,7 @@ msgid "Game Controllers"
 msgstr "Játékvezérlők"
 
 #. MAIN  Help links 
-#: data/gui/Game_Help.layout:153 ..Help.Support.Button
+#: data/gui/Game_Help.layout:147 ..Help.Support.Button
 msgctxt "Donations"
 msgid "Donations"
 msgstr "Adományok"
@@ -323,28 +322,28 @@ msgstr "Adományok"
 #: data/gui/Game.layout:2118 ..SingleRace.Championship.Button :2129:2140:2151
 #: data/gui/Game_Utils.layout:45 ..Championship.Button :132..Challenge.Button
 #: src/game/Championships.cpp:178:436 src/game/Challenges.cpp:545:659
-#: src/game/Collections.cpp:261
+#: src/game/Collections.cpp:268
 msgctxt "Start"
 msgid "Start"
 msgstr "Kezdés"
 
 #. MAIN  Championship  buttons 
 #: src/game/Championships.cpp:178:431:436 src/game/Challenges.cpp:530:545:659
-#: src/game/Collections.cpp:261
+#: src/game/Collections.cpp:268
 msgctxt "Continue"
 msgid "Continue"
 msgstr "Folytatás"
 
 #. MAIN  Championship  buttons 
 #: src/game/Championships.cpp:178 src/game/Challenges.cpp:659
-#: src/game/Collections.cpp:261
+#: src/game/Collections.cpp:268
 msgctxt "Restart"
 msgid "Restart"
 msgstr "Újraindítás"
 
 #. MAIN  Championship  buttons 
 #: data/gui/Common.layout:47 ..Track-Filter.Button data/gui/Game_Help.layout:32
-#: ..GameStatistics.Button :461..Welcometo.Button data/gui/Game_Utils.layout:91
+#: ..GameStatistics.Button :455..Welcometo.Button data/gui/Game_Utils.layout:91
 #: ..Championship.Button :185..Challenge.Button
 msgctxt "Close"
 msgid "Close"
@@ -352,7 +351,7 @@ msgstr "Bezárás"
 
 #. MAIN  Challenge prizes 
 #: src/game/Hud_Create.cpp:254 src/game/Challenges.cpp:448:648
-#: src/game/Collections.cpp:257 src/game/Gui_InitGames.cpp:83:96
+#: src/game/Collections.cpp:264 src/game/Gui_InitGames.cpp:83:96
 msgctxt "Prize"
 msgid "Prize"
 msgstr "Díj"
@@ -396,7 +395,7 @@ msgstr "Többjátékos"
 #: data/gui/Editor_Options.layout:614 ..Options.Graphics.Lights.Check
 #: data/gui/Editor_Tools.layout:554 ..Window data/gui/Game_Main.layout:422
 #: ..NewGame-GameTypes.Button data/gui/Game_Options.layout:1193
-#: src/game/Hud_Create.cpp:255 src/game/Gui_ProgressLoad.cpp:97
+#: src/game/Hud_Create.cpp:255 src/game/Gui_ProgressLoad.cpp:99
 #: src/game/Gui_Games.cpp:92 src/game/Gui_Util.cpp:175:176
 msgctxt "Collection"
 msgid "Collection"
@@ -410,7 +409,7 @@ msgstr ""
 
 #. MAIN  Game  Modes 
 #: data/gui/Game_Main.layout:442 ..NewGame-GameTypes.Button
-#: src/game/Gui_ProgressLoad.cpp:99 src/game/Gui_Games.cpp:92
+#: src/game/Gui_ProgressLoad.cpp:101 src/game/Gui_Games.cpp:92
 #: src/game/Gui_Util.cpp:171
 msgctxt "Career"
 msgid "Career"
@@ -447,7 +446,7 @@ msgstr "Körök száma"
 #: data/gui/Game_Options.layout:1502 ..Options.Graphics.Tab
 #: src/game/Challenges.cpp:589 src/game/Gui_Init.cpp:452
 #: src/game/Gui_Replay.cpp:168 src/game/Gui_Network.cpp:132
-#: src/game/Collections.cpp:237 src/editor/Update_EditKeyTxt.cpp:367
+#: src/game/Collections.cpp:244 src/editor/Update_EditKeyTxt.cpp:367
 msgctxt "Simulation"
 msgid "Simulation"
 msgstr "Szimuláció"
@@ -471,7 +470,7 @@ msgstr "Festés"
 #: data/gui/Editor_Track.layout:587 ..Track.Tab data/gui/Game.layout:1317
 #: ..SingleRace.Setup.Tab data/gui/Game_Options.layout:459
 #: ..Options.Input.Shortcuts.Text src/game/Challenges.cpp:587
-#: src/game/Gui_Network.cpp:131 src/game/Collections.cpp:235
+#: src/game/Gui_Network.cpp:131 src/game/Collections.cpp:242
 msgctxt "Game"
 msgid "Game"
 msgstr "Játék"
@@ -481,7 +480,7 @@ msgstr "Játék"
 #: :1704..Editor.Layers.Blendmap.Blendmap.Text data/gui/Editor_Track.layout:589
 #: ..Track.Game.Text data/gui/Game.layout:1373 ..SingleRace.Setup.Game.Text
 #: src/game/Challenges.cpp:590 src/game/Gui_Network.cpp:139
-#: src/game/Collections.cpp:238
+#: src/game/Collections.cpp:245
 msgctxt "Damage"
 msgid "Damage"
 msgstr "Sérülés"
@@ -517,7 +516,7 @@ msgstr ""
 #: :1423..SingleRace.Setup.Tab data/gui/Game_Options.layout:860
 #: ..Options.View.Camera.Text :871:1178..Options.Graphics.Lights.Check
 #: src/game/Challenges.cpp:593 src/game/Gui_Init.cpp:453
-#: src/game/Gui_Network.cpp:136 src/game/Collections.cpp:241
+#: src/game/Gui_Network.cpp:136 src/game/Collections.cpp:248
 msgctxt "Boost"
 msgid "Boost"
 msgstr ""
@@ -525,7 +524,7 @@ msgstr ""
 #. Game  Boost 
 #: data/gui/Game.layout:1341 ..SingleRace.Setup.Game.Text
 #: src/game/Challenges.cpp:594 src/game/Gui_Network.cpp:137
-#: src/game/Collections.cpp:242
+#: src/game/Collections.cpp:249
 msgctxt "Flip"
 msgid "Flip"
 msgstr ""
@@ -544,7 +543,7 @@ msgstr "Mindig"
 
 #. Game  Boost 
 #: src/game/Challenges.cpp:588 src/game/Gui_Network.cpp:135
-#: src/game/Collections.cpp:236 src/common/GuiCom_Options.cpp:64
+#: src/game/Collections.cpp:243 src/common/GuiCom_Options.cpp:64
 msgctxt "Any"
 msgid "Any"
 msgstr ""
@@ -704,8 +703,8 @@ msgstr ""
 #: src/game/Championships.cpp:401 src/game/CarModel_Config.cpp:108
 #: src/game/Hud_Create.cpp:262:299 src/game/Challenges.cpp:489
 #: src/game/Gui_Init.cpp:448 src/game/Gui_Replay.cpp:75:77:147
-#: src/game/Game_SceneInit.cpp:238 src/game/Gui_Network.cpp:124
-#: src/game/Collections.cpp:138:214 src/game/Gui_InitGames.cpp:93:109
+#: src/game/Game_SceneInit.cpp:247 src/game/Gui_Network.cpp:124
+#: src/game/Collections.cpp:145:221 src/game/Gui_InitGames.cpp:93:109
 #: src/game/ChampChall.cpp:239 src/editor/App_SceneInitEd.cpp:509
 #: src/editor/Gui_Tools.cpp:32:39:263:308
 msgctxt "Track"
@@ -732,7 +731,7 @@ msgstr ""
 #: data/gui/Editor_Options.layout:1107 ..Options.View.Pacenotes.Check
 #: data/gui/Game.layout:22 ..SingleRace.Track.Check
 #: :2110..SingleRace.Championship.Check data/gui/Game_Options.layout:1173
-#: ..Options.Graphics.Lights.Check src/game/Gui_ProgressLoad.cpp:80
+#: ..Options.Graphics.Lights.Check src/game/Gui_ProgressLoad.cpp:82
 #: src/game/Gui_Network.cpp:125
 msgctxt "Reverse"
 msgid "Reverse"
@@ -882,7 +881,7 @@ msgstr "Hossz"
 #: data/gui/Game.layout:801 ..SingleRace.Vehicle.Text
 #: data/gui/Game_Main.layout:132 ..Window :186..NewGame-Difficulty.Button
 #: src/game/Championships.cpp:159:411 src/game/Challenges.cpp:497:569
-#: src/game/Gui_InitCar.cpp:141 src/game/Collections.cpp:213
+#: src/game/Gui_InitCar.cpp:141 src/game/Collections.cpp:220
 #: src/game/Gui_InitGames.cpp:67:79:94:110
 msgctxt "Difficulty"
 msgid "Difficulty"
@@ -902,7 +901,7 @@ msgstr "Távolság"
 #. Championship Stage  stats 
 #: data/gui/Game.layout:567 ..SingleRace.Vehicle.Text
 #: src/game/Championships.cpp:166 src/game/Challenges.cpp:576
-#: src/game/Collections.cpp:219 src/game/Gui_InitGames.cpp:68:81:95:111
+#: src/game/Collections.cpp:226 src/game/Gui_InitGames.cpp:68:81:95:111
 #: src/editor/Gui_Events.cpp:635
 msgctxt "Time"
 msgid "Time"
@@ -937,14 +936,14 @@ msgstr "Összpontszám"
 #. MAIN  Challenge Stage  progress 
 #: data/gui/Editor_Options.layout:186 ..Options.Screen.Effects.Text
 #: data/gui/Game_Options.layout:185 src/game/Championships.cpp:427
-#: src/game/Challenges.cpp:535:608:632 src/game/Collections.cpp:220
+#: src/game/Challenges.cpp:535:608:632 src/game/Collections.cpp:227
 msgctxt "Needed"
 msgid "Needed"
 msgstr "Szükséges"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:170:425 src/game/Challenges.cpp:466:507:647
-#: src/game/Gui_ProgressLoad.cpp:23
+#: src/game/Gui_ProgressLoad.cpp:23:52
 msgctxt "Finished"
 msgid "Finished"
 msgstr "Vége"
@@ -957,7 +956,7 @@ msgstr "Továbbjutva"
 
 #. MAIN  Challenge Stage  progress 
 #: src/game/Championships.cpp:433 src/game/Challenges.cpp:384
-#: src/game/Hud_UpdatesAll.cpp:504
+#: src/game/Hud_UpdatesAll.cpp:491
 msgctxt "DidntPass"
 msgid "Didn't pass"
 msgstr "Nem sikerült a továbbjutás"
@@ -998,7 +997,7 @@ msgstr "Jármű"
 
 #. Vehicle 
 #: src/game/Challenges.cpp:580 src/game/Gui_Replay.cpp:151
-#: src/game/Collections.cpp:231 src/game/Gui_InitGames.cpp:80:94
+#: src/game/Collections.cpp:238 src/game/Gui_InitGames.cpp:80:94
 msgctxt "Vehicles"
 msgid "Vehicles"
 msgstr "Járművek"
@@ -1440,6 +1439,11 @@ msgid "Wolf"
 msgstr "Farkas"
 
 #. Vehicle  Names  from animals 
+msgctxt "Tiger"
+msgid "Tiger"
+msgstr ""
+
+#. Vehicle  Names  from animals 
 msgctxt "Scorpion"
 msgid "Scorpion"
 msgstr "Skorpió"
@@ -1549,7 +1553,7 @@ msgstr "Mentés"
 
 #. Editor  status 
 #: src/game/Gui_TweakSim.cpp:570 src/editor/App_SceneInitEd.cpp:548
-#: src/editor/Update_Key.cpp:43 src/editor/ExportRoR.cpp:60
+#: src/editor/Update_Key.cpp:43 src/editor/ExportRoR.cpp:61
 msgctxt "Saved"
 msgid "Saved"
 msgstr "Mentve"
@@ -1646,55 +1650,55 @@ msgid "Initializing"
 msgstr "Előkészítés"
 
 #. Loading game tags 
-#: src/game/Game_SceneInit.cpp:860
+#: src/game/Game_SceneInit.cpp:869
 msgctxt "LS_CLEANUP"
 msgid "Cleaning up"
 msgstr "Takarítás"
 
 #. Loading game tags 
-#: src/game/Game_SceneInit.cpp:860
+#: src/game/Game_SceneInit.cpp:869
 msgctxt "LS_GAME"
 msgid "Loading Game"
 msgstr "Játék betöltése"
 
 #. Loading game tags 
-#: src/game/Game_SceneInit.cpp:860:943
+#: src/game/Game_SceneInit.cpp:869:952
 msgctxt "LS_SCENE"
 msgid "Loading Scene"
 msgstr "Jelenet betöltése"
 
 #. Loading game tags 
-#: src/game/Game_SceneInit.cpp:860
+#: src/game/Game_SceneInit.cpp:869
 msgctxt "LS_CAR"
 msgid "Loading Vehicles"
 msgstr "Járművek betöltése"
 
 #. Loading game tags 
-#: src/game/Game_SceneInit.cpp:861
+#: src/game/Game_SceneInit.cpp:870
 msgctxt "LS_TER"
 msgid "Loading Terrains"
 msgstr "Terepek betöltése"
 
 #. Loading game tags 
-#: src/game/Game_SceneInit.cpp:861
+#: src/game/Game_SceneInit.cpp:870
 msgctxt "LS_ROAD"
 msgid "Loading Roads"
 msgstr "Utak betöltése"
 
 #. Loading game tags 
-#: src/game/Game_SceneInit.cpp:861
+#: src/game/Game_SceneInit.cpp:870
 msgctxt "LS_OBJS"
 msgid "Loading Objects"
 msgstr "Tereptárgyak betöltése"
 
 #. Loading game tags 
-#: src/game/Game_SceneInit.cpp:861
+#: src/game/Game_SceneInit.cpp:870
 msgctxt "LS_TREES"
 msgid "Loading Vegetation"
 msgstr "Növényzet betöltése"
 
 #. Loading game tags 
-#: src/game/Game_SceneInit.cpp:863
+#: src/game/Game_SceneInit.cpp:872
 msgctxt "LS_MISC"
 msgid "Finishing"
 msgstr "Befejezés"
@@ -2270,7 +2274,7 @@ msgid "Startup"
 msgstr ""
 
 #. MAIN  options 
-#: data/gui/Game_Help.layout:406 ..Welcometo.Button
+#: data/gui/Game_Help.layout:400 ..Welcometo.Button
 #: data/gui/Game_Options.layout:370 ..Options.Tab
 #: :486..Options.Input.Shortcuts.Text
 msgctxt "Input"
@@ -2521,7 +2525,7 @@ msgstr ""
 #. Screen 
 #: data/gui/Editor_Help.layout:248 ..Help.Input/help.Shortcuts.Text
 #: data/gui/Editor_Options.layout:19 ..Options.Tab
-#: data/gui/Game_Help.layout:381 ..Welcometo.Button
+#: data/gui/Game_Help.layout:375 ..Welcometo.Button
 #: data/gui/Game_Options.layout:23 :483..Options.Input.Shortcuts.Text
 msgctxt "Screen"
 msgid "Screen"
@@ -3168,7 +3172,7 @@ msgstr ""
 #. Graphics  Vegetation 
 #: data/gui/Editor_Options.layout:676 ..Options.Graphics.Vegetation.Text
 #: :762..Options.Graphics.Horizon.Text data/gui/Game_Options.layout:1255
-#: :1341..Options.Graphics.Horizon.Text
+#: :1341..Options.Graphics.Horizon.Text src/editor/Gui_InitLists.cpp:179
 msgctxt "Bush"
 msgid "Bush"
 msgstr ""
@@ -4147,7 +4151,7 @@ msgstr ""
 #. MAIN  Game Input  Player 
 #: data/gui/Game.layout:1357 ..SingleRace.Setup.Game.Text
 #: src/game/Challenges.cpp:591 src/game/Gui_Network.cpp:141
-#: src/game/Collections.cpp:239
+#: src/game/Collections.cpp:246
 msgctxt "InputMapRewind"
 msgid "Rewind (time)"
 msgstr ""
@@ -4424,38 +4428,38 @@ msgid "Car Scrap"
 msgstr ""
 
 #. About 
-#: data/gui/Game_Help.layout:285 ..Help.Tab
+#: data/gui/Game_Help.layout:279 ..Help.Tab
 msgctxt "About"
 msgid "About"
 msgstr "Névjegy"
 
 #. About 
-#: data/gui/Common.layout:84 ..Track-Filter.Check data/gui/Game_Help.layout:292
+#: data/gui/Common.layout:84 ..Track-Filter.Check data/gui/Game_Help.layout:286
 #: ..Help.About.Text
 msgctxt "Version"
 msgid "version"
 msgstr "verzió"
 
 #. About 
-#: data/gui/Game_Help.layout:298 ..Help.About.Text
+#: data/gui/Game_Help.layout:292 ..Help.About.Text
 msgctxt "GameBy"
 msgid "A game by"
 msgstr "Egy játék"
 
 #. About 
-#: data/gui/Game_Help.layout:304 ..Help.About.Text
+#: data/gui/Game_Help.layout:298 ..Help.About.Text
 msgctxt "AndContributors"
 msgid "and contributors."
 msgstr "és további közreműködők jóvoltából."
 
 #. About 
-#: data/gui/Game_Help.layout:314 ..Help.About.Text
+#: data/gui/Game_Help.layout:308 ..Help.About.Text
 msgctxt "BasedOn"
 msgid "based on"
 msgstr "a következő alapján:"
 
 #. About 
-#: data/gui/Game_Help.layout:333 ..Help.About.Text
+#: data/gui/Game_Help.layout:327 ..Help.About.Text
 msgctxt "AndUsing"
 msgid "and using"
 msgstr "és ezek használatával:"
@@ -4588,7 +4592,7 @@ msgstr ""
 
 #. Editor  Sun 
 #: data/gui/Editor.layout:46 ..Editor.Sun.Sun.Text
-#: src/editor/Gui_InitLists.cpp:248
+#: src/editor/Gui_InitLists.cpp:256
 msgctxt "Sky"
 msgid "Sky"
 msgstr ""
@@ -4607,7 +4611,7 @@ msgstr ""
 
 #. Editor  Sun 
 #: data/gui/Editor.layout:85 ..Editor.Sun.Sun.Text
-#: src/editor/Gui_InitLists.cpp:249
+#: src/editor/Gui_InitLists.cpp:257
 msgctxt "Pitch"
 msgid "pitch"
 msgstr ""
@@ -4633,7 +4637,7 @@ msgstr ""
 #: data/gui/Game.layout:1044 ..SingleRace.Setup.Paint.Tab
 #: :1178..SingleRace.Setup.Paint.Text :1182..SingleRace.Setup.Paint.Slider
 #: :1186..SingleRace.Setup.Paint.Text data/gui/MaterialEditor.layout:67
-#: ..MaterialEditor.Main.Text :78:89 src/editor/Gui_InitLists.cpp:273
+#: ..MaterialEditor.Main.Text :78:89 src/editor/Gui_InitLists.cpp:281
 #: src/editor/Update_EditKeyTxt.cpp:325 src/common/GuiCom_Options.cpp:66
 msgctxt "Diffuse"
 msgid "Diffuse"
@@ -4919,7 +4923,7 @@ msgstr ""
 
 #. Terrain  Layers 
 #: data/gui/Editor_Track.layout:858 ..Track.Export.Road.Text
-#: src/editor/Gui_InitLists.cpp:179 src/editor/Gui_Events.cpp:620
+#: src/editor/Gui_InitLists.cpp:187 src/editor/Gui_Events.cpp:620
 msgctxt "Layer"
 msgid "Layer"
 msgstr ""
@@ -5158,7 +5162,7 @@ msgstr ""
 #: data/gui/Editor_Track.layout:971 ..Track.Export.Settings.Text
 #: :998..Track.Export.Settings.Button data/gui/Game.layout:1613
 #: ..SingleRace.Setup.Steering.Text data/gui/Game_Tweak.layout:272 ..Tweak.Tab
-#: src/editor/Gui_InitLists.cpp:354
+#: src/editor/Gui_InitLists.cpp:362
 msgctxt "Surface"
 msgid "Surface"
 msgstr ""
@@ -5357,13 +5361,14 @@ msgstr ""
 #. Vegetation  Main 
 #: data/gui/Editor.layout:2339 ..Editor.Vegetation.Properties.Text
 #: data/gui/Editor_Track.layout:804 ..Track.Export.Track.Text
+#: src/editor/Gui_InitLists.cpp:181
 msgctxt "TreeDens"
 msgid "Trees   density"
 msgstr ""
 
 #. Vegetation  Model main 
 #: data/gui/Editor.layout:2471 ..Editor.Vegetation.Models.Text
-#: :2476..Editor.Vegetation.Models.Button src/editor/Gui_InitLists.cpp:326
+#: :2476..Editor.Vegetation.Models.Button src/editor/Gui_InitLists.cpp:334
 msgctxt "Model"
 msgid "Model"
 msgstr ""
@@ -5478,7 +5483,7 @@ msgstr ""
 #: data/gui/Editor.layout:1511 ..Editor.Layers.Text
 #: :2086..Editor.Grasses.Grasses.Text :2091..Editor.Grasses.Grasses.Button
 #: :2864..Editor.Vegetation.Road.Column.Text
-#: src/editor/Gui_InitLists.cpp:300:353 src/editor/Gui_Events.cpp:302
+#: src/editor/Gui_InitLists.cpp:308:361 src/editor/Gui_Events.cpp:302
 msgctxt "GrMaterial"
 msgid "Material"
 msgstr ""
@@ -5509,7 +5514,7 @@ msgstr ""
 #: data/gui/Editor_Help.layout:228 ..Help.Input/help.Shortcuts.Text
 #: :358..Help.Input/help.Tab data/gui/Editor_Track.layout:512
 #: ..Track.Tools.Button :534:829..Track.Export.Track.Text
-#: :850..Track.Export.Tab src/editor/Gui_InitLists.cpp:180
+#: :850..Track.Export.Tab src/editor/Gui_InitLists.cpp:188
 #: src/editor/Gui_Events.cpp:621 src/editor/Update_EditKeyTxt.cpp:70
 msgctxt "Road"
 msgid "Road"
@@ -5517,7 +5522,7 @@ msgstr "Út"
 
 #. Road  Main 
 #: data/gui/Editor.layout:2783 ..Editor.Vegetation.Road.Tab
-#: :2940..Editor.Vegetation.Road.Detail.Text src/editor/Gui_InitLists.cpp:181
+#: :2940..Editor.Vegetation.Road.Detail.Text src/editor/Gui_InitLists.cpp:189
 #: src/editor/Gui_Events.cpp:622
 msgctxt "Pipe"
 msgid "Pipe"
@@ -5857,7 +5862,7 @@ msgid "Buildings"
 msgstr ""
 
 #. Editor Objects  verious 
-#: src/editor/Gui_InitLists.cpp:168
+#: src/editor/Gui_InitLists.cpp:169
 msgctxt "ObjRocks"
 msgid "Rocks"
 msgstr ""
@@ -6272,7 +6277,7 @@ msgid "Material Editor"
 msgstr ""
 
 #. Tweak 
-#: src/game/Gui_Replay.cpp:77:148 src/game/Game_SceneInit.cpp:240
+#: src/game/Gui_Replay.cpp:77:148 src/game/Game_SceneInit.cpp:249
 #: src/game/Gui_TweakSim.cpp:140:342
 msgctxt "TweakUser"
 msgid "User"
@@ -7450,20 +7455,20 @@ msgid "Hint"
 msgstr "Tipp"
 
 #. Hint  welcome screen 
-#: data/gui/Game_Help.layout:452 ..Welcometo.Check
+#: data/gui/Game_Help.layout:446 ..Welcometo.Check
 msgctxt "HintShow"
 msgid "Show at startup"
 msgstr "Megjelenítés indításkor"
 
 #. Hint  welcome screen 
-#: data/gui/Game_Help.layout:97 ..Help.Support.Button :456..Welcometo.Text
+#: data/gui/Game_Help.layout:97 ..Help.Support.Button :450..Welcometo.Text
 #: data/gui/Game_Options.layout:405 ..Options.Input.General.Text
 msgctxt "HintKey"
 msgid "Ctrl-F1 - Show"
 msgstr "Ctrl+F1 – Megjelenítés"
 
 #. Hint  welcome screen 
-#: data/gui/Game_Help.layout:97 ..Help.Support.Button :350..Window
+#: data/gui/Game_Help.layout:97 ..Help.Support.Button :344..Window
 #: data/gui/Game_Options.layout:405 ..Options.Input.General.Text
 msgctxt "WelcomeTo"
 msgid "Welcome to"
@@ -7477,13 +7482,13 @@ msgid ""
 msgstr ""
 
 #. Hint  welcome screen 
-#: data/gui/Game_Help.layout:376 ..Welcometo.Edit
+#: data/gui/Game_Help.layout:370 ..Welcometo.Edit
 msgctxt "HintGraphics"
 msgid "To adjust graphics to your card press Screen button."
 msgstr ""
 
 #. Hint  welcome screen 
-#: data/gui/Game_Help.layout:401 ..Welcometo.Edit
+#: data/gui/Game_Help.layout:395 ..Welcometo.Edit
 msgctxt "HintInput"
 msgid ""
 "To check keys used in game or reassign them, or to configure controller "
@@ -7498,7 +7503,7 @@ msgid "Game Statistics"
 msgstr ""
 
 #. TIP  Track  messages 
-#: src/game/Game_SceneInit.cpp:239
+#: src/game/Game_SceneInit.cpp:248
 msgctxt "TrackNotFound"
 msgid "Track not found !"
 msgstr "A pálya nem található!"
@@ -7753,9 +7758,7 @@ msgstr ""
 #. HUD  Camera info  parts (use same count, separated by comma) 
 #: src/game/FollowCamera.cpp:603
 msgctxt "CamInfoStrings"
-msgid ""
-"Type,Yaw,Pitch,Dist,Height,Speed,Offset,LEFT,RIGHT,Middle,Wheel,shift,Rotate,"
-"reset,move,H,Pos"
+msgid "Type,Yaw,Pitch,Dist,Height,Speed,Offset,LEFT,RIGHT,Middle,Wheel,shift,Rotate,reset,move,H,Pos"
 msgstr ""
 
 #. Game Vehicle descriptions 
@@ -7862,6 +7865,13 @@ msgid ""
 "Very powerful engine fitted car, drivable on most tracks. Not best on bumps "
 "because of short and stiff suspension. So much torque also causes more "
 "wheels spin."
+msgstr ""
+
+#. Game Vehicle descriptions 
+msgctxt "CarDesc_LF"
+msgid ""
+"Quite powerful car. But long and has extremely low suspension, so it's not "
+"for stunts."
 msgstr ""
 
 #. Game Vehicle descriptions 
@@ -8026,7 +8036,7 @@ msgid "By antigravity it ignores all fluids completely."
 msgstr ""
 
 #. TIP  Hints title+text  (in game's How To Play) 
-#: data/gui/Game_Help.layout:500 ..HowToPlay.Button
+#: data/gui/Game_Help.layout:494 ..HowToPlay.Button
 msgctxt "Hint-0"
 msgid "Rewind"
 msgstr ""
@@ -8037,7 +8047,7 @@ msgid "If you crashed or you're stuck, hold [Insert] to move back in time."
 msgstr ""
 
 #. TIP  Hints title+text  (in game's How To Play) 
-#: data/gui/Game_Help.layout:493 ..HowToPlay.Button
+#: data/gui/Game_Help.layout:487 ..HowToPlay.Button
 msgctxt "Hint-1"
 msgid "Turns"
 msgstr ""
@@ -8051,7 +8061,7 @@ msgid ""
 msgstr ""
 
 #. TIP  Hints title+text  (in game's How To Play) 
-#: data/gui/Game_Help.layout:500 ..HowToPlay.Button
+#: data/gui/Game_Help.layout:494 ..HowToPlay.Button
 msgctxt "Hint-2"
 msgid "Flipping"
 msgstr ""
@@ -8064,7 +8074,7 @@ msgid ""
 msgstr ""
 
 #. TIP  Hints title+text  (in game's How To Play) 
-#: data/gui/Game_Help.layout:493 ..HowToPlay.Button
+#: data/gui/Game_Help.layout:487 ..HowToPlay.Button
 msgctxt "Hint-3"
 msgid "Gravel"
 msgstr ""
@@ -8078,7 +8088,7 @@ msgid ""
 msgstr ""
 
 #. TIP  Hints title+text  (in game's How To Play) 
-#: data/gui/Game_Help.layout:500 ..HowToPlay.Button
+#: data/gui/Game_Help.layout:494 ..HowToPlay.Button
 msgctxt "Hint-4"
 msgid "Damage"
 msgstr "Sérülés"
@@ -8103,7 +8113,7 @@ msgid ""
 msgstr ""
 
 #. TIP  Hints title+text  (in game's How To Play) 
-#: data/gui/Game_Help.layout:507 ..HowToPlay.Button
+#: data/gui/Game_Help.layout:501 ..HowToPlay.Button
 msgctxt "Hint-6"
 msgid "Boost"
 msgstr ""
@@ -8116,7 +8126,7 @@ msgid ""
 msgstr ""
 
 #. TIP  Hints title+text  (in game's How To Play) 
-#: data/gui/Game_Help.layout:521 ..HowToPlay.Button
+#: data/gui/Game_Help.layout:515 ..HowToPlay.Button
 msgctxt "Hint-7"
 msgid "Cars"
 msgstr ""
@@ -8143,7 +8153,7 @@ msgid ""
 msgstr ""
 
 #. TIP  Hints title+text  (in game's How To Play) 
-#: data/gui/Game_Help.layout:507 ..HowToPlay.Button
+#: data/gui/Game_Help.layout:501 ..HowToPlay.Button
 msgctxt "Hint-9"
 msgid "Jumps"
 msgstr ""
@@ -8156,7 +8166,7 @@ msgid ""
 msgstr ""
 
 #. TIP  Hints title+text  (in game's How To Play) 
-#: data/gui/Game_Help.layout:514 ..HowToPlay.Button
+#: data/gui/Game_Help.layout:508 ..HowToPlay.Button
 msgctxt "Hint-10"
 msgid "Loops"
 msgstr ""
@@ -8169,7 +8179,7 @@ msgid ""
 msgstr ""
 
 #. TIP  Hints title+text  (in game's How To Play) 
-#: data/gui/Game_Help.layout:514 ..HowToPlay.Button
+#: data/gui/Game_Help.layout:508 ..HowToPlay.Button
 msgctxt "Hint-11"
 msgid "Pipes"
 msgstr ""
@@ -8182,7 +8192,7 @@ msgid ""
 msgstr ""
 
 #. TIP  Hints title+text  (in game's How To Play) 
-#: data/gui/Game_Help.layout:535 ..HowToPlay.Button
+#: data/gui/Game_Help.layout:529 ..HowToPlay.Button
 msgctxt "Hint-12"
 msgid "Vehicles"
 msgstr ""
@@ -8229,7 +8239,7 @@ msgid "For more info, check [Help] in the menu. It also has links to websites."
 msgstr ""
 
 #. TIP  Hints title+text  (in game's How To Play) 
-#: data/gui/Game_Help.layout:521 ..HowToPlay.Button
+#: data/gui/Game_Help.layout:515 ..HowToPlay.Button
 msgctxt "Hint-16"
 msgid "Camera"
 msgstr ""
@@ -8242,7 +8252,7 @@ msgid ""
 msgstr ""
 
 #. TIP  Hints title+text  (in game's How To Play) 
-#: data/gui/Game_Help.layout:493 ..HowToPlay.Button
+#: data/gui/Game_Help.layout:487 ..HowToPlay.Button
 msgctxt "Hint-17"
 msgid "Trail"
 msgstr ""
@@ -8255,7 +8265,7 @@ msgid ""
 msgstr ""
 
 #. TIP  Hints title+text  (in game's How To Play) 
-#: data/gui/Game_Help.layout:493 ..HowToPlay.Button
+#: data/gui/Game_Help.layout:487 ..HowToPlay.Button
 msgctxt "Hint-18"
 msgid "Pacenotes"
 msgstr ""
@@ -8281,7 +8291,7 @@ msgid ""
 msgstr ""
 
 #. TIP  Hints title+text  (in game's How To Play) 
-#: data/gui/Game_Help.layout:521 ..HowToPlay.Button
+#: data/gui/Game_Help.layout:515 ..HowToPlay.Button
 msgctxt "Hint-20"
 msgid "Fluids"
 msgstr ""
@@ -8294,7 +8304,7 @@ msgid ""
 msgstr ""
 
 #. TIP  Hints title+text  (in game's How To Play) 
-#: data/gui/Game_Help.layout:528 ..HowToPlay.Button
+#: data/gui/Game_Help.layout:522 ..HowToPlay.Button
 msgctxt "Hint-21"
 msgid "Wheels"
 msgstr ""
@@ -8331,7 +8341,7 @@ msgid ""
 msgstr ""
 
 #. TIP  Hints title+text  (in game's How To Play) 
-#: data/gui/Game_Help.layout:535 ..HowToPlay.Button
+#: data/gui/Game_Help.layout:529 ..HowToPlay.Button
 msgctxt "Hint-24"
 msgid "Details"
 msgstr ""
@@ -8357,7 +8367,7 @@ msgid ""
 msgstr ""
 
 #. TIP  Hints title+text  (in game's How To Play) 
-#: data/gui/Game_Help.layout:528 ..HowToPlay.Button
+#: data/gui/Game_Help.layout:522 ..HowToPlay.Button
 msgctxt "Hint-26"
 msgid "Test tracks"
 msgstr ""
@@ -8371,7 +8381,7 @@ msgid ""
 msgstr ""
 
 #. TIP  Hints title+text  (in game's How To Play) 
-#: data/gui/Game_Help.layout:528 ..HowToPlay.Button
+#: data/gui/Game_Help.layout:522 ..HowToPlay.Button
 msgctxt "Hint-27"
 msgid "Handbrake"
 msgstr ""
