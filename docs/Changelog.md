@@ -3,7 +3,7 @@
 This section lists changes not yet released, but committed to repositories stuntrally3 and tracks3.  
 WIP means work in progress, unfinished, still being developed.
 
-- 5 New tracks
+- 6 New tracks
 - 1 new car: [LF](../data/cars/_previews/LF.jpg)
 - renewed vehicle preview images
 - added game arguments: prv, prvfar, prvnear
