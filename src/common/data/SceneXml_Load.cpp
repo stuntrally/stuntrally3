@@ -332,6 +332,7 @@ bool Scene::LoadXml(String file, bool bTer)
 			a = u->Attribute("sc");		if (a)  o.scale = s2v(a);
 			
 			a = u->Attribute("sh");		if (a)  o.shadow = s2i(a) > 0;
+			a = u->Attribute("col");	if (a)  o.collis = s2i(a) > 0;
 
 			objects.push_back(o);
 			u = u->NextSiblingElement("o");
@@ -466,6 +467,8 @@ bool Scene::LoadTerData(String file, TerData& td, XMLElement* e)
 
 	a = e->Attribute("horiz");		if (a)  td.iHorizon = s2i(a);
 	a = e->Attribute("collis");		if (a)  td.collis = s2i(a)>0;
+	a = e->Attribute("fake");		if (a)  td.fake = s2i(a)>0;
+
 	a = e->Attribute("bL");		if (a)  td.bL = s2i(a)>0;
 	a = e->Attribute("bR");		if (a)  td.bR = s2i(a)>0;
 	a = e->Attribute("bF");		if (a)  td.bF = s2i(a)>0;

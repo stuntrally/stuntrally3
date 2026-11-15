@@ -361,6 +361,8 @@ bool Scene::SaveXml(String file)
 			XMLElement* oe = xml.NewElement("o");
 
 			oe->SetAttribute("name",	o->name.c_str() );
+			if (!o->collis)
+				oe->SetAttribute("col",	o->collis ? 1 : 0 );
 			if (o->stat)
 				oe->SetAttribute("stat", o->stat ? 1 : 0 );
 

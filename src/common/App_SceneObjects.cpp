@@ -144,6 +144,7 @@ void App::CreateObjects()
 	{
 		Object& o = scn->sc->objects[i];
 		String s = toStr(i);  // counter for names
+
 		o.dyn = o.stat ? false : objHasBlt[o.name];
 		#ifndef SR_EDITOR
 		if (o.dyn && !pSet->game.dyn_objects)  continue;
@@ -179,6 +180,7 @@ void App::CreateObjects()
 		if (no)  continue;
 
 		//  add to bullet world (in game)
+		if (!o.collis)  continue;  // no col
 		if (!o.dyn)
 		{
 			///  🏢 static  . . . . . . . . . . . . 
