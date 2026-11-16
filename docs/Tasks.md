@@ -16,6 +16,7 @@ Legend:
 ----
 | Id |Pri |  Size      | Component|       Task name(s)          | Updated   |%Done|    Details               |
 |----|----|------------|----------|-----------------------------|------------|----|--------------------------|
+| 34 | 1  | 9 Insane   | Graphics | ⚙️**Engine**                | 2026-11-16 | 0  | [link](#engine) |
 | 01 | 1  | 4 Big      | Sound    | 🔊Sounds: ambient, object   | 2024-12-28 | 55 | [link](#sounds)          |
 | 02 | 2  | 4 Big      | Graphics | ✨**Particles**             | 2023-08-20 | 0  | [link](#particles)       |
 |    |    |            |          |                             |            |    |                          |
@@ -54,6 +55,53 @@ Legend:
 ----
 
 # Details
+
+----
+
+## Engine
+
+Change engine to Wicked Engine. An insanely huge task, as it is a complete game engine.  
+It is *way* better and more advanced. Thus benefits would also be big in the end.  
+It has: Rendering, Physics, Sound, Gui (own and Imgui), Networking, Scripting (lua, no need),  
+Splines (for road), GI, HDR, Impostors (for vegetation), Grass, Ocean, Soft particles, etc.  
+Even in rendering alone, as compared to OgreNext (which is old and won't improve).  
+
+Links:  
+[Wicked Engine](https://github.com/turanszkij/WickedEngine/) - [Features list](https://raw.githubusercontent.com/turanszkij/WickedEngine/refs/heads/master/features.txt),  
+OgreNext: my last [forum post](https://forums.ogre3d.org/viewtopic.php?p=557266#p557266), my poor [terrain demo](https://codeberg.org/cryham/terrain-demo) (for comparison)  
+which took time, while Wicked Engine already has way more.  
+
+It'd take years to complete for sure.  
+But IMO rather a waste of time to still fix any current rendering bugs, when things work better in Wicked and are ready to use.  
+It'd also require at very end, a new track editor from its own Wicked editor, adjusted for our tracks.
+
+
+A draft **plan** to do:  
+- backup, move to Debian 13, set up compiling
+-
+- some simple demo, cpp **App**
+- **Import** a tree, a car etc
+- Demo Linux release, check hardware reqs, fps etc
+- test engine's new features
+-
+- viewing SR3 track's **Hmap**
+- ter angles, scene.xml **Veget** placing
+- use our Blendmap
+-
+- Road, use their spline, check if all is doable, pipes etc
+- split projects: demo, SR4_test
+- Only reading our tracks
+-
+- Physics (and sim), likely move to theirs
+- try sphere and hovercars first
+-
+- Gui (whole new)
+- Sounds
+-
+- Sim (try new VDrift)
+-
+- Editor
+
 
 ----
 
