@@ -126,15 +126,15 @@ bool TracksIni::LoadIni(string file, bool check)
 		//  starting with digit
 		if (strlen(s) > 0 && s[0] >= '0' && s[0] <= '9')
 		{
-		//114,Fin1-Lakes  v=2.0 06/04/13 07/04/13 :Finland  |o0 w1 ~1 J2 L0 P0 /1 s1 l2 !2 *4  T=107.8  a:CH  r:org
+	//E.g. 252,Isl22-Fortress   v3.4 10/11/26 12/11/26 :Island   |o4 c3 w2 ~1 J4 L5 P4 /3 s3 u0 f0 n3 l13  !5 *6  T=435  a:CH  r:org
 			sscanf(s,
-			"%d,%s v%f %d/%d/%d %d/%d/%d :%s |o%d c%d w%d ~%d J%d L%d P%d /%d s%d u%d n%d l%d !%d *%d  T=%f a:%s r:%s"
+			"%d,%s v%f %d/%d/%d %d/%d/%d :%s |o%d c%d w%d ~%d J%d L%d P%d /%d s%d u%d f%d n%d l%d !%d *%d  T=%f a:%s r:%s"
 				,&t.n, name, &t.crtver
 					,&t.created.day, &t.created.month, &t.created.year
 					,&t.modified.day, &t.modified.month, &t.modified.year
 				,scenery
 				,&t.objects, &t.obstacles,  &t.fluids, &t.bumps,  &t.jumps, &t.loops, &t.pipes
-				,&t.banked, &t.frenzy, &t.underwater
+				,&t.banked, &t.frenzy, &t.underwater, &t.fields
 				,&t.narrow, &t.longn,  &t.diff, &t.rating
 				,&time, author, cmt);
 

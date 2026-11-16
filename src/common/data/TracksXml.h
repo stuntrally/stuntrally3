@@ -34,9 +34,10 @@ public:
 	//  track characteristics  (byte)
 	int objects =0, obstacles =0;
 	int fluids =0, bumps =0,  jumps =0, loops =0, pipes =0;
-	int	banked =0, frenzy =0,  underwater =0,  narrow =0, longn =0;
+	int	banked =0, frenzy =0;
+	int underwater =0, fields =0;
+	int narrow =0, longn =0;
 	int diff =0, rating =0,  sum =0;
-	//todo fields
 
 	int nn =0;  // number got from name eg. for Des15-.. it is 15
 	bool test =0, testC =0;  // starts with Test.. or TestC..
