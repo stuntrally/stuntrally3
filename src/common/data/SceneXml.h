@@ -108,7 +108,7 @@ public:
 	///  ⛰️ Terrains  ----
 	std::vector<TerData> tds;
 	//  world size
-	bool bAutoTerSize = 1;  // for more ters, not size from 1st
+	bool bAutoTerSize = 1;  // 0 for more ters, not size from 1st
 	float fTerSize = -1.f;  // custom size
 	
 	float GetTerSize() const

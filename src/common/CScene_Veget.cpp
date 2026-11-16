@@ -44,6 +44,8 @@ void CScene::CreateVegets()
 
 	//  Terrains
 	//------------------------------------------------------------------------------------------
+	float twsR = sc->GetTerSize();
+
 	int iVegetTer0 = 0;
 	Terra* ter0 = 0;  // prev ter iHoriz 0
 	for (int it = 0; it < ters.size(); ++it)
@@ -103,6 +105,10 @@ void CScene::CreateVegets()
 			else
 				LogO("TREES no imgRoad !");
 
+			auto tx = td.posX;  // todo: ofs ter..
+			auto tz = td.posZ;
+			// LogO(fToStr(tx)+" "+fToStr(tz)+"  >>>  TER Ofs  ter: "+toStr(it));
+				
 			///  Veget Layers  
 			//------------------------------------------------------------------------------------------
 			int vegAllLay = 0, nn = 0;
@@ -157,7 +163,7 @@ void CScene::CreateVegets()
 				int all = 0;  // stat
 				// LogO("tws: "+fToStr(tws)+" tr cnt: "+toStr(cnt)+" c/t2: "+fToStr(cnt/tws/tws,8,10));  //-
 				// LogO(String("col?  ")+(col?"y":"n")+ " ofs x "+fToStr(ofs.x,2)+ " z "+fToStr(ofs.y,2));
-				
+
 				//  todo: parallel
 				for (int i = 0; i < cnt; ++i)
 				if (iVegetAll < pSet->veg.limit)
@@ -176,6 +182,8 @@ void CScene::CreateVegets()
 						pos.z = (rnd.rand()-0.5) * tws;
 						Real scl = rnd.rand() * (vg.maxScale - vg.minScale) + vg.minScale;
 					#endif
+					// pos.x += tx;
+					// pos.z += tz;
 					pos0 = pos;  // store original place
 					bool add = true;
 
@@ -233,8 +241,8 @@ void CScene::CreateVegets()
 					//  if on  🛣️Road - uses roadDensity.png
 					if (imgRoad && r > 0)  //  ----------------
 					{
-					int mx = (0.5*tws + pos.x)/tws*r,
-						my = (0.5*tws + pos.z)/tws*r;
+					int mx = (0.5*twsR + pos.x)/twsR*r,
+						my = (0.5*twsR + pos.z)/twsR*r;
 
 						int c = sc->trRdDist + vg.addRdist;
 						int d = c;
@@ -270,6 +278,9 @@ void CScene::CreateVegets()
 					// if (!add)  LogO("on rd");
 					if (!add)  continue;  //
 				// end parallel
+
+					// pos.x += tx;
+					// pos.z += tz;
 
 					//  🟢 Ogre add 1
 					//--------------------------------
