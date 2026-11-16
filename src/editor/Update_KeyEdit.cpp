@@ -105,7 +105,9 @@ void App::keyPressObjects(SDL_Scancode skey)
 		switch (skey)
 		{
 			case key(SPACE):
-				iObjCur = -1;  PickObject();  UpdObjPick();  break;
+				iObjCur = -1;
+				if (!shift)
+					PickObject();  UpdObjPick();  break;
 			
 			//  ins
 			case key(INSERT):	case key(KP_0):

@@ -1632,7 +1632,8 @@
 	<Tag name="InputObjectsSimulate">C - simulation toggle for dynamic objects</Tag>
 	<Tag name="InputObjectsCopySel">ctrl-Ins - copy selection</Tag>
 	<Tag name="InputObjectsPaste">shift-Ins - paste copied</Tag>
-	
+	<Tag name="InputObjectsPick">Space - pick one, shift-Space - none</Tag>
+		
 
 	<!--  Particles  Input  -->
 	<Tag name="InputParticlesDensity">[,] - change density (emission rate)</Tag>
