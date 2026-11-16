@@ -57,6 +57,8 @@ void Scene::Default()
 
 	tds.clear();
 	// td.Default();
+	bAutoTerSize = 1;  fTerSize = -1.f;
+
 
 	//  🌳 veget
 	densTrees=0;  densGrass=0;  grDensSmooth=6;

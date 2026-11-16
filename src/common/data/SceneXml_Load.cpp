@@ -193,6 +193,7 @@ bool Scene::LoadXml(String file, bool bTer)
 	e = root->FirstChildElement("terrains");
 	if (e)
 	{
+		a = e->Attribute("size");		if (a)  {  fTerSize = s2r(a);  bAutoTerSize = 0;  }
 		u = e->FirstChildElement("terrain");	
 		while (u)
 		{
@@ -222,7 +223,8 @@ bool Scene::LoadXml(String file, bool bTer)
 		{
 			densTrees = s2r(a);
 			// LogO("old dens: "+toStr(densTrees)+" tws: "+fToStr(tds[0].fTerWorldSize)+" tws1: "+fToStr(tds[1].fTerWorldSize));
-			auto tws = tds[0].fTerWorldSize;
+			// auto tws = tds[0].fTerWorldSize;  /// 1st ter-
+			auto tws = GetTerSize();
 			densTrees = 1000000.f * densTrees / tws / tws;
 			// LogO("new dens2: "+fToStr(densTrees,9,11));
 		}
@@ -467,7 +469,6 @@ bool Scene::LoadTerData(String file, TerData& td, XMLElement* e)
 
 	a = e->Attribute("horiz");		if (a)  td.iHorizon = s2i(a);
 	a = e->Attribute("collis");		if (a)  td.collis = s2i(a)>0;
-	a = e->Attribute("fake");		if (a)  td.fake = s2i(a)>0;
 
 	a = e->Attribute("bL");		if (a)  td.bL = s2i(a)>0;
 	a = e->Attribute("bR");		if (a)  td.bR = s2i(a)>0;

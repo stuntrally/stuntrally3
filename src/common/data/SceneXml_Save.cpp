@@ -167,6 +167,9 @@ bool Scene::SaveXml(String file)
 
 
 	XMLElement* ters = xml.NewElement("terrains");  // ⛰️
+	if (!bAutoTerSize && fTerSize > 0.f)
+		ters->SetAttribute("size",	toStrC( fTerSize ));
+
 	for (int n = 0; n < tds.size(); ++n)
 	{
 		const auto& td = tds[n];
@@ -189,6 +192,7 @@ bool Scene::SaveXml(String file)
 
 			if (td.iHorizon)	ter->SetAttribute("horiz",	toStrC( td.iHorizon ));
 			if (!td.collis)		ter->SetAttribute("collis",	td.collis ? 1 : 0 );
+
 			if (!td.bL)		ter->SetAttribute("bL",	td.bL ? 1 : 0 );
 			if (!td.bR)		ter->SetAttribute("bR",	td.bR ? 1 : 0 );
 			if (!td.bF)		ter->SetAttribute("bF",	td.bF ? 1 : 0 );

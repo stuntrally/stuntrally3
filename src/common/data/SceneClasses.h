@@ -183,8 +183,10 @@ public:
 	btDefaultMotionState* ms = 0;  // 🎳 bullet
 	btCollisionObject* co = 0;
 	btRigidBody* rb = 0;
+	
 	bool dyn = false;  // auto set
 	btTransform* tr1 = 0;  // 1st pos after load, for reset
+	bool collis = true;  // for no col, HugeTree
 
 	void SetFromBlt();
 };
