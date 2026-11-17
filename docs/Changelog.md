@@ -3,11 +3,16 @@
 This section lists changes not yet released, but committed to repositories stuntrally3 and tracks3.  
 WIP means work in progress, unfinished, still being developed.
 
-- 10 New tracks
+- 11 New tracks
 - 1 new car: [LF](../data/cars/_previews/LF.jpg)
 - Gameplay: Fields🎆 on few SciFi tracks, areas that will do (depending on type, by color):  
   - blue: accelerate, yellow: antigravity, green: damping, red: teleport
 - renewed vehicle preview images
+- Editor
+  - Objects edit added: shift-Space to pick none, for placing new
+  - possible to put trees as objects, for HugeTree track
+  - option to remove objects from roadDensity, for vegetation
+  - manual world size for FloatingIslands (hard to edit), scene.xml <terrains size=""
 - added game arguments: prv, prvfar, prvnear
   - to start with preview camera setup for making vehicle screens
 - Updated **docs** (a lot) and screenshots
