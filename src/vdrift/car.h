@@ -17,9 +17,11 @@ public:
 	CarModel* pCarM =0;
 	SETTINGS* pSet =0;  // for sound vol
 
+
 	CAR();
 	~CAR();
 
+	float c_vel = 0.0, c_pitch = 0.0, tgd = 0.0;
 	int numWheels = 0;
 	void SetNumWheels(int n);
 	

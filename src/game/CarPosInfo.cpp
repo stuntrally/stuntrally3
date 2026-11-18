@@ -156,6 +156,8 @@ void ReplayFrame2::FromCar(const CAR* pCar, half prevHitTime)
 		float slide = -1.f;
 		wh.squeal = pCar->GetTireSquealAmount(wp, &slide);  wh.slide = slide;
 		wh.whVel = cd.GetWheelVelocity(wp).Magnitude();
+		// contact
+		wh.contact = (cd.GetWheelContact(wp).GetDepth() - 2 * pCar->GetTireRadius(wp)) > 0.0;
 		//  susp
 		wh.suspVel = cd.GetSuspension(wp).GetVelocity();
 		wh.suspDisp = cd.GetSuspension(wp).GetDisplacementPercent();
@@ -178,7 +180,7 @@ void ReplayFrame2::FromCar(const CAR* pCar, half prevHitTime)
 	throttle = cd.GetThrottle() *255.f;  clutch = pCar->GetClutch() *255.f;
 	steer = pCar->GetLastSteer() *127.f;  fboost = cd.doBoost *255.f;
 	damage = cd.fDamage /100.f*255.f;  //percent set outside
-
+	is_shifting = (char)(cd.rem_shift_time > 0.0001);
 	//  eng snd
 	speed = pCar->GetSpeed();  dynVel = cd.GetVelocity().Magnitude();
 	set(b_braking, cd.IsBraking());
