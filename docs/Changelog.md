@@ -3,7 +3,7 @@
 This section lists changes not yet released, but committed to repositories stuntrally3 and tracks3.  
 WIP means work in progress, unfinished, still being developed.
 
-- 11 New tracks
+- 13 New tracks
 - 1 new car: [LF](../data/cars/_previews/LF.jpg)
 - Gameplay: Fields🎆 on few SciFi tracks, areas that will do (depending on type, by color):  
   - blue: accelerate, yellow: antigravity, green: damping, red: teleport
@@ -141,6 +141,7 @@ WIP means work in progress, unfinished, still being developed.
 ### Version 3.0 beta - 3.12.2023
 
 - Stunt Rally 3 is continuing last SR 2.x.  
+- 26 New tracks
 - Graphics - moved to Ogre-Next 3.0
   - A **lot smoother and higher Fps**📈, also in split screen
     - No vegetation lags. Auto HW instancing. Good Fps with many objects/buildings, and road points in editor
