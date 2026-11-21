@@ -335,6 +335,7 @@ bool Scene::LoadXml(String file, bool bTer)
 			
 			a = u->Attribute("sh");		if (a)  o.shadow = s2i(a) > 0;
 			a = u->Attribute("col");	if (a)  o.collis = s2i(a) > 0;
+			a = u->Attribute("hid");	if (a)  o.hidePrvDens = s2i(a) > 0;
 
 			objects.push_back(o);
 			u = u->NextSiblingElement("o");

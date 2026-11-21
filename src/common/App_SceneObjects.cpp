@@ -169,7 +169,8 @@ void App::CreateObjects()
 		}
 		o.nd = mSceneMgr->getRootSceneNode(SCENE_DYNAMIC)->createChildSceneNode();
 		o.SetFromBlt();
-		o.nd->attachObject(o.it);  o.it->setVisibilityFlags(RV_Objects);
+		o.nd->attachObject(o.it);
+		o.it->setVisibilityFlags(o.hidePrvDens ? RV_ObjectsNoRTT : RV_Objects);  // ed rtt
 		o.nd->setScale(o.scale);
 
 		//  alpha from presets.xml
@@ -615,7 +616,8 @@ void App::NextObjMat(int add, Object& o)
 		o.it->setDatablockOrMaterialName(o.material);
 }
 
-void App::TogObjStatic()  // toggle static
+//  ext toggles
+void App::TogObjStatic()
 {
 	if (!vObjSel.empty())
 	{	for (int i : vObjSel)

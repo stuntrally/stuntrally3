@@ -91,6 +91,7 @@ const Ogre::uint32
 	RV_Vegetation   = 0x00000008,  // 🌳🪨 vegetation
 	RV_VegetGrass   = 0x00000010,  // 🌿   grass
 	RV_Objects      = 0x00000020,  // 📦🏢 all objects  (static meshes, buildings and dynamic props)
+	RV_ObjectsNoRTT = 0x00200000,  // objects hidden from rtt in ed
 
 	RV_SkyMain      = 0x00000100,  // ⛅   sky for main view
 	RV_SkyPlanarRefl= 0x00000200,  // ⛅🪞 sky for fluids refl 🌊
@@ -104,13 +105,14 @@ const Ogre::uint32
 	//  vis masks
 	// RV_MaskGameAll  = RV_SkyMain + RV_Road + RV_Terrain + RV_Vegetation + RV_VegetGrass + RV_Objects + RV_Fluid
 	// 				+ RV_Car + RV_CarGlass, // + RV_Hud3D[player],
-	RV_MaskReflect  = RV_SkyCubeRefl + RV_Road + RV_Terrain + RV_Vegetation + RV_Objects,  // no hud, grass, car,glass,tires
+	RV_MaskReflect  = RV_SkyCubeRefl + RV_Road + RV_Terrain + RV_Vegetation + RV_Objects + RV_ObjectsNoRTT,  // no hud, grass, car,glass,tires
 	//  most as  visibility_mask  in SR3.compositor
 	// RV_WaterReflect = RV_Terrain + RV_Vegetation + RV_Road /*+ RV_Objects /*+ RV_Car*/,
 	// RV_WaterRefract = RV_Terrain + RV_Vegetation + RV_Road + RV_Objects + RV_Car,
 
-	RV_MaskAll      = 0x000001FF,
+	RV_MaskAll      = 0x002001FF,
 	// RV_MaskPrvCam   = 0x00000200,
+
 	//  ed only  road RTT prv
 	RV_EdRoadDens    = 0x00004000,  // 🛣️🌿 for grass,trees placing etc
 	RV_EdRoadPreview = 0x00008000;  // 🛣️🌍 for minimap

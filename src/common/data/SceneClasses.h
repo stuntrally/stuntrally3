@@ -186,7 +186,9 @@ public:
 	
 	bool dyn = false;  // auto set
 	btTransform* tr1 = 0;  // 1st pos after load, for reset
+
 	bool collis = true;  // for no col, HugeTree
+	bool hidePrvDens = false;  // hide from road prv minimap and grass dens
 
 	void SetFromBlt();
 };
