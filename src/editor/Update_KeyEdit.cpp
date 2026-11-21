@@ -171,8 +171,10 @@ void App::keyPressObjects(SDL_Scancode skey)
 			case key(O):  case key(LEFTBRACKET):   NextObjMat(-1);  break;
 			case key(P):  case key(RIGHTBRACKET):  NextObjMat( 1);  break;
 
-			//  static
-			case key(KP_ENTER):  case key(RETURN):  TogObjStatic();  break;
+			//  ext toggles
+			case key(8):  TogObjStatic();  break;
+			case key(7):  TogObjCollis();  break;
+			case key(6):  TogObjHidPrv();  break;
 			
 			default:  break;
 		}

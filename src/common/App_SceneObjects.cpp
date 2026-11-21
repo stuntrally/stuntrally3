@@ -628,6 +628,28 @@ void App::TogObjStatic()
 	Object& o = bNew || scn->sc->objects.empty() ? objNew : scn->sc->objects[iObjCur];
 	o.stat = !o.stat;
 }
+void App::TogObjCollis()
+{
+	if (!vObjSel.empty())
+	{	for (int i : vObjSel)
+			scn->sc->objects[i].collis = !scn->sc->objects[i].collis;
+		return;
+	}
+	bool bNew = iObjCur == -1;
+	Object& o = bNew || scn->sc->objects.empty() ? objNew : scn->sc->objects[iObjCur];
+	o.collis = !o.collis;
+}
+void App::TogObjHidPrv()
+{
+	if (!vObjSel.empty())
+	{	for (int i : vObjSel)
+			scn->sc->objects[i].hidePrvDens = !scn->sc->objects[i].hidePrvDens;
+		return;
+	}
+	bool bNew = iObjCur == -1;
+	Object& o = bNew || scn->sc->objects.empty() ? objNew : scn->sc->objects[iObjCur];
+	o.hidePrvDens = !o.hidePrvDens;
+}
 
 
 //  preview model for insert

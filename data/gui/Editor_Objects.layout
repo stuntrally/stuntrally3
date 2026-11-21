@@ -89,37 +89,37 @@
 			<Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#C080FF#{Fields}"/>
 
-				<Widget type="TextBox" skin="TextBox" position="260 16 190 24">
+				<!-- <Widget type="TextBox" skin="TextBox" position="260 16 190 24">
 					<Property key="Caption" value="#{NotDone}"/>
 					<Property key="TextColour" value="0.95 0.7 0.7"/>
-				</Widget>
+				</Widget> -->
 			</Widget>
 
 <!-- ............................................................................................................................................. -->
 			<!-- 💡 Lights -->
-			<Widget type="TabItem" skin="" position="2 24 794 562">
+			<!-- <Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#FFF870#{Lights}"/>
 
 				<Widget type="TextBox" skin="TextBox" position="260 16 190 24">
 					<Property key="Caption" value="#{NotDone}"/>
 					<Property key="TextColour" value="0.95 0.7 0.7"/>
 				</Widget>
-			</Widget>
+			</Widget> -->
 
 <!-- ............................................................................................................................................. -->
 			<!-- 🔉 Sounds -->
-			<Widget type="TabItem" skin="" position="2 24 794 562">
+			<!-- <Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#80C0FF#{Sounds}"/>
 
 				<Widget type="TextBox" skin="TextBox" position="260 16 190 24">
 					<Property key="Caption" value="#{NotDone}"/>
 					<Property key="TextColour" value="0.95 0.7 0.7"/>
 				</Widget>
-			</Widget>
+			</Widget> -->
 
 <!-- ............................................................................................................................................. -->
 			<!-- 🎇 Entities -->
-			<Widget type="TabItem" skin="" position="2 24 794 562">
+			<!-- <Widget type="TabItem" skin="" position="2 24 794 562">
 				<Property key="Caption" value="#E0C0E0#{Entities}"/>
 
 				<Widget type="ListBox" skin="ListBox" position="12 40 166 500" name="EntitiesList">
@@ -134,7 +134,7 @@
 					<Property key="Caption" value="#{NotDone}"/>
 					<Property key="TextColour" value="0.95 0.7 0.7"/>
 				</Widget>
-			</Widget>
+			</Widget> -->
 
 		</Widget>
 	</Widget>

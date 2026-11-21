@@ -137,7 +137,7 @@ abstract target cubemap_target
 
 		expose cubemap
 
-		visibility_mask  0x0020042D  // 1 rd 4 ter 8 vgt 200020 obj  400 sky
+		visibility_mask  0x0020042D  // 1 rd 4 ter 8 vgt  200020 obj  400 sky
 		// visibility_mask  0x0000046D  // + 40 grass
 		rq_last	  199
 

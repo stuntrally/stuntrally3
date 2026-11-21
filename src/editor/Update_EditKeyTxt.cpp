@@ -368,7 +368,10 @@ void App::KeyTxtObjects()
 	objTxt[5]->setCaption(TR("#{Simulation}:  ") + TR(objSim?"#{Yes}":"#{No}")); // +"      "+toStr(world->getNumCollisionObjects()));
 	objTxt[5]->setTextColour(objSim ? MyGUI::Colour(1.0,0.9,1.0) : MyGUI::Colour(0.8,0.8,0.83));
 	objTxt[6]->setCaption(o.material);
-	objTxt[7]->setCaption(o.stat ? TR("#{ObjStatic}") : "");
+	//  ext toggles
+	objTxt[7]->setCaption(TR("#{ObjStatic}:  ") + (o.stat ? "1":"0"));
+	objTxt[8]->setCaption(TR("#{Collision}:  ") + (o.collis ? "1":"0"));
+	objTxt[9]->setCaption(TR("#{Hidden}:  ") + (o.hidePrvDens ? "1":"0"));
 
 	//  edit
 	if (mz != 0 && bEdit() && objs > 0)  // wheel prev/next

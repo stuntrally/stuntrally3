@@ -76,7 +76,7 @@ public:
 	//  🪟🛠️ tool windows texts  ----
 	const static int
 		BR_TXT = 10, RD_TXT = 14, RDS_TXT = 11,  //  brush, road, road stats
-		ST_TXT = 6, FL_TXT = 6, OBJ_TXT = 8,  //  start, fluids, objects
+		ST_TXT = 6, FL_TXT = 6, OBJ_TXT = 10,  //  start, fluids, objects
 		EMT_TXT = 8, COL_TXT = 8, FLD_TXT = 8;  //  emitters, collects, fields
 
 	Txt	brTxt[BR_TXT], brVal[BR_TXT], brKey[BR_TXT],

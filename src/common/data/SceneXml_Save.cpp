@@ -365,7 +365,7 @@ bool Scene::SaveXml(String file)
 			XMLElement* oe = xml.NewElement("o");
 
 			oe->SetAttribute("name",	o->name.c_str() );
-			if (!o->collis)  // todo: gui..
+			if (!o->collis)  // ext
 				oe->SetAttribute("col",	o->collis ? 1 : 0 );
 			if (o->stat)
 				oe->SetAttribute("stat", o->stat ? 1 : 0 );
@@ -382,7 +382,7 @@ bool Scene::SaveXml(String file)
 			if (o->scale != Vector3::UNIT_SCALE)  // dont save default
 				oe->SetAttribute("sc",	toStrC( o->scale ));
 
-			if (!o->shadow)  // ext  // todo: gui..
+			if (!o->shadow)  // ext
 				oe->SetAttribute("sh",	o->shadow ? 1 : 0 );
 			if (o->hidePrvDens)
 				oe->SetAttribute("hid",	o->hidePrvDens ? 1 : 0 );

@@ -330,7 +330,7 @@
 
 	<!-- 📦🏢 Objects -->
 <!-- ============================================================================================================================================= -->
-	<Widget type="Window" skin="WindowC" position="1076 672 306 240" layer="Back" name="ObjectsWnd">
+	<Widget type="Window" skin="WindowC" position="1076 672 306 280" layer="Back" name="ObjectsWnd">
 		<Property key="Caption" value="X - #{Objects}"/>
 		<Property key="Colour" value="1.0 1.0 1.0"/>
 		<Property key="Alpha" value="0.6"/>
@@ -426,6 +426,14 @@
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="TextColour" value="0.8 0.8 0.8"/>
 		</Widget>
+		<Widget type="TextBox" skin="TextBoxS" position="34 200 210 30" name="objTxt8">
+			<Property key="InheritsAlpha" value="false"/>
+			<Property key="TextColour" value="0.8 0.8 0.8"/>
+		</Widget>
+		<Widget type="TextBox" skin="TextBoxS" position="34 220 210 30" name="objTxt9">
+			<Property key="InheritsAlpha" value="false"/>
+			<Property key="TextColour" value="0.8 0.8 0.8"/>
+		</Widget>
 
 		<Widget type="TextBox" skin="TextBoxS" position="254 120 40 30" name="objKey5">
 			<Property key="InheritsAlpha" value="false"/>
@@ -437,10 +445,23 @@
 			<Property key="TextColour" value="0.7 0.7 0.7"/>
 			<Property key="Caption" value="C"/>
 		</Widget>
-		<Widget type="TextBox" skin="TextBoxS" position="244 180 50 30" name="objKey7">
+		
+		<Widget type="TextBox" skin="TextBoxS" position="270 180 50 30" name="objKey7">
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="TextColour" value="0.6 0.6 0.6"/>
-			<Property key="Caption" value="Enter"/>
+			<Property key="Caption" value="8"/>
+			<Property key="FontName" value="font.small"/>
+		</Widget>
+		<Widget type="TextBox" skin="TextBoxS" position="270 200 50 30" name="objKey8">
+			<Property key="InheritsAlpha" value="false"/>
+			<Property key="TextColour" value="0.6 0.6 0.6"/>
+			<Property key="Caption" value="7"/>
+			<Property key="FontName" value="font.small"/>
+		</Widget>
+		<Widget type="TextBox" skin="TextBoxS" position="270 220 50 30" name="objKey9">
+			<Property key="InheritsAlpha" value="false"/>
+			<Property key="TextColour" value="0.6 0.6 0.6"/>
+			<Property key="Caption" value="6"/>
 			<Property key="FontName" value="font.small"/>
 		</Widget>
 	</Widget>

@@ -3,20 +3,23 @@
 This section lists changes not yet released, but committed to repositories stuntrally3 and tracks3.  
 WIP means work in progress, unfinished, still being developed.
 
-- 16 New tracks
+- **16 New tracks**
 - 1 new car: [LF](../data/cars/_previews/LF.jpg)
-- Gameplay: Fields🎆 on few SciFi tracks, areas that will do (depending on type, by color):  
-  - blue: accelerate, yellow: antigravity, green: damping, red: teleport
+- New Gameplay: **Fields**🎆 on few SciFi tracks,  
+  areas that will do (depending on type, by color):  
+  blue: accelerate, yellow: antigravity, green: damping, red: teleport
 - renewed vehicle preview images
 - Editor
   - Objects edit added: shift-Space to pick none, for placing new
-  - possible to put trees as objects, for HugeTree track
-  - option to remove objects from roadDensity, for vegetation
+  - possible to put trees and bushes as Objects, for HugeTree track, added all into lists
   - manual world size for FloatingIslands (hard to edit), scene.xml <terrains size=""
-- added game arguments: prv, prvfar, prvnear
+  - Objects edit, toggle keys for: 6 - hide, 7 - collision, 8 - shadow
+    - hide removes (big, on FloatingIslands) Objects  
+      from roadDensity for vegetation, and from road preview for minimap
+- added game command line arguments: prv, prvfar, prvnear
   - to start with preview camera setup for making vehicle screens
 - Updated **docs** (a lot) and screenshots
-  - also added (sticky) forum topics with posts into docs/
+  - also added (sticky) forum topics with posts into docs/, before forum gone
 - [multiplayer](Multiplayer.md) added new master/game server to [game config](../config/game-default.cfg) under [ network ]
   - updated Gui tab Server, with games lists
 - Updated translations: Russian, Finnish, German fixes

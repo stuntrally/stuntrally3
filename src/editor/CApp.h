@@ -239,7 +239,7 @@ public:
 	
 	void SetObjNewType(int tnew), UpdObjNewNode();
 	void NextObjMat(int add), NextObjMat(int add, Object& o);
-	void TogObjStatic();  // toggle static
+	void TogObjStatic(), TogObjCollis(), TogObjHidPrv();  // ext toggles
 
 	void AddNewObj(bool getName=true);
 
