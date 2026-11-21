@@ -175,7 +175,9 @@ public:
 	//  collis triggers etc
 	//----------------------------------
 	float fVegetDamp = 0.f;  // 🌿 veget bush damping, sum
+
 	std::list<SField*> inFields;  // 🎆
+	bool camFirst = false;  // set after teleport🎆
 
 	std::list<FluidBox*> inFluids;  /// 🌊 list of fluids this car is in (if any)
 	std::vector<std::list<FluidBox*> > inFluidsWh;

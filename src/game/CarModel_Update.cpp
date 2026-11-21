@@ -595,6 +595,10 @@ void CarModel::UpdKeysCam()
 		
 	bLastChkOld = pCar->bLastChk;
 
+	CARDYNAMICS& cd = pCar->dynamics;  // cam after teleport🎆
+	if (cd.camFirst)
+	{	cd.camFirst = false;  First();  }
+
 	///  🎥 change Cameras  ---------------------------------
 	int iC = pCar->iCamNext;  // iRplCarOfs..
 	if (iC != 0 && iCamNextOld == 0 && !pApp->isFocGui)

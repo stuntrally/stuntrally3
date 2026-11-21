@@ -80,6 +80,8 @@ void CARDYNAMICS::UpdateFields()
 		{
 			// pCar->SetPosition(fld->pos2, fld->dir2)
 			SetPosition(fld->pos2);  // destination
+			camFirst = true;  // cam reset
+			
 			// SetOrientation(fld->dir2);  // todo..
 		}	break;
 		

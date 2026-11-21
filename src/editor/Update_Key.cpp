@@ -445,7 +445,7 @@ void App::keyPressed(const SDL_KeyboardEvent &arg)
 		case key(H):  if (bEdit()){  SetEdMode(ED_Fields);  UpdEditWnds();  }   break;
 
 
-		//  free  Y U J H Z N  not K L
+		//  free  U J H Z N  not K L
 		default:  break;
 	}
 }

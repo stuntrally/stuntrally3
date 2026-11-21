@@ -544,8 +544,15 @@ void App::FocusCam()
 		pos = boxCol.nd->getPosition();  SetCam();  break;
 
 	case ED_Fields:  // 🎆
-		dist = boxField.nd->getScale().y * 10.f;
-		pos = boxField.nd->getPosition();  SetCam();  break;
+	{	//  if teleport end
+		int flds = scn->sc->fields.size();
+		bool bNew = iFldCur == -1;
+		SField& f = bNew || scn->sc->fields.empty() ? fldNew : scn->sc->fields[iFldCur];
+		BoxCur& end = f.type == TF_Teleport && iEnd ? boxTelep : boxField;
+
+		dist = end.nd->getScale().y * 10.f;
+		pos = end.nd->getPosition();  SetCam();
+	}	break;
 
 	//  ter edit, cursor  ⛰️
 	case ED_Deform: case ED_Smooth: case ED_Height: case ED_Filter:
