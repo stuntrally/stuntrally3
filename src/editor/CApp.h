@@ -221,12 +221,16 @@ public:
 
 	void togPrvCam();
 
+	//  pick utils
+	void GetCam(Ogre::Vector3& pos, Ogre::Vector3& dir, Ogre::Ray& ray);
+	Ogre::Real GetDist(const Ogre::Vector3& cam, const Ogre::Vector3& dir, const Ogre::Vector3& pos);
+
 
 	//  💧 Fluids  ~~~~
 	bool bRecreateFluids =0;  // todo: only one
 	bool bRecreateFluidsRTT =0;  // gui opt apply
 	int iFlCur =0;
-	void UpdFluidBox();
+	void PickFluids(), UpdFluidBox();
 	std::string newFluidName = "water blue";
 	
 
@@ -285,7 +289,7 @@ public:
 	
 	void SetFldNewType(int tnew), UpdFldNewNode();
 	void AddNewFld();
-	void UpdFldPick();
+	void PickFields(), UpdFldPick();
 
 	SField fldNew;
 	void SetFldType(int add);

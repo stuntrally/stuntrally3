@@ -414,3 +414,31 @@ void FluidsReflect::CreateBltFluids()
 	app->UpdObjPick();
 #endif
 }
+
+
+//  👆 Pick
+//-------------------------------------------------------------------------------------------------------
+#ifdef SR_EDITOR
+void App::PickFluids()
+{
+	const auto& flds = scn->sc->fluids;
+	bool vis = edMode == ED_Fluids && !flds.empty() && !bMoveCam;
+	if (!vis)  return;
+
+	Vector3 cam, dir;  Ray ray;  GetCam(cam, dir, ray);
+
+	Real distMin = FLT_MAX;
+	int ie = -1;
+	for (int i=0; i < scn->refl.fluids.size(); ++i)
+	{
+		//  closest to center-
+		Real dist = GetDist(cam, dir, scn->refl.fluids[i].node[0]->getPosition());
+
+		if (dist < distMin)
+		{	distMin = dist;  ie = i;
+	}	}
+	
+	if (ie != -1)
+		iFlCur = ie;
+}
+#endif

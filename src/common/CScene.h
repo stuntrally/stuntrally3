@@ -79,7 +79,7 @@ public:
 
 	//  💧 Fluids  water, mud
 	//-----------------------------------
-	FluidsReflect refl;  // with RTT
+	FluidsReflect refl;  // with RTT, same size as sc->fluids
 
 
 	//  🛣️ Road

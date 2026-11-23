@@ -361,17 +361,14 @@ void App::PickCollect()
 	if (col.empty())  return;
 
 	iColCur = -1;
-	const MyGUI::IntPoint& mp = MyGUI::InputManager::getInstance().getMousePosition();
-	Real mx = Real(mp.left)/mWindow->getWidth(), my = Real(mp.top)/mWindow->getHeight();
-	Ray ray = mCamera->getCameraToViewportRay(mx,my);  // 0..1
-	const Vector3& pos = mCamera->getDerivedPosition(), dir = ray.getDirection();
+	Vector3 cam, dir;  Ray ray;  GetCam(cam, dir, ray);
 
 	//  query scene (aabbs are enough)
 	RaySceneQuery* rq = mSceneMgr->createRayQuery(ray);
 	rq->setSortByDistance(true);
 	RaySceneQueryResult& res = rq->execute();
 
-	Real distC = 100000.f;
+	Real distMin = FLT_MAX;
 	int io = -1;
 	for (auto it = res.begin(); it != res.end(); ++it)
 	{
@@ -392,22 +389,18 @@ void App::PickCollect()
 				//ab.getCenter();  ab.getSize();
 
 				//  closest to col center  // fixme fails..
-				const Vector3 posSph = col[i].nd->getPosition();
-				const Vector3 ps = pos - posSph;
-				Vector3 crs = ps.crossProduct(dir);
-				Real dC = crs.length() / dir.length();
+				const Vector3 pos = col[i].nd->getPosition();
+				const Vector3 diff = pos - cam;
+				const Vector3 crs = diff.crossProduct(dir);
+				Real dist = crs.length();
 
 				//if ((*it).distance < dist)  // closest aabb
-				if (dC < distC)  // closest center
-				{
-					io = i;
-					//dist = (*it).distance;
-					distC = dC;
+				if (dist < distMin)
+				{	distMin = dist;  io = i;
 			}	}
 	}	}
 	
 	if (io != -1)  //  if none picked
-	if (iColCur == -1)
 		iColCur = io;
 	
 	//rq->clearResults();

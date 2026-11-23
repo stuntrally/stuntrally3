@@ -343,23 +343,20 @@ void App::UpdObjPick()
 	boxObj.nd->_getFullTransformUpdated();
 }
 
+//  pick
 void App::PickObject()
 {
 	const auto& objs = scn->sc->objects;
 	if (objs.empty())  return;
 
-	iObjCur = -1;
-	const MyGUI::IntPoint& mp = MyGUI::InputManager::getInstance().getMousePosition();
-	Real mx = Real(mp.left)/mWindow->getWidth(), my = Real(mp.top)/mWindow->getHeight();
-	Ray ray = mCamera->getCameraToViewportRay(mx,my);  // 0..1
-	const Vector3& pos = mCamera->getDerivedPosition(), dir = ray.getDirection();
+	Vector3 cam, dir;  Ray ray;  GetCam(cam, dir, ray);
 
 	//  query scene (aabbs are enough)
 	RaySceneQuery* rq = mSceneMgr->createRayQuery(ray);
 	rq->setSortByDistance(true);
 	RaySceneQueryResult& res = rq->execute();
 
-	Real distC = 100000.f;
+	Real distMin = FLT_MAX;
 	int io = -1;
 	for (auto it = res.begin(); it != res.end(); ++it)
 	{
@@ -379,23 +376,16 @@ void App::PickObject()
 				//Aabb ab = objs[i].it->getLocalAabb();
 				//ab.getCenter();  ab.getSize();
 
-				//  closest to obj center  // fixme fails..
-				const Vector3 posSph = objs[i].nd->getPosition();
-				const Vector3 ps = pos - posSph;
-				Vector3 crs = ps.crossProduct(dir);
-				Real dC = crs.length() / dir.length();
+				Real dist = GetDist(cam, dir, objs[i].nd->getPosition());
 
 				//if ((*it).distance < dist)  // closest aabb
-				if (dC < distC)  // closest center
-				{
-					io = i;
+				if (dist < distMin)  // closest center
+				{	distMin = dist;  io = i;
 					//dist = (*it).distance;
-					distC = dC;
 			}	}
 	}	}
 	
 	if (io != -1)  //  if none picked
-	if (iObjCur == -1)
 		iObjCur = io;
 	
 	//rq->clearResults();

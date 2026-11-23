@@ -11,6 +11,7 @@ WIP means work in progress, unfinished, still being developed.
 - renewed vehicle preview images
 - Editor
   - Objects edit added: shift-Space to pick none, for placing new
+  - Fixed pick (Space) for Objects, Emitters, added for Fields, Fluids
   - possible to put trees and bushes as Objects, for HugeTree track, added all into lists
   - manual world size for FloatingIslands (hard to edit), scene.xml <terrains size=""
   - Objects edit, toggle keys for: 6 - hide, 7 - collision, 8 - shadow

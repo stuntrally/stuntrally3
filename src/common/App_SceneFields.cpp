@@ -165,11 +165,32 @@ void App::DestroyField(int i)
 //  👆 Pick
 //-------------------------------------------------------------------------------------------------------
 #ifdef SR_EDITOR
+void App::PickFields()
+{
+	const auto& flds = scn->sc->fields;
+	bool vis = edMode == ED_Fields && !flds.empty() && !bMoveCam;
+	if (!vis)  return;
+
+	// iFldCur = -1;
+	Vector3 cam, dir;  Ray ray;  GetCam(cam, dir, ray);
+
+	Real distMin = FLT_MAX;
+	int ie = -1;
+	for (int i=0; i < flds.size(); ++i)
+	{
+		Real dist = GetDist(cam, dir, flds[i].nd->getPosition());
+		if (dist < distMin)
+		{	distMin = dist;  ie = i;
+	}	}
+	
+	if (ie != -1)
+		iFldCur = ie;
+}
 
 void App::UpdFldPick()
 {
 	int flds = scn->sc->fields.size();
-	bool bFields = edMode == ED_Fields && !bMoveCam && flds > 0 && iFldCur >= 0;
+	bool bFields = edMode == ED_Fields && !bMoveCam && flds > 0;
 	if (flds > 0)
 		iFldCur = std::min(iFldCur, flds-1);
 
@@ -188,67 +209,6 @@ void App::UpdFldPick()
 
 	UpdTelepEnd();
 }
-
-#if 0
-void App::PickField()
-{
-	const auto& objs = scn->sc->objects;
-	if (objs.empty())  return;
-
-	iObjCur = -1;
-	const MyGUI::IntPoint& mp = MyGUI::InputManager::getInstance().getMousePosition();
-	Real mx = Real(mp.left)/mWindow->getWidth(), my = Real(mp.top)/mWindow->getHeight();
-	Ray ray = mCamera->getCameraToViewportRay(mx,my);  // 0..1
-	const Vector3& pos = mCamera->getDerivedPosition(), dir = ray.getDirection();
-
-	//  query scene (aabbs are enough)
-	RaySceneQuery* rq = mSceneMgr->createRayQuery(ray);
-	rq->setSortByDistance(true);
-	RaySceneQueryResult& res = rq->execute();
-
-	Real distC = 100000.f;
-	int io = -1;
-	for (auto it = res.begin(); it != res.end(); ++it)
-	{
-		const String& s = (*it).movable->getName();
-		if (StringUtil::startsWith(s,"oE",false))
-		{
-			// LogO("RAY "+s+" "+fToStr((*it).distance,2,4));
-			int i = -1;
-			//  find obj with same name
-			for (int o=0; o < objs.size(); ++o)
-				if (objs[o].it && s == objs[o].it->getName())
-				{	i = o;  break;  }
-			
-			//  pick
-			if (i != -1)
-			{
-				//Aabb ab = objs[i].it->getLocalAabb();
-				//ab.getCenter();  ab.getSize();
-
-				//  closest to obj center  // fixme fails..
-				const Vector3 posSph = objs[i].nd->getPosition();
-				const Vector3 ps = pos - posSph;
-				Vector3 crs = ps.crossProduct(dir);
-				Real dC = crs.length() / dir.length();
-
-				//if ((*it).distance < dist)  // closest aabb
-				if (dC < distC)  // closest center
-				{
-					io = i;
-					//dist = (*it).distance;
-					distC = dC;
-			}	}
-	}	}
-	
-	if (io != -1)  //  if none picked
-	if (iObjCur == -1)
-		iObjCur = io;
-	
-	//rq->clearResults();
-	mSceneMgr->destroyQuery(rq);
-}
-#endif
 
 
 //  type add +-1

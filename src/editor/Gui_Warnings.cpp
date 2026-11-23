@@ -158,10 +158,10 @@ CGui::TrackWarn CGui::WarningsCheck(const Scene* sc, const std::vector<SplineRoa
 			
 			//-  🔵 first chk  ----
 			if (iP1 < 0 || iP1 >= cnt)
-				Warn(ERR, "First checkpoint not set  (use ctrl-0)");
+				Warn(ERR, "First checkpoint not set  (use Alt-0)");
 			else
 			if (road->mP[iP1].chkR < 0.1f)
-				Warn(ERR, "First checkpoint not set  (use ctrl-0)");
+				Warn(ERR, "First checkpoint not set  (use Alt-0)");
 
 			
 			///-  road, 🔵 checkpoints  -------------

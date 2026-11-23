@@ -95,7 +95,7 @@ void App::UpdTelepEnd()
 	}
 }
 
-//  🚧 ed cursor
+//  🚧 fluid cursor
 void App::UpdFluidBox()
 {
 	int fls = scn->sc->fluids.size();
@@ -111,4 +111,23 @@ void App::UpdFluidBox()
 	boxFluid.nd->setPosition(fb.pos);
 	boxFluid.nd->setScale(fb.size);
 	boxFluid.nd->_getFullTransformUpdated();
+}
+
+
+//  pick utils
+void App::GetCam(Vector3& pos, Vector3& dir, Ray& ray)
+{
+	const MyGUI::IntPoint& mp = MyGUI::InputManager::getInstance().getMousePosition();
+	Real mx = Real(mp.left) / mWindow->getWidth(),
+		 my = Real(mp.top)  / mWindow->getHeight();
+	ray = mCamera->getCameraToViewportRay(mx,my);  // 0..1
+	pos = mCamera->getDerivedPosition();
+	dir = ray.getDirection();
+}
+
+Real App::GetDist(const Vector3& cam, const Vector3& dir, const Vector3& pos)
+{
+	const Vector3 diff = pos - cam;
+	const Vector3 crs = diff.crossProduct(dir);
+	return crs.length();
 }
