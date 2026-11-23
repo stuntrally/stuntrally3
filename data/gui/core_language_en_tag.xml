@@ -1557,12 +1557,15 @@
 	<Tag name="InputRoadIns">Ins - insert new (after picked, alt - before)</Tag>
 	<!-- Road  Input  (one) advanced  -->
 	<Tag name="InputRoadInsAlt">alt-shift - at start   alt-ctrl - at end</Tag>
+
+	<Tag name="InputRoadInsMid">alt-Ins - Insert new in middle</Tag>
 	<Tag name="InputRoadNew">ctrl-Space - set new point's values from picked</Tag>
 
 	<!-- Road  Input  (many)  -->
 	<Tag name="InputRoadSelectMany">Select (many)</Tag>
 	<Tag name="InputRoadSel">Backspace - add to or remove from selection</Tag>
 	<Tag name="InputRoadSelAlt">alt - select all   ctrl - select none</Tag>
+
 	<Tag name="InputRoadCopySel">ctrl-Ins - copy selection   ctrl-Del - delete sel.</Tag>
 	<Tag name="InputRoadShiftReverse">shift-Ins - paste   shift-ctrl-Ins - reversed</Tag>
 	<Tag name="InputRoadAfterPick">after picked, center at mouse</Tag>

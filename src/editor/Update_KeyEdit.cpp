@@ -55,7 +55,7 @@ void App::keyPressObjects(SDL_Scancode skey)
 			FluidBox& fb = fld[iFlCur];
 			switch (skey)
 			{
-				case key(SPACE):  // 👆pick
+				case key(SPACE):  // 👆pick  can't none
 					PickFluids();  UpdFluidBox();  break;
 				
 				//  first, last
@@ -109,8 +109,8 @@ void App::keyPressObjects(SDL_Scancode skey)
 		{
 			case key(SPACE):  // 👆pick
 				iObjCur = -1;
-				if (!shift)
-					PickObject();  UpdObjPick();  break;
+				if (!shift)  PickObject();
+				UpdObjPick();  break;
 			
 			//  ins
 			case key(INSERT):	case key(KP_0):
@@ -258,8 +258,8 @@ void App::keyPressObjects(SDL_Scancode skey)
 		int emts = emt.size();
 		switch (skey)
 		{
-			case key(SPACE):  // 👆pick
-				iEmtCur = -1;  PickEmitters();  UpdEmtBox();  break;
+			case key(SPACE):  // 👆pick  can't none
+				PickEmitters();  UpdEmtBox();  break;
 
 			//  prev,next
 			case key(PAGEUP):  case key(KP_9):
@@ -315,7 +315,9 @@ void App::keyPressObjects(SDL_Scancode skey)
 		switch (skey)
 		{
 			case key(SPACE):  // 👆pick
-				iColCur = -1;  PickCollect();  UpdColPick();  break;
+				iColCur = -1;
+				if (!shift)  PickCollect();
+				UpdColPick();  break;
 			
 			//  ins
 			case key(INSERT):	case key(KP_0):
@@ -398,8 +400,8 @@ void App::keyPressObjects(SDL_Scancode skey)
 					((iFldCur >= 0 && flds > 0 && iFldCur < flds) ? &fld[iFldCur] : 0);
 		switch (skey)
 		{
-			case key(SPACE):  // 👆pick
-				iFldCur = -1;  PickFields();  UpdFldPick();  break;
+			case key(SPACE):  // 👆pick  can't none
+				PickFields();  UpdFldPick();  break;
 			
 			//  ins
 			case key(INSERT):	case key(KP_0):

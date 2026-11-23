@@ -50,18 +50,22 @@ _This page lists available features in Stunt Rally 3 game and editor._
 ## Gameplay 🏁
 
 - **Stunt** and other elements:
-  - ⛒ [obstacles](https://cryham.org/stuntrally/tracks/?id=Can5-Obstacles) - to avoid on road or in pipes
-  - / \ [jumps](https://cryham.org/stuntrally/tracks/?id=Des7-CrossJumps) - with shown required speed
-  - ➰ [loops](https://cryham.org/stuntrally/tracks/?id=Sav3-Loops): straight, skewed, [side](https://cryham.org/stuntrally/tracks/?id=Grc13-YeleyStunts), [barrel](https://cryham.org/stuntrally/tracks/?id=Mos5-Factory), double, [unique](https://cryham.org/stuntrally/tracks/?id=Spc3-HyperLoops), etc
-  - ⭕ [pipes](https://cryham.org/stuntrally/tracks/?id=Sav6-PipeCrazy) (closed), [half](https://cryham.org/stuntrally/tracks/?id=Grc6-Halfpipes) pipes (open), on pipe drives
+  - ⛒ [Obstacles](https://cryham.org/stuntrally/tracks/?id=Can5-Obstacles) - to avoid on road or in pipes
+  - / \ [Jumps](https://cryham.org/stuntrally/tracks/?id=Des7-CrossJumps) - with shown required speed
+  - ➰ [Loops](https://cryham.org/stuntrally/tracks/?id=Sav3-Loops): straight, skewed, [side](https://cryham.org/stuntrally/tracks/?id=Grc13-YeleyStunts), [barrel](https://cryham.org/stuntrally/tracks/?id=Mos5-Factory), double, [unique](https://cryham.org/stuntrally/tracks/?id=Spc3-HyperLoops), etc
+  - ⭕ [Pipes](https://cryham.org/stuntrally/tracks/?id=Sav6-PipeCrazy) (closed), [half](https://cryham.org/stuntrally/tracks/?id=Grc6-Halfpipes) pipes (open), on pipe drives
   - 🔀 very [twisted](https://cryham.org/stuntrally/tracks/?id=Apo1-TarFields) bridges and highly [banked](https://cryham.org/stuntrally/tracks/?id=Can2-CanyonRun) (up to 90°)
   - 🌊 Drives through [water](https://cryham.org/stuntrally/tracks/?id=Isl3-Islands) or [mud areas](https://cryham.org/stuntrally/tracks/?id=Jng16-MudBath) (all are safe, won't get stuck)
   - Dynamic objects on tracks (🛢️barrels, 📦boxes, etc), can be hit  
+  - 🎆 Fields - on few SciFi tracks:  
+  Few types of areas, that will affect vehicle (if it's inside), by color:  
+  🟦blue: accelerate, 🟨yellow: antigravity, 🟩green: damping, 🟥red: teleport to other location
   &nbsp;
 - 💨 Boost - key to apply rocket boosters to speed up vehicle, works in air and underwater too
-- ⏪ Rewind - hold key to go back in time (after hit or mistake)
+- ⏪ **Rewind** - hold key to go back in time (after hit or mistake)
 - Simulation modes: Easy (beginner) and Normal
-- 🔨 Simple vehicle damage %, doesn't affect driving until 50%
+- 🔨 *Simple* vehicle damage %, doesn't affect driving until 50%
+
 
 ## Input
 

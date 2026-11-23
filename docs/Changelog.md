@@ -5,15 +5,16 @@ WIP means work in progress, unfinished, still being developed.
 
 - **18 New tracks**
 - 1 new car: [LF](../data/cars/_previews/LF.jpg)
-- New Gameplay: **Fields**🎆 on few SciFi tracks,  
-  areas that will do (depending on type, by color):  
-  blue: accelerate, yellow: antigravity, green: damping, red: teleport
+- New Gameplay: **Fields**🎆, on few SciFi tracks  
+  Few types of areas, that will affect vehicle (if it's inside), by color:  
+  🟦blue: accelerate, 🟨yellow: antigravity, 🟩green: damping, 🟥red: teleport, to other location.
 - renewed vehicle preview images
 - Editor
-  - Objects edit added: shift-Space to pick none, for placing new
-  - Fixed pick (Space) for Objects, Emitters, added for Fields, Fluids
-  - possible to put trees and bushes as Objects, for HugeTree track, added all into lists
-  - manual world size for FloatingIslands (hard to edit), scene.xml <terrains size=""
+  - Fixed **pick** (Space) for Objects, Emitters, Collectibles, added for Fields, Fluids
+    - added: shift-Space to pick none, for placing new (Objects, Collectibles)
+  - possible to put trees and bushes as Objects (e.g. for HugeTree track), added all into lists
+  - manual world size, in scene.xml <terrains size=""
+    - e.g. for FloatingIslands, hard to edit, also game has bad minimap
   - Objects edit, toggle keys for: 6 - hide, 7 - collision, 8 - shadow
     - hide removes (big, on FloatingIslands) Objects  
       from roadDensity for vegetation, and from road preview for minimap

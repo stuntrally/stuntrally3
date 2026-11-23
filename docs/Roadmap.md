@@ -9,11 +9,21 @@ Priorities (from highest) marked as:
 ----
 ### 3.4
 
-! `auto` road/ter Surface: **Particles**, trail, fix clr, **sounds**, from `presets.xml` not per track  
-new road particles  
+add new tracks to champs, challs  
+add collects  
+add fields
+
+track tab: add fields ico, halfpipes%
+
+### 3.5
 
 🌧️ Ambient [Sounds](Tasks.md#sounds): rain, wind, forest etc  
 📦 object *hit* sounds🔊  
+
+! `auto` road/ter Surface: **Particles**, trail, fix clr, **sounds**, from `presets.xml` not per track  
+new road particles  
+
+rem *tire trails* clr, no uv tex-  
 
 fix *tracks*:  
 MogFoss waterfalls up, Preyth bld up-  
@@ -22,8 +32,6 @@ MiningCity, KapabaRivers, Overgrowth, Glitchy - road segs white blend transp/inv
 MadMntnDark then load Temple - jng tex bad grn-blue
 
 win *installer* needs admin for vcredist, drop ask, or elevate on run  
-
-*tire trails* clr, no uv tex-  
 
 gui trk filter, new tab adv with sld:  clr Y viol when filtered, trk list bckgr hq 5,6  
 btns: best quality 5,6, no stunts, easiest, hardest, most loops, jumps, pipes, new in last ver, short fun, alien, villages, etc
