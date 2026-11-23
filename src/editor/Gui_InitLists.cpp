@@ -57,6 +57,7 @@ void CGui::InitGuiLists()
 
 	//---------------------  🔥 Emitters  ---------------------
 	gcom->GetMaterials("emitters.particle", true, "particle_system");
+	gcom->GetMaterials("weather.particle", false, "particle_system");
 	app->vEmtNames.clear();
 	for (auto& s : gcom->vsMaterials)
 		app->vEmtNames.push_back(s);

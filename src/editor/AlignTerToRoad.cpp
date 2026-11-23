@@ -80,7 +80,7 @@ void App::AlignTerToRoad()
 	float *rd = new float[w*h];  // road depth
 	bool  *rh = new bool[w*h];  // road hit
 
-	const float ws = scn->sc->tds[0].fTerWorldSize;  // 1st ter-
+	const float ws = scn->sc->tds[0].fTerWorldSize;  // todo: 1st ter-
 	const float Len = 2500;  // max ray height
 	int x,y,a,b;
 	float v,k, fx,fz, wx,wz;
@@ -94,6 +94,7 @@ void App::AlignTerToRoad()
 		fx = float(x)/fh;  fz = float(y)/fw;
 		//  pos on ter  -terSize..terSize
 		wx = (fx-0.5f) * ws;  wz = (fz-0.5f) * ws;
+		// todo: + pos ter
 
 		btVector3 from(wx,wz, Len*0.8f), to(wx,wz, -Len*1.1f);  // x -z y
 		RayResult rayRes(from, to);
