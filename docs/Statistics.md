@@ -17,14 +17,14 @@ Link to calculate [date difference](https://www.timeanddate.com/date/durationres
 
 |Version  | Date   |Days| MB  |g|e |Tracks |new  | ren |del| Scn  |New Sceneries  |Vehicles|new |New Vehicles| major Changes         |
 |---------|--------|----|-----|-|--|-------|-----|-----|---|------|---------------|--------|----|------------|-----------------------|
-|**3.4**  |--.--'27| -  |2740?| |  |**252**|`+20`|     |   |  40  |               |   34   | +1 | LF         | Fields🎆              |
+|**3.4**  |--.--'27| -  |2740?| |  |**253**|`+21`|     |   |  40  |               |   34   | +1 | LF         | Fields🎆              |
 |**3.3**  |29.12'24| 97 |2668 |2|  |**232**|  +3 |     |   |  40  |               |   33   |    |            | Effects, SSAO, Sounds🔊 |
 |**3.2**  |23.09'24| 151|2552 | |  |  229  |     |`129`|   |**40**|rem DesertMud  |   33   |    |            | `Vegetation`🌳🪴🍄, Collection💎   |
 |**3.1**  |25.04'24| 127|2391 | |3 |**229**|  +1 | >50 |   |  41  |     | **33** |`+8`| R1,R2,R3, Q1,Q3, H1,H2, YG | `Skies`⛅🌌, `Hovers`🚤, RoR export |
 |**3.0.1**|20.12'23| 17 |2100?| |  |  228  |     |     |   |  41  |               |   25   |    |            |                       |
-| `3.0`   | 3.12'23| 388|2098 |1|  |**228**|`+26`|`153`|-2 |  41  |               |   25   |    |            | **OgreNext,** PBS, paints, `Horizons`🏞️ |
-|**2.8?** | --     |>640|2098?| |  |**227**|`+25`|   7 |-2 |  41  | Marble, Spring, Anomaly, PostApo |   25   |   |         | new content in repo |
+| `3.0`   | 3.12'23| 388|2098 |1|  |**228**|`+26`|`153`|-2 |  41  |               |   25   |    |            | SR3, **OgreNext,** PBS, paints, `Horizons`🏞️ |
 |         |        |    |     | |  |       |     |     |   |      |               |        |    |            |                       |
+|**2.8?** | --     |>640|2098?| |  |**227**|`+25`|   7 |-2 |  41  | Marble, Spring, Anomaly, PostApo |   25   |   |         | SR2.x last, new content in repo |
 |**2.7**  |11.11'22|2609|1408 |1|  |**202**|`+34`|`130`|-4 |**37**| SurrealSpace, GreeceRocky, Other | **25** |`+7`| HI, SX, BE, U6, U8, MO, 3B | `Rocks`🪨, SR logo, Racing line, removed cars: 3S,360,CT,M3,TC6, N1,S1 |
 |**2.6.2**|25.03'22| -  | -   | |  |  172  |     |     |   |  34  |               |   25   |    |            | last with VDrift tracks, cars |
 |**2.6.1**|16.03'19| -  | -   | |  |  172  |     |     |   |  34  |               |   25   |    |            | fixes                 |
