@@ -4366,6 +4366,56 @@ particle_system SlimeBubblesSurface
 	}
 }
 
+particle_system AcidBubblesSurface
+{
+	material			FluidBubble
+	quota				500
+	particle_width		0.5
+	particle_height		0.5
+	cull_each			false
+	billboard_type		point
+
+	emitter Cylinder
+	{
+		angle	0
+		position	0 0 0
+		direction	0 1 0
+		width	1.0
+		height	1.0
+		depth	0.4  //h
+
+		colour				0.46 1.0 0.28  1.0
+		colour_range_start	0.43 1.0 0.28  1.0
+		colour_range_end	0.49 1.0 0.22  1.0
+
+		velocity_min	0.03
+		velocity_max	0.07
+		time_to_live_min	1.3
+		time_to_live_max	2.9
+	}
+
+	affector Rotator
+	{
+		rotation_range_start 0
+		rotation_range_end 360
+		rotation_speed_range_start -30
+		rotation_speed_range_end 30
+	}
+	affector LinearForce
+	{
+		force_vector	0 0.1 0
+		force_application	add
+	}
+	affector DirectionRandomiser
+	{
+		randomness	1
+	}
+	affector ColourFader
+	{
+		alpha	-0.6
+	}
+}
+
 
 //  Pink Jelly waterfall  ::: ::: :::
 particle_system PinkJellyfallHigh

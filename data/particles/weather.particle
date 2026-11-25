@@ -539,7 +539,7 @@ particle_system AshSmoke
 	}
 }
 
-//  AshEmbers
+//  AshEmbers  ` ` ` `
 particle_system AshEmbers
 {
 	material			SnowFlake
@@ -583,7 +583,7 @@ particle_system AshEmbers
 	}
 }
 
-//  AshEmbersSlow
+//  AshEmbersSlow  ` `
 particle_system AshEmbersSlow
 {
 	material			SnowFlake
@@ -620,6 +620,51 @@ particle_system AshEmbersSlow
         green -0.1
         blue  -0.1
         alpha -0.2
+    }
+	affector DirectionRandomiser
+	{
+		randomness	12
+	}
+}
+
+
+//  AcidEmbersSlow  ```  
+particle_system AcidEmbersSlow
+{
+	material			SnowFlake
+	quota				6000
+	particle_width		0.032
+	particle_height		0.045
+
+	cull_each		false
+	sorted			false
+	billboard_type  oriented_self
+
+	emitter Box
+	{
+		angle	25
+		position	0 0 0
+		direction	0 1 0
+		width	18
+		height	18
+		depth	12  //h
+
+		colour_range_start	0.2 0.9 0.2  0.5
+		colour				0.3 1.0 0.2  0.6
+		colour_range_end	0.5 1.0 0.2  0.7
+
+		emission_rate	20
+		velocity_min	-0.1
+		velocity_max	-1.2
+		time_to_live_min	1.0
+		time_to_live_max	2.5
+	}
+    affector ColourFader
+    {
+        red   -0.2
+        green -0.1
+        blue  -0.1
+        alpha -0.3
     }
 	affector DirectionRandomiser
 	{
