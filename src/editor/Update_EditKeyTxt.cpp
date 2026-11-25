@@ -130,29 +130,35 @@ void App::KeyTxtRoad(Real q)
 			rdTxtSt[2]->setCaption(TR("#{Road_Height}"));
 
 			rdTxtSt[3]->setCaption(TR("#{TrackInAir}"));
-			rdTxtSt[4]->setCaption(TR("#{TrackPipes}"));
-			rdTxtSt[5]->setCaption(TR("#{Road_OnPipe}"));
-			rdTxtSt[6]->setCaption("BnkAng");
 
-			rdTxtSt[7]->setCaption("lod points");
-			rdTxtSt[8]->setCaption("segs Merge");
-			rdTxtSt[9]->setCaption("vis");
-			rdTxtSt[10]->setCaption("tris");
+			rdTxtSt[4]->setCaption(TR("#{TrackHalfPipes}"));
+			rdTxtSt[5]->setCaption(TR("#{TrackPipes}"));
+			rdTxtSt[6]->setCaption(TR("#{Road_OnPipe}"));
+
+			rdTxtSt[7]->setCaption("BnkAng");
+
+			rdTxtSt[8]->setCaption("lod points");
+			rdTxtSt[9]->setCaption("segs Merge");
+			rdTxtSt[10]->setCaption("vis");
+			rdTxtSt[11]->setCaption("tris");
 		}			
 		rdValSt[0]->setCaption(fToStr(road->st.Length, 0,4));
 		rdValSt[1]->setCaption(fToStr(road->st.WidthAvg, 2,5));
 		rdValSt[2]->setCaption(fToStr(road->st.HeightDiff, 2,5));
 
 		rdValSt[3]->setCaption(fToStr(road->st.OnTer, 1,4)+"%");
-		rdValSt[4]->setCaption(fToStr(road->st.Pipes, 1,4)+"%");
-		rdValSt[5]->setCaption(fToStr(road->st.OnPipe, 1,4)+"%");
-		rdValSt[6]->setCaption(fToStr(road->st.bankAvg, 0,2)+" /"+fToStr(road->st.bankMax, 0,2));
+
+		rdValSt[4]->setCaption(fToStr(road->st.HalfPipe, 1,4)+"%");
+		rdValSt[5]->setCaption(fToStr(road->st.Pipes, 1,4)+"%");
+		rdValSt[6]->setCaption(fToStr(road->st.OnPipe, 1,4)+"%");
+
+		rdValSt[7]->setCaption(fToStr(road->st.bankAvg, 0,2)+"\n/"+fToStr(road->st.bankMax, 0,2));
 
 		int lp = !bCur ? -1 : road->vSegs[road->iChosen].lpos.size();
-		rdValSt[7]->setCaption(toStr(lp));
-		rdValSt[8]->setCaption(fToStr(road->st.segsMrg+1, 0,2));//+" "+fToStr(road->st.segsMrgW+1, 0,2));
-		rdValSt[9]->setCaption(fToStr(road->st.iVis, 0,2));
-		rdValSt[10]->setCaption(fToStr(road->st.iTris/1000.f, 1,4)+"k");
+		rdValSt[8]->setCaption(toStr(lp));
+		rdValSt[9]->setCaption(fToStr(road->st.segsMrg+1, 0,2));//+" "+fToStr(road->st.segsMrgW+1, 0,2));
+		rdValSt[10]->setCaption(fToStr(road->st.iVis, 0,2));
+		rdValSt[11]->setCaption(fToStr(road->st.iTris/1000.f, 1,4)+"k");
 	}
 
 	//  edit  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
