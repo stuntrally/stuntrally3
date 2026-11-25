@@ -189,6 +189,7 @@
 	<Tag name="TrackHeightDiff">Height diff.</Tag>
 	<Tag name="TrackInAir">In air</Tag>
 	<Tag name="TrackPipes">Pipes</Tag>
+	<Tag name="TrackHalfPipes">Half pipes</Tag>
 
 	<!--  Championship Stage  stats  -->
 	<Tag name="Name">Name</Tag>

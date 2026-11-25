@@ -214,7 +214,8 @@ private:
 	
 	struct StatsLod   // 🗒️ stats for current Lod
 	{	//#  stats
-		Ogre::Real roadLen = 0.f, rdOnT = 0.f, rdPipe = 0.f, rdOnPipe = 0.f;
+		Ogre::Real roadLen = 0.f, rdOnT = 0.f;
+		Ogre::Real rdPipe = 0.f, rdOnPipe = 0.f, rdHalfPipe = 0.f;
 		Ogre::Real avgWidth = 0.f, stMaxH = -1.0e6, stMinH = 1.0e6;
 		Ogre::Real bankAvg = 0.f, bankMax = 0.f;
 		bool stats = false;
@@ -347,7 +348,7 @@ public:
 		int iVis = 0, iTris = 0;  // in upd vis
 
 		Ogre::Real Length = 0.f, WidthAvg = 0.f, HeightDiff = 0.f;
-		Ogre::Real OnTer = 0.f, Pipes = 0.f, OnPipe = 0.f;
+		Ogre::Real OnTer = 0.f, Pipes = 0.f, OnPipe = 0.f, HalfPipe = 0.f;
 		Ogre::Real bankAvg = 0.f, bankMax = 0.f;  // banking angle
 		
 		void Reset();

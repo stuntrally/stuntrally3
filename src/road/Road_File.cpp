@@ -65,7 +65,7 @@ void SplineRoad::Stats::Reset()
 {
 	iMrgSegs = 0;  segsMrg = 0;
 	Length = 0.f;  WidthAvg = 0.f;  HeightDiff = 0.f;
-	OnTer = 0.f;   Pipes = 0.f;  OnPipe = 0.f;
+	OnTer = 0.f;   Pipes = 0.f;  OnPipe = 0.f;  HalfPipe = 0.f;
 	bankAvg = 0.f;  bankMax = 0.f;
 }
 
@@ -288,8 +288,11 @@ bool SplineRoad::LoadFile(String fname, bool build)
 		a = n->Attribute("width");     if (a)  st.WidthAvg = s2r(a);
 		a = n->Attribute("height");    if (a)  st.HeightDiff = s2r(a);
 		  a = n->Attribute("onTer");   if (a)  st.OnTer = s2r(a);
+
 		  a = n->Attribute("pipes");   if (a)  st.Pipes = s2r(a);
+		  a = n->Attribute("halfP");   if (a)  st.HalfPipe = s2r(a);
 		  a = n->Attribute("onPipe");  if (a)  st.OnPipe = s2r(a);
+
 		  a = n->Attribute("bnkAvg");  if (a)  st.bankAvg = s2r(a);
 		  a = n->Attribute("bnkMax");  if (a)  st.bankMax = s2r(a);
 	}	
@@ -421,9 +424,13 @@ bool SplineRoad::SaveFile(String fname)
 		ste->SetAttribute("width",  toStrC( st.WidthAvg ));
 		ste->SetAttribute("height", toStrC( st.HeightDiff ));
 		ste->SetAttribute("onTer",  toStrC( st.OnTer ));
+
 		ste->SetAttribute("pipes",  toStrC( st.Pipes ));
+		if (st.HalfPipe > 0.f)
+			ste->SetAttribute("halfP",  toStrC( st.HalfPipe ));
 		if (st.OnPipe > 0.f)
-		ste->SetAttribute("onPipe", toStrC( st.OnPipe ));
+			ste->SetAttribute("onPipe", toStrC( st.OnPipe ));
+
 		ste->SetAttribute("bnkAvg", toStrC( st.bankAvg ));
 		ste->SetAttribute("bnkMax", toStrC( st.bankMax ));
 	root->InsertEndChild(ste);

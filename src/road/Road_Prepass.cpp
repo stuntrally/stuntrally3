@@ -246,12 +246,20 @@ void SplineRoad::PrepassLod(
 		DL.v_iL.push_back(il);
 		DL.v_len.push_back(len);
 
+		//#  stats add
 		if (!mP[seg].notReal)
 		{	//  add len
 			ST.roadLen += len;  //#
 			if (pipe)
-			{	ST.rdPipe += len; //#
-				if (mP[seg].onPipe)  ST.rdOnPipe += len;  //#
+			{
+				if (mP[seg].onPipe)
+					ST.rdOnPipe += len;  //#
+				else
+				if (sp > 0.8f || sp1 > 0.8f)
+					ST.rdPipe += len;  //#
+				else
+				if (sp > 0.3f || sp1 > 0.3f)
+					ST.rdHalfPipe += len;  //#
 		}	}
 
 		///-  Merge conditions
@@ -395,10 +403,14 @@ void SplineRoad::End0Stats(const DataLod& DL, const StatsLod& ST)
 	//#  stats  at lod0, whole road
 	if (!ST.stats)  return;
 
-	st.Length = ST.roadLen;  st.WidthAvg = ST.avgWidth / ST.roadLen;
-	st.OnTer = ST.rdOnT / ST.roadLen * 100.f;
-	st.Pipes = ST.rdPipe / ST.roadLen * 100.f;
-	st.OnPipe = ST.rdOnPipe / ST.roadLen * 100.f;
+	auto l = ST.roadLen;
+	st.Length = l;
+	st.WidthAvg = ST.avgWidth / l;
+	st.OnTer = ST.rdOnT / l * 100.f;
+
+	st.Pipes = ST.rdPipe / l * 100.f;
+	st.OnPipe = ST.rdOnPipe / l * 100.f;
+	st.HalfPipe = ST.rdHalfPipe / l * 100.f;
 	st.segsMrg = DL.mrgCnt;
 }
 

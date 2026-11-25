@@ -462,9 +462,9 @@ void CGuiCom::UpdGuiRdStats(const SplineRoad* rd, const Scene* sc, const String&
 	float a;
 	
 	if (noRd)  //  hide
-	{	for (int i=0; i < 9; ++i)  if (i != 1)
+	{	for (int i=0; i < StTrk; ++i)  if (i != 1)
 			stTrk[ch][i]->setCaption("");
-		for (int i=0; i < 4; ++i)
+		for (int i=0; i < ImStTrk; ++i)
 			imStTrk[ch][i]->setAlpha(0.f);
 	}else
 	{	stTrk[ch][0]->setCaption(fToStr(len*0.001f*m ,1,3) + km);
@@ -473,22 +473,27 @@ void CGuiCom::UpdGuiRdStats(const SplineRoad* rd, const Scene* sc, const String&
 		stTrk[ch][3]->setCaption(fToStr(rd->st.HeightDiff ,0,2) + sm);  // h
 
 		bool h = rd->st.Pipes > 99.f && rd->st.OnTer > 99.f;  // hide bridge 100% when pipe is 100%
-		stTrk[ch][4]->setCaption(fToStr(rd->st.OnTer ,0,1));  // %
+		stTrk[ch][4]->setCaption(fToStr(rd->st.OnTer ,0,1));  // ter %
 		a = h || rd->st.OnTer < 1.f ? 0.f :  (0.5f + 0.5f * rd->st.OnTer / 100.f);
 		stTrk[ch][4]->setAlpha(a);  imStTrk[ch][0]->setAlpha(a);
 		
-		stTrk[ch][5]->setCaption(fToStr(rd->st.Pipes ,0,1));  // %
-		a =      rd->st.Pipes < 1.f ? 0.f :  (0.4f + 0.4f * rd->st.Pipes / 100.f);
+		auto hp = rd->st.HalfPipe, pp = rd->st.Pipes;
+		stTrk[ch][9]->setCaption(fToStr(hp ,0,1));  // hP %
+		a =      hp < 1.f ? 0.f :  (0.4f + 0.4f * hp / 100.f);
+		stTrk[ch][9]->setAlpha(a);  imStTrk[ch][4]->setAlpha(a);
+
+		stTrk[ch][5]->setCaption(fToStr(pp ,0,1));  // P %
+		a =      pp < 1.f ? 0.f :  (0.4f + 0.4f * pp / 100.f);
 		stTrk[ch][5]->setAlpha(a);  imStTrk[ch][1]->setAlpha(a);
+
+		stTrk[ch][8]->setCaption(fToStr(rd->st.OnPipe,0,1));  // onP %
+		a = rd->st.OnPipe < 0.1f ? 0.f : (0.5f + 0.5f * rd->st.OnPipe / 100.f);
+		stTrk[ch][8]->setAlpha(a);  imStTrk[ch][3]->setAlpha(a);
 
 		stTrk[ch][6]->setCaption(fToStr(rd->st.bankAvg,0,1)+"°");  // angles degrees
 		stTrk[ch][7]->setCaption(fToStr(rd->st.bankMax,0,1)+"°");
 		a = std::min(1.f,  0.3f + 0.7f * rd->st.bankMax / 80.f);  //rd->st.bankAvg / 30.f);
 		stTrk[ch][6]->setAlpha(a);  stTrk[ch][7]->setAlpha(a);  imStTrk[ch][2]->setAlpha(a);
-
-		stTrk[ch][8]->setCaption(fToStr(rd->st.OnPipe,0,1));  // %
-		a = rd->st.OnPipe < 0.1f ? 0.f : (0.5f + 0.5f * rd->st.OnPipe / 100.f);
-		stTrk[ch][8]->setAlpha(a);  imStTrk[ch][3]->setAlpha(a);
 	}
 	#ifndef SR_EDITOR
 	// if (app->gui->txTrackAuthor)

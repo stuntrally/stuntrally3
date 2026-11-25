@@ -165,36 +165,48 @@
 							<Property key="Alpha" value="0.9"/>
 							<UserString key="tip" value="#{TrackHeightDiff}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="158 64 36 18" name="st4">
+
+						<!-- % -->
+						<Widget type="TextBox" skin="TextBox" position="223 61 36 18" name="st4">
 							<Property key="TextColour" value="0.5 0.9 0.9"/>
 							<Property key="FontName" value="font.small"/>
 							<Property key="Alpha" value="0.9"/>
 							<UserString key="tip" value="#{TrackInAir} %"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="158 84 36 18" name="st5">
+						<Widget type="TextBox" skin="TextBox" position="223 81 28 18" name="st6">
+							<Property key="TextColour" value="0.55 0.52 0.5"/>
+							<Property key="FontName" value="font.small"/>
+							<Property key="Alpha" value="0.8"/>
+							<UserString key="tip" value="#{TrackBankAng}"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="223 101 28 18" name="st7">
+							<Property key="TextColour" value="0.6 0.52 0.47"/>
+							<Property key="FontName" value="font.small"/>
+							<Property key="Alpha" value="0.7"/>
+							<UserString key="tip" value="#{TrackBankAng}"/>
+						</Widget>
+
+						<!-- p % -->
+						<Widget type="TextBox" skin="TextBox" position="160 61 36 18" name="st9">
+							<Property key="TextColour" value="0.4 1.0 0.2"/>
+							<Property key="FontName" value="font.small"/>
+							<Property key="Alpha" value="0.9"/>
+							<UserString key="tip" value="#{TrackHalfPipes} %"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="160 81 36 18" name="st5">
 							<Property key="TextColour" value="0.9 0.9 0.5"/>
 							<Property key="FontName" value="font.small"/>
 							<Property key="Alpha" value="0.9"/>
 							<UserString key="tip" value="#{TrackPipes} %"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="208 64 28 18" name="st6">
-							<Property key="TextColour" value="0.7 0.75 0.8"/>
-							<Property key="FontName" value="font.small"/>
-							<UserString key="tip" value="#{TrackBankAng}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="232 64 28 18" name="st7">
-							<Property key="TextColour" value="0.8 0.72 0.67"/>
-							<Property key="FontName" value="font.small"/>
-							<UserString key="tip" value="#{TrackBankAng}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="208 84 36 18" name="st8">
+						<Widget type="TextBox" skin="TextBox" position="160 101 36 18" name="st8">
 							<Property key="TextColour" value="0.9 0.4 0.2"/>
 							<Property key="FontName" value="font.small"/>
 							<Property key="Alpha" value="0.9"/>
 							<UserString key="tip" value="#{Road_OnPipe} %"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="170 76 16 16">
-							<Property key="Caption" value="%"/>
+						<Widget type="TextBox" skin="TextBox" position="180 74 16 16">
+							<Property key="Caption" value="%"/>  <!--%-->
 							<Property key="TextColour" value="0.5 0.7 0.7"/>
 							<Property key="Alpha" value="0.8"/>
 							<Property key="FontName" value="font.small"/>
@@ -215,31 +227,42 @@
 							<Property key="Alpha" value="0.7"/>
 							<UserString key="tip" value="#{TrackHeightDiff}"/>
 						</Widget>
-						<Widget type="ImageBox" skin="ImageBox" position="130 63 32 20" name="ist0">
+
+						<!-- % -->
+						<Widget type="ImageBox" skin="ImageBox" position="196 60 32 20" name="ist0">
 							<Property key="ImageCoord" value="64 40 32 20"/>
 							<Property key="ImageTexture" value="track_icons.png"/>
 							<Property key="Alpha" value="0.8"/>
 							<UserString key="tip" value="#{TrackInAir} %"/>
 						</Widget>
-						<Widget type="ImageBox" skin="ImageBox" position="130 83 32 20" name="ist1">
-							<Property key="ImageCoord" value="128 40 32 20"/>
-							<Property key="ImageTexture" value="track_icons.png"/>
-							<Property key="Alpha" value="0.18"/>
-							<UserString key="tip" value="#{TrackPipes} %"/>
-						</Widget>
-						<Widget type="ImageBox" skin="ImageBox" position="184 63 32 20" name="ist2">
+						<Widget type="ImageBox" skin="ImageBox" position="197 80 32 20" name="ist2">
 							<Property key="ImageCoord" value="96 40 32 20"/>
 							<Property key="ImageTexture" value="track_icons.png"/>
 							<Property key="Alpha" value="0.18"/>
 							<UserString key="tip" value="#{TrackBankAng}"/>
 						</Widget>
-						<Widget type="ImageBox" skin="ImageBox" position="184 83 32 20" name="ist3">
+
+						<!-- p % -->
+						<Widget type="ImageBox" skin="ImageBox" position="134 60 32 20" name="ist4">
+							<Property key="ImageCoord" value="384 40 32 20"/>
+							<Property key="ImageTexture" value="track_icons.png"/>
+							<Property key="Alpha" value="0.18"/>
+							<UserString key="tip" value="#{TrackHalfPipes} %"/>
+						</Widget>
+						<Widget type="ImageBox" skin="ImageBox" position="134 80 32 20" name="ist1">
+							<Property key="ImageCoord" value="128 40 32 20"/>
+							<Property key="ImageTexture" value="track_icons.png"/>
+							<Property key="Alpha" value="0.18"/>
+							<UserString key="tip" value="#{TrackPipes} %"/>
+						</Widget>
+						<Widget type="ImageBox" skin="ImageBox" position="134 100 32 20" name="ist3">
 							<Property key="ImageCoord" value="160 40 32 20"/>
 							<Property key="ImageTexture" value="track_icons.png"/>
 							<Property key="Alpha" value="0.18"/>
 							<UserString key="tip" value="#{Road_OnPipe} %"/>
 						</Widget>
 
+						<!-- diff rates -->
 						<Widget type="ImageBox" skin="ImageBox" position="1 60 32 32" name="iti9">
 							<Property key="ImageTexture" value="track_icons.png"/>
 							<Property key="ImageCoord" value="0 0 32 32"/>
@@ -2311,36 +2334,48 @@
 							<Property key="Alpha" value="0.9"/>
 							<UserString key="tip" value="#{TrackHeightDiff}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="158 64 36 18" name="2st4">
+
+						<!-- % -->
+						<Widget type="TextBox" skin="TextBox" position="223 61 36 18" name="2st4">
 							<Property key="TextColour" value="0.5 0.9 0.9"/>
 							<Property key="FontName" value="font.small"/>
 							<Property key="Alpha" value="0.9"/>
 							<UserString key="tip" value="#{TrackInAir} %"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="158 84 36 18" name="2st5">
+						<Widget type="TextBox" skin="TextBox" position="223 81 28 18" name="2st6">
+							<Property key="TextColour" value="0.55 0.52 0.5"/>
+							<Property key="FontName" value="font.small"/>
+							<Property key="Alpha" value="0.8"/>
+							<UserString key="tip" value="#{TrackBankAng}"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="223 101 28 18" name="2st7">
+							<Property key="TextColour" value="0.6 0.52 0.47"/>
+							<Property key="FontName" value="font.small"/>
+							<Property key="Alpha" value="0.7"/>
+							<UserString key="tip" value="#{TrackBankAng}"/>
+						</Widget>
+
+						<!-- p % -->
+						<Widget type="TextBox" skin="TextBox" position="160 61 36 18" name="2st9">
+							<Property key="TextColour" value="0.4 1.0 0.2"/>
+							<Property key="FontName" value="font.small"/>
+							<Property key="Alpha" value="0.9"/>
+							<UserString key="tip" value="#{TrackHalfPipes} %"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="160 81 36 18" name="2st5">
 							<Property key="TextColour" value="0.9 0.9 0.5"/>
 							<Property key="FontName" value="font.small"/>
 							<Property key="Alpha" value="0.9"/>
 							<UserString key="tip" value="#{TrackPipes} %"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="208 64 28 18" name="2st6">
-							<Property key="TextColour" value="0.7 0.75 0.8"/>
-							<Property key="FontName" value="font.small"/>
-							<UserString key="tip" value="#{TrackBankAng}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="232 64 28 18" name="2st7">
-							<Property key="TextColour" value="0.8 0.72 0.67"/>
-							<Property key="FontName" value="font.small"/>
-							<UserString key="tip" value="#{TrackBankAng}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="208 84 36 18" name="2st8">
+						<Widget type="TextBox" skin="TextBox" position="160 101 36 18" name="2st8">
 							<Property key="TextColour" value="0.9 0.4 0.2"/>
 							<Property key="FontName" value="font.small"/>
 							<Property key="Alpha" value="0.9"/>
 							<UserString key="tip" value="#{Road_OnPipe} %"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="170 76 16 16">
-							<Property key="Caption" value="%"/>
+						<Widget type="TextBox" skin="TextBox" position="180 74 16 16">
+							<Property key="Caption" value="%"/>  <!--%-->
 							<Property key="TextColour" value="0.5 0.7 0.7"/>
 							<Property key="Alpha" value="0.8"/>
 							<Property key="FontName" value="font.small"/>
@@ -2361,31 +2396,42 @@
 							<Property key="Alpha" value="0.7"/>
 							<UserString key="tip" value="#{TrackHeightDiff}"/>
 						</Widget>
-						<Widget type="ImageBox" skin="ImageBox" position="130 63 32 20" name="2ist0">
+
+						<!-- % -->
+						<Widget type="ImageBox" skin="ImageBox" position="196 60 32 20" name="2ist0">
 							<Property key="ImageCoord" value="64 40 32 20"/>
 							<Property key="ImageTexture" value="track_icons.png"/>
 							<Property key="Alpha" value="0.8"/>
 							<UserString key="tip" value="#{TrackInAir} %"/>
 						</Widget>
-						<Widget type="ImageBox" skin="ImageBox" position="130 83 32 20" name="2ist1">
-							<Property key="ImageCoord" value="128 40 32 20"/>
-							<Property key="ImageTexture" value="track_icons.png"/>
-							<Property key="Alpha" value="0.18"/>
-							<UserString key="tip" value="#{TrackPipes} %"/>
-						</Widget>
-						<Widget type="ImageBox" skin="ImageBox" position="184 63 32 20" name="2ist2">
+						<Widget type="ImageBox" skin="ImageBox" position="197 80 32 20" name="2ist2">
 							<Property key="ImageCoord" value="96 40 32 20"/>
 							<Property key="ImageTexture" value="track_icons.png"/>
 							<Property key="Alpha" value="0.18"/>
 							<UserString key="tip" value="#{TrackBankAng}"/>
 						</Widget>
-						<Widget type="ImageBox" skin="ImageBox" position="184 83 32 20" name="2ist3">
+
+						<!-- p % -->
+						<Widget type="ImageBox" skin="ImageBox" position="134 60 32 20" name="2ist4">
+							<Property key="ImageCoord" value="384 40 32 20"/>
+							<Property key="ImageTexture" value="track_icons.png"/>
+							<Property key="Alpha" value="0.18"/>
+							<UserString key="tip" value="#{TrackHalfPipes} %"/>
+						</Widget>
+						<Widget type="ImageBox" skin="ImageBox" position="134 80 32 20" name="2ist1">
+							<Property key="ImageCoord" value="128 40 32 20"/>
+							<Property key="ImageTexture" value="track_icons.png"/>
+							<Property key="Alpha" value="0.18"/>
+							<UserString key="tip" value="#{TrackPipes} %"/>
+						</Widget>
+						<Widget type="ImageBox" skin="ImageBox" position="134 100 32 20" name="2ist3">
 							<Property key="ImageCoord" value="160 40 32 20"/>
 							<Property key="ImageTexture" value="track_icons.png"/>
 							<Property key="Alpha" value="0.18"/>
 							<UserString key="tip" value="#{Road_OnPipe} %"/>
 						</Widget>
 
+						<!-- diff rates -->
 						<Widget type="ImageBox" skin="ImageBox" position="1 60 32 32" name="2iti9">
 							<Property key="ImageTexture" value="track_icons.png"/>
 							<Property key="ImageCoord" value="0 0 32 32"/>
