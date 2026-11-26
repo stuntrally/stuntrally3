@@ -413,23 +413,23 @@
 							<Property key="FontName" value="font.small"/>
 							<Property key="TextColour" value="0.7 0.86 1.0"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="192 24 64 18" name="st9">
+						<Widget type="TextBox" skin="TextBox" position="192 24 64 18" name="st10">
 							<Property key="TextColour" value="0.7 1 0.7"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="192 44 64 18" name="st10">
+						<Widget type="TextBox" skin="TextBox" position="192 44 64 18" name="st11">
 							<Property key="TextColour" value="0.7 1 0.7"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="112 24 64 18" name="st11">
+						<Widget type="TextBox" skin="TextBox" position="112 24 64 18" name="st12">
 							<Property key="TextColour" value="0.7 0.96 1.0"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="112 44 64 18" name="st12">
+						<Widget type="TextBox" skin="TextBox" position="112 44 64 18" name="st13">
 							<Property key="TextColour" value="0.7 0.96 1.0"/>
 						</Widget>
 						<Widget type="TextBox" skin="TextBox" position="6 68 102 18">
 							<Property key="Caption" value="#{TBPoints}"/>
 							<Property key="TextColour" value="0.9 0.8 0.7"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="112 68 64 18" name="st13">
+						<Widget type="TextBox" skin="TextBox" position="112 68 64 18" name="st14">
 							<Property key="TextColour" value="0.9 0.7 0.5"/>
 						</Widget>
 					</Widget>
@@ -2571,10 +2571,10 @@
 							<Property key="Caption" value="#{TrackAvgSpeed}"/>
 							<Property key="TextColour" value="0.7 0.86 1.0"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="96 24 64 18" name="2st9">
+						<Widget type="TextBox" skin="TextBox" position="96 24 64 18" name="2st10">
 							<Property key="TextColour" value="0.7 1 0.7"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="96 44 64 18" name="2st10">
+						<Widget type="TextBox" skin="TextBox" position="96 44 64 18" name="2st11">
 							<Property key="TextColour" value="0.7 1 0.7"/>
 						</Widget>
 					</Widget>

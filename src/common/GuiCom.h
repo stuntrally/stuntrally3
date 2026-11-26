@@ -176,7 +176,7 @@ public:
 	#ifdef SR_EDITOR
 		StTrk = 10;
 	#else
-		StTrk = 14;
+		StTrk = 15;
 	#endif
 	Txt stTrk[2][StTrk], infTrk[2][InfTrk];  // [2] 2nd set is for champs
 	Img imStTrk[2][ImStTrk], imInfTrk[2][InfTrk];

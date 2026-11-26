@@ -551,23 +551,23 @@ void CGuiCom::UpdGuiRdStats(const SplineRoad* rd, const Scene* sc, const String&
 	bool noTm = timeCur < 0.1f || !rd;
 	if (ch==1)  noTm = false;  // show track's not current
 
-	stTrk[ch][9]->setCaption(StrTime(noTrk ? 0.f : timeT));
-	stTrk[ch][10]->setCaption(noTrk ? "--" : speedTrk);
+	stTrk[ch][10]->setCaption(StrTime(noTrk ? 0.f : timeT));
+	stTrk[ch][11]->setCaption(noTrk ? "--" : speedTrk);
 
 	if (ch==0)
 	if (noTm)
-	{	stTrk[ch][11]->setCaption(StrTime(0.f));
-		stTrk[ch][12]->setCaption("--");
+	{	stTrk[ch][12]->setCaption(StrTime(0.f));
 		stTrk[ch][13]->setCaption("--");
+		stTrk[ch][14]->setCaption("--");
 	}else
 	{	//  car record
 		std::string speed = fToStr(len / timeCur * m, 0,3) + unit;
-		stTrk[ch][11]->setCaption(StrTime(timeCur));
-		stTrk[ch][12]->setCaption(speed);
+		stTrk[ch][12]->setCaption(StrTime(timeCur));
+		stTrk[ch][13]->setCaption(speed);
 		//  points
 		float points = 0.f;
 		app->GetRacePos(timeCur, timeTrk, carMul, false, &points);
-		stTrk[ch][13]->setCaption(fToStr(points ,1,3));
+		stTrk[ch][14]->setCaption(fToStr(points ,1,3));
 	}
 #else
 	if (app->gui->trkName)  //
