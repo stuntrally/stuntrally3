@@ -94,7 +94,7 @@ or partly 🇮🇹 🇨🇿 🇪🇸 [translated](https://hosted.weblate.org/pro
   - 🖼️ preview image and minimap (click to toggle zoom)
   - 📊 stats like: rating, difficulty, length, width, jumps, loops, pipes, obstacles and much more
   - Driveability % estimate for vehicle on track (low means unfit)
-- ⏲️ Several gauge types (for engine rpm and vehicle speed)
+- ⏲️ Many gauge types (for engine rpm and vehicle speed)
 - Fps bar (F11) with many modes and info for GPU performance
 
 ## Graphics

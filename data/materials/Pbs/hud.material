@@ -10,29 +10,65 @@ hlms hud_base unlit
 	alpha_rejection none
 }
 
+//  gauges speed,rpm
 hlms hud_0 unlit : hud_base
 {
-	diffuse_map gauges0.png
+	diffuse_map gauges0_old.png
 }
 hlms hud_1 unlit : hud_base
 {
-	diffuse_map gauges1.png
+	diffuse_map gauges1_gray.png
 }
 hlms hud_2 unlit : hud_base
 {
-	diffuse_map gauges2.png
+	diffuse_map gauges2_white.png
 }
+
 hlms hud_3 unlit : hud_base
 {
-	diffuse_map gauges3.png
+	diffuse_map gauges3c_skyglow.png
 }
 hlms hud_4 unlit : hud_base
 {
-	diffuse_map gauges4.png
+	diffuse_map gauges3b_green.png
 }
+
 hlms hud_5 unlit : hud_base
 {
-	diffuse_map gauges5.png
+	diffuse_map gauges1a_ylw.png
+}
+hlms hud_6 unlit : hud_base
+{
+	diffuse_map gauges1b_orng.png
+}
+hlms hud_7 unlit : hud_base
+{
+	diffuse_map gauges1d_green.png
+}
+hlms hud_8 unlit : hud_base
+{
+	diffuse_map gauges1c_cyan.png
+}
+
+hlms hud_9 unlit : hud_base
+{
+	diffuse_map gauges2a_red.png
+}
+hlms hud_10 unlit : hud_base
+{
+	diffuse_map gauges2c_orng.png
+}
+hlms hud_11 unlit : hud_base
+{
+	diffuse_map gauges2d_ylw.png
+}
+hlms hud_12 unlit : hud_base
+{
+	diffuse_map gauges2e_cyan.png
+}
+hlms hud_13 unlit : hud_base
+{
+	diffuse_map gauges2g_viol.png
 }
 
 

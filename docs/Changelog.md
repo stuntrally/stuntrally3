@@ -9,6 +9,8 @@ WIP means work in progress, unfinished, still being developed.
   Few types of areas, that will affect vehicle (if it's inside), by color:  
   🟦blue: accelerate, 🟨yellow: antigravity, 🟩green: damping, 🟥red: teleport, to other location.
 - renewed vehicle preview images
+- Hud
+  - New gauges (for speed, rpm), recolored and with glow, now 14 total
 - Editor
   - Fixed **pick** (Space) for Objects, Emitters, Collectibles, added for Fields, Fluids
     - added: shift-Space to pick none, for placing new (Objects, Collectibles)
