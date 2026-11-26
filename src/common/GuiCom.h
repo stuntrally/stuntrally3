@@ -172,7 +172,7 @@ public:
 
 
 	//  📝 st- road stats, dim  inf- tracks.ini ratings
-	const static int InfTrk = 13, ImStTrk = 5,
+	const static int InfTrk = 14, ImStTrk = 5,
 	#ifdef SR_EDITOR
 		StTrk = 10;
 	#else

@@ -246,7 +246,7 @@
 							<UserString key="tip" value="#{Road_OnPipe} %"/>
 						</Widget>
 
-						<!-- diff rates -->
+						<!-- diff big imgs ed -->
 						<Widget type="ImageBox" skin="ImageBox" position="1 60 32 32" name="iti9">
 							<Property key="ImageTexture" value="track_icons.png"/>
 							<Property key="ImageCoord" value="0 0 32 32"/>
@@ -268,89 +268,7 @@
 							<UserString key="tip" value="#{sum}"/>
 						</Widget>
 
-						<Widget type="ImageBox" skin="ImageBox" position="2 120 28 28" name="iti8">
-							<Property key="ImageTexture" value="track_icons.png"/>
-							<Property key="ImageCoord" value="64 0 32 32"/>
-							<UserString key="tip" value="#{objects}"/>
-						</Widget>
-						<Widget type="ImageBox" skin="ImageBox" position="30 120 28 28" name="iti7">
-							<Property key="ImageTexture" value="track_icons.png"/>
-							<Property key="ImageCoord" value="96 0 32 32"/>
-							<UserString key="tip" value="#{obstacles}"/>
-						</Widget>
-						<Widget type="ImageBox" skin="ImageBox" position="58 120 28 28" name="iti0">
-							<Property key="ImageTexture" value="track_icons.png"/>
-							<Property key="ImageCoord" value="128 0 32 32"/>
-							<UserString key="tip" value="#{fluids}"/>
-						</Widget>
-						<Widget type="ImageBox" skin="ImageBox" position="86 120 28 28" name="iti1">
-							<Property key="ImageTexture" value="track_icons.png"/>
-							<Property key="ImageCoord" value="160 0 32 32"/>
-							<UserString key="tip" value="#{bumps}"/>
-						</Widget>
-						<Widget type="ImageBox" skin="ImageBox" position="114 120 28 28" name="iti2">
-							<Property key="ImageTexture" value="track_icons.png"/>
-							<Property key="ImageCoord" value="192 0 32 32"/>
-							<UserString key="tip" value="#{jumps}"/>
-						</Widget>
-						<Widget type="ImageBox" skin="ImageBox" position="142 120 28 28" name="iti3">
-							<Property key="ImageTexture" value="track_icons.png"/>
-							<Property key="ImageCoord" value="224 0 32 32"/>
-							<UserString key="tip" value="#{loops}"/>
-						</Widget>
-						<Widget type="ImageBox" skin="ImageBox" position="170 120 28 28" name="iti4">
-							<Property key="ImageTexture" value="track_icons.png"/>
-							<Property key="ImageCoord" value="256 0 32 32"/>
-							<UserString key="tip" value="#{pipes}"/>
-						</Widget>
-						<Widget type="ImageBox" skin="ImageBox" position="198 120 28 28" name="iti5">
-							<Property key="ImageTexture" value="track_icons.png"/>
-							<Property key="ImageCoord" value="288 0 32 32"/>
-							<UserString key="tip" value="#{banked}"/>
-						</Widget>
-						<Widget type="ImageBox" skin="ImageBox" position="226 120 28 28" name="iti6">
-							<Property key="ImageTexture" value="track_icons.png"/>
-							<Property key="ImageCoord" value="320 0 32 32"/>
-							<UserString key="tip" value="#{frenzy}"/>
-						</Widget>
-
-						<Widget type="TextBox" skin="TextBox" position="12 148 32 20" name="ti8">
-							<Property key="TextColour" value="0.8 0.4 0.6"/>
-							<UserString key="tip" value="#{objects}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="40 148 32 20" name="ti7">
-							<Property key="TextColour" value="0.8 0.65 0.2"/>
-							<UserString key="tip" value="#{obstacles}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="68 148 32 20" name="ti0">
-							<Property key="TextColour" value="0.5 0.8 1.0"/>
-							<UserString key="tip" value="#{fluids}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="96 148 32 20" name="ti1">
-							<Property key="TextColour" value="0.5 1.0 0.4"/>
-							<UserString key="tip" value="#{bumps}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="124 148 32 20" name="ti2">
-							<Property key="TextColour" value="1.0 0.6 0.3"/>
-							<UserString key="tip" value="#{jumps}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="152 148 32 20" name="ti3">
-							<Property key="TextColour" value="0.3 0.9 1.0"/>
-							<UserString key="tip" value="#{loops}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="180 148 32 20" name="ti4">
-							<Property key="TextColour" value="0.9 0.9 0.3"/>
-							<UserString key="tip" value="#{pipes}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="208 148 32 20" name="ti5">
-							<Property key="TextColour" value="0.8 0.8 0.8"/>
-							<UserString key="tip" value="#{banked}"/>
-						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="236 148 32 20" name="ti6">
-							<Property key="TextColour" value="0.8 0.8 1.0"/>
-							<UserString key="tip" value="#{frenzy}"/>
-						</Widget>
-
+						<!-- diff big texts ed -->
 						<Widget type="TextBox" skin="TextBox" position="14 92 32 20" name="ti9">
 							<Property key="TextColour" value="0.8 0.9 1.0"/>
 							<UserString key="tip" value="#{difficulty}"/>
@@ -370,6 +288,102 @@
 							<UserString key="tip" value="#{sum}"/>
 						</Widget>
 
+
+						<!-- diff rate imgs ed -->
+						<Widget type="ImageBox" skin="ImageBox" position="2 120 26 26" name="iti8">
+							<Property key="ImageTexture" value="track_icons.png"/>
+							<Property key="ImageCoord" value="64 0 32 32"/>
+							<UserString key="tip" value="#{objects}"/>
+						</Widget>
+						<Widget type="ImageBox" skin="ImageBox" position="28 120 26 26" name="iti7">
+							<Property key="ImageTexture" value="track_icons.png"/>
+							<Property key="ImageCoord" value="96 0 32 32"/>
+							<UserString key="tip" value="#{obstacles}"/>
+						</Widget>
+						<Widget type="ImageBox" skin="ImageBox" position="54 120 26 26" name="iti0">
+							<Property key="ImageTexture" value="track_icons.png"/>
+							<Property key="ImageCoord" value="128 0 32 32"/>
+							<UserString key="tip" value="#{fluids}"/>
+						</Widget>
+						<Widget type="ImageBox" skin="ImageBox" position="80 120 26 26" name="iti1">
+							<Property key="ImageTexture" value="track_icons.png"/>
+							<Property key="ImageCoord" value="160 0 32 32"/>
+							<UserString key="tip" value="#{bumps}"/>
+						</Widget>
+						<Widget type="ImageBox" skin="ImageBox" position="106 120 26 26" name="iti2">
+							<Property key="ImageTexture" value="track_icons.png"/>
+							<Property key="ImageCoord" value="192 0 32 32"/>
+							<UserString key="tip" value="#{jumps}"/>
+						</Widget>
+						<Widget type="ImageBox" skin="ImageBox" position="132 120 26 26" name="iti3">
+							<Property key="ImageTexture" value="track_icons.png"/>
+							<Property key="ImageCoord" value="224 0 32 32"/>
+							<UserString key="tip" value="#{loops}"/>
+						</Widget>
+						<Widget type="ImageBox" skin="ImageBox" position="156 120 26 26" name="iti4">
+							<Property key="ImageTexture" value="track_icons.png"/>
+							<Property key="ImageCoord" value="256 0 32 32"/>
+							<UserString key="tip" value="#{pipes}"/>
+						</Widget>
+						<Widget type="ImageBox" skin="ImageBox" position="182 120 26 26" name="iti5">
+							<Property key="ImageTexture" value="track_icons.png"/>
+							<Property key="ImageCoord" value="288 0 32 32"/>
+							<UserString key="tip" value="#{banked}"/>
+						</Widget>
+						<Widget type="ImageBox" skin="ImageBox" position="208 120 26 26" name="iti6">
+							<Property key="ImageTexture" value="track_icons.png"/>
+							<Property key="ImageCoord" value="320 0 32 32"/>
+							<UserString key="tip" value="#{frenzy}"/>
+						</Widget>
+						<Widget type="ImageBox" skin="ImageBox" position="234 120 26 26" name="iti13">
+							<Property key="ImageTexture" value="track_icons.png"/>
+							<Property key="ImageCoord" value="416 0 32 32"/>
+							<UserString key="tip" value="#{Fields}"/>
+						</Widget>
+
+						<!-- diff rate texts ed -->
+						<Widget type="TextBox" skin="TextBox" position="12 148 32 20" name="ti8">
+							<Property key="TextColour" value="0.8 0.4 0.6"/>
+							<UserString key="tip" value="#{objects}"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="38 148 32 20" name="ti7">
+							<Property key="TextColour" value="0.8 0.65 0.2"/>
+							<UserString key="tip" value="#{obstacles}"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="64 148 32 20" name="ti0">
+							<Property key="TextColour" value="0.5 0.8 1.0"/>
+							<UserString key="tip" value="#{fluids}"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="90 148 32 20" name="ti1">
+							<Property key="TextColour" value="0.5 1.0 0.4"/>
+							<UserString key="tip" value="#{bumps}"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="116 148 32 20" name="ti2">
+							<Property key="TextColour" value="1.0 0.6 0.3"/>
+							<UserString key="tip" value="#{jumps}"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="140 148 32 20" name="ti3">
+							<Property key="TextColour" value="0.3 0.9 1.0"/>
+							<UserString key="tip" value="#{loops}"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="166 148 32 20" name="ti4">
+							<Property key="TextColour" value="0.9 0.9 0.3"/>
+							<UserString key="tip" value="#{pipes}"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="192 148 32 20" name="ti5">
+							<Property key="TextColour" value="0.8 0.8 0.8"/>
+							<UserString key="tip" value="#{banked}"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="218 148 32 20" name="ti6">
+							<Property key="TextColour" value="0.8 0.8 1.0"/>
+							<UserString key="tip" value="#{frenzy}"/>
+						</Widget>
+						<Widget type="TextBox" skin="TextBox" position="240 148 32 20" name="ti13">
+							<Property key="TextColour" value="0.7 1.0 0.5"/>
+							<UserString key="tip" value="#{Fields}"/>
+						</Widget>
+
+						
 					</Widget>
 				</Widget>
 

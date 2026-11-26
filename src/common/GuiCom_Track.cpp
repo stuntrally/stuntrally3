@@ -514,7 +514,7 @@ void CGuiCom::UpdGuiRdStats(const SplineRoad* rd, const Scene* sc, const String&
 		inf(0, ti.fluids,5);  inf(1, ti.bumps, 4);
 		inf(2, ti.jumps, 3);  inf(3, ti.loops, 4);  inf(4, ti.pipes, 5);
 		inf(5, ti.banked,4);  inf(6, ti.frenzy,4);
-		inf(7, ti.obstacles,3);  inf(8, ti.objects,3);
+		inf(7, ti.obstacles,3);  inf(8, ti.objects,3);  inf(13, ti.fields,5);
 
 		//  long, sum
 		infTrk[ch][11]->setCaption(clrsLong[std::min(iClrsLong-1, ti.longn)] + str0(ti.longn));
