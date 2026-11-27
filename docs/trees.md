@@ -387,11 +387,11 @@ The only left to do are shrooms big and small, and maybe old firs too.
 The difference is huge in Jungle.
 Also notable on Forest (got own new trees too), Islands, Moss, etc.
 Jungle is a new thing now. I can't stop driving to look at new vegetation 😲.
-You can see screens in our Tracks browser starting [from here](https://cryham.org/stuntrally/tracks?id=Jng1-Curly).
+You can see screens in our Tracks browser starting [from here](https://cryham.org/stuntrally/tracks/?id=Jng1-Curly).
 But this is great for high end GPUs. Lower will need reducing options as always.
 🎉
 
 - CryHam · 14 Aug 2024
 
 Okay I did shrooms🍄. Lol, I mean I replaced oldest low poly, small texture mushrooms.
-Changes can be seen on Aln, Uni tracks in our browser. E.g. [Aln here](https://stuntrally.tuxfamily.org/tracks3?id=Aln3-MushroomBeach), [or here](https://stuntrally.tuxfamily.org/tracks3?id=Aln1-AlienBase), [Uni here](https://stuntrally.tuxfamily.org/tracks3?id=Uni3-Cloud), [and here](https://stuntrally.tuxfamily.org/tracks3?id=Uni2-Swirl) etc.
+Changes can be seen on Aln, Uni tracks in our browser. E.g. [Aln here](https://cryham.org/stuntrally/tracks/?id=Aln3-MushroomBeach), [or here](https://cryham.org/stuntrally/tracks/?id=Aln1-AlienBase), [Uni here](https://cryham.org/stuntrally/tracks/?id=Uni3-Cloud), [and here](https://cryham.org/stuntrally/tracks/?id=Uni2-Swirl) etc.

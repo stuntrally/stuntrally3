@@ -18,7 +18,7 @@ From my experience I need about 🕐1 hour editing per 1 km of track. So shortes
 
 ### 🌟Quality etc
 
-If you want your track **included** in next SR 3.x version, you can read and follow these old [remarks](https://forum.freegamedev.net/viewtopic.php?f=80&t=5034) also this post about my 🌟 [track rating](https://forum.freegamedev.net/viewtopic.php?f=80&t=5878&p=60432#p60432).  
+If you want your track **included** in next SR version, you can read and follow these old [remarks](https://forum.freegamedev.net/viewtopic.php?f=80&t=5034) also this post about my 🌟 [track rating](https://forum.freegamedev.net/viewtopic.php?f=80&t=5878&p=60432#p60432).  
 Basically the track needs to be of **good quality and have various elements** (especially if it is long or a stunt track), those then appear in Track menu with icons (e.g. fluids, objects, obstacles, jumps, various loops, pipes, halfpipes, onpipes, etc.). I can edit the track and improve quality or add some more things, but the more of that is done already, the less I need to do and more likely a track will meet requirements.
 
 
@@ -65,7 +65,7 @@ If this keeps in track's style it's good. Same for light / color / brightnes / s
 
 ### 👥Modding tracks
 
-Since this topic came recently, I should write more. Generally modded tracks aren't that creative, yet need few MB in repo and game size, and own line in (already big) tracks list.
+Generally modded tracks aren't that creative, yet need few MB in repo and game size, and own line in (already big) tracks list. Marked in [tracks.ini](../config/tracks.ini) as `cpy` after `r:`.
 
 Modded tracks can go into SR3 but I'm not too happy about them. Especially if they don't change much, like only day time and sky.
 

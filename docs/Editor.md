@@ -10,7 +10,7 @@ It can also export track(s) to Rigs of Rods. Details [here](EditorExportRoR.md).
 
 ## NEW Video Tutorial
 
-Newly started video tutorial from version 3.0:  
+New (but only) started video tutorial from version 3.0:  
 
 [Full playlist](https://www.youtube.com/playlist?list=PLU7SCFz6w40PY3L8qFNTe4DRq_W6ofs1d) on youtube.
 
@@ -130,8 +130,8 @@ current mode is shown in left bottom corner: Cam, Edit or Gui
 
 ### Update
 
-**B** - Rebuild road (after terrain under it changed, etc.)  
-F8 - Update (after changes made on Terrain/Vegetation tab)
+**B** - Rebuild road (after terrain under it changed, etc)  
+F8 - Update (after changes made on Terrain/Vegetation tab), or just press V twice
 
 ### Tools
 
@@ -148,45 +148,57 @@ F8 - Update (after changes made on Terrain/Vegetation tab)
 | Alt-Q - Track | Alt-T - Terrain Layers |
 | Alt-E - Settings | Alt-R - Road |
 | | Alt-V - Vegetation |
-| | Alt-X - Objects |
+| Alt-X - list of: Objects, Fluids or Emitters, depending on current mode |
 
    
 ----
 
 ### Approaches
 
-Basic Approaches to making a track:
+Basic Approaches to making a track are, either:
 
-  1. Make great terrain and place road in it (difficult)
-  2. Make cool road and decorate terrain after (easy)
+  1. Make great terrain and place road in it (difficult).
+  2. Make cool road and decorate terrain after (easy).  
+  Especially if you *already* have a road shape in mind (e.g. from other game).
   3. Mixed mode. Edit terrain and road freely.
 
 ### Workflow
 
-A list of short steps that describe creating a new track on a high level:
+An example list of short steps that describe creating a new track on a high level:
 
-Save **frequently** (F4), after each step or change. When made a mistake hit F5 to reload last track state.
+Save **frequently** (F4), after each step or change. When made a mistake hit F5 to reload last track state.  
+I also recommended making backup copies, before any major change (align terrain, etc), especially tools that can't undo.
 
   * 1
-    * load an existing track - that has the most of desired features already set up (eg. has good terrain layers, vegetation, terrain heightmap etc.).
-    * enter new track name, press button: new (duplicate)
+    * Load an existing track - that has the most of desired features already set up (eg. has good terrain layers, vegetation, terrain heightmap etc).
+    * enter new track name, press button: new (duplicate), save F4.
   * 2
-    * on terrain tab, choose area, make new flat terrain (pick heightmap and triangle size) - _when making new terrain shape_
-    * edit terrain (deform up/down or smooth)
-    * it's good to place car start now and test terrain scale in game by driving
-    * _optionally_ edit terrain layers
+    * On Terrain tab, choose area, make new flat terrain (pick heightmap and triangle size) - _when making new terrain shape_.
+    * Edit terrain (deform up/down or smooth).
+    * It's good to place car start now and test terrain scale in game by driving, or move around in editor to get the size feeling.
+    * _Optionally_ Edit terrain layers.
   * 3
-    * draw initial road shape - inserting road points from top view
-    * edit road points (make bridges,etc), adjust roll angles, _optionally_ use align terrain to road tool
+    * Draw initial road shape - inserting road points (from top view Alt-Z).
+    * Edit road points (move, or make bridges, etc), adjust roll angles, _optionally_ use align terrain to road tool.
   * 4
-    * setup car start position and its area (in Edit mode press Q and Ctrl-LMB to place it at cursor) - after this track can be driven in game
-    * choose road direction (+1 or -1), add road checkpoints (spheres, chkR), mark 1st checkpoint - after this track timing works
+    * Setup car start position and its area (in Edit mode press Q and Ctrl-LMB to place it at cursor) - after this track can be driven in game.
+    * Choose road direction (+1 or -1), add road checkpoints (spheres, chkR), mark 1st checkpoint - after this track timing works.
   * 5
-    * adjust vegetation amounts (grass, trees)
-    * _optionally_ edit vegetation layers and other parameters on vegetation tab
-    * enter preview camera and make a track screenshot
-    * drive the track, go back to editor and make changes to road / terrain to get the desired diving experience (this is quite important and best to repeat it often, starting early and after each major change)
+    * Adjust vegetation amounts (grass, trees).
+    * _Optionally_ Edit vegetation layers and other parameters on vegetation tab.
+    * Enter preview camera and make a track screenshot.
+    * Drive on the track in game. Go back to editor and make changes to road / terrain to get the desired diving experience.  
+    (This is quite important, and best to repeat it often, starting game early and after each major change).
+  * 6
+    * Save and test, check warnings in editor (alt-J, and see if anything needs fixing).
+  * 7
+    * _Optionally_ Add static, dynamic objects, particle emitters, fluids, fields, etc - if they fit the track.
+  * 8
+    * Name track, edit its Description (green, below - about location, scenery), and driving Advice (yellow, above - drive hints).
 
+This is just an example, because advanced artists, track creators will surely be able to do everything their way. And beginners won't 
+One other way is having a whole idea in mind, and working towards it, in editor.  
+E.g. I could pick a word, see if I can imagine it being a SR track and if so then make it (e.g. Spider, Factory, Swamp, etc).  
 
 ## Steps after
 
@@ -206,11 +218,11 @@ and set modified date `dd/mm/yy` as today or to when it was done.
 How to add Track's Ghost🏞️👻 drive to your new track.  
 This will also show racing line (trail) and few more pacenotes (bumps etc).
 
-  1. Be sure you didn't drive ES yet (well or faster) on this track. Or just delete your older ghost for it.
+  1. Be sure you didn't drive ES yet (well or faster) on this track. Or delete your older ghost and record from txt for it.
   2. Start game, use Rewind: Back in time.
   3. Use car: ES and Simulation: Normal.
   4. Drive smoothly, as perfectly as you can, always on road, with no hits.  
-     Drive 1 lap from start to finish, not using boost unless impossible otherwise (or some underwater).
+     Drive 1 lap from start to finish, not using boost (unless impossible otherwise, e.g. underwater).
   5. Copy user's ghost (named by your track and `_ES.rpl`) from:  
      `~/.local/share/stuntrally3/ghosts/normal/` into:
      `/data/ghosts/original`.

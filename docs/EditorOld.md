@@ -28,7 +28,8 @@ These videos (64 minutes total) cover creating a new track in detail. Even if be
 There is a **more recent** (old SR 2.x) page describing editor features [here](https://cryham.tuxfamily.org/portfolio/2015-sr-track-editor) (also new [here](https://cryham.org/portfolio/2010-sr-track-editor) but no images).
 
 _Note:_ Creating a very simple track (or just editing an existing one) doesn't require watching all parts (at least 1,2,3,7).  
-Creating a good, long or difficult track reaches 2 or more hours of editing. But a simple track can be done in 5 minutes if you know editor.
+Creating a good, long or difficult track reaches 2 or more hours of editing. But a simple track can be done in 5 minutes if you know editor.  
+As a general rule from experience: 1 km of track needs 1 hour of editing or more.
 
    
 ----
