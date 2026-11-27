@@ -366,15 +366,15 @@
 							<Property key="TextColour" value="0.8 0.65 0.2"/>
 							<UserString key="tip" value="#{obstacles}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="64 148 32 20" name="ti0">
+						<Widget type="TextBox" skin="TextBox" position="62 148 32 20" name="ti0">
 							<Property key="TextColour" value="0.5 0.8 1.0"/>
 							<UserString key="tip" value="#{fluids}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="90 148 32 20" name="ti1">
+						<Widget type="TextBox" skin="TextBox" position="88 148 32 20" name="ti1">
 							<Property key="TextColour" value="0.5 1.0 0.4"/>
 							<UserString key="tip" value="#{bumps}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="116 148 32 20" name="ti2">
+						<Widget type="TextBox" skin="TextBox" position="114 148 32 20" name="ti2">
 							<Property key="TextColour" value="1.0 0.6 0.3"/>
 							<UserString key="tip" value="#{jumps}"/>
 						</Widget>
@@ -390,11 +390,11 @@
 							<Property key="TextColour" value="0.8 0.8 0.8"/>
 							<UserString key="tip" value="#{banked}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="218 148 32 20" name="ti6">
+						<Widget type="TextBox" skin="TextBox" position="216 148 32 20" name="ti6">
 							<Property key="TextColour" value="0.8 0.8 1.0"/>
 							<UserString key="tip" value="#{frenzy}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="240 148 32 20" name="ti13">
+						<Widget type="TextBox" skin="TextBox" position="238 148 32 20" name="ti13">
 							<Property key="TextColour" value="0.7 1.0 0.5"/>
 							<UserString key="tip" value="#{Fields}"/>
 						</Widget>
@@ -2549,15 +2549,15 @@
 							<Property key="TextColour" value="0.8 0.65 0.2"/>
 							<UserString key="tip" value="#{obstacles}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="64 148 32 20" name="2ti0">
+						<Widget type="TextBox" skin="TextBox" position="62 148 32 20" name="2ti0">
 							<Property key="TextColour" value="0.5 0.8 1.0"/>
 							<UserString key="tip" value="#{fluids}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="90 148 32 20" name="2ti1">
+						<Widget type="TextBox" skin="TextBox" position="88 148 32 20" name="2ti1">
 							<Property key="TextColour" value="0.5 1.0 0.4"/>
 							<UserString key="tip" value="#{bumps}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="116 148 32 20" name="2ti2">
+						<Widget type="TextBox" skin="TextBox" position="114 148 32 20" name="2ti2">
 							<Property key="TextColour" value="1.0 0.6 0.3"/>
 							<UserString key="tip" value="#{jumps}"/>
 						</Widget>
@@ -2573,11 +2573,11 @@
 							<Property key="TextColour" value="0.8 0.8 0.8"/>
 							<UserString key="tip" value="#{banked}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="218 148 32 20" name="2ti6">
+						<Widget type="TextBox" skin="TextBox" position="216 148 32 20" name="2ti6">
 							<Property key="TextColour" value="0.8 0.8 1.0"/>
 							<UserString key="tip" value="#{frenzy}"/>
 						</Widget>
-						<Widget type="TextBox" skin="TextBox" position="240 148 32 20" name="2ti13">
+						<Widget type="TextBox" skin="TextBox" position="238 148 32 20" name="2ti13">
 							<Property key="TextColour" value="0.7 1.0 0.5"/>
 							<UserString key="tip" value="#{Fields}"/>
 						</Widget>

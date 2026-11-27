@@ -778,7 +778,7 @@
 
 	<!-- 🛣️ Road -->
 <!-- ============================================================================================================================================= -->
-	<Widget type="Window" skin="WindowC" position="244 648 250 383" layer="Back" name="RoadCur">
+	<Widget type="Window" skin="WindowC" position="244 648 250 363" layer="Back" name="RoadCur">
 		<Property key="Colour" value="1.0 0.8 0.6"/>
 		<Property key="Alpha" value="0.5"/>
 		<Property key="Caption" value="R - #{RoadPoint}"/>
@@ -795,14 +795,15 @@
 			<Property key="ImageCoord" value="32 40 32 20"/>
 			<Property key="ImageTexture" value="track_icons.png"/>
 		</Widget>
-		<Widget type="TextBox" skin="TextBoxS" position="34 0 130 25" name="rdTxt0">
+		<Widget type="TextBox" skin="TextBoxS" position="34 0 100 25" name="rdTxt0">
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="TextColour" value="0.7 1.0 0.5"/>
+			<Property key="FontHeight" value="20"/>
 		</Widget>
 		<Widget type="TextBox" skin="TextBoxS" position="110 2 60 25" name="rdVal0">
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="TextColour" value="0.7 1.0 0.5"/>
-			<Property key="FontHeight" value="16"/>
+			<Property key="FontHeight" value="20"/>
 		</Widget>
 		<Widget type="TextBox" skin="TextBoxS" position="174 2 70 25" name="rdKey0">
 			<Property key="InheritsAlpha" value="false"/>
@@ -862,7 +863,7 @@
 			<Property key="TextColour" value="0.9 0.6 0.5"/>
 			<Property key="FontHeight" value="16"/>
 		</Widget>
-		<Widget type="TextBox" skin="TextBoxS" position="110 73 70 25" name="rdVal3">
+		<Widget type="TextBox" skin="TextBoxS" position="116 73 70 25" name="rdVal3">
 			<Property key="InheritsAlpha" value="false"/>
 			<Property key="TextColour" value="0.9 0.6 0.5"/>
 			<Property key="FontHeight" value="16"/>

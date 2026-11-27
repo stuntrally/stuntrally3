@@ -8,9 +8,13 @@ WIP means work in progress, unfinished, still being developed.
 - New Gameplay: **Fields**🎆, on few SciFi tracks  
   Few types of areas, that will affect vehicle (if it's inside), by color:  
   🟦blue: accelerate, 🟨yellow: antigravity, 🟩green: damping, 🟥red: teleport, to other location.
-- renewed vehicle preview images
+- Renewed vehicle preview images
 - Hud
-  - New gauges (for speed, rpm), recolored and with glow, now 14 total
+  - New **gauges** (for speed, rpm), recolored and with glow, now 14 total
+- Gui
+  - Track tab extended
+    - added halfpipe % icon (green) above pipe (yellow), and on-pipe (red)
+    - added new icon for fields (last in difficulties row)
 - Editor
   - Fixed **pick** (Space) for Objects, Emitters, Collectibles, added for Fields, Fluids
     - added: shift-Space to pick none, for placing new (Objects, Collectibles)
@@ -20,8 +24,8 @@ WIP means work in progress, unfinished, still being developed.
   - Objects edit, toggle keys for: 6 - hide, 7 - collision, 8 - shadow
     - hide removes (big, on FloatingIslands) Objects  
       from roadDensity for vegetation, and from road preview for minimap
-- added game command line arguments: prv, prvfar, prvnear
-  - to start with preview camera setup for making vehicle screens
+- Added game command line arguments: prv, prvfar, prvnear
+  - to start with preview camera setup for making vehicle preview images
 - Updated **docs** (a lot) and screenshots
   - also added (sticky) forum topics with posts into docs/, before forum gone
 - [multiplayer](Multiplayer.md) added new master/game server to [game config](../config/game-default.cfg) under [ network ]
