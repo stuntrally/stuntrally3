@@ -506,6 +506,8 @@ descr="Jungle championship. Part 3.">
 		<t name="Jng24-NightJungle"/>
 		<t name="Jng25-CantorJungle"/>
 		<t name="Jng26-MilkyWay"/>
+		<t name="Jng27-Squircles"/>
+		<t name="Jng28-HugeTree"/>
 	</champ>
 
 	<champ name="Savanna" ver="1" difficulty="4" type="5"
@@ -555,6 +557,7 @@ descr="Winter championship. Part 2.">
 descr="Winter championship. Part 2.">
 		<t name="Wnt19-Downhill"/>
 		<t name="Wnt20-FirstSnow"/>
+		<t name="Wnt21-IcySquare"/>
 	</champ>
 
 	<champ name="Forest" ver="1" difficulty="4" type="5"
@@ -584,6 +587,9 @@ descr="Forest championship. Part 3.">
 		<t name="For19-CrolKarstMntn"/>
 		<t name="For20-LakoPine"/>
 		<t name="For21-StuntValley"/>
+		<t name="For22-Downpour"/>
+		<t name="For23-Bog"/>
+		<t name="For24-3Lakes"/>
 	</champ>
 
 	<champ name="Island" ver="1" difficulty="3" type="5"
@@ -613,6 +619,8 @@ descr="Island championship. Part 2.">
 descr="Island championship. Part 3.">
 		<t name="Isl20-Atlantis"/>
 		<t name="Isl21-BarrelFun"/>
+		<t name="Isl22-Fortress"/>
+		<t name="Isl23-Hurricane"/>
 	</champ>
 
 
@@ -626,6 +634,7 @@ descr="Mud championship.">
 		<t name="Mud4-Taiga"/>
 		<t name="Mud5-Mudflats"/>
 		<t name="Mud6-Weiriwasso"/>
+		<t name="Mud7-FloodedResort"/>
 	</champ>
 	<champ name="Canyon" ver="2" difficulty="3" type="6"
 descr="Canyon championship.">
@@ -639,6 +648,7 @@ descr="Canyon championship.">
 		<t name="Can8-RedoPoka"/>
 		<t name="Can9-DukeRain"/>
 		<t name="Can10-SandyCanyon"/>
+		<t name="Can11-Clover"/>
 	</champ>
 	<champ name="Australia" ver="2" difficulty="4" type="6"
 descr="Australia championship.">
@@ -652,6 +662,7 @@ descr="Australia championship.">
 		<t name="Aus8-Cliff"/>
 		<t name="Aus9-RedDesert"/>
 		<t name="Aus10-PreythCity"/>
+		<t name="Aus11-GoldRush"/>
 	</champ>
 
 	<champ name="Greece" ver="1" difficulty="3" type="6"
@@ -673,6 +684,7 @@ descr="Greece championship, Part 2.">
 		<t name="Grc12-KapabaRivers"/>
 		<t name="Grc13-YeleyStunts"/>
 		<t name="Grc14-SquazeloLakes"/>
+		<t name="Grc15-Bottle"/>
 	</champ>
 
 	<champ name="Finland and Spring" ver="1" difficulty="1" type="6"
@@ -697,6 +709,7 @@ descr="Autumn championship, Part 2.">
 		<t name="Atm8-Ultima"/>
 		<t name="Atm9-SchwabAutumn"/>
 		<t name="Atm10-LakeCity"/>
+		<t name="Atm11-Bat"/>
 	</champ>
 
 	<champ name="Moss" ver="3" difficulty="5" type="6"
@@ -721,12 +734,14 @@ descr="Volcanic championship.">
 		<t name="Vlc10-MtSulphur"/>
 		<t name="Vlc12-LavaPools"/>
 		<t name="Vlc13-BorVolcano"/>
+		<t name="Vlc14-Ash"/>
 	</champ>
 
 	<champ name="Stone" ver="1" difficulty="5" type="6"
 descr="Stone championship.">
 		<t name="Stn1-StoneQuarry"/>
 		<t name="Stn2-UltraFrenzy"/>
+		<t name="Stn3-ZigZag"/>
 	</champ>
 	<champ name="Other" ver="2" difficulty="3" type="6"
 descr="Championship of single track sceneries.">
@@ -746,6 +761,7 @@ descr="Unidentified championship.">
 		<t name="Uni5-PipeJumps"/>
 		<t name="Uni6-Wild"/>
 		<t name="Uni7-GlassStairs"/>
+		<t name="Uni8-Puff"/>
 	</champ>
 	<champ name="Mars" ver="1" difficulty="4" type="7"
 descr="Mars championship.">
@@ -759,6 +775,7 @@ descr="Mars championship.">
 descr="Toxic championship.">
 		<t name="Tox1-Radioactive"/>
 		<t name="Tox2-AcidLakes"/>
+		<t name="Tox3-ToxicSludge"/>
 		<t name="Apo1-TarFields"/>
 		<t name="Apo2-Toxicity"/>
 	</champ>
@@ -769,12 +786,14 @@ descr="Crystals championship.">
 		<t name="Cry3-BlueHell"/>
 		<t name="Cry4-Slide"/>
 		<t name="Cry5-CrystalIslands"/>
+		<t name="Cry6-Vortices"/>
 	</champ>
 
 	<champ name="Surreal" ver="4" difficulty="2" type="7"
 descr="Surreal championship.">
 		<t name="Sur1-Surreal"/>
 		<t name="Sur3-Chaotic"/>
+		<t name="Sur11-Awkward"/>
 	</champ>
 	<champ name="Marble" ver="1" difficulty="3" type="7"
 descr="Marble championship.">
@@ -791,6 +810,7 @@ descr="SurrealSpace championship.">
 		<t name="Sur7-UaraHills"/>
 		<t name="Sur8-BloCorcle"/>
 		<t name="Sur9-HexForest"/>
+		<t name="Sur10-FloatingIslands"/>
 	</champ>
 
 	<champ name="Alien" ver="1" difficulty="5" type="7"
@@ -801,6 +821,7 @@ descr="Alien championship.">
 		<t name="Aln4-EjeloOutpost"/>
 		<t name="Aln5-WhiteLemon"/>
 		<t name="Aln6-Overgrowth"/>
+		<t name="Aln7-Lookout"/>
 	</champ>
 
 	<champ name="Space" ver="1" difficulty="3" type="7"
@@ -822,6 +843,7 @@ descr="Anomaly scenery (graphical glitches) championship.">
 		<t name="Ano1-Glitchy"/>
 		<t name="Ano2-Bug"/>
 		<t name="Ano3-Oversize"/>
+		<t name="Ano4-Ripples"/>
 	</champ>
 
 
